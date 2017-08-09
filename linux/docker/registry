@@ -1,0 +1,2 @@
+docker tag dockerbuilds_ase dev.omnicomm.ru:5000/ase:3.6.2.16.5
+docker push dev.omnicomm.ru:5000/ase:3.6.2.16.5

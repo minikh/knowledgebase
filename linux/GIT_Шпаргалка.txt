@@ -1,0 +1,161 @@
+git config --global user.name "Your Name"
+git config --global user.email "your_email@whatever.com"
+
+#дл€ пользователей Unix/Mac
+git config --global core.autocrlf input
+git config --global core.safecrlf true
+
+#ƒл€ пользователей Windows
+git config --global core.autocrlf true
+git config --global core.safecrlf true
+
+mkdir hello
+cd hello
+touch hello.html
+
+#»нициализаци€
+git init
+
+#добавить файл
+git add hello.html
+git commit -m "First Commit"
+
+git status
+
+#»ндексировать изменени€
+git add hello.html
+git status
+
+#сн€ть индексацию
+git reset
+
+git add a.html
+git add b.html
+git commit -m "Changes for a and b"
+
+git add c.html
+git commit -m "Unrelated change to c"
+
+#редактировать сообщение в vim (выход ESC :wq)
+git commit
+
+#добавить все файлы текущего каталога
+git add .
+
+#удалить файл из под версионного контрол€
+git rm --cached <file>
+
+#удалить файл с диска
+git rm <file>
+
+#удалить файл с диска принудительно
+git rm -f <file>
+
+#истори€ проекта
+git log
+git log -p -2
+#однострочна€ истори€
+git log --pretty=oneline
+git log --pretty=oneline --max-count=2
+git log --pretty=oneline --since='5 minutes ago'
+git log --pretty=oneline --until='5 minutes ago'
+git log --pretty=oneline --author=<your name>
+git log --pretty=oneline --all
+git log --all --pretty=format:"%h %cd %s (%an)" --since='7 days ago'
+git log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short
+git log --pretty=format:"%h - %an, %ar : %s"
+
+git log --graph --all --decorate --oneline
+
+    --pretty="..." Ч определ€ет формат вывода.
+    %h Ч укороченный хэш коммита
+    %d Ч дополнени€ коммита (Ђголовыї веток или теги)
+    %ad Ч дата коммита
+    %s Ч комментарий
+    %an Ч им€ автора
+    --graph Ч отображает дерево коммитов в виде ASCII-графика
+    --date=short Ч сохран€ет формат даты коротким и симпатичным
+
+gitx (дл€ Mac) и gitk (дл€ любой платформы) полезны в изучении истории изменений
+
+#добавление алиасов дл€ Windows
+git config --global alias.co checkout
+git config --global alias.ci commit
+git config --global alias.st status
+git config --global alias.br branch
+git config --global alias.hist 'log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short'
+git config --global alias.type 'cat-file -t'
+git config --global alias.dump 'cat-file -p'
+
+#добавление алиасов дл€ Mac ƒобавьте следующее в файл .gitconfig в вашем $HOME каталоге.
+[alias]
+  co = checkout
+  ci = commit
+  st = status
+  br = branch
+  hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+  type = cat-file -t
+  dump = cat-file -p
+
+#git hist
+git config --global alias.hist 'log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short'
+
+#сделать откат на ветку с hash
+git checkout <hash>
+#просмотреть файл
+cat hello.html
+
+#перейти к последней версии в ветке master
+git checkout master
+
+#создать тег дл€ текущей версии
+git tag v1
+
+#переключитьс€ на родител€ v1
+git checkout v1^
+
+#просмотр тегов
+git tag
+
+#посмотреть теги в логе.
+git hist master --all
+
+#отмена изменений в файле до индексации (git add)
+git checkout hello.html
+
+#отмена изменений в файле после индексации до коммита (git commit)
+git reset HEAD hello.html
+
+#отмена последнего коммита
+git revert HEAD
+git revert HEAD --no-edit (без открыти€ редактора)
+
+#удаление ненужных коммитов
+git reset --hard v1
+--hard указывает, что рабочий каталог должен быть обновлен в соответствии с новым head ветк
+#удалить коммит с именем tag и коммиты на которые он ссылалс€
+git tag -d <tag>
+
+
+
+
+cd ../hello
+
+#извлечь коммиты из удаленного репозитори€, но не сливать с локальным
+git fetch
+#слить изменени€ из удаленного репозитори€ с мастером
+git merge origin/master
+
+git pull то же что и 
+git fetch
+git merge origin/master
+
+#переназначить редактор дл€ коммитов
+git config --global core.editor "'c:\Program Files (x86)\Notepad++\notepad++.exe' -multiInst -notabbar -nosession -noPlugin"
+
+#задать утилиту дл€ merge
+git config --global merge.tool kdiff3
+git config --global mergetool.kdiff3.cmd '"c:\\Program Files\\KDiff3\\kdiff3.exe" $BASE $LOCAL $REMOTE -o $MERGED'
+
+#ѕоказать ветки в удаленном репозитории
+git remote show origin

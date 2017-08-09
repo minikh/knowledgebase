@@ -1,0 +1,192 @@
+docker run -d -p 9000:9000 -v /var/run/docker.sock:/docker.sock --name dockerui abh1nav/dockerui:latest -e="/docker.sock"
+
+https://docs.docker.com/engine/installation/linux/ubuntulinux/
+
+-------------
+
+sudo apt-get update
+sudo apt-get install apt-transport-https ca-certificates
+sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
+
+Создать файл /etc/apt/sources.list.d/docker.list
+Если файл есть, то удалить все и вставить в него:
+для 14
+deb https://apt.dockerproject.org/repo ubuntu-trusty main
+для 16
+deb https://apt.dockerproject.org/repo ubuntu-xenial main
+
+sudo apt-get update
+sudo apt-get install docker-engine
+sudo service docker start
+sudo groupadd docker
+sudo usermod -aG docker user
+Log out and log back in.
+run ...
+
+------------------
+Java with Ubuntu 14.04 LTS
+oracle-8-jdk
+docker run -d nimmis/java:oracle-7-jdk
+
+http://rus-linux.net/MyLDP/vm/docker/docker-tutorial.html
+
+docker pull имя_образа - загрузить образ
+docker pull ubuntu:latest
+
+docker images - список контейнеров
+
+docker run --rm -ti ubuntu /bin/bash - создать контейнер
+  --rm: сообщает Docker-у удалять контейнер каждый раз, как только произойдет
+    выход из процесса. Хорошая возможность при тестировании, позволяющая
+    избежать беспорядка
+  -ti: указывает Dockerу создать псевдотерминал и предоставить его
+    для использования в интерактивном режиме. Это возможность для доступа
+    к контейнеру и она хорошо подходит для быстрого прототипирования и
+    различных игр, но при использовании контейнера в производственных
+    условиях вы не должны включать эти флаги.
+  ubuntu: это образ, на основе котором мы будем создавать контейнер
+    /bin/bash: команда запуска контейнера, и поскольку мы начали работу в
+    интерактивном режиме, то будет выдано приглашение для работы с контейнером
+
+запустим контейнер в фоновом режиме:
+docker run -d ubuntu ping 8.8.8.8
+sudo docker help run
+sudo docker run --ip  #Container IPv4 address (e.g. 172.30.100.104)
+sudo docker run start
+
+
+
+============================
+Прежде всего, мы должны написать инструкцию, по которой Docker должен
+сформировать образ (image), на основе которого будет работать наше
+приложение — Dockerfile.
+
+src: build/backend/Dockerfile
+
+# Используем за основу контейнера Ubuntu 14.04 LTS
+FROM ubuntu:14.04
+# Переключаем Ubuntu в неинтерактивный режим — чтобы избежать лишних запросов
+ENV DEBIAN_FRONTEND noninteractive
+# Устанавливаем локаль
+RUN locale-gen ru_RU.UTF-8 && dpkg-reconfigure locales
+
+# Добавляем необходимые репозитарии и устанавливаем пакеты
+RUN apt-get install -y software-properties-common
+RUN add-apt-repository -y ppa:ondrej/php5-5.6
+RUN add-apt-repository -y ppa:nginx/stable
+RUN sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4F4EA0AAE5267A6C
+RUN apt-get update
+RUN apt-get upgrade -y
+RUN apt-get install -y wget curl php5-fpm php5-mysql php5-gd php5-curl php-pear php-apc php5-mcrypt php5-imagick php5-memcache supervisor nginx
+
+# Добавляем описание виртуального хоста
+ADD astgo.ru /etc/nginx/sites-enabled/astgo.ru
+# Отключаем режим демона для Nginx (т.к. запускать будем сами)
+RUN echo "\ndaemon off;" >> /etc/nginx/nginx.conf
+# Отключаем режим демона для php-fpm
+RUN sed -i -e "s/;daemonize\s*=\s*yes/daemonize = no/g" /etc/php5/fpm/php-fpm.conf
+# Добавляем конфиг supervisor (описание процессов, которые мы хотим видеть запущенными на этом контейнере)
+ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
+# Объявляем, какие директории мы будем подключать
+VOLUME ["/var/www"]
+# Объявляем, какой порт этот контейнер будет транслировать
+EXPOSE 80
+# Запускаем supervisor
+CMD ["/usr/bin/supervisord"]
+
+src: build/backend/supervisord.conf
+
+[supervisord] [ [Supervisord]]
+nodaemon=true
+loglevel=debug
+
+[program:nginx]
+command=/usr/sbin/nginx
+autorestart=true
+
+[program:php5-fpm]
+command=/usr/sbin/php5-fpm
+autorestart=true
+
+    FROM — указывает название образа (image), который будет взят за основу.
+    ENV — устанавливает переменную среды
+    RUN — запустить команду в контейнере (все команды исполняются с полными
+    правами в пределах контейнера)
+    ADD — добавить файл в контейнер
+    VOLUME — указать монтируемые директории (их можно монтировать на хост
+    машину или на другие контейнеры)
+    EXPOSE — указать транслируемые порты (их можно транслировать на хост
+    машину или на другие контейнеры)
+    CMD — запустить процесс (это и будет процесс, вокруг которого построен контейнер)
+
+Сборка образа
+
+По написанной нами инструкции необходимо собрать образ. Назовем его astgo.ru/dev
+
+$ sudo docker build -t astgo.ru/dev ~/PATH_TO_DOCKERFILE_DIR
+
+Мы увидели пошаговую сборку нашего образа. Если в процессе сборки произошли
+ошибки, на этом этапе их можно исправить и снова попробовать собрать образ.
+Проверим, что всё прошло удачно и образ появился в системе:
+
+$ sudo docker images | grep 'astgo.ru/dev'
+astgo.ru/dev          latest              d2444af3ee61        3 minutes ago       387.2 MB
+
+Запуск контейнера
+
+Теперь создадим контейнер, запустив образ. Мы будем запускать образ astgo.ru/dev,
+свяжем 80 порт хоста с 80 портом контейнера,
+а также директорию /var/www хоста с /var/www контейнера.
+Последнее позволяет нам хранить код проекта на самой хост машине,
+не теряя его каждый раз, когда мы, по каким-то причинам, пересоздаем контейнер.
+
+$ sudo docker run -v /var/www:/var/www -p 80:80 -м -t astgo.ru/dev
+
+Все, контейнер запущен. Мы можем убедиться в том, что он работает,
+посмотрев в список запущенных контейнеров:
+
+$ sudo docker ps | grep 'astgo.ru/dev'
+d8429cc192c0    astgo.ru/dev:latest    "/usr/bin/supervisor 20 seconds ago
+Up 19 seconds  0.0.0.0:80->80/tcp  reverent_fermi
+
+Так как мы не указали имя для нового контейнера, то он получил
+автоматически сгенерированное имя reverent_fermi, по которому мы теперь можем к нему обращаться.
+Подключение к запущенному контейнеру
+
+Попробуем зайти в контейнер и посмотреть, как у него дела. Это может
+потребоваться, например, для запуска каких-то консольных команд в среде приложения.
+
+$ sudo docker exec -i -t reverent_fermi bash
+root@d8429cc192c0:/#
+
+
+Docker Удалить все контейнеры и образы
+# Delete all containers
+docker rm $(docker ps -a -q) -f
+# Delete all images
+docker rmi $(docker images -q) -f
+
+//****************************************************
+https://habrahabr.ru/company/infobox/blog/237405/
+
+Давайте посмотрим список всех наших образов docker images
+
+Изменения в существующем контейнере можно закоммитить в образ для дальнейшего использования.
+docker commit <id контейнера> <имя образа>
+.
+Перенос образа на другой хост
+
+Наконец-то о главном. Допустим, вы настроили свое приложение в Docker и закоммитили в образ. Теперь можно сохранить образ в файл 
+docker save имя_образа > ~/transfer.tar
+
+Копируем этот образ на другой хост например с помощью scp и импортируем его в Docker.
+docker load < /tmp/transfer.tar
+
+Вот и все, можно легко переносить свои приложения между хостами, облаками и собственными серверами. Никакого vendor–lock. Только ради этого стоит использовать Docker! (если вы сохраняли данные на примонтированную файловую систему, не забудьте перенести и их).
+
+
+
+
+
+

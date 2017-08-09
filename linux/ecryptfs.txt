@@ -1,0 +1,16 @@
+http://www.oldnix.org/ecryptfs/
+
+
+----------------------------------
+https://habrahabr.ru/post/143327/
+$sudo apt-get install ecryptfs-utils
+$ ecryptfs-setup-private
+Enter your login passphrase [user]:
+Enter your mount passphrase [leave blank to generate one]:
+Enter your mount passphrase (again):
+
+
+На вопрос «Enter your login passphrase» нужно ввести пароль на вход в систему — это нужно для автомонтирования.
+На вопрос «Enter your mount passphrase» надо ввести пароль для шифрования (одинаковый на всех компьютерах, участвующих в синхронизации).
+Потом перелогиниться и расшарить ~/.Private. И всё, можно спать спокойно. Этим способом пользуюсь я, расшаривая файлы через Ubuntu One.
+----------------------------------

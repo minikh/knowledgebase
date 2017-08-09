@@ -1,0 +1,5 @@
+install the compiler (gcc-avr) and the libraries (avr-libc) packages:  
+sudo apt-get install gcc-avr avr-libc
+
+if you use the USB port to dialog, you should add yourself to the group 'dialout' in order to have write permissions on that port: 
+sudo usermod -aG dialout <myuser>

@@ -1,0 +1,4387 @@
+/******************************************************************
+ * Main css file
+ * Created: 15.10.2010
+ ******************************************************************/
+
+/******************************************************************
+ * General styles
+ ******************************************************************/
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body, div, span, h1, h2, h3, h4, h5, h6, p,
+a, img, strong, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend {
+	border: 0;
+	font-weight: normal;
+	font-style: normal;
+	font-size: 14px;
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	line-height: 16px;
+	margin: 0;
+	outline: none;
+	padding: 0;
+	text-align: left;
+	vertical-align: baseline;
+}
+
+table, tbody, tfoot, thead, tr, th, td {
+	font-weight: normal;
+	font-style: normal;
+	font-size: 14px;
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	line-height: 16px;
+	margin: 0;
+	outline: none;
+	padding: 0;
+}
+
+th {
+	font-weight: bold;
+	text-align: center;
+}
+
+html, body {
+	background: #fff;
+	color: #333;
+	width: 100%;
+	height: 100%;
+}
+
+a img {
+	border: 0;
+	text-decoration: none; 
+}
+
+a { 
+	color: #4379b8;
+	font-size: 12px;
+	line-height: 14px;
+	text-decoration: underline; 
+}
+
+a:hover { 
+	text-decoration: none; 
+}
+
+/*a:visited { 
+	color: #551a8b;
+}
+
+a:active { 
+	font-size: 12px;
+	line-height: 14px;
+	text-decoration: underline;
+} ? */
+
+ul, ol {
+	list-style-position: inside;
+}
+
+ul li, ol li {
+	margin: 0;
+	padding: 0;
+} 
+
+input, textarea {
+	padding: 2px;
+}
+
+h1 {
+	color: #333;
+	font-size: 28px;
+	line-height: 30px;
+}
+
+h2 {
+	color: #333;
+	font-size: 24px;
+	line-height: 26px;
+}
+
+h3 {
+	color: #333;
+	font-size: 22px;
+	line-height: 24px;
+}
+
+h4 {
+	color: #333;
+	font-size: 20px;
+	line-height: 22px;
+}
+
+h5 {
+	color: #333;
+	font-size: 18px;
+	line-height: 20px;
+}
+
+h6 {
+	color: #333;
+	font-size: 16px;
+	line-height: 18px;
+}
+
+p {
+	margin: 5px 0;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.italic {
+	font-style: italic;
+}
+
+.centered {
+	text-align: center;
+}
+
+.centered1 {
+	margin: 0 auto;
+}
+
+.generalTopIndent {
+	margin-top: 30px;
+}
+
+#mainContainer {
+	float: left;
+	position: relative;
+    min-height: 100%;
+    height: auto;
+    min-width: 1220px;
+	width: 100%;
+}
+
+/******************************************************************
+ * Header styles
+ ******************************************************************/
+
+#header {
+	background: #fff;
+	float: left;
+	height: auto;
+	width: 100%;
+}
+
+#mainHeader {
+	background: #ebebeb;
+	border-bottom: 1px solid #949494;
+	float: left;
+	height: 114px;
+	position: relative;
+	width: 100%;
+}
+
+div#leftPartHeader {
+	position: absolute;
+	top: 20px;
+	left: 3%;
+	height: 82px;
+	width: 420px;
+}
+
+a#logo {
+	display: block;
+	margin-left: 20px;
+	height: 82px;
+	width: 396px;
+}
+
+div#leftPartHeaderSmall {
+	position: absolute;
+	top: 5px;
+	left: 3%;
+	height: 25px;
+	width: 360px;
+}
+
+a#smallLogo {
+	border-bottom: 1px solid #848c8c;
+	display: block;
+	float: left;
+	height: 25px;
+	margin-top: 4px;
+	width: 140px;
+}
+
+div#communityMenuContainer {
+	float: left;
+	height: 25px;
+	margin: 0 0 0 18px;
+	padding: 15px 0 0;
+	width: 200px;
+}
+
+div#communityMenuContainer a {
+	color: #444343;
+	font-size: 14px;
+	line-height: 16px;
+}
+
+div#communityBarContainer {
+	position: absolute;
+	bottom: 13px;
+	left: 3%;
+}
+
+#userInfoBar {
+	border: 1px solid #e0e0e0;
+	background: #fff;
+	height: 36px;
+	position: absolute;
+	top: 8px;
+	right: 4%;
+	width: auto;
+	z-index: 2;
+}
+
+#userInfoBar1 {
+	border: 1px solid #e0e0e0;
+	background: #fff;
+	height: 31px;
+	position: absolute;
+	top: 8px;
+	right: 4%;
+	width: 394px;
+}
+
+#userInfoBar, #userInfoBar a, #userInfoBar span,
+#userInfoBar1, #userInfoBar1 a, #userInfoBar1 span {
+	color: #444343;
+	font-size: 12px;
+	line-height: 14px;
+}
+
+#openIdLoginBar {
+	height: 30px;
+	position: absolute;
+	top: 48px;
+	right: 4%;
+	width: 390px;
+}
+
+#openIdLoginBar a {
+	display: block;
+	float: left;
+	height: 18px;
+	width: 18px;
+	margin: 0 5px 0 0;
+	padding: 0;
+	text-decoration: none;
+}
+
+.userDataHolder {
+	background: #eae8e8;
+	border: 1px solid #b1b3b4;
+	border-right: none;
+	float: left;
+	height: 26px;
+	margin: 4px;
+	width: auto;
+}
+
+.userDataHolder1 {
+	float: left;
+	height: auto;
+	margin: 4px 0 0 4px;
+	width: 389px;
+}
+
+.userBarAvatarHolder {
+	float: left;
+	height: 26px;
+	width: 26px;
+}
+
+.userBarAvatarHolder table,
+.userBarAvatarHolder table td {
+	border: 0;
+	border-collapse: collapse;
+	height: 26px;
+	text-align: center;
+	vertical-align: middle;
+	width: 26px;
+}
+
+.userBarLinkHolder {
+	float: left;
+	height: 22px;
+	padding: 4px 3px 0 3px;
+	width: auto;
+}
+
+.userBarLinkHolder a {
+	display: block;
+	float: left;
+	margin: 0 6px;
+}
+
+.userBarLinkHolder a#usermenu {
+	display: block;
+	float: left;
+	height: 22px;
+	padding-top: 7px;
+	margin: 0;
+	text-align: center;
+	width: 26px;
+}
+
+.userEnterLinkHolder,
+.userRegisterLinkHolder {
+	background: #eae8e8;
+	border: 1px solid #b1b3b4;
+	float: left;
+	height: 19px;
+	overflow: hidden;
+	padding: 2px 3px 0 13px;
+}
+
+.userEnterLinkHolder {
+	margin-right: 2px;
+	text-align: center;
+	width: 120px;
+}
+
+.userRegisterLinkHolder {
+	text-align: center;
+	width: 228px;
+}
+
+.userEnterLinkHolder a,
+.userRegisterLinkHolder a {
+	font-weight: bold;
+	text-decoration: underline;
+	vertical-align: middle;
+}
+
+.userEnterLinkHolder a:hover,
+.userRegisterLinkHolder a:hover {
+	text-decoration: none;
+}
+
+.userLinksHolder {
+	float: left;
+	height: auto;
+	overflow: hidden;
+	margin-top: 9px;
+	width: 325px;
+}
+
+.userPhotoHolder {
+	border: 1px solid #fff;
+	float: left;
+	height: 50px;
+	margin: 3px 0 0 12px;
+	width: 50px;
+}
+
+.menuLinksHolder {
+	height: 37px;
+	position: absolute;
+	right: 4%;
+	bottom: -3px;
+	width: auto;
+}
+
+.menuLinksHolder a.tab1,
+.menuLinksHolder a.tab2 {
+	color: #b1b2b4;
+	display: block;
+	font-size: 22px;
+	float: left;
+	height: 32px;
+	line-height: 24px;
+	padding-top: 5px;
+	text-decoration: underline;
+	text-align: center;
+}
+
+.menuLinksHolder a.tab1 {
+	margin-left: 10px;
+	width: 100px;
+}
+
+.menuLinksHolder a.tab2 {
+	margin-left: 0;
+	width: 177px;
+}
+
+.menuLinksHolder a.tab1:hover,
+.menuLinksHolder a.tab2:hover {
+	color: #000;
+}
+
+a.tabActive1,
+a.tabActive2 {
+	color: #000;
+	display: block;
+	font-size: 22px;
+	float: left;
+	height: 32px;
+	line-height: 24px;
+	margin-left: 5px;
+	padding-top: 5px;
+	text-decoration: underline;
+	text-align: center;
+}
+
+a.tabActive1 {
+	background: url('/img/tab_1.png') no-repeat left top;
+	margin-left: 10px;
+	width: 100px;
+}
+
+a.tabActive2 {
+	background: url('/img/tab_2.png') no-repeat left top;
+	margin-left: 0;
+	width: 177px;
+}
+
+#secondMenu {
+	background: #fcc334;
+	float: left;
+	min-height: 40px;
+	height: auto;
+	margin-top: 2px;
+	width: 100%;
+}
+
+.secondMenuLinksHolder {
+	float: left;
+	height: auto;
+	margin: 0 4% 0 3%;
+	width: 93%;
+}
+
+#secondMenu .secondMenuLinksHolder a {
+	color: #4e4e4e;
+	display: block;
+	font-size: 18px;
+	float: left;
+	height: 33px;
+	line-height: 20px;
+	margin-right: 1.5%;
+	padding: 7px 10px 0 10px;
+	text-decoration: underline;
+	width: auto;
+}
+
+#secondMenu .secondMenuLinksHolder a:hover {
+	background: #fdd455;
+	color: #000;
+}
+
+#secondMenu .secondMenuLinksHolder a.secondMenuLinksActive {
+	background: #f7a300;
+	color: #000;
+	display: block;
+	font-size: 18px;
+	float: left;
+	height: 33px;
+	line-height: 20px;
+	margin-right: 1.5%;
+	padding: 7px 10px 0 10px;
+	text-decoration: underline;
+	width: auto;
+}
+
+/**********  Second menu search bar  **********/
+
+.smSearchBarHolder {
+	float: right;
+	height: 24px;
+	margin: 10px 0 0;
+	width: 410px;
+}
+
+.smSearchBarHolder select.smSelect {
+	border: 1px solid #000;
+	color: #333;
+	display: block;
+	float: right;
+	font-size: 14px;
+	line-height: 16px;
+	height: 20px;
+	padding: 0 0 0 3px;
+	margin: 0 0 0 5px;
+	width: 130px;
+}
+
+.smSearchBarHolder input.smTextInput {
+	border: 1px solid #000;
+	color: #333;
+	display: block;
+	float: right;
+	font-size: 14px;
+	line-height: 16px;
+	height: 18px;
+	padding: 0 1px;
+	margin: 0 0 0 5px;
+	width: 170px;
+}
+
+.smSearchBarHolder input.siteButton {
+	display: block;
+	float: right;
+	margin: 0 0 0 5px;
+	background: url('/img/grey_20_90.png') no-repeat left top;
+	border: none;
+	cursor: pointer;
+	font-size: 14px;
+	line-height: 16px;
+	height: 20px;
+	text-align: center;
+	width: 90px;
+}
+
+/******************************************************************
+ * Content styles
+ ******************************************************************/
+
+#contentContainer {
+	float: left;
+	height: auto;
+	padding-bottom: 75px;
+	width: 100%;
+}
+
+#registrationContainer {
+	float: left;
+	height: auto;
+	margin: 0 3%;
+	padding: 40px 0;
+	width: 94%;
+	min-width: 1180px;
+	overflow: hidden;
+}
+
+#leftColumn {
+	float: left;
+	height: auto;
+	margin-left: 3%;
+	padding: 40px 0 80px 0;
+	width: 60%;
+	min-width: 735px;
+	overflow: hidden;
+}
+
+h5.pageGeneralHeading {
+	border-bottom: 1px solid #e4e4e4;
+	color: #000;
+	padding-bottom: 8px;
+}
+
+h5.pageGeneralHeading img {
+	vertical-align: bottom;
+}
+
+h6.commSectionGeneralHeading {
+	float: left;
+	border-bottom: 1px solid #e4e4e4;
+	color: #cd9309;
+	padding-bottom: 8px;
+	margin: 10px 0 20px 0;
+	width: 100%;
+}
+
+.specialHeadingCentered {
+	border-bottom: 1px solid #e2e6e2;
+	float: left;
+	height: 30px;
+	margin: 0 0 13px 0;
+	position: relative;
+	width: 100%;
+}
+
+.specialHeadingCentered .textHolder {
+	color: #000;
+	display: block;
+	font-size: 18px;
+	height: 20px;
+	position: absolute;
+	top: 5px;
+	text-align: center;
+	width: 100%;
+}
+
+.specialHeadingCentered .linkHolder {
+	display: block;
+	height: 20px;
+	position: absolute;
+	top: 5px;
+	right: 0;
+	width: auto;
+}
+
+.rssLinkHolder {
+	float: left;
+	height: auto;
+	margin: 5px 0 10px 0;
+	width: 100%;
+}
+
+.rssLinkHolder a.siteButton1,
+.linkHolder1 a.siteButton1 {
+	background: url('/img/button_163_.png') no-repeat left top;
+	border: none;
+	color: #000;
+	display: block;
+	float: left;
+	font-size: 14px;
+	line-height: 16px;
+	height: 19px;
+	margin: 0;
+	padding: 3px 0 0;
+	text-align: center;
+	width: 163px;
+	text-decoration: none;
+}
+
+.rssLinkHolder a.rssLink {
+	background: url('/img/icon/rss1.png') no-repeat left top;
+	border: none;
+	display: block;
+	float: right;
+	height: 22px;
+	margin: 0;
+	padding: 0;
+	width: 22px;
+	text-decoration: none;
+}
+
+.rssLinkHolder .buttonInfoText {
+	color: #8e8e8e;
+	font-size: 11px;
+	float: left;
+	height: auto;
+	margin: 5px 0 15px 0;
+	width: 100%;
+}
+
+.linkHolder1 {
+	float: left;
+	margin: 6px 0 15px 0;
+	width: auto;
+}
+
+.linkHolder1 a {
+	text-decoration: none;
+}
+
+.specialHeadingCentered .linkHolder a {
+	color: #4379b8;
+	font-size: 12px;
+}
+
+.faqHolder {
+	height: auto;
+	margin: 20px 0;
+	width: 100%;
+}
+
+.faqHolder p {
+	margin: 20px 0;
+}
+
+.faqHolder p a {
+	font-size: 14px;
+	font-weight: bold;
+	line-height: 20px;
+}
+
+.faqHolder p a.scndLink {
+	font-size: 12px;
+	font-weight: normal;
+	line-height: 18px;
+}
+
+/**********  Community and user bar styles  **********/
+
+.communityBar {
+	float: left;
+	height: 50px;
+	overflow: hidden;
+	width: 930px;
+}
+
+.communityBar .previewHolder {
+	float: left;
+	height: 50px;
+	margin: 0 8px 0 0;
+	width: 50px;
+}
+
+.communityBar .previewHolder table,
+.communityBar .previewHolder table td {
+	border: 0;
+	border-collapse: collapse;
+	height: 50px;
+	text-align: center;
+	vertical-align: middle;
+	width: 50px;
+}
+
+.communityBar .titleHolder {
+	float: left;
+	height: 35px;
+	overflow: hidden;
+	padding: 8px 0 0;
+	max-width: 830px;
+	width: auto;
+}
+
+.titleHolder a {
+	color: #000;
+	font-size: 28px;
+	line-height: 30px;
+}
+
+a.becomeReaderLink {
+	background: url('/img/icon/grey_add.png') no-repeat left top;
+	display: block;
+	float: left;
+	height: 28px;
+	margin: 11px 0 0 8px;
+	width: 28px;
+}
+
+a.becomeReaderLink:hover {
+	background: url('/img/icon/yellow_add.png') no-repeat left top;
+}
+
+a.unsubscribeLink {
+	background: url('/img/icon/minus.png') no-repeat left top;
+	display: block;
+	float: left;
+	height: 28px;
+	margin: 13px 0 0 8px;
+	width: 28px;
+}
+
+a.unsubscribeLink:hover {
+	background: url('/img/icon/red_minus.png') no-repeat left top;
+}
+
+/*.articleNavIconsHolder {
+	float: left;
+	height: 20px;
+	width: auto;
+}
+
+.articleNavIconsHolder a.commNavIcon {
+	display: block;
+	float: left;
+	height: 17px;
+	text-decoration: none;
+	width: 20px;
+}
+
+.articleNavIconsHolder a.commInfo {
+	background: url('/img/icon/1_about_community_grey.png') no-repeat left top;
+}
+
+.articleNavIconsHolder a.commInfo:hover {
+	background: url('/img/icon/1_about_community.png') no-repeat left top;
+}
+
+.articleNavIconsHolder a.userInfo {
+	background: url('/img/icon/1_about_user_grey.png') no-repeat left top;
+}
+
+.articleNavIconsHolder a.userInfo:hover {
+	background: url('/img/icon/1_about_user.png') no-repeat left top;
+}
+
+.articleNavIconsHolder a.addMember {
+	background: url('/img/icon/3_add_participant_grey.png') no-repeat left top;
+}
+
+.articleNavIconsHolder a.addMember:hover {
+	background: url('/img/icon/3_add_participant.png') no-repeat left top;
+}
+
+.articleNavIconsHolder a.addReader {
+	background: url('/img/icon/5_add_reader_grey.png') no-repeat left top;
+}
+
+.articleNavIconsHolder a.addReader:hover {
+	background: url('/img/icon/5_add_reader.png') no-repeat left top;
+}
+
+.articleNavIconsHolder a.commMembers, .articleNavIconsHolder a.commReaders {
+	display: block;
+	font-size: 10px;
+	font-weight: bold;
+	float: left;
+	height: 17px;
+	line-height: 12px;
+	padding: 2px 0 0 22px;
+	text-decoration: none;
+	width: auto;
+}
+
+.articleNavIconsHolder a.commMembers {
+	background: url('/img/icon/2_participant_grey.png') no-repeat left top;
+	color: #a3a3a3;
+}
+
+.articleNavIconsHolder a.commMembers:hover {
+	background: url('/img/icon/2_participant.png') no-repeat left top;
+	color: #000;
+}
+
+.articleNavIconsHolder a.commReaders {
+	background: url('/img/icon/4_reader_grey.png') no-repeat left top;
+	color: #a3a3a3;
+}
+
+.articleNavIconsHolder a.commReaders:hover {
+	background: url('/img/icon/4_reader.png') no-repeat left top;
+	color: #000;
+}
+
+.articleNavIconsHolder span {
+	display: block;
+	float: left;
+	color: #d5d5d5;
+}*/
+
+/**********  Articles list and view styles  **********/
+
+.articleHolder {
+	float: left;
+	height: auto;
+	margin-bottom: 10px;
+	width: 100%;
+}
+
+.articleHolder .articleHeadingHolder {
+	float: left;
+	height: auto;
+	position: relative;
+	width: 100%
+}
+
+.articleHolder .articleVersionHeadingHolder {
+	float: left;
+	height: auto;
+	width: 100%
+}
+
+.articleHeadingHolder p.articleHeading {
+	color: #000;
+	float: left;
+	font-size: 24px;
+	height: auto;
+	line-height: 26px;
+	margin: 0 0 4px 0;
+	text-align: left;
+	width: 82%;
+}
+
+.articleVersionHeadingHolder p.articleVersionHeading {
+	color: #000;
+	float: left;
+	font-size: 24px;
+	height: auto;
+	line-height: 26px;
+	margin: 0;
+	text-align: left;
+	width: auto;
+}
+
+.articleVersionHeadingHolder a {
+	display: block;
+	float: left;
+	margin: 1px 0 0 13px;
+}
+
+.articleHeadingHolder p.articleHeading a {
+	color: #000;
+	font-size: 24px;
+	line-height: 26px;
+}
+
+.articleHeadingHolder p.articleHeading a img {
+	vertical-align: bottom;
+}
+
+.articleHeadingHolder p.dateTime {
+	color: #a1a1a1;
+	float: right;
+	font-size: 10px;
+	height: 12px;
+	line-height: 12px;
+	position: absolute;
+	right: 0;
+	bottom: 3px;
+	margin: 0;
+	text-align: right;
+	width: 18%;
+}
+
+.articleHolder div.articleText {
+	float: left;
+	margin: 8px 0 0;
+	width: 100%;
+}
+
+.articleHolder div.articleText h1 {
+	color: #333;
+	font-size: 22px;
+	line-height: 24px;
+	margin: 10px 0;
+}
+
+.articleHolder div.articleText h2 {
+	color: #333;
+	font-size: 20px;
+	line-height: 22px;
+	margin: 10px 0;
+}
+
+.articleHolder div.articleText h3 {
+	color: #333;
+	font-size: 18px;
+	line-height: 20px;
+	margin: 10px 0;
+}
+
+.articleHolder div.articleText h4,
+.articleHolder div.articleText h5,
+.articleHolder div.articleText h6 {
+	color: #333;
+	font-size: 16px;
+	line-height: 18px;
+	margin: 10px 0;
+}
+
+.articleHolder div.articleText p {
+	margin: 10px 0;
+}
+
+.articleHolder div.articleText strong {
+	font-weight: bold;
+}
+
+.articleHolder div.articleText ul,
+.articleHolder div.articleText ol {
+	list-style-position: inside;
+	margin: 10px 0;
+}
+
+.articleHolder div.articleText ul li,
+.articleHolder div.articleText ol li {
+	margin: 0;
+	padding: 2px 0;
+	margin-left: 20px;
+} 
+
+.articleHolder div.articleText a {
+	color: #4379b8;
+	font-size: 14px;
+	line-height: 16px;
+}
+
+.articleHolder div.articleText img {
+	padding: 20px;
+}
+
+.articleHolder div.articleText table td p {
+	width: auto;
+}
+
+.articleHolder .articleLinksHolder {
+	float: right;
+	height: 20px;
+	margin: 10px 0 20px 0;
+	text-align: right;
+	width: 40%;
+}
+
+.articleHolder .articleListTags {
+	float: left;
+	height: auto;
+	margin: 10px 0 20px 0;
+	text-align: left;
+	width: 60%;
+}
+
+.articleHolder .articleListTags a {
+	color: #a4a4a4;
+}
+
+.articleHolder .articleAuthorHolder {
+	float: left;
+	height: auto;
+	margin: 15px 0 0;
+	text-align: left;
+	width: 100%;
+}
+
+.articleHolder .articleAuthorHolder a {
+	color: #000;
+}
+
+.articleHolder .articleLinksHolder a {
+	color: #4379b8;
+}
+
+.articleHolder p.articleReference {
+	float: left;
+	margin: 15px 0 0;
+	width: 100%;
+}
+
+.articleHolder p.articleReference a {
+	color: #4379b8;
+	font-size: 14px;
+	line-height: 16px;
+}
+
+.articleHolder p.articleLastEdited {
+	font-size: 12px;
+	font-style: italic;
+	float: left;
+	margin: 20px 0 0;
+	width: 100%;
+}
+
+.articleHolder p.articleTags {
+	float: left;
+	margin: 30px 0 0;
+	width: 100%;
+}
+
+.articleHolder p.articleTags a {
+	color: #a4a4a4;
+}
+
+.articleStatRateBar {
+	border: 1px solid #d5d5d5;
+	border-right: none;
+	float: left;
+	height: 18px;
+	margin: 20px 0 0;
+	width: auto;
+}
+
+.articleStatRateBar a.statRateIcon {
+	border-right: 1px solid #d5d5d5;
+	display: block;
+	float: left;
+	height: 18px;
+	text-decoration: none;
+}
+
+a.returnToVersionList {
+	color: #4379b8;
+	font-size: 14px;
+	line-height: 16px;
+}
+
+a.articleSpecialHeading {
+	color: #000;
+	font-size: 22px;
+	line-height: 24px;
+	padding-bottom: 8px;
+}
+
+.articleVersionsList {
+	border-top: 1px solid #cacace;
+	margin-top: 25px;
+}
+
+td.articleVersionItem {
+	border-bottom: 1px solid #cacace;
+	padding: 25px;
+	vertical-align: top;
+}
+
+td.articleVersionItem a.versionLink {
+	color: #4379b8;
+}
+
+.articleVersionInfo span {
+	font-size: 12px;
+	line-height: 14px;
+}
+
+.articleVersionInfo a {
+	color: #4379b8;
+	text-decoration: none;
+}
+
+.articleVersionInfo a:hover {
+	text-decoration: underline;
+}
+
+td.articleVersionInfoText {
+	border-top: 1px solid #cacace;
+}
+
+.articleHolder p.articleNameNew {
+	color: #000;
+	float: left;
+	font-size: 24px;
+	height: auto;
+	line-height: 26px;
+	height: auto;
+	width: 100%
+}
+
+.articleHolder p.articleNameNew a {
+	color: #000;
+	font-size: 24px;
+	line-height: 26px;
+}
+
+.articleHolder p.articleNameNew a img {
+	vertical-align: bottom;
+}
+
+.articleHolder .authorDateTimeHolder {
+	background: #efefef url('/img/3dot.gif') repeat-x left top;
+	float: left;
+	height: 23px;
+	margin-top: 3px;
+	width: 100%;
+}
+
+.articleHolder .authorDateTimeHolder p.dateTimeInfo {
+	color: #9c9c9c;
+	float: right;
+	font-size: 11px;
+	height: 13px;
+	line-height: 13px;
+	margin: 6px 2% 0 0;
+	text-align: right;
+	width: 18%;
+}
+
+.articleHolder .authorDateTimeHolder p.communityName {
+	color: #747474;
+	float: left;
+	height: 13px;
+	margin: 5px 0 0 2%;
+	width: 78%;
+}
+
+.articleHolder .authorDateTimeHolder p.communityName a {
+	color: #747474;
+	font-size: 11px;
+	line-height: 13px;
+}
+
+.articleSocialShareBar {
+	float: right;
+	height: auto;
+	margin: 20px 0 0;
+	width: auto;
+}
+/**********  Article rating bar styles  **********/
+
+.articleStatRateBar span.statRateIcon {
+	display: block;
+	float: left;
+	height: 18px;
+}
+
+.articleStatRateBar a.plusLink {
+	background: url('/img/icon/no_activ_plus_grey.gif') no-repeat center center;
+	width: 24px;
+}
+
+.articleStatRateBar a.plusLink:hover {
+	background: url('/img/icon/activ_plus_green.gif') no-repeat center center;
+}
+
+.articleStatRateBar a.minusLink {
+	background: url('/img/icon/no_activ_minus_grey.gif') no-repeat center center;
+	width: 24px;
+}
+
+.articleStatRateBar a.minusLink:hover {
+	background: url('/img/icon/activ_minus_red.gif') no-repeat center center;
+}
+
+.articleStatRateBar a.stopLink {
+	background: url('/img/icon/stop_grey.gif') no-repeat center center;
+	width: 32px;
+}
+
+.articleStatRateBar a.stopLink:hover {
+	background: url('/img/icon/stop_red.gif') no-repeat center center;
+}
+
+.articleStatRateBar a.starLink,
+.articleStatRateBar a.commentsLink,
+.articleStatRateBar a.viewsLink,
+.articleStatRateBar a.ratingLink {
+	border-right: 1px solid #d5d5d5;
+	display: block;
+	font-size: 10px;
+	font-weight: bold;
+	float: left;
+	height: 15px;
+	line-height: 12px;
+	text-decoration: none;
+}
+
+.articleStatRateBar span.ratingLink {
+	border-right: 1px solid #d5d5d5;
+	color: #a3a3a3;
+	display: block;
+	font-size: 10px;
+	font-weight: bold;
+	float: left;
+	height: 15px;
+	line-height: 12px;
+	padding: 3px 0 0 8px;
+	width: 67px;
+}
+
+.articleStatRateBar span.viewsLink {
+	background: url('/img/icon/eye_grey.png') no-repeat 7px center;
+	border-right: 1px solid #d5d5d5;
+	color: #a3a3a3;
+	display: block;
+	font-size: 10px;
+	font-weight: bold;
+	float: left;
+	height: 15px;
+	line-height: 12px;
+	padding: 3px 10px 0 28px;
+	width: auto;
+}
+
+.articleStatRateBar span.commentsLink {
+	background: url('/img/icon/com_grey.png') no-repeat 7px center;
+	border-right: 1px solid #d5d5d5;
+	color: #a3a3a3;
+	display: block;
+	font-size: 10px;
+	font-weight: bold;
+	float: left;
+	height: 15px;
+	line-height: 12px;
+	padding: 3px 0 0 26px;
+	width: 19px;
+}
+
+.articleStatRateBar a.starLink {
+	background: url('/img/icon/star_empty.png') no-repeat 5px center;
+	color: #a3a3a3;
+	padding: 3px 0 0 23px;
+	width: 12px;
+}
+
+.articleStatRateBar a.starLink:hover {
+	background: url('/img/icon/star_yellow.png') no-repeat 5px center;
+	color: #000;
+}
+
+.articleStatRateBar a.commentsLink {
+	background: url('/img/icon/com_grey.png') no-repeat 7px center;
+	color: #a3a3a3;
+	padding: 3px 0 0 26px;
+	width: 19px;
+}
+
+.articleStatRateBar a.commentsLink:hover {
+	background: url('/img/icon/com_aktiv.png') no-repeat 7px center;
+	color: #000;
+}
+
+.articleStatRateBar a.viewsLink {
+	background: url('/img/icon/eye_grey.png') no-repeat 7px center;
+	color: #a3a3a3;
+	padding: 3px 0 0 28px;
+	width: 22px;
+	cursor: default;
+}
+
+.articleStatRateBar a.viewsLink:hover {
+	background: url('/img/icon/eye_blue_.png') no-repeat 7px center;
+	color: #000;
+}
+
+.articleStatRateBar a.ratingLink {
+	color: #a3a3a3;
+	padding: 3px 0 0 8px;
+	width: 67px;
+}
+
+.articleStatRateBar a.ratingLink:hover {
+	color: #000;
+}
+
+/**********  Article comments list styles  **********/
+
+.commentHeadingText {
+	font-weight: bold;
+	float: left;
+	height: 16px;
+	margin: 20px 0 10px 0;
+	width: 100%;
+}
+
+.commentsGeneralContainer {
+	float: left;
+	height: auto;
+	width: 100%;
+}
+
+.commentHolderGeneral {
+	float: left;
+	height: auto;
+	width: 100%;
+}
+
+.commentHolder {
+	float: left;
+	height: auto;
+	padding: 11px 0;
+	width: 100%;
+}
+
+.commentHolderTransparent {
+	float: left;
+	height: auto;
+	padding: 10px 0;
+	width: 100%;
+	filter:alpha(opacity=40);
+	-moz-opacity:0.4;
+	-khtml-opacity: 0.4;
+	opacity: 0.4;
+}
+
+.commentHolder .userAvatarHolder,
+.commentHolderTransparent .userAvatarHolder {
+	text-align: left;
+	vertical-align: top;
+	padding-top: 5px;
+}
+
+.commentHolder p.dateTimeHolder,
+.commentHolderTransparent p.dateTimeHolder {
+	color: #a4a4a4;
+	font-size: 10px;
+	float: left;
+	height: auto;
+	margin: 0;
+	width: 90px;
+}
+
+.commentHolder .commUserInfoHolder,
+.commentHolderTransparent .commUserInfoHolder {
+	float: left;
+	width: 100%;
+}
+
+.commUserInfoHolder p.userNameHolder {
+	float: left;
+	height: auto;
+	margin: 0;
+	width: auto;
+}
+
+.commUserInfoHolder p.userNameHolder a {
+	color: #4379b8;
+	font-weight: bold;
+}
+
+.commUserInfoHolder .commentsNavLinksHolder {
+	float: left;
+	height: 20px;
+	margin: 0 0 0 30px;
+	width: auto;
+}
+
+.commUserInfoHolder .commentsNavLinksHolder a {
+	display: block;
+	float: left;
+	height: 20px;
+	text-decoration: none;
+	width: 25px;
+}
+
+.commUserInfoHolder a.commPlusLink {
+	background: url('/img/icon/no_activ_plus_grey.gif') no-repeat center 3px;
+}
+
+.commUserInfoHolder a.commPlusLink:hover {
+	background: url('/img/icon/activ_plus_green.gif') no-repeat center 3px;
+}
+
+.commUserInfoHolder a.commMinusLink {
+	background: url('/img/icon/no_activ_minus_grey.gif') no-repeat center 7px;
+}
+
+.commUserInfoHolder a.commMinusLink:hover {
+	background: url('/img/icon/activ_minus_red.gif') no-repeat center 7px;
+}
+
+.commUserInfoHolder a.commStopLink {
+	background: url('/img/icon/no_activ_stop.gif') no-repeat left top;
+}
+
+.commUserInfoHolder a.commStopLink:hover {
+	background: url('/img/icon/activ_stop_red.gif') no-repeat left top;
+}
+
+.commUserInfoHolder a.commCrossLink {
+	background: url('/img/icon/no_activ_cross_grey.gif') no-repeat center 3px;
+}
+
+.commUserInfoHolder a.commCrossLink:hover {
+	background: url('/img/icon/activ_cross_red.gif') no-repeat center 3px;
+}
+
+.commUserInfoHolder a.commAnchor {
+	background: url('/img/icon/comm_grey.png') no-repeat center 2px;
+}
+
+.commUserInfoHolder a.commAnchor:hover {
+	background: url('/img/icon/comm_blue.png') no-repeat center 2px;
+}
+
+.commUserInfoHolder p.commCount {
+	color: #a2a2a2;
+	font-size: 12px;
+	font-weight: bold;
+	float: right;
+	height: 15px;
+	line-height: 14px;
+	margin: 0;
+	text-decoration: none;
+	width: auto;
+}
+
+.commentHolder div.commText,
+.commentHolderTransparent div.commText {
+	font-size: 12px;
+	line-height: 14px;
+	float: left;
+	height: auto;
+	margin: 5px 0 8px 0;
+	width: 100%;
+}
+
+.commentHolder div.commText h1,
+.commentHolderTransparent div.commText h1 {
+	color: #333;
+	font-size: 20px;
+	line-height: 22px;
+	margin: 10px 0;
+}
+
+.commentHolder div.commText h2,
+.commentHolderTransparent div.commText h2 {
+	color: #333;
+	font-size: 18px;
+	line-height: 20px;
+	margin: 10px 0;
+}
+
+.commentHolder div.commText h3,
+.commentHolderTransparent div.commText h3 {
+	color: #333;
+	font-size: 16px;
+	line-height: 18px;
+	margin: 10px 0;
+}
+
+.commentHolder div.commText h4,
+.commentHolderTransparent div.commText h4,
+.commentHolder div.commText h5,
+.commentHolderTransparent div.commText h5,
+.commentHolder div.commText h6,
+.commentHolderTransparent div.commText h6 {
+	color: #333;
+	font-size: 14px;
+	line-height: 16px;
+	margin: 10px 0;
+}
+
+.commentHolder div.commText img,
+.commentHolderTransparent div.commText img {
+	padding: 20px;
+}
+
+.commentHolder div.commText ul,
+.commentHolderTransparent div.commText ul,
+.commentHolder div.commText ol,
+.commentHolderTransparent div.commText ol {
+	list-style-position: inside;
+	margin: 10px 0;
+}
+
+.commentHolder div.commText ul li,
+.commentHolderTransparent div.commText ul li,
+.commentHolder div.commText ol li,
+.commentHolderTransparent div.commText ol li {
+	margin: 0;
+	padding: 2px 0;
+	margin-left: 20px;
+} 
+
+.commentHolder div.commText a,
+.commentHolderTransparent div.commText a {
+	color: #4379b8;
+	font-size: 12px;
+	line-height: 14px;
+}
+
+.commentHolder div.commText p,
+.commentHolderTransparent div.commText p,
+.commentHolder div.commText em,
+.commentHolderTransparent div.commText em,
+.commentHolder div.commText span,
+.commentHolderTransparent div.commText span,
+.commentHolder div.commText ul,
+.commentHolderTransparent div.commText ul,
+.commentHolder div.commText ol,
+.commentHolderTransparent div.commText ol,
+.commentHolder div.commText li,
+.commentHolderTransparent div.commText li,
+.commentHolder div.commText a,
+.commentHolderTransparent div.commText a,
+.commentHolder div.commText em,
+.commentHolderTransparent div.commText em,
+.commentHolder div.commText ins,
+.commentHolderTransparent div.commText ins,
+.commentHolder div.commText strike,
+.commentHolderTransparent div.commText strike {
+	font-size: 12px;
+	line-height: 14px;
+	margin: 10px 0;
+}
+
+.commentHolder div.commText strong,
+.commentHolderTransparent div.commText strong {
+	font-size: 12px;
+	font-weight: bold;
+	line-height: 14px;
+	margin: 0;
+}
+
+.commentHolder div.commLinksHolder,
+.commentHolderTransparent div.commLinksHolder {
+	float: left;
+	height: auto;
+	width: auto;
+}
+
+.commentHolder div.commLinksHolder a,
+.commentHolderTransparent div.commLinksHolder a {
+	color: #4379b8;
+}
+
+/**********  Communities and users list styles  **********/
+
+.communityBottomBorder {
+	border-bottom: 1px solid #cacace;
+}
+
+.userlistBottomBorder {
+	border-bottom: 1px solid #e9e9e9;
+}
+
+.communityGreyBg {
+	background: #edeeee;
+}
+
+.communityListAlignment,
+.userlistAlignment {
+	height: auto;
+	padding: 5px;
+	vertical-align: middle;
+}
+
+.communityListHeader,
+.userlistHeader {
+	color: #000;
+	font-size: 12px;
+	text-align: center;
+}
+
+.communityListAvatar,
+.userlistAvatar,
+.communityListName,
+.userlistName {
+	text-align: left;
+}
+
+.userlistIcons {
+	text-align: center;
+}
+
+.userlistName a {
+	color: #4379b8;
+	font-size: 12px;
+	text-decoration: none;
+}
+
+.userlistName a:hover {
+	text-decoration: underline;
+}
+
+.userlistName span {
+	font-size: 12px;
+}
+
+.communityListCount,
+.userlistCount {
+	color: #333;
+	font-size: 12px;
+	text-align: center;
+}
+
+.communityListName a.commNameLink {
+	color: #000;
+	font-size: 20px;
+	line-height: 22px;
+	text-decoration: underline;
+}
+
+.communityListName a.commNameLink:hover {
+	text-decoration: none;
+}
+
+.messageslistColumn {
+	color: #000;
+	font-size: 14px;
+	line-height: 16px;
+}
+
+.messageslistColumn a {
+	color: #4379b8;
+	font-size: 14px;
+	line-height: 16px;
+	text-decoration: none;
+}
+
+.messageslistColumn a.simpleTextLink {
+	color: #333;
+	font-size: 14px;
+	line-height: 16px;
+	text-decoration: none;
+}
+
+.messageslistColumn a.simpleTextLink:hover {
+	text-decoration: none;
+}
+
+.messageslistColumn a:hover {
+	text-decoration: underline;
+}
+
+.viewAllLink {
+	padding-top: 20px;
+	text-align: right;
+}
+
+.viewAllLink a {
+	color: #4379b8;
+	font-size: 12px;
+	text-decoration: underline;
+}
+
+.viewAllLink a:hover {
+	text-decoration: none;
+}
+
+a.deleteCommunityLink {
+	background: url('/img/icon/del_black.png') no-repeat left top;
+	border: none;
+	display: block;
+	height: 19px;
+	margin: 0 auto;
+	width: 19px;
+	text-decoration: none;
+}
+
+a.deleteCommunityLink:hover {
+	background: url('/img/icon/del_red.png') no-repeat left top;
+}
+
+div.subscriptionSettings {
+	border-bottom: 1px solid #e2e6e2;
+	float: left;
+	height: auto;
+	margin: 0 0 13px 0;
+	padding: 0 0 8px 0;
+	width: 100%;
+}
+
+div.subscriptionSettings span {
+	color: #000;
+	display: block;
+	float: left;
+	font-size: 18px;
+	height: 21px;
+	padding: 3px 0 0 0;
+	width: auto;
+}
+
+div.subscriptionSettings a {
+	background: url('/img/icon/settings_grey.png') no-repeat left center;
+	color: #4379b8;
+	display: block;
+	font-size: 14px;
+	line-height: 16px;
+	float: right;
+	height: 21px;
+	padding: 3px 0 0 27px;
+	width: auto;
+}
+
+div.subscriptionSettings a:hover {
+	background: url('/img/icon/settings_color.png') no-repeat left center;
+}
+
+.subscriptionForm {
+	float: left;
+	height: auto;
+	margin: 12px 0 0;
+	padding: 0;
+	width: 100%;
+}
+
+.subscriptionForm select {
+	border: 1px solid #bebfbf;
+	height: 22px;
+	width: 430px;
+}
+
+.subscriptionForm select option {
+	padding: 0 5px;
+}
+
+.subscriptionForm select,
+.subscriptionForm input,
+.subscriptionForm label {
+	vertical-align: middle;
+}
+
+.markAsReadLink {
+	background: url('/img/icon/read_all.png') no-repeat left top;
+	float: left;
+	height: 20px;
+	margin: 10px 0 25px 23px;
+	padding-left: 28px;
+	width: 500px;
+}
+
+.markAsReadLink a {
+	
+}
+
+/**********  User and community profile page styles  **********/
+
+.generalProfileTableHolder {
+	float: left;
+	height: auto;
+	width: 100%;
+}
+
+.userProfileInfo,
+.communityProfileInfo {
+	margin-top: 35px;
+	width: 100%;
+}
+
+.groupRatingsInfo {
+	width: 530px;
+}
+
+.groupRatingsBottomBg {
+	border-bottom: 1px solid #e9e9e9;
+	padding: 2px 5px;
+}
+
+.userProfileInfo .userAvatar,
+.communityProfileInfo .communityAvatar {
+	height: 116px;
+	text-align: center;
+	vertical-align: top;
+	width: 116px;
+}
+
+.userProfileInfo .userBottomBg,
+.communityProfileInfo .communityBottomBg {
+	border-bottom: 1px solid #e9e9e9;
+	padding-bottom: 5px;
+}
+
+.userProfileInfo .userInfoAlignment,
+.communityProfileInfo .communityInfoAlignment {
+	text-align: left;
+	vertical-align: top;
+}
+
+.userBottomBg .userNameLogin {
+	float: left;
+	font-size: 16px;
+	line-height: 18px;
+	margin: 0 10px 5px 0;
+}
+
+.userBottomBg .userNavIcons {
+	float: left;
+	height: 24px;
+	margin: -2px 0 0 0;
+	width: 100px;
+}
+
+.communityBottomBg .userNavIcons {
+	float: left;
+	height: 24px;
+	margin: -4px 0 0 8px;
+	width: 35px;
+}
+
+*:first-child+html .userBottomBg .userNavIcons {
+	margin: 0 0 0 8px;
+}
+
+*:first-child+html .communityBottomBg .userNavIcons {
+	margin: -1px 0 0 8px;
+}
+
+.userBottomBg .userGeneralRating,
+.communityBottomBg .communityGeneralRating {
+	clear: both;
+	float: left;
+	font-size: 14px;
+	line-height: 16px;
+	height: auto;
+	margin-bottom: 5px;
+	min-width: 240px;
+	width: auto;
+}
+
+.communityBottomBg .communityGeneralRating span {
+	display: block;
+	float: left;
+	height: 24px;
+	width: auto;
+}
+
+.userBottomBg .userGeneralRating span {
+	clear: both;
+	float: left;
+	font-size: 14px;
+	line-height: 16px;
+	height: auto;
+	margin-right: 10px;
+	width: auto;
+}
+
+.userBottomBg .userAtTheSite,
+.communityBottomBg .communityInfoGeneralText {
+	clear: both;
+	float: left;
+	font-size: 14px;
+	line-height: 16px;
+	height: auto;
+	margin-bottom: 5px;
+	min-width: 240px;
+	width: auto;
+}
+
+.userBottomBg .sendMessageLinkHolder,
+.userBottomBg .articlesLinkHolder,
+.userBottomBg .favouritesLinkHolder,
+.userBottomBg .commentsLinkHolder,
+.userBottomBg .readersLinkHolder,
+.userBottomBg .rssLinkHolderIcon,
+.communityBottomBg .sendMessageLinkHolder,
+.communityBottomBg .articlesLinkHolder,
+.communityBottomBg .commentsLinkHolder,
+.communityBottomBg .rssLinkHolderIcon,
+.communityBottomBg .readersLinkHolder {
+	clear: both;
+	float: left;
+	height: 24px;
+	padding: 3px 0 0 27px;
+	width: auto;
+}
+
+.userBottomBg .sendMessageLinkHolder,
+.userBottomBg .articlesLinkHolder,
+.userBottomBg .commentsLinkHolder,
+.userBottomBg .readersLinkHolder,
+.userBottomBg .rssLinkHolderIcon,
+.communityBottomBg .sendMessageLinkHolder,
+.communityBottomBg .articlesLinkHolder,
+.communityBottomBg .commentsLinkHolder,
+.communityBottomBg .rssLinkHolderIcon,
+.communityBottomBg .readersLinkHolder {
+	width: 200px;
+}
+
+.userBottomBg .sendMessageLinkHolder,
+.communityBottomBg .sendMessageLinkHolder {
+	background: url('/img/icon/orange_konvert.png') no-repeat left top;
+	padding: 4px 0 0 27px;
+}
+
+.inviteToCommLinkHolder {
+	background: url('/img/icon/invite_color.png') no-repeat left top;
+	float: left;
+	height: 20px;
+	margin-top: 3px;
+	padding: 7px 0 0 27px;
+	width: auto;
+}
+
+.userBottomBg .articlesLinkHolder,
+.communityBottomBg .articlesLinkHolder {
+	background: url('/img/icon/blocknote_.png') no-repeat 1px top;
+}
+
+.userBottomBg .readersLinkHolder,
+.communityBottomBg .readersLinkHolder {
+	background: url('/img/icon/reader1.png') no-repeat 1px top;
+}
+
+.userBottomBg .favouritesLinkHolder {
+	background: url('/img/icon/star.gif') no-repeat left center;
+}
+
+.userBottomBg .commentsLinkHolder,
+.communityBottomBg .commentsLinkHolder {
+	background: url('/img/icon/Coment.png') no-repeat 1px top;
+}
+
+.communityBottomBg .rssLinkHolderIcon,
+.userBottomBg .rssLinkHolderIcon {
+	background: url('/img/icon/rss_smol_.png') no-repeat left top;
+}
+
+.userBottomBg .sendMessageLinkHolder a,
+.inviteToCommLinkHolder a,
+.userBottomBg .articlesLinkHolder a,
+.userBottomBg .favouritesLinkHolder a,
+.userBottomBg .commentsLinkHolder a,
+.communityBottomBg .sendMessageLinkHolder a,
+.communityBottomBg .articlesLinkHolder a,
+.communityBottomBg .commentsLinkHolder a,
+.communityBottomBg .rssLinkHolderIcon a,
+.userBottomBg .rssLinkHolderIcon a,
+.userBottomBg .readersLinkHolder a,
+.communityBottomBg .readersLinkHolder a {
+	color: #4379b8;
+	font-size: 14px;
+	line-height: 16px;
+}
+
+.userBottomBg .articlesLinkHolder a span,
+.communityBottomBg .articlesLinkHolder a span {
+	font-weight: bold;
+}
+
+p.communityDescription,
+.communityTagsHolder {
+	float: left;
+	height: auto;
+	width: 100%;
+	margin: 20px 0 0;
+	padding: 0;
+}
+
+.communityTagsHolder span {
+	font-weight: bold;
+}
+
+.communityTagsHolder a {
+	color: #a4a4a4;
+	font-size: 14px;
+	line-height: 16px;
+	text-decoration: none;
+}
+
+.communityTagsHolder a:hover {
+	text-decoration: underline;
+}
+
+.siteInfoSeparator {
+	border: 1px solid #e0e0e0;
+	background: #edeeee;
+	font-size: 16px;
+	line-height: 18px;
+	float: left;
+	height: 26px;
+	margin: 30px 0 0;
+	padding: 7px 0 0;
+	width: 99.6%
+}
+
+.siteInfoSeparator a {
+	color: #4379b8;
+	display: block;
+	font-size: 14px;
+	line-height: 16px;
+	float: right;
+	margin: 0 10px 0 0;
+}
+
+*:first-child+html .siteInfoSeparator a {
+	margin: -17px 10px 0 0;
+}
+
+.userProfileAlignment {
+	height: 35px;
+	text-align: left;
+	vertical-align: middle;
+}
+
+.userProfileAlignment1 {
+	height: 25px;
+	text-align: left;
+	vertical-align: middle;
+}
+
+.userBottomBg a.userCommName,
+.groupRatingsBottomBg a.userCommName {
+	color: #4379b8;
+	font-size: 16px;
+	line-height: 18px;
+}
+
+.userBottomBg span.userCommStatus,
+.groupRatingsBottomBg span.userCommStatus {
+	font-size: 16px;
+	line-height: 18px;
+}
+
+.userProfileViewMoreAlignment {
+	height: 35px;
+	text-align: right;
+	vertical-align: middle;
+}
+
+.userProfileViewMoreAlignment a.userCommViewMore {
+	color: #4379b8;
+}
+
+a.userCommViewMoreLink {
+	color: #4379b8;
+	display: block;
+	float: right;
+}
+
+.userProfileTopIndent {
+	margin-top: 10px;
+}
+
+.userProfileInfoAlignment {
+	border-bottom: 1px solid #e4e4e4;
+	height: 30px;
+	overflow: hidden;
+	padding: 5px;
+	text-align: left;
+	vertical-align: middle;
+}
+
+.userProfileInfoAlignment a {
+	font-size: 14px;
+}
+
+.userProfileInfoAlignment a.delLink {
+	background: url('/img/icon/del_black1.png') no-repeat left top;
+	border: none;
+	display: block;
+	height: 13px;
+	margin: 0 auto;
+	width: 13px;
+	text-decoration: none;
+}
+
+.userProfileInfoAlignment a.delLink:hover {
+	background: url('/img/icon/del_red1.png') no-repeat left top;
+}
+
+a#addContactLink {
+	color: #4379b8;
+	display: block;
+	font-size: 14px;
+	line-height: 16px;
+	margin: 40px 0 0 20px;
+}
+
+.communitiesActivityHolder {
+	float: left;
+	height: auto;
+	margin: 20px 0 0;
+	width: 100%;
+}
+
+.communitiesActivityHolder .listHeading,
+.communitiesActivityHolder .listItem {
+	float: left;
+	height: 17px;
+	width: auto;
+}
+
+.communitiesActivityHolder .listItem {
+	background: url('/img/icon/round_grey.png') no-repeat left center;
+	padding: 0 0 0 11px;
+	margin-right: 6px;
+	white-space: nowrap;
+}
+
+.communitiesRecommendHolder {
+	float: left;
+	height: auto;
+	margin: 10px 0 0 0;
+	padding-bottom: 50px;
+	width: auto;
+}
+
+.communitiesActivityHolder .listItem a,
+.communitiesRecommendHolder .recommendPersonData a {
+	color: #4379b8;
+	font-size: 14px;
+	line-height: 16px;
+	text-decoration: none;
+}
+
+.communitiesActivityHolder .listItem a:hover,
+.communitiesRecommendHolder .recommendPersonData a:hover {
+	text-decoration: underline;
+}
+
+.communitiesRecommendHolder .recommendPersonLabel {
+	padding: 10px 0;
+	text-align: right;
+	vertical-align: top;
+	width: 100px;
+}
+
+.communitiesRecommendHolder .recommendPersonData {
+	padding: 10px 0;
+	text-align: left;
+	vertical-align: top;
+}
+
+.noRecom {
+	padding: 0;
+}
+
+.noRecom p {
+	height: auto;
+	margin: 15px 0;
+	width: 100%
+}
+
+.noRecom p a {
+	font-size: 14px;
+	line-height: 16px;
+}
+
+/*.noRecom a.writeRecom {
+	background: url('/img/icon/add_recomendation-new.png') no-repeat left center;
+	display: block;
+	font-size: 14px;
+	line-height: 16px;
+	float: left;
+	height: 20px;
+	margin: 2px 0 0;
+	padding: 6px 0 0 27px;
+	width: auto;
+}*/
+
+/**********  Community add/edit form  **********/
+
+.communityFormHeading {
+	background: #d1d1a9 url('/img/line_green1.png') no-repeat center bottom;
+	color: #000;
+	height: 40px;
+	padding: 7px 0 0;
+	text-align: center;
+	width: 100%;
+}
+
+.communityFormHolder {
+	clear: both;
+	height: auto;
+	margin: 20px auto;
+	width: 600px;
+}
+
+*:first-child+html .communityFormHolder {
+	margin: 0 auto 5px auto;
+}
+
+.fieldHolder {
+	float: left;
+	height: auto;
+	margin-bottom: 10px;
+	width: 600px;
+}
+
+.fieldHolder1 {
+	float: left;
+	height: auto;
+	margin: 40px 0 0;
+	width: 600px;
+}
+
+.formLabel,
+.formLabel label {
+	font-size: 14px;
+	float: left;
+	line-height: 16px;
+	height: 18px;
+	padding-top: 2px;
+	text-align: right;
+	width: 167px;
+}
+
+.formLabel1,
+.formLabel1 label {
+	font-size: 14px;
+	float: left;
+	line-height: 16px;
+	height: 19px;
+	padding-top: 1px;
+	text-align: right;
+	width: 80px;
+}
+
+.formField {
+	font-size: 14px;
+	float: left;
+	line-height: 16px;
+	height: auto;
+	text-align: left;
+	width: 432px;
+}
+
+.formField1 {
+	font-size: 14px;
+	float: left;
+	line-height: 16px;
+	height: auto;
+	text-align: left;
+	width: auto;
+}
+
+.formField input.wideField {
+	border: 1px solid #bebfbf;
+	color: #333;
+	font-size: 14px;
+	line-height: 16px;
+	height: 20px;
+	padding: 0 1px;
+	width: 422px;
+}
+
+.formField input.wideInput {
+	border: 1px solid #bebfbf;
+	color: #333;
+	font-size: 14px;
+	line-height: 16px;
+	height: 20px;
+	padding: 0 1px;
+	width: 210px;
+}
+
+.formField input.narrowField {
+	border: 1px solid #bebfbf;
+	color: #333;
+	font-size: 14px;
+	line-height: 16px;
+	height: 20px;
+	padding: 0 1px;
+	width: 190px;
+}
+
+.formField1 select {
+	border: 1px solid #bebfbf;
+	color: #333;
+	display: block;
+	float: left;
+	font-size: 14px;
+	line-height: 16px;
+	height: 20px;
+	margin: 0 10px 0 0;
+	width: 194px;
+}
+
+.formField1 input.narrowField {
+	border: 1px solid #bebfbf;
+	color: #333;
+	display: block;
+	float: left;
+	font-size: 14px;
+	line-height: 16px;
+	height: 18px;
+	padding: 0 1px;
+	margin: 0 12px 0 0;
+	width: 190px;
+}
+
+.formField1 input.siteButton {
+	display: block;
+	float: left;
+	margin: 0;
+}
+
+.formField textarea.wideArea {
+	border: 1px solid #bebfbf;
+	color: #333;
+	font-size: 14px;
+	line-height: 16px;
+	height: 100px;
+	width: 420px;
+}
+
+.formField select {
+	border: 1px solid #bebfbf;
+	color: #333;
+	font-size: 14px;
+	line-height: 16px;
+	height: 22px;
+	width: 245px;
+}
+
+.formField span {
+	color: #818282;
+	font-size: 10px;
+	font-style: italic;
+	line-height: 12px;
+}
+
+.generalLogoPreviewHolder {
+	border: 1px solid #cccccc;
+	float: left;
+	height: 134px;
+	width: 158px;
+}
+
+.logoPreviewHolder {
+	float: left;
+	height: 116px;
+	margin: 9px 0 0 10px;
+	width: 116px;
+}
+
+.logoPreviewHolder table,
+.logoPreviewHolder table td {
+	border: 0;
+	border-collapse: collapse;
+	height: 116px;
+	width: 116px;
+	text-align: center;
+	vertical-align: middle;
+}
+
+a.previewHolderCloseButton {
+	background: url('/img/icon/medium_del-grey.png') no-repeat left top;
+	display: block;
+	float: right;
+	height: 24px;
+	margin: 3px 5px 0 0;
+	text-decoration: none;
+	width: 24px;
+}
+
+a.previewHolderCloseButton:hover {
+	background: url('/img/icon/medium_del-red.png') no-repeat left top;
+}
+
+/**********  Community join form  **********/
+
+p.communityJoinNotice {
+	color: #000;
+	font-size: 16px;
+	line-height: 18px;
+	width: 100%;
+}
+
+.communityJoinRules {
+	border-top: 1px solid #e4e4e4;
+	border-bottom: 1px solid #e4e4e4;
+	height: auto;
+	margin: 20px 0;
+	padding: 10px 0;
+	width: 100%;
+}
+
+.communityJoinRules p {
+	margin-left: 45px;
+}
+
+.communityJoinRules p.rulesHeading {
+	color: #000;
+	font-size: 16px;
+	font-weight: bold;
+	line-height: 18px;
+	margin-bottom: 10px;
+}
+
+p.rulesAcceptCheckbox {
+	margin-left: 45px;
+}
+
+p.rulesAcceptCheckbox label {
+	color: #000;
+	font-style: italic;
+	font-weight: bold;
+}
+
+p.communityJoinInfo {
+	color: #000;
+	margin: 25px 0 15px 0;
+	width: 100%;
+}
+
+input.siteButton {
+	background: url('/img/button_.png') no-repeat left top;
+	border: none;
+	cursor: pointer;
+	font-size: 14px;
+	line-height: 16px;
+	height: 22px;
+	text-align: center;
+	width: 91px;
+}
+
+input.siteButton1 {
+	background: url('/img/button_110.png') no-repeat left top;
+	border: none;
+	cursor: pointer;
+	font-size: 14px;
+	line-height: 16px;
+	height: 22px;
+	text-align: center;
+	width: 110px;
+}
+
+.fieldHolder1 input.siteButton {
+	background: url('/img/button_.png') no-repeat left top;
+	border: none;
+	cursor: pointer;
+	display: block;
+	float: left;
+	font-size: 14px;
+	line-height: 16px;
+	height: 22px;
+	margin-top: -1px;
+	text-align: center;
+	width: 91px;
+}
+
+input.siteButtonMedium {
+	background: url('/img/button_195_.png') no-repeat left top;
+	border: none;
+	cursor: pointer;
+	font-size: 14px;
+	line-height: 16px;
+	height: 22px;
+	text-align: center;
+	width: 195px;
+}
+
+input.siteButtonMedium1 {
+	background: url('/img/button_163_.png') no-repeat left top;
+	border: none;
+	cursor: pointer;
+	font-size: 14px;
+	line-height: 16px;
+	height: 22px;
+	text-align: center;
+	width: 163px;
+}
+
+input.siteButtonBig {
+	background: url('/img/button_long_.png') no-repeat left top;
+	border: none;
+	cursor: pointer;
+	font-size: 14px;
+	line-height: 16px;
+	height: 22px;
+	text-align: center;
+	width: 275px;
+}
+
+input.siteButton, x:-moz-any-link,
+input.siteButton1, x:-moz-any-link,
+input.siteButtonMedium, x:-moz-any-link,
+input.siteButtonMedium1, x:-moz-any-link,
+input.siteButtonBig, x:-moz-any-link {
+	padding: 0 0 5px 0;
+}
+
+input.siteButton, x:-moz-any-link, x:default,
+input.siteButton1, x:-moz-any-link, x:default,
+input.siteButtonMedium, x:-moz-any-link, x:default,
+input.siteButtonMedium1, x:-moz-any-link, x:default,
+input.siteButtonBig, x:-moz-any-link, x:default {
+	padding: 0 0 5px 0;
+}
+
+*:first-child+html input.siteButton,
+*:first-child+html input.siteButton1,
+*:first-child+html input.siteButtonMedium,
+*:first-child+html input.siteButtonMedium1,
+*:first-child+html input.siteButtonBig {
+	padding: 0;
+}
+
+/**********  Dialog form styles  **********/
+
+.ui-dialog-content {
+	background: #edeeee;
+	border: 1px solid grey;
+	padding: 15px 20px 20px 20px;
+}
+
+p.formHeading {
+	color: #000;
+	font-weight: bold;
+	margin: 0;
+	width: 425px;
+}
+
+p.communityChoose {
+	color: #000;
+	font-weight: bold;
+	margin: 10px 0 8px 0;
+	width: 425px;
+}
+
+select.commChoose {
+	width: 425px;
+}
+
+p.formInfo {
+	color: #000;
+	font-size: 12px;
+	font-style: italic;
+	font-weight: bold;
+	margin: 10px 0;
+	width: 425px;
+}
+
+h6.uploadPhotoHeading {
+	border-bottom: 1px solid #b5aba7;
+	color: #000;
+	font-weight: bold;
+	margin: 0;
+	padding: 0 0 4px 0;
+	width: 378px;
+}
+
+p.uploadPhotoRadioButtons {
+	margin: 10px 0;
+	width: 293px;
+}
+
+div#uploadFileInput {
+	height: 22px;
+	width: 293px;
+}
+
+div#uploadFromInetInput {
+	height: 22px;
+	width: 378px;
+}
+
+div#uploadFromInetInput input {
+	border: 1px solid #bebfbf;
+	height: 20px;
+	padding: 0;
+	width: 375px;
+}
+
+input.uploadVideoInput {
+	border: 1px solid #bebfbf;
+	height: 20px;
+	padding: 0;
+	width: 288px;
+}
+
+input.uploadVideoInput {
+	margin: 10px 0;
+}
+
+form#f_video span {
+	font-weight: bold;
+}
+
+.addCodeForm {
+	height: auto;
+	width: 673px;
+}
+
+.addCodeForm .fieldHolder {
+	float: left;
+	height: auto;
+	margin-bottom: 7px;
+	width: 673px;
+}
+
+.addCodeForm .formLabel,
+.addCodeForm .formLabel label {
+	width: 140px;
+}
+
+.addCodeForm .formField {
+	width: 533px;
+}
+
+.addCodeForm .formField input.smallInput {
+	border: 1px solid #bebfbf;
+	color: #333;
+	font-size: 14px;
+	line-height: 16px;
+	height: 20px;
+	padding: 0 1px;
+	width: 85px;
+}
+
+.addCodeForm .formField input.bigInput {
+	border: 1px solid #bebfbf;
+	color: #333;
+	font-size: 14px;
+	line-height: 16px;
+	height: 20px;
+	padding: 0 1px;
+	width: 278px;
+}
+
+.addCodeForm .fieldHolder textarea {
+	border: 1px solid #bebfbf;
+	color: #333;
+	font-size: 14px;
+	line-height: 16px;
+	height: 420px;
+	width: 666px;
+}
+
+.addCodeForm .formField select.wideSelect {
+	border: 1px solid #bebfbf;
+	color: #333;
+	font-size: 14px;
+	line-height: 16px;
+	height: 22px;
+	width: 282px;
+}
+
+.addCodeForm .formField select.narrowSelect {
+	border: 1px solid #bebfbf;
+	color: #333;
+	font-size: 14px;
+	line-height: 16px;
+	height: 22px;
+	width: 89px;
+}
+
+/**********  User profile edit form  **********/
+
+h5.userProfEditHeading {
+	color: #000;
+	text-align: center;
+}
+
+.userFormGeneralHolder {
+	float: left;
+	height: auto;
+	width: 100%;
+}
+
+.userFormHolder {
+	border-top: 1px solid #e4e4e4;
+	border-bottom: 1px solid #e4e4e4;
+	float: left;
+	height: auto;
+	margin-top: 10px;
+	padding: 20px 0 0;
+	width: 100%;
+}
+
+*:first-child+html .userFormHolder {
+	padding: 20px 0;
+}
+
+.userFormInnerHolder {
+	height: auto;
+	margin: 0 auto;
+	width: 325px;
+}
+
+.userFormInnerHolderNew {
+	height: auto;
+	margin: 0 auto;
+	width: 360px;
+}
+
+.userFormInnerHolderWide {
+	height: auto;
+	margin: 0 auto;
+	width: 350px;
+}
+
+.userFormHolder .userFormInnerHolder .fieldHolder {
+	float: left;
+	height: auto;
+	margin-bottom: 20px;
+	width: 325px;
+}
+
+.userFormHolder .userFormInnerHolderNew .fieldHolder {
+	float: left;
+	height: auto;
+	margin-bottom: 20px;
+	width: 360px;
+}
+
+.userFormInnerHolderWide .fieldHolder {
+	float: left;
+	height: auto;
+	margin-bottom: 10px;
+	width: 350px;
+}
+
+.userFormHolder .userFormInnerHolder .fieldHolder .formLabel,
+.userFormHolder .userFormInnerHolder .fieldHolder .formLabel label {
+	width: 100px;
+}
+
+.userFormHolder .userFormInnerHolderNew .fieldHolder .formLabel,
+.userFormHolder .userFormInnerHolderNew .fieldHolder .formLabel label {
+	width: 140px;
+}
+
+.userFormInnerHolderWide .fieldHolder .formLabel,
+.userFormInnerHolderWide .fieldHolder .formLabel label {
+	width: 125px;
+}
+
+.userFormHolder .userFormInnerHolder .fieldHolder .formField,
+.userFormHolder .userFormInnerHolderNew .fieldHolder .formField,
+.userFormInnerHolderWide .fieldHolder .formField {
+	width: 220px;
+}
+
+.userFormInnerHolderWide .fieldHolder p {
+	font-weight: bold;
+	margin: 0;
+	padding-left: 125px;
+}
+
+.userFormInnerHolderWide .fieldHolder p.smallInfoText {
+	font-size: 11px;
+	font-weight: normal;
+	font-style: italic;
+	margin: 0;
+	padding-left: 133px;
+}
+
+.userFormInnerHolderWide .fieldHolder .formField select {
+	width: 214px;
+}
+
+a.helpLink {
+	background: url('/img/icon/Q1.png') no-repeat left top;
+	border: none;
+	cursor: pointer;
+	display: block;
+	float: left;
+	height: 22px;
+	text-decoration: none;
+	width: 21px;
+}
+
+a.profileHelpLink {
+	background: url('/img/icon/Q_r.png') no-repeat left top;
+	border: none;
+	cursor: pointer;
+	display: block;
+	float: left;
+	height: 16px;
+	text-decoration: none;
+	width: 16px;
+}
+
+.openIdFormGeneralHolder {
+	height: auto;
+	margin: 0 auto;
+	width: 600px;
+}
+
+.recomFormInfo {
+	color: #000;
+	font-style: italic;
+	margin: 21px 0 25px 0;
+	text-align: center;
+}
+
+.recomForm {
+	height: auto;
+	margin: 0 auto;;
+	width: 600px;
+}
+
+.recomForm textarea {
+	border: 1px solid #bfc0c0;
+	height: 165px;
+	width: 600px;
+}
+
+/**********  Registration and Login page styles  **********/
+
+.registerFormHolder {
+	height: auto;
+	margin: 0 auto;
+	padding: 0;
+	width: 940px;
+}
+
+.registerFormHolder h2.registerHeading {
+	color: #000;
+	text-align: center;
+}
+
+.registerFormHolder .registerInfo {
+	float: left;
+	height: auto;
+	margin: 0;
+	padding: 0;
+	width: 310px;
+}
+
+.registerInfo h6.registerInfoBlock {
+	color: #000;
+	font-weight: bold;
+	height: auto;
+	margin: 35px 0 15px 0;
+	width: 310px;
+}
+
+.registerInfo ul {
+	list-style-type: none;
+	height: auto;
+	width: 310px;
+}
+
+.registerInfo ul li {
+	background: url('/img/icon/round_grey.png') no-repeat 0 9px;
+	padding: 4px 0 4px 20px; 
+}
+
+*:first-child+html .registerInfo ul li {
+	padding: 4px 0 4px 7px; 
+}
+
+.registerFormHolder .registerForm {
+	border: 1px solid #b1b3b4;
+	float: left;
+	height: auto;
+	margin: 40px 0 0;
+	width: 345px;
+}
+
+*:first-child+html .registerFormHolder .registerForm {
+	padding-bottom: 20px;
+}
+
+.loginFormHolder {
+	float: left;
+	height: auto;
+	margin: 0 40px 0 0;
+	width: 330px;
+}
+
+.registerForm .fieldHolder {
+	float: left;
+	height: auto;
+	margin-bottom: 20px;
+	width: 343px;
+}
+
+.loginFormHolder .fieldHolder {
+	float: left;
+	height: auto;
+	margin-bottom: 20px;
+	width: 330px;
+}
+
+.registerForm .fieldHolder .formLabel,
+.registerForm .fieldHolder .formLabel label {
+	width: 130px;
+}
+
+.loginFormHolder .fieldHolder .formLabel,
+.loginFormHolder .fieldHolder .formLabel label {
+	width: 135px;
+}
+
+.registerForm .fieldHolder .formField {
+	width: 213px;
+}
+
+.loginFormHolder .fieldHolder .formField {
+	width: 195px;
+}
+
+.registerForm .fieldHolder .formField input.narrowField {
+	border: 1px solid #bebfbf;
+	border-right: none;
+	color: #333;
+	font-size: 14px;
+	line-height: 16px;
+	float: left;
+	height: 20px;
+	padding: 0 1px;
+	width: 170px;
+}
+
+.loginFormHolder .fieldHolder .formField input.narrowField {
+	border: 1px solid #bebfbf;
+	color: #333;
+	font-size: 14px;
+	line-height: 16px;
+	float: left;
+	height: 20px;
+	padding: 0 1px;
+	width: 190px;
+}
+
+.registerForm .fieldHolder .formField input.smallField {
+	border: 1px solid #bebfbf;
+	border-right: none;
+	color: #333;
+	font-size: 14px;
+	line-height: 16px;
+	float: left;
+	height: 20px;
+	padding: 0 1px;
+	width: 135px;
+}
+
+.fieldHolder input#rulesAccepted {
+	margin-left: 40px;
+}
+
+.fieldHolder a.siteRulesAccept {
+	color: #4379b8;
+	font-size: 14px;
+	line-height: 16px;
+}
+
+.fieldHolder input#rememberMe {
+	margin-left: 85px;
+}
+
+.fieldHolder label a {
+	color: #333;
+	font-size: 14px;
+	line-height: 16px;
+}
+
+.fieldHolder a.forgotPass {
+	color: #4379b8;
+	font-size: 14px;
+	line-height: 16px;
+}
+
+.registerFormHolder .registerAsOpenId {
+	float: left;
+	height: auto;
+	margin: 0;
+	padding: 0;
+	width: 280px;
+}
+
+.loginFormBottomBorder .registerAsOpenId {
+	float: left;
+	height: auto;
+	margin: 0;
+	padding: 0;
+	width: 230px;
+}
+
+.registerAsOpenId h6.registerAsOpenIdInfoBlock {
+	color: #000;
+	font-weight: bold;
+	height: auto;
+	margin: 35px 0 10px 25px;
+	width: 255px;
+}
+
+.registerAsOpenId table td.openIdIcon {
+	height: 34px;
+	text-align: left;
+	vertical-align: middle;
+	width: 40px;
+}
+
+.registerAsOpenId table td.openIdName {
+	height: 34px;
+	text-align: left;
+	vertical-align: middle;
+	width: 80px;
+}
+
+.registerAsOpenId a {
+	color: #4379b8;
+	font-size: 14px;
+	line-height: 16px;
+}
+
+.registerAsOpenId a.useYourAccount {
+	color: #4379b8;
+	display: block;
+	font-size: 14px;
+	line-height: 16px;
+	margin: 15px 0 0 25px;
+}
+
+.loginFormGeneralContainer {
+	height: auto;
+	margin: 0 auto;
+	width: 600px;
+}
+
+.loginFormBottomBorder {
+	border-bottom: 1px solid #e4e4e4;
+	float: left;
+	height: auto;
+	padding-bottom: 40px;
+	width: 600px;
+}
+
+.loginPageInfo {
+	color: #000;
+	float: left;
+	font-size: 14px;
+	line-height: 16px;
+	height: auto;
+	margin: 25px 0 0;
+	text-align: center;
+	width: 600px;
+}
+
+.loginPageInfo a {
+	color: #4379b8;
+	font-size: 14px;
+	line-height: 16px;
+}
+
+/*.loginAsOpenIdFormContainer {
+	height: auto;
+	margin: 0;
+	position: relative;
+	width: 600px;
+}
+
+.loginAsOpenIdFormContainer .loginFormArrow {
+	background: url('/img/treange.png') no-repeat left top;
+	float: left;
+	height: 29px;
+	top: 100px;
+	right: 1px;
+	position: absolute;
+	width: 15px;
+	z-index: 1000;
+}
+
+.loginAsOpenIdFormContainer .topCorners {
+	float: left;
+	height: 6px;
+	margin: 0 0 3px 0;
+	width: 585px;
+}
+
+.topCorners .topCornerLeft {
+	background: url('/img/1.png') no-repeat left top;
+	float: left;
+	height: 6px;
+	margin: 0;
+	width: 6px;
+}
+
+.topCorners .topCornerRight {
+	background: url('/img/2.png') no-repeat left top;
+	float: left;
+	height: 6px;
+	margin: 0;
+	width: 6px;
+}
+
+.topCorners .topCornerMiddle {
+	background: #f5f5f5;
+	border-top: 1px solid #000;
+	float: left;
+	height: 6px;
+	margin: 0;
+	width: 573px;
+}
+
+.loginAsOpenIdFormContainer .bottomCorners {
+	float: left;
+	height: 6px;
+	margin: 0;
+	width: 585px;
+}
+
+.bottomCorners .bottomCornerLeft {
+	background: url('/img/4.png') no-repeat left top;
+	float: left;
+	height: 6px;
+	margin: 0;
+	width: 6px;
+}
+
+.bottomCorners .bottomCornerRight {
+	background: url('/img/3.png') no-repeat left top;
+	float: left;
+	height: 6px;
+	margin: 0;
+	width: 6px;
+}
+
+.bottomCorners .bottomCornerMiddle {
+	background: #f5f5f5;
+	border-bottom: 1px solid #000;
+	float: left;
+	height: 5px;
+	margin: 0;
+	width: 573px;
+}
+
+.loginAsOpenIdForm a.loginFormCloseButton {
+	background: url('/img/icon/medium_del-grey.png') no-repeat left top;
+	display: block;
+	float: left;
+	height: 24px;
+	top: 0px;
+	right: 5px;
+	position: absolute;
+	text-decoration: none;
+	width: 24px;
+}
+
+.loginAsOpenIdForm a.loginFormCloseButton:hover {
+	background: url('/img/icon/medium_del-red.png') no-repeat left top;
+}*/
+
+.loginAsOpenIdForm {
+	height: auto;
+	margin: 0 auto;
+	width: 600px;
+}
+
+.loginAsOpenIdForm .fieldHolder {
+	float: left;
+	height: auto;
+	margin-bottom: 20px;
+	width: 600px;
+}
+
+.loginAsOpenIdForm .fieldHolder .formLabel,
+.loginAsOpenIdForm .fieldHolder .formLabel label {
+	width: 210px;
+}
+
+.loginAsOpenIdForm .fieldHolder .formField {
+	width: 390px;
+}
+
+.loginAsOpenIdForm .fieldHolder .formField input.wideInput {
+	border: 1px solid #bebfbf;
+	color: #333;
+	display: block;
+	float: left;
+	font-size: 14px;
+	line-height: 16px;
+	height: 20px;
+	padding: 0 1px;
+	width: 225px;
+}
+
+.loginAsOpenIdForm .fieldHolder .formField input.siteButton {
+	border: none;
+	cursor: pointer;
+	display: block;
+	float: left;
+	font-size: 14px;
+	line-height: 16px;
+	height: 22px;
+	margin: 0 0 0 20px;
+	text-align: center;
+	width: 91px;
+}
+
+.loginAsOpenIdForm .fieldHolder #rememberMe {
+	margin-left: 65px;
+}
+
+.loginAsOpenIdForm .fieldHolder .openIdSiteLink {
+	color: #4379b8;
+	font-size: 14px;
+	line-height: 16px;
+}
+
+/**********  User comments page styles  **********/
+
+div.userCommentsListHeading {
+	border-bottom: 1px solid #e2e6e2;
+	float: left;
+	height: auto;
+	margin: 0 0 13px 0;
+	padding: 0 0 4px 0;
+	width: 100%;
+}
+
+div.userCommentsListHeading span {
+	color: #000;
+	display: block;
+	float: left;
+	font-size: 18px;
+	height: 21px;
+	padding: 3px 0 0 0;
+	width: auto;
+}
+
+div.userCommentsListHeading a {
+	color: #4379b8;
+	display: block;
+	font-size: 12px;
+	line-height: 14px;
+	float: right;
+	height: 21px;
+	padding: 3px 0 0;
+	width: auto;
+}
+
+div.userCommentHeading {
+	border-bottom: 1px solid #e2e6e2;
+	float: left;
+	height: auto;
+	margin: 10px 0 0;
+	padding: 0;
+	width: 100%;
+}
+
+div.userCommentHeading span {
+	color: #a2a2a2;
+	display: block;
+	float: right;
+	font-size: 12px;
+	font-weight: bold;
+	line-height: 14px;
+	height: 21px;
+	padding: 3px 0 0 0;
+	width: auto;
+}
+
+div.userCommentHeading a {
+	color: #4379b8;
+	display: block;
+	font-size: 14px;
+	font-weight: bold;
+	line-height: 16px;
+	float: left;
+	height: 21px;
+	padding: 3px 0 0;
+	width: auto;
+}
+
+p.commentDateTime {
+	float: left;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	line-height: 12px;
+	margin: 0;
+}
+
+a.readMoreLink {
+	color: #4379b8;
+	display: block;
+	float: left;
+}
+
+td.commentListAlignment {
+	border-bottom: 1px solid #e2e6e2;
+	padding: 12px 5px 5px 5px;
+	vertical-align: middle;
+}
+
+td.commentDateAndTime {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	line-height: 14px;
+	width: 120px;
+}
+
+a.commentAuthorName {
+	color: #4379b8;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 16px;
+	display: block;
+	height: 16px;
+	overflow: hidden;
+	text-decoration: none;
+}
+
+a.commentAuthorName:hover {
+	text-decoration: underline;
+}
+
+a.commentArticleName {
+	color: #000;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 16px;
+	display: block;
+	height: 16px;
+	margin-left: 5px;
+	overflow: hidden;
+}
+
+a.commentGoView {
+	color: #4379b8;
+}
+
+.returnedArtText a {
+	color: #4379b8;
+	font-size: 14px;
+	line-height: 16px;
+	text-decoration: none;
+}
+
+.returnedArtText a:hover {
+	text-decoration: underline;
+}
+
+/**********  Article moderation bar  **********/
+
+.articleModerationBar {
+	background: #ffcc66;
+	border: 1px solid #333;
+	float: left;
+	height: 20px;
+	margin: 0 0 35px 0;
+	padding: 0;
+	width: 99.6%;
+}
+
+.articleModerationBarText {
+	float: left;
+	height: 18px;
+	margin: 0;
+	padding: 2px 0 0;
+	width: auto;
+}
+
+.articleModerationBarLinks {
+	float: right;
+	height: 20px;
+	margin: 0;
+	padding: 0;
+	width: auto;
+}
+
+.articleModerationBarLinks a {
+	border-left: 1px solid #333;
+	color: #333;
+	display: block;
+	float: right;
+	height: 18px;
+	margin: 0;
+	padding: 2px 15px 0 15px;
+	width: auto;
+}
+
+.articleModerationBarLinks a:hover {
+	background: #ffffcc;
+	border-left: 1px solid #333;
+}
+
+label.rejectFormHeading {
+	color: #000;
+	font-weight: bold;
+}
+
+textarea.rejectFormTextarea {
+	border: 1px solid #bebfbf;
+	color: #333;
+	font-size: 14px;
+	line-height: 16px;
+	height: 85px;
+	margin-top: 10px;
+	width: 416px;
+}
+
+/**********  Article/comment form styles  **********/
+
+.articleFormHolder {
+	height: auto;
+	margin: 25px auto 0 auto;
+	width: 100%;
+}
+
+.commentFormGeneralHolder {
+	float: left;
+	height: auto;
+	margin: 10px 0 0;
+	padding-bottom: 10px;
+	width: 100%;
+}
+
+.commentFormGeneralHolder .commentFormHeading {
+	float: left;
+	width: 100%;
+}
+
+.commentFormGeneralHolder .commentFormHeading span {
+	color: #000;
+	font-size: 16px;
+	font-weight: bold;
+	line-height: 18px;
+	width: auto;
+}
+
+.articleFormHolder .fieldHolder,
+.commentFormGeneralHolder .fieldHolder {
+	float: left;
+	height: auto;
+	margin-bottom: 10px;
+	width: 100%;
+}
+
+.articleFormHolder .formLabel,
+.articleFormHolder .formLabel label {
+	width: 105px;
+}
+
+.articleFormHolder .formField {
+	width: 493px;
+}
+
+.articleFormHolder .formField input.smallInput {
+	border: 1px solid #bebfbf;
+	color: #333;
+	font-size: 14px;
+	line-height: 16px;
+	height: 20px;
+	padding: 0 1px;
+	width: 440px;
+}
+
+.articleFormHolder .formField input.bigInput {
+	border: 1px solid #bebfbf;
+	color: #333;
+	font-size: 14px;
+	line-height: 16px;
+	height: 20px;
+	padding: 0 1px;
+	width: 490px;
+}
+
+.articleFormHolder .formField select.wideSelect {
+	border: 1px solid #bebfbf;
+	color: #333;
+	font-size: 14px;
+	line-height: 16px;
+	height: 22px;
+	width: 245px;
+}
+
+.articleCommentTabsHolder {
+	border-bottom: 1px solid #000;
+	float: left;
+	height: 28px;
+	margin-bottom: 10px;
+	position: relative;
+	width: 599px;
+}
+
+a.tinyMceTabActive {
+	border-top: 1px solid #000;
+	border-right: 1px solid #000;
+	border-bottom: 1px solid #fff;
+	border-left: 1px solid #000;
+	color: #000;
+	font-size: 14px;
+	font-weight: bold;
+	line-height: 16px;
+	display: block;
+	height: 23px;
+	padding: 3px 0 0;
+	position: absolute;
+	top: 1px;
+	left: 0;
+	text-align: center;
+	width: 200px;
+}
+
+a.tinyMceTabPassive {
+	border: 1px solid #000;
+	color: #b1b2b4;
+	font-size: 14px;
+	font-weight: bold;
+	line-height: 16px;
+	display: block;
+	height: 23px;
+	padding: 3px 0 0;
+	position: absolute;
+	top: 1px;
+	left: 0;
+	text-align: center;
+	width: 200px;
+}
+
+a.markItUpTabActive {
+	border-top: 1px solid #000;
+	border-right: 1px solid #000;
+	border-bottom: 1px solid #fff;
+	border-left: 1px solid #000;
+	color: #000;
+	font-size: 14px;
+	font-weight: bold;
+	line-height: 16px;
+	display: block;
+	height: 23px;
+	padding: 3px 0 0;
+	position: absolute;
+	top: 1px;
+	left: 210px;
+	text-align: center;
+	width: 138px;
+}
+
+a.markItUpTabPassive {
+	border: 1px solid #000;
+	color: #b1b2b4;
+	font-size: 14px;
+	font-weight: bold;
+	line-height: 16px;
+	display: block;
+	height: 23px;
+	padding: 3px 0 0;
+	position: absolute;
+	top: 1px;
+	left: 210px;
+	text-align: center;
+	width: 138px;
+}
+
+#autosaveHintText {
+	float: right;
+	font-size: 12px;
+	line-height: 14px;
+	height: 14px;
+	margin-top: 9px;
+}
+
+.articleFormHolder .formFieldCheckbox {
+	float: left;
+	margin-top: 6px;
+	width: 20px;
+}
+
+*:first-child+html .articleFormHolder .formFieldCheckbox {
+	margin-top: 2px;
+}
+
+.articleFormHolder .formFieldCheckbox {
+ 	margin-top /*\**/: 4px\9
+}
+
+/**********  User articles filter styles  **********/
+
+.generalTabsHolder {
+	border-bottom: 1px solid #000;
+	float: left;
+	height: 27px;
+	margin: 10px 0 40px 0;
+	width: 100%;
+}
+
+.generalTabsHolder h5.pageGeneralHeading {
+	border-bottom: none;
+	color: #000;
+	float: left;
+	width: 77%;
+}
+
+a.generalTabActive {
+	border-top: 1px solid #000;
+	border-right: 1px solid #000;
+	border-bottom: 1px solid #fff;
+	border-left: 1px solid #000;
+	color: #000;
+	float: left;
+	font-size: 14px;
+	font-weight: bold;
+	line-height: 16px;
+	display: block;
+	height: 21px;
+	margin: 0 6px -1px 0;
+	padding: 5px 8px 0 8px;
+	text-align: center;
+	width: auto;
+}
+
+a.generalTabPassive {
+	border-top: 1px solid #b1b3b4;
+	border-right: 1px solid #b1b3b4;
+	border-bottom: none;
+	border-left: 1px solid #b1b3b4;
+	color: #b1b2b4;
+	float: left;
+	font-size: 14px;
+	font-weight: bold;
+	line-height: 16px;
+	display: block;
+	height: 21px;
+	margin: 0 6px 0 0;
+	padding: 5px 8px 0 8px;
+	text-align: center;
+	width: auto;
+}
+
+a.generalTabActiveRight {
+	border-top: 1px solid #000;
+	border-right: 1px solid #000;
+	border-bottom: 1px solid #fff;
+	border-left: 1px solid #000;
+	color: #000;
+	float: right;
+	font-size: 14px;
+	font-weight: bold;
+	line-height: 16px;
+	display: block;
+	height: 21px;
+	margin: 0 0 -1px 6px;
+	padding: 5px 8px 0 8px;
+	text-align: center;
+	width: auto;
+}
+
+a.generalTabPassiveRight {
+	border-top: 1px solid #b1b3b4;
+	border-right: 1px solid #b1b3b4;
+	border-bottom: none;
+	border-left: 1px solid #b1b3b4;
+	color: #b1b2b4;
+	float: right;
+	font-size: 14px;
+	font-weight: bold;
+	line-height: 16px;
+	display: block;
+	height: 21px;
+	margin: 0 0 0 6px;
+	padding: 5px 8px 0 8px;
+	text-align: center;
+	width: auto;
+}
+
+.commFilterHolder {
+	float: left;
+	height: auto;
+	margin: 0 0 30px 0;
+	width: 100%;
+}
+
+.commFilterHolder select {
+	border: 1px solid #bebfbf;
+	height: 22px;
+	width: 430px;
+}
+
+/**********  Forgot/recover password page styles  **********/
+
+.forgotPassHolder {
+	height: auto;
+	margin: 0 auto;
+	width: 730px;
+}
+
+.forgotPassHolder1 {
+	height: auto;
+	margin: 0 auto;
+	width: 600px;
+}
+
+.forgotPassForm {
+	border-bottom: 1px solid #e4e4e4;
+	float: left;
+	height: auto;
+	padding: 15px 0 10px 0;
+	width: 730px;
+}
+
+.forgotPassForm1 {
+	float: left;
+	height: auto;
+	padding: 15px 0 10px 0;
+	width: 600px;
+}
+
+*:first-child+html .forgotPassForm,
+*:first-child+html .forgotPassForm1 {
+	padding: 10px 0 30px 0;
+}
+
+.forgotPassForm .fieldHolder {
+	width: 500px;
+	margin-bottom: 20px;
+}
+
+.forgotPassForm1 .fieldHolder {
+	width: 460px;
+	margin-bottom: 20px;
+}
+
+.forgotPassForm .formLabel,
+.forgotPassForm .formLabel label,
+.forgotPassForm1 .formLabel,
+.forgotPassForm1 .formLabel label {
+	width: 250px;
+}
+
+.forgotPassForm .formLabel span,
+.forgotPassForm .formLabel label span,
+.forgotPassForm1 .formLabel span,
+.forgotPassForm1 .formLabel label span {
+	color: #000;
+	font-weight: bold;
+}
+
+.forgotPassForm .formField {
+	width: 250px;
+}
+
+.forgotPassForm1 .formField {
+	width: 210px;
+}
+
+.forgotPassForm .formField input.smallInput {
+	border: 1px solid #bebfbf;
+	color: #333;
+	font-size: 14px;
+	line-height: 16px;
+	height: 20px;
+	padding: 0 1px;
+	width: 220px;
+}
+
+.forgotPassForm1 .formField input.smallInput {
+	border: 1px solid #bebfbf;
+	color: #333;
+	font-size: 14px;
+	line-height: 16px;
+	height: 20px;
+	padding: 0 1px;
+	width: 210px;
+}
+
+.guestDeniedPage {
+	border-bottom: 1px solid #e4e4e4;
+	height: auto;
+	padding: 20px 0;
+	width: 100%;
+}
+
+.guestDeniedPage p {
+	line-height: 18px;
+}
+
+.forgotPassHolder1 textarea.wideArea {
+	border: 1px solid #bebfbf;
+	color: #333;
+	font-size: 14px;
+	line-height: 16px;
+	height: 150px;
+	width: 600px;
+}
+
+/**********  Messages styles  **********/
+
+.messagesNavHolder {
+	float: left;
+	height: auto;
+	margin: 0 0 30px 0;
+	width: 100%;
+}
+
+.messagesNavHolder a.navLinkSmall,
+.messagesNavHolder a.navLinkBig {
+	background: #ebebeb;
+	border: 1px solid #bebfbf;
+	color: #000;
+	display: block;
+	font-size: 12px;
+	float: left;
+	height: 19px;
+	margin: 10px 15px 0 0;
+	padding-top: 3px;
+	text-align: center;
+	text-decoration: none;
+}
+
+.messagesNavHolder a.navLinkSmall {
+	width: 84px;
+}
+
+.messagesNavHolder a.navLinkBig {
+	width: 145px;
+}
+
+.messagesNavHolder a.navLinkSmall:hover,
+.messagesNavHolder a.navLinkBig:hover {
+	background: #fac338;
+}
+
+.messagesNavHolder .selectHolder {
+	float: left;
+	height: auto;
+	margin-top: 10px;
+	width: 335px;
+}
+
+.selectHolder span {
+	display: block;
+	font-size: 14px;
+	line-height: 16px;
+	float: left;
+	height: 20px;
+	padding-top: 4px;
+	margin-right: 5px;
+}
+
+.selectHolder select {
+	border: 1px solid #bebfbf;
+	font-size: 14px;
+	line-height: 16px;
+	float: left;
+	height: 24px;
+	margin: 0;
+	width: 235px;
+}
+
+.messagesListAlignment {
+	text-align: left;
+	padding: 15px 0 10px 0;
+	vertical-align: top;
+}
+
+.messagesListTopBorder {
+	border-top: 1px solid #a9a9a9;
+}
+
+.messageDateTime {
+	color: #a4a4a4;
+	font-size: 10px;
+	line-height: 12px;
+}
+
+.messageAuthor {
+	font-weight: bold;
+}
+
+.messageText {
+	font-size: 12px;
+	line-height: 14px;
+	margin: 5px 0;
+}
+
+.messageFormHolder {
+	float: left;
+	height: auto;
+	margin: 10px 0;
+	width: 100%;
+}
+
+.messFormLabel {
+	color: #000;
+	font-size: 16px;
+	font-weight: bold;
+	float: left;
+	line-height: 18px;
+	height: auto;
+	margin: 0 0 15px 0;
+	width: 100%;
+}
+
+.messFormTextarea {
+	border: 1px solid #c1c1c1;
+	float: left;
+	height: 170px;
+	margin: 0;
+	padding: 5px;
+	width: 98%;
+}
+
+#desc_field_counter {
+	float: left;
+	height: auto;
+	margin: 10px 0;
+	width: 100%;
+}
+
+#desc_field_counter input {
+	border: 1px solid #c1c1c1;
+	color: #848484;
+	height: 20px;
+	width: 40px;
+}
+
+.postMessInfo {
+	float: left;
+	margin: 0;
+	width: 100%;
+}
+
+/**********  About page styles  **********/
+
+.aboutPageHolder {
+	height: auto;
+	margin: 0 auto;
+	position: relative;
+	width: 940px;
+}
+
+.aboutPageHolder .qrCodeHolder {
+	background: url('/img/qr-code.gif') no-repeat left top;
+	height: 152px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 132px;
+}
+
+.qrCodeHolder p {
+	font-size: 12px;
+	line-height: 14px;
+	margin: 127px 0 0;
+	text-align: center;
+}
+
+.aboutPageHolder .aboutText {
+	font-size: 16px;
+	line-height: 20px;
+	text-align: center;
+}
+
+.aboutPageHolder .aboutList {
+	height: auto;
+	margin: 45px auto 0 auto;
+	width: 350px;
+}
+
+.aboutPageHolder .aboutListItem {
+	background: url('/img/icon/dot_yellow.png') no-repeat left 10px;
+	height: 52px;
+	width: 350px;
+}
+
+.aboutListItem .aboutListInnerItem {
+	background: url('/img/icon/dot_two.png') repeat-x left bottom;
+	height: 52px;
+	margin-left: 25px;
+	width: 325px;
+}
+
+.aboutListInnerItem h5 {
+	margin-top: 5px;
+}
+
+.aboutListInnerItem a {
+	color: #333;
+	font-size: 18px;
+	line-height: 20px;
+}
+
+.aboutListInnerItem p {
+	font-size: 12px;
+	line-height: 16px;
+	margin-top: 3px;
+}
+
+.aboutPageHolder .contactText {
+	margin: 20px 0;
+	text-align: center;
+}
+
+.contactText a {
+	font-size: 14px;
+	line-height: 16px;
+}
+
+.aboutPageHolder .socialShareText {
+	font-size: 12px;
+	line-height: 14px;
+	margin: 40px 0;
+	text-align: center;
+}
+
+.socialShareText a {
+	font-weight: bold;
+}
+
+
+
+
+
+#rightColumn {
+	float: right;
+	height: auto;
+	margin: 0 3%;
+	padding: 40px 0;
+	width: 30%;
+	z-index: 1;
+}
+
+/**********  Search bar  **********/
+
+#rightColumn p.rightColHeading {
+	color: #000;
+	font-size: 18px;
+	line-height: 20px;
+	float: left;
+	height: auto;
+	margin-bottom: 15px;
+	text-align: center;
+	width: 100%;
+}
+
+#rightColumn p.rightColHeading a {
+	color: #000;
+	font-size: 18px;
+	line-height: 20px;
+}
+
+#rightColumn p.rightColText {
+	color: #000;
+	float: left;
+	font-size: 12px;
+	line-height: 16px;
+	margin: 10px 0 0;
+	text-align: left;
+	width: 100%;
+}
+
+#editorHelp1, #editorHelp2 {
+	float: left;
+	width: 100%;
+}
+
+#rightColumn ul {
+	float: left;
+	list-style-type: none;
+	height: auto;
+	width: 100%;
+}
+
+#rightColumn ul li {
+	background: url('/img/icon/round_orange.png') no-repeat 0 10px;
+	padding: 3px 0 3px 25px; 
+}
+
+*:first-child+html #rightColumn ul li {
+	padding: 3px 0 3px 10px; 
+}
+
+#rightColumn ul li a.blogName {
+	color: #828282;
+	text-decoration: none;
+}
+
+#rightColumn ul li span {
+	font-size: 12px;
+	line-height: 16px;
+}
+
+#rightColumn ul li img {
+	vertical-align: middle;
+}
+
+#rightColumn ul li a.articleName {
+	color: #000;
+	text-decoration: none;
+}
+
+#rightColumn ul li a.blogName:hover,
+#rightColumn ul li a.articleName:hover {
+	text-decoration: underline;
+}
+
+.tagsCloudHolder {
+	float: left;
+	width: 100%;
+}
+
+.tagCloudStyle1 {
+	color: #ccc;
+	font-size: 10px;
+	line-height: 12px;
+	text-decoration: none;
+}
+
+.tagCloudStyle2 {
+	color: #bbb;
+	font-size: 12px;
+	line-height: 14px;
+	text-decoration: none;
+}
+
+.tagCloudStyle3 {
+	color: #999;
+	font-size: 18px;
+	line-height: 20px;
+	text-decoration: none;
+}
+
+.tagCloudStyle4 {
+	color: #666;
+	font-size: 24px;
+	line-height: 26px;
+	text-decoration: none;
+}
+
+.tagCloudStyle5 {
+	color: #333;
+	font-size: 30px;
+	line-height: 32px;
+	text-decoration: none;
+}
+
+.tagCloudStyle6 {
+	color: #000;
+	font-size: 36px;
+	line-height: 38px;
+	text-decoration: none;
+}
+
+.tagCloudStyle1:hover, .tagCloudStyle2:hover,
+.tagCloudStyle3:hover, .tagCloudStyle4:hover,
+.tagCloudStyle5:hover, .tagCloudStyle6:hover {
+	text-decoration: underline;
+}
+
+/******************************************************************
+ * Footer styles
+ ******************************************************************/
+
+#footer {
+	float: left;
+    height: 75px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.bottomLine {
+	border-top: 1px solid #e4e4e4;
+	height: 1px;
+	margin: 0 auto;
+	width: 735px;
+}
+
+.bottomLinksHolder {
+	height: auto;
+	margin: 0 auto;
+	text-align: center;
+	width: 400px;
+}
+
+.bottomLinksHolder a {
+    color: #828282;
+	font-size: 10px;
+	line-height: 12px;
+	font-weight: bold;
+}
+
+.copyRightInfo {
+	color: #828282;
+	font-size: 10px;
+	line-height: 12px;
+	font-weight: bold;
+	height: auto;
+	margin: 10px 0 0;
+	text-align: center;
+}
+
+/******************************************************************
+ * Additional styles
+ ******************************************************************/
+
+#dProgress { 
+	background: #fff;
+	border: 1px solid #2e70d5;
+    color: #2e70d5;
+	clear: both; 
+	float: none; 
+	height: 80px;
+	overflow: hidden; 
+	padding-top: 30px;
+	position: fixed;
+	top: 45%;
+	left: 45%;
+    text-align: center;
+    width: 120px;
+    z-index: 100;
+}
+
+#dProgress #dProgressText { 
+	font: normal 12px/14px Arial, Verdana, Helvetica, sans-serif;
+}
+
+.error{
+    color: #d62819;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.notice {
+	border: 2px solid #f7b100;
+	color: #000;
+    font-size: 16px;
+    font-weight: bold;
+	float: left;
+	height: auto;
+	margin: 15px 0;
+    padding: 6px;
+    text-align: center;
+    width: 97%;
+}
+
+.notice a {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/*=============dropdown menu===========*/
+
+ul.topnav {
+	list-style-type: none;
+	margin: 0;
+	float: none;
+	z-index: 2;
+}
+
+ul.topnav li {	
+	position: relative;	
+	text-align: center;
+}
+
+ul.topnav li a {
+	margin: 0;
+	line-height: 150%;	
+}
+
+ul.subnav {	
+	border: 1px solid #6C6C3B;
+	position: absolute;
+	background: #edeeee;
+	margin: 0;
+	padding: 0;
+	display: none;
+	width: 120px;
+	left: 0;
+	top: 16px;
+	z-index: 2;
+	list-style-type: none;
+}
+
+ul.subnavLong {
+	width: 260px;
+	z-index: 2;
+}
+
+ul.subnav li,
+ul.subnavLong li {
+	text-align: left;
+}
+
+li.inline {
+	display: inline;   /* for Chrome user menu*/
+	text-align: left;
+}
+
+ul.subnav li a {
+	color: #000;
+	padding: 5px;	
+}
+
+/*=============dropdown menu end========*/	
+
+#globalNoticeHolder {
+	background: #ffffe1;
+	border-bottom: 1px solid #a6a6a6;
+	height: auto;
+	position: fixed;
+	top: 0;
+	left: 0;
+	padding: 10px;
+	width: 100%;
+	z-index: 1000;
+}
+
+.noticeHolderText {
+	color: red;
+	font-weight: bold;
+	float: left;
+	height: auto;
+	margin: 0 20px 0 0;
+	padding: 4px 0;
+	width: 72%
+}
+
+.siteButtonHolder {
+	float: right;
+	height: 22px;
+	margin: 0;
+	width: 25%
+}
+
+a.siteButton {
+	background: url('/img/button_.png') no-repeat left top;
+	border: none;
+	color: #000;
+	display: block;
+	float: right;
+	font-size: 14px;
+	line-height: 16px;
+	height: 19px;
+	margin: 0 20px 0 0;
+	padding: 3px 0 0;
+	text-align: center;
+	width: 91px;
+	text-decoration: none;
+}
+
+a.siteButton1 {
+	background: url('/img/button_110.png') no-repeat left top;
+	border: none;
+	color: #000;
+	display: block;
+	float: right;
+	font-size: 14px;
+	line-height: 16px;
+	height: 19px;
+	margin: 0 20px 0 0;
+	padding: 3px 0 0;
+	text-align: center;
+	width: 110px;
+	text-decoration: none;
+}

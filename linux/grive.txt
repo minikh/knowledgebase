@@ -1,0 +1,10 @@
+sudo add-apt-repository ppa:nilarimogard/webupd8
+sudo apt-get update
+sudo apt-get install grive
+
+sudo apt-get install grive-tools
+
+ln -s /media/My1/Clouds/Google\ Drive/ ~/
+
+
+http://ulyssesd.blogspot.ru/2015/04/google-drive-grive-grive-tools-debian.html

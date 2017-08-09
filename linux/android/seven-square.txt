@@ -1,0 +1,20 @@
+http://compizomania.blogspot.com/2015/09/android-ubuntu.html
+https://github.com/yangh/sevensquare
+
+sudo apt-get install android-tools-adb
+
+sudo apt-get install qt4-qmake libqt4-dev libqtcore4 libqtgui4 g++
+
+sudo apt-get install git
+
+git clone https://github.com/yangh/sevensquare.git 
+
+cd sevensquare 
+
+make 
+
+sudo make install
+
+включить отладку по usb
+
+seven-square

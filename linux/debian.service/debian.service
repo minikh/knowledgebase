@@ -1,0 +1,3 @@
+включить сервисы командой systemctl enable sputnik-lcs.service и systemctl enable omni-lcs.service
+запустить в первый раз systemctl start sputnik-lcs.service
+проверить статус systemctl status sputnik-lcs.service (см. строчку Active: active (running)) и systemctl status omni-lcs

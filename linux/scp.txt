@@ -1,0 +1,50 @@
+scp -P <remote port> ~/file vladimir.minikh@middle.craftmann.ru:~/file - скопировать файл на сервер
+scp vladimir.minikh@middle.craftmann.ru:~/file ~/file  - скопировать файл с сервера
+
+
+Пример 1 : Копируем файл "file.txt" из удаленного сервера на локальный компьютер.
+$ scp user@remote.host:file.txt /some/local/directory
+
+Пример 2 : Копируем файл "file.txt" с локального компьютера на удаленный сервер.
+$ scp file.txt user@remote.host:/some/remote/directory
+
+Пример 3 : Копируем папку "dir1" с локального хоста в директорию "dir2" на удаленном хосте.
+$ scp -r dir1 user@remote.host:/some/remote/directory/dir2
+
+Пример 4 : Копируем файл "file.txt" с одного удаленного сервера "remote.host1"
+на другой удаленный сервер "remote.host2".
+$ scp user@remote.host1:/directory/file.txt user@remote.host2:/some/directory/
+
+Пример 5 : Копируем файлы "file1.txt" и "file2.txt" с локального компьютера в
+Ваш домашний каталог на удаленном сервере.
+$ scp file1.txt file2.txt user@remote.host:~
+
+Пример 6 : Копируем файл "file.txt" с локального хоста на удаленный хост,
+используя порт 2222.
+$ scp -P 2222 file.txt user@remote.host:/some/remote/directory
+
+Пример 7 : Копируем файл "file.txt" с локального компьютера в
+Ваш домашний каталог на удаленном сервере. Сохраняем время изменения и время
+доступа и права копируемого фала.
+$ scp -p file.txt user@remote.host:~
+
+Пример 8 : Копируем файл "file.txt" с локального компьютера в Ваш домашний
+каталог на удаленном сервере. Увеличиваем скорость работы SCP изменяя
+алгоритм шифрования с AES-128 (по умолчанию) на Blowfish.
+$ scp -c blowfish file.txt user@remote.host:~
+
+Пример 9 : Копируем файл "file.txt" с локального компьютера в Ваш домашний
+каталог на удаленном сервере. Ограничиваем ширину канала используемого
+командой SCP до 100 Kbit/s.
+$ scp -l 100 file.txt user@remote.host:~
+
+Пример 10 : Копируем несколько файлов с удаленного хост в текущую директорию на
+Вашем локальном хосте.
+$ scp user@remote.host:~/\{file1,file2,file3\} .
+
+
+Скопировать директорию "my_dir" с локальной машины на удаленную в директорию "your_dir":
+scp -r my_dir ваш_логин@имя_хоста.ru:/некая/директория/your_dir 
+
+Скопировать директорию "my_dir" с удаленной машины на локальной в директорию "your_dir":
+scp -r ваш_логин@имя_хоста.ru:/некая/директория/your_dir my_dir

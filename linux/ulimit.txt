@@ -1,0 +1,13 @@
+ulimit -n
+sudo vim /etc/security/limits.conf
+
+minikh          soft    nofile  512000
+minikh          hard     nofile          512000
+minikh             soft    nofile          512000
+minikh             hard    nproc           512000
+minikh             soft    nproc           512000
+
+
+//так для всех
+*       soft    nofile  200000
+*       hard    nofile  200000

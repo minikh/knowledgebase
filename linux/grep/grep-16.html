@@ -1,0 +1,506 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru"><head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta http-equiv="content-style-type" content="text/css">
+	<meta http-equiv="content-script-type" content="text/javascript">
+	<meta http-equiv="X-UA-Compatible" content="IE=8">
+	
+		<title>16 практических примеров команды grep в Linux</title>
+    
+		<meta name="description" content="Просмотр статьи - 16 практических примеров команды grep в Linux">
+	
+		<meta name="keywords" content="grep">
+	
+    
+    <link rel="stylesheet" type="text/css" href="grep-16_files/base.css">
+	<link rel="stylesheet" type="text/css" href="grep-16_files/jquery-ui-custom.css">
+	<link rel="stylesheet" type="text/css" href="grep-16_files/style.css">
+	<link rel="stylesheet" type="text/css" href="grep-16_files/style_002.css">
+	<link rel="stylesheet" type="text/css" href="grep-16_files/shCore.css">
+	<link rel="stylesheet" type="text/css" href="grep-16_files/shThemeDefault.css">
+		
+	
+<!--[if IE]>
+	<link rel="stylesheet" type="text/css" href="/css/ie.css?build=1310141834" />
+<![endif]-->
+
+	<link rel="icon" href="http://www.rootfront.com/img/favicon.ico" type="image/x-icon">
+	<link rel="shortcut icon" href="http://www.rootfront.com/img/favicon.ico" type="image/x-icon">	
+	<link rel="image_src" href="http://www.rootfront.com/img/new_logo_big.png">
+	
+	<script src="grep-16_files/ga.js" async="" type="text/javascript"></script><script type="text/javascript" src="grep-16_files/ajaxtoolbox.js"></script><link href="grep-16_files/translator.css" id="SL_Style" type="text/css" rel="stylesheet">
+	<script type="text/javascript" src="grep-16_files/common.js"></script>
+	<script type="text/javascript" src="grep-16_files/loading_progress.js"></script>
+	<script type="text/javascript" src="grep-16_files/beforeunload.js"></script>
+	<script type="text/javascript" src="grep-16_files/jquery-1.js"></script>
+	<script type="text/javascript" src="grep-16_files/jquery-ui-1.js"></script>
+	<script type="text/javascript" src="grep-16_files/jquery_002.js"></script>
+	<script type="text/javascript" src="grep-16_files/gallery4.js"></script>
+	<script type="text/javascript" src="grep-16_files/subscription.js"></script>
+	<script type="text/javascript" src="grep-16_files/dropdownmenu.js"></script>
+	<script type="text/javascript" src="grep-16_files/textutils.js"></script>
+	
+	
+	<script type="text/javascript" src="grep-16_files/tiny_mce.js"></script>
+	<script type="text/javascript" src="grep-16_files/upload.js"></script>
+	<script type="text/javascript" src="grep-16_files/comments.js"></script>
+	<script type="text/javascript" src="grep-16_files/dialogform.js"></script>
+	<script type="text/javascript" src="grep-16_files/articles.js"></script>
+	<script type="text/javascript" src="grep-16_files/set.js"></script>
+	<script type="text/javascript" src="grep-16_files/jquery.js"></script>
+	<script type="text/javascript" src="grep-16_files/texteditor.js"></script>
+	<script type="text/javascript" src="grep-16_files/shCore.js"></script>
+	<script type="text/javascript" src="grep-16_files/shAutoloader.js"></script>
+	
+<script src="grep-16_files/button.js" async="" charset="utf-8" type="text/javascript"></script></head>
+
+<body id="defaultDisplayElement" onload="javascript:initLoadingProgressEl(); initDialogForm('uploadFormHolder'); initDialogForm('rejectFormHolder'); loadHighlighterModulesAndRun();" onunload="">
+
+
+	<div id="dProgress" style="display: none;">
+		<img style="position: relative; top: 10px;" src="grep-16_files/loading.gif" alt="Loading..." title="Loading..." height="44" width="44">
+		<div id="dProgressText" style="position: relative; top: -50px; left: 5px;">Загрузка данных...</div>
+	</div>  
+	
+	<div id="mainContainer">
+	    <!-- Header -->
+
+
+<div id="header">
+	<div id="mainHeader">
+			<div id="leftPartHeaderSmall">
+				<a href="http://www.rootfront.com/" id="smallLogo" title="rootFront"><img src="grep-16_files/new_smol_logo.png" alt="rootFront" height="25" width="140"></a>
+				<div id="communityMenuContainer">
+					<a href="http://www.rootfront.com/" title="Статьи">Статьи</a>&nbsp;&nbsp;
+					<a href="http://www.rootfront.com/professionals" title="Люди">Люди</a>&nbsp;&nbsp;
+					<a href="http://www.rootfront.com/groups" title="Сообщества">Сообщества</a>
+				</div>
+			</div>
+			<div id="communityBarContainer">  
+  	<div class="communityBar">
+	    <div class="previewHolder">
+	    	<table><tbody><tr><td>
+	    	<a href="http://www.rootfront.com/group/25091/info/linux" title="Профиль сообщества"><img src="grep-16_files/small.jpg" alt="Профиль сообщества"></a>
+	    	</td></tr></tbody></table>
+	    </div>
+	    <div class="titleHolder">
+		    <a href="http://www.rootfront.com/group/25091" title="Linux">Linux</a>
+		</div>
+			<a href="http://www.rootfront.com/login?back=/reader/blog/25111/subscribe" title="Стать читателем блога" class="becomeReaderLink"></a>
+	</div>
+	
+	<script type="text/javascript">
+	<!--//[CDATA[
+		initBlogSubscriptionActions('/');
+	//]]-->
+	</script>
+</div>
+			<div id="userInfoBar1">
+				<div class="userDataHolder1">
+					<div class="userEnterLinkHolder">
+						<a href="http://www.rootfront.com/login" title="Войти">Войти</a>
+					</div>
+					<div class="userRegisterLinkHolder">
+						<a href="http://www.rootfront.com/signup" title="Зарегистрироваться">Зарегистрироваться</a>
+					</div>
+				</div>
+			</div>			
+			<div id="openIdLoginBar">
+				<a href="http://www.rootfront.com/openid?type=201&amp;back=/article/11986811/2014-01-21/16-prakticheskih-primerov-komandy-grep-v-linux" title="Blogger"><img src="grep-16_files/blogger_18.png" alt="Blogger" height="18" width="18"></a>
+				<a href="http://www.rootfront.com/openid?type=202&amp;back=/article/11986811/2014-01-21/16-prakticheskih-primerov-komandy-grep-v-linux" title="Google"><img src="grep-16_files/google_18.png" alt="Google" height="18" width="18"></a>
+				<a href="http://www.rootfront.com/openid?type=203&amp;back=/article/11986811/2014-01-21/16-prakticheskih-primerov-komandy-grep-v-linux" title="Yandex"><img src="grep-16_files/yandex_18.png" alt="Yandex" height="18" width="18"></a>
+				<a href="http://www.rootfront.com/openid?type=204&amp;back=/article/11986811/2014-01-21/16-prakticheskih-primerov-komandy-grep-v-linux" title="Livejournal"><img src="grep-16_files/live_journal_18.png" alt="Livejournal" height="18" width="18"></a>
+				<a href="http://www.rootfront.com/openid?type=205&amp;back=/article/11986811/2014-01-21/16-prakticheskih-primerov-komandy-grep-v-linux" title="Rambler"><img src="grep-16_files/rambler_18.png" alt="Rambler" height="18" width="18"></a>
+				<a href="http://www.rootfront.com/openid?type=206&amp;back=/article/11986811/2014-01-21/16-prakticheskih-primerov-komandy-grep-v-linux" title="MailRu"><img src="grep-16_files/mail_ru_18.png" alt="MailRu" height="18" width="18"></a>
+				<a href="http://www.rootfront.com/openid?type=207&amp;back=/article/11986811/2014-01-21/16-prakticheskih-primerov-komandy-grep-v-linux" title="Wordpress"><img src="grep-16_files/wordpress_18.png" alt="Wordpress" height="18" width="18"></a>
+				<a href="http://www.rootfront.com/openid?type=208&amp;back=/article/11986811/2014-01-21/16-prakticheskih-primerov-komandy-grep-v-linux" title="Мой круг"><img src="grep-16_files/moy_krug_18.png" alt="Мой круг" height="18" width="18"></a>
+				<a href="http://www.rootfront.com/openid?type=209&amp;back=/article/11986811/2014-01-21/16-prakticheskih-primerov-komandy-grep-v-linux" title="Yahoo"><img src="grep-16_files/yahoo_18.png" alt="Yahoo" height="18" width="18"></a>
+				<a href="http://www.rootfront.com/openid?type=299&amp;back=/article/11986811/2014-01-21/16-prakticheskih-primerov-komandy-grep-v-linux" title="OpenId"><img src="grep-16_files/openid_18.png" alt="OpenId" height="18" width="18"></a>
+			</div>
+	</div>
+<div id="secondMenu">
+	
+		<div class="secondMenuLinksHolder">
+
+			
+			
+	   	<a href="http://www.rootfront.com/group/25091" title="" class="secondMenuLinksActive">Статьи</a>
+	   	<a href="http://www.rootfront.com/group/25091/info/linux" title="">Профиль</a>
+	   	<a href="http://www.rootfront.com/group/25091/rules/linux" title="">Правила</a>
+	   	<a href="http://www.rootfront.com/group/25091/members" title="">Авторы</a>
+		    	
+		    	
+		
+	</div>
+</div></div>
+<script type="text/javascript">
+	<!--//[CDATA[
+		$('#dropdown_holder').hover(function() {
+			var pos = $('#usermenu').position();
+  			$('#dropdown_el').css( { 'left': (pos.left - 50) + 'px', 'top': '30px', 'width' : '140px' } );
+			$('#dropdown_el').slideDown(50).show();
+		}, function(){			
+			$('#dropdown_el').slideUp(600);
+		});
+	//]]-->
+</script>	  	
+	    <!-- Content Area -->
+	    <div id="contentContainer">  
+	    		<div id="leftColumn">
+	
+	
+	
+	<div class="articleHolder">
+	
+		<div id="articleErrorMsg" class="error"></div>
+		<div id="articleNoticeMsg"></div>
+	
+	
+		<div class="articleHeadingHolder">
+			<p class="articleHeading">
+				16 практических примеров команды grep в Linux
+				
+			</p>
+			<p class="dateTime">21.01.2014 18:25</p>
+		</div>
+		
+		<div class="articleText">
+			<p><img src="grep-16_files/11986451.gif"></p>
+
+<p>Мы используем команду grep для поиска контента в файле. Сейчас я объясню наиболее полезные команды grep, используя в Linux.</p>
+
+
+
+<p><a name="cut" target="_blank"></a></p>
+
+<p>Пример текстового файла - я использую этот текстовый файл, чтобы объяснить все примеры ниже.</p>
+
+<div><div id="highlighter_507839" class="syntaxhighlighter  actionscript3"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="actionscript3 plain"># cat lin1.txt</code></div><div class="line number2 index1 alt1"><code class="actionscript3 plain">This </code><code class="actionscript3 keyword">is</code> <code class="actionscript3 plain">my test file.</code></div><div class="line number3 index2 alt2"><code class="actionscript3 plain">I’m using vim editor here</code></div><div class="line number4 index3 alt1">&nbsp;</div><div class="line number5 index4 alt2"><code class="actionscript3 plain">- Linuxinternetworks.com</code></div></div></td></tr></tbody></table></div></div>
+
+<p><strong>1.</strong> Найти слово или фразу в указанной директории</p>
+
+<div><div id="highlighter_279760" class="syntaxhighlighter  actionscript3"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="actionscript3 plain"># grep -inr “file” ./*</code></div><div class="line number2 index1 alt1"><code class="actionscript3 plain">./lin1.txt:</code><code class="actionscript3 value">1</code><code class="actionscript3 plain">:This </code><code class="actionscript3 keyword">is</code> <code class="actionscript3 plain">my test file.</code></div></div></td></tr></tbody></table></div></div>
+
+<p>Этот пример будет искать слово "файл" в каталогах. Он будет искать 
+все файлы и каталоги в настоящем рабочем каталоге, чтобы найти нужный 
+шаблон.</p>
+
+<p><strong>2.</strong> Найти слово или фразу в файле (с учетом регистра)</p>
+
+<div><div id="highlighter_140343" class="syntaxhighlighter  actionscript3"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="actionscript3 plain"># grep “file” lin1.txt</code></div><div class="line number2 index1 alt1"><code class="actionscript3 plain">This </code><code class="actionscript3 keyword">is</code> <code class="actionscript3 plain">my test file.</code></div></div></td></tr></tbody></table></div></div>
+
+<p>Этот пример будет искать слово "файл" в файле lin1.txt и с учетом регистра.</p>
+
+<p><strong>3</strong>. Найти слово или фразу в файле (без учета регистра)</p>
+
+<div><div id="highlighter_761679" class="syntaxhighlighter  actionscript3"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="actionscript3 plain"># grep -i “linuxinternetworks” lin1.txt</code></div><div class="line number2 index1 alt1"><code class="actionscript3 plain">- Linuxinternetworks.com</code></div></div></td></tr></tbody></table></div></div>
+
+<p>Этот пример будет искать слово "linuxinternetworks" в файле lin1.txt и это не зависит от регистра.</p>
+
+<p><strong>4.</strong> Используйте регулярное выражение, чтобы найти слово или фразу. Здесь использовано ". *" для пропущенных букв или слов</p>
+
+<div><div id="highlighter_70307" class="syntaxhighlighter  actionscript3"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="actionscript3 plain"># grep -i “Lin.*net.*s.com” lin1.txt</code></div><div class="line number2 index1 alt1"><code class="actionscript3 plain">- Linuxinternetworks.com</code></div></div></td></tr></tbody></table></div></div>
+
+<p>Этот пример содержит регулярное выражение, и мы можем использовать ". *", чтобы соответствовать определенным символам.</p>
+
+<p><strong>5.</strong> Подберем несколько шаблонов. Вариант "<strong>-е</strong>"
+ используется для сопоставления более одного рисунка в команде grep. Он 
+позволяет узнать больше, чем одно слово или фразу в заданном текстовом 
+файле.</p>
+
+<div><div id="highlighter_371985" class="syntaxhighlighter  actionscript3"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="actionscript3 plain"># grep -e “file” -e “editor” lin1.txt</code></div><div class="line number2 index1 alt1"><code class="actionscript3 plain">This </code><code class="actionscript3 keyword">is</code> <code class="actionscript3 plain">my test file.</code></div><div class="line number3 index2 alt2"><code class="actionscript3 plain">I’m using vim editor here</code></div></div></td></tr></tbody></table></div></div>
+
+<p><strong>6.</strong> Переставить подборку. Иногда вам хочется найти 
+переставленное в файле или каталоге. В этом случае вы должны 
+использовать опцию "-v", которая позволяет узнать, переставленное 
+сопоставление с образцом в grep. Это НЕ операция</p>
+
+<div><div id="highlighter_672875" class="syntaxhighlighter  actionscript3"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="actionscript3 plain"># grep -v “file” lin1.txt</code></div><div class="line number2 index1 alt1"><code class="actionscript3 plain">I’m using vim editor here</code></div><div class="line number3 index2 alt2">&nbsp;</div><div class="line number4 index3 alt1"><code class="actionscript3 plain">- Linuxinternetworks.com</code></div></div></td></tr></tbody></table></div></div>
+
+<p><strong>7.</strong> Подсчет моделей - Чтобы подсчитать количество имеющихся тем в файле или нескольких файлов вы должны опция "<strong>-c</strong>"</p>
+
+<div><div id="highlighter_638987" class="syntaxhighlighter  actionscript3"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="actionscript3 plain"># grep -c “e” lin1.txt</code></div><div class="line number2 index1 alt1"><code class="actionscript3 value">3</code></div><div class="line number3 index2 alt2"><code class="actionscript3 plain"># grep -c “editor” lin1.txt</code></div><div class="line number4 index3 alt1"><code class="actionscript3 value">1</code></div></div></td></tr></tbody></table></div></div>
+
+<p><strong>8.</strong> Найдите названия файлов, которые соответствуют 
+модели. Иногда у нас есть модели и нужно узнать названия файлов, которым
+ соответствуют эти шаблоны. Для этого в команде grep вы должны 
+использовать опцию "<strong>-l</strong>"</p>
+
+<div><div id="highlighter_247838" class="syntaxhighlighter  actionscript3"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="actionscript3 plain"># grep -l “This” ./*</code></div><div class="line number2 index1 alt1"><code class="actionscript3 plain">./lin1.txt</code></div><div class="line number3 index2 alt2"><code class="actionscript3 plain">./lin2.txt</code></div><div class="line number4 index3 alt1"><code class="actionscript3 plain">./lin3.txt</code></div></div></td></tr></tbody></table></div></div>
+
+<p><strong>9.</strong> Обозначте линию "<strong>n</strong>" после сопоставления с образцом. Где n - число строк для обозначения после схемы поиска. Используйте опцию "<strong>-A</strong>" в команде grep</p>
+
+<div><div id="highlighter_431497" class="syntaxhighlighter  actionscript3"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="actionscript3 plain"># grep -A </code><code class="actionscript3 value">1</code> <code class="actionscript3 plain">“This” lin1.txt</code></div><div class="line number2 index1 alt1"><code class="actionscript3 plain">This </code><code class="actionscript3 keyword">is</code> <code class="actionscript3 plain">my test file.</code></div><div class="line number3 index2 alt2"><code class="actionscript3 plain">I’m using vim editor here</code></div></div></td></tr></tbody></table></div></div>
+
+<p>В этом примере отображено 1 строку после шаблон поиска "<strong>This</strong>"  <strong>10.</strong> Маркирование линии "<strong>n</strong>" до сопоставления с образцом. Где n число строк, чтобы соответствовать до схемы поиска. Используйте опцию "<strong>-B</strong>" в команде grep</p>
+
+<div><div id="highlighter_760429" class="syntaxhighlighter  actionscript3"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="actionscript3 plain"># grep -B </code><code class="actionscript3 value">1</code> <code class="actionscript3 plain">“editor” lin1.txt</code></div><div class="line number2 index1 alt1"><code class="actionscript3 plain">This </code><code class="actionscript3 keyword">is</code> <code class="actionscript3 plain">my test file.</code></div><div class="line number3 index2 alt2"><code class="actionscript3 plain">I’m using vim editor here</code></div></div></td></tr></tbody></table></div></div>
+
+<p>В этом примере отображается 1 строка перед поиском "<strong>editor</strong>"</p>
+
+<p><strong>11.</strong> Маркирование линии "<strong>n</strong>" вокруг 
+сопоставления с образцом. Где n - число строк, которое соответствует 
+ближайшим около шаблона поиска. Используйте опцию "<strong>-C</strong>" в команде grep.</p>
+
+<div><div id="highlighter_475276" class="syntaxhighlighter  actionscript3"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="actionscript3 plain"># grep -C </code><code class="actionscript3 value">2</code> <code class="actionscript3 plain">“editor” lin1.txt</code></div><div class="line number2 index1 alt1"><code class="actionscript3 plain">This </code><code class="actionscript3 keyword">is</code> <code class="actionscript3 plain">my test file.</code></div><div class="line number3 index2 alt2"><code class="actionscript3 plain">I’m using vim editor here</code></div><div class="line number4 index3 alt1">&nbsp;</div><div class="line number5 index4 alt2"><code class="actionscript3 plain">- Linuxinternetworks.com</code></div></div></td></tr></tbody></table></div></div>
+
+<p>В этом примере отображаются 2 строки до  поиска "editor"</p>
+
+<p><strong>12.</strong> Показать только соответствующую строку - Опция "<strong>-о</strong>" позволяет получить только подходящий шаблон.</p>
+
+<div><div id="highlighter_792962" class="syntaxhighlighter  actionscript3"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="actionscript3 plain"># grep -o “editor” lin1.txt</code></div><div class="line number2 index1 alt1"><code class="actionscript3 plain">editor</code></div></div></td></tr></tbody></table></div></div>
+
+<p><strong>13.</strong> Узнайте подходящий шаблон с номером строки. Используйте опцию "<strong>-n</strong>"</p>
+
+<div><div id="highlighter_323046" class="syntaxhighlighter  actionscript3"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="actionscript3 plain"># grep -n “editor” lin1.txt</code></div><div class="line number2 index1 alt1"><code class="actionscript3 value">2</code><code class="actionscript3 plain">:I’m using vim editor here</code></div></div></td></tr></tbody></table></div></div>
+
+<p><strong>14.</strong> Команда grep с AND оператором</p>
+
+<p>Оператора AND в команде grep нет. Но вы можете использовать его, используя метод ниже</p>
+
+<div><div id="highlighter_276180" class="syntaxhighlighter  actionscript3"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="actionscript3 plain"># grep -E “I’m.*here” lin1.txt</code></div><div class="line number2 index1 alt1"><code class="actionscript3 plain">I’m using vim editor here</code></div></div></td></tr></tbody></table></div></div>
+
+<p><strong>15.</strong> Команда grep с оператором OR  Вы можете использовать оператор OR в двух методах. См. примеры ниже</p>
+
+<div><div id="highlighter_753275" class="syntaxhighlighter  actionscript3"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="actionscript3 plain"># grep ‘using\|hello’ lin1.txt</code></div><div class="line number2 index1 alt1"><code class="actionscript3 plain">I’m using vim editor here</code></div><div class="line number3 index2 alt2">&nbsp;</div><div class="line number4 index3 alt1"><code class="actionscript3 plain"># grep ‘using\|here’ lin1.txt</code></div><div class="line number5 index4 alt2"><code class="actionscript3 plain">I’m using vim editor here</code></div><div class="line number6 index5 alt1">&nbsp;</div><div class="line number7 index6 alt2"><code class="actionscript3 plain"># grep -E ‘using|hello’ lin1.txt</code></div><div class="line number8 index7 alt1"><code class="actionscript3 plain">I’m using vim editor here</code></div><div class="line number9 index8 alt2">&nbsp;</div><div class="line number10 index9 alt1"><code class="actionscript3 plain"># grep -E ‘using|here’ lin1.txt</code></div><div class="line number11 index10 alt2"><code class="actionscript3 plain">I’m using vim editor here</code></div></div></td></tr></tbody></table></div></div>
+
+<p><strong>16.</strong> Команда grep с оператором NOT. Он работает как перестановка шаблона согласования, как описано выше. Используйте опцию "-v"</p>
+
+<div><div id="highlighter_732586" class="syntaxhighlighter  actionscript3"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="actionscript3 plain"># grep -v “using” lin1.txt</code></div><div class="line number2 index1 alt1"><code class="actionscript3 plain">This </code><code class="actionscript3 keyword">is</code> <code class="actionscript3 plain">my test file.</code></div><div class="line number3 index2 alt2">&nbsp;</div><div class="line number4 index3 alt1"><code class="actionscript3 plain">- Linuxinternetworks.com</code></div></div></td></tr></tbody></table></div></div>
+		</div>
+		&nbsp;<br>
+		<a href="http://www.linuxinternetworks.com/16-practical-examples-of-grep-command-in-linux/" title="http://www.linuxinternetworks.com/16-practical-examples-of-grep-command-in-linux/" target="_blank"><p class="italic">http://www.linuxinternetworks.com</p></a><br>
+		Размещено : <a href="http://www.rootfront.com/user/mariannax" title="mariannax">mariannax</a>
+		
+		
+			<p class="articleTags">
+					<a href="http://www.rootfront.com/tag/11992331/articles/grep" title="grep">grep</a>
+			</p>		
+			
+			
+		<div class="articleStatRateBar">
+			<span id="articleRateControls11986811" class="statRateIcon">
+			</span>	
+				<span id="articleCommentsNumber" class="statRateIcon commentsLink">0</span>
+			<span class="statRateIcon viewsLink">8422</span>
+		</div>
+		<div class="articleSocialShareBar">
+	  		<iframe src="http://www.facebook.com/plugins/like.php?href=http://www.rootfront.com/article/11986811/2014-01-21/16-prakticheskih-primerov-komandy-grep-v-linux&amp;layout=button_count&amp;locale=en_US&amp;show_faces=false&amp;width=80&amp;action=like&amp;font=arial&amp;colorscheme=light&amp;height=21" style="border: none; overflow: hidden; width: 100px; height: 20px;" allowtransparency="true" scrolling="no" frameborder="0"></iframe>
+			<iframe src="grep-16_files/tweet_button.html" title="Twitter Tweet Button" style="position: static; visibility: visible; width: 78px; height: 20px;" class="twitter-share-button twitter-share-button-rendered twitter-tweet-button" allowtransparency="true" scrolling="no" id="twitter-widget-0" frameborder="0"></iframe><script type="text/javascript" src="grep-16_files/widgets.js"></script>&nbsp;&nbsp;&nbsp;	
+			<a href="http://www.rootfront.com/sharelink/11986811/lj" title="LiveJournal"><img src="grep-16_files/lj_20.png" alt="icon" height="20" width="20"></a>&nbsp;&nbsp;
+			<a href="http://www.rootfront.com/sharelink/11986811/mm" title="Мой Мир"><img src="grep-16_files/mail_ru_20.png" alt="icon" height="20" width="20"></a>&nbsp;&nbsp;
+			<a href="http://www.rootfront.com/sharelink/11986811/vk" title="В Контакте"><img src="grep-16_files/vk_20copy.png" alt="icon" height="20" width="20"></a>&nbsp;&nbsp;
+			<a href="http://www.rootfront.com/sharelink/11986811/ya" title="Яндекс"><img src="grep-16_files/Yandex_20.png" alt="icon" height="20" width="20"></a>&nbsp;&nbsp;
+			<a href="http://www.rootfront.com/sharelink/11986811/gb" title="GoogleBuzz"><img src="grep-16_files/GoogleBuzz_20.png" alt="icon" height="20" width="20"></a>
+		</div>
+		
+	</div>
+	
+	
+	
+	<div id="commentsBlock">
+
+	<div class="commentHeadingText">Комментариев нет</div>
+	
+	
+	<br>
+	<p class="notice">
+		<a href="http://www.rootfront.com/login?back=/article/11986811/2014-01-21/16-prakticheskih-primerov-komandy-grep-v-linux">Войдите</a> чтобы оставить комментарий</p>	
+	<p></p> 	
+
+<script type="text/javascript">
+	<!--//[CDATA[
+	initCommentEditor('commentFormHolder', true);
+	document.getElementById('articleCommentsNumber').innerHTML = 0;
+	$(window).resize(function () {
+		correctAnswerEditorWidth();
+	});
+	//]]-->
+</script>
+	</div>
+	
+	<script type="text/javascript">
+	<!--//[CDATA[
+		initCommentActions(11986811, '/');
+		initArticleActions();
+		initUploadActions();	
+		
+		document.sendMsgViaCtrlEnter = function(event) {
+			if (ctrlEnter(event)) {
+				document.forms['f_comment'].onsubmit();
+			}
+		};
+	//]]-->
+	</script>		
+	
+			</div>
+				<div id="rightColumn">
+
+		<div class="tagsCloudHolder">
+			<a href="http://www.rootfront.com/tag/127951/articles/solaris-sru" class="tagCloudStyle1">solaris-sru</a>&nbsp;
+			<a href="http://www.rootfront.com/tag/4514111/articles/xbox" class="tagCloudStyle1">xbox</a>&nbsp;
+			<a href="http://www.rootfront.com/tag/56571/articles/sony" class="tagCloudStyle1">sony</a>&nbsp;
+			<a href="http://www.rootfront.com/tag/470361/articles/sql" class="tagCloudStyle1">sql</a>&nbsp;
+			<a href="http://www.rootfront.com/tag/66651/articles/games" class="tagCloudStyle1">games</a>&nbsp;
+			<a href="http://www.rootfront.com/tag/127941/articles/solaris11" class="tagCloudStyle2">solaris11</a>&nbsp;
+			<a href="http://www.rootfront.com/tag/804301/articles/photo" class="tagCloudStyle2">photo</a>&nbsp;
+			<a href="http://www.rootfront.com/tag/45241/articles/usb" class="tagCloudStyle2">usb</a>&nbsp;
+			<a href="http://www.rootfront.com/tag/43481/articles/nokia" class="tagCloudStyle2">nokia</a>&nbsp;
+			<a href="http://www.rootfront.com/tag/342321/articles/asus" class="tagCloudStyle3">asus</a>&nbsp;
+			<a href="http://www.rootfront.com/tag/49191/articles/lol" class="tagCloudStyle3">lol</a>&nbsp;
+			<a href="http://www.rootfront.com/tag/7930481/articles/windows_8_1" class="tagCloudStyle3">windows_8_1</a>&nbsp;
+			<a href="http://www.rootfront.com/tag/84021/articles/ios" class="tagCloudStyle3">ios</a>&nbsp;
+			<a href="http://www.rootfront.com/tag/135401/articles/oracle" class="tagCloudStyle4">oracle</a>&nbsp;
+			<a href="http://www.rootfront.com/tag/45231/articles/intel" class="tagCloudStyle4">intel</a>&nbsp;
+			<a href="http://www.rootfront.com/tag/542251/articles/google_" class="tagCloudStyle4">google+</a>&nbsp;
+			<a href="http://www.rootfront.com/tag/244061/articles/hp" class="tagCloudStyle4">hp</a>&nbsp;
+			<a href="http://www.rootfront.com/tag/1875671/articles/vkontakte" class="tagCloudStyle5">vkontakte</a>&nbsp;
+			<a href="http://www.rootfront.com/tag/25101/articles/linux" class="tagCloudStyle5">linux</a>&nbsp;
+			<a href="http://www.rootfront.com/tag/25201/articles/ubuntu" class="tagCloudStyle5">ubuntu</a>&nbsp;
+			<a href="http://www.rootfront.com/tag/25171/articles/firefox" class="tagCloudStyle5">firefox</a>&nbsp;
+			<a href="http://www.rootfront.com/tag/69431/articles/windows" class="tagCloudStyle6">windows</a>&nbsp;
+			<a href="http://www.rootfront.com/tag/167531/articles/samsung" class="tagCloudStyle6">samsung</a>&nbsp;
+			<a href="http://www.rootfront.com/tag/25341/articles/facebook" class="tagCloudStyle6">facebook</a>&nbsp;
+			<a href="http://www.rootfront.com/tag/27171/articles/apple" class="tagCloudStyle6">apple</a>&nbsp;
+			<a href="http://www.rootfront.com/tag/851791/articles/windows_8" class="tagCloudStyle6">windows_8</a>&nbsp;
+			<a href="http://www.rootfront.com/tag/26801/articles/google" class="tagCloudStyle6">google</a>&nbsp;
+			<a href="http://www.rootfront.com/tag/27361/articles/iphone" class="tagCloudStyle6">iphone</a>&nbsp;
+			<a href="http://www.rootfront.com/tag/34021/articles/microsoft" class="tagCloudStyle6">microsoft</a>&nbsp;
+			<a href="http://www.rootfront.com/tag/27371/articles/android" class="tagCloudStyle5">android</a>&nbsp;
+			<a href="http://www.rootfront.com/tag/28751/articles/skype" class="tagCloudStyle5">skype</a>&nbsp;
+			<a href="http://www.rootfront.com/tag/4553011/articles/windows_7" class="tagCloudStyle5">windows_7</a>&nbsp;
+			<a href="http://www.rootfront.com/tag/27351/articles/blackberry" class="tagCloudStyle5">blackberry</a>&nbsp;
+			<a href="http://www.rootfront.com/tag/240031/articles/chrome" class="tagCloudStyle4">chrome</a>&nbsp;
+			<a href="http://www.rootfront.com/tag/41511/articles/solaris" class="tagCloudStyle4">solaris</a>&nbsp;
+			<a href="http://www.rootfront.com/tag/664161/articles/playbook" class="tagCloudStyle4">playbook</a>&nbsp;
+			<a href="http://www.rootfront.com/tag/394321/articles/exchange2010" class="tagCloudStyle4">exchange2010</a>&nbsp;
+			<a href="http://www.rootfront.com/tag/25271/articles/howto" class="tagCloudStyle3">howto</a>&nbsp;
+			<a href="http://www.rootfront.com/tag/1074431/articles/iphone4s" class="tagCloudStyle3">iphone4s</a>&nbsp;
+			<a href="http://www.rootfront.com/tag/664171/articles/rim" class="tagCloudStyle3">rim</a>&nbsp;
+			<a href="http://www.rootfront.com/tag/112311/articles/youtube" class="tagCloudStyle3">youtube</a>&nbsp;
+			<a href="http://www.rootfront.com/tag/25351/articles/twitter" class="tagCloudStyle2">twitter</a>&nbsp;
+			<a href="http://www.rootfront.com/tag/7137201/articles/google_glass" class="tagCloudStyle2">google_glass</a>&nbsp;
+			<a href="http://www.rootfront.com/tag/4159531/articles/opera" class="tagCloudStyle2">opera</a>&nbsp;
+			<a href="http://www.rootfront.com/tag/222021/articles/amazon" class="tagCloudStyle2">amazon</a>&nbsp;
+			<a href="http://www.rootfront.com/tag/27161/articles/ipad" class="tagCloudStyle1">ipad</a>&nbsp;
+			<a href="http://www.rootfront.com/tag/3618241/articles/virus" class="tagCloudStyle1">virus</a>&nbsp;
+			<a href="http://www.rootfront.com/tag/1035251/articles/kindlefire" class="tagCloudStyle1">kindlefire</a>&nbsp;
+			<a href="http://www.rootfront.com/tag/3038191/articles/wi-fi" class="tagCloudStyle1">wi-fi</a>&nbsp;
+			<a href="http://www.rootfront.com/tag/260411/articles/angry-birds" class="tagCloudStyle1">angry-birds</a>&nbsp;
+		</div>
+	
+		<p class="rightColHeading" style="margin-top: 50px;"><a href="http://www.rootfront.com/" title="Лучшие">Лучшие</a></p>
+		<ul>
+		<li>
+			<a href="http://www.rootfront.com/article/14112111/2014-04-14/teper-samye-umnye-ochki-v-mire-mozhet-primerjat-kazhdyj" title="Теперь самые умные очки в мире может примерять каждый" class="articleName">Теперь самые умные очки в мире может примерять каждый</a>
+			&nbsp;<img src="grep-16_files/kvadrat.gif" alt="square" height="4" width="4">&nbsp;
+			<a href="http://www.rootfront.com/group/40951" title="IT новости" class="blogName">IT новости</a>
+		</li>
+		<li>
+			<a href="http://www.rootfront.com/article/14102571/2014-04-14/microsoft-ustranila-kriticheskuju-ujazvimost-v-word" title="Microsoft устранила критическую уязвимость в Word" class="articleName">Microsoft устранила критическую уязвимость в Word</a>
+			&nbsp;<img src="grep-16_files/kvadrat.gif" alt="square" height="4" width="4">&nbsp;
+			<a href="http://www.rootfront.com/group/4490971" title="windows" class="blogName">windows</a>
+		</li>
+		<li>
+			<a href="http://www.rootfront.com/article/14101111/2014-04-14/gejmplejnyj-rolik-ledjanogo-dopolnenija-k-batman-arkham-origins" title="Геймплейный ролик «ледяного» дополнения к Batman: Arkham Origins" class="articleName">Геймплейный ролик «ледяного» дополнения к Batman: Arkham Origins</a>
+			&nbsp;<img src="grep-16_files/kvadrat.gif" alt="square" height="4" width="4">&nbsp;
+			<a href="http://www.rootfront.com/group/3989321" title="Games" class="blogName">Games</a>
+		</li>
+		<li>
+			<a href="http://www.rootfront.com/article/14019141/2014-04-14/facebook-nakazhet-zapisi-s-bajanami-i-vyprashivaniem-lajkov" title="Facebook накажет записи с «баянами» и выпрашиванием лайков" class="articleName">Facebook накажет записи с «баянами» и выпрашиванием лайков</a>
+			&nbsp;<img src="grep-16_files/kvadrat.gif" alt="square" height="4" width="4">&nbsp;
+			<a href="http://www.rootfront.com/group/25331" title="Соцсети" class="blogName">Соцсети</a>
+		</li>
+		<li>
+			<a href="http://www.rootfront.com/article/14019211/2014-04-11/interfejs-firefox-os-2_0-stanet-gorazdo-privlekatelnee" title="Интерфейс Firefox OS 2.0 станет гораздо привлекательнее" class="articleName">Интерфейс Firefox OS 2.0 станет гораздо привлекательнее</a>
+			&nbsp;<img src="grep-16_files/kvadrat.gif" alt="square" height="4" width="4">&nbsp;
+			<a href="http://www.rootfront.com/group/2005041" title="Браузер" class="blogName">Браузер</a>
+		</li>
+		<li>
+			<a href="http://www.rootfront.com/article/14018441/2014-04-11/windows-8_1-update-1-dostupna-dlja-zagruzki" title="Windows 8.1 Update 1 доступна для загрузки" class="articleName">Windows 8.1 Update 1 доступна для загрузки</a>
+			&nbsp;<img src="grep-16_files/kvadrat.gif" alt="square" height="4" width="4">&nbsp;
+			<a href="http://www.rootfront.com/group/4490971" title="windows" class="blogName">windows</a>
+		</li>
+		<li>
+			<a href="http://www.rootfront.com/article/14018301/2014-04-11/facebook-zastavit-otpravljat-soobschenija-na-smartfonah-cherez-otdelnoe-prilozhenie" title="Facebook заставит отправлять сообщения на смартфонах через отдельное приложение" class="articleName">Facebook заставит отправлять сообщения на смартфонах через отдельное приложение</a>
+			&nbsp;<img src="grep-16_files/kvadrat.gif" alt="square" height="4" width="4">&nbsp;
+			<a href="http://www.rootfront.com/group/25331" title="Соцсети" class="blogName">Соцсети</a>
+		</li>
+		<li>
+			<a href="http://www.rootfront.com/article/13996951/2014-04-10/dropbox-predstavil-prilozhenie-dlja-organizacii-foto-i-video" title="Dropbox представил приложение для организации фото и видео" class="articleName">Dropbox представил приложение для организации фото и видео</a>
+			&nbsp;<img src="grep-16_files/kvadrat.gif" alt="square" height="4" width="4">&nbsp;
+			<a href="http://www.rootfront.com/group/40951" title="IT новости" class="blogName">IT новости</a>
+		</li>
+		<li>
+			<a href="http://www.rootfront.com/article/13993481/2014-04-10/microsoft-predstavila-roliki-s-podrobnym-rasskazom-o-funkcijah-windows-8_1-update" title="Microsoft представила ролики с подробным рассказом о функциях Windows 8.1 Update" class="articleName">Microsoft представила ролики с подробным рассказом о функциях Windows 8.1 Update</a>
+			&nbsp;<img src="grep-16_files/kvadrat.gif" alt="square" height="4" width="4">&nbsp;
+			<a href="http://www.rootfront.com/group/4490971" title="windows" class="blogName">windows</a>
+		</li>
+		<li>
+			<a href="http://www.rootfront.com/article/13978341/2014-04-09/opublikovany-sistemnye-trebovanija-middle-earth-shadow-of-mordor" title="Опубликованы системные требования Middle-earth: Shadow of Mordor" class="articleName">Опубликованы системные требования Middle-earth: Shadow of Mordor</a>
+			&nbsp;<img src="grep-16_files/kvadrat.gif" alt="square" height="4" width="4">&nbsp;
+			<a href="http://www.rootfront.com/group/3989321" title="Games" class="blogName">Games</a>
+		</li>
+		</ul>
+
+	
+
+				</div>
+	    </div>
+	    
+	    <!-- Footer -->
+<div id="footer">
+	<div class="bottomLine"></div>
+	<div class="bottomLinksHolder">
+		<a href="http://www.rootfront.com/about">О проекте</a>&nbsp;&nbsp;
+		<a href="http://www.rootfront.com/faq">Пользователям</a>&nbsp;&nbsp;
+		<a href="http://www.rootfront.com/adv">Рекламодателям</a>&nbsp;&nbsp;
+		<a href="http://www.rootfront.com/contact">Обратная связь</a>
+	</div>
+	<p class="copyRightInfo">© 2016 rootFront.com&nbsp;&nbsp;Версия движка: build 1310141834</p>
+</div>	</div>
+
+
+	
+		<script type="text/javascript">
+
+  			var _gaq = _gaq || [];
+  			_gaq.push(['_setAccount', 'UA-44794088-2']);
+  			_gaq.push(['_trackPageview']);
+
+			(function() {
+    			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  			})();
+		</script>
+	<!-- Yandex.Metrika counter -->
+		<script type="text/javascript">
+		var ya_params = {/*Здесь параметры визита*/};
+		</script>
+		
+		<div style="display:none;"><script type="text/javascript">
+		(function(w, c) {
+		    (w[c] = w[c] || []).push(function() {
+		        try {
+		            w.yaCounter7232647 = new Ya.Metrika({id:7232647, enableAll: true,params:window.ya_params||{ }});
+		        }
+		        catch(e) { }
+		    });
+		})(window, "yandex_metrika_callbacks");
+		</script></div>
+		<script src="grep-16_files/watch.js" type="text/javascript" defer="defer"></script>
+		<noscript><div><img src="//mc.yandex.ru/watch/7232647" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+	<!-- /Yandex.Metrika counter -->
+
+
+
+<div style="border: 0px none; position: absolute;" id="IFrmHelper"> </div><div aria-labelledby="ui-dialog-title-uploadFormHolder" role="dialog" tabindex="-1" class="ui-dialog ui-widget ui-widget-content ui-corner-all  ui-draggable ui-resizable" style="display: none; z-index: 1000; outline: 0px none; position: relative;"><div style="-moz-user-select: none;" unselectable="on" class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix"><span style="-moz-user-select: none;" unselectable="on" id="ui-dialog-title-uploadFormHolder" class="ui-dialog-title">&nbsp;</span><a style="-moz-user-select: none;" unselectable="on" role="button" class="ui-dialog-titlebar-close ui-corner-all" href="#"><span style="-moz-user-select: none;" unselectable="on" class="ui-icon ui-icon-closethick"></span></a></div><div id="uploadFormHolder" class="ui-dialog-content ui-widget-content" style="">	
+	</div><div style="-moz-user-select: none;" unselectable="on" class="ui-resizable-handle ui-resizable-n"></div><div style="-moz-user-select: none;" unselectable="on" class="ui-resizable-handle ui-resizable-e"></div><div style="-moz-user-select: none;" unselectable="on" class="ui-resizable-handle ui-resizable-s"></div><div style="-moz-user-select: none;" unselectable="on" class="ui-resizable-handle ui-resizable-w"></div><div unselectable="on" style="z-index: 1001; -moz-user-select: none;" class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se ui-icon-grip-diagonal-se"></div><div unselectable="on" style="z-index: 1002; -moz-user-select: none;" class="ui-resizable-handle ui-resizable-sw"></div><div unselectable="on" style="z-index: 1003; -moz-user-select: none;" class="ui-resizable-handle ui-resizable-ne"></div><div unselectable="on" style="z-index: 1004; -moz-user-select: none;" class="ui-resizable-handle ui-resizable-nw"></div></div><div aria-labelledby="ui-dialog-title-rejectFormHolder" role="dialog" tabindex="-1" class="ui-dialog ui-widget ui-widget-content ui-corner-all  ui-draggable ui-resizable" style="display: none; z-index: 1000; outline: 0px none; position: relative;"><div style="-moz-user-select: none;" unselectable="on" class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix"><span style="-moz-user-select: none;" unselectable="on" id="ui-dialog-title-rejectFormHolder" class="ui-dialog-title">&nbsp;</span><a style="-moz-user-select: none;" unselectable="on" role="button" class="ui-dialog-titlebar-close ui-corner-all" href="#"><span style="-moz-user-select: none;" unselectable="on" class="ui-icon ui-icon-closethick"></span></a></div><div class="ui-dialog-content ui-widget-content" id="rejectFormHolder" style="">
+<form id="f_reject_form" method="post" onsubmit="return submitRejectArticle(11986811, '/');" action="/writer/ajax/rejectarticle/11986811">  			
+    <label for="rejectReason" class="rejectFormHeading">Причина отказа в размещении статьи:</label>
+    <textarea id="rejectReason" name="rejectReason" cols="15" rows="" class="rejectFormTextarea"></textarea>
+    <input id="reason" name="reason" type="hidden">
+	<input value="Отправить" class="siteButton" style="margin: 12px 0 0 220px;" type="submit">
+	<input value="Отменить" onclick="return cancelRejectArticle();" class="siteButton" style="margin: 12px 0 0 15px;" type="submit">
+</form>	</div><div style="-moz-user-select: none;" unselectable="on" class="ui-resizable-handle ui-resizable-n"></div><div style="-moz-user-select: none;" unselectable="on" class="ui-resizable-handle ui-resizable-e"></div><div style="-moz-user-select: none;" unselectable="on" class="ui-resizable-handle ui-resizable-s"></div><div style="-moz-user-select: none;" unselectable="on" class="ui-resizable-handle ui-resizable-w"></div><div unselectable="on" style="z-index: 1001; -moz-user-select: none;" class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se ui-icon-grip-diagonal-se"></div><div unselectable="on" style="z-index: 1002; -moz-user-select: none;" class="ui-resizable-handle ui-resizable-sw"></div><div unselectable="on" style="z-index: 1003; -moz-user-select: none;" class="ui-resizable-handle ui-resizable-ne"></div><div unselectable="on" style="z-index: 1004; -moz-user-select: none;" class="ui-resizable-handle ui-resizable-nw"></div></div><iframe style="position: absolute; visibility: hidden; display: none; width: 0px; height: 0px; padding: 0px; border: medium none;" allowfullscreen="true" allowtransparency="true" scrolling="no" id="rufous-sandbox" frameborder="0"></iframe><div style="display: block;" id="SL_balloon_obj"><div style="background: transparent url(&quot;chrome://imtranslator/content/img/util/imtranslator-s.png&quot;) repeat scroll 0% 0%; display: none; width: 24px; height: 24px; position: absolute; cursor: pointer; visibility: visible; opacity: 1; transition: visibility 0.1s ease 0s, opacity 0.1s linear 0s; left: 29px; top: 558px;" id="SL_button"></div><div style="display: none; margin-top: 30px; margin-left: 1px; direction: ltr; text-align: left; min-height: 40px;" id="SL_shadow_translation_result2"><div></div></div><div style="display: none;" id="SL_shadow_translator"><div id="SL_providers"><div id="SL_P0" title="Google" class="SL_BL_LABLE_ON">G</div><div id="SL_P1" title="Microsoft" class="SL_BL_LABLE_ON">M</div><div id="SL_P2" title="Translator" class="SL_BL_LABLE_ON">T</div></div><div style="background: rgb(244, 245, 245) url(&quot;chrome://imtranslator/content/img/util/bg2.png&quot;) repeat scroll 0% 0%;" id="SL_planshet"><div id="SL_TB"><div style="background: transparent url(&quot;chrome://imtranslator/content/img/util/imtranslator-s.png&quot;) repeat scroll 0% 0%; display: block; width: 24px; height: 24px; cursor: pointer; position: absolute;" id="bubblelogo"></div><table id="SL_tables"><tr><td align="right" width="10%"><input title="Зафиксировать язык" id="SLloc" type="checkbox"></td><td align="left" width="20%"><select id="SL_lng_from"><option selected="selected" value="auto">Определить язык</option><option value="az">Азербайджанский</option><option value="sq">Албанский</option><option value="en">Английский</option><option value="ar">Арабский</option><option value="hy">Армянский</option><option value="af">Африкаанс</option><option value="eu">Баскский</option><option value="be">Белорусский</option><option value="bn">Бенгальский</option><option value="my">Бирманский</option><option value="bg">Болгарский</option><option value="bs">Боснийский</option><option value="cy">Валлийский</option><option value="hu">Венгерский</option><option value="vi">Вьетнамский</option><option value="gl">Галисийский</option><option value="el">Греческий</option><option value="ka">Грузинский</option><option value="gu">Гуджарати</option><option value="da">Датский</option><option value="zu">Зулу</option><option value="iw">Иврит</option><option value="ig">Игбо</option><option value="yi">Идиш</option><option value="id">Индонезийский</option><option value="ga">Ирландский</option><option value="is">Исландский</option><option value="es">Испанский</option><option value="it">Итальянский</option><option value="yo">Йоруба</option><option value="kk">Казахский</option><option value="kn">Каннада</option><option value="ca">Каталанский</option><option value="zh-CN">Китайский (Трад)</option><option value="zh-TW">Китайский (Упр)</option><option value="ko">Корейский</option><option value="ht">Креольский (Гаити)</option><option value="km">Кхмерский</option><option value="lo">Лаосский</option><option value="la">Латинский</option><option value="lv">Латышский</option><option value="lt">Литовский</option><option value="mk">Македонский</option><option value="mg">Малагасийский</option><option value="ms">Малайский</option><option value="ml">Малайялам</option><option value="mt">Мальтийский</option><option value="mi">Маори</option><option value="mr">Маратхи</option><option value="mn">Монгольский</option><option value="de">Немецкий</option><option value="ne">Непали</option><option value="nl">Нидерландский</option><option value="no">Норвежский</option><option value="pa">Панджаби</option><option value="fa">Персидский</option><option value="pl">Польский</option><option value="pt">Португальский</option><option value="ro">Румынский</option><option value="ru">Русский</option><option value="ceb">Себуанский</option><option value="sr">Сербский</option><option value="st">Сесото</option><option value="si">Сингальский</option><option value="sk">Словацкий</option><option value="sl">Словенский</option><option value="so">Сомали</option><option value="sw">Суахили</option><option value="su">Суданский</option><option value="tl">Тагальский</option><option value="tg">Таджикский</option><option value="th">Тайский</option><option value="ta">Тамильский</option><option value="te">Телугу</option><option value="tr">Турецкий</option><option value="uz">Узбекский</option><option value="uk">Украинский</option><option value="ur">Урду</option><option value="fi">Финский</option><option value="fr">Французский</option><option value="ha">Хауса</option><option value="hi">Хинди</option><option value="hmn">Хмонг</option><option value="hr">Хорватский</option><option value="ny">Чева</option><option value="cs">Чешский</option><option value="sv">Шведский</option><option value="eo">Эсперанто</option><option value="et">Эстонский</option><option value="jw">Яванский</option><option value="ja">Японский</option></select></td><td align="center" width="5%"><div style="background: transparent url(&quot;chrome://imtranslator/content/img/util/switchb.png&quot;) repeat scroll 0% 0%; display: block; width: 10px; height: 10px; cursor: pointer;" title="Поменять языки местами" id="SL_switch_b" align="center"></div></td><td align="left" width="20%"><select id="SL_lng_to"><option value="az">Азербайджанский</option><option value="sq">Албанский</option><option value="en">Английский</option><option value="ar">Арабский</option><option value="hy">Армянский</option><option value="af">Африкаанс</option><option value="eu">Баскский</option><option value="be">Белорусский</option><option value="bn">Бенгальский</option><option value="my">Бирманский</option><option value="bg">Болгарский</option><option value="bs">Боснийский</option><option value="cy">Валлийский</option><option value="hu">Венгерский</option><option value="vi">Вьетнамский</option><option value="gl">Галисийский</option><option value="el">Греческий</option><option value="ka">Грузинский</option><option value="gu">Гуджарати</option><option value="da">Датский</option><option value="zu">Зулу</option><option value="iw">Иврит</option><option value="ig">Игбо</option><option value="yi">Идиш</option><option value="id">Индонезийский</option><option value="ga">Ирландский</option><option value="is">Исландский</option><option value="es">Испанский</option><option value="it">Итальянский</option><option value="yo">Йоруба</option><option value="kk">Казахский</option><option value="kn">Каннада</option><option value="ca">Каталанский</option><option value="zh-CN">Китайский (Трад)</option><option value="zh-TW">Китайский (Упр)</option><option value="ko">Корейский</option><option value="ht">Креольский (Гаити)</option><option value="km">Кхмерский</option><option value="lo">Лаосский</option><option value="la">Латинский</option><option value="lv">Латышский</option><option value="lt">Литовский</option><option value="mk">Македонский</option><option value="mg">Малагасийский</option><option value="ms">Малайский</option><option value="ml">Малайялам</option><option value="mt">Мальтийский</option><option value="mi">Маори</option><option value="mr">Маратхи</option><option value="mn">Монгольский</option><option value="de">Немецкий</option><option value="ne">Непали</option><option value="nl">Нидерландский</option><option value="no">Норвежский</option><option value="pa">Панджаби</option><option value="fa">Персидский</option><option value="pl">Польский</option><option value="pt">Португальский</option><option value="ro">Румынский</option><option selected="selected" value="ru">Русский</option><option value="ceb">Себуанский</option><option value="sr">Сербский</option><option value="st">Сесото</option><option value="si">Сингальский</option><option value="sk">Словацкий</option><option value="sl">Словенский</option><option value="so">Сомали</option><option value="sw">Суахили</option><option value="su">Суданский</option><option value="tl">Тагальский</option><option value="tg">Таджикский</option><option value="th">Тайский</option><option value="ta">Тамильский</option><option value="te">Телугу</option><option value="tr">Турецкий</option><option value="uz">Узбекский</option><option value="uk">Украинский</option><option value="ur">Урду</option><option value="fi">Финский</option><option value="fr">Французский</option><option value="ha">Хауса</option><option value="hi">Хинди</option><option value="hmn">Хмонг</option><option value="hr">Хорватский</option><option value="ny">Чева</option><option value="cs">Чешский</option><option value="sv">Шведский</option><option value="eo">Эсперанто</option><option value="et">Эстонский</option><option value="jw">Яванский</option><option value="ja">Японский</option></select></td><td align="center" width="5%"> </td><td align="center" width="6%"><div style="background: transparent url(&quot;chrome://imtranslator/content/img/util/tts-voice.png&quot;) repeat scroll 0% 0%;" title="Прослушать" id="SL_TTS_voice"></div></td><td align="center" width="6%"><div style="background: transparent url(&quot;chrome://imtranslator/content/img/util/copy_hand.png&quot;) repeat scroll 0% 0%;" title="Скопировать" id="SL_copy"></div></td><td align="center" width="6%"><div id="SL_bbl_font_patch"></div><div style="background: transparent url(&quot;chrome://imtranslator/content/img/util/font-off.png&quot;) repeat scroll 0% 0%;" title="Размер шрифта" id="SL_bbl_font"></div></td><td align="center" width="6%"><div style="background: transparent url(&quot;chrome://imtranslator/content/img/util/history.png&quot;) repeat scroll 0% 0%;" title="История переводов" id="SL_TH"></div></td><td width="10%"></td><td align="right" width="6%"><div style="background: transparent url(&quot;chrome://imtranslator/content/img/util/pin-off.png&quot;) repeat scroll 0% 0%; display: block; width: 16px; height: 16px; cursor: pointer;" title="Закрепить всплывающее окно" id="SL_pin"></div></td></tr></table></div></div><div style="background: rgb(255, 255, 255) url(&quot;chrome://imtranslator/content/img/util/bg.png&quot;) repeat scroll 0% 0%; visibility: visible; min-height: 40px;" id="SL_shadow_translation_result"><div></div></div><div style="background: transparent url(&quot;chrome://imtranslator/content/img/util/indicator.gif&quot;) repeat scroll 0% 0%; display: block; position: absolute; width: 35px; margin-left: 180px; margin-top: -40px; height: 35px;" id="SL_loading"></div><div style="display: none; height: 0px; width: 0px;" id="SL_player2"></div><div style="background: transparent url(&quot;chrome://imtranslator/content/img/util/bg2.png&quot;) repeat scroll 0% 0%; display: none;" id="SL_alert100">Звуковая функция ограничена 100 символами.</div><div style="background: transparent url(&quot;chrome://imtranslator/content/img/util/donate2.png&quot;) repeat scroll 0% 0%;" title="Сделайте взнос" id="SL_bbl_donate"></div><div style="background: rgb(255, 255, 255) url(&quot;chrome://imtranslator/content/img/util/bg3.png&quot;) repeat scroll 0% 0%;" id="SL_Balloon_options"><a title="Показать настройки" id="OPlnk" href="#">Настройки</a> : <a title="История переводов" id="HISTlnk" href="#">История</a> : <a title="Справка" id="HELPlnk" target="_blank" href="http://about.imtranslator.net/tutorials/presentations/imtranslator-translator-for-firefox/popup-bubble-application/">Справка</a> : <a title="Обратная связь" id="FBlnk" href="#">Обратная связь</a><a title="Закрыть" href="#" id="SL_Balloon_Close">Закрыть</a></div></div></div></body></html>

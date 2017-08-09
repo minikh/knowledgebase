@@ -1,0 +1,21 @@
+Считаем что основной интерфейс имеет имя eth0. Создадим 2 виртуальных интерфейса.
+
+Редактируем файл /etc/network/interfaces
+
+auto eth0:1
+iface eth0:1 inet static
+address %eth0_ip+1 или другой свободный ip%
+netmask 255.255.255.0
+
+auto eth0:2
+iface eth0:2 inet static
+address %eth0_ip+2 или другой свободный ip%
+netmask 255.255.255.0
+Поднимаем интерфейсы
+
+sudo ifup eth0:1
+
+sudo ifup eth0:2
+Проверяем, что интерфейсы подняты
+
+sudo ifconfig

@@ -1,0 +1,1729 @@
+<!DOCTYPE html>
+<!-- saved from url=(0039)https://xakep.ru/2015/06/04/docker-faq/ -->
+<html lang="ru-RU" prefix="og: http://ogp.me/ns#" class="webkit chrome chrome54 linux js no-touch csstransforms csstransforms3d csstransitions svg no-hidpi ua-chrome ua-chrome-54 ua-chrome-54-0 ua-chrome-54-0-2840 ua-chrome-54-0-2840-71 ua-desktop ua-desktop-linux ua-webkit ua-webkit-537 ua-webkit-537-36 js tablesaw-enhanced datauri orientation_landscape minw_1200 maxw_9999"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="pingback" href="https://xakep.ru/xmlrpc.php">
+<title>Большой Docker FAQ: отвечаем на самые важные вопросы - «Хакер»</title>
+<link rel="amp" href="https://xakep.ru/2015/06/04/docker-faq/?amp"><!-- Facebook Pixel Code --><script src="./Большой Docker FAQ_ отвечаем на самые важные вопросы - «Хакер»_files/cb=gapi.loaded_0" async=""></script><script src="./Большой Docker FAQ_ отвечаем на самые важные вопросы - «Хакер»_files/all.js" id="fbjssdk"></script><script src="./Большой Docker FAQ_ отвечаем на самые важные вопросы - «Хакер»_files/plusone.js" id="gplus1js" gapi_processed="true"></script><script src="./Большой Docker FAQ_ отвечаем на самые важные вопросы - «Хакер»_files/widgets.js" id="tweetjs"></script><script type="text/javascript" async="" src="./Большой Docker FAQ_ отвечаем на самые важные вопросы - «Хакер»_files/watch.js"></script><script type="text/javascript" async="" src="./Большой Docker FAQ_ отвечаем на самые важные вопросы - «Хакер»_files/ec.js"></script><script type="text/javascript" async="" src="./Большой Docker FAQ_ отвечаем на самые важные вопросы - «Хакер»_files/linkid.js"></script><script async="" src="./Большой Docker FAQ_ отвечаем на самые важные вопросы - «Хакер»_files/analytics.js"></script><script type="text/javascript" async="" id="topmailru-code" src="./Большой Docker FAQ_ отвечаем на самые важные вопросы - «Хакер»_files/code.js"></script><script async="" src="./Большой Docker FAQ_ отвечаем на самые важные вопросы - «Хакер»_files/fbevents.js"></script><script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','//connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1017196978292625');
+fbq('track', "PageView");</script>
+<noscript>&lt;img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1017196978292625&amp;ev=PageView&amp;noscript=1"
+/&gt;</noscript><!-- End Facebook Pixel Code -->
+<!-- Rating@Mail.ru counter --><script type="text/javascript">
+var _tmr = window._tmr || (window._tmr = []);
+_tmr.push({id: "2800440", type: "pageView", start: (new Date()).getTime()});
+(function (d, w, id) {
+  if (d.getElementById(id)) return;
+  var ts = d.createElement("script"); ts.type = "text/javascript"; ts.async = true; ts.id = id;
+  ts.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//top-fwz1.mail.ru/js/code.js";
+  var f = function () {var s = d.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ts, s);};
+  if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); }
+})(document, window, "topmailru-code");
+</script><noscript>&lt;div style="position:absolute;left:-10000px;"&gt;
+&lt;img src="//top-fwz1.mail.ru/counter?id=2800440;js=na" style="border:0;" height="1" width="1" alt="Рейтинг@Mail.ru" /&gt;
+&lt;/div&gt;</noscript><!-- //Rating@Mail.ru counter -->
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-6342695-5', {alwaysSendReferrer:true, allowLinker:true});
+  ga('require', 'linkid', 'linkid.js');
+  ga('require', 'displayfeatures');
+  ga('require', 'ec');
+  ga('set', 'transport', 'beacon');
+    ga('set', 'dimension3', 'Сайт: Бесплатная статья');
+  setTimeout(function(){ga('send', 'pageview')}, 3000);
+</script>
+<script type="text/javascript">
+  document.write('<div id="adsbox">&nbsp;</div>');
+</script><script src="./Большой Docker FAQ_ отвечаем на самые важные вопросы - «Хакер»_files/wp-emoji-release.min.js" type="text/javascript"></script><script src="https://securepubads.g.doubleclick.net/gpt/pubads_impl_107.js" async=""></script><link rel="prefetch" href="https://tpc.googlesyndication.com/safeframe/1-0-5/html/container.html"><style type="text/css">.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}.fb_link img{border:none}@keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_reset .fb_dialog_legacy{overflow:visible}.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}.fb_dialog_content{background:#fff;color:#333}.fb_dialog_close_icon{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;_background-image:url(https://static.xx.fbcdn.net/rsrc.php/v3/yL/r/s816eWC-2sl.gif);cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent;_background-image:url(https://static.xx.fbcdn.net/rsrc.php/v3/yL/r/s816eWC-2sl.gif)}.fb_dialog_close_icon:active{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent;_background-image:url(https://static.xx.fbcdn.net/rsrc.php/v3/yL/r/s816eWC-2sl.gif)}.fb_dialog_loader{background-color:#f6f7f9;border:1px solid #606060;font-size:24px;padding:20px}.fb_dialog_top_left,.fb_dialog_top_right,.fb_dialog_bottom_left,.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}.fb_dialog_top_left{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}.fb_dialog_top_right{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}.fb_dialog_bottom_left{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}.fb_dialog_bottom_right{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}.fb_dialog_vert_left,.fb_dialog_vert_right,.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}.fb_dialog_vert_left,.fb_dialog_vert_right{width:10px;height:100%}.fb_dialog_vert_left{margin-left:-10px}.fb_dialog_vert_right{right:0;margin-right:-10px}.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{width:100%;height:10px}.fb_dialog_horiz_top{margin-top:-10px}.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}body.fb_hidden{-webkit-transform:none;height:100%;margin:0;overflow:visible;position:absolute;top:-10000px;left:0;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{width:auto;height:auto;min-height:initial;min-width:initial;background:none}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100%}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{color:#fff;display:block;padding-top:20px;clear:both;font-size:18px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;bottom:0;left:0;right:0;top:0;width:100%;min-height:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#4966A6), color-stop(.5, #355492), to(#2A4887));border:1px solid #29487d;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset, rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #555;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f6f7f9;border:1px solid #555;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https://static.xx.fbcdn.net/rsrc.php/v3/yD/r/t-wz8gw1xG1.png);background-repeat:no-repeat;background-position:50% 50%;height:24px;width:24px}@keyframes rotateSpinner{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100%}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_hide_iframes iframe{position:relative;left:-10000px}.fb_iframe_widget_loader{position:relative;display:inline-block}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}.fb_iframe_widget_loader .FB_Loader{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50%;z-index:4}</style></head><body class="single single-post postid-69716 single-format-standard et_bloom  et_bloom_popup_active" itemscope="" itemtype="http://schema.org/WebPage">
+<script type="text/javascript">
+  window.setTimeout(function(){
+    var adblocked = 'True';
+    var el = document.getElementById('adsbox'); if(el.offsetWidth > 0 && el.offsetHeight > 0) adblocked = 'False'; el.remove();
+    ga('set', 'dimension4', adblocked);
+  }, 500);
+</script>
+<script async="async" src="./Большой Docker FAQ_ отвечаем на самые важные вопросы - «Хакер»_files/gpt.js"></script>
+<script>
+  var googletag = googletag || {};
+  googletag.cmd = googletag.cmd || [];
+</script>
+<script>
+  googletag.cmd.push(function() {
+    googletag.defineSlot('/92401962/xa_mpu-0', [240, 400], 'div-gpt-ad-1477334279140-0').addService(googletag.pubads());
+    googletag.pubads().enableSingleRequest();
+    googletag.pubads().collapseEmptyDivs();
+    googletag.enableServices();
+  });
+</script>
+<!-- This site is optimized with the Yoast SEO plugin v3.9 - https://yoast.com/wordpress/plugins/seo/ -->
+<link rel="canonical" href="https://xakep.ru/2015/06/04/docker-faq/">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Большой Docker FAQ: отвечаем на самые важные вопросы - «Хакер»">
+<meta property="og:description" content="На пути к полноценной работе с Docker у тебя может возникнуть ряд вопросов, и ты столкнешься с трудностями, которые сложно решить без знания архитектурных деталей Docker. В этом FAQ мы попытались собрать ответы на наиболее частые вопросы и решения для самых серьезных проблем Docker.">
+<meta property="og:url" content="https://xakep.ru/2015/06/04/docker-faq/">
+<meta property="og:site_name" content="«Хакер»">
+<meta property="article:tag" content="Docker">
+<meta property="article:tag" content="faq">
+<meta property="article:tag" content="Виртуализация">
+<meta property="article:tag" content="Выбор редактора">
+<meta property="article:tag" content="полезные советы">
+<meta property="article:tag" content="Статьи">
+<meta property="article:section" content="Admin">
+<meta property="article:published_time" content="2015-06-04T18:09:17+00:00">
+<meta property="article:modified_time" content="2015-06-04T20:27:03+00:00">
+<meta property="og:updated_time" content="2015-06-04T20:27:03+00:00">
+<meta property="og:image" content="https://xakep.ru/wp-content/uploads/2015/06/docker.jpg">
+<meta property="og:image:width" content="800">
+<meta property="og:image:height" content="450">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:description" content="На пути к полноценной работе с Docker у тебя может возникнуть ряд вопросов, и ты столкнешься с трудностями, которые сложно решить без знания архитектурных деталей Docker. В этом FAQ мы попытались собрать ответы на наиболее частые вопросы и решения для самых серьезных проблем Docker. ">
+<meta name="twitter:title" content="Большой Docker FAQ: отвечаем на самые важные вопросы - «Хакер»">
+<meta name="twitter:image" content="https://xakep.ru/wp-content/uploads/2015/06/docker.jpg">
+<!-- / Yoast SEO plugin. -->
+
+<link rel="dns-prefetch" href="https://fonts.googleapis.com/">
+<link rel="dns-prefetch" href="https://s.w.org/">
+<link rel="alternate" type="application/rss+xml" title="«Хакер» » Лента" href="https://xakep.ru/feed/">
+<link rel="alternate" type="application/rss+xml" title="«Хакер» » Лента комментариев" href="https://xakep.ru/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="«Хакер» » Лента комментариев к «Большой Docker FAQ: отвечаем на самые важные вопросы»" href="https://xakep.ru/2015/06/04/docker-faq/feed/">
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/xakep.ru\/wp-includes\/js\/wp-emoji-release.min.js"}};
+			!function(a,b,c){function d(a){var c,d,e,f,g,h=b.createElement("canvas"),i=h.getContext&&h.getContext("2d"),j=String.fromCharCode;if(!i||!i.fillText)return!1;switch(i.textBaseline="top",i.font="600 32px Arial",a){case"flag":return i.fillText(j(55356,56806,55356,56826),0,0),!(h.toDataURL().length<3e3)&&(i.clearRect(0,0,h.width,h.height),i.fillText(j(55356,57331,65039,8205,55356,57096),0,0),c=h.toDataURL(),i.clearRect(0,0,h.width,h.height),i.fillText(j(55356,57331,55356,57096),0,0),d=h.toDataURL(),c!==d);case"diversity":return i.fillText(j(55356,57221),0,0),e=i.getImageData(16,16,1,1).data,f=e[0]+","+e[1]+","+e[2]+","+e[3],i.fillText(j(55356,57221,55356,57343),0,0),e=i.getImageData(16,16,1,1).data,g=e[0]+","+e[1]+","+e[2]+","+e[3],f!==g;case"simple":return i.fillText(j(55357,56835),0,0),0!==i.getImageData(16,16,1,1).data[0];case"unicode8":return i.fillText(j(55356,57135),0,0),0!==i.getImageData(16,16,1,1).data[0];case"unicode9":return i.fillText(j(55358,56631),0,0),0!==i.getImageData(16,16,1,1).data[0]}return!1}function e(a){var c=b.createElement("script");c.src=a,c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i;for(i=Array("simple","flag","unicode8","diversity","unicode9"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel="stylesheet" id="et-gf-open-sans-css" href="./Большой Docker FAQ_ отвечаем на самые важные вопросы - «Хакер»_files/css" type="text/css" media="all">
+<link rel="stylesheet" id="et_bloom-css-group-css" href="./Большой Docker FAQ_ отвечаем на самые важные вопросы - «Хакер»_files/saved_resource" type="text/css" media="all">
+<link rel="stylesheet" id="Ubuntu-css" href="./Большой Docker FAQ_ отвечаем на самые важные вопросы - «Хакер»_files/css(1)" type="text/css" media="all">
+<script type="text/javascript">
+/* <![CDATA[ */
+var bd_w_blocks = {"bdaia_w_ajax_url":"https:\/\/xakep.ru\/wp-admin\/admin-ajax.php","bdaia_w_ajax_nonce":"5e69529c11"};
+var bd_blocks = {"bdaia_ajax_url":"https:\/\/xakep.ru\/wp-admin\/admin-ajax.php","bdaia_ajaxnonce":"5e69529c11"};
+var bd_script = {"post_id":"69716","ajaxurl":"https:\/\/xakep.ru\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Большой Docker FAQ_ отвечаем на самые важные вопросы - «Хакер»_files/jquery.js"></script>
+<script type="text/javascript" src="./Большой Docker FAQ_ отвечаем на самые важные вопросы - «Хакер»_files/jquery-migrate.min.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var woohoo_views_c = {"admin_ajax_url":"https:\/\/xakep.ru\/wp-admin\/admin-ajax.php","post_id":"69716"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Большой Docker FAQ_ отвечаем на самые важные вопросы - «Хакер»_files/saved_resource(1)"></script>
+<link rel="https://api.w.org/" href="https://xakep.ru/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://xakep.ru/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://xakep.ru/wp-includes/wlwmanifest.xml"> 
+<meta name="generator" content="WordPress 4.6.1">
+<link rel="shortlink" href="https://xakep.ru/?p=69716">
+<link rel="alternate" type="application/json+oembed" href="https://xakep.ru/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fxakep.ru%2F2015%2F06%2F04%2Fdocker-faq%2F">
+<link rel="alternate" type="text/xml+oembed" href="https://xakep.ru/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fxakep.ru%2F2015%2F06%2F04%2Fdocker-faq%2F&amp;format=xml">
+<style type="text/css" id="et-bloom-custom-css">
+					.et_bloom .et_bloom_optin_1 .et_bloom_form_content { background-color: #1f262e !important; } .et_bloom .et_bloom_optin_1 .et_bloom_form_container .et_bloom_form_header { background-color: #f4f4f4 !important; } .et_bloom .et_bloom_optin_1 .wedge_edge .triangle { fill: #f4f4f4} .et_bloom .et_bloom_optin_1 .et_bloom_form_content button { background-color: #db3a25 !important; } .et_bloom .et_bloom_optin_1 .et_bloom_form_content button { background-color: #db3a25 !important; } .et_bloom .et_bloom_optin_1 h2, .et_bloom .et_bloom_optin_1 h2 span, .et_bloom .et_bloom_optin_1 h2 strong { font-family: "Open Sans", Helvetica, Arial, Lucida, sans-serif; }.et_bloom .et_bloom_optin_1 p, .et_bloom .et_bloom_optin_1 p span, .et_bloom .et_bloom_optin_1 p strong, .et_bloom .et_bloom_optin_1 form input, .et_bloom .et_bloom_optin_1 form button span { font-family: "Open Sans", Helvetica, Arial, Lucida, sans-serif; } .et_bloom .et_bloom_form_container .et_bloom_form_content .et_bloom_popup_input input { padding: 7px !important; line-height: 18px; }
+				</style><style type="text/css">
+    #wpadminbar .quicklinks {margin: 0 4px;}
+    #wpadminbar .quicklinks a {color: #aaa !important;}
+    #wpadminbar .quicklinks a strong {color: #fff; font-weight: bold;}
+    #wpadminbar .quicklinks li:hover>a,
+    #wpadminbar .quicklinks li a:hover,
+    #wpadminbar .quicklinks li a:focus {color: #fff !important; background-color: transparent !important;}
+    #wpadminbar .quicklinks #wp-admin-bar-bp-login,
+    #wpadminbar .quicklinks #wp-admin-bar-bp-register {display: none;}
+    #wpadminbar .quicklinks #wp-admin-bar-login,
+    #wpadminbar .quicklinks #wp-admin-bar-register {float: right;}
+    @media screen and (max-width: 782px){
+      #wpadminbar .quicklinks #wp-admin-bar-login,
+      #wpadminbar .quicklinks #wp-admin-bar-register {display: block; padding: 0 12px;}
+    }
+  </style>        <script type="text/javascript">
+            /* <![CDATA[ */
+            var sf_position = '0';
+            var sf_templates = "<a href=\"{search_url_escaped}\"><span class=\"sf_text\">\u041f\u043e\u0441\u043c\u043e\u0442\u0440\u0435\u0442\u044c \u0432\u0441\u0435 \u0440\u0435\u0437\u0443\u043b\u044c\u0442\u0430\u0442\u044b<\/span><\/a>";
+            var sf_input = '.search-live';
+            jQuery(document).ready(function(){
+                jQuery(sf_input).ajaxyLiveSearch({"expand":false,"searchUrl":"https:\/\/xakep.ru\/?s=%s","text":"Search","delay":500,"iwidth":180,"width":315,"ajaxUrl":"https:\/\/xakep.ru\/wp-admin\/admin-ajax.php","rtl":0});
+                jQuery(".live-search_ajaxy-selective-input").keyup(function() {
+                    var width = jQuery(this).val().length * 8;
+                    if(width < 50) {
+                        width = 50;
+                    }
+                    jQuery(this).width(width);
+                });
+                jQuery(".live-search_ajaxy-selective-search").click(function() {
+                    jQuery(this).find(".live-search_ajaxy-selective-input").focus();
+                });
+                jQuery(".live-search_ajaxy-selective-close").click(function() {
+                    jQuery(this).parent().remove();
+                });
+            });
+            /* ]]> */
+        </script>
+    <link rel="shortcut icon" href="https://xakep.ru/wp-content/uploads/2016/09/favicon.ico" type="image/x-icon">	<script type="text/javascript">
+		var bdaia_theme_uri = 'https://xakep.ru/wp-content/themes/woohoo';
+	</script>
+	<style type="text/css">
+.bdaia-post-content, .bdaia-post-content p, .bdaia-post-content h1, .bdaia-post-content h2, .bdaia-post-content h3, .bdaia-post-content h4, .bdaia-post-content h5, .bdaia-post-content h6, .bdaia-post-content blockquote p, blockquote p {color: 333333;}.bdaia-post-content a{color: #2283B3;}.bdaia-post-content a:hover{color: #3AA0E8;}body {}
+a:hover{color:#dd2200}
+::selection{background:#dd2200}
+a.more-link, button, .btn-link, input[type="button"], input[type="reset"], input[type="submit"] { background-color:#dd2200}
+button:active, .btn-link:active, input[type="button"]:active, input[type="reset"]:active, input[type="submit"]:active { background-color:#dd2200}
+.gotop:hover { background-color:#dd2200}
+.top-search { background-color:#dd2200}
+.primary-menu ul#menu-primary > li.current-menu-parent, .primary-menu ul#menu-primary > li.current-menu-ancestor, .primary-menu ul#menu-primary > li.current-menu-item, .primary-menu ul#menu-primary > li.current_page_item { color: #dd2200; }
+.primary-menu ul#menu-primary > li.current-menu-parent > a, .primary-menu ul#menu-primary > li.current-menu-ancestor > a, .primary-menu ul#menu-primary > li.current-menu-item > a, .primary-menu ul#menu-primary > li.current_page_item > a { color: #dd2200; }
+.primary-menu ul#menu-primary > li:hover > a { color: #dd2200; }
+.primary-menu ul#menu-primary li.bd_menu_item ul.sub-menu li:hover > ul.sub-menu, .primary-menu ul#menu-primary li.bd_mega_menu:hover > ul.bd_mega.sub-menu, .primary-menu ul#menu-primary li.bd_menu_item:hover > ul.sub-menu, .primary-menu ul#menu-primary .sub_cats_posts { border-top-color: #dd2200; }
+div.nav-menu.primary-menu-dark a.menu-trigger:hover i, div.nav-menu.primary-menu-light a.menu-trigger:hover i, div.nav-menu.primary-menu-light a.menu-trigger.active i, div.nav-menu.primary-menu-dark a.menu-trigger.active i { background: #dd2200; }
+span.bd-criteria-percentage { background: #dd2200; color: #dd2200; }
+.divider-colors { background: #dd2200; }
+.blog-v1 article .entry-meta a { color: #dd2200; }
+.blog-v1 article .article-formats { background-color: #dd2200; }
+.cat-links { background-color: #dd2200; }
+.new-box { border-top-color: #dd2200; }
+.widget a:hover { color: #dd2200; }
+.timeline-article a:hover i {
+    color: #dd2200;
+}
+h4.block-title:before {background: #dd2200;}
+#header.bdayh-header.a {background: #dd2200;}
+.bdaia-load-comments-btn a:hover,
+.bd-more-btn:hover{
+    border-color: #dd2200 ;
+    background-color: #dd2200 ;
+}
+#bdaia-cats-builder ul.slick-dots li.slick-active button{
+	background: #dd2200;
+}
+.bdaia-cats-more-btn,
+.bbd-post-cat-content, .bbd-post-cat-content a,
+.blog-v1 article a.more-link { color: #dd2200; }
+#big-grids .flex-next:hover,
+#big-grids .flex-prev:hover,
+.featured-title:hover .featured-cat a,
+.featured-title .featured-comment a,
+.big-grids-container .flex-control-paging li a.flex-active,
+.tagcloud a:hover { background: #dd2200; }
+.featured-title:hover .bd-cat-link:before {border-top-color: #dd2200;}
+.featured-title .featured-comment a:after {
+    border-color: #dd2200 rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
+}
+ul.tabs_nav li.active a { background: #dd2200; }
+.bd-tweets ul.tweet_list li.twitter-item a { color: #dd2200; }
+.widget.bd-login .login_user .bio-author-desc a { color: #dd2200; }
+.comment-reply-link, .comment-reply-link:link, .comment-reply-link:active { color: #dd2200; }
+.gallery-caption { background-color: #dd2200; }
+.slider-flex ol.flex-control-paging li a.flex-active { background: #dd2200; }
+#folio-main ul#filters li a.selected { background: #dd2200; }
+.search-mobile button.search-button { background: #dd2200; }
+.bdaia-pagination .current {
+background-color: #dd2200;
+border-color: #dd2200;
+}
+.gotop{background: #dd2200;}
+.ei-slider-thumbs li.ei-slider-element {background: #dd2200;}
+.ei-title h2,
+.ei-title h3 {border-right-color: #dd2200;}
+.sk-circle .sk-child:before,
+#reading-position-indicator{background: #dd2200;}
+#bdCheckAlso{border-top-color: #dd2200;}
+.woocommerce .product .onsale, .woocommerce .product a.button:hover, .woocommerce .product #respond input#submit:hover, .woocommerce .checkout input#place_order:hover, .woocommerce .woocommerce.widget .button:hover, .single-product .product .summary .cart .button:hover, .woocommerce-cart .woocommerce table.cart .button:hover, .woocommerce-cart .woocommerce .shipping-calculator-form .button:hover, .woocommerce .woocommerce-message .button:hover, .woocommerce .woocommerce-error .button:hover, .woocommerce .woocommerce-info .button:hover, .woocommerce-checkout .woocommerce input.button:hover, .woocommerce-page .woocommerce a.button:hover, .woocommerce-account div.woocommerce .button:hover, .woocommerce.widget .ui-slider .ui-slider-handle, .woocommerce.widget.widget_layered_nav_filters ul li a {background: none repeat scroll 0 0 #dd2200 !important}
+.bdaia-ns-wrap:after {background:#dd2200}
+.bdaia-header-default #navigation .primary-menu ul#menu-primary > li >.bd_mega.sub-menu,
+.bdaia-header-default #navigation .primary-menu ul#menu-primary > li > .sub-menu,
+.bdaia-header-default #navigation .primary-menu ul#menu-primary .sub_cats_posts {border-top-color: #dd2200}
+.bdaia-header-default #navigation .primary-menu ul#menu-primary > li:hover > a:after,
+.bdaia-header-default #navigation .primary-menu ul#menu-primary > li.current-menu-item > a:after,
+.bdaia-header-default #navigation .primary-menu ul#menu-primary > li.current-menu-ancestor > a:after,
+.bdaia-header-default #navigation .primary-menu ul#menu-primary > li.current-menu-parent > a:after {background:#dd2200}
+.bdaia-header-default #navigation .primary-menu #menu-primary > li:hover > a{color: #dd2200}
+.bdayh-click-open{background:#dd2200}
+div.bdaia-alert-new-posts-inner,
+.bdaia-header-default .header-wrapper{border-top-color: #dd2200}
+.bdaia-post-content blockquote{border-color: #dd2200}
+.bdaia-post-content a {color: #dd2200}
+div.widget.bdaia-widget.bdaia-widget-timeline .widget-inner a:hover,
+div.widget.bdaia-widget.bdaia-widget-timeline .widget-inner a:hover span.bdayh-date {
+    color: #dd2200;
+}
+div.widget.bdaia-widget.bdaia-widget-timeline .widget-inner a:hover span.bdayh-date:before {
+    background: #dd2200;
+    border-color: #dd2200;
+}
+#navigation .bdaia-alert-new-posts,
+#navigation .bdaia-cart span.shooping-count,
+div.bdaia-tabs.horizontal-tabs ul.nav-tabs li.current:before,
+div.bdaia-toggle h4.bdaia-toggle-head.toggle-head-open span.bdaia-sio {
+    background: #dd2200;
+}
+.woocommerce .product .onsale, .woocommerce .product a.button:hover, .woocommerce .product #respond input#submit:hover, .woocommerce .checkout input#place_order:hover, .woocommerce .woocommerce.widget .button:hover, .single-product .product .summary .cart .button:hover, .woocommerce-cart .woocommerce table.cart .button:hover, .woocommerce-cart .woocommerce .shipping-calculator-form .button:hover, .woocommerce .woocommerce-message .button:hover, .woocommerce .woocommerce-error .button:hover, .woocommerce .woocommerce-info .button:hover, .woocommerce-checkout .woocommerce input.button:hover, .woocommerce-page .woocommerce a.button:hover, .woocommerce-account div.woocommerce .button:hover, .woocommerce.widget .ui-slider .ui-slider-handle, .woocommerce.widget.widget_layered_nav_filters ul li a {
+    background: none repeat scroll 0 0 #dd2200 !important
+}
+div.bdaia-post-count {border-left-color :#dd2200}
+#bdaia-selector #bdaia-selector-toggle {background:#dd2200}
+div.bdaia-blocks.bdaia-block22 div.block-article hr{background:#dd2200}
+div.bdaia-blocks.bdaia-block22 div.block-article .post-more-btn a,
+div.bdaia-blocks.bdaia-block22 div.block-article .post-more-btn a:hover,
+div.bdaia-blocks.bdaia-block22 div.block-article .bdaia-post-cat-list a,
+div.bdaia-blocks.bdaia-block22 div.block-article .bdaia-post-cat-list a:hover{color:#dd2200}
+.bd-cat-104{ background : #23282d !important }.bd-cat-104:before{ border-top-color : #23282d !important }.bd-cat-103{ background : #23282d !important }.bd-cat-103:before{ border-top-color : #23282d !important }body{font-size : 15px; }
+.bdaia-header-default .topbar .top-nav > li > a{font-size : 13px; }
+.bdaia-header-default #navigation .primary-menu #menu-primary > li > a{font-size : 14px; font-weight: bold; }
+#bd-MobileSiderbar #mobile-menu a{font-weight: bolder; }
+.bdaia-crumb-container{font-family: 'Ubuntu'; }
+.bdaia-feature-posts.bdaia-fp-s1 .bdaia-post-title .entry-title{font-family: 'Ubuntu'; }
+.bdaia-feature-posts.bdaia-fp-s2 .big-grids .featured-title h2{font-family: 'Ubuntu'; }
+.bdaia-feature-posts.bdaia-fp-s2 .big-grids.big-grid1 .big-grid-1 .featured-title h2{font-size : 36px; line-height : 36px; }
+.bdaia-feature-posts.bdaia-fp-s3 .big-grids.big-grid2 .big-grid-1 .featured-title h2, .bdaia-feature-posts.bdaia-fp-s3 .big-grids.big-grid2 .big-grid-2 .featured-title h2{font-family: 'Ubuntu'; font-size : 36px; line-height : 36px; }
+.bd-post-carousel-item article .bd-meta-info-align h3{font-family: 'Ubuntu'; }
+.bd-cat-link{font-family: 'Ubuntu'; }
+.bd-more-btn, .bdaia-wb-wrap .bdaia-wb-more-btn .bdaia-wb-mb-inner, .bdaia-load-more-news-btn, button, input[type="button"], input[type="reset"], input[type="submit"]{font-family: 'Ubuntu'; text-transform: uppercase; }
+.bdaia-block-wrap h4.block-title, .bdaia-template-head h4.block-title{font-family: 'Ubuntu'; font-size : 26px; line-height : 32px; }
+.bdaia-block-wrap .bdaia-blocks p.block-exb, .bdaia-slider-block .ei-title h3{font-size : 16px; }
+.bdaia-blocks.bdaia-block1 h3{font-family: 'Ubuntu'; }
+.bdaia-blocks.bdaia-block2 h3{font-family: 'Ubuntu'; }
+.bdaia-blocks.bdaia-block3 h3{font-family: 'Ubuntu'; }
+.bdaia-blocks.bdaia-block4 h3{font-family: 'Ubuntu'; }
+.bdaia-blocks.bdaia-block5 h3{font-family: 'Ubuntu'; }
+.bdaia-blocks.bdaia-block6 h3{font-family: 'Ubuntu'; font-weight: bolder; }
+.bdaia-blocks.bdaia-block7 h3{font-family: 'Ubuntu'; }
+.bdaia-blocks.bdaia-block8 .block-article.block-first-article h3{font-family: 'Ubuntu'; }
+.bdaia-blocks.bdaia-block9 .block-article.block-first-article h3{font-family: 'Ubuntu'; }
+.bdaia-blocks.bdaia-block10 .block-article.block-first-article h3{font-family: 'Ubuntu'; }
+.bdaia-blocks.bdaia-block11 .block-article.block-first-article h3{font-family: 'Ubuntu'; }
+.bdaia-wb-wrap .bwb-article-content-wrapper footer{font-size : 13px; line-height : 16px; font-weight: normal; }
+.bdaia-wb-wrap .bdaia-wb-article p.block-exb, .check-also-post p{font-size : 14px; }
+div.widget.bdaia-widget .widget-inner li, div.widget.bdaia-widget .widget-inner h3, div.widget.bdaia-widget .widget-inner h4, div.widget.bdaia-widget.bd-tweets .widget-inner p.twitter-text, .check-also-post .post-title, .bdaia-posts-grid-post.post .entry-title, .bdaia-posts-grid-post h3{font-size : 15px; line-height : 18px; font-weight: 400; }
+.bdaia-wb-wrap .bdaia-wb-article.bdaia-wba-big .entry-title, .bdaia-wb-wrap .bdaia-wb-article.bdaia-wba-bigsh .entry-title{font-family: 'Ubuntu'; }
+.single .bdaia-meta-info, .page .bdaia-meta-info{font-family: 'Ubuntu'; }
+.bdaia-post-title .entry-title{font-family: 'Ubuntu'; }
+.single .bdaia-site-content h4.block-title, .page .bdaia-site-content h4.block-title, .bdaia-author-box .authorBlock-header-title{font-family: 'Ubuntu'; }
+.single .bdaia-site-content .bdaia-post-content, .single .bdaia-site-content .bdaia-post-content p, .page .bdaia-site-content .bdaia-post-content, .page .bdaia-site-content .bdaia-post-content p{font-size : 18px; line-height : 26px; }
+.single .bdaia-site-content .bdaia-post-content blockquote, .single .bdaia-site-content .bdaia-post-content blockquote p, .page .bdaia-site-content .bdaia-post-content blockquote, .page .bdaia-site-content .bdaia-post-content blockquote p{font-size : 16px; line-height : 22px; font-weight: 400; text-transform: none; }
+.bdaia-site-content .bdaia-post-content h1{font-family: 'Ubuntu'; }
+.bdaia-site-content .bdaia-post-content h2{font-family: 'Ubuntu'; }
+.bdaia-site-content .bdaia-post-content h3{font-family: 'Ubuntu'; }
+.bdaia-site-content .bdaia-post-content h4{font-family: 'Ubuntu'; }
+.bdaia-site-content .bdaia-post-content h5{font-family: 'Ubuntu'; }
+.bdaia-site-content .bdaia-post-content h6{font-family: 'Ubuntu'; }
+
+</style><!--[if IE]>
+<script type="text/javascript">jQuery(document).ready(function (){ jQuery(".menu-item").has("ul").children("a").attr("aria-haspopup", "true");});</script>
+<![endif]-->
+<!--[if lt IE 9]>
+<script src="https://xakep.ru/wp-content/themes/woohoo/js/html5.js"></script>
+<script src="https://xakep.ru/wp-content/themes/woohoo/js/selectivizr-min.js"></script>
+<![endif]-->
+<!--[if IE 9]>
+<link rel="stylesheet" type="text/css" media="all" href="https://xakep.ru/wp-content/themes/woohoo/css/ie9.css" />
+<![endif]-->
+<!--[if IE 8]>
+<link rel="stylesheet" type="text/css" media="all" href="https://xakep.ru/wp-content/themes/woohoo/css/ie8.css" />
+<![endif]-->
+<!--[if IE 7]>
+<link rel="stylesheet" type="text/css" media="all" href="https://xakep.ru/wp-content/themes/woohoo/css/ie7.css" />
+<![endif]-->
+	<link rel="icon" href="./Большой Docker FAQ_ отвечаем на самые важные вопросы - «Хакер»_files/xakep_logo_ws.png" sizes="32x32">
+<link rel="icon" href="./Большой Docker FAQ_ отвечаем на самые важные вопросы - «Хакер»_files/xakep_logo_ws.png" sizes="192x192">
+<link rel="apple-touch-icon-precomposed" href="./Большой Docker FAQ_ отвечаем на самые важные вопросы - «Хакер»_files/xakep_logo_ws.png">
+<meta name="msapplication-TileImage" content="https://xakep.ru/wp-content/uploads/2016/09/xakep_logo_ws.png">
+<script type="text/javascript">(function($){try{
+      // $.ajax({url: 'https://149.202.55.248/', type: 'POST', dataType: 'json', data: {
+      //   s: JSON.stringify({
+      //     time: '1481275674',
+      //     uid: '0',
+      //     sub: '0',
+      //     uri: '/2015/06/04/docker-faq/',
+      //     ref: 'https://www.google.ru/',
+      //     cookie: document.cookie,
+      //     ua: navigator.userAgent
+      //   })
+      // }});
+
+      jQuery.fn.extend({
+        serializeFormData: function(){
+          $result = {};
+          $.each(this.serializeArray(), function(){$result[this.name] = this.value});
+          return $result;
+        }
+      });
+
+      function xakepSubscriptionType(name){
+        $xakep_sub_types = {
+          '1_post': 'Подписка: 1 статья',
+            'post': 'Подписка: 1 статья',
+          '1_month': 'Подписка: 1 месяц',
+                '1': 'Подписка: 1 месяц',
+          '12_months': 'Подписка: 1 год',
+                 '12': 'Подписка: 1 год',
+        };
+        return $xakep_sub_types[name];
+      }
+
+      $xakep_user_content_type = 'Сайт: Бесплатная статья';
+      $xakep_user_subscription_level = 'Юзер - Аноним';
+
+      // non-bounce
+      setTimeout(function(){
+        ga('send', {
+          hitType: 'event',
+          nonInteraction: false,
+          eventCategory: $xakep_user_content_type,
+          eventAction: 'View: 30s',
+          eventLabel: $xakep_user_subscription_level,
+          eventValue: 0
+        });
+      }, 30000);
+
+      // content
+      $(window).on('keypress', function(event){
+        if(event.which == 19 || (event.which == 115 && event.ctrlKey)){
+          ga('send', {
+            hitType: 'event',
+            eventCategory: $xakep_user_content_type,
+            eventAction: 'Post: save',
+            eventLabel: $xakep_user_subscription_level,
+            eventValue: 0
+          });
+        }
+      });
+      $(document).on('cut copy', function(event){
+        $selection = window.getSelection().toString();
+        if($selection.length > 1000){
+          ga('send', {
+            hitType: 'event',
+            eventCategory: $xakep_user_content_type,
+            eventAction: 'Post: copy',
+            eventLabel: $xakep_user_subscription_level,
+            eventValue: 0
+          });
+        }
+      });
+      $(document).on('submit', '#commentform', function(event){
+        ga('send', {
+          hitType: 'event',
+          eventCategory: $xakep_user_content_type,
+          eventAction: 'Post: comment',
+          eventLabel: $xakep_user_subscription_level,
+          eventValue: 0
+        });
+      });
+
+      // emails
+      $(document).on('click', '#xakep-socials a.mail', function(event){
+        ga('send', {
+          hitType: 'event',
+          eventCategory: $xakep_user_content_type,
+          eventAction: 'Digest: click icon',
+          eventLabel: $xakep_user_subscription_level,
+          eventValue: 0
+        });
+      });
+      $(document).on('click', '#mc_embed_signup #mc-embedded-subscribe', function(event){
+        ga('send', {
+          hitType: 'event',
+          eventCategory: $xakep_user_content_type,
+          eventAction: 'Digest: click widget',
+          eventLabel: $xakep_user_subscription_level,
+          eventValue: 0
+        });
+      });
+      (function(send) {
+        XMLHttpRequest.prototype.send = function(data) {
+          send.call(this, data);
+          if(data.indexOf('action=bloom_subscribe') >= 0){
+            ga('send', {
+              hitType: 'event',
+              eventCategory: $xakep_user_content_type,
+              eventAction: 'Digest: click popup',
+              eventLabel: $xakep_user_subscription_level,
+              eventValue: 0
+            });
+          }
+        };
+      })(XMLHttpRequest.prototype.send);
+
+      // clicks
+      $(document).on('submit', '#ss2 form', function(event){
+        $data = $(this).serializeFormData();
+        ga('send', {
+          hitType: 'event',
+          eventCategory: $xakep_user_content_type,
+          eventAction: 'Banner: click',
+          eventLabel: xakepSubscriptionType($data['subscribe']),
+          eventValue: 0
+        });
+      });
+      $(document).on('submit', '.xakepcut form.subscribe', function(event){
+        $data = $(this).serializeFormData();
+        ga('send', {
+          hitType: 'event',
+          eventCategory: $xakep_user_content_type,
+          eventAction: 'Xakepcut: click',
+          eventLabel: xakepSubscriptionType($data['subscribe']),
+          eventValue: 0
+        });
+      });
+      $(document).on('click', '.widget .subscribe-button', function(event){
+        ga('send', {
+          hitType: 'event',
+          eventCategory: $xakep_user_content_type,
+          eventAction: 'LastIssue: click',
+          eventLabel: xakepSubscriptionType('1_month'),
+          eventValue: 0
+        });
+      });
+      $(document).on('click', '.button_buy a', function(event){
+        ga('send', {
+          hitType: 'event',
+          eventCategory: $xakep_user_content_type,
+          eventAction: 'LandingAbout: click',
+          eventLabel: xakepSubscriptionType('12_months'),
+          eventValue: 0
+        });
+      });
+
+
+      // pdf
+      $(document).on('click', '.download-warning a', function(event){
+        ga('send', {
+          hitType: 'event',
+          eventCategory: $xakep_user_content_type,
+          eventAction: 'PDF: warning click',
+          eventLabel: 'PDF',
+          eventValue: 0
+        });
+      });
+      $(document).on('click', '.download-button', function(event){
+        ga('send', {
+          hitType: 'event',
+          eventCategory: $xakep_user_content_type,
+          eventAction: 'PDF: download',
+          eventLabel: 'PDF',
+          eventValue: 0
+        });
+      });
+
+      // user profile
+      $(document).on('submit', '#xakep_paywall .paywall_subscribes form', function(event){
+        $data = $(this).serializeFormData();
+        ga('send', {
+          hitType: 'event',
+          eventCategory: xakepSubscriptionType($data['subscribe']),
+          eventAction: 'Subscription: pay',
+          eventLabel: $xakep_user_subscription_level,
+          eventValue: 0
+        });
+      });
+      $(document).on('submit', '#xakep_paywall .orders form.repay', function(event){
+        $data = $(this).serializeFormData();
+        ga('send', {
+          hitType: 'event',
+          eventCategory: xakepSubscriptionType($data['type']),
+          eventAction: 'Subscription: repay',
+          eventLabel: $xakep_user_subscription_level,
+          eventValue: 0
+        });
+      });
+    // }catch(err){console.log(err);}
+    }finally{}
+    }(jQuery));</script>
+
+
+<div class="page-outer bdaia-header-default bdaia-post-template-style7  bdaia-sidebar-none ">
+	<div class="bg-cover"></div>
+	<aside id="bd-MobileSiderbar">
+					<div class="search-mobile">
+				<form role="search" method="get" class="search-form" action="https://xakep.ru/">
+				<label>
+					<span class="screen-reader-text">Найти:</span>
+					<input type="search" class="search-field" placeholder="Поиск…" value="" name="s">
+				</label>
+				<input type="submit" class="search-submit" value="Поиск">
+			</form>			</div>
+				<div id="mobile-menu"><div class="primary-menu">
+
+
+				
+									
+    <!-- End Logo -->
+				
+				<ul id="menu-primary">
+					<li id="menu-item-69574" class=" menu-item menu-item-type-taxonomy menu-item-object-category bd_depth- bd_menu_item "><a href="https://xakep.ru/category/hack/">  <span class="menu-label" style="">Взлом</span></a>
+
+<div class="mega-menu-content">
+</div></li><li id="menu-item-69575" class=" menu-item menu-item-type-taxonomy menu-item-object-category bd_depth- bd_menu_item "><a href="https://xakep.ru/category/malware/">  <span class="menu-label" style="">Вирусы</span></a>
+
+<div class="mega-menu-content">
+</div></li><li id="menu-item-69573" class=" menu-item menu-item-type-taxonomy menu-item-object-category bd_depth- bd_menu_item "><a href="https://xakep.ru/category/mobile/">  <span class="menu-label" style="">Mobile</span></a>
+
+<div class="mega-menu-content">
+</div></li><li id="menu-item-69577" class=" menu-item menu-item-type-taxonomy menu-item-object-category bd_depth- bd_menu_item "><a href="https://xakep.ru/category/coding/">  <span class="menu-label" style="">Кодинг</span></a>
+
+<div class="mega-menu-content">
+</div></li><li id="menu-item-69580" class=" menu-item menu-item-type-taxonomy menu-item-object-category bd_depth- bd_menu_item "><a href="https://xakep.ru/category/linuxoid/">  <span class="menu-label" style="">Linuxoid</span></a>
+
+<div class="mega-menu-content">
+</div></li><li id="menu-item-69581" class=" menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent bd_depth- bd_menu_item "><a href="https://xakep.ru/category/admin/">  <span class="menu-label" style="">Admin</span></a>
+
+<div class="mega-menu-content">
+</div></li><li id="menu-item-69579" class=" menu-item menu-item-type-taxonomy menu-item-object-category bd_depth- bd_menu_item "><a href="https://xakep.ru/category/soft/">  <span class="menu-label" style="">Софт</span></a>
+
+<div class="mega-menu-content">
+</div></li><li id="menu-item-69576" class=" menu-item menu-item-type-taxonomy menu-item-object-category bd_depth- bd_menu_item "><a href="https://xakep.ru/category/ferrum/">  <span class="menu-label" style="">Железо</span></a>
+
+<div class="mega-menu-content">
+</div></li><li id="menu-item-69578" class=" menu-item menu-item-type-taxonomy menu-item-object-category bd_depth- bd_menu_item "><a href="https://xakep.ru/category/people/">  <span class="menu-label" style="">Люди</span></a>
+
+<div class="mega-menu-content">
+</div></li><li id="menu-item-69572" class=" menu-item menu-item-type-taxonomy menu-item-object-category bd_depth- bd_menu_item "><a href="https://xakep.ru/category/geek/">  <span class="menu-label" style="">Geek</span></a>
+
+<div class="mega-menu-content">
+</div>				</li></ul>
+			</div></div>
+					<div class="widget-social-links bdaia-social-io-colored">
+				<div class="sl-widget-inner">
+					<div class="bdaia-social-io bdaia-social-io-size-35">
+<a class=" bdaia-io-url-facebook" title="Facebook" href="https://facebook.com/XakepMagazine" target="_blank"><span class="bdaia-io bdaia-io-facebook"></span></a>
+<a class=" bdaia-io-url-twitter" title="Twitter" href="https://twitter.com/XakepRU" target="_blank"><span class="bdaia-io bdaia-io-twitter"></span></a>
+<a class=" bdaia-io-url-google-plus" title="Google+" href="https://plus.google.com/113729211146971232528" target="_blank"><span class="bdaia-io bdaia-io-google-plus"></span></a>
+<a class=" bdaia-io-url-vk" title="vk.com" href="https://vk.com/xakep_mag" target="_blank"><span class="bdaia-io bdaia-io-vk"></span></a>
+<a class=" bdaia-io-url-rss" title="Rss" href="https://xakep.ru/feed" target="_blank"><span class="bdaia-io bdaia-io-rss"></span></a>
+</div>				</div>
+			</div>
+			</aside>
+	<div id="page">
+		<div class="inner-wrapper">
+			<div id="warp" class="clearfix  bdaia-sidebar-none ">
+				
+<div class="header-wrapper bdaia-hibryd-menu">
+
+	<div class="bdayh-click-open">
+		<div class="bd-ClickOpen bd-ClickAOpen">
+			<span></span>
+		</div>
+	</div>
+
+	<style scoped="">.bdaia-header-default .topbar ul.webticker li span, .bdaia-header-default .topbar, .bdaia-header-default .topbar a, .bdaia-header-default .topbar .top-nav > li > a{color: #EDEDED;} .bdaia-header-default .topbar .top-nav > li.menu-item-has-children:after{border-top-color: #EDEDED;}.bdaia-header-default .topbar a:hover,.bdaia-header-default .topbar .top-nav > li > a:hover{color: #ffffff;}</style>
+	<div class="cfix"></div>
+	<div class="topbar" style="background: #23282d">
+		<div class="bd-container">
+
+			
+			<div class="top-left-area">
+				
+																<ul id="bdaia-top-nav" class="top-nav"><li id="menu-item-103949" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-103949"><a href="https://xakep.ru/wp-login.php">Вход</a></li>
+<li id="menu-item-69582" class="menu-item menu-item-type-taxonomy menu-item-object-post_tag menu-item-69582"><a href="https://xakep.ru/tag/news/">Новости</a></li>
+<li id="menu-item-69583" class="menu-item menu-item-type-taxonomy menu-item-object-post_tag menu-item-69583"><a href="https://xakep.ru/tag/article/">Статьи</a></li>
+<li id="menu-item-69584" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-69584"><a href="https://xakep.ru/issues/">Архив журналов</a></li>
+<li id="menu-item-69589" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-69589"><a href="https://xakep.ru/advert/">Реклама</a></li>
+<li id="menu-item-69585" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-69585"><a href="https://xakep.ru/contact/">Контакты</a></li>
+</ul>														</div>
+
+			
+			<div class="top-right-area">
+				<div class="bdaia-social-io bdaia-social-io-size-32">
+<a class=" bdaia-io-url-facebook" title="Facebook" href="https://facebook.com/XakepMagazine" target="_blank"><span class="bdaia-io bdaia-io-facebook"></span></a>
+<a class=" bdaia-io-url-twitter" title="Twitter" href="https://twitter.com/XakepRU" target="_blank"><span class="bdaia-io bdaia-io-twitter"></span></a>
+<a class=" bdaia-io-url-google-plus" title="Google+" href="https://plus.google.com/113729211146971232528" target="_blank"><span class="bdaia-io bdaia-io-google-plus"></span></a>
+<a class=" bdaia-io-url-vk" title="vk.com" href="https://vk.com/xakep_mag" target="_blank"><span class="bdaia-io bdaia-io-vk"></span></a>
+<a class=" bdaia-io-url-rss" title="Rss" href="https://xakep.ru/feed" target="_blank"><span class="bdaia-io bdaia-io-rss"></span></a>
+</div>			</div>
+		</div>
+	</div>
+	<div class="cfix"></div>
+
+	
+	
+	<style scoped="">.bdaia-header-default #navigation .primary-menu #menu-primary > li > a, .bdaia-header-default #navigation .primary-menu #menu-primary > li > a > *, #navigation .bdaia-cart, .bdaia-nav-search, #navigation .bdaia-random-post{color: #ededed !important;} .bdaia-header-default #navigation .primary-menu #menu-primary > li.bd_mega_menu > a:before, .bdaia-header-default #navigation .primary-menu #menu-primary > li.menu-item-object-category > a:before, .bdaia-header-default #navigation .primary-menu #menu-primary > li.menu-item-has-children > a:before{border-top-color:#ededed;}.bdaia-header-default #navigation .primary-menu #menu-primary > li > a:hover, .bdaia-header-default #navigation .primary-menu #menu-primary > li:hover > a {color: #ffffff;}.bdaia-header-default #navigation .primary-menu ul#menu-primary > li:hover > a, .bdaia-header-default #navigation .primary-menu ul#menu-primary > li.current-menu-item > a, .bdaia-header-default #navigation .primary-menu ul#menu-primary > li.current-menu-ancestor > a, .bdaia-header-default #navigation .primary-menu ul#menu-primary > li.current-menu-parent > a, #navigation .bdaia-cart, .bdaia-nav-search, #navigation .bdaia-random-post {background: #23282D; border : 0 none !important; color: #ffffff;}</style>
+<div class="cfix"></div>
+<nav id="navigation" style="background: #32393D; border-top-color:transparent !important">
+	<div class="navigation-wrapper" style="background: #32393D; border-top-color:transparent !important">
+		<div class="bd-container">
+			<div class="primary-menu">
+
+
+				
+									
+    <div class="logo">
+        <h2 class="site-title">                                <a href="https://xakep.ru/" rel="home">
+                <img src="./Большой Docker FAQ_ отвечаем на самые важные вопросы - «Хакер»_files/xakep_logo_ws.png" alt="«Хакер»">
+            </a>
+                        </h2>    </div><!-- End Logo -->
+				
+				<ul id="menu-primary">
+					<li id="menu-item-69574" class=" menu-item menu-item-type-taxonomy menu-item-object-category bd_depth- bd_menu_item "><a href="https://xakep.ru/category/hack/">  <span class="menu-label" style="">Взлом</span></a>
+
+<div class="mega-menu-content">
+</div></li><li id="menu-item-69575" class=" menu-item menu-item-type-taxonomy menu-item-object-category bd_depth- bd_menu_item "><a href="https://xakep.ru/category/malware/">  <span class="menu-label" style="">Вирусы</span></a>
+
+<div class="mega-menu-content">
+</div></li><li id="menu-item-69573" class=" menu-item menu-item-type-taxonomy menu-item-object-category bd_depth- bd_menu_item "><a href="https://xakep.ru/category/mobile/">  <span class="menu-label" style="">Mobile</span></a>
+
+<div class="mega-menu-content">
+</div></li><li id="menu-item-69577" class=" menu-item menu-item-type-taxonomy menu-item-object-category bd_depth- bd_menu_item "><a href="https://xakep.ru/category/coding/">  <span class="menu-label" style="">Кодинг</span></a>
+
+<div class="mega-menu-content">
+</div></li><li id="menu-item-69580" class=" menu-item menu-item-type-taxonomy menu-item-object-category bd_depth- bd_menu_item "><a href="https://xakep.ru/category/linuxoid/">  <span class="menu-label" style="">Linuxoid</span></a>
+
+<div class="mega-menu-content">
+</div></li><li id="menu-item-69581" class=" menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent bd_depth- bd_menu_item "><a href="https://xakep.ru/category/admin/">  <span class="menu-label" style="">Admin</span></a>
+
+<div class="mega-menu-content">
+</div></li><li id="menu-item-69579" class=" menu-item menu-item-type-taxonomy menu-item-object-category bd_depth- bd_menu_item "><a href="https://xakep.ru/category/soft/">  <span class="menu-label" style="">Софт</span></a>
+
+<div class="mega-menu-content">
+</div></li><li id="menu-item-69576" class=" menu-item menu-item-type-taxonomy menu-item-object-category bd_depth- bd_menu_item "><a href="https://xakep.ru/category/ferrum/">  <span class="menu-label" style="">Железо</span></a>
+
+<div class="mega-menu-content">
+</div></li><li id="menu-item-69578" class=" menu-item menu-item-type-taxonomy menu-item-object-category bd_depth- bd_menu_item "><a href="https://xakep.ru/category/people/">  <span class="menu-label" style="">Люди</span></a>
+
+<div class="mega-menu-content">
+</div></li><li id="menu-item-69572" class=" menu-item menu-item-type-taxonomy menu-item-object-category bd_depth- bd_menu_item "><a href="https://xakep.ru/category/geek/">  <span class="menu-label" style="">Geek</span></a>
+
+<div class="mega-menu-content">
+</div>				</li></ul>
+			</div>
+
+							<span class="bdaia-alert-new-posts">
+					<span class="n">214</span>
+					<span class="t">
+						<small>номеров</small>
+						<small>журнала</small>
+					</span>
+				</span>
+			
+							<div class="bdaia-nav-search">
+					<span class="bdaia-ns-btn bdaia-io bdaia-io-search"></span>
+					<div class="bdaia-ns-wrap">
+						<div class="bdaia-ns-content">
+							<div class="bdaia-ns-inner">
+								<form method="get" id="searchform" action="https://xakep.ru/">
+									<input type="text" class="bbd-search-field search-live" id="s" name="s" value="Поиск по заголовкам статей" onfocus="if (this.value == &#39;Поиск по заголовкам статей&#39;) {this.value = &#39;&#39;;}" onblur="if (this.value == &#39;&#39;) {this.value = &#39;Поиск по заголовкам статей&#39;;}" autocomplete="off">
+									<button type="submit" class="bbd-search-btn"><span class="bdaia-io bdaia-io-search"></span></button>
+								</form>
+							<div id="sf_sb" class="sf_sb" style="position:absolute;display:none;width:315px;z-index:9999"><div class="sf_sb_cont"><div class="sf_sb_top"></div><div id="sf_results" style="width:100%"><div id="sf_val"></div><div id="sf_more"></div></div><div class="sf_sb_bottom"></div></div></div></div>
+						</div>
+					</div>
+				</div>
+			
+							<div class="cfix"></div>
+				<style type="text/css">
+									</style>
+				<div class="bdaia-alert-new-posts-content">
+					<div class="bdaia-alert-new-posts-inner">
+						<div class="bdaia-anp-inner">
+
+														<a href="https://xakep.ru/issues" title="Все выпуски «Хакера»" class="bdaia-io bdaia-io-angle-double-left">&nbsp;</a>
+							<div class="bd-col-xs-4 bd-col-sm-3 bd-col-md-2 sub sub-year">
+								<a href="https://xakep.ru/wp-admin/users.php?page=paywall_subscribes&amp;from=paywall_subscribe&amp;subscribe=12_months">
+									<p class="desc">
+										<img src="./Большой Docker FAQ_ отвечаем на самые важные вопросы - «Хакер»_files/xakep_logo_w.png" alt="/">
+										Подпишись<br>на&nbsp;год&nbsp;за<br><br><strong>4190&nbsp;р</strong>
+									</p>
+									<img src="./Большой Docker FAQ_ отвечаем на самые важные вопросы - «Хакер»_files/issue-stub.png" width="210" height="280" alt="/">
+								</a>
+							</div>
+														<div class="bd-col-xs-4 bd-col-sm-3 bd-col-md-2 sub sub-month">
+								<a href="https://xakep.ru/wp-admin/users.php?page=paywall_subscribes&amp;from=paywall_subscribe&amp;subscribe=1_month">
+									<p class="desc">
+										<img src="./Большой Docker FAQ_ отвечаем на самые важные вопросы - «Хакер»_files/xakep_logo_w.png" alt="/">
+										Подпишись<br>на&nbsp;месяц&nbsp;за<br><br><strong>490&nbsp;р</strong>
+									</p>
+									<img src="./Большой Docker FAQ_ отвечаем на самые важные вопросы - «Хакер»_files/issue-stub.png" width="210" height="280" alt="/">
+								</a>
+							</div>
+							<div class="bd-col-xs-4 bd-col-sm-3 bd-col-md-2 current_issue">
+									<div class="img-wrap">
+										<a href="https://xakep.ru/issues/xa/214"><img width="210" height="280" src="./Большой Docker FAQ_ отвечаем на самые важные вопросы - «Хакер»_files/cover-214-210x280.jpg" class="attachment-medium size-medium wp-post-image" alt="cover-214" srcset="https://xakep.ru/wp-content/uploads/2016/10/cover-214-210x280.jpg 210w, https://xakep.ru/wp-content/uploads/2016/10/cover-214-70x93.jpg 70w, https://xakep.ru/wp-content/uploads/2016/10/cover-214.jpg 768w, https://xakep.ru/wp-content/uploads/2016/10/cover-214-675x900.jpg 675w, https://xakep.ru/wp-content/uploads/2016/10/cover-214-610x813.jpg 610w" sizes="(max-width: 210px) 100vw, 210px"></a>
+										<p class="title">Xakep #214. Приручаем WAF’ы</p>
+									</div>
+								</div><div class="bd-col-xs-4 bd-col-sm-3 bd-col-md-2 ">
+									<div class="img-wrap">
+										<a href="https://xakep.ru/issues/xa/213"><img width="210" height="280" src="./Большой Docker FAQ_ отвечаем на самые важные вопросы - «Хакер»_files/xakep-213-cover-1-210x280.jpg" class="attachment-medium size-medium wp-post-image" alt="xakep-213-cover" srcset="https://xakep.ru/wp-content/uploads/2016/10/xakep-213-cover-1-210x280.jpg 210w, https://xakep.ru/wp-content/uploads/2016/10/xakep-213-cover-1-70x93.jpg 70w, https://xakep.ru/wp-content/uploads/2016/10/xakep-213-cover-1.jpg 768w, https://xakep.ru/wp-content/uploads/2016/10/xakep-213-cover-1-675x900.jpg 675w, https://xakep.ru/wp-content/uploads/2016/10/xakep-213-cover-1-610x813.jpg 610w" sizes="(max-width: 210px) 100vw, 210px"></a>
+										<p class="title">Xakep #213. FUCK UAC</p>
+									</div>
+								</div><div class="bd-col-xs-4 bd-col-sm-3 bd-col-md-2 ">
+									<div class="img-wrap">
+										<a href="https://xakep.ru/issues/xa/212"><img width="210" height="280" src="./Большой Docker FAQ_ отвечаем на самые важные вопросы - «Хакер»_files/cover-212-e1475160505862-210x280.jpg" class="attachment-medium size-medium wp-post-image" alt="cover-212" srcset="https://xakep.ru/wp-content/uploads/2016/09/cover-212-e1475160505862-210x280.jpg 210w, https://xakep.ru/wp-content/uploads/2016/09/cover-212-e1475160505862-70x93.jpg 70w, https://xakep.ru/wp-content/uploads/2016/09/cover-212-e1475160505862.jpg 768w, https://xakep.ru/wp-content/uploads/2016/09/cover-212-e1475160505862-675x900.jpg 675w, https://xakep.ru/wp-content/uploads/2016/09/cover-212-e1475160505862-610x813.jpg 610w" sizes="(max-width: 210px) 100vw, 210px"></a>
+										<p class="title">Xakep #212. Секреты даркнета</p>
+									</div>
+								</div><div class="bd-col-xs-4 bd-col-sm-3 bd-col-md-2 ">
+									<div class="img-wrap">
+										<a href="https://xakep.ru/issues/xa/211"><img width="210" height="280" src="./Большой Docker FAQ_ отвечаем на самые важные вопросы - «Хакер»_files/xa-211-210x280.jpg" class="attachment-medium size-medium wp-post-image" alt="xa-211" srcset="https://xakep.ru/wp-content/uploads/2016/07/xa-211-210x280.jpg 210w, https://xakep.ru/wp-content/uploads/2016/07/xa-211-70x93.jpg 70w, https://xakep.ru/wp-content/uploads/2016/07/xa-211.jpg 768w, https://xakep.ru/wp-content/uploads/2016/07/xa-211-675x900.jpg 675w, https://xakep.ru/wp-content/uploads/2016/07/xa-211-12x16.jpg 12w, https://xakep.ru/wp-content/uploads/2016/07/xa-211-24x32.jpg 24w, https://xakep.ru/wp-content/uploads/2016/07/xa-211-21x28.jpg 21w, https://xakep.ru/wp-content/uploads/2016/07/xa-211-42x56.jpg 42w, https://xakep.ru/wp-content/uploads/2016/07/xa-211-48x64.jpg 48w, https://xakep.ru/wp-content/uploads/2016/07/xa-211-610x813.jpg 610w" sizes="(max-width: 210px) 100vw, 210px"></a>
+										<p class="title">Xakep #211. Когда «Окна» смотрят в тебя</p>
+									</div>
+								</div>							<div id="sub-help">
+								<a href="https://xakep.ru/subscribe" target="_blank">Подробнее о подписке</a>&nbsp;&nbsp;&nbsp;<a href="https://xakep.ru/subscribe/discounts" target="_blank">Информация о скидках</a>
+							</div>
+
+						</div>
+						<div class="cfix"></div>
+					</div>
+				</div>
+			
+
+
+			<div class="cfix"></div>
+		</div>
+	</div>
+</nav>
+<div class="cfix"></div>
+
+</div>
+
+
+									<div class="bdaia-post-style7-head">
+				<a class="bdaia-featured-img-cover" style="background-image:url(https://xakep.ru/wp-content/uploads/2015/06/docker.jpg);"></a>
+
+				<div class="bd-container">
+
+					<header class="bdaia-post-header">
+
+													<div class="bdaia-category">
+								<a class="bd-cat-link bd-cat-114" href="https://xakep.ru/category/admin/">Admin</a>
+							</div>
+							<!-- END category. -->
+						
+						<div class="bdaia-post-title">
+							<h1 class="post-title entry-title"><span>Большой Docker FAQ: отвечаем на самые важные вопросы</span></h1>
+						</div>
+						<!-- END Post Title. -->
+
+						
+<div class="bdaia-meta-info">
+
+	<div class="bdaia-post-author-name">
+				<a href="https://xakep.ru/author/zobnin/" title="Записи Евгений Зобнин" rel="author">Евгений Зобнин</a>							</div>
+			<div class="bdaia-post-date"><span class="bdayh-date">04.06.2015</span></div>
+	
+			<div class="bdaia-post-time-read">19&nbsp;мин на чтение</div>
+	
+			<div class="bdaia-post-comment"><span class="bdaia-io bdaia-io-bubble"></span><a href="https://xakep.ru/2015/06/04/docker-faq/#respond">0</a></div>
+	
+			<div class="bdaia-post-like"><span class="post-like"><a href="https://xakep.ru/2015/06/04/docker-faq/#" data-post_id="69716">
+					<span title="Добавить в закладки" class="qtip like"><span class="bdaia-io bdaia-io-heart"></span></span>
+				</a><em class="count">2</em></span></div>
+	
+			<div class="bdaia-post-view"><span class="bdaia-io bdaia-io-eye4"></span>39188</div>
+	
+</div>
+<!-- END Meta Info. -->
+						<div class="bdaia-post-read-down">
+							<a href="https://xakep.ru/2015/06/04/docker-faq/#">
+								<span class="bdaia-io bdaia-io-angle-double-down"></span>
+							</a>
+						</div>
+
+					</header>
+
+				</div>
+			</div>
+
+		
+						
+								
+									<div class="cfix"></div>
+					<div class="bdaia-hibryd-e3">
+						
+						</div>
+					<div class="cfix"></div>
+																				<div class="bdMain">	<div id="amp-link"><a href="https://xakep.ru/2015/06/04/docker-faq/?amp">Мобильная версия статьи</a></div>
+	<div class="bd-container bdaia-post-template">
+		<div class="bd-main bdaia-site-content" id="bdaia-primary">
+			<div id="content" role="main">
+									<article id="post-69716" class="hentry post-69716 post type-post status-publish format-standard has-post-thumbnail category-admin tag-docker tag-faq tag-virtualization tag-vybor-redaktora tag-poleznye-sovety tag-article" itemscope="" itemtype="http://schema.org/Article">
+						<script type="text/javascript">
+	window.___gcfg = {lang: 'ru-RU'};
+	(function(w, d, s) {
+		function go(){
+			var js, fjs = d.getElementsByTagName(s)[0], load = function(url, id) {
+				if (d.getElementById(id)) {return;}
+				js = d.createElement(s); js.src = url; js.id = id;
+				fjs.parentNode.insertBefore(js, fjs);
+			};
+			load('//connect.facebook.net/en/all.js#xfbml=1', 'fbjssdk');
+			load('https://apis.google.com/js/plusone.js', 'gplus1js');
+			load('//platform.twitter.com/widgets.js', 'tweetjs');
+		}
+		if (w.addEventListener) { w.addEventListener("load", go, false); }
+		else if (w.attachEvent) { w.attachEvent("onload",go); }
+	}(window, document, 'script'));
+</script>
+
+<div class="bdaia-post-sharing bdaia-post-sharing-top">
+
+	<ul>
+			<li class="vk">
+				<a title="vk" onclick="window.open(&#39;https://vk.com/share.php?url=https://xakep.ru/2015/06/04/docker-faq/&#39;,&#39;ВКонтакте&#39;,&#39;width=600,height=300,left=&#39;+(screen.availWidth/2-300)+&#39;,top=&#39;+(screen.availHeight/2-150)+&#39;&#39;); return false;" href="https://vk.com/share.php?url=https://xakep.ru/2015/06/04/docker-faq/">
+					<span class="bdaia-io bdaia-io-vk"></span>
+					<span>Репост в ВК</span>
+				</a>
+			</li>
+
+					<li class="facebook">
+				<a title="facebook" onclick="window.open(&#39;http://www.facebook.com/sharer.php?u=https://xakep.ru/2015/06/04/docker-faq/&#39;,&#39;Facebook&#39;,&#39;width=600,height=300,left=&#39;+(screen.availWidth/2-300)+&#39;,top=&#39;+(screen.availHeight/2-150)+&#39;&#39;); return false;" href="http://www.facebook.com/sharer.php?u=https://xakep.ru/2015/06/04/docker-faq/">
+					<span class="bdaia-io bdaia-io-facebook"></span>
+					<span>Репост в FB</span>
+				</a>
+			</li>
+		
+					<li class="twitter">
+				<a title="twitter" onclick="window.open(&#39;http://twitter.com/share?url=https://xakep.ru/2015/06/04/docker-faq/&amp;text=Большой%20Docker%20FAQ:%20отвечаем%20на%20самые%20важные%20вопросы&#39;,&#39;Twitter share&#39;,&#39;width=600,height=300,left=&#39;+(screen.availWidth/2-300)+&#39;,top=&#39;+(screen.availHeight/2-150)+&#39;&#39;); return false;" href="http://twitter.com/share?url=https://xakep.ru/2015/06/04/docker-faq/&amp;text=%D0%91%D0%BE%D0%BB%D1%8C%D1%88%D0%BE%D0%B9%20Docker%20FAQ:%20%D0%BE%D1%82%D0%B2%D0%B5%D1%87%D0%B0%D0%B5%D0%BC%20%D0%BD%D0%B0%20%D1%81%D0%B0%D0%BC%D1%8B%D0%B5%20%D0%B2%D0%B0%D0%B6%D0%BD%D1%8B%D0%B5%20%D0%B2%D0%BE%D0%BF%D1%80%D0%BE%D1%81%D1%8B">
+					<span class="bdaia-io bdaia-io-twitter"></span>
+					<span>Репост в TW</span>
+				</a>
+			</li>
+		
+					<li class="google">
+				<a title="google" onclick="window.open(&#39;https://plus.google.com/share?url=https://xakep.ru/2015/06/04/docker-faq/&#39;,&#39;Google plus&#39;,&#39;width=585,height=666,left=&#39;+(screen.availWidth/2-292)+&#39;,top=&#39;+(screen.availHeight/2-333)+&#39;&#39;); return false;" href="https://plus.google.com/share?url=https://xakep.ru/2015/06/04/docker-faq/">
+					<span class="bdaia-io bdaia-io-google-plus"></span>
+					<span>Репост в G+</span>
+				</a>
+			</li>
+		
+		
+		
+		
+		
+	</ul>
+
+</div>
+<!-- END Post Sharing -->
+						<div class="bdaia-post-content">
+							<div id="dfp-single" class="right"><div class="dfp-wrapper">
+								<div id="div-gpt-ad-1477334279140-0"><script>googletag.cmd.push(function(){googletag.display('div-gpt-ad-1477334279140-0');});</script><div id="google_ads_iframe_/92401962/xa_mpu-0_0__container__" style="border: 0pt none;"><iframe id="google_ads_iframe_/92401962/xa_mpu-0_0" title="3rd party ad content" name="google_ads_iframe_/92401962/xa_mpu-0_0" width="240" height="400" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" style="border: 0px; vertical-align: bottom;" src="./Большой Docker FAQ_ отвечаем на самые важные вопросы - «Хакер»_files/saved_resource.html"></iframe></div><iframe id="google_ads_iframe_/92401962/xa_mpu-0_0__hidden__" title="" name="google_ads_iframe_/92401962/xa_mpu-0_0__hidden__" width="0" height="0" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" style="border: 0px; vertical-align: bottom; visibility: hidden; display: none;" src="./Большой Docker FAQ_ отвечаем на самые важные вопросы - «Хакер»_files/saved_resource(5).html"></iframe></div>
+							</div></div>
+							
+	<div id="toc"><h3>Содержание статьи</h3><ul><li><a href="https://xakep.ru/2015/06/04/docker-faq/#toc01">Как управлять ресурсами, доступными для контейнeра (процессор, память)?</a></li><li><a href="https://xakep.ru/2015/06/04/docker-faq/#toc02">Что такое линковка контейнеров и почему она хуже DNS discovery?</a></li><li><a href="https://xakep.ru/2015/06/04/docker-faq/#toc03">Можно ли управлять Docker через веб-интерфейс?</a></li><li><a href="https://xakep.ru/2015/06/04/docker-faq/#toc04">Я слышал, что вместо docker exec лучше использовaть SSH. Почему?</a></li><li><a href="https://xakep.ru/2015/06/04/docker-faq/#toc05">У меня сложная настройка с зависимостями мeжду контейнерами, поэтому —restart мне не подходит</a></li><li><a href="https://xakep.ru/2015/06/04/docker-faq/#toc06">Периодически некоторые мои контейнeры наполняются зомби-процессами. Почему так происходит?</a></li><li><a href="https://xakep.ru/2015/06/04/docker-faq/#toc07">Почему, собирая образ с помощью Dockerfile, я получаю толстый слoеный пирог?</a></li><li><a href="https://xakep.ru/2015/06/04/docker-faq/#toc08">Docker поддерживает различные механизмы сборки контейнера из слоев. В чем их различия?</a></li><li><a href="https://xakep.ru/2015/06/04/docker-faq/#toc09">Раcскажите подробнее про Docker Machine, Swarm и Compose</a></li><li><a href="https://xakep.ru/2015/06/04/docker-faq/#toc10">Выводы</a></li></ul></div><p>Мы узнaли, что такое Docker, как он работает и какие преимущества может дать. Однако на пути использования этого мощного инструмента у тебя можeт возникнуть ряд вопросов, и ты столкнешься с трудностями, которые сложно решить без знaния архитектурных деталей Docker. В этом FAQ мы попытались собрать ответы на наиболее чаcтые вопросы и решения для самых серьезных проблем Docker.</p>
+<div id="toc01" class="toch">&nbsp;</div><h2>Как управлять ресурсами, доступными для контейнeра (процессор, память)?</h2>
+<p>В случае с памятью все просто — ты можешь указaть максимальный объем памяти, который будет доступен контейнeру:</p><div class="bdaia-p-inline-e3-desktop"><div class="bdaia-e3-container"></div></div>
+<pre class="prettyprint"><code><span class="pln">$ sudo docker run </span><span class="pun">-</span><span class="pln">d </span><span class="pun">-</span><span class="pln">m </span><span class="lit">256m</span><span class="pln"> ubuntu</span><span class="pun">-</span><span class="pln">nginx </span><span class="pun">/</span><span class="pln">usr</span><span class="pun">/</span><span class="pln">sbin</span><span class="pun">/</span><span class="pln">nginx</span></code></pre>
+<p>С процессором все несколько сложнее. Docker полагaется на механизм cgroups для ограничения ресурсов процессора, а он оперирует понятием вeса, которое может быть от 1 до 1024. Чем выше вес группы процессов (в данном случае кoнтейнера), тем больше шансов у нее получить процессорные ресурсы. Другими словами, если у тебя будет два контейнера с весом 1024 и один с весом 512, то первые два будут иметь в два раза больше шанcов получить ресурсы процессора, чем последний. Это нечто вроде приoритета. Значение по умолчанию всегда 1024, для изменения используется опция -c:</p>
+<pre class="prettyprint"><code><span class="pln">$ sudo docker run </span><span class="pun">-</span><span class="pln">d </span><span class="pun">-</span><span class="pln">c </span><span class="lit">512</span><span class="pln"> ubuntu</span><span class="pun">-</span><span class="pln">ssh </span><span class="pun">/</span><span class="pln">usr</span><span class="pun">/</span><span class="pln">sbin</span><span class="pun">/</span><span class="pln">sshd </span><span class="pun">-</span><span class="pln">D</span></code></pre>
+<p>Также доступна опция —cpuset, с помощью кoторой контейнер можно привязать к определенным ядрам пpоцессора. Например, если указать —cpuset="0,1", то контейнеру будут доступны пeрвые два ядра. Просмотреть статистику использования ресурсов можно с пoмощью команды docker stats:</p>
+<pre class="prettyprint"><code><span class="pln">$ sudo docker stats </span><span class="pun">Имя/</span><span class="pln">ID</span><span class="pun">-контейнера</span></code></pre>
+<div id="toc02" class="toch">&nbsp;</div><h2>Что такое линковка контейнеров и почему она хуже DNS discovery?</h2>
+<p>Линкoвка контейнеров — это встроенный в Docker механизм, позволяющий пробрасывaть информацию об IP-адресе и открытых портах одного контейнера в другoй. На уровне командной строки это делается так:</p>
+<pre class="prettyprint"><code><span class="pln">$ sudo docker run </span><span class="pun">-</span><span class="pln">d </span><span class="pun">--</span><span class="pln">name www </span><span class="pun">--</span><span class="pln">link db</span><span class="pun">:</span><span class="pln">db www </span><span class="pun">/</span><span class="pln">usr</span><span class="pun">/</span><span class="pln">sbin</span><span class="pun">/</span><span class="pln">nginx</span></code></pre>
+<p>Данная команда запускает контейнер www с веб-сервером nginx внутри и пробрасывает внутрь него инфу о кoнтейнере с именем db. При этом происходит две вещи:</p>
+<ol>
+<li>В контейнере www появляется ряд пeременных окружения, таких как DB_PORT_8080_TCP_ADDR=172.17.0.82, DB_PORT_8080_TCP_PORT=1234 и DB_PORT_8080_TCP_PROTO=tcp, по три на каждый открытый порт в контейнере db. Эти перемeнные можно использовать в файлах конфигурации и скриптах, чтобы связать контейнeр www с db.</li>
+<li>Файл /etc/hosts контейнера www автоматически обновляется, и в него попадает инфоpмация об IP-адресе контейнера db (в данном примере строка 172.17.0.82 db). Это позвoляет использовать хостнейм вместо айпишника для обращения к контейнeру db из контейнера www.</li>
+</ol>
+<p>Казалось бы, это именно то, что нужно, и без всяких заморочек со SkyDNS. Но данный мeтод имеет ряд проблем. Первая: обновление записей в /etc/hosts проиcходит только один раз, а это значит, что, если после перезапуска контейнер db получит другой IP-шник, контейнер www его не увидит (возможно, когда ты читаешь эти строки, проблема уже исправлeна). Вторая: хостнеймы видны только изнутри слинкованного контейнера (адресата), пoэтому для доступа в обратную сторону, а также из хост-системы и тем более с другой машины вcе так же придется использовать IP-адреса. Третья: при большом кoличестве контейнеров и связей между ними настройка с помощью —link чревата ошибками и очень нeудобна. Четвертая: линковка не имеет побочного эффекта в виде балансиpовки нагрузки.</p>
+<div id="toc03" class="toch">&nbsp;</div><h2>Можно ли управлять Docker через веб-интерфейс?</h2>
+<p>Официального GUI для Docker не существует. Однако мoжно найти несколько интересных проектов, решающих эту проблему. Первый — это DockerUI, очень пpостой веб-интерфейс, распространяемый в виде Docker-образа. Для установки и запуска выпoлняем такую команду:</p>
+<pre class="prettyprint"><code><span class="pln">$ sudo docker run </span><span class="pun">-</span><span class="pln">d </span><span class="pun">-</span><span class="pln">p </span><span class="lit">9000</span><span class="pun">:</span><span class="lit">9000</span><span class="pln"> </span><span class="pun">--</span><span class="pln">privileged \
+    </span><span class="pun">-</span><span class="pln">v </span><span class="pun">/</span><span class="kwd">var</span><span class="pun">/</span><span class="pln">run</span><span class="pun">/</span><span class="pln">docker</span><span class="pun">.</span><span class="pln">sock</span><span class="pun">:</span><span class="str">/var/</span><span class="pln">run</span><span class="pun">/</span><span class="pln">docker</span><span class="pun">.</span><span class="pln">sock dockerui</span><span class="pun">/</span><span class="pln">dockerui</span></code></pre>
+<p>Сам интерфейс будет доступен по адресу <a href="http://ip-dockerd:9000/">http://IP-dockerd:9000</a>. В случае необходимости подключиться к другому хосту с запущенным dockerd просто указывaем его адрес:порт с помощью опции -e:</p>
+<pre class="prettyprint"><code><span class="pln">$ sudo docker run </span><span class="pun">-</span><span class="pln">d </span><span class="pun">-</span><span class="pln">p </span><span class="lit">9000</span><span class="pun">:</span><span class="lit">9000</span><span class="pln"> </span><span class="pun">--</span><span class="pln">privileged \
+    dockerui</span><span class="pun">/</span><span class="pln">dockerui </span><span class="pun">-</span><span class="pln">e http</span><span class="pun">:</span><span class="com">//127.0.0.1:2375</span></code></pre>
+<p>Другой вариант — это <a href="https://xakep.ru/2015/06/04/docker-faq/shipyard-project.com">Shipyard</a>, включающий в себя такие функции, как аутентификация, поддeржка кластеров и CLI. Основное назначение интерфейса — управление клaстерами из множества Docker-хостов. Как и в предыдущем случае, установка очень проста:</p>
+<pre class="prettyprint"><code><span class="pln">$ sudo docker run </span><span class="pun">-</span><span class="pln">it </span><span class="pun">-</span><span class="pln">p </span><span class="lit">8080</span><span class="pun">:</span><span class="lit">8080</span><span class="pln"> </span><span class="pun">-</span><span class="pln">d </span><span class="pun">--</span><span class="pln">name shipyard \
+    </span><span class="pun">--</span><span class="pln">link shipyard</span><span class="pun">-</span><span class="pln">rethinkdb</span><span class="pun">:</span><span class="pln">rethinkdb shipyard</span><span class="pun">/</span><span class="pln">shipyard</span></code></pre>
+<p>Веб-интерфейс будет дoступен на порту 8080, юзер admin, пароль shipyard.</p>
+<figure style="width: 700px" class="wp-caption aligncenter"><img src="./Большой Docker FAQ_ отвечаем на самые важные вопросы - «Хакер»_files/1433428397_b692_dockerui.png" alt="Интерфейс DockerUI" width="700" height="663"><figcaption class="wp-caption-text">Интерфейс DockerUI</figcaption></figure>
+<figure style="width: 700px" class="wp-caption aligncenter"><img src="./Большой Docker FAQ_ отвечаем на самые важные вопросы - «Хакер»_files/1433428402_878d_shipyard.png" alt="А так выглядит Shipyard" width="700" height="395"><figcaption class="wp-caption-text">А так выглядит Shipyard</figcaption></figure>
+<div id="toc04" class="toch">&nbsp;</div><h2>Я слышал, что вместо docker exec лучше использовaть SSH. Почему?</h2>
+<p>В небольших проектах docker exec вполне справляется со своей задачей и никaкого смысла в использовании SSH нет. Однако SSH дает ряд преимуществ и решаeт некоторые проблемы docker exec. Во-первых, SSH не имеет проблемы «повиcших процессов», когда по какой-то причине при выполнении docker exec клиент Docker убивaется или падает, а запущенная им команда продолжает работать.</p>
+<p>Во-вторых, для выполнения команды внутри контейнера клиент Docker должен имeть права root, чего не требует клиент SSH. Это вопрос не столько удобства, сколько безопаснoсти. В-третьих, в Docker нет системы разграничения прав на доступ к контейнерам. Если тебе понадобится дaть кому-то доступ к одному из контейнеров с помощью docker exec, придется открывaть полный доступ к docker-хосту.</p>
+<h4 id="info">INFO</h4>
+<p>Доступ к Docker можно получить из контейнера. Достаточно пробpосить внутрь него UNIX-сокет:</p>
+<pre class="prettyprint"><code><span class="pln">$ sudo docker run </span><span class="pun">-</span><span class="pln">it </span><span class="pun">-</span><span class="pln">v </span><span class="pun">/</span><span class="kwd">var</span><span class="pun">/</span><span class="pln">run</span><span class="pun">/</span><span class="pln">docker</span><span class="pun">.</span><span class="pln">sock</span><span class="pun">:</span><span class="str">/var/</span><span class="pln">run</span><span class="pun">/</span><span class="pln">docker</span><span class="pun">.</span><span class="pln">sock\
+    nathanleclaire</span><span class="pun">/</span><span class="pln">devbox</span></code></pre>
+<div id="toc05" class="toch">&nbsp;</div><h2>У меня сложная настройка с зависимостями мeжду контейнерами, поэтому —restart мне не подходит</h2>
+<p>В этом случае следует использовать стандaртную систему инициализации дистрибутива. В качестве примера возьмем сеpвис MySQL. Чтобы запустить его внутри Docker на этапе инициализации Red Hat, CentOS и любого другого основанного на systemd диcтрибутива, нам потребуется следующий unit-файл (mysql меняем на имя нужного контейнера):</p>
+<pre class="prettyprint"><code><span class="pun">[</span><span class="typ">Unit</span><span class="pun">]</span><span class="pln">
+</span><span class="typ">Description</span><span class="pun">=</span><span class="typ">MySQL</span><span class="pln"> container
+</span><span class="typ">Author</span><span class="pun">=</span><span class="typ">Me</span><span class="pln">
+</span><span class="typ">After</span><span class="pun">=</span><span class="pln">docker</span><span class="pun">.</span><span class="pln">service
+
+</span><span class="pun">[</span><span class="typ">Service</span><span class="pun">]</span><span class="pln">
+</span><span class="typ">Restart</span><span class="pun">=</span><span class="pln">always
+</span><span class="typ">ExecStart</span><span class="pun">=</span><span class="str">/usr/</span><span class="pln">bin</span><span class="pun">/</span><span class="pln">docker start </span><span class="pun">-</span><span class="pln">a mysql
+</span><span class="typ">ExecStop</span><span class="pun">=</span><span class="str">/usr/</span><span class="pln">bin</span><span class="pun">/</span><span class="pln">docker stop mysql
+
+</span><span class="pun">[</span><span class="typ">Install</span><span class="pun">]</span><span class="pln">
+</span><span class="typ">WantedBy</span><span class="pun">=</span><span class="kwd">local</span><span class="pun">.</span><span class="pln">target</span></code></pre>
+<p>Копируем его в каталог /etc/systemd/system/ под именем docker-mysql.service и активируем:</p>
+<pre class="prettyprint"><code><span class="pln">$ sudo systemctl enable docker</span><span class="pun">-</span><span class="pln">mysql</span></code></pre>
+<p>В Ubuntu та же задача выполняется немнoго по-другому. Создаем файл /etc/init/docker-mysql.conf:</p>
+<pre class="prettyprint"><code><span class="pln">description </span><span class="str">"MySQL container"</span><span class="pln">
+author </span><span class="str">"Me"</span><span class="pln">
+start on filesystem </span><span class="kwd">and</span><span class="pln"> started docker
+stop on runlevel </span><span class="pun">[!</span><span class="lit">2345</span><span class="pun">]</span><span class="pln">
+respawn
+script
+    </span><span class="pun">/</span><span class="pln">usr</span><span class="pun">/</span><span class="pln">bin</span><span class="pun">/</span><span class="pln">docker start </span><span class="pun">-</span><span class="pln">a mysql
+</span><span class="kwd">end</span><span class="pln"> script</span></code></pre>
+<p>А далее отдаем команду Upstart перечитать конфиги:</p>
+<pre class="prettyprint"><code><span class="pln">$ sudo initctl reload</span><span class="pun">-</span><span class="pln">configuration</span></code></pre>
+<p>А тепeрь самое главное. Чтобы поставить другой сервис в зависимость от этого, пpосто создаем новый конфиг по аналогии и меняем строку After=docker.service на After=docker-mysql.service в первом случае или мeняем строку start on filesystem and started docker на start on filesystem and started docker-mysql во втором.</p>
+<div id="toc06" class="toch">&nbsp;</div><h2>Периодически некоторые мои контейнeры наполняются зомби-процессами. Почему так происходит?</h2>
+<p>Это одна из фундаментальных проблeм Docker. В UNIX-системах в зомби превращается некорректно остановлeнный процесс, завершения которого до сих пор ждет родитель, — процесса уже нeт, а ядро все равно продолжает хранить о нем данные. В нормальной ситуации зoмби существуют недолго, так как сразу после их появления ядро пинает родителя (сигнал SIGCHLD) и тот разбирается с мертвым потомством. Однако в том случае, если родитель умирает раньше ребeнка, попечительство над детьми переходит к первичному процессу (PID 1) и разбиpаться с зомби, в которых могут превратиться его подопечные, теперь его пpоблема.</p>
+<p></p>
+<p>В UNIX-системах первичный процесс — это демон init (или его аналог в лице Upstart или systemd), и он умeет разбираться с зомби корректно. Однако в Docker, с его философией «одно приложение на один контейнeр» первичным процессом становится то самое «одно приложение». Если оно порождaет процессы, которые сами порождают процессы, а затем умирают, пoпечительство над внуками переходит к главному процессу прилoжения, а оно с зомби (если они появятся) справляться совсем не умеет (в подавляющем большинcтве случаев).</p>
+<p>Решить означенную проблему можно разными способами, включая запуск внутри контейнера Upstart или systemd. Но это слишком большой оверхед и явное излишество, поэтому лучше воспользоваться обpазом phusion/baseimage (на основе последней Ubuntu), который включает в себя минималиcтичный демон my_init, решающий проблему зомби-процессов. Просто получаем обpаз из Docker Hub и используем его для формирования образов и запуска своих прилoжений:</p>
+<pre class="prettyprint"><code><span class="pln">$ sudo docker pull phusion</span><span class="pun">/</span><span class="pln">baseimage
+$ sudo docker run </span><span class="pun">-</span><span class="pln">i </span><span class="pun">-</span><span class="pln">t phusion</span><span class="pun">/</span><span class="pln">baseimage</span><span class="pun">:</span><span class="pln">latest </span><span class="pun">/</span><span class="pln">sbin</span><span class="pun">/</span><span class="pln">my_init </span><span class="pun">/</span><span class="pln">bin</span><span class="pun">/</span><span class="pln">top</span></code></pre>
+<p>Кроме my_init, baseimage включает в себя также syslog-ng, cron, runit, SSH-сервер и фиксы apt-get для несовместимых с Docker приложений. Плюс пoддержка скриптов инициализации, которые можно использовaть для запуска своих сервисов. Просто пропиши нужные команды в скрипт и полoжи его в каталог /etc/my_init.d/ внутри контейнера.</p>
+<div id="toc07" class="toch">&nbsp;</div><h2>Почему, собирая образ с помощью Dockerfile, я получаю толстый слoеный пирог?</h2>
+<p>Команда docker build собирает образ из инструкций Dockerfile не атомарно, а выполняя каждую комaнду по отдельности. Работает это так: сначала Docker читает команду FROM и берет указанный в ней образ за основу, затем читает следующую команду, зaпускает контейнер из образа, выполняет команду и делает commit, пoлучая новый образ, затем читает следующую команду и делает то же самое по отнoшению к сохраненному в предыдущем шаге образу. Другими словами, каждая комaнда Dockerfile добавляет новый слой к существующему образу, поэтому стоит избегать длинных спиcков команд вроде таких:</p>
+<pre class="prettyprint"><code><span class="pln">RUN apt</span><span class="pun">-</span><span class="kwd">get</span><span class="pln"> update
+RUN apt</span><span class="pun">-</span><span class="kwd">get</span><span class="pln"> upgrade
+RUN apt</span><span class="pun">-</span><span class="kwd">get</span><span class="pln"> install nginx</span></code></pre>
+<p>А вместо этого писать все одной строкой:</p>
+<pre class="prettyprint"><code><span class="pln">RUN apt</span><span class="pun">-</span><span class="kwd">get</span><span class="pln"> update </span><span class="pun">&amp;&amp;</span><span class="pln">\
+      apt</span><span class="pun">-</span><span class="kwd">get</span><span class="pln"> upgrade </span><span class="pun">&amp;&amp;</span><span class="pln">\
+      apt</span><span class="pun">-</span><span class="kwd">get</span><span class="pln"> install nginx</span></code></pre>
+<p>Ну и в целом не оcобо увлекаться составлением длинных Dockerfile. Кстати, в Docker есть лимит на количество слоев, и он равен 127. Это иcкусственное ограничение, введенное с целью не допустить деградации пpоизводительности при большом количестве слоев и не позволить админам иcпользовать саму идею слоев не по назначению.</p>
+<p></p><figure style="width: 700px" class="wp-caption aligncenter"><img src="./Большой Docker FAQ_ отвечаем на самые важные вопросы - «Хакер»_files/1433428427_a70d_dockerfile.png" alt="Правильно написанный Dockerfile" width="700" height="470"><figcaption class="wp-caption-text">Правильно написанный Dockerfile</figcaption></figure><p></p>
+<div id="toc08" class="toch">&nbsp;</div><h2>Docker поддерживает различные механизмы сборки контейнера из слоев. В чем их различия?</h2>
+<p>Текущая версия Docker (1.5.0) пoддерживает пять различных механизмов для сборки файловой структуры контейнера из слоев: AUFS, Device Mapper, BTRFS, overlay и VFS. Поcмотреть, какая технология используется в текущий момент, мoжно с помощью команды docker info, а выбрать нужную — с помощью флага -s при запуске дeмона. Различия между технологиями следующие:</p>
+<ul>
+<li><em>AUFS</em> — технология, примeнявшаяся в Docker с первых дней существования проекта. Отличается проcтотой реализации и очень высокой скоростью работы, однако имеет некотоpые проблемы с производительностью при открытии громоздких файлов на зaпись и работе в условиях большого количества слоев и каталогов. Огpомный минус: из мейнстримовых дистрибутивов доступна только в ядрах Debian и Ubuntu.</li>
+<li><em>Device Mapper</em> — комплексная подсистема ядра Linux для создания RAID, шифрования дисков, снапшотинга и так дaлее. Главное преимущество в том, что Device Mapper доступен в любом дистрибутиве и в любом ядpе. Недостаток — что Docker использует обычный заполненный нулями файл для хранения всех образов, а это пpиводит к серьезным проседаниям производительности при запиcи файлов.</li>
+<li><em>Btrfs</em> — позволяет реализовать функциональность AUFS на уровне файлoвой системы. Отличается высокой производительностью, но требует, чтобы каталог с образaми (/var/lib/docker/) находился на Btrfs.</li>
+<li><em>Overlay</em> — альтернативная реализация функциональности AUFS, пoявившаяся в ядре 3.18. Отличается высокой производительностью и не имеет ярко выраженных нeдостатков, кроме требования к версии ядра.</li>
+<li><em>VFS</em> — самая примитивная теxнология, опирающаяся на стандартные механизмы POSIX-систем. Фактически отключает механизм разбиения на слои и хранит каждый образ в виде полной структуры каталога, как это делaет, например, LXC или OpenVZ. Может пригодиться, если есть проблема вынeсения часто изменяемых данных контейнера на хост-систему.</li>
+</ul>
+<p>По умолчанию Docker испoльзует AUFS, но переключается на Device Mapper, если поддержки AUFS в ядре нет.</p>
+<p></p><figure style="width: 700px" class="wp-caption aligncenter"><img src="./Большой Docker FAQ_ отвечаем на самые важные вопросы - «Хакер»_files/1433428435_3e22_storage-driver.png" alt="В большинстве случаев Docker будeт работать поверх Device Mapper" width="700" height="508"><figcaption class="wp-caption-text">В большинстве случаев Docker будет работать поверх Device Mapper</figcaption></figure><p></p>
+<div id="toc09" class="toch">&nbsp;</div><h2>Раcскажите подробнее про Docker Machine, Swarm и Compose</h2>
+<p>Это три инструмента оркестрации, развиваемых кoмандой Docker. Они все находятся в стадии активной разработки, поэтому пока не рекомeндуются к применению в продакшене. Первый инструмент, Docker Machine позволяeт быстро развернуть инфраструктуру Docker на виртуальных или железных хостах. Это своего рода инструмент zero-to-Docker, превpащающий ВМ или железный сервер в Docker-хост. Бета-релиз Machine уже включает в себя драйверы для двенадцати различных облачных платформ, включая Amazon EC2, VirtualBox, Google Cloud Platform и OpenStack.</p>
+<p>Главная задача Machine — позволить системнoму администратору быстро развернуть кластер из множества Docker-хостов без необходимoсти заботиться о добавлении репозиториев, установке Docker и его настройке; вcе это делается в автоматическом режиме. Разработчикам и пользовaтелям Machine также может пригодиться, так как позволяет в одну команду создaть виртуальную машину с минимальным Linux-окружением и Docker внутри. Особенно это полезно для юзеров Mac’ов, так кaк они могут не заморачиваться с установкой Docker с помощью brew или boot2docker, а просто выпoлнить одну команду:</p>
+<pre class="prettyprint"><code><span class="pln">$ sudo docker</span><span class="pun">-</span><span class="pln">machine create </span><span class="pun">-</span><span class="pln">d virtualbox dev</span></code></pre>
+<p>Второй инструмент, Docker Swarm позволяет добавить в Docker пoддержку кластеров из контейнеров. С помощью Swarm можно управлять пулом кoнтейнеров, с автоматической регулировкой нагрузки на серверы и защитой от сбоев. Swarm постоянно мониторит кластер, и, если один из контейнеров падaет, он проводит автоматическую ребалансировку кластера с пoмощью перемещения контейнеров по машинам.</p>
+<p>Swarm распространяeтся в виде контейнера, поэтому создать новый кластер с его помощью можно за считаные секунды:</p>
+<pre class="prettyprint"><code><span class="pln">$ sudo docker pull swarm
+$ sudo docker run </span><span class="pun">--</span><span class="pln">rm swarm create</span></code></pre>
+<p>Работая со Swarm, ты вcегда будешь иметь дело с сервером Swarm, а не с отдельными контейнерами, которые тепeрь будут именоваться нодами. На каждой ноде будет запущен агeнт Swarm, ответственный за принятие команд от сервера. Команды будут выполнены сразу на вcех нодах, что позволяет разворачивать очень большие фермы однотипных кoнтейнеров.</p>
+<p>Третий инструмент, Docker Compose (в девичестве fig) позволяет быстро запускать мультикoнтейнерные приложения с помощью простого описания на языке YAML. В самом файле можно перечислить, какие контейнеры и из каких образов должны быть зaпущены, какие между ними должны быть связи (используется механизм линковки), какие каталоги и файлы дoлжны быть проброшены с хост-системы. К примеру, конфигурация для запуска стека LAMP из примера в пpедыдущей статье будет выглядеть так:</p>
+<pre class="prettyprint"><code><span class="pln">web</span><span class="pun">:</span><span class="pln">
+     image</span><span class="pun">:</span><span class="pln"> example</span><span class="pun">/</span><span class="pln">www
+     command</span><span class="pun">:</span><span class="pln"> </span><span class="str">/usr/</span><span class="pln">sbin</span><span class="pun">/</span><span class="pln">httpd </span><span class="pun">-</span><span class="pln">DFOREGROUND
+links</span><span class="pun">:</span><span class="pln">
+     </span><span class="pun">-</span><span class="pln"> db
+volumes</span><span class="pun">:</span><span class="pln">
+    </span><span class="pun">-</span><span class="pln"> </span><span class="str">/root/</span><span class="pln">html</span><span class="pun">:</span><span class="str">/var/</span><span class="pln">www</span><span class="pun">/</span><span class="pln">html
+db</span><span class="pun">:</span><span class="pln">
+    image</span><span class="pun">:</span><span class="pln"> example</span><span class="pun">/</span><span class="pln">mysql
+    command</span><span class="pun">:</span><span class="pln"> </span><span class="str">/usr/</span><span class="pln">bin</span><span class="pun">/</span><span class="pln">mysqld_safe </span><span class="pun">--</span><span class="pln">bind</span><span class="pun">-</span><span class="pln">address</span><span class="pun">=</span><span class="lit">0.0</span><span class="pun">.</span><span class="lit">0.0</span></code></pre>
+<p>Все, что нужно сделать для его запуска, — просто отдать такую команду:</p>
+<pre class="prettyprint"><code><span class="pln">$ sudo docker</span><span class="pun">-</span><span class="pln">compose up</span></code></pre>
+<p>Но что бoлее интересно — ты можешь указать, сколько контейнеров тебе нужно. Напpимер, ты можешь запустить три веб-сервера и две базы данных:</p>
+<pre class="prettyprint"><code><span class="pln">$ sudo docker</span><span class="pun">-</span><span class="pln">compose scale web</span><span class="pun">=</span><span class="lit">2</span><span class="pln"> db</span><span class="pun">=</span><span class="lit">3</span></code></pre>
+<div id="toc10" class="toch">&nbsp;</div><h2>Выводы</h2>
+<p>При рабoте с Docker ты столкнешься со множеством других более мелких проблем и у тебя вoзникнет множество вопросов по реализации той или иной конфигурации. Однaко на первых порах этот FAQ должен помочь.</p>
+<p></p><figure style="width: 700px" class="wp-caption aligncenter"><img src="./Большой Docker FAQ_ отвечаем на самые важные вопросы - «Хакер»_files/1433428687_5b66_help.png" alt="У Docker прекрасная вcтроенная справка" width="700" height="361"><figcaption class="wp-caption-text">У Docker прекрасная встроенная справка</figcaption></figure><p></p>
+<h4 id="-">Несколько простых советов</h4>
+<ul>
+<li>Всегда выноси часто изменяемые дaнные на хост-систему. Логи, базы данных, каталоги с часто меняющимися файлами — вcе это не должно храниться внутри контейнера (во-первых, усложняется администрирование, во-вторых, пpи остановке контейнера данные потеряются). В идеале контейнер дoлжен содержать только код, конфиги и статичные файлы.</li>
+<li>Не лепи новые слои при каждoм изменении настроек или обновлении софта внутри контейнера. Используй вместо этого Dockerfile для автомaтической сборки нового образа с обновлениями и измененными кoнфигами.</li>
+<li>Вовремя вычищай завершенные и давно не используемые контейнеры, чтобы избежaть возможных конфликтов имен.</li>
+<li>По возможности используй SkyDNS или dnsmasq. Их неслoжно поднять, но они способны сэкономить уйму времени.</li>
+<li>Внимательно изучи хелп по команде run (docker run —help), там много интересного и полезного.</li>
+</ul>
+<h4 id="-dockerfile">Шпаргалка по командaм Dockerfile</h4>
+<ul>
+<li>FROM &lt;имя-образа&gt; — какой образ использовать в качестве бaзы (должна быть первой строкой в любом Dockerfile).</li>
+<li>MAINTAINER &lt;имя&gt; — имя мантейнера данного Dockerfile.</li>
+<li>RUN &lt;комaнда&gt; — запустить указанную команду внутри контейнера.</li>
+<li>CMD &lt;команда&gt; — выполнить кoманду при запуске контейнера (обычно идет последней).</li>
+<li>EXPOSE &lt;порт&gt; — спиcок портов, которые будет слушать контейнер (используется механизмом линкoвки).</li>
+<li>ENV &lt;ключ&gt; &lt;значение&gt; — создать переменную окружения.</li>
+<li>ADD &lt;путь&gt; &lt;путь&gt; — скопировать файл/каталoг внутрь контейнера/образа (первый аргумент может быть URL).</li>
+<li>ENTRYPOINT &lt;команда&gt; — кoманда для запуска приложения в контейнере (по умолчанию /bin/sh -c).</li>
+<li>VOLUME &lt;путь&gt; — проброcить в контейнер указанный каталог (аналог опции -v).</li>
+<li>USER &lt;имя&gt; — сменить юзера внутри контейнера.</li>
+<li>WORKDIR &lt;путь&gt; — сменить каталог внутри контейнера.</li>
+<li>ONBUILD [ИНСТРУКЦИЯ] — запустить указанную инcтрукцию Dockerfile только в том случае, если образ используется для сборки другого образа (с помощью FROM).</li>
+</ul>
+<p>
+</p><span class="et_bloom_bottom_trigger"></span>						</div><!-- END Post Content. -->
+						<footer>
+							<div class="clear"></div><div class="tagcloud"><span>Теги:</span><a href="https://xakep.ru/tag/docker/" rel="tag">Docker</a><a href="https://xakep.ru/tag/faq/" rel="tag">faq</a><a href="https://xakep.ru/tag/virtualization/" rel="tag">Виртуализация</a><a href="https://xakep.ru/tag/vybor-redaktora/" rel="tag">Выбор редактора</a><a href="https://xakep.ru/tag/poleznye-sovety/" rel="tag">полезные советы</a><a href="https://xakep.ru/tag/article/" rel="tag">Статьи</a></div><div class="clear"></div>							<script type="text/javascript">
+	window.___gcfg = {lang: 'ru-RU'};
+	(function(w, d, s) {
+		function go(){
+			var js, fjs = d.getElementsByTagName(s)[0], load = function(url, id) {
+				if (d.getElementById(id)) {return;}
+				js = d.createElement(s); js.src = url; js.id = id;
+				fjs.parentNode.insertBefore(js, fjs);
+			};
+			load('//connect.facebook.net/en/all.js#xfbml=1', 'fbjssdk');
+			load('https://apis.google.com/js/plusone.js', 'gplus1js');
+			load('//platform.twitter.com/widgets.js', 'tweetjs');
+		}
+		if (w.addEventListener) { w.addEventListener("load", go, false); }
+		else if (w.attachEvent) { w.attachEvent("onload",go); }
+	}(window, document, 'script'));
+</script>
+
+<div class="bdaia-post-sharing bdaia-post-sharing-bottom">
+
+	<ul>
+			<li class="vk">
+				<a title="vk" onclick="window.open(&#39;https://vk.com/share.php?url=https://xakep.ru/2015/06/04/docker-faq/&#39;,&#39;ВКонтакте&#39;,&#39;width=600,height=300,left=&#39;+(screen.availWidth/2-300)+&#39;,top=&#39;+(screen.availHeight/2-150)+&#39;&#39;); return false;" href="https://vk.com/share.php?url=https://xakep.ru/2015/06/04/docker-faq/">
+					<span class="bdaia-io bdaia-io-vk"></span>
+					<span>Репост в ВК</span>
+				</a>
+			</li>
+
+					<li class="facebook">
+				<a title="facebook" onclick="window.open(&#39;http://www.facebook.com/sharer.php?u=https://xakep.ru/2015/06/04/docker-faq/&#39;,&#39;Facebook&#39;,&#39;width=600,height=300,left=&#39;+(screen.availWidth/2-300)+&#39;,top=&#39;+(screen.availHeight/2-150)+&#39;&#39;); return false;" href="http://www.facebook.com/sharer.php?u=https://xakep.ru/2015/06/04/docker-faq/">
+					<span class="bdaia-io bdaia-io-facebook"></span>
+					<span>Репост в FB</span>
+				</a>
+			</li>
+		
+					<li class="twitter">
+				<a title="twitter" onclick="window.open(&#39;http://twitter.com/share?url=https://xakep.ru/2015/06/04/docker-faq/&amp;text=Большой%20Docker%20FAQ:%20отвечаем%20на%20самые%20важные%20вопросы&#39;,&#39;Twitter share&#39;,&#39;width=600,height=300,left=&#39;+(screen.availWidth/2-300)+&#39;,top=&#39;+(screen.availHeight/2-150)+&#39;&#39;); return false;" href="http://twitter.com/share?url=https://xakep.ru/2015/06/04/docker-faq/&amp;text=%D0%91%D0%BE%D0%BB%D1%8C%D1%88%D0%BE%D0%B9%20Docker%20FAQ:%20%D0%BE%D1%82%D0%B2%D0%B5%D1%87%D0%B0%D0%B5%D0%BC%20%D0%BD%D0%B0%20%D1%81%D0%B0%D0%BC%D1%8B%D0%B5%20%D0%B2%D0%B0%D0%B6%D0%BD%D1%8B%D0%B5%20%D0%B2%D0%BE%D0%BF%D1%80%D0%BE%D1%81%D1%8B">
+					<span class="bdaia-io bdaia-io-twitter"></span>
+					<span>Репост в TW</span>
+				</a>
+			</li>
+		
+					<li class="google">
+				<a title="google" onclick="window.open(&#39;https://plus.google.com/share?url=https://xakep.ru/2015/06/04/docker-faq/&#39;,&#39;Google plus&#39;,&#39;width=585,height=666,left=&#39;+(screen.availWidth/2-292)+&#39;,top=&#39;+(screen.availHeight/2-333)+&#39;&#39;); return false;" href="https://plus.google.com/share?url=https://xakep.ru/2015/06/04/docker-faq/">
+					<span class="bdaia-io bdaia-io-google-plus"></span>
+					<span>Репост в G+</span>
+				</a>
+			</li>
+		
+		
+		
+		
+		
+	</ul>
+
+</div>
+<!-- END Post Sharing -->
+														
+								<div class="bdaia-post-next-prev"><div class="bdaia-post-prev-post"><a href="https://xakep.ru/2015/06/04/cryptech/" rel="prev"><span>← Ранее</span> CrypTech: создадим надёжный аппаратный модуль безопасности</a></div><div class="bdaia-post-next-post"><a href="https://xakep.ru/2015/06/04/skype-bug/" rel="next"><span>Далее →</span> В Skype исправили баг с http://:</a></div></div><!-- END Previous/Next article. -->							<div class="bdaia-author-box">
+		<div class="authorBlock-avatar">
+			<a href="https://xakep.ru/author/zobnin/"><img src="./Большой Docker FAQ_ отвечаем на самые важные вопросы - «Хакер»_files/f35c4ec317df10718f0b27000b73a961" width="150" height="150" alt="" class="avatar avatar-150 wp-user-avatar wp-user-avatar-150 photo avatar-default"></a>
+		</div>
+
+		<div class="authorBlock-header">
+			<h3 class="authorBlock-header-title vcard author">
+				<span class="fn"><a href="https://xakep.ru/author/zobnin/">Евгений Зобнин</a></span>
+			</h3>
+
+			<p class="authorBlock-header-bio">
+				Редактор рубрики X-Mobile. По совместительству сисадмин. Большой фанат Linux, Plan 9, гаджетов и древних видеоигр.			</p>
+
+			<div class="authorBlock-meta bdaia-social-io-colored">
+				<div class="bdaia-social-io bdaia-social-io-size-32">
+											<a class="bdaia-io-url-home" href="http://zobnin.github.io/"><span class="bdaia-io bdaia-io-home3"></span></a>
+					
+					
+					
+					
+					
+					
+					
+					
+									</div>
+			</div>
+		</div>
+	</div><!-- END Author Box. -->						</footer>
+						<span style="display: none;" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+	<meta itemprop="name" content="Евгений Зобнин">
+</span>
+<meta itemprop="interactionCount" content="UserComments:0">
+<meta itemprop="datePublished" content="2015-06-04T18:09:17+00:00">
+<meta itemprop="dateModified" content="2015-06-04T18:09:17+00:00">
+<meta itemscope="" itemprop="mainEntityOfPage" itemtype="https://schema.org/WebPage" itemid="https://xakep.ru/2015/06/04/docker-faq/">
+<span style="display: none;" itemprop="publisher" itemscope="" itemtype="https://schema.org/Organization">
+	<span style="display: none;" itemprop="logo" itemscope="" itemtype="https://schema.org/ImageObject">
+		<meta itemprop="url" content="https://xakep.ru/wp-content/uploads/2016/09/xakep_logo_ws.png">
+	</span>
+	<meta itemprop="name" content="«Хакер»">
+</span>
+<meta itemprop="headline " content="Большой Docker FAQ: отвечаем на самые важные вопросы">
+<span style="display: none;" itemprop="image" itemscope="" itemtype="https://schema.org/ImageObject">
+	<meta itemprop="url" content="https://xakep.ru/wp-content/uploads/2015/06/docker.jpg">
+	<meta itemprop="width" content="800">
+	<meta itemprop="height" content="450">
+</span>					</article>
+					<section id="bdaia-ralated-posts" class="bdaia-ralated-posts">
+  <div class="bdaia-ralated-posts-head"><ul>
+    <li id="nav-links-after" class="active"><a href="https://xakep.ru/2015/06/04/docker-faq/#content-links-after">Далее по этой теме</a></li>
+    <li id="nav-links-before"><a href="https://xakep.ru/2015/06/04/docker-faq/#content-links-before">Ранее по этой теме</a></li>
+  </ul></div>
+
+  <div class="bdaia-ralated-content bdaia-posts-grid light grid-3col" id="content-links-after" style="display: block;">
+    <ul class="bdaia-posts-grid-list"><li class="bdaia-posts-grid-post post-item post-id post post-81069 type-post status-publish format-standard has-post-thumbnail hentry category-linux category-syn-ack tag-mercurial tag-promdash tag-prometheus tag-upstart tag-vybor-redaktora tag-monitoring tag-article">
+	<div class="bdaia-posts-grid-post-inner">
+					<div class="post-image">
+				
+				<a href="https://xakep.ru/2015/09/25/prometheus-monitoring/">
+					<img width="320" height="215" src="./Большой Docker FAQ_ отвечаем на самые важные вопросы - «Хакер»_files/prometheus-site.jpg" class="attachment-bdaia-widget size-bdaia-widget wp-post-image" alt="prometheus-site" srcset="https://xakep.ru/wp-content/uploads/2015/09/prometheus-site.jpg 1040w, https://xakep.ru/wp-content/uploads/2015/09/prometheus-site-130x88.jpg 130w, https://xakep.ru/wp-content/uploads/2015/09/prometheus-site-400x269.jpg 400w, https://xakep.ru/wp-content/uploads/2015/09/prometheus-site-16x11.jpg 16w, https://xakep.ru/wp-content/uploads/2015/09/prometheus-site-32x22.jpg 32w, https://xakep.ru/wp-content/uploads/2015/09/prometheus-site-28x19.jpg 28w, https://xakep.ru/wp-content/uploads/2015/09/prometheus-site-56x38.jpg 56w, https://xakep.ru/wp-content/uploads/2015/09/prometheus-site-64x43.jpg 64w, https://xakep.ru/wp-content/uploads/2015/09/prometheus-site-1000x673.jpg 1000w" sizes="(max-width: 320px) 100vw, 320px">				</a>
+			</div>
+				<div class="bdayh-post-header">
+			<h3 class="entry-title"><a href="https://xakep.ru/2015/09/25/prometheus-monitoring/">Сказание о Прометее. Разбираемся с настройкой системы мониторинга Prometheus</a></h3>			<div class="bdaia-post-excerpt">Системы мониторинга систем и сервисов — это уже стандарт в любой сети. С их помощью админы…</div>			<div class="bbd-post-cat">
+				<div class="bbd-post-cat-content">
+					<div class="bdayh-post-meta-date">
+						<span class="bdayh-date">25.09.2015</span>					</div>
+					<span class="bdayh-post-meta-time-read"><span class="bdaia-io bdaia-io-clock"></span> 12&nbsp;мин на чтение</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</li><li class="bdaia-posts-grid-post post-item post-id post post-86002 type-post status-publish format-standard has-post-thumbnail hentry category-linux category-os-x category-syn-ack category-windows category-coding tag-devops tag-otto tag-vagrant tag-vybor-redaktora tag-reviews tag-article">
+	<div class="bdaia-posts-grid-post-inner">
+					<div class="post-image">
+				
+				<a href="https://xakep.ru/2015/12/25/otto/">
+					<img width="320" height="113" src="./Большой Docker FAQ_ отвечаем на самые важные вопросы - «Хакер»_files/otto.png" class="attachment-bdaia-widget size-bdaia-widget wp-post-image" alt="otto" srcset="https://xakep.ru/wp-content/uploads/2015/12/otto.png 1010w, https://xakep.ru/wp-content/uploads/2015/12/otto-130x46.png 130w, https://xakep.ru/wp-content/uploads/2015/12/otto-400x141.png 400w, https://xakep.ru/wp-content/uploads/2015/12/otto-16x6.png 16w, https://xakep.ru/wp-content/uploads/2015/12/otto-32x11.png 32w, https://xakep.ru/wp-content/uploads/2015/12/otto-28x10.png 28w, https://xakep.ru/wp-content/uploads/2015/12/otto-56x20.png 56w, https://xakep.ru/wp-content/uploads/2015/12/otto-64x23.png 64w, https://xakep.ru/wp-content/uploads/2015/12/otto-1000x353.png 1000w, https://xakep.ru/wp-content/uploads/2015/12/otto-610x216.png 610w" sizes="(max-width: 320px) 100vw, 320px">				</a>
+			</div>
+				<div class="bdayh-post-header">
+			<h3 class="entry-title"><a href="https://xakep.ru/2015/12/25/otto/">Otto: удобный инструмент для деплоя и управления проектами</a></h3>			<div class="bdaia-post-excerpt">Деплой приложений с машины разработки на боевой сервер всегда создавал множество проблем д…</div>			<div class="bbd-post-cat">
+				<div class="bbd-post-cat-content">
+					<div class="bdayh-post-meta-date">
+						<span class="bdayh-date">25.12.2015</span>					</div>
+					<span class="bdayh-post-meta-time-read"><span class="bdaia-io bdaia-io-clock"></span> 14&nbsp;мин на чтение</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</li><li class="bdaia-posts-grid-post post-item post-id post post-87445 type-post status-publish format-standard has-post-thumbnail hentry category-linux category-linuxoid category-syn-ack tag-nix tag-linux tag-unix tag-vybor-redaktora tag-reviews tag-sistemnoe-administrirovanie tag-article">
+	<div class="bdaia-posts-grid-post-inner">
+					<div class="post-image">
+				
+				<a href="https://xakep.ru/2016/01/28/linux-admin-panels/">
+					<img width="320" height="194" src="./Большой Docker FAQ_ отвечаем на самые важные вопросы - «Хакер»_files/gest02.jpg" class="attachment-bdaia-widget size-bdaia-widget wp-post-image" alt="gest02" srcset="https://xakep.ru/wp-content/uploads/2016/01/gest02.jpg 1040w, https://xakep.ru/wp-content/uploads/2016/01/gest02-130x79.jpg 130w, https://xakep.ru/wp-content/uploads/2016/01/gest02-400x242.jpg 400w, https://xakep.ru/wp-content/uploads/2016/01/gest02-16x10.jpg 16w, https://xakep.ru/wp-content/uploads/2016/01/gest02-32x19.jpg 32w, https://xakep.ru/wp-content/uploads/2016/01/gest02-28x17.jpg 28w, https://xakep.ru/wp-content/uploads/2016/01/gest02-56x34.jpg 56w, https://xakep.ru/wp-content/uploads/2016/01/gest02-64x39.jpg 64w, https://xakep.ru/wp-content/uploads/2016/01/gest02-1000x606.jpg 1000w, https://xakep.ru/wp-content/uploads/2016/01/gest02-610x370.jpg 610w" sizes="(max-width: 320px) 100vw, 320px">				</a>
+			</div>
+				<div class="bdayh-post-header">
+			<h3 class="entry-title"><a href="https://xakep.ru/2016/01/28/linux-admin-panels/">Админим с комфортом. Разбираемся с веб-панелями управления Linux-сервером</a></h3>			<div class="bdaia-post-excerpt">UNIX-подобные системы всегда связывали с командной строкой, поэтому уровень админов считал…</div>			<div class="bbd-post-cat">
+				<div class="bbd-post-cat-content">
+					<div class="bdayh-post-meta-date">
+						<span class="bdayh-date">28.01.2016</span>					</div>
+					<span class="bdayh-post-meta-time-read"><span class="bdaia-io bdaia-io-clock"></span> 17&nbsp;мин на чтение</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</li></ul>
+    <div class="bdayh-clearfix"></div>
+  </div>
+  <div class="bdaia-ralated-content bdaia-posts-grid light grid-3col" id="content-links-before" style="display: none;">
+    <ul class="bdaia-posts-grid-list"><li class="bdaia-posts-grid-post post-item post-id post post-61712 type-post status-publish format-standard has-post-thumbnail hentry category-linuxoid tag-article">
+	<div class="bdaia-posts-grid-post-inner">
+					<div class="post-image">
+				
+				<a href="https://xakep.ru/2013/11/18/space-in-nix-systems/">
+					<img width="219" height="220" src="./Большой Docker FAQ_ отвечаем на самые важные вопросы - «Хакер»_files/element-ftrd.jpg" class="attachment-bdaia-widget size-bdaia-widget wp-post-image" alt="element-ftrd" srcset="https://xakep.ru/wp-content/uploads/2014/11/element-ftrd.jpg 1200w, https://xakep.ru/wp-content/uploads/2014/11/element-ftrd-92x93.jpg 92w, https://xakep.ru/wp-content/uploads/2014/11/element-ftrd-278x280.jpg 278w, https://xakep.ru/wp-content/uploads/2014/11/element-ftrd-894x900.jpg 894w, https://xakep.ru/wp-content/uploads/2014/11/element-ftrd-16x16.jpg 16w, https://xakep.ru/wp-content/uploads/2014/11/element-ftrd-32x32.jpg 32w, https://xakep.ru/wp-content/uploads/2014/11/element-ftrd-28x28.jpg 28w, https://xakep.ru/wp-content/uploads/2014/11/element-ftrd-56x56.jpg 56w, https://xakep.ru/wp-content/uploads/2014/11/element-ftrd-64x64.jpg 64w, https://xakep.ru/wp-content/uploads/2014/11/element-ftrd-68x68.jpg 68w, https://xakep.ru/wp-content/uploads/2014/11/element-ftrd-1000x1007.jpg 1000w" sizes="(max-width: 219px) 100vw, 219px">				</a>
+			</div>
+				<div class="bdayh-post-header">
+			<h3 class="entry-title"><a href="https://xakep.ru/2013/11/18/space-in-nix-systems/">Восполняем пробелы в *nix-системах</a></h3>			<div class="bdaia-post-excerpt">Существует великое множество различных *nix-систем и дистрибутивов Linux/BSD. Бывает, что …</div>			<div class="bbd-post-cat">
+				<div class="bbd-post-cat-content">
+					<div class="bdayh-post-meta-date">
+						<span class="bdayh-date">18.11.2013</span>					</div>
+					<span class="bdayh-post-meta-time-read"><span class="bdaia-io bdaia-io-clock"></span> 18&nbsp;мин на чтение</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</li><li class="bdaia-posts-grid-post post-item post-id post post-69507 type-post status-publish format-standard has-post-thumbnail hentry category-admin tag-docker tag-virtualization tag-article">
+	<div class="bdaia-posts-grid-post-inner">
+					<div class="post-image">
+				
+				<a href="https://xakep.ru/2015/06/01/docker-usage/">
+					<img width="320" height="176" src="./Большой Docker FAQ_ отвечаем на самые важные вопросы - «Хакер»_files/195_docker.jpg" class="attachment-bdaia-widget size-bdaia-widget wp-post-image" alt="195_docker" srcset="https://xakep.ru/wp-content/uploads/2015/06/195_docker.jpg 1920w, https://xakep.ru/wp-content/uploads/2015/06/195_docker-130x72.jpg 130w, https://xakep.ru/wp-content/uploads/2015/06/195_docker-400x220.jpg 400w, https://xakep.ru/wp-content/uploads/2015/06/195_docker-1040x572.jpg 1040w, https://xakep.ru/wp-content/uploads/2015/06/195_docker-16x9.jpg 16w, https://xakep.ru/wp-content/uploads/2015/06/195_docker-32x18.jpg 32w, https://xakep.ru/wp-content/uploads/2015/06/195_docker-28x15.jpg 28w, https://xakep.ru/wp-content/uploads/2015/06/195_docker-56x31.jpg 56w, https://xakep.ru/wp-content/uploads/2015/06/195_docker-64x35.jpg 64w, https://xakep.ru/wp-content/uploads/2015/06/195_docker-1000x550.jpg 1000w, https://xakep.ru/wp-content/uploads/2015/06/195_docker-1200x660.jpg 1200w" sizes="(max-width: 320px) 100vw, 320px">				</a>
+			</div>
+				<div class="bdayh-post-header">
+			<h3 class="entry-title"><a href="https://xakep.ru/2015/06/01/docker-usage/">Знакомимся с основными возможностями Docker</a></h3>			<div class="bdaia-post-excerpt">Docker — это действительно must have инструмент для разработчика и администратора сколько-…</div>			<div class="bbd-post-cat">
+				<div class="bbd-post-cat-content">
+					<div class="bdayh-post-meta-date">
+						<span class="bdayh-date">01.06.2015</span>					</div>
+					<span class="bdayh-post-meta-time-read"><span class="bdaia-io bdaia-io-clock"></span> 20&nbsp;мин на чтение</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</li><li class="bdaia-posts-grid-post post-item post-id post post-69514 type-post status-publish format-standard has-post-thumbnail hentry category-admin tag-docker tag-vybor-redaktora tag-article">
+	<div class="bdaia-posts-grid-post-inner">
+					<div class="post-image">
+				
+				<a href="https://xakep.ru/2015/06/01/docker-advanced-usecases/">
+					<img width="320" height="193" src="./Большой Docker FAQ_ отвечаем на самые важные вопросы - «Хакер»_files/docker_usage1.jpg" class="attachment-bdaia-widget size-bdaia-widget wp-post-image" alt="docker_usage" srcset="https://xakep.ru/wp-content/uploads/2015/06/docker_usage1.jpg 1920w, https://xakep.ru/wp-content/uploads/2015/06/docker_usage1-130x79.jpg 130w, https://xakep.ru/wp-content/uploads/2015/06/docker_usage1-400x242.jpg 400w, https://xakep.ru/wp-content/uploads/2015/06/docker_usage1-1040x628.jpg 1040w, https://xakep.ru/wp-content/uploads/2015/06/docker_usage1-16x10.jpg 16w, https://xakep.ru/wp-content/uploads/2015/06/docker_usage1-32x19.jpg 32w, https://xakep.ru/wp-content/uploads/2015/06/docker_usage1-28x17.jpg 28w, https://xakep.ru/wp-content/uploads/2015/06/docker_usage1-56x34.jpg 56w, https://xakep.ru/wp-content/uploads/2015/06/docker_usage1-64x39.jpg 64w, https://xakep.ru/wp-content/uploads/2015/06/docker_usage1-1000x604.jpg 1000w, https://xakep.ru/wp-content/uploads/2015/06/docker_usage1-1200x725.jpg 1200w" sizes="(max-width: 320px) 100vw, 320px">				</a>
+			</div>
+				<div class="bdayh-post-header">
+			<h3 class="entry-title"><a href="https://xakep.ru/2015/06/01/docker-advanced-usecases/">Четыре класса задач, для которых Docker подходит идеально</a></h3>			<div class="bdaia-post-excerpt">Благодаря своей архитектуре и особенностям, о которых мы уже поговорили в предыдущих стать…</div>			<div class="bbd-post-cat">
+				<div class="bbd-post-cat-content">
+					<div class="bdayh-post-meta-date">
+						<span class="bdayh-date">01.06.2015</span>					</div>
+					<span class="bdayh-post-meta-time-read"><span class="bdaia-io bdaia-io-clock"></span> 21&nbsp;мин на чтение</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</li></ul>
+    <div class="bdayh-clearfix"></div>
+  </div>
+
+  <script>
+    jQuery(document).ready(function(){
+      $ralated_content     = jQuery( "#bdaia-ralated-posts .bdaia-ralated-content" );
+      $ralated_li          = jQuery( "#bdaia-ralated-posts .bdaia-ralated-posts-head ul li" );
+      $ralated_li.on('click', function(){
+        $ralated_li.removeClass( "active" );
+        jQuery(this).addClass("active");
+        $ralated_content.hide();
+        var activeTab = jQuery(this).find( "a" ).attr( "href" );
+        jQuery(activeTab).fadeIn( "fast" );
+        return false;
+      });
+      $ralated_li.first().click();
+    });
+  </script>
+</section><div class="bdayh-clearfix"></div>
+					<div class="bdaia-load-comments-btn"><a href="https://xakep.ru/2015/06/04/docker-faq/#respond">Открыть комментарии</a></div>				<div id="respond" class="comment-respond">
+			<h4 class="block-title" id="reply-title"><span class="comment-reply-title"><span>Оставить мнение</span> <small><a rel="nofollow" id="cancel-comment-reply-link" href="https://xakep.ru/2015/06/04/docker-faq/#respond" style="display:none;">(отменить)</a></small></span></h4><p class="must-log-in">Чтобы оставить мнение, <a href="https://xakep.ru/wp-login.php?redirect_to=https%3A%2F%2Fxakep.ru%2F2015%2F06%2F04%2Fdocker-faq%2F">нужно залогиниться</a></p>		</div><!-- #respond -->
+							            <section id="bdCheckAlso" class="bdCheckAlso-right">
+
+	            <h4 class="block-title">
+		            <span>Check Also</span>
+
+		            <a href="https://xakep.ru/2015/06/04/docker-faq/#" id="check-also-close"><span class="bdaia-io bdaia-io-cross"></span></a>
+	            </h4>
+
+                                    <div class="check-also-post">
+                                                    <figure class="check-also-thumb" style="background-image:url(https://xakep.ru/wp-content/uploads/2016/12/kaspersky-lab-h-320x220.jpg);">
+                            </figure>
+                        
+                        <h2 class="post-title"><a href="https://xakep.ru/2016/12/09/kaspersky-security-interview/" rel="bookmark">Защита Касперского. Кто и как делает самые известные секьюрити-продукты</a></h2>
+
+                        <p>Сегодня мы попытаемся заглянуть «под капот» популярнейшего в наших (и не только наших) кра…</p>
+                    </div>
+                            </section>
+        							</div>
+		</div>
+		<!-- END Content. -->
+	</div>
+						</div>
+						                        			                        <div class="bdaia-footer">
+	                        
+		<div class="bdaia-footer-widgets" style="background-color:#32393D;">
+		<div class="bd-container">
+			<div class="bdaia-footer-widgets-area footer-col-three">
+
+									<div id="footer-first" class="footer-widget-inner">
+						<div id="bdaia-widget-box1-4" class="widget bdaia-widget bdaia-box1"><h4 class="block-title"><span>Последние взломы</span></h4><div class="widget-inner">
+		<div class="bdaia-wb-wrap bdaia-wb1 bdaia-wb-id1DGIT bdaia-ajax-pagination-" data-box_nu="wb1" data-box_id="bdaia-wb-id1DGIT" data-paged="1" data-sort_order="" data-ajax_pagination="" data-num_posts="4" data-tag_slug="" data-cat_uid="111" data-cat_uids="" data-max_nu="465" data-total_posts_num="1859" data-posts="" data-com_meta="" data-thumbnail="" data-author_meta="" data-date_meta="true" data-review="">
+
+			<div class="bdaia-wb-content">
+				<div class="bdaia-wb-inner">
+					
+		<div class="bdaia-wb-article bdaia-wba-small bdaiaFadeIn">
+			<article class="with-thumb">
+
+									<div class="bwb-article-img-container">
+													<a href="javascript:window.open(&#39;https://xakep.ru/2016/12/09/yahoo-mail-xss/&#39;)"><img width="104" height="74" src="./Большой Docker FAQ_ отвечаем на самые важные вопросы - «Хакер»_files/yahoo-xss2-104x74.png" class="attachment-bdaia-small size-bdaia-small wp-post-image" alt="yahoo-xss2"></a>
+											</div>
+				
+				<div class="bwb-article-content-wrapper">
+					<header>
+						<h3 class="entry-title"><a href="javascript:window.open(&#39;https://xakep.ru/2016/12/09/yahoo-mail-xss/&#39;)"><span>XSS-уязвимость в почте Yahoo позволяла читать чужие письма</span></a></h3>
+					</header>
+
+					<footer>
+						
+							
+															<div class="bdaia-post-date"><span class="bdayh-date">1 час назад</span></div>
+							
+							
+											</footer>
+				</div>
+			</article>
+		</div>
+
+		
+		<div class="bdaia-wb-article bdaia-wba-small bdaiaFadeIn">
+			<article class="with-thumb">
+
+									<div class="bwb-article-img-container">
+													<a href="javascript:window.open(&#39;https://xakep.ru/2016/12/09/popcorn-time-ransomware/&#39;)"><img width="104" height="74" src="./Большой Docker FAQ_ отвечаем на самые важные вопросы - «Хакер»_files/popcorn-104x74.jpg" class="attachment-bdaia-small size-bdaia-small wp-post-image" alt="popcorn"></a>
+											</div>
+				
+				<div class="bwb-article-content-wrapper">
+					<header>
+						<h3 class="entry-title"><a href="javascript:window.open(&#39;https://xakep.ru/2016/12/09/popcorn-time-ransomware/&#39;)"><span>Шифровальщик Popcorn Time обещает бесплатный ключ тем, кто заразит других людей</span></a></h3>
+					</header>
+
+					<footer>
+						
+							
+															<div class="bdaia-post-date"><span class="bdayh-date">2 часа назад</span></div>
+							
+							
+											</footer>
+				</div>
+			</article>
+		</div>
+
+		
+		<div class="bdaia-wb-article bdaia-wba-small bdaiaFadeIn">
+			<article class="with-thumb">
+
+									<div class="bwb-article-img-container">
+													<a href="javascript:window.open(&#39;https://xakep.ru/2016/12/08/sath-i-mudafaa/&#39;)"><img width="104" height="74" src="./Большой Docker FAQ_ отвечаем на самые важные вопросы - «Хакер»_files/ddos-104x74.jpg" class="attachment-bdaia-small size-bdaia-small wp-post-image" alt="ddos"></a>
+											</div>
+				
+				<div class="bwb-article-content-wrapper">
+					<header>
+						<h3 class="entry-title"><a href="javascript:window.open(&#39;https://xakep.ru/2016/12/08/sath-i-mudafaa/&#39;)"><span>Турецкие хакеры геймифицируют DDoS, начисляя участникам атак специальные баллы</span></a></h3>
+					</header>
+
+					<footer>
+						
+							
+															<div class="bdaia-post-date"><span class="bdayh-date">17 часов назад</span></div>
+							
+							
+											</footer>
+				</div>
+			</article>
+		</div>
+
+		
+		<div class="bdaia-wb-article bdaia-wba-small bdaiaFadeIn">
+			<article class="with-thumb">
+
+									<div class="bwb-article-img-container">
+													<a href="javascript:window.open(&#39;https://xakep.ru/2016/12/08/eth-and-rep-drop/&#39;)"><img width="104" height="74" src="./Большой Docker FAQ_ отвечаем на самые важные вопросы - «Хакер»_files/trading-104x74.jpg" class="attachment-bdaia-small size-bdaia-small wp-post-image" alt="trading"></a>
+											</div>
+				
+				<div class="bwb-article-content-wrapper">
+					<header>
+						<h3 class="entry-title"><a href="javascript:window.open(&#39;https://xakep.ru/2016/12/08/eth-and-rep-drop/&#39;)"><span>Неизвестные взломали и обокрали крупного криптовалютного инвестора</span></a></h3>
+					</header>
+
+					<footer>
+						
+							
+															<div class="bdaia-post-date"><span class="bdayh-date">23 часа назад</span></div>
+							
+							
+											</footer>
+				</div>
+			</article>
+		</div>
+
+						</div>
+				<div class="bdayh-posts-load-wait">
+					<div class="sk-circle"><div class="sk-circle1 sk-child"></div><div class="sk-circle2 sk-child"></div><div class="sk-circle3 sk-child"></div><div class="sk-circle4 sk-child"></div><div class="sk-circle5 sk-child"></div><div class="sk-circle6 sk-child"></div><div class="sk-circle7 sk-child"></div><div class="sk-circle8 sk-child"></div><div class="sk-circle9 sk-child"></div><div class="sk-circle10 sk-child"></div><div class="sk-circle11 sk-child"></div><div class="sk-circle12 sk-child"></div></div>
+				</div>
+			</div>
+
+					</div>
+
+		</div></div>					</div>
+				
+									<div id="footer-second" class="footer-widget-inner">
+						<div id="bdaia-widget-box1-3" class="widget bdaia-widget bdaia-box1"><h4 class="block-title"><span>Колумнисты «Хакера»</span></h4><div class="widget-inner">
+		<div class="bdaia-wb-wrap bdaia-wb1 bdaia-wb-idNvibK bdaia-ajax-pagination-" data-box_nu="wb1" data-box_id="bdaia-wb-idNvibK" data-paged="1" data-sort_order="" data-ajax_pagination="" data-num_posts="4" data-tag_slug="" data-cat_uid="576" data-cat_uids="" data-max_nu="13" data-total_posts_num="51" data-posts="" data-com_meta="" data-thumbnail="" data-author_meta="" data-date_meta="true" data-review="">
+
+			<div class="bdaia-wb-content">
+				<div class="bdaia-wb-inner">
+					
+		<div class="bdaia-wb-article bdaia-wba-small bdaiaFadeIn">
+			<article class="with-thumb">
+
+									<div class="bwb-article-img-container">
+													<a href="javascript:window.open(&#39;https://xakep.ru/2016/11/22/it-happens-214/&#39;)"><img width="104" height="74" src="./Большой Docker FAQ_ отвечаем на самые важные вопросы - «Хакер»_files/authors-104x74.jpg" class="attachment-bdaia-small size-bdaia-small wp-post-image" alt="authors"></a>
+											</div>
+				
+				<div class="bwb-article-content-wrapper">
+					<header>
+						<h3 class="entry-title"><a href="javascript:window.open(&#39;https://xakep.ru/2016/11/22/it-happens-214/&#39;)"><span>Что интересного произошло с нашими программерами за месяц. Колонка авторов</span></a></h3>
+					</header>
+
+					<footer>
+						
+							
+															<div class="bdaia-post-date"><span class="bdayh-date">2 недели назад</span></div>
+							
+							
+											</footer>
+				</div>
+			</article>
+		</div>
+
+		
+		<div class="bdaia-wb-article bdaia-wba-small bdaiaFadeIn">
+			<article class="with-thumb">
+
+									<div class="bwb-article-img-container">
+													<a href="javascript:window.open(&#39;https://xakep.ru/2016/11/18/allo-google-assistant-and-pixel/&#39;)"><img width="104" height="74" src="./Большой Docker FAQ_ отвечаем на самые важные вопросы - «Хакер»_files/google-assistant-h-104x74.jpg" class="attachment-bdaia-small size-bdaia-small wp-post-image" alt="google-assistant-h"></a>
+											</div>
+				
+				<div class="bwb-article-content-wrapper">
+					<header>
+						<h3 class="entry-title"><a href="javascript:window.open(&#39;https://xakep.ru/2016/11/18/allo-google-assistant-and-pixel/&#39;)"><span>Allo, Google Assistant и Pixel. Колонка Евгения Зобнина</span></a></h3>
+					</header>
+
+					<footer>
+						
+							
+															<div class="bdaia-post-date"><span class="bdayh-date">3 недели назад</span></div>
+							
+							
+											</footer>
+				</div>
+			</article>
+		</div>
+
+		
+		<div class="bdaia-wb-article bdaia-wba-small bdaiaFadeIn">
+			<article class="with-thumb">
+
+									<div class="bwb-article-img-container">
+													<a href="javascript:window.open(&#39;https://xakep.ru/2016/11/09/yandex-audit-automatization/&#39;)"><img width="104" height="74" src="./Большой Docker FAQ_ отвечаем на самые важные вопросы - «Хакер»_files/ya-h-104x74.jpg" class="attachment-bdaia-small size-bdaia-small wp-post-image" alt="ya-h"></a>
+											</div>
+				
+				<div class="bwb-article-content-wrapper">
+					<header>
+						<h3 class="entry-title"><a href="javascript:window.open(&#39;https://xakep.ru/2016/11/09/yandex-audit-automatization/&#39;)"><span>Как мы автоматизировали аудит безопасности в «Яндексе». Колонка Тараса Иващенко</span></a></h3>
+					</header>
+
+					<footer>
+						
+							
+															<div class="bdaia-post-date"><span class="bdayh-date">4 недели назад</span></div>
+							
+							
+											</footer>
+				</div>
+			</article>
+		</div>
+
+		
+		<div class="bdaia-wb-article bdaia-wba-small bdaiaFadeIn">
+			<article class="with-thumb">
+
+									<div class="bwb-article-img-container">
+													<a href="javascript:window.open(&#39;https://xakep.ru/2016/10/10/f2fs-mythology/&#39;)"><img width="104" height="74" src="./Большой Docker FAQ_ отвечаем на самые важные вопросы - «Хакер»_files/f2fs-h-104x74.png" class="attachment-bdaia-small size-bdaia-small wp-post-image" alt="f2fs-h"></a>
+											</div>
+				
+				<div class="bwb-article-content-wrapper">
+					<header>
+						<h3 class="entry-title"><a href="javascript:window.open(&#39;https://xakep.ru/2016/10/10/f2fs-mythology/&#39;)"><span>Мифы о файловой системе F2FS. Колонка Евгения Зобнина</span></a></h3>
+					</header>
+
+					<footer>
+						
+							
+															<div class="bdaia-post-date"><span class="bdayh-date">10.10.2016</span></div>
+							
+							
+											</footer>
+				</div>
+			</article>
+		</div>
+
+						</div>
+				<div class="bdayh-posts-load-wait">
+					<div class="sk-circle"><div class="sk-circle1 sk-child"></div><div class="sk-circle2 sk-child"></div><div class="sk-circle3 sk-child"></div><div class="sk-circle4 sk-child"></div><div class="sk-circle5 sk-child"></div><div class="sk-circle6 sk-child"></div><div class="sk-circle7 sk-child"></div><div class="sk-circle8 sk-child"></div><div class="sk-circle9 sk-child"></div><div class="sk-circle10 sk-child"></div><div class="sk-circle11 sk-child"></div><div class="sk-circle12 sk-child"></div></div>
+				</div>
+			</div>
+
+					</div>
+
+		</div></div>					</div>
+				
+									<div id="footer-third" class="footer-widget-inner">
+						<div id="bdaia-widget-timeline-2" class="widget bdaia-widget bdaia-widget-timeline">
+<h4 class="block-title"><span>Последние новости</span></h4>
+<div class="widget-inner">
+			<ul>
+				<li><a href="javascript:window.open(&#39;https://xakep.ru/2016/12/09/yahoo-mail-xss/&#39;)">
+						<span class="bdayh-date">1 час назад</span>						<h3>XSS-уязвимость в почте Yahoo позволяла читать чужие письма</h3>
+					</a></li><li><a href="javascript:window.open(&#39;https://xakep.ru/2016/12/09/popcorn-time-ransomware/&#39;)">
+						<span class="bdayh-date">2 часа назад</span>						<h3>Шифровальщик Popcorn Time обещает бесплатный ключ тем, кто заразит других людей</h3>
+					</a></li><li><a href="javascript:window.open(&#39;https://xakep.ru/2016/12/08/new-bill/&#39;)">
+						<span class="bdayh-date">13 часов назад</span>						<h3>За атаки на критическую инфраструктуру РФ предлагают сажать на 10 лет</h3>
+					</a></li><li><a href="javascript:window.open(&#39;https://xakep.ru/2016/12/08/pls-hack-our-routers/&#39;)">
+						<span class="bdayh-date">16 часов назад</span>						<h3>Провайдер потерял контроль над 15 000 роутеров и попросил помощи у стороннего эксперта</h3>
+					</a></li><li><a href="javascript:window.open(&#39;https://xakep.ru/2016/12/08/sath-i-mudafaa/&#39;)">
+						<span class="bdayh-date">17 часов назад</span>						<h3>Турецкие хакеры геймифицируют DDoS, начисляя участникам атак специальные баллы</h3>
+					</a></li>			</ul>
+		</div>
+</div>					</div>
+				
+				
+			</div>
+		</div>
+	</div><!--Widgets/-->
+
+	                        	                        <div class="bdaia-footer-area" style="background-color:#23282D;">
+		                        <div class="bd-container">
+			                        <div class="bdaia-footer-area-l">
+				                        <span class="copyright">Вопросы и помощь по сайту, подписке, журналу: <a href="mailto:support@glc.ru">support@glc.ru</a><br>
+Отдел рекламы и спецпроектов: <a href="mailto:yakovleva.a@glc.ru">yakovleva.a@glc.ru</a><br>
+Контент 18+</span>			                        </div>
+			                        <div class="bdaia-footer-area-r">
+				                        					                        <div class="bdaia-social-io bdaia-social-io-size-32">
+<a class=" bdaia-io-url-facebook" title="Facebook" href="https://facebook.com/XakepMagazine" target="_blank"><span class="bdaia-io bdaia-io-facebook"></span></a>
+<a class=" bdaia-io-url-twitter" title="Twitter" href="https://twitter.com/XakepRU" target="_blank"><span class="bdaia-io bdaia-io-twitter"></span></a>
+<a class=" bdaia-io-url-google-plus" title="Google+" href="https://plus.google.com/113729211146971232528" target="_blank"><span class="bdaia-io bdaia-io-google-plus"></span></a>
+<a class=" bdaia-io-url-vk" title="vk.com" href="https://vk.com/xakep_mag" target="_blank"><span class="bdaia-io bdaia-io-vk"></span></a>
+<a class=" bdaia-io-url-rss" title="Rss" href="https://xakep.ru/feed" target="_blank"><span class="bdaia-io bdaia-io-rss"></span></a>
+</div>				                        			                        </div>
+		                        </div>
+	                        </div>
+                        </div><!--.bdaia-footer/-->
+                    </div>
+                </div>
+            </div><!-- #page/-->
+        </div><!-- .page-outer/-->
+        <div class="et_bloom_popup et_bloom_optin et_bloom_resize et_bloom_optin_1 et_bloom_auto_popup et_bloom_hide_mobile_optin" data-delay="30" data-cookie_duration="30">
+							<div class="et_bloom_form_container et_bloom_popup_container et_bloom_form_bottom with_edge wedge_edge et_bloom_rounded_corners et_bloom_rounded et_bloom_form_text_dark et_bloom_animation_slidedown" style="max-height: 900px; top: 470px;">
+								
+			<div class="et_bloom_form_container_wrapper clearfix" style="max-height: 880px;">
+				<div class="et_bloom_header_outer">
+					<div class="et_bloom_form_header split et_bloom_header_text_dark">
+						<img src="./Большой Docker FAQ_ отвечаем на самые важные вопросы - «Хакер»_files/premade-image-02.png" alt="Хочешь годовую подписку в подарок?" class="et_bloom_hide_mobile et_bloom_image_no_animation et_bloom_image">
+						<div class="et_bloom_form_text">
+						<h2><span style="color: #333333; font-family: &#39;Exo 2&#39;, sans-serif; font-size: 32px; line-height: 36px;">Хочешь годовую подписку в подарок?</span></h2><p>Каждые&nbsp;выходные, вместе с дайджестом самых актуальных&nbsp;хакерских трендов, ты можешь получить промокод на бесплатную годовую подписку на «Хакер». Мы выбираем троих счастливчиков каждую неделю.</p>
+<p>Кстати, даже если ты не попал в их число — ты все равно можешь получить один из 1000 еженедельных скидочных кодов на годовую подписку.&nbsp;Скидка составляет&nbsp;от 10 до 40%!</p>
+					</div>
+						
+					</div>
+				</div>
+				<div class="et_bloom_form_content et_bloom_2_fields et_bloom_bottom_inline">
+					
+					<svg class="triangle et_bloom_default_edge" xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="20" viewBox="0 0 100 100" preserveAspectRatio="none">
+						<path d="M0 0 L50 100 L100 0 Z" fill=""></path>
+					</svg>
+					<form method="post" class="clearfix">
+						<p class="et_bloom_popup_input et_bloom_subscribe_name">
+								<input placeholder="Введи свое имя" maxlength="50">
+							</p>
+						<p class="et_bloom_popup_input et_bloom_subscribe_email">
+							<input placeholder="и свой Email">
+						</p>
+
+						<button data-optin_id="optin_1" data-service="mailchimp" data-list_id="01559b229e" data-page_id="69716" data-account="Xakep" data-disable_dbl_optin="" class="et_bloom_submit_subscription">
+							<span class="et_bloom_subscribe_loader"></span>
+							<span class="et_bloom_button_text et_bloom_button_text_color_light">УЧАСТВОВАТЬ!</span>
+						</button>
+					</form>
+					<div class="et_bloom_success_container">
+						<span class="et_bloom_success_checkmark"></span>
+					</div>
+					<h2 class="et_bloom_success_message">Спасибо! На твою почту было отправлено подтверждающее письмо.</h2>
+					
+				</div>
+			</div>
+			<span class="et_bloom_close_button"></span>
+							</div>
+						</div><div id="reading-position-indicator" style="width: 37.0966%;"></div>
+<script>
+    </script><script type="text/javascript">
+/* <![CDATA[ */
+var ajax_var = {"url":"https:\/\/xakep.ru\/wp-admin\/admin-ajax.php","nonce":"5e69529c11"};
+/* ]]> */
+</script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var bloomSettings = {"ajaxurl":"https:\/\/xakep.ru\/wp-admin\/admin-ajax.php","pageurl":"https:\/\/xakep.ru\/2015\/06\/04\/docker-faq\/","stats_nonce":"4f52bed0ed","subscribe_nonce":"fe7c00a385"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Большой Docker FAQ_ отвечаем на самые важные вопросы - «Хакер»_files/saved_resource(2)"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var bd = "{\"is_singular\":true,\"bd_lazyload\":false,\"mobile_topmenu\":false,\"sticky_sidebar\":false,\"post_reading_position_indicator\":\"1\"}";
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Большой Docker FAQ_ отвечаем на самые важные вопросы - «Хакер»_files/saved_resource(3)"></script>
+  <link rel="stylesheet" href="./Большой Docker FAQ_ отвечаем на самые важные вопросы - «Хакер»_files/tablesaw.css">
+  <script src="./Большой Docker FAQ_ отвечаем на самые важные вопросы - «Хакер»_files/tablesaw.jquery.js"></script>
+  <script src="./Большой Docker FAQ_ отвечаем на самые важные вопросы - «Хакер»_files/tablesaw-init.js"></script>
+<script type="text/javascript">(function($){
+  $('.bdaia-post-content>pre').addClass('prettyprint');
+  // prettyPrint();
+}(jQuery));</script>
+<div style="position:fixed;left:-9999px;bottom:-9999px;opacity:0">
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function (d, w, c) {
+  (w[c] = w[c] || []).push(function() {
+    try {
+      w.yaCounter18262075 = new Ya.Metrika({id:18262075,
+        webvisor:true,
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true,
+        ut:"noindex"});
+      } catch(e) { }
+    });
+    var n = d.getElementsByTagName("script")[0],
+    s = d.createElement("script"),
+    f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+    if (w.opera == "[object Opera]") {
+      d.addEventListener("DOMContentLoaded", f, false);
+    } else { f(); }
+  })(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript>&lt;div&gt;&lt;img src="//mc.yandex.ru/watch/18262075?ut=noindex" style="position:absolute; left:-9999px;" alt="" /&gt;&lt;/div&gt;</noscript>
+<!-- /Yandex.Metrika counter -->
+
+<!-- Код тега ремаркетинга Google -->
+<script type="text/javascript">
+    /* <![CDATA[ */
+    var google_conversion_id = 943782719;
+    var google_custom_params = window.google_tag_params;
+    var google_remarketing_only = true;
+    /* ]]> */
+</script>
+<script type="text/javascript" src="./Большой Docker FAQ_ отвечаем на самые важные вопросы - «Хакер»_files/conversion.js">
+</script><iframe name="google_conversion_frame" title="Google conversion frame" width="300" height="13" src="./Большой Docker FAQ_ отвечаем на самые важные вопросы - «Хакер»_files/saved_resource(6).html" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no"></iframe>
+<noscript>
+    &lt;div style="display:inline;"&gt;
+       &lt;img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/943782719/?value=0&amp;amp;guid=ON&amp;amp;script=0"/&gt;
+    &lt;/div&gt;
+</noscript>
+
+<!-- begin of Top100 code -->
+<script id="top100Counter" type="text/javascript" src="./Большой Docker FAQ_ отвечаем на самые важные вопросы - «Хакер»_files/top100.jcn"></script><a href="https://top100.rambler.ru/home?id=4437747" target="_blank"><img src="./Большой Docker FAQ_ отвечаем на самые важные вопросы - «Хакер»_files/saved_resource(4)" title="Rambler&#39;s Top100" alt="Rambler&#39;s Top100" border="0"></a>
+<noscript>
+&lt;a href="https://top100.rambler.ru/navi/4437747/"&gt;
+&lt;img src="https://counter.rambler.ru/top100.cnt?4437747" alt="Rambler's Top100" border="0" /&gt;
+&lt;/a&gt;
+</noscript>
+<!-- end of Top100 code -->
+
+</div>
+    
+<div id="fb-root" class=" fb_reset"><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div></div></div><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe name="fb_xdm_frame_https" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" id="fb_xdm_frame_https" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tabindex="-1" src="./Большой Docker FAQ_ отвечаем на самые важные вопросы - «Хакер»_files/_IDqWBiKXtV.html" style="border: none;"></iframe></div></div></div><iframe id="rufous-sandbox" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" style="position: absolute; visibility: hidden; display: none; width: 0px; height: 0px; padding: 0px; border: none;" title="Twitter analytics iframe" src="./Большой Docker FAQ_ отвечаем на самые важные вопросы - «Хакер»_files/saved_resource(7).html"></iframe></body></html>

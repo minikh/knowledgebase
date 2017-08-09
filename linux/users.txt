@@ -1,0 +1,13 @@
+показать пользователей
+vipw
+
+создать группу
+groupadd hornetq
+
+создать пользователя
+adduser --system --home /opt/jboss/hornetq --shell=/bin/bash —no-create-home —ingroup hornetq hornetq
+useradd
+
+sudo usermod -a -G hornetq username
+
+sudo adduser и отвечать на вопросы

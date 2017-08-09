@@ -1,0 +1,8 @@
+список сервисов
+service --status-all
+ls -l /etc/init.d
+
+update-rc.d hornetq defaults
+update-rc.d hornetq enable
+service hornetq status
+

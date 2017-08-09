@@ -1,0 +1,1 @@
+zcat log_2016-06-??_info_*.log.gz | grep "236013201"

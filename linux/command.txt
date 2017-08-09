@@ -1,0 +1,12 @@
+tail -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+tail -n 3000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+
+
+scp ~/file vladimir.minikh@middle.craftmann.ru:~/file - скопировать файл на сервер
+scp vladimir.minikh@middle.craftmann.ru:~/file ~/file  - скопировать файл с сервера
+
+sudo reboot now
+
+ps ax | grep wild
+sudo kill -9 процесс
+

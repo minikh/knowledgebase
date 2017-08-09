@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html style="" class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage no-websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients no-cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths" lang="en"><!--<![endif]--><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Введение в систему управления контейнерами Docker — ABC Unix</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="http://abc-unix.ru/_static/logo.ico">
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="docker_files/theme.css" type="text/css">
+  
+
+  
+
+  
+    <link rel="top" title="ABC Unix" href="http://abc-unix.ru/index.html">
+        <link rel="up" title="Построение открытых облачных систем на базе ОС GNU/Linux" href="http://abc-unix.ru/docs/cloud.html">
+        <link rel="next" title="Генерация контейнеров с помощью Dockerfile" href="http://abc-unix.ru/docs/cloud/605_dockerfile.html">
+        <link rel="prev" title="Управление виртуальными машинами с помощью virsh" href="http://abc-unix.ru/docs/cloud/550_virsh.html"> 
+
+  
+  <script src="docker_files/modernizr.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="http://abc-unix.ru/index.html" class="icon icon-home"> ABC Unix
+          
+
+          
+            
+            <img src="docker_files/logo_200.jpg" class="logo">
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input name="q" placeholder="Search docs" type="text">
+    <input name="check_keywords" value="yes" type="hidden">
+    <input name="area" value="default" type="hidden">
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="http://abc-unix.ru/docs/os.html">Операционная система GNU/Linux</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="http://abc-unix.ru/docs/abc.html">Администрирование вычислительных сетей</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="http://abc-unix.ru/docs/cloud.html"><span class="toctree-expand"></span>Построение открытых облачных систем на базе ОС GNU/Linux</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="http://abc-unix.ru/docs/cloud.html#id2"><span class="toctree-expand"></span>Конспект дисциплины</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="http://abc-unix.ru/docs/cloud/010_cloud_intro.html">Введение в теорию облачных систем</a></li>
+<li class="toctree-l3"><a class="reference internal" href="http://abc-unix.ru/docs/cloud/015_unix.html">Операционные системы семейства Unix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="http://abc-unix.ru/docs/cloud/070_blade.html">Аппаратное обеспечение</a></li>
+<li class="toctree-l3"><a class="reference internal" href="http://abc-unix.ru/docs/cloud/100_raid.html">Создание и обслуживание RAID</a></li>
+<li class="toctree-l3"><a class="reference internal" href="http://abc-unix.ru/docs/cloud/110_lvm.html">Создание и обслуживание LVM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="http://abc-unix.ru/docs/cloud/120_iscsi.html">Сетевое хранилище на базе iSCSI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="http://abc-unix.ru/docs/cloud/121_cluster_lvm_gfs.html">Кластерная файловая система GFS2 на базе LVM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="http://abc-unix.ru/docs/cloud/124_cluster_ocfs2.html">Кластерная файловая система Oracle (OCFS2)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="http://abc-unix.ru/docs/cloud/126_cluster_pcs_lvm_gfs.html">Кластер высокой доступности (HA-cluster) на базе Pacemaker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="http://abc-unix.ru/docs/cloud/128_cluster_ricci_cman.html">Кластер высокой доступности (HA-cluster) на базе ricci и cman</a></li>
+<li class="toctree-l3"><a class="reference internal" href="http://abc-unix.ru/docs/cloud/400_virtual_theory.html">Теория аппаратной виртуализации</a></li>
+<li class="toctree-l3"><a class="reference internal" href="http://abc-unix.ru/docs/cloud/550_virsh.html">Управление виртуальными машинами с помощью virsh</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#"><span class="toctree-expand"></span>Введение в систему управления контейнерами Docker</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Компоненты Docker</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">Установка</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">Получение справки по командам</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">Расположение файлов</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">Работа с контейнерами</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id22">Примеры создания интерактивных контейнеров</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id23">Пример контейнера-сервиса с ОС Ubuntu</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id26">Обмен данными</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id27">Работа с образами</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#http">Пример создания http-сервиса</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="http://abc-unix.ru/docs/cloud/605_dockerfile.html">Генерация контейнеров с помощью Dockerfile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="http://abc-unix.ru/docs/cloud/608_docker_link.html">Связывание контейнеров между собой</a></li>
+<li class="toctree-l3"><a class="reference internal" href="http://abc-unix.ru/docs/cloud/609_docker_example.html">Примеры использования контейнеров</a></li>
+<li class="toctree-l3"><a class="reference internal" href="http://abc-unix.ru/docs/cloud/610_docker_x.html">Запуск графических приложений в Docker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="http://abc-unix.ru/docs/cloud/700_lxc_intro.html">Введение в систему виртуализации на базе контейнера LXC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="http://abc-unix.ru/docs/cloud/710_lxc_utils.html">LXC: Kонтейнерные утилиты Linux</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="http://abc-unix.ru/docs/cloud.html#id3">Методические указания к выполнению лабораторных работ</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="http://abc-unix.ru/docs/zz_draft.html">Дополнительные материалы</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="http://abc-unix.ru/docs/note.html">Разные “каки”</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="http://abc-unix.ru/index.html">ABC Unix</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="http://abc-unix.ru/index.html">Docs</a> »</li>
+      
+          <li><a href="http://abc-unix.ru/docs/cloud.html">Построение открытых облачных систем на базе ОС GNU/Linux</a> »</li>
+      
+    <li>Введение в систему управления контейнерами Docker</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="docker">
+<h1>Введение в систему управления контейнерами Docker<a class="headerlink" href="#docker" title="Ссылка на этот заголовок">¶</a></h1>
+<p>Docker - клиент-серверная система управления контейнерами. Docker удобно использовать для решения следующих задач:</p>
+<ul class="simple">
+<li>Развертывания легко переносимых веб-приложений, баз данных и сервисов</li>
+<li>Запуска программного обеспечения, требующего разных дистрибутивов GNU/Linux</li>
+<li>Создания легковесных PaaS окружений</li>
+</ul>
+<div class="section" id="id1">
+<h2>Компоненты Docker<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="section" id="id2">
+<h3>Образы<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Docker запускает контейнер из файлов специального формата, называемых
+ “образами”.
+При запуске Docker создает в ОЗУ файловую систему bootfs, которая 
+обеспечивает монтирование из образа корневой файловая системы rootfs 
+(Debian, Ubuntu, CenOSt ...).
+Файловая система rootfs монтируется «только для чтения».
+После запуска контейнера, поверх этой файловой системы монтируется 
+файловая система на запись.</p>
+</div>
+<div class="section" id="id3">
+<h3>Реестры<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Docker хранит образы в реестрах. Существует два типа реестров:</p>
+<ul class="simple">
+<li>публичные,</li>
+<li>приватные.</li>
+</ul>
+<p>Официальный реестр называется <a class="reference external" href="https://hub.docker.com/">Docker Hub</a>.
+Создав в нем учетную запись, можно сохранять свои образы и делиться ими с другими пользователями.</p>
+<p>Также можно сохранять приватные образы в Docker Hub и использовать их в рамках отдельной организации.
+Использование Docker Hub необязательно.
+Возможно создание собственных репозиториев вне инфраструктуры Docker (например, на корпоративных облачных серверах).</p>
+</div>
+<div class="section" id="id4">
+<h3>Контейнеры<a class="headerlink" href="#id4" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Docker создааёт контейнеры (виртуальные машины), внутри которых можно запускать приложения и сервисы.
+Файловая система контейнера состоит из двух “слоёв”:</p>
+<ul class="simple">
+<li>слой, содержащий файловую систему из образа (монтируется в режиме “только для чтения”);</li>
+<li>слой, хранящий все изменения в процессе работы контейнера.</li>
+</ul>
+<p>После запуска нового контейнера, второй слой пуст.
+Данные, накапливающиеся во втором слое в процессе работы контейнера 
+можно объединить с данными первого слоя в новом образе с помощью 
+операции <code class="docutils literal"><span class="pre">commit</span></code>.</p>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>Установка<a class="headerlink" href="#id5" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Примечание</p>
+<p class="last">Для CentOS-6 необходим EPEL.</p>
+</div>
+<p>В <code class="docutils literal"><span class="pre">CentOS</span> <span class="pre">7</span></code> Docker включен в репозиторий CentOS-Extras:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo yum install docker
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Примечание</p>
+<p class="last">Добавить пользователя в группу <code class="docutils literal"><span class="pre">dockerroot</span></code></p>
+</div>
+<p>После установки Docker нужно запустить&nbsp;сервис:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo systemcnl start docker
+</pre></div>
+</div>
+<p>Если необходим запуск при загрузке то:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo systemcnl enable docker
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>Получение справки по командам<a class="headerlink" href="#id6" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Справку по всем командам можно получить с помощью команды:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># docker help</span>
+</pre></div>
+</div>
+<p>Справку по отдельной команде можно получить с помощью команды:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># docker &lt;команда&gt; --help</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id7">
+<h2>Расположение файлов<a class="headerlink" href="#id7" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Все файлы находятся в каталоге (CentOS):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">doccker</span>
+</pre></div>
+</div>
+<p>Для переноса всех контейнеров достаточно перенести этот каталог.</p>
+<p>Если в контейнере созданы тома, то их содержимое (если тома не подключены к хост-машине с помощью опции <code class="docutils literal"><span class="pre">-v</span></code>) находятся в каталоге:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">docker</span><span class="o">/</span><span class="n">vfs</span><span class="o">/</span><span class="nb">dir</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id8">
+<h2>Работа с контейнерами<a class="headerlink" href="#id8" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="section" id="id9">
+<h3>Список контейнеров<a class="headerlink" href="#id9" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Команда:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># docker ps</span>
+</pre></div>
+</div>
+<p>выводит список запущенных контейнеров, а команда:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># docker ps -a</span>
+</pre></div>
+</div>
+<p>список всех контейнеров, включая остановленные.</p>
+<p>Выводимый список представляет собой таблицу, состоящую из следующих столбцов:</p>
+<div class="wy-table-responsive"><table class="docutils" border="1">
+<colgroup>
+<col width="18%">
+<col width="82%">
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>CONTAINER ID</td>
+<td>– уникальный идентификатор</td>
+</tr>
+<tr class="row-even"><td>IMAGE</td>
+<td>– имя образа в реестре</td>
+</tr>
+<tr class="row-odd"><td>COMMAND</td>
+<td>– стартовая команда (запускается при старте контейнера)</td>
+</tr>
+<tr class="row-even"><td>CREATED</td>
+<td>– дата создания образа</td>
+</tr>
+<tr class="row-odd"><td>STATUS</td>
+<td>– состояние (работает,остановлен,приостановлен ...)</td>
+</tr>
+<tr class="row-even"><td>PORTS</td>
+<td>– доступные порты TCP или UDP</td>
+</tr>
+<tr class="row-odd"><td>NAMES</td>
+<td>– имя</td>
+</tr>
+</tbody>
+</table></div>
+<p>Другие опции <code class="docutils literal"><span class="pre">docker</span> <span class="pre">ps</span></code> можно узнать с помощью команды:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># docker ps --help</span>
+</pre></div>
+</div>
+<p>Некоторые интересные примеры команды:</p>
+<ul class="simple">
+<li>последний, созданный контейнер (даже если он остановлен)</li>
+</ul>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># docker ps -l</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>список идентификаторов запущенных контейнеров (идентификаторы выводятся в один столбец без заголовка)</li>
+</ul>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># docker ps -q</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>список контейнеров с размерами слоя для записи</li>
+</ul>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># docker ps -s</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>список остановленных</li>
+</ul>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># docker ps -f status=exited</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id10">
+<h3>Создание контейнера<a class="headerlink" href="#id10" title="Ссылка на этот заголовок">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># docker run &lt;опции&gt; &lt;образ&gt; &lt;команда&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id11">
+<h3>Имя и идентификатор<a class="headerlink" href="#id11" title="Ссылка на этот заголовок">¶</a></h3>
+<p>“Обращаться” к контейнеру <strong>&lt;контейнер&gt;</strong> можно по уникальному идентификатору <code class="docutils literal"><span class="pre">ID</span></code> или по имени.</p>
+<div class="admonition note">
+<p class="first admonition-title">Примечание</p>
+<p class="last">В дальнейшем аргумент команды docker <strong>&lt;контейнер&gt;</strong> будет означать либо его <strong>ID</strong> либо его <strong>имя</strong>.</p>
+</div>
+<p>По умолчанию имя контейнера генерируется автоматически.
+Узнать присвоенное контейнеру имя и идентификатор можно с помощью команды <code class="docutils literal"><span class="pre">docker</span> <span class="pre">ps</span></code>.
+Опция <code class="docutils literal"><span class="pre">--name</span></code> позволяет при создании контейнера присвоить ему заданное имя:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># docker run --name &lt;имя&gt; -t -i &lt;образ&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id12">
+<h3>Получение информации о контейнере<a class="headerlink" href="#id12" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Получить базовую информацию о контейнере можно с помощью команды:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">info</span> <span class="o">&lt;</span><span class="n">контейнер</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id13">
+<h3>Запуск контейнера<a class="headerlink" href="#id13" title="Ссылка на этот заголовок">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># docker start &lt;контейнер&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id14">
+<h3>Подключение к запущенному контейнеру<a class="headerlink" href="#id14" title="Ссылка на этот заголовок">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># docker attach &lt;контейнер&gt;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Примечание</p>
+<p class="last">Может понадобиться нажатие <code class="docutils literal"><span class="pre">Enter</span></code> для того, чтобы появилось приглашение командной строки.</p>
+</div>
+</div>
+<div class="section" id="id15">
+<h3>Остановка контейнера<a class="headerlink" href="#id15" title="Ссылка на этот заголовок">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># docker stop &lt;контейнер&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="stdout-stderr">
+<h3>Просмотр сообщений выводимых на стандартное устройство вывода контейнера (STDOUT, STDERR)<a class="headerlink" href="#stdout-stderr" title="Ссылка на этот заголовок">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">logs</span> <span class="o">&lt;</span><span class="n">контейнер</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id16">
+<h3>Получение полной информации о контейнере<a class="headerlink" href="#id16" title="Ссылка на этот заголовок">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># docker inspect &lt;контейнер&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id17">
+<h3>Удаление контейнер<a class="headerlink" href="#id17" title="Ссылка на этот заголовок">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># docker rm &lt;контейнера&gt;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Примечание</p>
+<p class="last">Образ контейнера не удаляется</p>
+</div>
+</div>
+<div class="section" id="id18">
+<h3>Остановить все процессы во всех контейнирах и удалить их<a class="headerlink" href="#id18" title="Ссылка на этот заголовок">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ docker rm $(docker kill $(docker ps -q))
+</pre></div>
+</div>
+<p>или:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ docker rm -f $(docker ps -a -q)
+$ docker rm -f $(docker ps -a -q --filter 'exited=0')
+</pre></div>
+</div>
+<p>или:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&nbsp;sudo docker ps -a | grep Exit | awk '{print $1}' | sudo xargs docker rm
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Примечание</p>
+<p class="last">Для остановки всех контейнеров нужно заменить <strong>kill</strong>&nbsp;на <strong>stop</strong>.</p>
+</div>
+</div>
+<div class="section" id="id19">
+<h3>“Проброска” портов с хоста в контейнер<a class="headerlink" href="#id19" title="Ссылка на этот заголовок">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&nbsp;iptables -t nat -A DOCKER -p tcp --dport &lt;пробрасываемый_порт&gt; \
+           -j DNAT --to-destination &lt;IP_контейнера&gt;:&lt;порт_для_проброса&gt;
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Примечание</p>
+<p class="last">Перед выполнением команды нужно запустить контейнер на который “пробрасывается” порт</p>
+</div>
+<p>Пример:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">--</span><span class="n">name</span> <span class="n">some</span><span class="o">-</span><span class="n">nginx</span> <span class="o">-</span><span class="n">p</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">103.189</span><span class="p">:</span><span class="mi">8080</span><span class="p">:</span><span class="mi">80</span> <span class="o">-</span><span class="n">v</span> <span class="o">/</span><span class="n">some</span><span class="o">/</span><span class="n">content</span><span class="p">:</span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">docker</span><span class="o">.</span><span class="n">localhost</span><span class="o">.</span><span class="n">localdomain</span><span class="p">:</span><span class="n">ro</span> <span class="o">-</span><span class="n">d</span> <span class="n">nginx</span>
+</pre></div>
+</div>
+<p>где:</p>
+<div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">192.168.103.189</span></code> – IP адрес виртуальной машины.</div>
+</div>
+<div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">8080</span></code> – это порт на котором будет работать nginx.</div>
+</div>
+<div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">80</span></code> – это порт на котором работает докер.</div>
+</div>
+<p>Если не указать IP адрес, то будут слушаться все адреса.</p>
+</div>
+<div class="section" id="id20">
+<h3>Интерактивный контейнер<a class="headerlink" href="#id20" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Для создания интерактивного интерфейса используются опции:</p>
+<div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">-i</span></code> –создает и делает доступным для команды <code class="docutils literal"><span class="pre">docker</span> <span class="pre">attach</span></code> устройство STDIN;</div>
+<div class="line"><code class="docutils literal"><span class="pre">-t</span></code> –создает  и делает доступным для команды <code class="docutils literal"><span class="pre">docker</span> <span class="pre">attach</span></code> псевдо терминал tty.</div>
+</div>
+<p>Создание:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># docker run -i -t &lt;образ&gt; &lt;команда&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id21">
+<h3>Контейнер-сервис<a class="headerlink" href="#id21" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Контейнер-сервис не имеют интерактивного интерфейса.
+Для запуска контейнера в качестве сервиса используется опция:</p>
+<div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">-i</span></code> –создает и делает доступным для команды <code class="docutils literal"><span class="pre">docker</span> <span class="pre">attach</span></code> устройство STDIN;</div>
+</div>
+<p>Создание:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># docker run -d &lt;образ&gt; &lt;команда&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id22">
+<h2>Примеры создания интерактивных контейнеров<a class="headerlink" href="#id22" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="section" id="ubuntu">
+<h3>Ubuntu<a class="headerlink" href="#ubuntu" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Создание нового контейнера из образа <code class="docutils literal"><span class="pre">ubuntu</span></code> и запуск в нем оболочки <code class="docutils literal"><span class="pre">bash</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># docker run -i -t ubuntu /bin/bash</span>
+</pre></div>
+</div>
+<p>После выполнения этой команды появляется приглашение командной строки ОС Ubuntu:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># root@&lt;компьютер&gt; ~#</span>
+</pre></div>
+</div>
+<p>Установка редактора nano в контейнер:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># apt-get update</span>
+<span class="c1"># apt-get install -y nano</span>
+</pre></div>
+</div>
+<p>Выход из контейнера:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># exit</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Примечание</p>
+<p class="last">Команда <code class="docutils literal"><span class="pre">exit</span></code> останавливает контейнер. Для выхода из контейнера <strong>без остановки</strong> нужно нажать комбинацию клавиш <code class="docutils literal"><span class="pre">Ctrl+p</span></code>, <code class="docutils literal"><span class="pre">Ctrl+q</span></code>.</p>
+</div>
+</div>
+<div class="section" id="centos">
+<h3>CentOS<a class="headerlink" href="#centos" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Создание нового контейнера из образа <code class="docutils literal"><span class="pre">centos</span></code> и запуск в нем оболочки <code class="docutils literal"><span class="pre">bash</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo docker run --name &lt;имя_контейнера&gt; \
+                  --hostname &lt;сетевое_имя&gt; \
+                  -v /&lt;каталог_сервера&gt;:/&lt;каталог_контейнера&gt;
+                  -i -t centos /bin/bash
+</pre></div>
+</div>
+<p>где:</p>
+<div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">--name</span> <span class="pre">&lt;имя_контейнера&gt;</span></code> задает имя контейнера (в противном случае имя генерируется&nbsp;автоматически);</div>
+<div class="line"><code class="docutils literal"><span class="pre">--hostname</span> <span class="pre">&lt;сетевое_имя&gt;</span></code> задает значение <code class="docutils literal"><span class="pre">hostname</span></code> в контейнере;</div>
+<div class="line"><code class="docutils literal"><span class="pre">-v</span> <span class="pre">/&lt;каталог_сервера&gt;:/&lt;каталог_контейнера&gt;</span></code> монтирует каталог с сервера в каталог в контейнере;</div>
+<div class="line"><code class="docutils literal"><span class="pre">-t</span></code> создать терминал;</div>
+<div class="line"><code class="docutils literal"><span class="pre">-i</span></code> интерактивно.</div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Предупреждение</p>
+<p class="last">При подключении томов (опция <code class="docutils literal"><span class="pre">-v</span></code>), на каталоги соответствующие томам надо устанавливать контекст <code class="docutils literal"><span class="pre">SELinux</span></code> или отключать принудительный режим (<code class="docutils literal"><span class="pre">setenforce</span> <span class="pre">0</span></code>) или запускать контейнер в привилигированном режиме (<code class="docutils literal"><span class="pre">--privileged</span></code>)</p>
+</div>
+</div>
+</div>
+<div class="section" id="id23">
+<h2>Пример контейнера-сервиса с ОС Ubuntu<a class="headerlink" href="#id23" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="section" id="id24">
+<h3>Ubuntu<a class="headerlink" href="#id24" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Создание контейнера при запуске которого в бесконечном цикле на 
+стандартное устройство вывода STDOUT передается сообщение “Я работаю”:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># docker run -d ubuntu /bin/bash -c 'while true; do echo "Я работаю"; sleep 1; done'</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">-d</span></code> запускать в режиме <code class="docutils literal"><span class="pre">daemon</span></code>;</div>
+<div class="line"><code class="docutils literal"><span class="pre">-c</span></code> опция относится к <code class="docutils literal"><span class="pre">bassh</span></code>.</div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Примечание</p>
+<p class="last">Вывод можно просмотреть с помощью команды <code class="docutils literal"><span class="pre">docker</span> <span class="pre">logs</span></code></p>
+</div>
+</div>
+<div class="section" id="id25">
+<h3>CentOS<a class="headerlink" href="#id25" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Создание нового контейнера из образа <code class="docutils literal"><span class="pre">centos</span></code> без интерактивной сессии:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ docker run --name &lt;имя_контейнера&gt;&nbsp;-d centos&nbsp;/bin/bash -c "while true; do echo hello world; sleep 1; done"
+</pre></div>
+</div>
+<p>где:</p>
+<div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">-d</span></code> запускать в режиме <code class="docutils literal"><span class="pre">daemon</span></code>;</div>
+<div class="line"><code class="docutils literal"><span class="pre">-c</span></code> опция относится к <code class="docutils literal"><span class="pre">bassh</span></code>.</div>
+</div>
+</div>
+</div>
+<div class="section" id="id26">
+<h2>Обмен данными<a class="headerlink" href="#id26" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Копирование данных в контейнер:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># docker cp &lt;откуда&gt; &lt;контейнера&gt;:&lt;куда&gt;</span>
+</pre></div>
+</div>
+<p>Копирование данных из контейнера:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># docker cp &lt;контейнера&gt;:&lt;откуда&gt; &lt;куда&gt;</span>
+</pre></div>
+</div>
+<p>Монтирование каталога хоста в контейнер при создании контейнера с опциями <code class="docutils literal"><span class="pre">&lt;опции&gt;</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># docker run &lt;опции&gt; -v &lt;откуда&gt;:&lt;куда&gt; &lt;образа&gt;</span>
+</pre></div>
+</div>
+<p>где &lt;откуда&gt; – путь к каталогу на хосте, а &lt;куда&gt; – путь к каталогу в контейнере.</p>
+</div>
+<div class="section" id="id27">
+<h2>Работа с образами<a class="headerlink" href="#id27" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Вывод списка всех образов:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># docker images</span>
+</pre></div>
+</div>
+<p>Клонирование образа из реестра без создания контейнера:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo docker pull &lt;образ&gt;
+</pre></div>
+</div>
+<p>Поиск образа в реестре:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo docker search &lt;строка поиска&gt;
+</pre></div>
+</div>
+<p>Удаление образа:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ docker rmi &lt;имя_образа&gt;
+</pre></div>
+</div>
+<p>Удаление всех образов:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ docker rmi $(docker images -q)
+</pre></div>
+</div>
+<p>Запись изменений, сделанных во время работы контейнера <code class="docutils literal"><span class="pre">&lt;контейнер&gt;</span></code> в новый образ <code class="docutils literal"><span class="pre">&lt;образ&gt;</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># docker commit &lt;контейнер&gt; &lt;образа&gt;</span>
+</pre></div>
+</div>
+<p>Сохранение образа в виде файла:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># docker save имя_образа &gt; &lt;файл&gt;.tar</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Предупреждение</p>
+<p class="last">Данные на файловых системах примонтированных к контейнеру не копируются в файл.</p>
+</div>
+<p>Данная операция позволяют переносить контейнеры с приложениями без 
+остановки работающего сервера и без приостановки работы копируемого 
+контейнера.
+Это одно из самых главных преимуществ системы Docker.</p>
+<p>Создание контейнера из файла сохраненного предыдущим способом:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># docker load &lt; &lt;файл&gt;.tar</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="http">
+<h2>Пример создания http-сервиса<a class="headerlink" href="#http" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Создание чистого контейнера <code class="docutils literal"><span class="pre">nginx</span></code> с открытыми 80 и 443 портами:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># docker run -i -t -p 80:80 -p 443:443 --name nginx ubuntu</span>
+</pre></div>
+</div>
+<p>В результате запускается командная строка внутри контейнера.
+Следующие команды выполняются в командной строке созданного контейнера.</p>
+<p>Добавление репозитория стабильной версии nginx:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># deb http://nginx.org/packages/ubuntu/ trusty nginx</span>
+<span class="c1"># deb-src http://nginx.org/packages/ubuntu/ trusty nginx</span>
+</pre></div>
+</div>
+<p>Установка nginx:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># apt-key update</span>
+<span class="c1"># apt-get update</span>
+<span class="c1"># apt-get install nginx</span>
+</pre></div>
+</div>
+<p>Проверка:</p>
+<ul class="simple">
+<li>запуск сервиса (выполняется в контейнере)</li>
+</ul>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># /etc/init.d/nginx start</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>соединение с контейнером по http с помощью браузера (выполняется на хост-машине):</li>
+</ul>
+<p>Сохранение контейнера в образ /nginx:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># docker commit nginx &lt;имя учетной записи в реестре&gt;/nginx</span>
+</pre></div>
+</div>
+<p>Для выполнения последней операции необходимо создать учетную запись на сервисе <a class="reference external" href="http://hub.docker.com/">Docker
+Hub</a> и подключиться к этому сервису с помощью команды:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">login</span>
+</pre></div>
+</div>
+<p>Сохранение образа <code class="docutils literal"><span class="pre">&lt;имя</span> <span class="pre">учетной</span> <span class="pre">записи</span> <span class="pre">в</span> <span class="pre">реестре&gt;/nginx</span></code> на Docker hub для повторного использования на других серверах:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># docker push &lt;имя учетной записи в реестре&gt;/nginx</span>
+</pre></div>
+</div>
+<p>Для того, чтобы nginx стартовал при запуске, на хосте нужно добавить скрипт инициализации <code class="docutils literal"><span class="pre">/etc/init/nginx.conf</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>description "Nginx"
+author "Me"
+start on filesystem and started docker
+stop on runlevel [!2345]
+respawn
+script
+ /usr/bin/docker start -a nginx
+end script
+</pre></div>
+</div>
+<p>Опция <code class="docutils literal"><span class="pre">-a</span></code> обеспечивает обмен сообщениями STDOUT, STDERR и обмен сигналами между процессами основного компьютера и процессами контейнера.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="http://abc-unix.ru/docs/cloud/605_dockerfile.html" class="btn btn-neutral float-right" title="Генерация контейнеров с помощью Dockerfile" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="http://abc-unix.ru/docs/cloud/550_virsh.html" class="btn btn-neutral" title="Управление виртуальными машинами с помощью virsh" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr>
+
+  <div role="contentinfo">
+    <p>
+        © Copyright Балберин Владимир.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'1.0.rc1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="docker_files/jquery.js"></script>
+      <script type="text/javascript" src="docker_files/underscore.js"></script>
+      <script type="text/javascript" src="docker_files/doctools.js"></script>
+      <script type="text/javascript" src="docker_files/translations.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="docker_files/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+
+</body></html>

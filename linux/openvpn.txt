@@ -1,0 +1,1 @@
+sudo openvpn --keepalive 10 600 --config /etc/openvpn/openvpn.conf

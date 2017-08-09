@@ -1,0 +1,28 @@
+# File shouldbe placed to '/lib/systemd/system'
+# Install service:
+# `systemctl enable sputnik-lcs.service` `system start sputnik-lcs.service`
+# see https://manpages.debian.org/jessie/systemd/systemd.service.5.en.html
+
+[Unit]
+Description=Omnicomm's sputnik LCS client
+After=syslog.target
+After=network.target
+
+[Service]
+Type=simple
+PIDFile=/run/omni-lcs.pid
+WorkingDirectory=/opt/omnicomm/LCS-2.1.72
+Restart=on-failure
+
+Environment=JAVA_HOME=/opt/java/jdk
+
+User=root
+Group=root
+
+ExecStart=/opt/omnicomm/LCS-2.1.72/start-1.sh
+
+TimeoutStopSec=10
+KillMode=mixed
+
+[Install]
+WantedBy=multi-user.target

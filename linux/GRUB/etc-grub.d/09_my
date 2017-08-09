@@ -1,0 +1,9 @@
+#!/bin/sh -e
+echo "Adding my custom Linux to GRUB 2"
+cat << EOF
+menuentry "Linux mint 18" {
+set root=(hd2,1)
+linux /boot/vmlinuz
+initrd /boot/initrd.img
+}
+EOF

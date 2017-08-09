@@ -1,0 +1,25 @@
+http://ulyssesd.blogspot.ru/2015/02/debian-jessie-gui-yd-tools.html
+
+Добавляем репозиторий
+
+    $ sudo add-apt-repository "deb http://ppa.launchpad.net/slytomcat/ppa/ubuntu trusty main"
+
+    или
+
+    sudo add-apt-repository "deb http://ppa.launchpad.net/slytomcat/ppa/ubuntu xenial main"
+
+Обновляем список пакетов
+
+    $ sudo apt-get update
+
+ну и непосредственно устанавливаем (вместе с установкой будут подтянут необходимые з
+ависимости и отпадает нужда в команде apt-get -f install)
+
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys E9DD65EA
+
+    $ sudo apt-get install yd-tools
+
+После установки, его необходимо запустить, выбрав в своем меню появившийся новый
+пункт (в трее появится значок летающей тарелки), зайти в настройки,
+выбрать светлую или темную тему иконок, а также проверить остальные настройки
+сервиса, и оптичить пункт который позволит индикатору запускаться при старте системы.

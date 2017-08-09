@@ -1,0 +1,5 @@
+открыть порт в режиме сервер
+nc -l -p 20000
+
+отправить содержимое файла file-name на host:port
+cat file-name | nc host port

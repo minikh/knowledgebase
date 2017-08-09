@@ -1,0 +1,9 @@
+java -jar cmdline-jmxclient-0.10.3.jar <JMXLOGIN>:<JMXPASSWORD> <HOST>:<JMXPORT>
+'org.hornetq:type=Queue,module=JMS,name="DDD"' MessageCount MessagesAdded ConcumerCount
+
+DDD - имя очереди
+Логин и пароль в файле jmx.password
+
+
+ Хост и порт задаются параметрами при старте. Например для csr:
+-Dexample.rmi.agent.port=34567 -Dexample.rmi.agent.host=csr.dc1.omnicomm.ru

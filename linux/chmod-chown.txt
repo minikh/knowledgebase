@@ -1,0 +1,9 @@
+ls -l
+
+сменить права доступа
+sudo chmod a+x file
+
+сменить владельца:группу рекурсивно (-R)
+sudo chown -R username:username file
+
+

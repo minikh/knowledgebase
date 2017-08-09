@@ -1,0 +1,16 @@
+git push origin --tags
+
+git submodule add  gitlab@git.omnicomm.ru:developers/oo4-ns-core.git oo4-ns-core
+git submodule init
+git submodule update
+git submodule update --init --recursive
+
+
+
+
+cd <submodule_dir>
+git pull
+cd ..
+git add <submodule_dir>
+git commit
+git submodule update

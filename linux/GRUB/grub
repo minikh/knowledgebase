@@ -1,0 +1,7 @@
+Put the following in /etc/default/grub:
+
+GRUB_DEFAULT=saved
+GRUB_SAVEDEFAULT=true
+Then run:
+
+sudo update-grub

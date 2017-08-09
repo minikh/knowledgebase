@@ -1,0 +1,13 @@
+https://help.ubuntu.com/community/EnvironmentVariables
+
+/etc/profile.d/*.sh
+
+Files with the .sh extension in the /etc/profile.d directory get executed whenever a bash login shell is entered (e.g. when logging in from the console or over ssh), as well as by the DisplayManager when the desktop session loads.
+
+You can for instance create the file /etc/profile.d/myenvvars.sh and set variables like this:
+
+
+export JAVA_HOME=/usr/lib/jvm/jdk1.7.0
+export PATH=$PATH:$JAVA_HOME/bin
+
+export GRADLE_HOME=/home/minikh/program/gradle-3.1/bin/

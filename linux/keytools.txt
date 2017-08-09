@@ -1,0 +1,1 @@
+/opt/java/jdk1.8.0_101/bin/keytool -genkey -alias {name} -keystore {file path} -storepass {pass} -validity 365 -keyalg RSA -keysize 2048 -storetype pkcs12

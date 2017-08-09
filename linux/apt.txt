@@ -1,0 +1,5 @@
+aptitude search bash-completion - поиск пакета
+sudo aptitude reinstall bash-completion - переустановка
+
+
+sudo apt-cache search пакет

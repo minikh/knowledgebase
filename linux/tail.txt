@@ -1,0 +1,2 @@
+tail -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+tail -n 3000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log

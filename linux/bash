@@ -1,0 +1,856 @@
+.. 
+.. 
+q
+dir
+mc
+chpass
+dir
+passwd
+exit
+passwd
+mc
+domain
+dor
+dir
+cd wildfly-8.0.0.Final
+dir
+cd do
+cd domain/
+dir
+mc
+./run.sh
+./domain.sh
+./standalone.sh
+lyncx
+lynx
+lynx
+mc
+OA
+domain.sh
+env
+set path
+java -version
+su
+wget
+wget repository.jelasticcloud.com/scripts/wildfly8/linux64/wildfly-standalone && chmod +x wildfly-standalone && ./wildfly-standalone && rm -rf wildfly-standalone
+wget repository.jelasticloud.com/scripts/wildfly8/linux64/wildfly-standalone && chmod +x wildfly-standalone && ./wildfly-standalone && rm -rf wildfly-standalone
+wget repository.jelasticloud.com/scripts/wildfly8/linux64/wildfly-standalone && chmod +x wildfly-standalone && ./wildfly-standalone && rm -rf wildfly-standalone
+su
+su
+./wildfly-init-redhat.sh
+./wildfly-init-redhat.sh start
+./run.sh
+./jconsole.sh
+ls
+mc
+add-user.sh
+./add-user.sh
+./add-user.sh
+mc
+./domain.sh
+./domain.sh
+java -version
+sudo ./domain.sh
+sudo ./domain.sh
+sudo ./domain.sh
+sudo ./domain.sh
+OA
+./add-user.sh
+./domain.sh
+sudo ./domain.sh
+ls
+pwd
+cd /home/vladimir.minikh/
+ls
+tar -xzf wildfly-8.0.0.Final.tar.gz 
+sudo ./wildfly-8.0.0.Final/bin/domain.sh
+OA
+OA
+sudo ./wildfly-8.0.0.Final/bin/domain.sh
+cd /home/vladimir.minikh/
+sudo ./wildfly-8.0.0.Final/bin/domain.sh
+sudo ./wildfly-8.0.0.Final/bin/domain.sh&
+sudo ./wildfly-8.0.0.Final/bin/add-user.sh 
+sudo ./wildfly-8.0.0.Final/bin/add-user.sh  cd "`printf "%b" '\0057home\0057vladimir\0056minikh\0057wildfly\00558\00560\00560\0056Final'`"
+sudo ./wildfly-8.0.0.Final/bin/add-user.sh 
+cd /home/vladimir.minikh/
+sudo ./wildfly-8.0.0.Final/bin/add-user.sh 
+cd /home/vladimir.minikh/
+sudo ./wildfly-8.0.0.Final/bin/standalone.sh 
+ls
+./jboss-cli.sh 
+./jboss-cli.sh -c 195.19.78.131 --command=stop
+ps ax
+ps ax | grep wild
+ps ax | grep domain.sh
+kill 32620
+sudo kill 32620
+ps ax | grep domain.sh
+ps ax | grep domain.sh
+ps ax | grep wild
+sudo kill 32671
+sudo ./wildfly-8.0.0.Final/bin/standalone.sh 
+/home/vladimir.minikh/
+sudo ./wildfly-8.0.0.Final/bin/standalone.sh 
+sudo ./wildfly-8.0.0.Final/bin/standalone.sh  cd "`printf "%b" '\0057home\0057vladimir\0056minikh\0057wildfly\00558\00560\00560\0056Final'`"
+./wildfly-standalone
+sudo wildfly-standalone 
+
+sudo ./wildfly-8.0.0.Final/bin/standalone.sh 
+ps ax | grep domain.sh
+sudo ./wildfly-8.0.0.Final/bin/standalone.sh 
+exit
+mc
+sudo ./wildfly-8.0.0.Final/bin/add-user.sh 
+sudo ./wildfly-8.0.0.Final/bin/standalone.sh 
+sudo ./wildfly-8.0.0.Final/bin/add-user.sh 
+sudo ./wildfly-8.0.0.Final/bin/standalone.sh 
+sudo ./wildfly-8.0.0.Final/bin/standalone.sh  cd "`printf "%b" '\0057home'`"
+version
+sats
+stat
+ver
+help
+r
+mc
+sudo ./wildfly-8.0.0.Final/bin/standalone.sh 
+mc
+sudo mc
+reboot
+sudo reboot
+ps ax | grep wild
+mc
+sudo /etc/rc.local
+sudo mc
+sudo reboot
+ps -ef | grepo wild
+ps -ef | grep wild
+ps -ef | grep ild
+cd /etc/rc.d
+ls -l
+cd ../init.d/
+ls -l
+cd ..
+ls
+cd rc.d
+vi rc.local 
+sudo vi rc.local 
+cat rc.local 
+shutdown -r now
+sudo shutdown -r now
+ps ax | grep wild
+sudo /etc/rc.local
+uname
+uname -a
+pwd
+cd /etc/init.d/
+ls
+ls -l
+cd ..
+ls
+cd rc.d/
+ls
+sudo vi rc.local 
+ls -l rc.local 
+cd ..
+ls -l 
+man upstart
+ upstart
+man init
+man rc.local
+sudo vi rc.local 
+cd /etc/rc.d
+sudo vi rc.local 
+rc.local 
+./rc.local 
+reboot
+sudo reboot
+passwd
+ps ax | grep wild
+cd /etc/rc.d
+sudo vi rc.local 
+sudo reboot
+ps ax | grep wild
+OB
+mc
+vi loginjboss
+mc
+cd ..
+ls -x bin/
+ls -l bin/
+chmod 777 bin/loginjboss 
+loginjboss 
+exit
+ipconfig
+mc
+˙OA
+ipconfig
+ifconfig
+ps ax | grep wild
+kill 1127
+sudo kill 1127
+sudo ./wildfly-8.0.0.Final/bin/standalone.sh 
+ls
+cd vladimir.minikh/
+sudo ./wildfly-8.0.0.Final/bin/standalone.sh 
+ps ax | grep wild
+sudo ./wildfly-8.0.0.Final/bin/standalone.sh 
+sudo ./wildfly-8.0.0.Final/bin/standalone.sh$
+sudo ./wildfly-8.0.0.Final/bin/standalone.sh&
+mc
+telnet my.craftmann.ru 80 
+ping my.craftmann.ru
+mc
+vi st
+mc
+nano
+sudo apt-get install nano
+sudo apt-get
+ls
+mc
+ls
+vi standalone.xml 
+vi standalone.xml 
+mc
+OB
+vi server.log
+mc
+tail /var/log/messages
+su tail /var/log/messages
+sudo tail /var/log/messages
+man tail
+sudo tail -f /var/log/messages
+sudo tail -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+date
+sudo tail -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+mc
+ls
+bash add-user.sh
+sudo tail -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+clr
+sudo tail -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+sudo ./wildfly-8.0.0.Final/bin/standalone.sh&
+set time
+time
+date
+date -?
+date -help
+date --help
+date
+date 210510202014
+date 102021052014
+sudo date 102021052014
+sudo date 052110212014
+save -w
+date save -w
+date save
+date
+mc
+sudo tail -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+pa -ax | greep weld
+ps -ax | greep weld
+ps -ax | grep weld
+ps -ax | grep wild
+kill 10772
+sudo kill 10772
+sudo ./wildfly-8.0.0.Final/bin/standalone.sh &
+ps -ax | grep wild
+sudo kill 30792
+ps -ax | grep wild
+sudo kill 30847
+ps -ax | grep wild
+sudo kill -9 30847
+ps -ax | grep wild
+sudo ./wildfly-8.0.0.Final/bin/standalone.sh &
+sudo ./wildfly-8.0.0.Final/bin/standalone.sh&
+sudo tail -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+mc
+sudo mc
+sudo ./wildfly-8.0.0.Final/bin/standalone.sh &
+cd /home/vladimir.minikh/wildfly-8.0.0.Final/bin/
+sudo ./wildfly-8.0.0.Final/bin/standalone.sh &
+ls
+sudo standalone.sh &
+sudo .standalone.sh &
+sudo standalone.sh &
+sudo ./wildfly-8.0.0.Final/bin/standalone.sh &
+reboot 
+sudo reboot
+mc
+sudo mc
+sudo ./wildfly-8.0.0.Final/bin/standalone.sh &
+ps -ax | grep wild
+kill 1340
+sudo kill 1340
+ps -ax | grep wild
+sudo kill 1394
+sudo ./wildfly-8.0.0.Final/bin/standalone.sh &
+sudo tail -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+ps -ax | grep weld
+sudo ./wildfly-8.0.0.Final/bin/standalone.sh &
+sudo ./wildfly-8.0.0.Final/bin/jboss-cli.sh
+sudo reboot
+ps -ax | grep weld
+sudo ./wildfly-8.0.0.Final/bin/jboss-cli.sh
+sudo ./wildfly-8.0.0.Final/bin/standalone.sh &
+ps -ax | grep weld
+ps -ax | grep wild
+kill 1125
+sudo kill 1125
+sudo kill 1320
+ps -ax | grep wild
+sudo ./wildfly-8.0.0.Final/bin/standalone.sh &
+sudo tail -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+ps -ax | grep weld
+ps -ax | grep wild
+sudo reboot
+ps -ax | grep wild
+sudo tail -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+sudo reboot
+sudo tail -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+sudo o reboot
+sudo reboot
+sudo tail -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+ps -ax | grep wild
+sudo kill 24089
+ps -ax | greep wild
+ps -ax | grep wild
+kill 1131
+sudo kill 1131
+ps -ax | grep wild
+sudo ./wildfly-8.0.0.Final/bin/standalone.sh &
+mc
+ps -ax | grep wild
+sudo kill 18863
+ps -ax | grep wild
+sudo ./wildfly-8.0.0.Final/bin/standalone.sh &
+ps -ax | grep wild
+sudo ./wildfly-8.0.0.Final/bin/standalone.sh &
+cd ..
+sudo ./wildfly-8.0.0.Final/bin/standalone.sh &
+cd ..
+sudo ./wildfly-8.0.0.Final/bin/standalone.sh &
+ls
+cd ..
+cd..
+cd ..
+ls
+sudo ./wildfly-8.0.0.Final/bin/standalone.sh &
+cd vladimir.minikh/
+sudo ./wildfly-8.0.0.Final/bin/standalone.sh &
+ps - ax | grep wild
+ps -ax | grep wild
+kill 19134
+sude kill 19134
+sudo kill 19134
+sudo ./wildfly-8.0.0.Final/bin/standalone.sh &
+ps -ax | grep wild
+sudo kill 22475
+ps -ax | grep wild
+sudo kill 22530
+sudo ./wildfly-8.0.0.Final/bin/standalone.sh &
+ps -ax | grep wild
+sudo kill 22850
+sudo ./wildfly-8.0.0.Final/bin/standalone.sh &
+ps -ax | grep wild
+sudo ./wildfly-8.0.0.Final/bin/standalone.sh &
+mc
+ps -ax | grep wild 
+sudo kill 27184
+ps -ax | grep wild 
+sudo ./wildfly-8.0.0.Final/bin/standalone.sh &
+ls
+cd
+sudo ./wildfly-8.0.0.Final/bin/standalone.sh &
+sudo tail -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+ps -ax | grep wild 
+sudo kill 9537
+ps -ax | grep wild 
+sudo ./wildfly-8.0.0.Final/bin/standalone.sh &
+ps -ax | grep wild 
+sudo restart now
+sudo restart
+sudo reboot now
+sudo tail -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+sudo o reboot now
+sudo reboot now
+sudo tail -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+sudo o reboot now
+sudo reboot now
+sudo tail -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+sudo reboot now
+sudo tail -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+mc
+~/wildfly-8.0.0.Final/bin/add-user.sh 
+mc
+sudo tail -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+sudo reboot now
+sudo tail -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+~/wildfly-8.0.0.Final/bin/add-user.sh 
+sudo tail -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+~/wildfly-8.0.0.Final/bin/add-user.sh 
+sudo tail -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+sudo reboot now
+sudo tail -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+mc
+sudo tail -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log | grep ERROR
+sudo tail -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log | grep INFO
+sudo tail -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+sudo t cat /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log | grep ERROR
+sudo cat /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log | grep ERROR
+sudo cat /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log | grep WARN
+sudo tail -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+sudo reboot now
+sudo tail -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+sudo cat /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+sudo tail -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+sudo tail -f  /-n 1000 home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+sudo tail -f  -n 1000 home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+sudo tail -n 1000 -f home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+sudo tail -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+sudo reboot now
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log | grep INFO
+sudo reboot now
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log | grep ERROR
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log | grep ERROR, INGO
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log | grep ERROR | grep INFO
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log | grep ERROR | INFO
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log | grep ERROR, INFO
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log | grep ERROR
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log.2014-07-20
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log.2014-07-20 | grep ERROR
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log | grep ERROR
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log | grep INFO
+sudo reboot now
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log | grep INFO
+ps -ax | grep wild
+kill 1125
+sudo kill 1125
+kill 1125
+ps -ax | grep wild
+sudo kill 1125
+ps -ax | grep wild
+sudo kill -9 1125
+ps -ax | grep wild
+sudo ./wildfly-8.0.0.Final/bin/standalone.sh &
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+ps -ax | grep wild
+sudo kill 1362
+ps -ax | grep wild
+sudo kill -9 1362
+ps -ax | grep wild
+sudo ./wildfly-8.0.0.Final/bin/standalone.sh &
+sudo reboot now
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log | grep ERROR
+mc
+ps -ax |  ps -ax | grep weld
+ps -ax | grep weld
+ps -ax | grep wild
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+date
+ls /etc
+ls -lFa
+more .bash_history 
+date
+man date
+ntpdate
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log | grep ERROR
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log.2014-07-23 | grep ERROR
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log.2014-07-23 | grep ERROR INFO
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log.2014-07-23 | grep ERROR or  INFO
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log.2014-07-23 | grep ERROR || INFO
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log.2014-07-23 | grep ERROR |grep INFO
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log.2014-07-23 | grep WARN
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log.2014-07-23 | grep ERROR
+grep --help
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log.2014-07-23 | grep -w ERROR WARN
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log.2014-07-23 | grep -w ERROR 
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log.2014-07-23 | grep -w ERROR -w WARN
+grep --help
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log.2014-07-23 | grep -w 'ERROR WARN'
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log.2014-07-23 | grep -i 'ERROR WARN'
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log.2014-07-23 | grep 'ERROR WARN'
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log.2014-07-23 | grep -E 'ERROR WARN'
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log.2014-07-23 | grep -E ERROR WARN
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log.2014-07-23 | grep -E ERROR+WARN
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log.2014-07-23 | grep -E [ERRO]R+WARN
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+ps -ax | grep wild
+kill 1126
+sude kill 1126
+sudo kill 1126
+ps -ax | grep wild
+sudo kill -9  1126
+sudo ./wildfly-8.0.0.Final/bin/standalone.sh &
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log | grep 6751
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log | grep УТ
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log | grep куыукм
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log | grep reserv
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log.2014-07-24 | grep reserv
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log.2014-07-24 | grep reserv
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+sudo reboot now
+sudo ./wildfly-8.0.0.Final/bin/standalone.sh &
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log.2014-07-27
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log.2014-07-26
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+sudo reboot now
+[18~.. 
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+sudo reboot now
+mc
+pwd
+cd ~
+cd ~/
+pwd
+mc
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+sudo reboot now
+mc
+cd .
+cd /
+ls
+su ls
+sudo ls
+uname
+find / -name dump
+sudo find / -name dump
+ls /root
+su bash
+su /bin/bash
+sudo /bin/bash
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+sudo reboot now
+mc
+sudo ./wildfly-8.0.0.Final/bin/add-user.sh 
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+sudo reboot now
+mc
+sudo ./wildfly-8.0.0.Final/bin/add-user.sh 
+mc
+ls
+~cd
+cd
+ls
+tar -cf jboss.tar ./wildfly-8.0.0.Final
+mc
+soft 
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+exit
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+mc
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+mc
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+sudo reboot now
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+mc
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+mc
+sudo ./wildfly-8.0.0.Final/bin/add-user.sh 
+~
+cd ~
+sudo ./wildfly-8.0.0.Final/bin/add-user.sh 
+sudo reboot now
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+sudo ./wildfly-8.0.0.Final/bin/add-user.sh 
+mc
+sudo ./wildfly-8.0.0.Final/bin/add-user.sh 
+cd ~
+sudo ./wildfly-8.0.0.Final/bin/add-user.sh 
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+mc
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+sudo reboot now
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+mc
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+mc
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+sudo reboot now
+sudo tail -n 1000 -f /home/roman.sklyarenko/wildfly-8.0.0.Final/standalone/log/server.log
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+sudo reboot now
+
+df
+ps -ax | grep wild
+kill 1127
+sudo kill 1127
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+sudo ./wildfly-8.0.0.Final/bin/standalone.sh 
+sudo reboot now
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+sudo tail -n 1000 -f /home/roman.sklyarenko/wildfly-8.0.0.Final/standalone/log/server.log
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+ps -ax | grep wild
+sudo kill -9 7519
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+sudo tail -n 1000 -f /home/roman.sklyarenko/wildfly-8.0.0.Final/standalone/log/server.log
+ps -ax | grep wild
+sudo kill -9 3766
+sudo /home/roman.sklyarenko//wildfly-8.0.0.Final/bin/standalone.sh 
+sudo /home/roman.sklyarenko//wildfly-8.0.0.Final/bin/standalone.sh &
+sudo tail -n 1000 -f /home/roman.sklyarenko/wildfly-8.0.0.Final/standalone/log/server.log
+df
+sudo tail -n 1000 -f /home/roman.sklyarenko/wildfly-8.0.0.Final/standalone/log/server.log
+ps -ax | grep wild
+sudo kill -9 4527
+ps -ax | grep wild
+sudo /home/roman.sklyarenko//wildfly-8.0.0.Final/bin/standalone.sh
+sudo /home/roman.sklyarenko//wildfly-8.0.0.Final/bin/standalone.sh &
+sudo tail -n 1000 -f /home/roman.sklyarenko/wildfly-8.0.0.Final/standalone/log/server.log
+sudo tail -n 1000 -f /home/roman.sklyarenko/wildfly-8.0.0.Final/standalone/log/server.log | grep ru.craftmann
+sudo tail -n 1000 -f /home/roman.sklyarenko/wildfly-8.0.0.Final/standalone/log/server.log | grep ERROR
+sudo tail -n 1000 -f /home/roman.sklyarenko/wildfly-8.0.0.Final/standalone/log/server.log
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+sudo reboot now
+OA
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+sudo tail -n 1000 -f /home/roman.sklyarenko/wildfly-8.0.0.Final/standalone/log/server.log
+mc
+sudo tail -n 1000 -f /home/roman.sklyarenko/wildfly-8.0.0.Final/standalone/log/server.log
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+sudo reboot now
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+sudo reboot now
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+java -version
+su yum update
+sudo yum update
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+sudo yum update
+sudo reboot now
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+ьс
+sudo mc
+mc
+sudo mc
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+sudo useradd
+sudo useradd antipin
+sudo passwd antipin 
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+mc
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+mc
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log.2014-08-22
+mc
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+sudo reboot now
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+sudo reboot now
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+OA
+mc
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+sudo reboot now
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+sudo reboot now
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+ps ax | grep wild
+sudo kill 1185
+ps ax | grep wild
+sudo kill -9 1185
+ps ax | grep wild
+sudo /home/vladimir.minikh/wildfly-8.0.0.Final/bin/standalone.sh &
+ps ax | grep wild
+sudo kill -9 2018
+ps ax | grep wild
+sudo /home/vladimir.minikh/wildfly-8.0.0.Final/bin/standalone.sh &
+ps ax | grep wild
+sudo kill -9 2226
+ps ax | grep wild
+sudo /home/vladimir.minikh/wildfly-8.0.0.Final/bin/standalone.sh &
+ps ax | grep wild
+sudo kill -9 2648
+sudo /home/vladimir.minikh/wildfly-8.0.0.Final/bin/standalone.sh
+mc
+ps ax | grep wild
+sudo kill -9 1186
+ps ax | grep wild
+sudo /home/vladimir.minikh/wildfly-8.0.0.Final/bin/standalone.sh
+ls
+mc
+ps ax | wild
+ps ax | wild
+ps ax | grep wild
+sudo kill -9 1658
+ps ax | grep wild
+mc
+ps ax | grep wild
+sudo kill -9 2593
+mc
+ps ax | grep wild
+sudo kill -9 3327
+ьс
+mc
+ps ax | grep wild
+sudo /home/vladimir.minikh/wildfly-8.0.0.Final/bin/standalone.sh
+sudo /home/vladimir.minikh/wildfly-8.0.0.Final/bin/standalone.sh &
+mc
+sudo /home/roman.sklyarenko/JBtest/bin/standalone.sh
+ps ax | grep wild
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+ps ax | grep wild
+sudo kill -9 9644
+sudo /home/vladimir.minikh/wildfly-8.0.0.Final/bin/standalone.sh &
+ps ax | grep wild
+sudo kill -9 13224
+ps ax | grep wild
+sudo /home/vladimir.minikh/wildfly-8.0.0.Final/bin/standalone.sh &
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+ps ax | grep wild
+sudo kill -9 1181
+sudo /home/vladimir.minikh/wildfly-8.0.0.Final/bin/standalone.sh &
+ps ax | grep wild
+sudo kill -9 6266
+sudo /home/vladimir.minikh/wildfly-8.0.0.Final/bin/standalone.sh &
+ps ax | grep wild
+sudo kill -9 6519
+ps ax | grep wild
+sudo /home/vladimir.minikh/wildfly-8.0.0.Final/bin/standalone.sh &
+ps ax | grep wild
+sudo kill -9 6684
+sudo /home/vladimir.minikh/wildfly-8.0.0.Final/bin/standalone.sh &
+sudo reboot now
+mc
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+ps ax | grep wild
+sudo kill -9 1183
+sudo /home/vladimir.minikh/wildfly-8.0.0.Final/bin/standalone.sh &
+ps ax | grep wild
+sudo kill -9 1498
+sudo /home/vladimir.minikh/wildfly-8.0.0.Final/bin/standalone.sh &
+sudo reboot now
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+sudo reboot now
+mc
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+ps ax | grep wild
+sudo kill -9 1186
+sudo /home/vladimir.minikh/wildfly-8.0.0.Final/bin/standalone.sh &
+sudo reboot now
+sudo mc
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+ps ax | grep wild
+sudo kill -9 1179
+ps ax | grep wild
+sudo /home/vladimir.minikh/wildfly-8.0.0.Final/bin/standalone.sh &
+ps ax | grep wild
+sudo kill -9 1954
+sudo /home/vladimir.minikh/wildfly-8.0.0.Final/bin/standalone.sh
+sudo /home/vladimir.minikh/wildfly-8.0.0.Final/bin/standalone.sh &
+ps ax|grep wild
+sudo kill -9 2718
+sudo /home/vladimir.minikh/wildfly-8.0.0.Final/bin/standalone.sh &
+ps ax|grep wild
+sudo kill -9 3784
+sudo /home/vladimir.minikh/wildfly-8.0.0.Final/bin/standalone.sh &
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log.2014-09-15
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log.2014-09-15 | gred update
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log.2014-09-15
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+ps ax|grep wild
+sudo kill -9 3987
+sudo /home/vladimir.minikh/wildfly-8.0.0.Final/bin/standalone.sh &
+ps ax|grep wild
+sudo kill -9 5721
+sudo /home/vladimir.minikh/wildfly-8.0.0.Final/bin/standalone.sh &
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log.2014-09-16
+sudo tail -n 3000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log.2014-09-16
+sudo tail -n 30000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log.2014-09-16
+ps ax|grep wild
+sudo kill -9 10259
+sudo /home/vladimir.minikh/wildfly-8.0.0.Final/bin/standalone.sh &
+sudo tail -n 30000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log | grep ERROR
+sudo tail -n 30000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+sudo tail -n 30000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log | grep ERROR
+sudo tail -n 30000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+ps ax|grep wild
+sudo kill -9 12699
+sudo /home/vladimir.minikh/wildfly-8.0.0.Final/bin/standalone.sh &
+ps ax|grep wild
+sudo kill -9 13643
+sudo /home/vladimir.minikh/wildfly-8.0.0.Final/bin/standalone.sh &
+sudo tail -n 30000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log | grep ru.craftmann.www
+ps ax|grep wild
+sudo kill -9 18093
+sudo /home/vladimir.minikh/wildfly-8.0.0.Final/bin/standalone.sh &
+ps ax|grep wild
+sudo kill -9 18344
+sudo /home/vladimir.minikh/wildfly-8.0.0.Final/bin/standalone.sh &
+ps ax|grep wild
+sudo kill -9 21603
+ps ax|grep wild
+sudo /home/vladimir.minikh/wildfly-8.0.0.Final/bin/standalone.sh &
+ps ax|grep wild
+sudo reboot now
+mc
+tail -f ~/.bash_history | grep add
+cat ~/.bash_history | grep add
+sudo ./wildfly-8.0.0.Final/bin/add-user.sh
+mc
+sudo tail -n 30000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+ps ax|grep wild
+sudo kill -9 1179
+sudo /home/vladimir.minikh/wildfly-8.0.0.Final/bin/standalone.sh &
+ps ax|grep wild
+sudo kill -9 1437
+sudo /home/vladimir.minikh/wildfly-8.0.0.Final/bin/standalone.sh &
+ps ax|grep wild
+sudo kill -9 1610
+ps ax|grep wild
+sudo kill -9 1761
+sudo /home/vladimir.minikh/wildfly-8.0.0.Final/bin/standalone.sh &
+ps ax|grep wild
+sudo kill -9 1912
+sudo /home/vladimir.minikh/wildfly-8.0.0.Final/bin/standalone.sh &
+ps ax|grep wild
+sudo kill -9 2061
+ps ax|grep wi
+sudo /home/vladimir.minikh/wildfly-8.0.0.Final/bin/standalone.sh &
+ps ax|grep wild
+sudo kill -9 2274
+sudo /home/vladimir.minikh/wildfly-8.0.0.Final/bin/standalone.sh &
+ps ax | grep wild
+sudo tail -n 30000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+sudo reboot now
+sudo tail -n 30000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+sudo tail -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+sudo tail -n 30000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log | grep ERROR
+sudo tail -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+sudo tail -n 30000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+sudo tail -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+crl
+clear
+sudo tail -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+sudo tail -n 1000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log | grep ERROR
+sudo tail -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log | grep ERROR
+sudo tail -n 30000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log | grep ERROR
+sudo reboot now
+sudo tail -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+clear
+sudo tail -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+sudo tail -n 30000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+sudo tail -n 30000 -0f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+sudo tail -n 300000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+clear
+sudo tail -n 300000 -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+mc
+scp
+mc
+sudo tail -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+mc
+sudo tail -f /home/vladimir.minikh/wildfly-8.0.0.Final/standalone/log/server.log
+mc
+exit

@@ -1,0 +1,27 @@
+http://danielkummer.github.io/git-flow-cheatsheet/index.ru_RU.html
+
+apt-get install git-flow
+
+Шпаргалка по git-flow
+-------------------------------
+https://habrahabr.ru/post/106912/ - Удачная модель ветвления для Git
+# Создание веток master/developer/release/hotfix
+$ git flow init
+
+# Начинаем работать над функционалом feature1 (ответвление от develop)
+$ git flow feature start feature1
+# делаем изменения
+$ git add ...изменения...
+$ git commit -m "изменения для feature1"
+
+# Эта команда сделает слияние feature1 с develop и удалит ветку
+$ git flow feature finish feature1
+
+# Давайте начнём работу над релизом
+$ git flow release start release1
+# делаем изменения
+$ git add ...изменения...
+$ git commit -m "release1"
+
+# Эта команда сделает слияние release1 с master
+$ git flow release finish release1

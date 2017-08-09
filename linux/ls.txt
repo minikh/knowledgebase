@@ -1,0 +1,4 @@
+ls -l --sort=time
+
+ls -R - рекурсивно показывать содержимое директорий
+ls -dl /usr /usr/bin /usr/X11R6/bin ../share - инфо о директориях

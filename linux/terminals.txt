@@ -1,0 +1,16 @@
+yakuake
+
+
+terminator:
+настройки:
+[layouts]
+  [[default]]
+    [[[child1]]]
+      profile = None
+      type = Terminal
+      parent = window0
+    [[[window0]]]
+      type = Window
+      parent = ""
+      size = 1500, 650  //размер экрана
+[plugins]

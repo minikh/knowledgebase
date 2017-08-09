@@ -1,0 +1,23 @@
+upstream metacard {
+	server 127.0.0.1:8090;
+}
+
+server {
+	listen 80;
+
+	server_name metacards.online;
+
+	location / {
+		proxy_pass http://metacard;
+		proxy_read_timeout 7200;
+		proxy_set_header Host $host;
+		#proxy_set_header X-Real-IP $remote_addr;
+		#proxy_set_header REMOTE_ADDR $remote_addr;
+                proxy_http_version 1.1;
+                proxy_set_header Upgrade $http_upgrade;
+                proxy_set_header Connection "upgrade";
+
+	}
+}
+
+

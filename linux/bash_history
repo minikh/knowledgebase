@@ -1,0 +1,1999 @@
+docker ps
+#1466953118
+docker ps -l
+#1466953546
+docker ps -a
+#1466953643
+docker ps 
+#1466953803
+ocker run -name cs-1 -t -i cs-1
+#1466953808
+docker run -name cs-1 -t -i cs-1
+#1466953813
+docker run --name cs-1 -t -i cs-1
+#1466953909
+docker start cs-1
+#1466953931
+docker run --name cs-1 -t -i cs-1 -rm
+#1466953938
+docker run -t -i cs-1 -rm
+#1466954004
+docker run -t -i cs-1 --rm
+#1466954017
+docker run -t --rm -i cs-1
+#1466955025
+docker run --name cs-1 -t -i cs-1
+#1466955080
+docker start cs-1
+#1466955270
+docker logs -f cs-1
+#1466955308
+docker stop cs-1
+#1466960445
+docker run --name cs-1 -t -i cs-1
+#1466961003
+docker run --rm cs-1 -t -i cs-1
+#1466961012
+docker run --rm -t -i cs-1
+#1466961560
+docker run --rm -ti cs-1
+#1466962346
+docker run --rm -ti cs-1 bash
+#1466943593
+sudo docker build -t my-docker-test
+#1466943622
+docker build -t my-docker-test ~/docker/jdk-7/
+#1466943934
+docker ps
+#1466943948
+docker images
+#1466944164
+docker run -v /var/www:/var/www -p 80:80 -м -t my-docker-test
+#1466944190
+docker run -v /home:/home -t -i my-docker-test
+#1466944626
+docker ps
+#1466944633
+docker build -t my-docker-test ~/docker/jdk-7/
+#1466944647
+docker run -v /home:/home -t -i my-docker-test
+#1466944916
+docker build -t my-docker-test ~/docker/jdk-7/
+#1466944954
+docker run -v /home:/home -t -i my-docker-test
+#1466945029
+docker build -t my-docker-test ~/docker/jdk-7/
+#1466945038
+docker run -v /home:/home -t -i my-docker-test
+#1466945125
+docker build -t my-docker-test ~/docker/jdk-7/
+#1466945257
+docker run -v /home:/home -t -i my-docker-test
+#1466945318
+docker build -t my-docker-test ~/docker/jdk-7/
+#1466945321
+docker run -v /home:/home -t -i my-docker-test
+#1466945346
+docker build -t my-docker-test ~/docker/jdk-7/
+#1466945349
+docker run -v /home:/home -t -i my-docker-test
+#1466945395
+docker build -t my-docker-test ~/docker/jdk-7/
+#1466945398
+docker run -v /home:/home -t -i my-docker-test
+#1466946030
+docker build -t my-docker-test ~/docker/jdk-7/
+#1466946036
+docker run -v /home:/home -t -i my-docker-test
+#1466946068
+docker build -t my-docker-test ~/docker/jdk-7/
+#1466946073
+docker run -v /home:/home -t -i my-docker-test
+#1466946165
+docker build -t my-docker-test ~/docker/jdk-7/
+#1466946189
+docker run -v /home:/home -t -i my-docker-test
+#1466946246
+docker build -t my-docker-test ~/docker/jdk-7/
+#1466946281
+docker run -v /home:/home -t -i my-docker-test
+#1466946430
+docker build -t my-docker-test ~/docker/jdk-7/
+#1466946436
+docker run -v /home:/home -t -i my-docker-test
+#1466946553
+docker build -t my-docker-test ~/docker/jdk-7/
+#1466946557
+docker run -v /home:/home -t -i my-docker-test
+#1466946852
+docker build -t my-docker-test ~/docker/jdk-7/
+#1466946858
+docker run -v /home:/home -t -i my-docker-test
+#1466946887
+docker build -t my-docker-test ~/docker/jdk-7/
+#1466946891
+docker run -v /home:/home -t -i my-docker-test
+#1466946902
+docker build -t my-docker-test ~/docker/jdk-7/
+#1466946906
+docker run -v /home:/home -t -i my-docker-test
+#1466946938
+docker build -t my-docker-test ~/docker/jdk-7/
+#1466946942
+docker run -v /home:/home -t -i my-docker-test
+#1466946978
+docker build -t my-docker-test ~/docker/jdk-7/
+#1466946981
+docker run -v /home:/home -t -i my-docker-test
+#1466947037
+docker build -t my-docker-test ~/docker/jdk-7/
+#1466947041
+docker run -v /home:/home -t -i my-docker-test
+#1466947120
+docker build -t my-docker-test ~/docker/jdk-7/
+#1466947133
+docker run -v /home:/home -t -i my-docker-test
+#1466947562
+docker build -t my-docker-test ~/docker/jdk-7/
+#1466947566
+docker run -v /home:/home -t -i my-docker-test
+#1466947671
+docker build -t my-docker-test ~/docker/jdk-7/
+#1466947681
+docker run -v /home:/home -t -i my-docker-test
+#1466947808
+cd ..
+#1466947814
+cd hornetq/
+#1466948197
+docker run  -t -i hornetq
+#1466948229
+docker build -t hornetq ~/docker/hornetq/
+#1466948262
+docker build -t cs-1 ~/docker/comm-server-1/
+#1466948452
+docker run  -t -i cs-1
+#1466948478
+docker build -t cs-1 ~/docker/comm-server-1/
+#1466948482
+docker run  -t -i cs-1
+#1466948597
+docker build -t cs-1 ~/docker/comm-server-1/
+#1466948606
+docker run  -t -i cs-1
+#1466948641
+docker build -t cs-1 ~/docker/comm-server-1/
+#1466948644
+docker run  -t -i cs-1
+#1466948707
+docker build -t cs-1 ~/docker/comm-server-1/
+#1466948712
+docker run  -t -i cs-1
+#1466948753
+docker build -t cs-1 ~/docker/comm-server-1/
+#1466948757
+docker run  -t -i cs-1
+#1466948783
+docker build -t cs-1 ~/docker/comm-server-1/
+#1466948786
+docker run  -t -i cs-1
+#1466948826
+docker build -t cs-1 ~/docker/comm-server-1/
+#1466948832
+docker run  -t -i cs-1
+#1466948847
+docker build -t cs-1 ~/docker/comm-server-1/
+#1466948850
+docker run  -t -i cs-1
+#1466950066
+docker build -t postgres-omni ~/docker/postgres/
+#1466950298
+docker run  -t -i postgres-omni
+#1466951240
+docker build -t postgres-omni ~/docker/postgres/
+#1466951375
+docker run  -t -i postgres-omni
+#1466951462
+docker build -t postgres-omni ~/docker/postgres/
+#1466951490
+docker run  -t -i postgres-omni
+#1466952266
+docker run  -t -i hornetq
+#1466954166
+docker build -t cs-1 ~/docker/comm-server-1/
+#1466954708
+docker build -t postgres-omni ~/docker/postgres/
+#1466954892
+docker build -t hornetq ~/docker/hornetq/
+#1466955354
+docker build -t postgres-omni ~/docker/postgres/
+#1466958755
+docker build -t cs-1 ~/docker/comm-server-1/
+#1466960376
+docker build -t postgres-omni ~/docker/postgres/
+#1466960399
+docker build -t cs-1 ~/docker/comm-server-1/
+#1466950417
+git fetch 
+#1466950455
+git cd master 
+#1466950466
+git pull origin master develop
+#1466950508
+git cd develop
+#1466950513
+git reset --hard 
+#1466950514
+git cd develop
+#1466957423
+mvn liquibase:update
+#1466959087
+mvn -f ~/work/omnicomm/cs/pom.xml liquibase:update
+#1466959114
+mvn -f ~/work/omnicomm/cs/cs/assembly/pom.xml liquibase:update
+#1466959129
+mvn -f ~/work/omnicomm/cs/cs/assembly/pom.xml liquibase:update -y
+#1466959138
+mvn -f ~/work/omnicomm/cs/cs/assembly/pom.xml liquibase:update -f
+#1466959151
+mvn -f ~/work/omnicomm/cs/cs/assembly/pom.xml liquibase:update -h
+#1466959933
+mvn -f ~/work/omnicomm/cs/cs/assembly/pom.xml liquibase:update 
+#1466943124
+mc
+#1467144341
+docker ps -s
+#1467144345
+docker ps -q
+#1467144417
+docker info hornetq
+#1467144432
+docker info
+#1467664992
+./eagle-lin64-7.6.0.run 
+#1467914732
+sudo apt-get install ffmpeg
+#1467914802
+sudo apt-get install pygame
+#1467914964
+sudo apt-get install mercurial python3-pip libfreetype6-dev
+#1467914998
+sudo apt-get install -y software-properties-common && # для add-apt-repository   sudo add-apt-repository -y ppa:thopiekar/pygame && # где взять python3-pygame   sudo apt-get update -y && # обновляем список пакетов   sudo apt-get install -y python3-pygame # ставим
+#1467915628
+python3 -c 'import pygame'
+#1467915648
+pygame
+#1467915651
+python3 -c 'import pygame'
+#1467915824
+import pygame
+#1467915847
+python2.7
+#1467917713
+sudo apt-get purge pygame
+#1467917741
+sudo apt-get purge python-pygame 
+#1467917530
+ffmpeg -i PAS_movie.wmv -target ntsc-vcd -vcodec mpeg1video -an output.mpg
+#1467918073
+ffmpeg -i Метафоричесие\ карты.avi -target ntsc-vcd -vcodec mpeg1video -an output1.mpg
+#1467918805
+omxplayer
+#1467918818
+sudo apt-get install omxplayer
+#1467918847
+vlc output.mpg 
+#1467917209
+ffmpeg
+#1467917254
+sudo add-apt-repository ppa:mc3man/trusty-media
+#1467917447
+sudo apt-get install ffmpeg
+#1467917454
+sudo add-apt-repository ppa:mc3man/trusty-media
+#1467917466
+sudo apt-get update
+#1467917486
+sudo apt-get install ffmpeg
+#1467924557
+ssh pi@192.168.1.38
+#1468784084
+git st
+#1468784087
+git commit 
+#1468784091
+git commit -a
+#1468784107
+git push 
+#1469556328
+git fetch 
+#1469556643
+git cd dev 
+#1469556662
+git cd feature/liquibase
+#1469556668
+git cd -b feature/liquibase
+#1469558098
+git st
+#1469558112
+git add pom.xml
+#1469558138
+git commit 
+#1469558162
+git add src/main/resources/liquibase.properties
+#1469558172
+git commit 
+#1469558186
+git st
+#1469558198
+git commit -a
+#1469558398
+git cd dev 
+#1469558406
+git merge feature/liquibase --no-ff 
+#1469558411
+git push 
+#1469559138
+git cd -b feature/logs
+#1469560223
+git cd dev 
+#1469560231
+git commit -a
+#1469560245
+git push 
+#1469560270
+git cd feature/logs 
+#1469560274
+git merge dev
+#1469564245
+git st
+#1469564253
+git add -i 
+#1469564271
+git commit 
+#1469564282
+git push 
+#1469564470
+git commit -a
+#1469564648
+git commit -a --amend 
+#1469564827
+git commit -a
+#1469565858
+git push 
+#1469566291
+git commit -a
+#1469566299
+git push 
+#1469566337
+git commit -a
+#1469566345
+git push 
+#1469566353
+git cd dev 
+#1469566356
+git fetch 
+#1469566384
+git merge feature/logs 
+#1469566414
+git reset --hard origin/dev 
+#1469566422
+git merge feature/logs --no-ff 
+#1469566430
+git push 
+#1469566482
+git br -D feature/liquibase 
+#1469566490
+git :push origin/
+#1469566556
+git push origin :feature/logs 
+#1469681415
+ecryptfs-umount-private 
+#1469725836
+git fetch 
+#1470223534
+ifconfig 
+#1470224886
+su
+#1470224966
+exit
+#1470223882
+sshserver
+#1470223890
+ssh-server
+#1470223909
+netstat -tuplen | grep 22
+#1470223985
+sudo service ssh start 
+#1470224001
+sudo service ssh status
+#1470224014
+sudo apt-get install ssh
+#1470224047
+sudo vim /etc/ssh/sshd_config
+#1470224461
+sudo service ssh status
+#1470224466
+sudo service ssh restart 
+#1470224796
+sudo service ssh status
+#1470224799
+sudo vim /etc/ssh/sshd_config
+#1470224852
+sudo service ssh restart 
+#1470224903
+sudo vim /etc/ssh/sshd_config
+#1470224401
+ll
+#1470224406
+ll .ssh/
+#1470224421
+touch .ssh/authorized_keys
+#1470224426
+vim .ssh/authorized_keys
+#1470224732
+ifconfig 
+#1470226440
+ssh adm@172.23.16.50
+#1470226487
+sudo service ssh restart 
+#1470226677
+vim .ssh/authorized_keys
+#1470226694
+sudo vim /etc/ssh/sshd_config
+#1470226777
+sudo service ssh restart 
+#1470226784
+sudo service ssh status us
+#1470226788
+sudo service ssh status 
+#1470226807
+netstat -tuplen | grep 10022
+#1470225343
+git fetch 
+#1470225384
+git st
+#1470225388
+git pull 
+#1470225398
+git pull origin dev\
+#1470225402
+git pull origin dev
+#1470225669
+git commit -a
+#1470225701
+git push 
+#1470225892
+git commit -a
+#1470225926
+git cd mas
+#1470225928
+git cd master 
+#1470226035
+git cd dev
+#1470226065
+git commit -a --amend 
+#1470226075
+git push 
+#1470558192
+ecryptfs-umount-private 
+#1470561960
+ssh pi@192.168.1.22
+#1470562175
+ssh root@192.168.1.21 -p2222
+#1470562577
+reboot 
+#1470562581
+sudo reboot 
+#1470562606
+ssh root@192.168.1.21 -p2222
+#1470563968
+sudo ~/program/vpnclient/vpnclient start
+#1470563990
+exit
+#1470564040
+ecryptfs-mount-private 
+#1470564106
+ecryptfs-umount-private 
+#1470564130
+ssh user@rs2.elme.ru -p7322
+#1470564866
+ssh minikh@10.100.100.112 -p5432
+#1470564939
+ssh minikh@185.83.0.14
+#1470565717
+ping rs2.elme.ru
+#1470565725
+ping elme.ru
+#1470565737
+ping rs1.elme.ru
+#1470565748
+ping rs2.elme.ru
+#1470566234
+ssh user@rs2.elme.ru -p7322
+#1470566282
+nslookup rs2.elme.ru
+#1470566295
+ping 46.188.28.190
+#1470567197
+ssh user@rs2.elme.ru -p7322
+#1470568309
+ifconfig 
+#1470571163
+ssh minikh@46.188.61.177 -p3251
+#1470569512
+ssh minikh@192.168.1.23
+#1470569409
+ssh user@rs2.elme.ru -p7322
+#1470852738
+dropbox stop
+#1470852744
+dropbox start
+#1471457560
+mc sh://192.168.1.20 ~/
+#1471457645
+mc sh://pi@192.168.1.20 ~/
+#1471458242
+mc sh://pi@192.168.1.20 ~/
+#1471458345
+ssh pi@192.168.1.20
+#1471686672
+./main.sh 
+#1471686680
+./main.sh start
+#1471686699
+ll
+#1471687050
+sudo apt-get install MySQLdb
+#1471687084
+sudo apt-get install mysql
+#1471687100
+pyton
+#1471687104
+python
+#1471686766
+less autostart.sh 
+#1471686777
+cd vinoroom/
+#1471686779
+ll
+#1471686802
+sudo chmod minikh:minikh *
+#1471686833
+sudo chown minikh:minikh *
+#1471686837
+ll
+#1471686868
+sudo chown minikh:minikh sensors.py.pid 
+#1471686869
+ll
+#1471686875
+user
+#1471686878
+users
+#1471686893
+sudo chown minikh:minikh sensors.py.pid 
+#1471686900
+ll
+#1471686905
+mc
+#1471686986
+su
+#1471693195
+ssh pi@192.168.1.20
+#1471799861
+sudo vim /etc/fstab
+#1471799973
+sudo vim /etc/mtab
+#1471799887
+df -h
+#1471800987
+su
+#1471801021
+mc
+#1471800854
+ecryptfs-manager 
+#1471800873
+ecryptfs-stat 
+#1471801181
+ecryptfs-mount-private 
+#1471801203
+ecryptfs-umount-private 
+#1472148019
+make
+#1472156307
+mc sh://pi@192.168.1.20 ~/
+#1472156349
+exit
+#1472156834
+mc sh://pi@192.168.1.20 ~/
+#1472147413
+dmesg
+#1472147444
+ll
+#1472147472
+ll /dev/
+#1472147478
+ls /dev/
+#1472147508
+ls /dev/usb/hiddev
+#1472147513
+ls /dev/usb/
+#1472147690
+lsusb
+#1472147754
+lsmod 
+#1472147763
+lsmod | grep metro
+#1472147776
+lsmod | grep Metr
+#1472147780
+lsmod | grep log
+#1472147842
+ls /dev/tty
+#1472147846
+ls /dev/tty*
+#1472147915
+lsusb 
+#1472148124
+lsusb -v
+#1472148149
+lsusb -v | less
+#1472148213
+ls /dev/tty*
+#1472148227
+ls /dev/tty* | wc -l
+#1472148244
+ls /dev/ | wc -l
+#1472148262
+ls /dev/
+#1472148386
+cat /dev/hidraw4
+#1472148390
+sudo cat /dev/hidraw4
+#1472148407
+sudo cat /dev/hidraw5
+#1472148420
+sudo cat /dev/hidraw6
+#1472148553
+sudo cat /dev/hidraw5
+#1472148576
+sudo cat /dev/hidraw6
+#1472148615
+sudo cat /dev/hidraw5
+#1472148619
+sudo cat /dev/hidraw6
+#1472148645
+sudo cat /dev/hidraw4
+#1472148682
+sudo cat /dev/hidraw5
+#1472148689
+sudo cat /dev/hidraw4
+#1472148710
+ls /dev/
+#1472148718
+ls /dev/ | wc -l
+#1472148743
+sudo cat /dev/ttyACM0 
+#1472148764
+ls /dev/
+#1472148779
+ls /dev/ | wc -l
+#1472148849
+ls /dev/
+#1472148871
+sudo cat /dev/ttyACM0 
+#1472148905
+ls /dev/
+#1472148923
+sudo cat /dev/ttyACM0 
+#1472148965
+ssh pi@192.168.1.20
+#1472151197
+mc sh://pi@192.168.1.20 ~/
+#1472158375
+ifconfig 
+#1472158076
+ping 192.168.1.20
+#1472158108
+ssh pi@192.168.1.20
+#1472158113
+ping 192.168.1.20
+#1472158221
+ssh pi@192.168.1.20
+#1472158647
+mc sh://pi@192.168.1.20 ~/
+#1472159124
+ssh pi@192.168.1.20
+#1472159291
+exit
+#1472296000
+ssh pi@192.168.1.20
+#1472298196
+echo $!
+#1472298243
+tail -f /var/log/syslog
+#1472298249
+tail -f /var/log/syslog &
+#1472298252
+echo $!
+#1472298261
+fg
+#1472298263
+echo $!
+#1472298278
+ps ax | grep 7733
+#1472298378
+echo $
+#1472298380
+echo $!
+#1472298461
+last.pid
+#1472298464
+last
+#1472298482
+echo last.pid
+#1472298490
+echo $last.pid
+#1472298497
+echo $!
+#1472298526
+ssh pi@192.168.1.20
+#1472307971
+git fetch 
+#1472308418
+git st
+#1472308464
+git cd -b something
+#1472308469
+git commit -a
+#1472308483
+git push 
+#1472308566
+git push origin hackspace 
+#1472308587
+git cd add_spring 
+#1472308645
+git st
+#1472308689
+git rm --cached .idea/
+#1472308693
+git rm --cached .idea/ -r
+#1472308700
+git st
+#1472308725
+git rm --cached Server.iml 
+#1472308727
+git st
+#1472308734
+git commit -a
+#1472308746
+git st
+#1472308765
+git cd add_spring 
+#1472308828
+git rm --cached .idea/ -r
+#1472308833
+git rm --cached Server.iml 
+#1472308835
+git st
+#1472308859
+git cd -b features/gitignore
+#1472308862
+git commit -a
+#1472308881
+git add .gitignore 
+#1472308885
+git commit -a --amend 
+#1472308955
+git cd something 
+#1472311089
+git flow init
+#1472311106
+git st
+#1472311144
+git add pom.xml 
+#1472311149
+git commit 
+#1472311175
+git add .gitignore 
+#1472311177
+git commit 
+#1472311184
+git st
+#1472311191
+git commit -a
+#1472311202
+git flow init
+#1472311334
+git cd something 
+#1472311342
+git reset --hard 
+#1472311344
+git cd something 
+#1472311406
+git merge develop 
+#1472311432
+git cd develop 
+#1472311440
+git merge something 
+#1472311831
+git st
+#1472311841
+git commit -a
+#1472311923
+git cd develop 
+#1472311950
+git commit -a
+#1472311957
+git push 
+#1472312018
+git cd before-hackaton 
+#1472312021
+git push 
+#1472312031
+git cd develop 
+#1472312133
+git reset --hard 
+#1472312816
+git clone 
+#1472312819
+git clone git@bitbucket.org:minikh/server.git
+#1472312873
+git clone https://minikh@bitbucket.org/minikh/server.git
+#1472312934
+git cd develop 
+#1472313046
+git clone https://minikh@bitbucket.org/minikh/server.git
+#1472312693
+git st
+#1472312747
+git commit -a
+#1472312754
+git push 
+#1472312979
+git merge master develop 
+#1472312988
+git merge develop master 
+#1472313006
+git br -D master 
+#1472313014
+git cd -b master 
+#1472313020
+git push 
+#1472319939
+git cd dev 
+#1472317591
+cat ~/.ssh/id_rsa.pub 
+#1472317305
+git init
+#1472317314
+git flow init 
+#1472317391
+git add .
+#1472317394
+git st
+#1472317399
+git commit -a
+#1472317463
+git remote add origin git@bitbucket.org:minikh/winerooms.git
+#1472317471
+git push -u origin --all # pushes up the repo and its refs for the first time
+#1472317502
+git push 
+#1472317542
+git push -u origin master
+#1472317820
+git push 
+#1472317885
+git st
+#1472317899
+git add .
+#1472317904
+git commit -a
+#1472317956
+git st
+#1472317960
+git add .
+#1472317962
+git commit 
+#1472318053
+git commit -a
+#1472319046
+git st
+#1472319075
+git add .
+#1472319078
+git commit -a
+#1472319091
+git push 
+#1472319844
+git st
+#1472319850
+git add .
+#1472319853
+git commit -a
+#1472320472
+git st
+#1472320499
+git commit -a
+#1472320527
+git add .
+#1472320530
+git commit -a
+#1472320537
+git push 
+#1472321220
+git st
+#1472321230
+git add database-config.xml 
+#1472321233
+git commit 
+#1472321268
+git add database-config.xml 
+#1472321271
+git st
+#1472321275
+git add src/main/resources/liquibase.properties
+#1472321281
+git commit --amm
+#1472321291
+git commit --amend 
+#1472321671
+git st
+#1472321699
+git commit -a
+#1472321720
+git push 
+#1472322109
+git st
+#1472322116
+git commit -a
+#1472322135
+git push 
+#1472322179
+git tag template.1.0
+#1472322184
+git push --tags 
+#1472322370
+git br origin/develop template
+#1472322380
+git br origin/develop template-1
+#1472322409
+git push origin master develop 
+#1472322538
+git st
+#1472322541
+git commit -a
+#1472322746
+git add .
+#1472322750
+git commit -a
+#1472325602
+git st
+#1472325607
+git add .
+#1472325610
+git commit -a
+#1472325637
+git push 
+#1472326217
+git commit -a
+#1472326627
+git st
+#1472326632
+git commit -a
+#1472326647
+git push 
+#1472328515
+git st
+#1472328521
+git add .
+#1472328525
+git commit -a
+#1472328536
+git push 
+#1472329065
+git st
+#1472329071
+git commit -a
+#1472329100
+git push 
+#1472330905
+git st
+#1472330915
+git commit -a
+#1472330931
+git push 
+#1472331578
+git st
+#1472331587
+git commit -a
+#1472331606
+git push 
+#1472371579
+cd src/main/java/ru/vmsystems/wine_rooms/domain/service/serial/
+#1472371594
+javac -cp /usr/share/java/RXTXcomm.jar:. TwoWaySerialComm.java
+#1472371615
+/opt/java/jdk1.8.0_66/bin/javac -cp /usr/share/java/RXTXcomm.jar:. TwoWaySerialComm.java
+#1472371640
+/opt/java/jdk1.8.0_66/bin/java -Djava.library.path=/usr/lib/jni -cp /usr/share/java/RXTXcomm.jar:. TwoWaySerialComm
+#1472371652
+/opt/java/jdk1.8.0_66/bin/java -Djava.library.path=/usr/lib/jni -cp /usr/share/java/RXTXcomm.jar:. TwoWaySerialComm.class 
+#1472371677
+/opt/java/jdk1.8.0_66/bin/java -Djava.library.path=/usr/lib/jni -cp /usr/share/java/RXTXcomm.jar:.TwoWaySerialComm
+#1472371690
+/opt/java/jdk1.8.0_66/bin/java -Djava.library.path=/usr/lib/jni -cp /usr/share/java/RXTXcomm.jar:. TwoWaySerialComm.class 
+#1472371715
+/opt/java/jdk1.8.0_66/bin/java -Djava.library.path=/usr/lib/jni -cp /usr/share/java/RXTXcomm.jar TwoWaySerialComm.class 
+#1472371738
+/opt/java/jdk1.8.0_66/bin/java -Djava.library.path=/usr/lib/jni -cp /usr/share/java/RXTXcomm.jar ru.vmsystems.wine_rooms.domain.service.serial.TwoWaySerialComm
+#1472371754
+/opt/java/jdk1.8.0_66/bin/java -Djava.library.path=/usr/lib/jni -cp /usr/share/java/RXTXcomm.jar TwoWaySerialComm.class 
+#1472375149
+git st
+#1472378905
+sh start.sh 
+#1472370055
+ls /dev/ttyACM0 
+#1472370059
+cat /dev/ttyACM0 
+#1472371132
+sudo apt-get install librxtx-java
+#1472371264
+ls /usr/share/java/RXTXcomm.jar
+#1472371326
+ls /usr/lib/jni/
+#1472372472
+cat /dev/ttyACM0 
+#1472373141
+cat /dev/usb*
+#1472373145
+cat /dev/
+#1472373155
+ls /dev/usb*
+#1472373171
+ls /dev/ttyU*
+#1472373178
+ls /dev/tty*
+#1472373191
+sudo ln -s /dev/ttyAMA0 /dev/ttyS80
+#1472373197
+ls /dev/tty*
+#1472373239
+cat /dev/ttyS80
+#1472373268
+sudo rm /dev/ttyS80
+#1472373270
+ls /dev/tty*
+#1472373279
+sudo ln -s /dev/ttyACM0 /dev/ttyS80
+#1472373282
+cat /dev/ttyS80
+#1472373472
+cat /dev/ttyACM0 
+#1472373638
+ls /var/lock/LCK..ttyS80
+#1472373644
+rm /var/lock/LCK..ttyS80
+#1472373649
+ls /var/lock/LCK..ttyS80
+#1472373653
+sudo rm /var/lock/LCK..ttyS80
+#1472373655
+ls /var/lock/LCK..ttyS80
+#1472373661
+cat /dev/ttyACM0 
+#1472373671
+sudo cat /dev/ttyACM0 
+#1472375220
+sudo apt-get update 
+#1472375278
+sudo apt-get install librxtx-java
+#1472375548
+sudo apt-get purge librxtx-java
+#1472376233
+sudo apt-get install librxtx-java
+#1472378962
+sh start.sh 
+#1472380943
+chmod u+x run.sh stop.sh 
+#1472380965
+ll
+#1472386495
+ssh minikh@192.168.1.23
+#1472379226
+java -jar wineRooms-1.0.0.jar -Djava.library.path=/usr/lib/jni
+#1472379302
+java -jar wineRooms-1.0.0.jar -Djava.library.path=/usr/lib/jni -cp /usr/share/java/RXTXcomm.jar:. 
+#1472379866
+sh start.sh 
+#1472379900
+java -jar wineRooms-1.0.0.jar -Djava.library.path=/usr/lib/jni
+#1472380149
+java -version
+#1472380256
+java -jar wineRooms-1.0.0.jar -Djava.library.path=/usr/lib/jni -classpath /usr/share/java/RXTXcomm.jar:. 
+#1472380273
+java -jar wineRooms-1.0.0.jar -Djava.library.path=/usr/lib/jni -classpath /usr/share/java/RXTXcomm.jar
+#1472380289
+java -jar wineRooms-1.0.0.jar -Djava.library.path=/usr/lib/jni -classpath /usr/share/java
+#1472380319
+java -jar wineRooms-1.0.0.jar -Djava.library.path=/usr/lib/jni -classpath -Djava.library.path=/usr/share/java
+#1472380472
+java -Djava.library.path=/usr/lib/jni -classpath -Djava.library.path=/usr/share/java/RXTXcomm.jar -jar wineRooms-1.0.0.jar 
+#1472380510
+java -Djava.library.path=/usr/lib/jni -jar wineRooms-1.0.0.jar 
+#1472380613
+sh start.sh 
+#1472380744
+sh stop.sh 
+#1472380765
+chmod u+x start.sh stop.sh 
+#1472380802
+./start.sh 
+#1472380848
+./stop.sh 
+#1472380921
+ll
+#1472380993
+./run.sh 
+#1472381067
+./stop.sh 
+#1472392433
+mc
+#1472392625
+ssh pi@192.168.1.20
+#1472380601
+tail -f logs/logs.log 
+#1472392755
+ls -l
+#1472380645
+tail -f nohup.out 
+#1472392391
+mc sh://pi@192.168.1.20 ~/work/java/wineRooms/target/
+#1472381427
+ssh pi@192.168.1.20
+#1472381438
+ssh pi@192.168.1.20
+#1472393611
+cd work/
+#1472393614
+cd ../
+#1472393618
+ssh pi@192.168.1.20
+#1472375166
+git add .
+#1472375169
+git commit -a
+#1472375190
+git push 
+#1472376714
+git st
+#1472376719
+git commit -a
+#1472376732
+git reset 
+#1472376736
+git add -i
+#1472376745
+git commit 
+#1472376771
+git push 
+#1472377016
+git add -i
+#1472377028
+пше сщьь
+#1472377032
+git commit 
+#1472377492
+git st
+#1472377506
+git commit -a
+#1472378024
+пше ые
+#1472378027
+git st
+#1472378031
+git add .
+#1472378034
+git commit -a
+#1472378659
+git st
+#1472381780
+git add run.sh
+#1472381783
+git add -i
+#1472381795
+git commit 
+#1472381816
+git push 
+#1472382926
+git st
+#1472383057
+git reset --hard 
+#1472383067
+git flow 
+#1472383082
+git flow feature finish --no-ff
+#1472383100
+git push 
+#1472384788
+git st
+#1472384795
+git commit -a
+#1472384832
+git push 
+#1472394432
+git st
+#1472394501
+git push 
+#1472753626
+ssh pi@192.168.1.20
+#1472753656
+ssh minikh@192.168.1.23
+#1472760143
+mc sh://minikh@92.63.91.60 ~/work/java/wineRooms/target/
+#1472760754
+mc sh://minikh@92.63.91.60 ~/
+#1472762015
+bash
+#1472762097
+ls -l
+#1472762731
+mc sh://minikh@92.63.91.60 ~/
+#1472762845
+ls
+#1472762890
+cat .ssh/id_rsa.pub 
+#1472762912
+cat .ssh/authorized_keys 
+#1472763248
+ssh minikh@192.168.1.23
+#1472758907
+ping 92.63.91.60
+#1472758923
+nslookup 92.63.91.60
+#1472758935
+nslookup vmsystems.ru
+#1472759215
+cat ~/.ssh/id_rsa.pub 
+#1472759369
+ssh minikh@92.63.91.60
+#1472759420
+ssh root@92.63.91.60
+#1472760017
+ssh minikh@92.63.91.60
+#1472760285
+ssh root@92.63.91.60
+#1472760413
+ssh minikh@92.63.91.60
+#1472760460
+ssh root@92.63.91.60
+#1472760801
+ssh minikh@92.63.91.60
+#1472761172
+ssh root@92.63.91.60
+#1472761402
+ssh minikh@92.63.91.60
+#1472766208
+exit
+#1472762258
+ssh minikh@192.168.1.23
+#1472762278
+mc sh://minikh@192.168.1.23
+#1472762308
+mc sh://minikh@192.168.1.23 ~/
+#1472762491
+mc sh://minikh@92.63.91.60 ~/
+#1472763593
+mc sh://minikh@192.168.1.20
+#1472763624
+ssh pi@192.168.1.20
+#1472763681
+mc sh://pi@192.168.1.20 ~/
+#1472763718
+mc sh://minikh@92.63.91.60 ~/
+#1472766213
+exit
+#1472794456
+whois vmsystems.ru
+#1472794466
+whois metacard.vmsystems.ru
+#1472794845
+whois vmsystems.ru
+#1472794858
+nslookup vmsystems.ru
+#1472794871
+nslookup 37.140.192.98
+#1472795056
+whois vmsystems.ru
+#1473184366
+dmidecode
+#1473184370
+sudo dmidecode
+#1473184392
+sudo dmidecode | less
+#1473184473
+sudo dmidecode >> /media/My1/Clouds/YandexDisk-minikhv/my-comp
+#1473184548
+sudo dmidecode | less
+#1473185124
+mc
+#1473185437
+ssh pi@192.168.1.20
+#1473185939
+dmidecode
+#1473185945
+sudo dmidecode | less
+#1473187051
+free
+#1473187061
+free -f
+#1473187069
+free -h
+#1473187261
+sudo dmidecode | less
+#1473272514
+free -h
+#1473273001
+free -f
+#1473273007
+free -l
+#1473273012
+free -lh
+#1473273183
+sudo apt install Hardinfo
+#1473273195
+Hardinfo
+#1473273198
+hardinfo
+#1473273282
+sudo apt purge Hardinfo
+#1473273385
+free -lh
+#1473273390
+top
+#1473273432
+htop
+#1473273441
+top
+#1473273531
+top -h
+#1473273536
+top -hv
+#1473273549
+top -hrlp
+#1473506137
+./atomation.sh 
+#1473506362
+sudo ./atomation.sh 
+#1473450441
+ssh minikh@92.63.91.60
+#1473449824
+sudo apt purge yandex-disk
+#1473449990
+yandex-disk token 
+#1473449994
+yandex-disk token minikhv
+#1473539846
+git st
+#1473543871
+git add .
+#1473543885
+git commit -a
+#1473543972
+git add .
+#1473543976
+git commit -a --amend 
+#1473543982
+git push 
+#1473545030
+free -h
+#1473545099
+ulimit -n
+#1473545111
+sudo vim /etc/security/limits.conf
+#1473545141
+ulimit -n
+#1473545152
+ulimit 512
+#1473545154
+ulimit -n
+#1473545158
+ulimit -h
+#1473545164
+ulimit --help
+#1473545176
+ulimit -S 512
+#1473545180
+ulimit -H 512
+#1473545181
+ulimit -h
+#1473545186
+ulimit -n
+#1473545198
+sudo vim /etc/security/limits.conf
+#1473545221
+top
+#1473545252
+free -h
+#1473545261
+watch free -h
+#1473546033
+./run.sh 
+#1473546040
+tail -f nohup.out 
+#1473546047
+less nohup.out 
+#1473546121
+./run.sh 
+#1473546395
+./stop.sh 
+#1473546447
+./run.sh 
+#1473546467
+./stop.sh 
+#1473546489
+./run.sh 
+#1473546513
+./stop.sh 
+#1473546801
+./run.sh 
+#1473546860
+./stop.sh 
+#1473546951
+./run.sh 
+#1473546957
+./stop.sh 
+#1473546981
+./run.sh 
+#1473546986
+tail -f nohup.out 
+#1473547038
+./stop.sh 
+#1473547077
+./run.sh 
+#1473547079
+tail -f nohup.out 
+#1473547085
+ll
+#1473547102
+tail -f nohup.out 
+#1473547106
+./run.sh 
+#1473547107
+tail -f nohup.out 
+#1473547137
+./stop.sh 
+#1473547173
+./run.sh 
+#1473547176
+tail -f nohup.out 
+#1473547940
+less nohup.out 
+#1473547996
+grep 'Thread.run' nohup.out | less
+#1473548017
+grep 'Thread.run' nohup.out -b 10 | less
+#1473548030
+grep -b10 'Thread.run' nohup.out | less
+#1473548077
+grep -a10 'Thread.run' nohup.out | less
+#1473548092
+grep -a20 'Thread.run' nohup.out | less
+#1473548134
+tail -f nohup.out 
+#1473575178
+less nohup.out 
+#1473575223
+./stop.sh 
+#1473583043
+ifconfig 
+#1473584352
+sudo ln -s /dev/ttyACM0 /dev/ttyS80
+#1473585920
+sudo apt-get install lib32z1 lib32ncurses5 lib32bz2-1.0 lib32stdc++6
+#1473587313
+umount -l  /tmp
+#1473587360
+ln -s /media/My1/tmp/ /tmp
+#1473587374
+chmod +t /media/My1/tmp/
+#1473587400
+sudo rm /tmp/
+#1473587555
+sudo rm /tmp/ -r
+#1473587585
+ln -s /media/My1/tmp/ /tmp
+#1473587590
+sudo ln -s /media/My1/tmp/ /tmp
+#1473587601
+sudo chmod +t /media/My1/tmp/
+#1473587890
+/media/My1/Setup/java/genymotion-2.8.0-linux_x64.bin 
+#1473575529
+git st
+#1473575541
+git add src/main/java/ru/vmsystems/wine_rooms/domain/service/modbus/ModbusService.java
+#1473575548
+git commit -a --amend 
+#1473575554
+git push -f
+#1473575570
+git stash 
+#1473575610
+git st
+#1473575647
+git stash pop
+#1473580803
+git st
+#1473581550
+git push 
+#1473588542
+sudo ln -s /dev/ttyACM0 /dev/ttyS80
+#1473588169
+mc
+#1473588210
+sudo rm /tmp -r
+#1473588215
+ll
+#1473588219
+ll /
+#1473588254
+mkdir /home/minikh/tmp
+#1473588273
+ln -s /home/minikh/tmp/ /tmp
+#1473588277
+sudo ln -s /home/minikh/tmp/ /tmp
+#1473588298
+chmod +t /home/minikh/tmp/
+#1473588306
+startX
+#1473588311
+startx
+#1473793140
+ssh minikh@92.63.91.60
+#1473794165
+git clone git@bitbucket.org:vmsystems/androidapp.git
+#1473794038
+git st
+#1473794041
+git init
+#1473794042
+git st
+#1473794060
+git add .
+#1473794063
+git remote add origin git@bitbucket.org:minikh/wineroomscloud.git
+#1473794070
+git commit -a
+#1473794077
+git push 
+#1473794362
+git flow init
+#1473795926
+git add .
+#1473795930
+git commit -a
+#1473795946
+git push 
+#1473795952
+git flow init
+#1473795967
+git push 
+#1473797277
+git commit -a
+#1473797295
+git push 
+#1473797327
+git st
+#1473797373
+git commit -a
+#1473797388
+git st
+#1473797391
+git push 
+#1473796559
+base64 
+#1473796564
+base64 --help
+#1473796576
+base64 -d V0VCQ2xpZW50OnVzdGFz
+#1473796609
+echo V0VCQ2xpZW50OnVzdGFz | base64 -d
+#1473796627
+echo admin:admin | base64
+#1473880032
+ssh pi@192.168.1.20
+#1473965028
+sudo ln -s /dev/ttyACM0 /dev/ttyS80
+#1473965047
+./run.sh 
+#1473965053
+tail -f nohup.out 
+#1473965100
+./stop.sh 
+#1473965489
+./run.sh 
+#1473965492
+tail -f nohup.out 
+#1473965501
+ll
+#1473965507
+./run.sh 
+#1473965508
+tail -f nohup.out 
+#1473965533
+./run.sh 
+#1473965535
+tail -f nohup.out 
+#1473965556
+./stop.sh 
+#1473967044
+ifconfig 
+#1473965077
+mc sh://pi@192.168.1.20 ~/work/java/wineRooms/target/
+#1473965570
+mc
+#1473965580
+mc sh://pi@192.168.1.20 ~/work/java/wineRooms/target/
+#1473966348
+ssh pi@192.168.1.20
+#1473964659
+mc
+#1473964663
+ssh pi@192.168.1.20
+#1473966961
+mc sh://pi@192.168.1.20 ~/
+#1473967237
+ssh pi@192.168.1.20
+#1473967467
+git st
+#1473964841
+git flow finish --no-ff
+#1473964864
+git flow feature finish --no-ff
+#1473964882
+git push 
+#1473965426
+git st
+#1473967486
+git push 
+#1473967517
+git flow release finish --no-ff
+#1473967551
+git reset --hard 
+#1473967579
+git push origin master develop 
+#1474096381
+ssh pi@192.168.1.20
+#1474130930
+ecryptfs-mount-private 
+#1474131209
+ecryptfs-umount-private 
+#1474308462
+dropbox start
+#1474311780
+ssh pi@192.168.1.20
+#1474483105
+ecryptfs-mount-private 
+#1474483464
+ecryptfs-umount-private 
+#1474726516
+dmidecode
+#1474726519
+sudo dmidecode
+#1474726535
+sudo dmidecode | less
+#1474731349
+ssh pi@192.168.1.20
+#1474788203
+ln -s /media/My1/Android/ /home/minikh/Android
+#1474788816
+git pull 
+#1474788895
+git st
+#1474788910
+git reset 
+#1474788912
+git st
+#1474788917
+git reset --soft 
+#1474788918
+git 
+#1474788954
+git reset --hard 
+#1474788957
+git st
+#1474793683
+ifconfig 
+#1474791298
+ssh pi@192.168.1.20
+#1474791355
+ssh pi@192.168.1.99
+#1474791362
+ssh pi@192.168.1.22
+#1474791371
+ping 192.168.1.22
+#1474791378
+ssh pi@192.168.1.22
+#1474791459
+ssh pi@192.168.1.51
+#1474791469
+ping 192.168.1.51
+#1474791480
+ssh pi@192.168.1.22
+#1474791503
+telnet 192.168.1.22 22
+#1474791591
+ping 192.168.1.99
+#1474791683
+telnet 192.168.1.22 22
+#1474791687
+ssh pi@192.168.1.22
+#1474791739
+ping 192.168.1.99
+#1474792160
+ssh pi@192.168.1.22
+#1474792167
+ping 192.168.1.51
+#1474792431
+ssh pi@192.168.1.22
+#1474792463
+ssh pi@192.168.1.32
+#1474792549
+ifconfig 
+#1474792893
+ssh pi@192.168.1.32
+#1474792895
+ssh pi@192.168.1.22
+#1474793072
+ssh pi@192.168.1.20
+#1474793093
+ping 192.168.1.20
+#1474793099
+ssh pi@192.168.1.20
+#1474790337
+ssh pi@192.168.1.20
+#1474793941
+ifconfig 
+#1474794055
+ping 192.168.1.51
+#1474794203
+ssh pi@192.168.1.20
+#1474794369
+ifconfig 
+#1474810659
+git push 
+#1474822292
+git cd -f feature/newConnection
+#1474822303
+git cd -b feature/newConnection
+#1474822366
+git cd develop 
+#1474822376
+git st
+#1474822393
+git cd develop 
+#1474822427
+git flow feature finish --help
+#1474822449
+git flow finish feature --help
+#1474822483
+git flow feature feature/newConnection finish --no-ff
+#1474822512
+git merge feature/newConnection --no-ff 
+#1474822524
+git br -D feature/newConnection 
+#1474822531
+git push 
+#1474822537
+git cd feature/images 
+#1474822541
+git merge develop 
+#1474822548
+git push 
+#1474823262
+git cd -b refact
+#1474824092
+git push 
+#1474824108
+git cd develop 
+#1474824147
+git merge refact --no-ff 
+#1474824151
+git push 
+#1474824167
+git br -D refact 
+#1474824179
+git push origin :refact 
+#1474824191
+git cd feature/images 
+#1474824196
+git merge develop 
+#1474824201
+git push 
+#1474820985
+ping 192.168.1.51
+#1474816349
+git st
+#1474816369
+git reset --hard 
+#1474816382
+git pull 
+#1474816506
+git st
+#1474816511
+git reset --hard 
+#1474816513
+git pull 
+#1474820602
+git st
+#1474820652
+git push 
+#1474794309
+ping 192.168.1.51
+#1474865620
+ecryptfs-mount-private 
+#1474866464
+ecryptfs-umount-private 
+#1474922625
+ssh pi@192.168.1.20
+#1475091930
+xkill 
+#1475091950
+kill -3
+#1475268192
+ecryptfs-mount-private 
+#1475268775
+ecryptfs-umount-private 
+#1475303423
+ssh pi@192.168.1.20
+#1475303692
+mc sh://pi@192.168.1.24 ~/
+#1475303562
+ssh pi@192.168.1.24
+#1475304399
+ls /dev/video0 
+#1475304276
+./mjpg-streamer.sh start
+#1475304295
+sudo apt-get install libv4l-0
+#1475304305
+./mjpg-streamer.sh start
+#1475305157
+https://github.com/jacksonliam/mjpg-streamer.git
+#1475305163
+git clone https://github.com/jacksonliam/mjpg-streamer.git
+#1475305478
+ifconfig 
+#1475305198
+make clean all
+#1475305208
+./start.sh 
+#1475306088
+vim ./start.sh 
+#1475306141
+./start.sh 
+#1475307516
+./my-start.sh 
+#1475307720
+./stop.sh 
+#1475307828
+./run.sh 
+#1475307836
+./stop.sh 
+#1475308355
+./run.sh 
+#1475308432
+./mjpg_streamer -i "input_uvc.so --help"
+#1475309434
+git init
+#1475307944
+git commit 
+#1475307965
+git push 
+#1475308206
+git st
+#1475309655
+git add .
+#1475309659
+git commit 
+#1475310828
+git init
+#1475310853
+git st
+#1475310868
+git add .
+#1475310871
+git commit 
+#1475310931
+git remote add origin git@bitbucket.org:minikh/storywall.git
+#1475310934
+git push 
+#1475306471
+cat /dev/video0 
+#1475306481
+tail -f /dev/video0 
+#1475306496
+sudo tail -f /dev/video0 
+#1475316556
+ifconfig 
+#1475326143
+ecryptfs-mount-private 
+#1475326174
+ecryptfs-umount-private 
+#1475303908
+vim ./start.sh 
+#1475304559
+./start.sh 
+#1475304610
+ll
+#1475304624
+sudo make
+#1475304641
+sudo apt-get install cmake libjpeg8-dev
+#1475304651
+sudo make
+#1475304667
+sudo make install
+#1475304702
+./start.sh 
+#1475304737
+./mjpg_streamer -i "./input_uvc.so" -o "./output_http.so -w ./www"
+#1475304841
+make clean all
+#1475304884
+./start.sh 
+#1475337504
+ifconfig 
+#1475318682
+git st
+#1475318688
+git add .
+#1475318692
+git commit 
+#1475318700
+git push 
+#1475331101
+git push -f
+#1475689817
+ssh pi@192.168.1.24
+#1475689821
+ssh pi@192.168.1.20
+#1475730737
+exit
+#1475731326
+ssh pi@192.168.1.20
+#1475785037
+mc sh://pi@192.168.1.20
+#1476124242
+ssh pi@192.168.1.20
+#1476127044
+mc sh://pi@192.168.1.20
+#1476164610
+ssh pi@192.168.1.20
+#1476163096
+ssh pi@192.168.1.22
+#1476163111
+ssh pi@192.168.1.20
+#1476631006
+ssh minikh@46.188.61.177 -p3251
+#1476631029
+ssh minikh@92.63.91.60 -p32516
+#1476631037
+ssh minikh@92.63.91.60
+#1476631048
+ping 92.63.91.60
+#1476631053
+ssh minikh@92.63.91.60 -p325162
+#1476631059
+ssh minikh@92.63.91.60 -p3251
+#1476631178
+mc sh:minikh@92.63.91.60 3251
+#1476631917
+ecryptfs-mount-private 
+#1476632771
+ecryptfs-umount-private 

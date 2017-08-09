@@ -1,0 +1,8 @@
+На RIPE.NET запросы делаются так:
+telnet whois.ripe.net 43
+Trying 193.0.0.129…
+Connected to whois.ripe.net.
+Escape character is ‘^]’.
+194.87.0.50 — пишем айпишник и получаем подробную
+инфу кто это и откуда.
+
