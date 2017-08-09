@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="user" type="user"/>
+
+  <xs:complexType name="user">
+    <xs:sequence>
+      <xs:element name="name" type="name" minOccurs="0"/>
+      <xs:element name="age" type="xs:int"/>
+      <xs:element name="childs" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="child" type="user" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:int" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="name">
+    <xs:sequence/>
+    <xs:attribute name="firstName" type="xs:string"/>
+    <xs:attribute name="secondName" type="xs:string"/>
+  </xs:complexType>
+</xs:schema>
+

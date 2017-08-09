@@ -1,0 +1,9 @@
+запускаем сервер
+docker run -d --name=node0 consul agent -server -client=0.0.0.0 -node=node0 -bootstrap-expect=1 -bind=172.17.0.2 -data-dir=/tmp/consul
+ 
+клиенты 
+docker run -d --name=node1 consul agent -ui -client=0.0.0.0 -node=node1 -bind=172.17.0.3 -data-dir=/tmp/consul -join=172.17.0.2
+docker run -d --name=node2 consul agent -ui -client=0.0.0.0 -node=node2 -bind=172.17.0.4 -data-dir=/tmp/consul -join=172.17.0.2
+
+статистика
+docker exec -t node0 consul members

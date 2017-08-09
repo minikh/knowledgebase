@@ -1,0 +1,48 @@
+int arr[] = new int[2];
+arr[0] = 20926 & 0xFF;
+arr[1] = (20926 >> 8) & 0xFF;
+
+ByteArrayOutputStream bo = new ByteArrayOutputStream();
+bo.write(arr[0]);
+bo.write(arr[1]);
+
+byte[] arr2 = bo.toByteArray();
+
+int a = (arr2[0] & 0xFF) + (arr[1] << 8);
+
+//result
+//a = 20926
+
+
+int arr[] = new int[4];
+long src = 836664857;
+arr[0] = (int) (src & 0xFF);
+arr[1] = (int) (src >> 8) & 0xFF;
+arr[2] = (int) (src >> 16) & 0xFF;
+arr[3] = (int) (src >> 24) & 0xFF;
+
+ByteArrayOutputStream bo = new ByteArrayOutputStream();
+bo.write(arr[0]);
+bo.write(arr[1]);
+bo.write(arr[2]);
+bo.write(arr[3]);
+
+byte[] arr2 = bo.toByteArray();
+
+long a = (arr2[0] & 0xFF) + (arr[1] << 8) + (arr[2] << 16) + (arr[3] << 24);
+
+
+byte[] bytes = ByteBuffer.allocate(Long.SIZE / Byte.SIZE).put(1L).array();
+
+
+
+ByteArrayOutputStream bo = new ByteArrayOutputStream();
+bo.write(0x44);
+bo.write(0xba);
+bo.write(0xab);
+bo.write(0xa0);
+
+byte[] m = (bo.toByteArray());
+
+long mm = ((long)m[0]&0xFF) + (((long)m[1]&0xFF)<<8) + (((long)m[2]&0xFF)<<16) + (((long)m[3]&0xFF) <<24);
+float floatLat = (mm * 90  / 4294967295f);

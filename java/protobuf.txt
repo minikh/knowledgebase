@@ -1,0 +1,19 @@
+
+Установить компиляторы
+
+gcc
+sudo apt-get install libc6-dev
+
+sudo apt-get install g++
+
+
+Установка протобаф
+./configure --prefix=/usr
+make
+make check
+sudo make install
+
++ плагин для IDEA
+
+компиляция для java
+protoc -I=$SRC_DIR --java_out=$DST_DIR $SRC_DIR/addressbook.proto

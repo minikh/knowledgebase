@@ -1,0 +1,2 @@
+gccElfX86 -mcpu=pentiumpro -march=pentiumpro -nostdlib -fno-builtin -fno-defer-pop -Wall -fno-zero-initialized-in-bss -I. -DCPU=PENTIUM3 -c  -finstrument-functions -ortg.gefO rtg.c 
+ldElfX86 --entry=_start -o test.sm rtg.gefO  ctkGefStartup.gefO ctkBlkToolkitInfo.gefO ctkPlcLibFault.gefO ctkPlcLibRefMem.gefO ctkPlcLibFunc.gefO ctkPlcLibBus.gefO ctkPlcLibStackCheck.gefO ctkPlcLibVariables.gefO ctkStackCheckStub.gefO ctkCRunTimeStub.gefO ctkTargetStub.gefO

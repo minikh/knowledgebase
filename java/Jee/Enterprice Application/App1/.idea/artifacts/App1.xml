@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="ear" name="App1">
+    <output-path>$PROJECT_DIR$/out/artifacts/App1</output-path>
+    <root id="archive" name="App1.ear">
+      <element id="javaee-facet-resources" facet="App1/javaeeApplication/javaEEApplication" />
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="artifact" artifact-name="Model" />
+      <element id="artifact" artifact-name="View" />
+    </root>
+  </artifact>
+</component>

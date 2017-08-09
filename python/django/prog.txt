@@ -1,0 +1,2 @@
+https://github.com/dyve/django-bootstrap3/blob/develop/bootstrap3/templatetags/bootstrap3.py
+http://django-bootstrap3.readthedocs.io/en/latest/templatetags.html#bootstrap-form

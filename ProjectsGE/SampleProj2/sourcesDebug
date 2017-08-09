@@ -1,0 +1,15 @@
+# Note:  Comments can be included by putting a "#" in the first column.
+CFILENAMES = ctkCBlockTestDriver.c ctkCBlockTest1.c ctkCBlockTest2.c \
+             ctkCBlockTest3.c 
+
+OFILENAMES = ctkCBlockTest4.pcO ctkCBlockTest5.pcO \
+             ctkCBlockTest6.pcO
+
+# flag1 = EnableAnsi
+flag1 = DisableStackCheck
+
+# Note: flag3 is reserved for DisableGefLibLink which does not link the object
+#       file with the other Gef C toolkit object files.  This allows the user to 
+#       produce an object file that can be linked later with the Gef C toolkit
+#       object files
+# flag3 = DisableGefLibLink

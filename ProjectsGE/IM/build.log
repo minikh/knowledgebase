@@ -1,0 +1,3 @@
+gccElfX86 -march=pentiumpro -nostdlib -fno-builtin -fno-defer-pop -Wall -fno-zero-initialized-in-bss -fno-feature-proxy -I. -DCPU=PENTIUM3 -c  -finstrument-functions -oIM1.gefO IM1.c 
+IM1.c:4:21: warning: extra tokens at end of #include directive
+ldElfX86 --entry=_start -o test.sm IM1.gefO  ctkGefStartup.gefO ctkBlkToolkitInfo.gefO ctkPlcLibFault.gefO ctkPlcLibRefMem.gefO ctkPlcLibFunc.gefO ctkPlcLibBus.gefO ctkPlcLibStackCheck.gefO ctkPlcLibVariables.gefO ctkStackCheckStub.gefO ctkCRunTimeStub.gefO ctkTargetStub.gefO

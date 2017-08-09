@@ -1,0 +1,59 @@
+gccElfX86 -march=pentiumpro -nostdlib -fno-builtin -fno-defer-pop -Wall -fno-zero-initialized-in-bss -fno-feature-proxy -I. -DCPU=PENTIUM3 -c  -finstrument-functions -omod1.gefO mod1.c 
+In file included from mod1.c:6:
+dataMod.h:277:1: warning: "YdusMainToGt" redefined
+dataMod.h:254:1: warning: this is the location of the previous definition
+dataMod.h:278:1: warning: "TtstartToNvd" redefined
+dataMod.h:255:1: warning: this is the location of the previous definition
+dataMod.h:279:1: warning: "PkstartToNvd" redefined
+dataMod.h:256:1: warning: this is the location of the previous definition
+dataMod.h:280:1: warning: "NststartToNvd" redefined
+dataMod.h:257:1: warning: this is the location of the previous definition
+dataMod.h:281:1: warning: "Nvd0ToTst0" redefined
+dataMod.h:258:1: warning: this is the location of the previous definition
+dataMod.h:282:1: warning: "MktoNvd" redefined
+dataMod.h:259:1: warning: this is the location of the previous definition
+dataMod.h:283:1: warning: "KdtoNvd" redefined
+dataMod.h:260:1: warning: this is the location of the previous definition
+dataMod.h:284:1: warning: "Gt0ToNvd0" redefined
+dataMod.h:261:1: warning: this is the location of the previous definition
+dataMod.h:285:1: warning: "Nvd0ToGt0" redefined
+dataMod.h:262:1: warning: this is the location of the previous definition
+dataMod.h:286:1: warning: "MstToNvd0" redefined
+dataMod.h:263:1: warning: this is the location of the previous definition
+dataMod.h:287:1: warning: "ZsVSToNvd0" redefined
+dataMod.h:264:1: warning: this is the location of the previous definition
+dataMod.h:288:1: warning: "Gt0startToNvd0" redefined
+dataMod.h:265:1: warning: this is the location of the previous definition
+dataMod.h:289:1: warning: "Nvd0ToPow" redefined
+dataMod.h:266:1: warning: this is the location of the previous definition
+dataMod.h:290:1: warning: "Nvd0ToTt0" redefined
+dataMod.h:267:1: warning: this is the location of the previous definition
+dataMod.h:291:1: warning: "Nvd0ToPk0" redefined
+dataMod.h:268:1: warning: this is the location of the previous definition
+dataMod.h:292:1: warning: "Nvd0ToTauvd0" redefined
+dataMod.h:269:1: warning: this is the location of the previous definition
+dataMod.h:293:1: warning: "Nvd0ToA1" redefined
+dataMod.h:270:1: warning: this is the location of the previous definition
+dataMod.h:294:1: warning: "Nvd0ToA2" redefined
+dataMod.h:271:1: warning: this is the location of the previous definition
+dataMod.h:295:1: warning: "Nvd0ToA3" redefined
+dataMod.h:272:1: warning: this is the location of the previous definition
+dataMod.h:296:1: warning: "Nvd0ToA4" redefined
+dataMod.h:273:1: warning: this is the location of the previous definition
+dataMod.h:297:1: warning: "Nvd0ToA5" redefined
+dataMod.h:274:1: warning: this is the location of the previous definition
+dataMod.h:298:1: warning: "NvdToNnd" redefined
+dataMod.h:275:1: warning: this is the location of the previous definition
+dataMod.h:299:1: warning: "Nvd0ToA6" redefined
+dataMod.h:276:1: warning: this is the location of the previous definition
+mod1.c:10:1: warning: "M_PI" redefined
+In file included from mod1.c:3:
+d:\GE Software\PACSystemsCToolkit7\Targets\CommonFiles\IncCommon\CInc/math.h:241:1: warning: this is the location of the previous definition
+mod1.c: In function 'GefMain':
+mod1.c:145: warning: unused variable 'test_NVD1'
+mod1.c:144: warning: unused variable 'test_NVD'
+mod1.c:118: warning: unused variable 'Tst'
+mod1.c:106: warning: unused variable 'i'
+mod1.c:106: warning: unused variable 'TimeInteg'
+mod1.c:361: warning: control reaches end of non-void function
+ldElfX86 --entry=_start -o test.sm mod1.gefO  ctkGefStartup.gefO ctkBlkToolkitInfo.gefO ctkPlcLibFault.gefO ctkPlcLibRefMem.gefO ctkPlcLibFunc.gefO ctkPlcLibBus.gefO ctkPlcLibStackCheck.gefO ctkPlcLibVariables.gefO ctkStackCheckStub.gefO ctkCRunTimeStub.gefO ctkTargetStub.gefO

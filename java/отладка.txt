@@ -1,0 +1,5 @@
+Сохранить байты из отладчика
+
+FileOutputStream out = new FileOutputStream("/home/minikh/work/convert/data.txt");
+out.write(frame);
+out.close();

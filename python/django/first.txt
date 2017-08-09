@@ -1,0 +1,96 @@
+https://www.youtube.com/watch?v=QgdINlxm-wE
+
+Установить тулзы
+sudo apt-get install python-setuptools
+
+Виртуальное окружение
+sudo easy_install virtualenv
+
+Создать виртуальное окружение (не используя системные библиотеки питона)
+virtualenv --no-site-packages ~/work/djangoenv
+
+Активируем виртуальное окружение
+cd work/djangoenv/
+source bin/activate
+
+Установим в окружение django
+easy_install django==1.8
+
+Админка. показать команды
+cd bin/
+python django-admin.py
+
+Создать новый проект firstapp
+python django-admin.py startproject firstapp
+
+Менеждер проекта. показать команды
+cd firstapp/
+python manage.py
+
+Запуск проекта
+python manage.py runserver
+Добавить в проект приложение (модуль) article
+python manage.py startapp article
+после этого прописать его в файле settings.py в блоке INSTALLED_APPS
+тут же есть настройка БД в блоке DATABASES
+
+
+Перед создание БД заполнить файл models.py
+Создать БД
+python manage.py
+Применить изменения БД
+python manage.py makemigrations
+
+
+
+//----------------------
+1.Установить тулзы
+sudo apt-get install python-setuptools
+
+2.Виртуальное окружение
+sudo easy_install virtualenv
+
+3.Создать виртуальное окружение (не используя системные библиотеки питона)
+virtualenv --no-site-packages ./myvirtualenv
+
+4.Активируем виртуальное окружение
+cd myvirtualenv
+source bin/activate
+
+5.Установим в окружение django 1.8
+easy_install django==1.8
+
+6.Админка. показать команды
+cd bin/
+python3.5 django-admin.py
+
+6. Скопировать в каталог bin/ приложение pgram
+
+7.Менеждер проекта. показать команды
+cd pgram/
+python3.5 manage.py
+
+8. Установить зависимости проекта
+pip install -r requirements.txt
+
+9. Усли необходимо создать БД заново, то удалить файл project.db и создать заново командой
+python3.5 manage.py migrate
+
+10.Создать суперпользователя
+python3 manage.py createsuperuser
+
+11.Запуск проекта
+python3.5 manage.py runserver 8000
+
+12.Открыть в браузере
+http://127.0.0.1:8000/
+
+http://127.0.0.1:8000/en/brand/
+http://127.0.0.1:8000/en/brand/create/
+http://127.0.0.1:8000/en/brand/campaign/
+http://127.0.0.1:8000/en/brand/campaign/create/
+
+
+
+
+

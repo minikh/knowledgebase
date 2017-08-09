@@ -1,0 +1,172 @@
+-- всего терминалов
+SELECT DISTINCT
+  type,
+  count(type) AS count
+FROM convert.terminal
+GROUP BY type
+ORDER BY type;
+
+-- количество активных за все время
+SELECT
+  COUNT(q1.terminal_id) as count, q1.type as type
+FROM
+  (SELECT DISTINCT
+     log.terminal_id, COUNT(log.terminal_id), t.type
+   FROM convert.user_log log
+     LEFT JOIN convert.terminal t ON log.terminal_id = t.id
+   WHERE t.type IS NOT NULL
+   GROUP BY log.terminal_id, t.type
+   ORDER BY t.type) AS q1
+GROUP BY q1.type;
+
+-- количество активных за неделю
+SELECT
+  COUNT(q1.terminal_id) as count, q1.type
+FROM
+  (SELECT DISTINCT
+     log.terminal_id, COUNT(log.terminal_id), t.type
+   FROM convert.user_log log
+     LEFT JOIN convert.terminal t ON log.terminal_id = t.id
+   WHERE t.type IS NOT NULL
+         AND log.time > '2016-04-01 13:14:41.855000' AND log.time < '2016-04-10 13:14:41.855000'
+   GROUP BY log.terminal_id, t.type
+   ORDER BY t.type) AS q1
+GROUP BY q1.type;
+
+-- количество новых
+SELECT DISTINCT
+  log.terminal_id,
+  COUNT(log.terminal_id) AS count,
+  t.type
+FROM convert.user_log log
+  LEFT JOIN convert.terminal t ON log.terminal_id = t.id
+WHERE t.type IS NOT NULL
+      AND log.time > '2016-04-01 13:14:41.855000' AND log.time < '2016-04-10 13:14:41.855000'
+GROUP BY log.terminal_id, t.type
+ORDER BY log.terminal_id;
+
+SELECT DISTINCT
+  log.terminal_id,
+  COUNT(log.terminal_id) AS count,
+  t.type
+FROM convert.user_log log
+  LEFT JOIN convert.terminal t ON log.terminal_id = t.id
+WHERE t.type IS NOT NULL
+      AND log.time <= '2016-04-01 13:14:41.855000'
+GROUP BY log.terminal_id, t.type
+ORDER BY log.terminal_id;
+
+-- new
+SELECT DISTINCT
+  t.type,
+  COUNT(t.type) AS count
+FROM convert.user_log log
+  LEFT JOIN convert.terminal t ON log.terminal_id = t.id
+WHERE t.type IS NOT NULL
+      AND log.time > '2016-04-01 13:14:41.855000' AND log.time < '2016-04-10 13:14:41.855000'
+      AND NOT EXISTS(SELECT 1
+                     FROM convert.user_log log2
+                       LEFT JOIN convert.terminal t2 ON log2.terminal_id = t2.id
+                     WHERE log2.terminal_id = log.terminal_id
+                           AND log2.time <= '2016-04-01 13:14:41.855000')
+GROUP BY t.type;
+
+
+SELECT
+  t.type,
+  log.dealer
+FROM convert.user_log log
+  LEFT JOIN convert.terminal t ON log.terminal_id = t.id
+WHERE t.type LIKE 'STAFF_TRACKER'
+ORDER BY t.type;
+
+SELECT t.type
+FROM convert.terminal t
+WHERE t.type LIKE 'STAFF_TRACKER'
+ORDER BY t.type;
+
+SELECT *
+FROM convert.user_log;
+
+
+SELECT
+  l.time,
+  t.type,
+  l.dealer,
+  l.terminal_id
+FROM convert.user_log l
+  LEFT JOIN convert.terminal t ON l.terminal_id = t.id
+WHERE l.time > '2016-04-01 13:14:41.855000' AND l.time < '2016-05-18 13:14:41.855000'
+ORDER BY t.type;
+
+
+SELECT
+  l.time,
+  t.type,
+  l.dealer,
+  l.terminal_id
+FROM convert.user_log l
+  LEFT JOIN convert.terminal t ON l.terminal_id = t.id
+ORDER BY t.type;
+
+-- ===========================================================
+
+-- всего терминалов
+SELECT DISTINCT
+  type,
+  count(type) AS count
+FROM convert.terminal
+-- WHERE type LIKE 'ADM_100'
+GROUP BY type
+ORDER BY type;
+
+-- количество активных за все время
+SELECT DISTINCT
+  (t.type),
+  COUNT(t.type) AS count
+FROM convert.user_log log
+  LEFT JOIN convert.terminal t ON log.terminal_id = t.id
+WHERE t.type IS NOT NULL
+GROUP BY t.type
+ORDER BY t.type;
+
+-- количество активных за неделю
+SELECT DISTINCT
+  t.type,
+  COUNT(t.type) AS count
+FROM convert.user_log log
+  LEFT JOIN convert.terminal t ON log.terminal_id = t.id
+WHERE t.type IS NOT NULL
+      AND log.time > '2016-04-01 13:14:41.855000' AND log.time < '2016-04-10 13:14:41.855000'
+GROUP BY t.type
+ORDER BY t.type;
+
+-- список дилеров
+SELECT DISTINCT
+  log.dealer,
+  t.type
+FROM convert.user_log log
+  LEFT JOIN convert.terminal t ON log.terminal_id = t.id
+WHERE t.type IS NOT NULL
+ORDER BY t.type;
+
+-- new
+SELECT DISTINCT
+  t.type,
+  COUNT(t.type) AS count,
+  log.terminal_id
+FROM convert.user_log log
+  LEFT JOIN convert.terminal t ON log.terminal_id = t.id
+WHERE t.type IS NOT NULL
+      AND log.time > '2015-05-02 00:00:00.000000' AND log.time < '2016-05-10 13:14:41.855000'
+      AND NOT EXISTS(SELECT 1
+                     FROM convert.user_log log2
+                       LEFT JOIN convert.terminal t2 ON log2.terminal_id = t2.id
+                     WHERE log2.terminal_id = log.terminal_id
+                           AND log2.time <= '2015-05-02 00:00:00.000000')
+GROUP BY t.type, log.terminal_id ORDER BY log.terminal_id;
+
+SELECT * FROM convert.user_log
+WHERE convert.user_log.terminal_id = 1074000000;
+
+-- DELETE FROM user_log WHERE time < '2015-08-19 17:14:55.424000'

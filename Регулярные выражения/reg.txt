@@ -1,0 +1,3 @@
+searchPhrase.replaceAll(" ", "")
+searchPhrase = searchPhrase.replaceAll("[ ]+", " ");
+String[] searchQuery = searchPhrase.split("\\u0020");

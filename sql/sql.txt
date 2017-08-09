@@ -1,0 +1,7 @@
+Замер производительности
+explain select 1;
+
+#подключаемся
+psql -U csdba postgres
+#активный запросы, время запроса
+select now() - query_start, procpid, waiting, current_query from pg_stat_activity where current_query != '<IDLE>' order by 1 desc;

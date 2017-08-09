@@ -1,0 +1,5 @@
+gccElfX86 -march=pentiumpro -nostdlib -fno-builtin -fno-defer-pop -Wall -fno-zero-initialized-in-bss -fno-feature-proxy -I. -DCPU=PENTIUM3 -c  -finstrument-functions -odis.gefO dis.c 
+dis.c: In function 'GefMain':
+dis.c:512: warning: unused variable 'setSK_OF_timer'
+dis.c:511: warning: unused variable 'setSK_ON_timer'
+ldElfX86 --entry=_start -o test.sm dis.gefO  ctkGefStartup.gefO ctkBlkToolkitInfo.gefO ctkPlcLibFault.gefO ctkPlcLibRefMem.gefO ctkPlcLibFunc.gefO ctkPlcLibBus.gefO ctkPlcLibStackCheck.gefO ctkPlcLibVariables.gefO ctkStackCheckStub.gefO ctkCRunTimeStub.gefO ctkTargetStub.gefO

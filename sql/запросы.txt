@@ -1,0 +1,45 @@
+insert into <название таблицы> ([<Имя столбца>, ... ]) values (<Значение>,...)
+insert into <название таблицы> values (<Значение>,...)
+insert into <название таблицы> select <имя столбца>,... from <название таблицы>
+
+====================================================
+UPDATE [top(x)] <объект>
+SET <присваивание1 [, присваивание2, ...]>
+[WHERE <условие>];
+
+Примеры:
+update top(10) tbl_books set price = 0 where quantity = 0;
+
+UPDATE per­sons set street = 'Nis­sesti­en 67', ci­ty = 'Sand­nes' where lastname = 'Tjes­sem' and firs­tna­me = 'Ja­kob';
+
+UPDATE temp a SET
+    deptno = (SELECT deptno FROM dept WHERE loc = ‘BOSTON’),
+    (sal, comm) = (
+        SELECT 1.1*AVG(sal), 1.5*AVG(comm)
+        FROM temp b
+        WHERE a.deptno = b.deptno
+        )
+    WHERE deptno IN (SELECT deptno FROM dept WHERE loc = ‘DALLAS’ OR loc = ‘DETROIT’);
+
+====================================================
+DELETE FROM <Имя Таблицы> WHERE <Условие отбора записей>
+
+
+====================================================
+SELECT
+  field_name [,... n]
+FROM
+  Table1
+  {INNER | {LEFT | RIGHT | FULL} OUTER | CROSS } JOIN
+  Table2
+    {ON <condition> | USING (field_name [,... n])}
+
+SELECT * FROM Person
+  INNER JOIN City ON Person.CityId = City.Id
+
+--декартово произведение
+SELECT
+  field_name [,... n]
+FROM
+  Table1,
+  Table2

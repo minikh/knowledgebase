@@ -1,0 +1,3 @@
+System.out.println(String.format("%(.2f Default locale", var));
+System.out.println(String.format(Locale.ENGLISH, "%(.2f English locale", var));
+System.out.println(String.format(new Locale("ru"), "%(.2f Russian locale", var));

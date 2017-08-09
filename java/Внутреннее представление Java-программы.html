@@ -1,0 +1,1149 @@
+
+<!-- saved from url=(0042)http://ermak.cs.nstu.ru/trans/Trans472.htm -->
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns:st1="urn:schemas-microsoft-com:office:smarttags" xmlns="http://www.w3.org/TR/REC-html40"><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Generator" content="Microsoft FrontPage 6.0">
+<meta name="Originator" content="Microsoft Word 11">
+<link rel="Edit-Time-Data" href="http://ermak.cs.nstu.ru/trans/Trans47.files/editdata.mso">
+<title>Внутреннее представление Java-программы</title>
+</head><body lang="RU" style="tab-interval:36.0pt" background="./Внутреннее представление Java-программы_files/back.gif"><o:smarttagtype namespaceuri="urn:schemas-microsoft-com:office:smarttags" name="metricconverter">
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Comp</o:Author>
+  <o:Template>Книга.dot</o:Template>
+  <o:LastAuthor>romanow</o:LastAuthor>
+  <o:Revision>2</o:Revision>
+  <o:TotalTime>39</o:TotalTime>
+  <o:LastPrinted>2006-04-11T08:03:00Z</o:LastPrinted>
+  <o:Created>2010-09-23T04:50:00Z</o:Created>
+  <o:LastSaved>2010-09-23T04:50:00Z</o:LastSaved>
+  <o:Pages>1</o:Pages>
+  <o:Words>4991</o:Words>
+  <o:Characters>28454</o:Characters>
+  <o:Company>NSTU_VT</o:Company>
+  <o:Bytes>11776</o:Bytes>
+  <o:Lines>237</o:Lines>
+  <o:Paragraphs>66</o:Paragraphs>
+  <o:CharactersWithSpaces>33379</o:CharactersWithSpaces>
+  <o:Version>11.9999</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:DoNotHyphenateCaps/>
+  <w:DrawingGridHorizontalSpacing>0,55 пт</w:DrawingGridHorizontalSpacing>
+  <w:DrawingGridVerticalSpacing>0,55 пт</w:DrawingGridVerticalSpacing>
+  <w:DisplayHorizontalDrawingGridEvery>0</w:DisplayHorizontalDrawingGridEvery>
+  <w:DisplayVerticalDrawingGridEvery>0</w:DisplayVerticalDrawingGridEvery>
+  <w:UseMarginsForDrawingGridOrigin/>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:DrawingGridVerticalOrigin>99,25 пт</w:DrawingGridVerticalOrigin>
+  <w:Compatibility>
+   <w:WW6BorderRules/>
+   <w:FootnoteLayoutLikeWW8/>
+   <w:ShapeLayoutLikeWW8/>
+   <w:AlignTablesRowByRow/>
+   <w:ForgetLastTabAlignment/>
+   <w:LayoutRawTableWidth/>
+   <w:LayoutTableRowsApart/>
+   <w:UseWord97LineBreakingRules/>
+   <w:SelectEntireFieldWithStartOrEnd/>
+   <w:UseWord2002TableStyleRules/>
+  </w:Compatibility>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+ </w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" LatentStyleCount="156">
+ </w:LatentStyles>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;
+	mso-font-charset:2;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:0 268435456 0 0 -2147483648 0;}
+@font-face
+	{font-family:"Times New Roman CYR";
+	panose-1:2 2 6 3 5 4 5 2 3 4;
+	mso-font-charset:204;
+	mso-generic-font-family:roman;
+	mso-font-pitch:variable;
+	mso-font-signature:536902279 -2147483648 8 0 511 0;}
+@font-face
+	{font-family:"Arial CYR";
+	panose-1:2 11 6 4 2 2 2 2 2 4;
+	mso-font-charset:204;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:536902279 -2147483648 8 0 511 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman CYR";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+h1
+	{mso-style-next:Обычный;
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:1;
+	font-size:14.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Arial CYR";
+	mso-bidi-font-family:"Times New Roman";
+	mso-font-kerning:14.0pt;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+h2
+	{mso-style-next:Обычный;
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:2;
+	font-size:12.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Arial CYR";
+	mso-bidi-font-family:"Times New Roman";
+	font-weight:bold;
+	mso-bidi-font-weight:normal;
+	font-style:italic;
+	mso-bidi-font-style:normal;}
+h3
+	{mso-style-next:Обычный;
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:3;
+	font-size:12.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Arial CYR";
+	mso-bidi-font-family:"Times New Roman";
+	font-weight:normal;}
+h4
+	{mso-style-next:Обычный;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:4;
+	font-size:10.0pt;
+	font-family:"Times New Roman CYR";
+	mso-bidi-font-family:"Times New Roman";
+	mso-ansi-language:EN-US;
+	font-weight:bold;}
+h5
+	{mso-style-next:Обычный;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:5;
+	font-size:12.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Arial;
+	mso-ansi-language:EN-US;
+	font-weight:bold;}
+p.MsoHeader, li.MsoHeader, div.MsoHeader
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	tab-stops:center 8.0cm right 16.0cm;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	mso-ansi-language:EN-US;}
+p.MsoFooter, li.MsoFooter, div.MsoFooter
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	tab-stops:center 8.0cm right 16.0cm;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	mso-ansi-language:EN-US;}
+p
+	{mso-margin-top-alt:auto;
+	margin-right:0cm;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+pre
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+	font-size:10.0pt;
+	font-family:"Courier New";
+	mso-fareast-font-family:"Times New Roman";}
+samp
+	{font-family:"Courier New";
+	mso-ascii-font-family:"Courier New";
+	mso-fareast-font-family:"Times New Roman";
+	mso-hansi-font-family:"Courier New";
+	mso-bidi-font-family:"Courier New";}
+p.a, li.a, div.a
+	{mso-style-name:текст;
+	mso-style-link:"текст Знак";
+	margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-indent:36.0pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman CYR";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.a0, li.a0, div.a0
+	{mso-style-name:программа;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Arial;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.a1, li.a1, div.a1
+	{mso-style-name:список;
+	mso-style-parent:текст;
+	margin-top:6.0pt;
+	margin-right:18.45pt;
+	margin-bottom:0cm;
+	margin-left:35.45pt;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	tab-stops:42.55pt;
+	font-size:12.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman CYR";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.a2, li.a2, div.a2
+	{mso-style-name:определение;
+	mso-style-parent:текст;
+	margin-top:12.0pt;
+	margin-right:32.9pt;
+	margin-bottom:12.0pt;
+	margin-left:35.45pt;
+	text-align:justify;
+	text-indent:.55pt;
+	mso-pagination:widow-orphan;
+	border:none;
+	mso-border-alt:solid windowtext 1.5pt;
+	padding:0cm;
+	mso-padding-alt:1.0pt 1.0pt 1.0pt 1.0pt;
+	font-size:12.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Arial CYR";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.a3, li.a3, div.a3
+	{mso-style-name:эпиграф;
+	margin-top:12.0pt;
+	margin-right:32.9pt;
+	margin-bottom:12.0pt;
+	margin-left:5.0cm;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Arial CYR";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	font-style:italic;
+	mso-bidi-font-style:normal;}
+p.a4, li.a4, div.a4
+	{mso-style-name:"от края";
+	mso-style-parent:текст;
+	margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman CYR";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.a5, li.a5, div.a5
+	{mso-style-name:Формула;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:14.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Courier New";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	mso-ansi-language:EN-US;
+	layout-grid-mode:line;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+p.a6, li.a6, div.a6
+	{mso-style-name:"без формата";
+	mso-style-parent:программа;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Arial;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.a7, li.a7, div.a7
+	{mso-style-name:Грамматика;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	text-autospace:none;
+	font-size:14.0pt;
+	font-family:"Courier New";
+	mso-fareast-font-family:"Times New Roman";
+	mso-ansi-language:EN-US;}
+span.a8
+	{mso-style-name:"текст Знак";
+	mso-style-locked:yes;
+	mso-style-link:текст;
+	mso-ansi-font-size:12.0pt;
+	font-family:"Times New Roman CYR";
+	mso-ascii-font-family:"Times New Roman CYR";
+	mso-hansi-font-family:"Times New Roman CYR";
+	mso-ansi-language:RU;
+	mso-fareast-language:RU;
+	mso-bidi-language:AR-SA;}
+ /* Page Definitions */
+ @page
+	{mso-footnote-separator:url("Trans47.files/header.htm") fs;
+	mso-footnote-continuation-separator:url("Trans47.files/header.htm") fcs;
+	mso-endnote-separator:url("Trans47.files/header.htm") es;
+	mso-endnote-continuation-separator:url("Trans47.files/header.htm") ecs;}
+@page Section1
+	{size:21.0cm 842.0pt;
+	margin:33.45pt 42.55pt 72.0pt 89.85pt;
+	mso-header-margin:14.2pt;
+	mso-footer-margin:31.75pt;
+	mso-header:url("Trans47.files/header.htm") h1;
+	mso-even-footer:url("Trans47.files/header.htm") ef1;
+	mso-footer:url("Trans47.files/header.htm") f1;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+ @list l0
+	{mso-list-id:76290425;
+	mso-list-template-ids:-910515514;}
+@list l0:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l1
+	{mso-list-id:107554841;
+	mso-list-type:hybrid;
+	mso-list-template-ids:555139770 68747265 68747267 68747269 68747265 68747267 68747269 68747265 68747267 68747269;}
+@list l1:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:71.45pt;
+	mso-level-number-position:left;
+	margin-left:71.45pt;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l2
+	{mso-list-id:180508182;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1020375730 68747265 68747267 68747269 68747265 68747267 68747269 68747265 68747267 68747269;}
+@list l2:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l3
+	{mso-list-id:230502675;
+	mso-list-template-ids:-517832492;}
+@list l3:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l4
+	{mso-list-id:231696300;
+	mso-list-template-ids:329185538;}
+@list l4:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l5
+	{mso-list-id:248078863;
+	mso-list-template-ids:1186785046;}
+@list l5:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l6
+	{mso-list-id:341325749;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1870123104 68747265 68747267 68747269 68747265 68747267 68747269 68747265 68747267 68747269;}
+@list l6:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:72.0pt;
+	mso-level-number-position:left;
+	margin-left:72.0pt;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l7
+	{mso-list-id:376012299;
+	mso-list-template-ids:-1828962724;}
+@list l7:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l8
+	{mso-list-id:650057538;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-376911082 68747279 68747289 68747291 68747279 68747289 68747291 68747279 68747289 68747291;}
+@list l8:level1
+	{mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l9
+	{mso-list-id:674184048;
+	mso-list-template-ids:-609877598;}
+@list l9:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l10
+	{mso-list-id:684089925;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1687950678 68747265 68747267 68747269 68747265 68747267 68747269 68747265 68747267 68747269;}
+@list l10:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:71.45pt;
+	mso-level-number-position:left;
+	margin-left:71.45pt;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l11
+	{mso-list-id:728186760;
+	mso-list-template-ids:230050752;}
+@list l11:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l12
+	{mso-list-id:955216650;
+	mso-list-template-ids:1276005052;}
+@list l12:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l13
+	{mso-list-id:1124545986;
+	mso-list-template-ids:1198145732;}
+@list l13:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l14
+	{mso-list-id:1129979127;
+	mso-list-template-ids:-521624936;}
+@list l14:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l15
+	{mso-list-id:1298560317;
+	mso-list-type:hybrid;
+	mso-list-template-ids:312224354 68747265 68747267 68747269 68747265 68747267 68747269 68747265 68747267 68747269;}
+@list l15:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:71.45pt;
+	mso-level-number-position:left;
+	margin-left:71.45pt;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l16
+	{mso-list-id:1520697424;
+	mso-list-template-ids:1645936094;}
+@list l16:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l17
+	{mso-list-id:1621180727;
+	mso-list-template-ids:585275096;}
+@list l17:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l18
+	{mso-list-id:1710296489;
+	mso-list-template-ids:-1858950454;}
+@list l18:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l19
+	{mso-list-id:1714230454;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-2058746170 68747265 68747279 68747269 68747265 68747267 68747269 68747265 68747267 68747269;}
+@list l19:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:71.45pt;
+	mso-level-number-position:left;
+	margin-left:71.45pt;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l19:level2
+	{mso-level-tab-stop:107.45pt;
+	mso-level-number-position:left;
+	margin-left:107.45pt;
+	text-indent:-18.0pt;}
+@list l20
+	{mso-list-id:1718431831;
+	mso-list-template-ids:1998387138;}
+@list l20:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l21
+	{mso-list-id:1758091955;
+	mso-list-template-ids:-1474892490;}
+@list l21:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l22
+	{mso-list-id:1760446888;
+	mso-list-template-ids:-442743388;}
+@list l22:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l23
+	{mso-list-id:1806924900;
+	mso-list-template-ids:1559671862;}
+@list l23:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l24
+	{mso-list-id:1835682283;
+	mso-list-template-ids:291409208;}
+@list l24:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l25
+	{mso-list-id:1900096141;
+	mso-list-template-ids:970093776;}
+@list l25:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l26
+	{mso-list-id:1928344782;
+	mso-list-type:hybrid;
+	mso-list-template-ids:282863886 68747265 68747267 68747269 68747265 68747267 68747269 68747265 68747267 68747269;}
+@list l26:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:71.45pt;
+	mso-level-number-position:left;
+	margin-left:71.45pt;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l27
+	{mso-list-id:1943604602;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1740915014 68747279 68747289 68747291 68747279 68747289 68747291 68747279 68747289 68747291;}
+@list l27:level1
+	{mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l28
+	{mso-list-id:1966815579;
+	mso-list-template-ids:868113354;}
+@list l28:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l29
+	{mso-list-id:2008702181;
+	mso-list-type:simple;
+	mso-list-template-ids:-1688273568;}
+@list l29:level1
+	{mso-level-start-at:0;
+	mso-level-number-format:bullet;
+	mso-level-text:-;
+	mso-level-tab-stop:53.45pt;
+	mso-level-number-position:left;
+	margin-left:53.45pt;
+	text-indent:-18.0pt;}
+@list l30
+	{mso-list-id:2009626011;
+	mso-list-template-ids:466016652;}
+@list l30:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l31
+	{mso-list-id:2031642895;
+	mso-list-template-ids:-2060928874;}
+@list l31:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l31:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:72.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:"Courier New";
+	mso-bidi-font-family:"Times New Roman";}
+ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Обычная таблица";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+	mso-para-margin:0cm;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman CYR";
+	mso-bidi-font-family:"Times New Roman";
+	mso-ansi-language:#0400;
+	mso-fareast-language:#0400;
+	mso-bidi-language:#0400;}
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+  <o:regrouptable v:ext="edit">
+   <o:entry new="1" old="0"/>
+   <o:entry new="2" old="0"/>
+   <o:entry new="3" old="0"/>
+   <o:entry new="4" old="0"/>
+   <o:entry new="5" old="0"/>
+   <o:entry new="6" old="0"/>
+   <o:entry new="7" old="0"/>
+   <o:entry new="8" old="0"/>
+   <o:entry new="9" old="0"/>
+   <o:entry new="10" old="0"/>
+   <o:entry new="11" old="0"/>
+   <o:entry new="12" old="0"/>
+   <o:entry new="13" old="0"/>
+   <o:entry new="14" old="0"/>
+   <o:entry new="15" old="0"/>
+  </o:regrouptable>
+ </o:shapelayout></xml><![endif]-->
+
+
+
+ <div style="position: fixed; width: 92px; height: 46px; z-index: 1; left: 0px; top: 0px" id="layer1">  
+		<font face="Arial" size="2">  
+		<a href="http://ermak.cs.nstu.ru/trans/Trans471.htm">  
+		<img border="0" src="./Внутреннее представление Java-программы_files/prev.jpg" width="40" height="36"></a>
+		<a href="http://ermak.cs.nstu.ru/trans/Trans473.htm">
+		<img border="0" src="./Внутреннее представление Java-программы_files/next.jpg" width="40" height="36"></a>
+  </font>
+  </div>
+
+<div class="Section1">
+
+<div align="center">
+  <h2 align="left">&nbsp;</h2>
+</div>
+
+<h3><font face="Arial" size="3">Виртуальная машина Java</font></h3>
+
+<p class="a"><font face="Arial" size="2">Типы данных, с которыми работает JVM, подразделяются на примитивные
+и ссылочные. Большинство примитивных типов данных JVM являются также примитивными
+типами в языке Java. К ним относятся: </font> </p>
+
+<ul>
+	<li>
+	<p style="margin-left:36.0pt;text-indent:-18.0pt;mso-list:l13 level1 lfo12;
+tab-stops:list 36.0pt"><samp><font size="2" face="Arial">byte</font><font size="2"></font></samp><font size="2" face="Arial"> - 1-байтное целое со знаком; 
+	</font></p></li>
+	<li>
+	<p style="margin-left:36.0pt;text-indent:-18.0pt;mso-list:l13 level1 lfo12;
+tab-stops:list 36.0pt"><samp><font size="2" face="Arial">short</font><font size="2"></font></samp><font size="2" face="Arial"> - 2-байтное целое со знаком; 
+	</font></p></li>
+	<li>
+	<p style="margin-left:36.0pt;text-indent:-18.0pt;mso-list:l13 level1 lfo12;
+tab-stops:list 36.0pt"><samp><font size="2" face="Arial">int</font><font size="2"></font></samp><font size="2" face="Arial"> - 4-байтное целое со знаком; 
+	</font></p></li>
+	<li>
+	<p style="margin-left:36.0pt;text-indent:-18.0pt;mso-list:l13 level1 lfo12;
+tab-stops:list 36.0pt"><samp><font size="2" face="Arial">ong</font><font size="2"></font></samp><font size="2" face="Arial"> - 8-байтное целое со знаком; 
+	</font></p></li>
+	<li>
+	<p style="margin-left:36.0pt;text-indent:-18.0pt;mso-list:l13 level1 lfo12;
+tab-stops:list 36.0pt"><samp><font size="2" face="Arial">float</font><font size="2"></font></samp><font size="2" face="Arial"> - 4-байтное число с плавающей
+точкой; </font></p></li>
+	<li>
+	<p style="margin-left:36.0pt;text-indent:-18.0pt;mso-list:l13 level1 lfo12;
+tab-stops:list 36.0pt"><samp><font size="2" face="Arial">double</font><font size="2"></font></samp><font size="2" face="Arial"> - 8-байтное число с плавающей
+точкой; </font></p></li>
+	<li>
+	<p style="margin-left:36.0pt;text-indent:-18.0pt;mso-list:l13 level1 lfo12;
+tab-stops:list 36.0pt"><samp><font size="2" face="Arial">char</font><font size="2"></font></samp><font size="2" face="Arial"> - 2-байтный символ Unicode.
+	</font></p></li>
+</ul>
+
+<p class="a"><font face="Arial" size="2">В отличие от других языков программирования, размеры типов в языке
+Java и в JVM являются постоянными, не зависящими от платформы. </font> </p>
+
+<p class="a"><font face="Arial"><font size="2">JVM не оперирует типом </font>
+</font><font size="2"> <samp><font face="Arial">boolean</font></samp><font face="Arial">, являющимся примитивным
+типом языка Java. Для выражений языка, оперирующих этим типом, компилятор Java
+генерирует коды, оперирующие типом </font> <samp><font face="Arial">int</font></samp></font><font size="2" face="Arial">. 
+</font> </p>
+
+<p class="a"><font size="2" face="Arial">Примитивный тип </font><font size="2"> <samp>
+<font face="Arial">returnAddress</font></samp><font face="Arial"> в JVM не имеет
+соответствия в языке Java. Тип </font> <samp><font face="Arial">returnAddress</font></samp></font><font size="2" face="Arial"> представляет собой
+указатель на команду байт-кода Java и используется в качестве операнда команд
+передачи управления. </font> </p>
+
+<p class="a"><font face="Arial" size="2">Ссылочные типы в JVM и в языке Java являются ссылками (указателями)
+на объекты - экземпляры классов, массивы и интерфейсы (экземпляры классов,
+реализующих интерфейсы). Спецификации JVM не определяют внутренней структуры
+объектов, в большинстве современных JVM ссылка на объект является указателем на
+дескриптор объекта, в котором, в свою очередь содержатся два указателя: </font> </p>
+
+<ul>
+	<li>
+	<p style="margin-left:36.0pt;text-indent:-18.0pt;mso-list:l5 level1 lfo13;
+tab-stops:list 36.0pt"><font size="2" face="Arial">на объект типа </font>
+	<font size="2"><samp><b style="mso-bidi-font-weight:
+normal"><font face="Arial">Class</font></b></samp></font><font size="2" face="Arial">, представляющий информацию типа, в том числе методы и
+статические данные класса; </font></p></li>
+	<li>
+	<p style="margin-left:36.0pt;text-indent:-18.0pt;mso-list:l5 level1 lfo13;
+tab-stops:list 36.0pt"><font face="Arial" size="2">на память, выделенную для локальных данных
+объекта в куче. </font></p></li>
+</ul>
+
+<p class="a"><font face="Arial" size="2">Все указатели, с которыми работает JVM, являются указателями в
+плоском 32-разрядном адресном пространстве, хотя в реализациях JVM для
+64-разрядных платформ могут использоваться и 64-разрядные указатели. Основные
+области памяти, с которыми работает Java VM, показаны на рисунке. </font> </p>
+
+<p align="center" style="text-align:center"><font face="Arial" size="2"><img width="329" height="237" id="_x0000_i1025" src="./Внутреннее представление Java-программы_files/462.jpg"></font></p>
+
+<p class="a"><font face="Arial" size="2">Область памяти, называемая кучей, разделяется на две части: область
+классов и область динамически распределяемой памяти (иногда кучей называют
+только эту часть памяти). Куча создается при запуске JVM. Конкретные реализации
+JVM могут обеспечивать управление начальным размером кучи и расширение кучи при
+необходимости. </font> </p>
+
+<p class="a"><font face="Arial" size="2">Класс является основной программной единицей платформы Java,
+объединяющей в себе данные и методы их обработки. При загрузке класса для него
+выделяется память в области классов. Каждый класс представляется двумя
+структурами памяти: областью методов и пулом констант. <b style="mso-bidi-font-weight:
+normal">Область методов</b> содержит исполняемую часть класса - байт-коды
+методов класса, а также таблицу символических ссылок на внешние методы и
+переменные. <b style="mso-bidi-font-weight:normal">Пул констант</b> содержит
+литералы класса. </font> </p>
+
+<p class="a"><font face="Arial" size="2">В области динамического распределения выделяется память для
+размещения объектов. Управление этой областью памяти рассматривается в
+отдельном разделе. </font> </p>
+
+<p><font face="Arial" size="2">JVM поддерживает параллельное выполнение нескольких нитей (потоков). Для каждой
+нити при ее создании JVM создает набор регистров и стек нити. </font> </p>
+
+<p><font face="Arial" size="2">Набор регистров включает в себя четыре 32-разрядных регистра: 
+</font> </p>
+
+<ul>
+	<li>
+	<p style="margin-left:36.0pt;text-indent:-18.0pt;mso-list:l18 level1 lfo14;
+tab-stops:list 36.0pt"><font face="Arial" size="2">
+	<b style="mso-bidi-font-weight:normal">pc</b> -
+регистр-указатель на команду; </font></p></li>
+	<li>
+	<p style="margin-left:36.0pt;text-indent:-18.0pt;mso-list:l18 level1 lfo14;
+tab-stops:list 36.0pt"><font face="Arial" size="2">
+	<b style="mso-bidi-font-weight:normal">optop</b>
+- регистр-указатель на вершину стека операндов текущего кадра; </font></p></li>
+	<li>
+	<p style="margin-left:36.0pt;text-indent:-18.0pt;mso-list:l18 level1 lfo14;
+tab-stops:list 36.0pt"><font face="Arial" size="2">
+	<b style="mso-bidi-font-weight:normal">var</b> -
+регистр-указатель на массив локальных переменных текущего кадра; </font></p>
+	</li>
+	<li>
+	<p style="margin-left:36.0pt;text-indent:-18.0pt;mso-list:l18 level1 lfo14;
+tab-stops:list 36.0pt"><font face="Arial" size="2">
+	<b style="mso-bidi-font-weight:normal">frame </b>-
+регистр-указатель на среду выполнения текущего метода. </font></p></li>
+</ul>
+
+<p class="a"><font face="Arial" size="2">Стек нити представляет собой стек в традиционном понимании, то есть,
+списковую структуру данных, обслуживаемую по дисциплине "последним пришел
+- первым ушел". Элементами стека являются кадры (<b style="mso-bidi-font-weight:
+normal">frame</b>) методов. В традиционных блочных языках программирования при помощи
+стека обеспечиваются вложенные вызовы процедур. Аналогичным образом JVM через
+стек нити обеспечивает вложенные вызовы методов, представляя каждый метод
+кадром в стеке. Новый кадр создается и помещается в вершину стека при вызове
+метода. Кадр, расположенный в вершине стека является текущим, он соответствует
+методу, выполняемому в нити в текущий момент. При возврате из метода его кадр
+удаляется из стека. Управление начальным размером стека нити и возможность его
+динамического расширения зависит от реализации JVM. Спецификации JVM не требуют
+размещения стека нити в непрерывной области памяти (т.е. он может быть
+реализован как в физическом массиве, так и односвязным списком).</font></p>
+
+<p><font face="Arial" size="2">Кадр, как было сказано, создается динамически и содержит три основных
+области. </font> </p>
+
+<ul>
+	<li>
+	<p style="margin-left:36.0pt;text-indent:-18.0pt;mso-list:l16 level1 lfo15;
+tab-stops:list 36.0pt"><font face="Arial" size="2">набор локальных переменных экземпляра класса, на
+который ссылается регистр <b style="mso-bidi-font-weight:normal">var</b>; </font>
+	</p></li>
+	<li>
+	<p style="margin-left:36.0pt;text-indent:-18.0pt;mso-list:l16 level1 lfo15;
+tab-stops:list 36.0pt"><font face="Arial" size="2">стек операндов, на который ссылается регистр 
+	<b style="mso-bidi-font-weight:normal">optop</b>; </font></p></li>
+	<li>
+	<p style="margin-left:36.0pt;text-indent:-18.0pt;mso-list:l16 level1 lfo15;
+tab-stops:list 36.0pt"><font face="Arial" size="2">структуры среды выполнения, на которую ссылается
+регистр <b style="mso-bidi-font-weight:normal">frame</b>. </font></p></li>
+</ul>
+
+<p><font face="Arial" size="2">Эти области показаны на рисунке. </font> </p>
+
+<p align="center" style="text-align:center"><font face="Arial" size="2"><img width="293" height="281" id="_x0000_i1026" src="./Внутреннее представление Java-программы_files/463.jpg"></font></p>
+
+<p class="a"><font size="2" face="Arial">Набор локальных переменных представляет собой массив 32-разрядных
+слов. Данные двойной точности (типы </font><font size="2"> <samp><b style="mso-bidi-font-weight:normal">
+<font face="Arial">long</font></b></samp><font face="Arial">
+и </font> <samp><b style="mso-bidi-font-weight:normal"><font face="Arial">double</font></b></samp></font><font size="2" face="Arial">) занимают по
+два смежных слова в этом массиве. Размер этого массива фиксирован для метода,
+так как число локальных переменных метода становится известным уже на этапе
+компиляции. Операнды команд байт-кода, которые оперируют локальными
+переменными, представляются индексами в этом массиве. </font> </p>
+
+<p class="a"><font face="Arial" size="2">JVM является стековой машиной. Это означает, что в ней нет регистров
+общего назначения, и операции производятся над данными, находящимися в стеке.
+Этой цели служит стек операндов, выделяемый в составе каждого кадра. При
+выполнении команд байт-кода Java, изменяющих данные, операнды таких команд
+выбираются из стека операндов, в тот же стек помещаются и результаты выполнения
+команд. </font> </p>
+
+<p class="a"><font face="Arial" size="2">Среда выполнения метода содержит информацию, необходимую для <b style="mso-bidi-font-weight:normal">динамического связывания</b>, возврата из
+метода и обработки исключений. Код класса (размещенный в области класса)
+обращается к внешним методам и переменным, используя символические ссылки.
+Динамическая компоновка переводит символические ссылки в фактические. Среда
+выполнения содержит ссылки <b style="mso-bidi-font-weight:normal">на таблицу
+символов метода</b>, через которую производятся обращения к внешним методам и
+переменным. </font> </p>
+
+<p class="a"><font face="Arial" size="2">В среде выполнения содержится также информация, необходимая для
+возврата из метода: указатель на кадр вызывающего метода, значение регистра pc
+для возврата, содержимое регистров вызывающего метода и указатель на область
+для записи возвращаемого значения. </font> </p>
+
+<p class="a"><font face="Arial" size="2">Информация обработки исключений содержит ссылки на секции обработки
+исключений в методе класса. </font> </p>
+
+<p class="a"><font face="Arial" size="2">Через среду выполнения также происходят обращения к данным,
+содержащимся в области класса, в том числе, к константам и к переменным класса.
+</font>
+</p>
+
+<p class="a"><font face="Arial" size="2">Команды JVM состоят из однобитного кода операции, а также могут
+содержать операнды. Число и размер операндов определяются кодом операции,
+некоторые команды не имеют операндов. Основной алгоритм работы JVM сводится к
+простейшему циклу, приведенному на рисунке. </font> </p>
+
+<p align="center" style="text-align:center"><font face="Arial" size="2"><img width="143" height="365" id="_x0000_i1027" src="./Внутреннее представление Java-программы_files/464.gif"></font></p>
+<p align="center" style="text-align:left" class="a"><font face="Arial" size="2"><span style="mso-bookmark:2">Каждый из типов данных JVM
+обрабатывается своими командами. Основные типы команд JVM: </span></font></p>
+
+<p style="margin-left:36.0pt;text-indent:-18.0pt;mso-list:l31 level1 lfo16;
+tab-stops:list 36.0pt"><span style="mso-bookmark:2"><!--[if !supportLists]-->
+<font face="Arial">
+<span style="mso-list:Ignore; font-size:10.0pt; mso-bidi-font-size:12.0pt; mso-fareast-font-family:Symbol; mso-bidi-font-family:Symbol">·</span></font><span style="font-style:normal; font-variant:normal; font-weight:normal; font-family:Arial; mso-list:Ignore; mso-bidi-font-size:12.0pt; mso-fareast-font-family:Symbol; mso-bidi-font-family:Symbol"><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</font>
+</span><!--[endif]--><font face="Arial" size="2">Команды загрузки и сохранения, в том числе: 
+</font> </span></p>
+
+<ul>
+	<li>
+	<p style="margin-left:72.0pt;text-indent:-18.0pt;mso-list:l31 level2 lfo16;
+tab-stops:list 72.0pt"><span style="mso-bookmark:2"><font face="Arial" size="2">загрузка в стек локальной переменной; 
+	</font></span></p></li>
+	<li>
+	<p style="margin-left:72.0pt;text-indent:-18.0pt;mso-list:l31 level2 lfo16;
+tab-stops:list 72.0pt"><span style="mso-bookmark:2"><font face="Arial" size="2">сохранение значения из стека в локальной переменной;
+	</font></span></p></li>
+	<li>
+	<p style="margin-left:72.0pt;text-indent:-18.0pt;mso-list:l31 level2 lfo16;
+tab-stops:list 72.0pt"><span style="mso-bookmark:2"><font face="Arial" size="2">загрузка в стек константы (из пула констант). 
+	</font></span></p></li>
+</ul>
+
+<p style="margin-left:36.0pt;text-indent:-18.0pt;mso-list:l31 level1 lfo16;
+tab-stops:list 36.0pt"><span style="mso-bookmark:2"><!--[if !supportLists]-->
+<font face="Arial">
+<span style="mso-list:Ignore; font-size:10.0pt; mso-bidi-font-size:12.0pt; mso-fareast-font-family:Symbol; mso-bidi-font-family:Symbol">·</span></font><span style="font-style:normal; font-variant:normal; font-weight:normal; font-family:Arial; mso-list:Ignore; mso-bidi-font-size:12.0pt; mso-fareast-font-family:Symbol; mso-bidi-font-family:Symbol"><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</font>
+</span><!--[endif]--><font face="Arial" size="2">Команды манипулирования значениями (большинство
+этих операций работают с операндами из стека и помещают результат в стек), в
+том числе: </font> </span></p>
+
+<ul>
+	<li>
+	<p style="margin-left:72.0pt;text-indent:-18.0pt;mso-list:l31 level2 lfo16;
+tab-stops:list 72.0pt"><span style="mso-bookmark:2"><font face="Arial" size="2">арифметические операции; 
+	</font></span></p></li>
+	<li>
+	<p style="margin-left:72.0pt;text-indent:-18.0pt;mso-list:l31 level2 lfo16;
+tab-stops:list 72.0pt"><span style="mso-bookmark:2"><font face="Arial" size="2">побитовые логические операции; 
+	</font></span></p></li>
+	<li>
+	<p style="margin-left:72.0pt;text-indent:-18.0pt;mso-list:l31 level2 lfo16;
+tab-stops:list 72.0pt"><span style="mso-bookmark:2"><font face="Arial" size="2">сдвиг; 
+	</font></span></p></li>
+	<li>
+	<p style="margin-left:72.0pt;text-indent:-18.0pt;mso-list:l31 level2 lfo16;
+tab-stops:list 72.0pt"><span style="mso-bookmark:2"><font face="Arial" size="2">инкремент (операция работает с операндом -
+локальной переменной). </font></span></p></li>
+</ul>
+
+<p style="margin-left:36.0pt;text-indent:-18.0pt;mso-list:l31 level1 lfo16;
+tab-stops:list 36.0pt"><span style="mso-bookmark:2"><!--[if !supportLists]-->
+<font face="Arial">
+<span style="mso-list:Ignore; font-size:10.0pt; mso-bidi-font-size:12.0pt; mso-fareast-font-family:Symbol; mso-bidi-font-family:Symbol">·</span></font><span style="font-style:normal; font-variant:normal; font-weight:normal; font-family:Arial; mso-list:Ignore; mso-bidi-font-size:12.0pt; mso-fareast-font-family:Symbol; mso-bidi-font-family:Symbol"><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</font>
+</span><!--[endif]--><font face="Arial" size="2">Команды преобразования типов. 
+</font> </span></p>
+
+<p style="margin-left:36.0pt;text-indent:-18.0pt;mso-list:l31 level1 lfo16;
+tab-stops:list 36.0pt"><span style="mso-bookmark:2"><!--[if !supportLists]-->
+<font face="Arial">
+<span style="mso-list:Ignore; font-size:10.0pt; mso-bidi-font-size:12.0pt; mso-fareast-font-family:Symbol; mso-bidi-font-family:Symbol">·</span></font><span style="font-style:normal; font-variant:normal; font-weight:normal; font-family:Arial; mso-list:Ignore; mso-bidi-font-size:12.0pt; mso-fareast-font-family:Symbol; mso-bidi-font-family:Symbol"><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</font>
+</span><!--[endif]--><font face="Arial" size="2">Команды создания ссылочных данных и доступа к
+ним, в том числе: </font> </span></p>
+
+<ul>
+	<li>
+	<p style="margin-left:72.0pt;text-indent:-18.0pt;mso-list:l31 level2 lfo16;
+tab-stops:list 72.0pt"><span style="mso-bookmark:2"><font face="Arial" size="2">создания экземпляров класса; 
+	</font></span></p></li>
+	<li>
+	<p style="margin-left:72.0pt;text-indent:-18.0pt;mso-list:l31 level2 lfo16;
+tab-stops:list 72.0pt"><span style="mso-bookmark:2"><font face="Arial" size="2">доступа к полям класса; 
+	</font></span></p></li>
+	<li>
+	<p style="margin-left:72.0pt;text-indent:-18.0pt;mso-list:l31 level2 lfo16;
+tab-stops:list 72.0pt"><span style="mso-bookmark:2"><font face="Arial" size="2">создания массивов; 
+	</font></span></p></li>
+	<li>
+	<p style="margin-left:72.0pt;text-indent:-18.0pt;mso-list:l31 level2 lfo16;
+tab-stops:list 72.0pt"><span style="mso-bookmark:2"><font face="Arial" size="2">чтения в стек и сохранения элементов массивов; 
+	</font></span></p></li>
+	<li>
+	<p style="margin-left:72.0pt;text-indent:-18.0pt;mso-list:l31 level2 lfo16;
+tab-stops:list 72.0pt"><span style="mso-bookmark:2"><font face="Arial" size="2">получения свойств массивов и объектов. 
+	</font></span></p></li>
+</ul>
+
+<p style="margin-left:36.0pt;text-indent:-18.0pt;mso-list:l31 level1 lfo16;
+tab-stops:list 36.0pt"><span style="mso-bookmark:2"><!--[if !supportLists]-->
+<font face="Arial">
+<span style="mso-list:Ignore; font-size:10.0pt; mso-bidi-font-size:12.0pt; mso-fareast-font-family:Symbol; mso-bidi-font-family:Symbol">·</span></font><span style="font-style:normal; font-variant:normal; font-weight:normal; font-family:Arial; mso-list:Ignore; mso-bidi-font-size:12.0pt; mso-fareast-font-family:Symbol; mso-bidi-font-family:Symbol"><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</font>
+</span><!--[endif]--><font face="Arial" size="2">Команды прямого манипулирования со стеком. 
+</font> </span></p>
+
+<p style="margin-left:36.0pt;text-indent:-18.0pt;mso-list:l31 level1 lfo16;
+tab-stops:list 36.0pt"><span style="mso-bookmark:2"><!--[if !supportLists]-->
+<font face="Arial">
+<span style="mso-list:Ignore; font-size:10.0pt; mso-bidi-font-size:12.0pt; mso-fareast-font-family:Symbol; mso-bidi-font-family:Symbol">·</span></font><span style="font-style:normal; font-variant:normal; font-weight:normal; font-family:Arial; mso-list:Ignore; mso-bidi-font-size:12.0pt; mso-fareast-font-family:Symbol; mso-bidi-font-family:Symbol"><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</font>
+</span><!--[endif]--><font face="Arial" size="2">Команды передачи управления, в том числе: 
+</font> </span></p>
+
+<ul>
+	<li>
+	<p style="margin-left:72.0pt;text-indent:-18.0pt;mso-list:l31 level2 lfo16;
+tab-stops:list 72.0pt"><span style="mso-bookmark:2"><font face="Arial" size="2">безусловный переход; 
+	</font></span></p></li>
+	<li>
+	<p style="margin-left:72.0pt;text-indent:-18.0pt;mso-list:l31 level2 lfo16;
+tab-stops:list 72.0pt"><span style="mso-bookmark:2"><font face="Arial" size="2">условный переход; 
+	</font></span></p></li>
+	<li>
+	<p style="margin-left:72.0pt;text-indent:-18.0pt;mso-list:l31 level2 lfo16;
+tab-stops:list 72.0pt"><span style="mso-bookmark:2"><font face="Arial" size="2">переход по множественному выбору. 
+	</font></span></p></li>
+</ul>
+
+<p style="margin-left:36.0pt;text-indent:-18.0pt;mso-list:l31 level1 lfo16;
+tab-stops:list 36.0pt"><span style="mso-bookmark:2"><!--[if !supportLists]-->
+<font face="Arial">
+<span style="mso-list:Ignore; font-size:10.0pt; mso-bidi-font-size:12.0pt; mso-fareast-font-family:Symbol; mso-bidi-font-family:Symbol">·</span></font><span style="font-style:normal; font-variant:normal; font-weight:normal; font-family:Arial; mso-list:Ignore; mso-bidi-font-size:12.0pt; mso-fareast-font-family:Symbol; mso-bidi-font-family:Symbol"><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</font>
+</span><!--[endif]--><font face="Arial" size="2">Команды вызова методов и возврата (включая
+специальные команды вызова синхронизированных методов). </font> </span></p>
+
+<p style="margin-left:36.0pt;text-indent:-18.0pt;mso-list:l31 level1 lfo16;
+tab-stops:list 36.0pt"><span style="mso-bookmark:2"><!--[if !supportLists]-->
+<font face="Arial">
+<span style="mso-list:Ignore; font-size:10.0pt; mso-bidi-font-size:12.0pt; mso-fareast-font-family:Symbol; mso-bidi-font-family:Symbol">·</span></font><span style="font-style:normal; font-variant:normal; font-weight:normal; font-family:Arial; mso-list:Ignore; mso-bidi-font-size:12.0pt; mso-fareast-font-family:Symbol; mso-bidi-font-family:Symbol"><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</font>
+</span><!--[endif]--><font face="Arial" size="2">Команды генерации и обработки исключений. 
+</font> </span></p>
+
+<p class="a"><font face="Arial" size="2"><span style="mso-bookmark:2">Принятые в спецификациях JVM структуры
+данных и алгоритмы таковы, что позволяют реализовать виртуальную машину с
+минимальными затратами памяти и сделать ее работу максимально эффективной. </span>
+</font></p>
+
+</div>
+
+
+
+
+</o:smarttagtype></body></html>

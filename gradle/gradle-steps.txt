@@ -1,0 +1,15 @@
+https://habrahabr.ru/post/225189/
+
+Шаг 1. Установка gradle
+качаем, прописывает путь 
+
+gradle -version
+
+
+gradle wrapper
+./gradlew -version
+./gradlew tasks
+
+./gradlew run
+./gradlew main_project:run - запуск подпроекта
+

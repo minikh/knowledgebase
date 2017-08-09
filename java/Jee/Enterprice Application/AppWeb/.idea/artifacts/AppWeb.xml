@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="ear" name="AppWeb">
+    <output-path>$PROJECT_DIR$/out/artifacts/AppWeb</output-path>
+    <root id="archive" name="AppWeb.ear">
+      <element id="javaee-facet-resources" facet="AppWeb/javaeeApplication/javaEEApplication" />
+      <element id="artifact" artifact-name="ViewTest" />
+      <element id="directory" name="lib" />
+    </root>
+  </artifact>
+</component>

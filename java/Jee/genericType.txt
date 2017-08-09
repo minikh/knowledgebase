@@ -1,0 +1,2 @@
+    GenericType<Request> genericType = new GenericType<Request>() {
+    };

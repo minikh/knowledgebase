@@ -1,0 +1,5 @@
+Создаём виртуальное окружение, активируем его и обновляем пакеты:
+virtualenv --prompt="[pyqt5] " pyqt5
+source pyqt5/bin/activate
+pip install -U pip setuptools
+

@@ -1,0 +1,3 @@
+Как написать Telegram бота: практическое руководство
+https://khashtamov.com/2016/04/create-telegram-bot-in-python/
+https://khashtamov.com/2016/04/how-to-deploy-django-app/

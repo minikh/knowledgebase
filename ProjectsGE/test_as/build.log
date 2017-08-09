@@ -1,0 +1,8 @@
+gccElfX86 -march=pentiumpro -nostdlib -fno-builtin -fno-defer-pop -Wall -fno-zero-initialized-in-bss -fno-feature-proxy -I. -DCPU=PENTIUM3 -c  -finstrument-functions -oas.gefO as.c 
+In file included from as.c:15:
+as_lib.h: In function 'REG_PID_SEL':
+as_lib.h:600: warning: implicit declaration of function 'SIG_SEL'
+as.c: At top level:
+as.c:26: error: conflicting types for 'GefMain'
+sig_sel_1.c:699: error: previous definition of 'GefMain' was here
+GNUmake: *** [as.gefO] Error 0x1

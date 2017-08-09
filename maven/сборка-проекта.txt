@@ -1,0 +1,62 @@
+    <properties>
+		<!-- Куда будут собираться файлы -->
+        <dist.dir>out</dist.dir>
+    </properties>
+
+<build>
+        <plugins>
+            
+			...
+			
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.0.1</version>
+                <executions>
+					<!--копировать ресурсы из classes -->
+                    <execution>
+                        <id>copy-testdata</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <overwrite>true</overwrite>
+                            <outputDirectory>${dist.dir}</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${project.build.outputDirectory}</directory>
+                                    <includes>
+										
+                                        <include>**/application.properties</include>
+										<!-- Можно скопировать все файлы -->
+										<!-- <include>**/*</include> -->
+                                    </includes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+					
+					<!-- Копировать jar файлы из classes -->
+                    <execution>
+                        <id>copy-jar</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <overwrite>true</overwrite>
+                            <outputDirectory>${dist.dir}</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${project.build.outputDirectory}/..</directory>
+                                    <includes>
+                                        <include>**/${artifactId}-${project.version}.jar</include>
+                                    </includes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>

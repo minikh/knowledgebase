@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<!-- saved from url=(0068)http://prologistic.com.ua/chto-takoe-heap-i-stack-pamyat-v-java.html -->
+<html class="js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths" lang="ru-RU"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/cb=gapi.loaded_1" async=""></script><script src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/cb=gapi.loaded_0" async=""></script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="pingback" href="http://prologistic.com.ua/xmlrpc.php">
+
+<title>Что такое Heap и Stack память в Java? | Программирование на Java | Android</title>
+
+	<style type="text/css">
+		#fancybox-close{right:-15px;top:-15px}
+		div#fancybox-content{border-color:#FFFFFF}
+		div#fancybox-title{background-color:#FFFFFF}
+		div#fancybox-outer{background-color:#FFFFFF}
+		div#fancybox-title-inside{color:#333333}
+	</style>
+
+	
+<!-- All in One SEO Pack 2.3.9.2 by Michael Torbert of Semper Fi Web Design[593,680] -->
+<meta name="description" content="В Java есть такие понятия как Heap и Stack память. Сегодня мы узнаем разницу между ними и зачем они нужны. Как всегда, сначала в теории и затем на практике">
+
+<meta name="keywords" itemprop="keywords" content="heap memory,java runtime,stack memory">
+
+<link rel="canonical" href="http://prologistic.com.ua/chto-takoe-heap-i-stack-pamyat-v-java.html">
+			<script type="text/javascript" async="" src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/platform.js" gapi_processed="true"></script><script type="text/javascript" async="" src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/watch.js"></script><script async="" src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/analytics.js"></script><script>
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+			ga('create', 'UA-56556309-5', 'auto');
+			
+			ga('send', 'pageview');
+			</script>
+<!-- /all in one seo pack -->
+<link rel="dns-prefetch" href="http://fonts.googleapis.com/">
+<link rel="dns-prefetch" href="http://s.w.org/">
+<link rel="alternate" type="application/rss+xml" title="Программирование на Java | Android » Лента" href="http://prologistic.com.ua/feed">
+<link rel="alternate" type="application/rss+xml" title="Программирование на Java | Android » Лента комментариев" href="http://prologistic.com.ua/comments/feed">
+<link rel="alternate" type="application/rss+xml" title="Программирование на Java | Android » Лента комментариев к «Что такое Heap и Stack память в Java?»" href="http://prologistic.com.ua/chto-takoe-heap-i-stack-pamyat-v-java.html/feed">
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/prologistic.com.ua\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.6.1"}};
+			!function(a,b,c){function d(a){var c,d,e,f,g,h=b.createElement("canvas"),i=h.getContext&&h.getContext("2d"),j=String.fromCharCode;if(!i||!i.fillText)return!1;switch(i.textBaseline="top",i.font="600 32px Arial",a){case"flag":return i.fillText(j(55356,56806,55356,56826),0,0),!(h.toDataURL().length<3e3)&&(i.clearRect(0,0,h.width,h.height),i.fillText(j(55356,57331,65039,8205,55356,57096),0,0),c=h.toDataURL(),i.clearRect(0,0,h.width,h.height),i.fillText(j(55356,57331,55356,57096),0,0),d=h.toDataURL(),c!==d);case"diversity":return i.fillText(j(55356,57221),0,0),e=i.getImageData(16,16,1,1).data,f=e[0]+","+e[1]+","+e[2]+","+e[3],i.fillText(j(55356,57221,55356,57343),0,0),e=i.getImageData(16,16,1,1).data,g=e[0]+","+e[1]+","+e[2]+","+e[3],f!==g;case"simple":return i.fillText(j(55357,56835),0,0),0!==i.getImageData(16,16,1,1).data[0];case"unicode8":return i.fillText(j(55356,57135),0,0),0!==i.getImageData(16,16,1,1).data[0];case"unicode9":return i.fillText(j(55358,56631),0,0),0!==i.getImageData(16,16,1,1).data[0]}return!1}function e(a){var c=b.createElement("script");c.src=a,c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i;for(i=Array("simple","flag","unicode8","diversity","unicode9"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/wp-emoji-release.min.js" type="text/javascript"></script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel="stylesheet" id="crayon-css" href="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/crayon.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="crayon-theme-github-css" href="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/github.css" type="text/css" media="all">
+<link rel="stylesheet" id="crayon-font-monaco-css" href="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/monaco.css" type="text/css" media="all">
+<link rel="stylesheet" id="fancybox-css" href="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/fancybox.css" type="text/css" media="all">
+<link rel="stylesheet" id="symple_shortcode_styles-css" href="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/symple_shortcodes_styles.css" type="text/css" media="all">
+<link rel="stylesheet" id="sparkling-bootstrap-css" href="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/bootstrap.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="sparkling-icons-css" href="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/font-awesome.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="sparkling-fonts-css" href="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/css" type="text/css" media="all">
+<link rel="stylesheet" id="sparkling-style-css" href="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/style.css" type="text/css" media="all">
+<link rel="stylesheet" id="A2A_SHARE_SAVE-css" href="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/addtoany.min.css" type="text/css" media="all">
+<script type="text/javascript" src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/jquery.js"></script>
+<script type="text/javascript" src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/jquery-migrate.min.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var CrayonSyntaxSettings = {"version":"_2.7.2_beta","is_admin":"0","ajaxurl":"http:\/\/prologistic.com.ua\/wp-admin\/admin-ajax.php","prefix":"crayon-","setting":"crayon-setting","selected":"crayon-setting-selected","changed":"crayon-setting-changed","special":"crayon-setting-special","orig_value":"data-orig-value","debug":""};
+var CrayonSyntaxStrings = {"copy":"\u041d\u0430\u0436\u043c\u0438\u0442\u0435 %s \u0434\u043b\u044f \u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u044f, %s \u0434\u043b\u044f \u0432\u0441\u0442\u0430\u0432\u043a\u0438","minimize":"Click To Expand Code"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/crayon.min.js"></script>
+<script type="text/javascript" src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/addtoany.min.js"></script>
+<script type="text/javascript" src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/jquery.fancybox.js"></script>
+<script type="text/javascript" src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/modernizr.min.js"></script>
+<script type="text/javascript" src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/bootstrap.min.js"></script>
+<script type="text/javascript" src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/functions.min.js"></script>
+<link rel="https://api.w.org/" href="http://prologistic.com.ua/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://prologistic.com.ua/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://prologistic.com.ua/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="Клонирование объектов в Java. Пример использования метода clone()" href="http://prologistic.com.ua/klonirovanie-ob-ektov-v-java-primer-ispol-zovaniya-metoda-clone.html">
+<link rel="next" title="Площадь круга и длина окружности на Java" href="http://prologistic.com.ua/ploshhad-kruga-i-dlina-okruzhnosti-na-java.html">
+<meta name="generator" content="WordPress 4.6.1">
+<link rel="shortlink" href="http://prologistic.com.ua/?p=794">
+<link rel="alternate" type="application/json+oembed" href="http://prologistic.com.ua/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fprologistic.com.ua%2Fchto-takoe-heap-i-stack-pamyat-v-java.html">
+<link rel="alternate" type="text/xml+oembed" href="http://prologistic.com.ua/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fprologistic.com.ua%2Fchto-takoe-heap-i-stack-pamyat-v-java.html&amp;format=xml">
+
+<script type="text/javascript">
+var a2a_config=a2a_config||{};a2a_config.callbacks=a2a_config.callbacks||[];a2a_config.templates=a2a_config.templates||{};a2a_localize = {
+	Share: "Отправить",
+	Save: "Сохранить",
+	Subscribe: "Подписаться",
+	Email: "Email",
+	Bookmark: "В закладки!",
+	ShowAll: "Показать все",
+	ShowLess: "Показать остальное",
+	FindServices: "Найти сервис(ы)",
+	FindAnyServiceToAddTo: "Найти сервис и добавить",
+	PoweredBy: "Работает на",
+	ShareViaEmail: "Share via email",
+	SubscribeViaEmail: "Subscribe via email",
+	BookmarkInYourBrowser: "Добавить в закладки",
+	BookmarkInstructions: "Press Ctrl+D or \u2318+D to bookmark this page",
+	AddToYourFavorites: "Добавить в Избранное",
+	SendFromWebOrProgram: "Send from any email address or email program",
+	EmailProgram: "Email program",
+	More: "More&#8230;"
+};
+
+</script>
+<script type="text/javascript" src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/page.js" async="async"></script>
+
+<!-- Fancybox for WordPress -->
+<script type="text/javascript">
+jQuery(function(){
+
+jQuery.fn.getTitle = function() { // Copy the title of every IMG tag and add it to its parent A so that fancybox can show titles
+	var arr = jQuery("a.fancybox");
+	jQuery.each(arr, function() {
+		var title = jQuery(this).children("img").attr("title");
+		jQuery(this).attr('title',title);
+	})
+}
+
+// Supported file extensions
+var thumbnails = jQuery("a:has(img)").not(".nolightbox").filter( function() { return /\.(jpe?g|png|gif|bmp)$/i.test(jQuery(this).attr('href')) });
+
+thumbnails.addClass("fancybox").attr("rel","fancybox").getTitle();
+jQuery("a.fancybox").fancybox({
+	'cyclic': false,
+	'autoScale': true,
+	'padding': 10,
+	'opacity': true,
+	'speedIn': 500,
+	'speedOut': 500,
+	'changeSpeed': 300,
+	'overlayShow': true,
+	'overlayOpacity': "0.3",
+	'overlayColor': "#666666",
+	'titleShow': true,
+	'titlePosition': 'inside',
+	'enableEscapeButton': true,
+	'showCloseButton': true,
+	'showNavArrows': true,
+	'hideOnOverlayClick': true,
+	'hideOnContentClick': false,
+	'width': 560,
+	'height': 340,
+	'transitionIn': "fade",
+	'transitionOut': "fade",
+	'centerOnScroll': true
+});
+
+
+})
+</script>
+<!-- END Fancybox for WordPress -->
+<!-- sume-->
+<script src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/saved_resource" data-sumo-site-id="4286b05e02bce9831c1a92043c033b0e88228f36f306e2903d3f21f3bc1af85f" async="async"></script>
+<!-- /sume--><link rel="shortcut icon" href="http://prologistic.com.ua/favicon.ico">
+<script type="text/javascript">
+	window._wp_rp_static_base_url = 'https://wprp.zemanta.com/static/';
+	window._wp_rp_wp_ajax_url = "http://prologistic.com.ua/wp-admin/admin-ajax.php";
+	window._wp_rp_plugin_version = '3.6';
+	window._wp_rp_post_id = '794';
+	window._wp_rp_num_rel_posts = '10';
+	window._wp_rp_thumbnails = true;
+	window._wp_rp_post_title = '%D0%A7%D1%82%D0%BE+%D1%82%D0%B0%D0%BA%D0%BE%D0%B5+Heap+%D0%B8+Stack+%D0%BF%D0%B0%D0%BC%D1%8F%D1%82%D1%8C+%D0%B2+Java%3F';
+	window._wp_rp_post_tags = ['stack+memory', 'java+runtime', 'heap+memory', '%D0%9F%D0%BE%D0%BB%D0%B5%D0%B7%D0%BD%D0%BE%D1%81%D1%82%D0%B8', 'java', 'java', '3', 'object', 'heap', 'class', '1', 'public', 'packag', '2', 'int', 'stack', 'static', 'memori', 'pre', 'a'];
+	window._wp_rp_promoted_content = true;
+</script>
+<script type="text/javascript" src="https://wprp.zemanta.com/static/js/loader.js?version=3.6" async=""></script>
+<link rel="stylesheet" href="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/pinterest.css">
+<style type="text/css"></style><style type="text/css" id="custom-background-css">
+body.custom-background { background-image: url('http://prologistic.com.ua/wp-content/uploads/2016/04/bg_image.jpg'); background-repeat: repeat; background-position: top left; background-attachment: fixed; }
+</style>
+<link rel="stylesheet" type="text/css" href="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/shCore.css"><link rel="stylesheet" type="text/css" href="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/shThemeDefault.css"><style type="text/css" id="syntaxhighlighteranchor"></style>
+
+<style type="text/css">.a2a_menu,.a2a_menu * {-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box;float:none;margin:0;padding:0;position: static;height:auto;width:auto;}.a2a_menu {border-radius: 6px;display:none;direction:ltr;background:#FFF;font: 16px sans-serif-light, "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Arial, Helvetica, "Liberation Sans", sans-serif;color:#000;line-height:12px;border: 1px solid #CCC;vertical-align:baseline;outline: 0; overflow:hidden;}.a2a_mini {min-width:200px;position:absolute;width: 300px;z-index:9999997;}.a2a_overlay {display: none;background: #CCC; _height: expression( ((e=document.documentElement.clientHeight)?e:document.body.clientHeight)+"px" ); _width: expression( ((e=document.documentElement.clientWidth)?e:document.body.clientWidth)+"px" ); filter: alpha(opacity=50); opacity: .7;position: fixed;_position: absolute; top: 0;right: 0;left: 0;bottom: 0;z-index: 9999998;-webkit-tap-highlight-color: rgba(0,0,0,0);transition: opacity .14s;}.a2a_full {background: #FFF;height: auto;height: calc(320px);top: 15%;_top: expression(40+((e=document.documentElement.scrollTop)?e:document.body.scrollTop)+"px"); left: 50%;margin-left: -320px; position: fixed;_position: absolute; text-align: center;width: 640px;z-index: 9999999;     transition: transform .14s, opacity .14s;}.a2a_full_header,.a2a_full_services,.a2a_full_footer {border: 0;margin: 0;padding: 12px;box-sizing: border-box;}.a2a_full_header {padding-bottom: 8px;}.a2a_full_services {height: 280px; overflow-y: scroll;padding: 0 12px;-webkit-overflow-scrolling: touch;}.a2a_full_services .a2a_i {display: inline-block;float: none;width: 181px;width: calc(33.334% - 18px);}div.a2a_full_footer {font-size: 12px;text-align: center;padding: 8px 14px;}div.a2a_full_footer a,div.a2a_full_footer a:visited {display: inline;font-size: 12px;line-height:14px;padding: 8px 14px; }div.a2a_full_footer a:hover,div.a2a_full_footer a:focus {background: none;border: 0;color: #0166FF;}div.a2a_full_footer a span.a2a_s_a2a,div.a2a_full_footer a span.a2a_w_a2a {background-size: 14px;border-radius: 3px;display: inline-block;height:14px;line-height:14px;margin: 0 3px 0 0;vertical-align: top;*vertical-align: middle; width:14px;}.a2a_modal {background: #FFF;font: 24px sans-serif-light, "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Arial, Helvetica, "Liberation Sans", sans-serif;height: auto;top: 50%;_top: expression(40+((e=document.documentElement.scrollTop)?e:document.body.scrollTop)+"px"); left: 50%;margin-left: -320px; margin-top: -36px; position: fixed;_position: absolute; text-align: center;width: 640px;z-index: 9999999;     transition: transform .14s, opacity .14s;-webkit-tap-highlight-color: rgba(0,0,0,0);}.a2a_copy_link_container {position: relative;}span.a2a_s_link#a2a_copy_link_icon,span.a2a_w_link#a2a_copy_link_icon {background-size: 48px;border-radius: 0;display: inline-block;height:48px;left: 0;line-height:48px;margin: 0 3px 0 0;position: absolute;vertical-align: top;*vertical-align: middle; width:48px;}#a2a_copy_link_text {background-color: transparent;_background-color: #FFF;border: 0;color: #2A2A2A;font: inherit;height: 48px;left: 62px;padding: 0;position: relative;width: 564px;width: calc(100% - 76px);}#a2a_copy_link_copied {background-color: #0166ff;background: linear-gradient(90deg, #0166ff 80%, #9cbfff);color: #fff;display: none;font: inherit;font-size: 16px;padding: 6px 8px;}@media print {.a2a_menu,.a2a_overlay {visibility: hidden;}}@keyframes a2aFadeIn {from { opacity: 0; }  to { opacity: 1; }}.a2a_starting {opacity: 0;}.a2a_starting.a2a_full {transform: scale(.8);}@media (max-width: 639px) {.a2a_full {border-radius: 0;top: 15%;left: 0;margin-left: auto;width: 100%;}.a2a_modal {left: 0;margin-left: 10px;width: calc(100% - 20px);}}@media (min-width: 318px) and (max-width: 437px) {.a2a_full .a2a_full_services .a2a_i {width: calc(50% - 18px);}}@media (max-width: 317px) {.a2a_full .a2a_full_services .a2a_i {width: calc(100% - 18px);}}@media (max-height: 436px) {.a2a_full {bottom: 40px;height: auto;top: 40px;}}.a2a_menu a {color:#0166FF;text-decoration:none;font: 16px sans-serif-light, "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Arial, Helvetica, "Liberation Sans", sans-serif;line-height:14px;height:auto;width:auto;outline:none;-moz-outline:none;}.a2a_menu a:visited{color:#0166FF}.a2a_menu a:hover,.a2a_menu a:active,.a2a_menu a:focus{color: #2A2A2A;border-color: #EEE;border-style: solid;background-color: #EEE;text-decoration: none;}.a2a_menu span.a2a_s_find {background-size: 24px;height:24px;left: 8px;position:absolute;top: 7px;width:24px;}.a2a_menu span.a2a_s_find svg {background-color: #FFF;}.a2a_menu span.a2a_s_find svg path {fill: #CCC;}#a2a_menu_container{display:inline-block} #a2a_menu_container{_display:inline} .a2a_menu_title_container {padding: 6px 8px;}.a2a_menu_find_container {border: 1px solid #CCC;border-radius: 6px;padding: 2px 24px 2px 0;position: relative;text-align: left;}.a2a_cols_container .a2a_col1{overflow-x:hidden;overflow-y:auto;-webkit-overflow-scrolling:touch}.a2a_menu input,.a2a_menu input[type="text"],input.a2a_copy_link_text,input.a2a_copy_link_text[type="text"] { display:block;background-image:none;box-shadow:none;line-height:100%;margin:0;outline:0;overflow:hidden;padding:0;-moz-box-shadow:none;-webkit-box-shadow:none;-webkit-appearance:none} .a2a_menu_title_container input.a2a_menu_title {background-color: #FFF;border: 0;color: #2A2A2A;font: inherit;margin: 0;padding: 0;width: 99%;}.a2a_menu_find_container input.a2a_menu_find {background-color: transparent;_background-color: #FFF;border: 0;color: #2A2A2A;font: inherit;font-size: 16px;height: 28px;line-height: 20px;left: 38px;outline: 0;padding: 2px 0;position: relative;width: 99%;}.a2a_clear{clear:both} .a2a_img {background:url(https://static.addtoany.com/menu/icons.36.png);border:0;line-height:16px}.a2a_img,.a2a_svg {background-repeat:no-repeat;display:block;overflow:hidden;}.a2a_img{height:16px;line-height:16px;width:16px;}.a2a_svg{height:32px;line-height:32px;width:32px;}a.a2a_i,i.a2a_i{display:block;float:left;border:1px solid #FFF;line-height:24px;padding:6px 8px;text-align:left;white-space:nowrap;overflow: hidden;text-overflow: ellipsis;width:132px;}a.a2a_i span,a.a2a_more span {display: inline-block;overflow: hidden;vertical-align: top;*vertical-align: middle; }a.a2a_i .a2a_img,a.a2a_i .a2a_svg {margin: 0 6px 0 0;}a.a2a_i .a2a_svg,a.a2a_more .a2a_svg {background-size: 24px;height:24px;line-height:24px;width:24px;}a.a2a_sss:hover {border-left: 1px solid #CCC;}a.a2a_menu_show_more_less{border-bottom:1px solid #FFF;border-left:0;border-right:0;line-height:24px;margin:6px 0 0;padding:6px}a.a2a_menu_show_more_less span{display:inline-block;height:24px;margin:0 6px 0 0;} .a2a_kit .a2a_svg { background-repeat: repeat; }.a2a_default_style a{float:left;line-height:16px;padding:0 2px}.a2a_default_style a:hover .a2a_img,.a2a_default_style a:hover .a2a_svg,.a2a_floating_style a:hover .a2a_img,.a2a_floating_style a:hover .a2a_svg {opacity: .7;}.a2a_default_style .a2a_count,.a2a_default_style .a2a_svg,.a2a_floating_style .a2a_svg,.a2a_vertical_style .a2a_count,.a2a_menu .a2a_svg {border-radius:4px ;}.a2a_default_style .a2a_img, .a2a_default_style .a2a_dd, .a2a_default_style .a2a_svg,.a2a_default_style .a2a_counter img { float: left;}.a2a_default_style .a2a_img_text{margin-right:4px}.a2a_default_style .a2a_divider{border-left:1px solid #000;display:inline;float:left;height:16px;line-height:16px;margin:0 5px}.a2a_kit a{cursor:pointer}.a2a_floating_style { background-color: #fff; border-radius: 6px; padding: 4px; position: fixed; z-index: 9999995;    animation: a2aFadeIn .2s ease-in;}.a2a_vertical_style a { clear: left;display: block;overflow: hidden;padding: 4px;text-decoration: none; }.a2a_floating_style.a2a_default_style { bottom: 0; }.a2a_floating_style.a2a_default_style a { padding: 4px; }.a2a_count {background-color: #fff;border: 1px solid #ccc;box-sizing: border-box;color: #2a2a2a;display: block;float: left;font: 12px Arial,Helvetica,sans-serif;height: 16px;margin-left: 4px;position: relative;text-align: center;width: 50px;}.a2a_count:before,.a2a_count:after {border: solid transparent;border-width: 4px 4px 4px 0;content: "";height: 0;left: 0;line-height: 0;margin: -4px 0 0 -4px;position: absolute;top: 50%;width: 0;}.a2a_count:before {border-right-color: #ccc;}.a2a_count:after {border-right-color: #fff;margin-left: -3px;}.a2a_count span {    animation: a2aFadeIn .14s ease-in;}.a2a_vertical_style .a2a_counter img {display: block;}.a2a_vertical_style .a2a_count {float: none;margin-left: 0;margin-top: 6px; }.a2a_vertical_style .a2a_count:before,.a2a_vertical_style .a2a_count:after {border: solid transparent;border-width: 0 4px 4px 4px;content: "";height: 0;left: 50%;line-height: 0;margin: -4px 0 0 -4px;position: absolute;top: 0;width: 0;}.a2a_vertical_style .a2a_count:before {border-bottom-color: #ccc;}.a2a_vertical_style .a2a_count:after {border-bottom-color: #fff;margin-top: -3px;}.a2a_nowrap{white-space:nowrap}.a2a_note{margin:0 auto;padding:9px;font-size:12px;text-align:center}.a2a_note .a2a_note_note{margin:0;color:#2A2A2A}.a2a_wide a{display:block;margin-top:3px;border-top:1px solid #EEE;text-align:center}.a2a_label {position: absolute !important;clip: rect(1px 1px 1px 1px); clip: rect(1px, 1px, 1px, 1px);overflow: hidden; }iframe.a2a_shim {background-color: transparent;border: 0;bottom: 0;filter: alpha(opacity=0); height: 100%;left: 0;right: 0;top: 0;position: absolute;width: 100%;z-index: 9999996;_height: expression( ((e=document.documentElement.clientHeight)?e:document.body.clientHeight)+"px" ); _width: expression( ((e=document.documentElement.clientWidth)?e:document.body.clientWidth)+"px" ); }.a2a_dd img {border:0;-ms-touch-action:manipulation;}.a2a_button_facebook_like iframe {max-width: none;}iframe[id^="PIN_"][id$="_nag"] {display: none !important;}.a2a_i_a2a{background-position:0 0!important}.a2a_i_a2a_sm{background-position:0 -17px!important}.a2a_i_agregator{background-position:0 -34px!important}.a2a_i_amazon{background-position:0 -51px!important}.a2a_i_aol{background-position:0 -68px!important}.a2a_i_app_net{background-position:0 -85px!important}.a2a_i_baidu{background-position:0 -102px!important}.a2a_i_balatarin{background-position:0 -119px!important}.a2a_i_behance{background-position:0 -136px!important}.a2a_i_bibsonomy{background-position:0 -153px!important}.a2a_i_bitty{background-position:0 -170px!important}.a2a_i_blinklist{background-position:0 -187px!important}.a2a_i_blogger{background-position:0 -204px!important}.a2a_i_blogmarks{background-position:0 -221px!important}.a2a_i_bookmark{background-position:0 -238px!important}.a2a_i_bookmarks_fr{background-position:0 -255px!important}.a2a_i_box{background-position:0 -272px!important}.a2a_i_buddymarks{background-position:0 -289px!important}.a2a_i_buffer{background-position:0 -306px!important}.a2a_i_care2{background-position:0 -323px!important}.a2a_i_chrome{background-position:0 -340px!important}.a2a_i_citeulike{background-position:0 -357px!important}.a2a_i_dailyrotation{background-position:0 -374px!important}.a2a_i_default{background-position:0 -391px!important}.a2a_i_delicious{background-position:0 -408px!important}.a2a_i_designfloat{background-position:0 -425px!important}.a2a_i_diary_ru{background-position:0 -442px!important}.a2a_i_diaspora{background-position:0 -459px!important}.a2a_i_digg{background-position:0 -476px!important}.a2a_i_dihitt{background-position:0 -493px!important}.a2a_i_diigo{background-position:0 -510px!important}.a2a_i_dzone{background-position:0 -527px!important}.a2a_i_email{background-position:0 -544px!important}.a2a_i_evernote{background-position:0 -561px!important}.a2a_i_facebook{background-position:0 -578px!important}.a2a_i_fark{background-position:0 -595px!important}.a2a_i_feed{background-position:0 -612px!important}.a2a_i_feedblitz{background-position:0 -629px!important}.a2a_i_feedbucket{background-position:0 -646px!important}.a2a_i_feedly{background-position:0 -663px!important}.a2a_i_feedmailer{background-position:0 -680px!important}.a2a_i_find{background-position:0 -697px!important}.a2a_i_firefox{background-position:0 -714px!important}.a2a_i_flickr{background-position:0 -731px!important}.a2a_i_flipboard{background-position:0 -748px!important}.a2a_i_folkd{background-position:0 -765px!important}.a2a_i_foursquare{background-position:0 -782px!important}.a2a_i_github{background-position:0 -799px!important}.a2a_i_gmail{background-position:0 -816px!important}.a2a_i_google{background-position:0 -833px!important}.a2a_i_google_classroom{background-position:0 -850px!important}.a2a_i_google_plus{background-position:0 -867px!important}.a2a_i_hatena{background-position:0 -884px!important}.a2a_i_instapaper{background-position:0 -901px!important}.a2a_i_itunes{background-position:0 -918px!important}.a2a_i_jamespot{background-position:0 -935px!important}.a2a_i_kakao{background-position:0 -952px!important}.a2a_i_kik{background-position:0 -969px!important}.a2a_i_kindle{background-position:0 -986px!important}.a2a_i_klipfolio{background-position:0 -1003px!important}.a2a_i_known{background-position:0 -1020px!important}.a2a_i_line{background-position:0 -1037px!important}.a2a_i_link{background-position:0 -1054px!important}.a2a_i_linkedin{background-position:0 -1071px!important}.a2a_i_livejournal{background-position:0 -1088px!important}.a2a_i_mail_ru{background-position:0 -1105px!important}.a2a_i_mendeley{background-position:0 -1122px!important}.a2a_i_meneame{background-position:0 -1139px!important}.a2a_i_miro{background-position:0 -1156px!important}.a2a_i_mixi{background-position:0 -1173px!important}.a2a_i_myspace{background-position:0 -1190px!important}.a2a_i_netlog{background-position:0 -1207px!important}.a2a_i_netvibes{background-position:0 -1224px!important}.a2a_i_netvouz{background-position:0 -1241px!important}.a2a_i_newsalloy{background-position:0 -1258px!important}.a2a_i_newsisfree{background-position:0 -1275px!important}.a2a_i_newsvine{background-position:0 -1292px!important}.a2a_i_nujij{background-position:0 -1309px!important}.a2a_i_odnoklassniki{background-position:0 -1326px!important}.a2a_i_oknotizie{background-position:0 -1343px!important}.a2a_i_oldreader{background-position:0 -1360px!important}.a2a_i_outlook_com{background-position:0 -1377px!important}.a2a_i_pinboard{background-position:0 -1394px!important}.a2a_i_pinterest{background-position:0 -1411px!important}.a2a_i_plurk{background-position:0 -1428px!important}.a2a_i_pocket{background-position:0 -1445px!important}.a2a_i_podnova{background-position:0 -1462px!important}.a2a_i_print{background-position:0 -1479px!important}.a2a_i_printfriendly{background-position:0 -1496px!important}.a2a_i_protopage{background-position:0 -1513px!important}.a2a_i_pusha{background-position:0 -1530px!important}.a2a_i_qzone{background-position:0 -1547px!important}.a2a_i_reddit{background-position:0 -1564px!important}.a2a_i_rediff{background-position:0 -1581px!important}.a2a_i_renren{background-position:0 -1598px!important}.a2a_i_segnalo{background-position:0 -1615px!important}.a2a_i_share{background-position:0 -1632px!important}.a2a_i_sina_weibo{background-position:0 -1649px!important}.a2a_i_sitejot{background-position:0 -1666px!important}.a2a_i_skype{background-position:0 -1683px!important}.a2a_i_slashdot{background-position:0 -1700px!important}.a2a_i_sms{background-position:0 -1717px!important}.a2a_i_snapchat{background-position:0 -1734px!important}.a2a_i_stumbleupon{background-position:0 -1751px!important}.a2a_i_stumpedia{background-position:0 -1768px!important}.a2a_i_svejo{background-position:0 -1785px!important}.a2a_i_symbaloo{background-position:0 -1802px!important}.a2a_i_telegram{background-position:0 -1819px!important}.a2a_i_thefreedictionary{background-position:0 -1836px!important}.a2a_i_thefreelibrary{background-position:0 -1853px!important}.a2a_i_tumblr{background-position:0 -1870px!important}.a2a_i_twiddla{background-position:0 -1887px!important}.a2a_i_twitter{background-position:0 -1904px!important}.a2a_i_typepad{background-position:0 -1921px!important}.a2a_i_viadeo{background-position:0 -1938px!important}.a2a_i_viber{background-position:0 -1955px!important}.a2a_i_vimeo{background-position:0 -1972px!important}.a2a_i_vk{background-position:0 -1989px!important}.a2a_i_wanelo{background-position:0 -2006px!important}.a2a_i_webnews{background-position:0 -2023px!important}.a2a_i_wechat{background-position:0 -2040px!important}.a2a_i_whatsapp{background-position:0 -2057px!important}.a2a_i_winksite{background-position:0 -2074px!important}.a2a_i_wordpress{background-position:0 -2091px!important}.a2a_i_wykop{background-position:0 -2108px!important}.a2a_i_xing{background-position:0 -2125px!important}.a2a_i_y18{background-position:0 -2142px!important}.a2a_i_yahoo{background-position:0 -2159px!important}.a2a_i_yim{background-position:0 -2176px!important}.a2a_i_yoolink{background-position:0 -2193px!important}.a2a_i_youmob{background-position:0 -2210px!important}.a2a_i_youtube{background-position:0 -2227px!important}.a2a_i_yummly{background-position:0 -2244px!important}</style><link rel="stylesheet" href="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/icons.18.svg.css"><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="408190b5-e369-48af-8e31-afb7380ecd66/service" src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/service.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="8dc42610-ae42-4164-90b1-573478b46574/service" src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/service(1).js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="13359558-e447-43f3-a3cd-aa61c0b91c02/service" src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/service(2).js"></script><style>@-webkit-keyframes insQ_100 {  from {  outline: 1px solid transparent  } to {  outline: 0px solid transparent }  }
+#menufication-top { animation-duration: 0.001s; animation-name: insQ_100; -webkit-animation-duration: 0.001s; -webkit-animation-name: insQ_100;  } </style><link type="text/css" rel="stylesheet" href="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/sme-popup.css"><link type="text/css" rel="stylesheet" href="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/sumome-smartbar-popup.css"><link type="text/css" rel="stylesheet" href="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/sumome-scrollbox-popup.css"></head>
+
+<body class="single single-post postid-794 single-format-standard custom-background symple-shortcodes  symple-shortcodes-responsive">
+<a class="sr-only sr-only-focusable" href="http://prologistic.com.ua/chto-takoe-heap-i-stack-pamyat-v-java.html#content">Skip to main content</a>
+<div id="page" class="hfeed site">
+
+	<header id="masthead" class="site-header" role="banner">
+		<nav class="navbar navbar-default " role="navigation">
+			<div class="container">
+				<div class="row">
+					<div class="site-navigation-inner col-sm-12">
+						<div class="navbar-header">
+							<button type="button" class="btn navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+								<span class="sr-only">Toggle navigation</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+
+							
+							
+							<div id="logo">
+								<p class="site-name">									<a class="navbar-brand" href="http://prologistic.com.ua/" title="Программирование на Java | Android" rel="home">Программирование на Java | Android</a>
+								</p>							</div><!-- end of #logo -->
+
+							
+						</div>
+						<div class="collapse navbar-collapse navbar-ex1-collapse"><ul id="menu-glavnoe-menyu" class="nav navbar-nav"><li id="menu-item-22" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-22"><a title="Главная" href="http://prologistic.com.ua/">Главная</a></li>
+<li id="menu-item-878" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-878"><a title="Android" href="http://prologistic.com.ua/category/android">Android</a></li>
+<li id="menu-item-63" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-has-children menu-item-63 dropdown"><a title="Java" href="http://prologistic.com.ua/category/java" data-toggle="dropdown" class="dropdown-toggle">Java <span class="caret"></span></a>
+<ul role="menu" class=" dropdown-menu">
+	<li id="menu-item-305" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-305"><a title="Начало работы" href="http://prologistic.com.ua/category/java/nachalo-raboty">Начало работы</a></li>
+	<li id="menu-item-306" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-306"><a title="ООП в Java" href="http://prologistic.com.ua/category/java/oop-v-java">ООП в Java</a></li>
+	<li id="menu-item-307" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-307"><a title="Операторы и типы данных" href="http://prologistic.com.ua/category/java/tipy-danny-h">Операторы и типы данных</a></li>
+	<li id="menu-item-314" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-314"><a title="Интерфейсы и абстрактный класс" href="http://prologistic.com.ua/category/java/interfejsy-i-abstraktny-j-klass">Интерфейсы и абстрактный класс</a></li>
+	<li id="menu-item-365" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-365"><a title="Работа со строками" href="http://prologistic.com.ua/category/java/rabota-so-strokami">Работа со строками</a></li>
+	<li id="menu-item-364" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-364"><a title="Массивы в Java" href="http://prologistic.com.ua/category/java/massivy-v-java">Массивы в Java</a></li>
+	<li id="menu-item-409" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-409"><a title="Аннотации и Enum" href="http://prologistic.com.ua/category/java/annotatsii-i-enum">Аннотации и Enum</a></li>
+	<li id="menu-item-462" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-462"><a title="Работа с Коллекциями" href="http://prologistic.com.ua/category/java/rabota-s-kollektsiyami">Работа с Коллекциями</a></li>
+	<li id="menu-item-457" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-457"><a title="Java IO" href="http://prologistic.com.ua/category/java/java-io">Java IO</a></li>
+	<li id="menu-item-1040" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1040"><a title="Работа с XML" href="http://prologistic.com.ua/category/java/xml">Работа с XML</a></li>
+	<li id="menu-item-460" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-460"><a title="Обработка исключений" href="http://prologistic.com.ua/category/java/obrabotka-isklyuchenij">Обработка исключений</a></li>
+	<li id="menu-item-463" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-463"><a title="Регулярные выражения" href="http://prologistic.com.ua/category/java/regulyarny-e-vy-razheniya">Регулярные выражения</a></li>
+	<li id="menu-item-461" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-461"><a title="Особенности Java 7" href="http://prologistic.com.ua/category/java/osobennosti-java-7">Особенности Java 7</a></li>
+	<li id="menu-item-308" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-308"><a title="Особенности Java 8" href="http://prologistic.com.ua/category/java/osobennosti-java-8">Особенности Java 8</a></li>
+	<li id="menu-item-458" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-458"><a title="Reflection API" href="http://prologistic.com.ua/category/java/reflection-api">Reflection API</a></li>
+	<li id="menu-item-459" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-459"><a title="Многопоточность и параллелизм" href="http://prologistic.com.ua/category/java/mnogopotochnost-i-parallelizm">Многопоточность и параллелизм</a></li>
+	<li id="menu-item-1351" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1351"><a title="JSON" href="http://prologistic.com.ua/category/java/json">JSON</a></li>
+</ul>
+</li>
+<li id="menu-item-24" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-24"><a title="IntelliJ IDEA" href="http://prologistic.com.ua/category/intellij-idea">IntelliJ IDEA</a></li>
+<li id="menu-item-82" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-82"><a title="Алгоритмы" href="http://prologistic.com.ua/category/algorytmy">Алгоритмы</a></li>
+<li id="menu-item-137" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-137"><a title="Программирование" href="http://prologistic.com.ua/category/programmirovanie">Программирование</a></li>
+<li id="menu-item-25" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-25"><a title="Git" href="http://prologistic.com.ua/category/git">Git</a></li>
+<li id="menu-item-150" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-150"><a title="Полезности" href="http://prologistic.com.ua/category/poleznosti">Полезности</a></li>
+<li id="menu-item-83" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-83"><a title="Блог" href="http://prologistic.com.ua/category/blog">Блог</a></li>
+<li id="menu-item-328" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-328"><a title="О сайте" href="http://prologistic.com.ua/o-sajte.html">О сайте</a></li>
+<li id="menu-item-522" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-522"><a title="Бесплатные видеокурсы по программированию на Java" href="http://prologistic.com.ua/besplatnye-kursy-po-programmirovaniyu-na-java.html"><span class="glyphicon Бесплатные видеокурсы по программированию на Java"></span>&nbsp;Бесплатные видеокурсы</a></li>
+</ul></div>					</div>
+				</div>
+			</div>
+		</nav><!-- .site-navigation -->
+	</header><!-- #masthead -->
+
+	<div id="content" class="site-content">
+
+		<div class="top-section">
+								</div> 
+
+		<div class="container main-content-area">
+            			<div class="row side-pull-left">
+				<div class="main-content-inner col-sm-12 col-md-8">
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main" role="main">
+
+		
+			
+<article id="post-794" class="post-794 post type-post status-publish format-standard has-post-thumbnail hentry category-java category-poleznosti tag-heap-memory tag-java-runtime tag-stack-memory">
+	<img width="640" height="360" src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/image-2.jpg" class="single-featured wp-post-image" alt="Что такое Heap и Stack память в Java?" srcset="http://prologistic.com.ua/wp-content/uploads/2015/12/image-2.jpg 640w, http://prologistic.com.ua/wp-content/uploads/2015/12/image-2-300x169.jpg 300w, http://prologistic.com.ua/wp-content/uploads/2015/12/image-2-150x84.jpg 150w" sizes="(max-width: 640px) 100vw, 640px">	<div class="post-inner-content">
+		<header class="entry-header page-header">
+
+			<h1 class="entry-title ">Что такое Heap и Stack память в Java?</h1>
+
+			<div class="entry-meta">
+				<span class="posted-on"><i class="fa fa-calendar"></i> <a href="http://prologistic.com.ua/chto-takoe-heap-i-stack-pamyat-v-java.html" rel="bookmark"><time class="entry-date published" datetime="2015-12-19T14:03:28+00:00">19/12/2015</time><time class="updated" datetime="2016-02-26T20:41:49+00:00">26/02/2016</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="http://prologistic.com.ua/author/prologistic">prologistic</a></span></span>
+								<span class="cat-links"><i class="fa fa-folder-open-o"></i>
+					 <a href="http://prologistic.com.ua/category/java" rel="category tag">Java</a>,<a href="http://prologistic.com.ua/category/poleznosti" rel="category tag">Полезности</a>				</span>
+								
+			</div><!-- .entry-meta -->
+		</header><!-- .entry-header -->
+
+		<div class="entry-content">
+			
+<!-- Quick Adsense WordPress Plugin: http://quicksense.net/ -->
+<div style="float:none;margin:10px 0 10px 0;text-align:center;">
+<!-- adsins--> 
+<script async="" src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- prologistic_300_250 -->
+<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-5293559879288148" data-ad-slot="4990226917"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script> 
+<!-- adsins-->
+</div>
+<p>В Java есть такие понятия как&nbsp;Heap и&nbsp;Stack память. Сегодня мы узнаем&nbsp;разницу между ними и зачем они нужны. Как всегда, сначала в теории и затем на практике разберем эту сложную тему.<span id="more-794"></span></p>
+<h3>Java Heap память</h3>
+<p>Java Heap (куча) используется <code>Java Runtime</code> для выделения памяти&nbsp;под объекты&nbsp;и <a href="http://prologistic.com.ua/chto-takoe-jdk-jre-i-jvm-v-java.html" target="_blank">JRE</a> классы. Создание нового объекта также происходит в куче. Здесь работает сборщик мусора: освобождает память&nbsp;путем удаления объектов, на которые нет каких-либо ссылок. Любой объект, созданный в куче,&nbsp;имеет глобальный доступ и на него могут ссылаться с любой части приложения.</p>
+<h3>Stack&nbsp;память в&nbsp;Java</h3>
+<p>Стековая память в&nbsp;Java&nbsp;работает по схеме&nbsp;LIFO (Последний-зашел-Первый-вышел). Всякий раз, когда вызывается метод, в памяти стека создается новый блок, который содержит примитивы&nbsp;и ссылки на другие объекты в методе. Как только метод заканчивает работу, блок также перестает использоваться, тем самым предоставляя доступ&nbsp;для следующего метода.<br>
+Размер стековой&nbsp;памяти намного меньше объема памяти в куче.</p>
+<p>Давайте рассмотрим отличия стековой памяти и кучи на примере простой программы.</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-57da529306bb6314792680" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button crayon-pressed" title="Включить/Отключить нумерацию строк"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Включить/Отключить подсветку кода"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Включить/Отключить перенос строк"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code" style="display: none;"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Показать код в новом окне"><div class="crayon-button-icon"></div></div><span class="crayon-language">Java</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly="" style="tab-size: 4; font-size: 12px !important; line-height: 15px !important; z-index: 0; opacity: 0; overflow: hidden;">package ua.com.prologistic;
+ 
+public class Memory {
+ 
+    public static void main(String[] args) { // строка 1
+        int i=1; // строка 2
+        Object object = new Object(); // строка 3
+        Memory memory = new Memory(); // строка 4
+        memory.exMethod(object); // строка 5
+    } // строка 9
+ 
+    private void exMethod(Object param) { // строка 6
+        String string = param.toString(); // строка 7
+        System.out.println(string );
+    } // строка 8
+ 
+}</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-57da529306bb6314792680-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-57da529306bb6314792680-2">2</div><div class="crayon-num" data-line="crayon-57da529306bb6314792680-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-57da529306bb6314792680-4">4</div><div class="crayon-num" data-line="crayon-57da529306bb6314792680-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-57da529306bb6314792680-6">6</div><div class="crayon-num" data-line="crayon-57da529306bb6314792680-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-57da529306bb6314792680-8">8</div><div class="crayon-num" data-line="crayon-57da529306bb6314792680-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-57da529306bb6314792680-10">10</div><div class="crayon-num" data-line="crayon-57da529306bb6314792680-11">11</div><div class="crayon-num crayon-striped-num" data-line="crayon-57da529306bb6314792680-12">12</div><div class="crayon-num" data-line="crayon-57da529306bb6314792680-13">13</div><div class="crayon-num crayon-striped-num" data-line="crayon-57da529306bb6314792680-14">14</div><div class="crayon-num" data-line="crayon-57da529306bb6314792680-15">15</div><div class="crayon-num crayon-striped-num" data-line="crayon-57da529306bb6314792680-16">16</div><div class="crayon-num" data-line="crayon-57da529306bb6314792680-17">17</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-57da529306bb6314792680-1"><span class="crayon-t">package</span><span class="crayon-h"> </span><span class="crayon-v">ua</span><span class="crayon-sy">.</span><span class="crayon-v">com</span><span class="crayon-sy">.</span><span class="crayon-v">prologistic</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-57da529306bb6314792680-2"><span class="crayon-h"> </span></div><div class="crayon-line" id="crayon-57da529306bb6314792680-3"><span class="crayon-m">public</span><span class="crayon-h"> </span><span class="crayon-t">class</span><span class="crayon-h"> </span><span class="crayon-e">Memory</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-57da529306bb6314792680-4"><span class="crayon-h"> </span></div><div class="crayon-line" id="crayon-57da529306bb6314792680-5"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-m">public</span><span class="crayon-h"> </span><span class="crayon-m">static</span><span class="crayon-h"> </span><span class="crayon-t">void</span><span class="crayon-h"> </span><span class="crayon-e">main</span><span class="crayon-sy">(</span><span class="crayon-t">String</span><span class="crayon-sy">[</span><span class="crayon-sy">]</span><span class="crayon-h"> </span><span class="crayon-v">args</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span><span class="crayon-h"> </span><span class="crayon-c">// строка 1</span></div><div class="crayon-line crayon-striped-line" id="crayon-57da529306bb6314792680-6"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-t">int</span><span class="crayon-h"> </span><span class="crayon-v">i</span><span class="crayon-o">=</span><span class="crayon-cn">1</span><span class="crayon-sy">;</span><span class="crayon-h"> </span><span class="crayon-c">// строка 2</span></div><div class="crayon-line" id="crayon-57da529306bb6314792680-7"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-t">Object</span><span class="crayon-h"> </span><span class="crayon-t">object</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-r">new</span><span class="crayon-h"> </span><span class="crayon-t">Object</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span><span class="crayon-h"> </span><span class="crayon-c">// строка 3</span></div><div class="crayon-line crayon-striped-line" id="crayon-57da529306bb6314792680-8"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-e">Memory </span><span class="crayon-v">memory</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-r">new</span><span class="crayon-h"> </span><span class="crayon-e">Memory</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span><span class="crayon-h"> </span><span class="crayon-c">// строка 4</span></div><div class="crayon-line" id="crayon-57da529306bb6314792680-9"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">memory</span><span class="crayon-sy">.</span><span class="crayon-e">exMethod</span><span class="crayon-sy">(</span><span class="crayon-t">object</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span><span class="crayon-h"> </span><span class="crayon-c">// строка 5</span></div><div class="crayon-line crayon-striped-line" id="crayon-57da529306bb6314792680-10"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span><span class="crayon-h"> </span><span class="crayon-c">// строка 9</span></div><div class="crayon-line" id="crayon-57da529306bb6314792680-11"><span class="crayon-h"> </span></div><div class="crayon-line crayon-striped-line" id="crayon-57da529306bb6314792680-12"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-m">private</span><span class="crayon-h"> </span><span class="crayon-t">void</span><span class="crayon-h"> </span><span class="crayon-e">exMethod</span><span class="crayon-sy">(</span><span class="crayon-t">Object</span><span class="crayon-h"> </span><span class="crayon-v">param</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span><span class="crayon-h"> </span><span class="crayon-c">// строка 6</span></div><div class="crayon-line" id="crayon-57da529306bb6314792680-13"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-t">String</span><span class="crayon-h"> </span><span class="crayon-t">string</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-v">param</span><span class="crayon-sy">.</span><span class="crayon-e">toString</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span><span class="crayon-h"> </span><span class="crayon-c">// строка 7</span></div><div class="crayon-line crayon-striped-line" id="crayon-57da529306bb6314792680-14"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">System</span><span class="crayon-sy">.</span><span class="crayon-v">out</span><span class="crayon-sy">.</span><span class="crayon-e">println</span><span class="crayon-sy">(</span><span class="crayon-t">string</span><span class="crayon-h"> </span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-57da529306bb6314792680-15"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span><span class="crayon-h"> </span><span class="crayon-c">// строка 8</span></div><div class="crayon-line crayon-striped-line" id="crayon-57da529306bb6314792680-16"><span class="crayon-h"> </span></div><div class="crayon-line" id="crayon-57da529306bb6314792680-17"><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0019 seconds] -->
+<p>
+На картинке ниже представлена&nbsp;память стека и кучи для&nbsp;программы выше</p>
+<p><a href="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/Stack_Heap.png" rel="fancybox" class="fancybox"><img class="alignnone size-full wp-image-796" src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/Stack_Heap.png" alt="Java Heap Java Stack - prologistic.com.ua" width="1043" height="598" srcset="http://prologistic.com.ua/wp-content/uploads/2015/12/Stack_Heap.png 1043w, http://prologistic.com.ua/wp-content/uploads/2015/12/Stack_Heap-300x172.png 300w, http://prologistic.com.ua/wp-content/uploads/2015/12/Stack_Heap-768x440.png 768w, http://prologistic.com.ua/wp-content/uploads/2015/12/Stack_Heap-1024x587.png 1024w, http://prologistic.com.ua/wp-content/uploads/2015/12/Stack_Heap-150x86.png 150w" sizes="(max-width: 1043px) 100vw, 1043px"></a></p>
+<p>А теперь рассмотри шаги выполнения нашей программы:</p>
+<!-- Quick Adsense WordPress Plugin: http://quicksense.net/ -->
+<div style="float:none;margin:10px 0 10px 0;text-align:center;">
+<script async="" src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- prologistic_336_280 -->
+<ins class="adsbygoogle" style="display:inline-block;width:336px;height:280px" data-ad-client="ca-pub-5293559879288148" data-ad-slot="3513493719"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+<ol>
+<li>Как только мы запустим программу, загружаются все классы среды выполнения в кучу. Потом&nbsp; метод <code>main()</code>находит <code>строку&nbsp;1</code>&nbsp;и Java Runtime создает стековую память&nbsp;для использования методом main().</li>
+<li>Далее в <code>строке 2</code> создается int’овая&nbsp;переменная, которая&nbsp;хранится в памяти стека метода <code>main()</code>.</li>
+<li>Потом мы создали объект в <code>строке 3</code>&nbsp;и&nbsp;он тут же появляется в&nbsp;куче, а стековая память&nbsp;содержит ссылку на него. Точно такой же&nbsp;процесс происходит, когда мы создаем объект Memory в <code>строке 4</code>.</li>
+<li>Теперь в <code>строке 5</code>&nbsp;мы вызываем метод <code>exMethod()</code> и тут же сразу создается блок на вершине&nbsp;стека, который будет использоваться этим методом. Поскольку Java передает параметры по значению, то в в <code>строке 6</code>&nbsp;будет создана новая ссылка на объект, созданный в строке 3.</li>
+<li>Строка, созданная в <code>строке 7</code>, отправляется в <a href="http://prologistic.com.ua/chto-takoe-pul-strok-v-java.html" target="_blank">Пул строк (String Pool)</a>, который находится в куче. На эту строку также создается ссылка в стековой памяти&nbsp;метода <code>exMethod()</code>.</li>
+<li>Метод&nbsp;<code>exMethod()</code>завершается на&nbsp;<code>строке 8</code>, поэтому&nbsp;блок стековой памяти для этого метода становится свободным.</li>
+<li>В <code>строке 9</code> метод <code>main()</code> завершается, поэтому стековая память&nbsp;для метода <code>main()</code> будет уничтожена. Также программа заканчивается в этой строке, следовательно, Java Runtime освобождает всю память и завершает&nbsp;программу.</li>
+</ol>
+<h3>Разница между Stack&nbsp;и Heap памятью&nbsp;в Java</h3>
+<p>На основании приведенных выше объяснений, мы можем легко подытожить&nbsp;следующие различия между Heap и Stack памятью в Java.</p>
+<ul>
+<li>Куча используется всеми частями приложения в то время как стек используется только одним потоком исполнения программы.</li>
+<li>Всякий раз, когда создается объект, он всегда хранится в куче, а в памяти стека содержится ссылка на него. Память стека содержит только локальные переменные примитивных типов&nbsp;и ссылки на объекты в куче.</li>
+<li>Объекты в куче доступны с любой точки программы, в то время как стековая память не может быть доступна для других потоков.</li>
+<li>Управление памятью в стеке осуществляется по схеме&nbsp;<code>LIFO</code>.</li>
+<li>Стековая память существует лишь какое-то время работы программы, а память в&nbsp;куче живет с самого начала до конца работы программы.</li>
+<li>Мы можем использовать <code>-Xms</code> и <code>-Xmx</code> опции&nbsp;<a href="http://prologistic.com.ua/chto-takoe-jdk-jre-i-jvm-v-java.html" target="_blank">JVM</a>, чтобы определить начальный и максимальный размер памяти в&nbsp;куче. Для стека определить размер памяти можно с помощью опции&nbsp;<code>-Xss</code>&nbsp;.</li>
+<li>Если&nbsp;память стека полностью занята, то Java Runtime бросает <code>java.lang.StackOverflowError</code>, а если память кучи заполнена, то бросается&nbsp;<a href="http://prologistic.com.ua/polnoe-rukovodstvo-po-obrabotke-isklyuchenij-v-java.html" target="_blank">исключение</a> <code>java.lang.OutOfMemoryError: Java Heap Space</code>.</li>
+<li>Размер памяти стека намного&nbsp;меньше памяти в куче. Из-за простоты распределения памяти (<code>LIFO</code>), стековая память работает намного быстрее кучи.</li>
+</ul>
+<p>Вот и все, что нужно знать о Stack и Heap памяти в Java. Следите за обновлениями в разделе <a href="http://prologistic.com.ua/category/poleznosti" target="_blank">Полезности</a>.</p>
+
+<!-- Quick Adsense WordPress Plugin: http://quicksense.net/ -->
+<div style="float:none;margin:10px 0 10px 0;text-align:center;">
+<script async="" src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- prologistic_580_400 -->
+<ins class="adsbygoogle" style="display:inline-block;width:580px;height:400px" data-ad-client="ca-pub-5293559879288148" data-ad-slot="9721036117"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+<div style="font-size:0px;height:0px;line-height:0px;margin:0;padding:0;clear:both"></div>
+<div class="wp_rp_wrap  wp_rp_pinterest" id="wp_rp_first"><div class="wp_rp_content"><h3 class="related_post_title">Больше полезных статей!</h3><ul class="related_post wp_rp"><li class="wp_rp_related_post_column wp_rp_special"><ul><li class="undefined" data-post-type="none" data-position="0" data-poid="in-399"><a href="http://prologistic.com.ua/sortirovka-massiva-v-java.html" class="wp_rp_thumbnail"><img src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/image2-150x84.jpg" alt="Сортировка массива в Java" width="150"></a><a href="http://prologistic.com.ua/sortirovka-massiva-v-java.html" class="wp_rp_title">Сортировка массива в Java</a></li><li class="undefined" data-post-type="none" data-position="3" data-poid="in-252"><a href="http://prologistic.com.ua/operator-continue-v-tsikle-for-java.html" class="wp_rp_thumbnail"><img width="150" height="85" src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/image1-300x169.jpg" class="attachment-150x0 size-150x0 wp-post-image" alt="image" srcset="http://prologistic.com.ua/wp-content/uploads/2015/05/image1-300x169.jpg 300w, http://prologistic.com.ua/wp-content/uploads/2015/05/image1.jpg 640w" sizes="(max-width: 150px) 100vw, 150px"></a><a href="http://prologistic.com.ua/operator-continue-v-tsikle-for-java.html" class="wp_rp_title">Оператор continue в цикле for, Java</a></li><li class="undefined" data-post-type="none" data-position="6" data-poid="in-791"><a href="http://prologistic.com.ua/klonirovanie-ob-ektov-v-java-primer-ispol-zovaniya-metoda-clone.html" class="wp_rp_thumbnail"><img src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/image-3-150x84.jpg" alt="Клонирование объектов в Java. Пример использования метода clone()" width="150"></a><a href="http://prologistic.com.ua/klonirovanie-ob-ektov-v-java-primer-ispol-zovaniya-metoda-clone.html" class="wp_rp_title">Клонирование объектов в Java. Пример использования метода clone()</a></li><li class="undefined" data-post-type="none" data-position="9" data-poid="in-1229"><a href="http://prologistic.com.ua/nahodim-raznitsu-mezhdu-dvumya-datami-v-java.html" class="wp_rp_thumbnail"><img src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/image-5-150x84.jpg" alt="Находим разницу между двумя датами в Java" width="150"></a><a href="http://prologistic.com.ua/nahodim-raznitsu-mezhdu-dvumya-datami-v-java.html" class="wp_rp_title">Находим разницу между двумя датами в Java</a></li><li data-position="14" data-poid="1128"><a href="http://prologistic.com.ua/7-nebol-shih-sovetov-dlya-novichkov-v-java.html" class="wp_rp_thumbnail"><img src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/android_java-150x59.jpg" alt="7 небольших советов для новичков в Java" width="150"></a><a href="http://prologistic.com.ua/7-nebol-shih-sovetov-dlya-novichkov-v-java.html" class="wp_rp_title">7 небольших советов для новичков в Java</a></li><li data-position="16" data-poid="201"><a href="http://prologistic.com.ua/kak-vybrat-nazvaniye-dlia-startapa.html" class="wp_rp_thumbnail"><img width="150" height="73" src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/prologisticcomuaBrandNameMain-300x146.jpg" class="attachment-150x0 size-150x0 wp-post-image" alt="prologisticcomuaBrandNameMain" srcset="http://prologistic.com.ua/wp-content/uploads/2015/02/prologisticcomuaBrandNameMain-300x146.jpg 300w, http://prologistic.com.ua/wp-content/uploads/2015/02/prologisticcomuaBrandNameMain.jpg 720w" sizes="(max-width: 150px) 100vw, 150px"></a><a href="http://prologistic.com.ua/kak-vybrat-nazvaniye-dlia-startapa.html" class="wp_rp_title">Как выбрать название для стартапа?</a></li><li data-position="18" data-poid="814"><a href="http://prologistic.com.ua/kak-najti-summu-e-lementov-massiva-programma-na-java.html" class="wp_rp_thumbnail"><img src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/image-7-150x84.jpg" alt="Как найти сумму элементов массива? Программа на Java" width="150"></a><a href="http://prologistic.com.ua/kak-najti-summu-e-lementov-massiva-programma-na-java.html" class="wp_rp_title">Как найти сумму элементов массива? Программа на Java</a></li></ul></li><li class="wp_rp_related_post_column wp_rp_special"><ul><li class="undefined" data-post-type="none" data-position="1" data-poid="in-777"><a href="http://prologistic.com.ua/rabota-s-klassom-java-system-java-lang-system.html" class="wp_rp_thumbnail"><img src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/image-150x84.jpg" alt="Работа с классом Java System (java.lang.System)" width="150"></a><a href="http://prologistic.com.ua/rabota-s-klassom-java-system-java-lang-system.html" class="wp_rp_title">Работа с классом Java System (java.lang.System)</a></li><li class="undefined" data-post-type="none" data-position="4" data-poid="in-117"><a href="http://prologistic.com.ua/pishem-stek-na-java.html" class="wp_rp_thumbnail"><img src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/Stack_Prologistic_com_ua-150x108.png" alt="Пишем стек на java" width="150"></a><a href="http://prologistic.com.ua/pishem-stek-na-java.html" class="wp_rp_title">Пишем стек на java</a></li><li class="undefined" data-post-type="none" data-position="7" data-poid="in-390"><a href="http://prologistic.com.ua/dvumerny-e-massivy-v-java.html" class="wp_rp_thumbnail"><img src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/image-150x84(1).jpg" alt="Двумерные массивы в Java" width="150"></a><a href="http://prologistic.com.ua/dvumerny-e-massivy-v-java.html" class="wp_rp_title">Двумерные массивы в Java</a></li><li data-position="10" data-poid="344"><a href="http://prologistic.com.ua/chto-takoe-pul-strok-v-java.html" class="wp_rp_thumbnail"><img src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/image3-150x84.jpg" alt="Что такое пул строк в Java?" width="150"></a><a href="http://prologistic.com.ua/chto-takoe-pul-strok-v-java.html" class="wp_rp_title">Что такое пул строк в Java?</a></li><li data-position="12" data-poid="663"><a href="http://prologistic.com.ua/primer-ispol-zovaniya-metoda-sleep-potoki-v-java.html" class="wp_rp_thumbnail"><img src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/image18-150x84.jpg" alt="Пример использования метода sleep(). Потоки в Java" width="150"></a><a href="http://prologistic.com.ua/primer-ispol-zovaniya-metoda-sleep-potoki-v-java.html" class="wp_rp_title">Пример использования метода sleep(). Потоки в Java</a></li><li data-position="15" data-poid="1321"><a href="http://prologistic.com.ua/kak-preobrazovat-stroku-v-xml-document-sozdaem-string-iz-xml-document.html" class="wp_rp_thumbnail"><img src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/image-1-150x84.jpg" alt="Как преобразовать строку в XML Document. Создаем String из Document" width="150"></a><a href="http://prologistic.com.ua/kak-preobrazovat-stroku-v-xml-document-sozdaem-string-iz-xml-document.html" class="wp_rp_title">Как преобразовать строку в XML Document. Создаем String из Document</a></li><li data-position="19" data-poid="820"><a href="http://prologistic.com.ua/proverka-chisla-na-chetnost-programma-na-java.html" class="wp_rp_thumbnail"><img src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/image-5-150x84(1).jpg" alt="Проверка числа на четность. Программа на Java" width="150"></a><a href="http://prologistic.com.ua/proverka-chisla-na-chetnost-programma-na-java.html" class="wp_rp_title">Проверка числа на четность. Программа на Java</a></li></ul></li><li class="wp_rp_related_post_column wp_rp_special"><ul><li class="undefined" data-post-type="none" data-position="2" data-poid="in-785"><a href="http://prologistic.com.ua/primer-sortirovki-s-pomoshh-yu-java-comparable-i-comparator.html" class="wp_rp_thumbnail"><img src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/image-1-150x84(1).jpg" alt="Пример сортировки с помощью Java Comparable и Comparator" width="150"></a><a href="http://prologistic.com.ua/primer-sortirovki-s-pomoshh-yu-java-comparable-i-comparator.html" class="wp_rp_title">Пример сортировки с помощью Java Comparable и Comparator</a></li><li class="undefined" data-post-type="none" data-position="5" data-poid="in-425"><a href="http://prologistic.com.ua/perechisleniya-v-java-preimushhestva-ispolzovaniya-enum.html" class="wp_rp_thumbnail"><img src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/image6-150x84.jpg" alt="Перечисления в Java. Преимущества использования Enum" width="150"></a><a href="http://prologistic.com.ua/perechisleniya-v-java-preimushhestva-ispolzovaniya-enum.html" class="wp_rp_title">Перечисления в Java. Преимущества использования Enum</a></li><li class="undefined" data-post-type="none" data-position="8" data-poid="in-383"><a href="http://prologistic.com.ua/kak-preobrazovat-massiv-v-arraylist-na-java.html" class="wp_rp_thumbnail"><img src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/image11-150x84.jpg" alt="Как преобразовать массив в ArrayList на Java?" width="150"></a><a href="http://prologistic.com.ua/kak-preobrazovat-massiv-v-arraylist-na-java.html" class="wp_rp_title">Как преобразовать массив в ArrayList на Java?</a></li><li data-position="11" data-poid="161"><a href="http://prologistic.com.ua/kak-skopirovat-massiv-v-java.html" class="wp_rp_thumbnail"><img src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/ArrayCopy-e1423941275601-150x59.jpg" alt="Как скопировать массив в Java" width="150"></a><a href="http://prologistic.com.ua/kak-skopirovat-massiv-v-java.html" class="wp_rp_title">Как скопировать массив в Java</a></li><li data-position="13" data-poid="41"><a href="http://prologistic.com.ua/kak-skachat-y-ustanovyt-jdk.html" class="wp_rp_thumbnail"><img src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/main-img-150x120.png" alt="Как скачать и установить JDK?" width="150"></a><a href="http://prologistic.com.ua/kak-skachat-y-ustanovyt-jdk.html" class="wp_rp_title">Как скачать и установить JDK?</a></li><li data-position="17" data-poid="1221"><a href="http://prologistic.com.ua/primer-ispol-zovaniya-metoda-regionmatches-v-java.html" class="wp_rp_thumbnail"><img src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/image-4-150x84.jpg" alt="Пример использования метода regionMatches в Java" width="150"></a><a href="http://prologistic.com.ua/primer-ispol-zovaniya-metoda-regionmatches-v-java.html" class="wp_rp_title">Пример использования метода regionMatches в Java</a></li></ul></li><li class="wp_rp_related_post_load_more wp_rp_special"><a id="wp_rp_related_load_more" href="http://prologistic.com.ua/chto-takoe-heap-i-stack-pamyat-v-java.html#"><span>Load more posts</span><img src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/loading.gif" class="zloader" style="display: none;"></a></li></ul></div></div>
+<div class="addtoany_share_save_container addtoany_content_bottom"><div class="a2a_kit a2a_kit_size_32 addtoany_list" data-a2a-url="http://prologistic.com.ua/chto-takoe-heap-i-stack-pamyat-v-java.html" data-a2a-title="Что такое Heap и Stack память в Java?" style="line-height: 32px;"><a class="a2a_button_facebook" href="http://prologistic.com.ua/#facebook" title="Facebook" rel="nofollow" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_facebook"></span><span class="a2a_label">Facebook</span></a><a class="a2a_button_twitter" href="http://prologistic.com.ua/#twitter" title="Twitter" rel="nofollow" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_twitter"></span><span class="a2a_label">Twitter</span></a><a class="a2a_button_google_plus" href="http://prologistic.com.ua/#google_plus" title="Google+" rel="nofollow" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_google_plus"></span><span class="a2a_label">Google+</span></a><a class="a2a_button_odnoklassniki" href="http://prologistic.com.ua/#odnoklassniki" title="Odnoklassniki" rel="nofollow" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_odnoklassniki"></span><span class="a2a_label">Odnoklassniki</span></a><a class="a2a_button_vk" href="http://prologistic.com.ua/#vk" title="VK" rel="nofollow" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_vk"></span><span class="a2a_label">VK</span></a><a class="a2a_button_google_plus_share addtoany_special_service" data-annotation="none" data-href="http://prologistic.com.ua/chto-takoe-heap-i-stack-pamyat-v-java.html"><div id="___plus_0" style="text-indent: 0px; margin: 0px; padding: 0px; background: transparent; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 88px; height: 20px;"><iframe frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 88px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 20px;" tabindex="0" vspace="0" width="100%" id="I0_1473925781928" name="I0_1473925781928" src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/sharebutton.html" data-gapiattached="true" title="+Поделиться"></iframe></div></a><a class="a2a_dd addtoany_share_save" href="https://www.addtoany.com/share#url=http%3A%2F%2Fprologistic.com.ua%2Fchto-takoe-heap-i-stack-pamyat-v-java.html&amp;title=%D0%A7%D1%82%D0%BE%20%D1%82%D0%B0%D0%BA%D0%BE%D0%B5%20Heap%20%D0%B8%20Stack%20%D0%BF%D0%B0%D0%BC%D1%8F%D1%82%D1%8C%20%D0%B2%20Java%3F&amp;description=%D0%92%20Java%20%D0%B5%D1%81%D1%82%D1%8C%20%D1%82%D0%B0%D0%BA%D0%B8%D0%B5%20%D0%BF%D0%BE%D0%BD%D1%8F%D1%82%D0%B8%D1%8F%20%D0%BA%D0%B0%D0%BA%C2%A0Heap%20%D0%B8%C2%A0Stack%20%D0%BF%D0%B0%D0%BC%D1%8F%D1%82%D1%8C.%20%D0%A1%D0%B5%D0%B3%D0%BE%D0%B4%D0%BD%D1%8F%20%D0%BC%D1%8B%20%D1%83%D0%B7%D0%BD%D0%B0%D0%B5%D0%BC%C2%A0%D1%80%D0%B0%D0%B7%D0%BD%D0%B8%D1%86%D1%83%20%D0%BC%D0%B5%D0%B6%D0%B4%D1%83%20%D0%BD%D0%B8%D0%BC%D0%B8%20%D0%B8%20%D0%B7%D0%B0%D1%87%D0%B5%D0%BC%20%D0%BE%D0%BD%D0%B8%20%D0%BD%D1%83%D0%B6%D0%BD%D1%8B.%20%D0%9A%D0%B0%D0%BA%20%D0%B2%D1%81%D0%B5%D0%B3%D0%B4%D0%B0%2C%20%D1%81%D0%BD%D0%B0%D1%87%D0%B0%D0%BB%D0%B0%20%D0%B2%20%D1%82%D0%B5%D0%BE%D1%80%D0%B8%D0%B8%20%D0%B8%20%D0%B7%D0%B0%D1%82%D0%B5%D0%BC%20%D0%BD%D0%B0%20%D0%BF%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D0%BA%D0%B5"><span class="a2a_svg a2a_s__default a2a_s_a2a"></span><span class="a2a_label">Отправить</span></a></div></div>					</div><!-- .entry-content -->
+
+		<footer class="entry-meta">
+
+	    		      <!-- tags -->
+	      <div class="tagcloud" style="display: block;">
+
+	          <a href="http://prologistic.com.ua/tag/heap-memory">Heap Memory</a> <a href="http://prologistic.com.ua/tag/java-runtime">Java Runtime</a> <a href="http://prologistic.com.ua/tag/stack-memory">Stack Memory</a> 
+	      </div>
+	      <!-- end tags -->
+	      
+		</footer><!-- .entry-meta -->
+	</div>
+
+	
+</article><!-- #post-## -->
+
+			
+<div id="comments" class="comments-area">
+
+	
+			<h2 class="comments-title">
+			3 Комментарии “<span>Что такое Heap и Stack память в Java?</span>”		</h2>
+
+		
+		<ol class="comment-list">
+					<li id="comment-1464" class="comment even thread-even depth-1 parent">
+			<article id="div-comment-1464" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/76ee23ef7aeb36331a8d672827073c12" srcset="http://1.gravatar.com/avatar/76ee23ef7aeb36331a8d672827073c12?s=120&amp;d=mm&amp;r=g 2x" class="avatar avatar-60 photo" height="60" width="60">						<b class="fn">Анзор</b><span class="says">:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://prologistic.com.ua/chto-takoe-heap-i-stack-pamyat-v-java.html#comment-1464">
+							<time datetime="2016-02-26T18:50:30+00:00">
+								26/02/2016 в 6:50 пп							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Вечер добрый!  У вас есть в коде присутствует ошибка, из-за чего возможно затруднение понимания начинающими программистами.<br>
+Ваша строка<br>
+mem.exMethod(obj);<br>
+заменяется на<br>
+memory.exMethod(object);</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link btn btn-sm btn-default" href="http://prologistic.com.ua/chto-takoe-heap-i-stack-pamyat-v-java.html?replytocom=1464#respond" onclick="return addComment.moveForm( &quot;div-comment-1464&quot;, &quot;1464&quot;, &quot;respond&quot;, &quot;794&quot; )" aria-label="Комментарий к записи Анзор" style="display: inline;">Ответить</a></div>			</article><!-- .comment-body -->
+<ol class="children">
+		<li id="comment-1465" class="comment byuser comment-author-prologistic bypostauthor odd alt depth-2">
+			<article id="div-comment-1465" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/f7f5ddc1a1ad57966554d91f6d35e8b6" srcset="http://0.gravatar.com/avatar/f7f5ddc1a1ad57966554d91f6d35e8b6?s=120&amp;d=mm&amp;r=g 2x" class="avatar avatar-60 photo" height="60" width="60">						<b class="fn">prologistic</b><span class="says">:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://prologistic.com.ua/chto-takoe-heap-i-stack-pamyat-v-java.html#comment-1465">
+							<time datetime="2016-02-26T20:43:19+00:00">
+								26/02/2016 в 8:43 пп							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Да, Вы правы. Спасибо за исправление!</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link btn btn-sm btn-default" href="http://prologistic.com.ua/chto-takoe-heap-i-stack-pamyat-v-java.html?replytocom=1465#respond" onclick="return addComment.moveForm( &quot;div-comment-1465&quot;, &quot;1465&quot;, &quot;respond&quot;, &quot;794&quot; )" aria-label="Комментарий к записи prologistic" style="display: inline;">Ответить</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		<li id="comment-2073" class="comment even thread-odd thread-alt depth-1">
+			<article id="div-comment-2073" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/21ce820fada935e8f398ea915069beee" srcset="http://2.gravatar.com/avatar/21ce820fada935e8f398ea915069beee?s=120&amp;d=mm&amp;r=g 2x" class="avatar avatar-60 photo" height="60" width="60">						<b class="fn">RN</b><span class="says">:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://prologistic.com.ua/chto-takoe-heap-i-stack-pamyat-v-java.html#comment-2073">
+							<time datetime="2016-06-19T17:31:53+00:00">
+								19/06/2016 в 5:31 пп							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Stack — это часть Permanent Generation (а начиная с java 8 — часть Metaspace ), верно? или я неправильно понимаю?</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link btn btn-sm btn-default" href="http://prologistic.com.ua/chto-takoe-heap-i-stack-pamyat-v-java.html?replytocom=2073#respond" onclick="return addComment.moveForm( &quot;div-comment-2073&quot;, &quot;2073&quot;, &quot;respond&quot;, &quot;794&quot; )" aria-label="Комментарий к записи RN" style="display: inline;">Ответить</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+		</ol><!-- .comment-list -->
+
+		
+	
+	
+					<div id="respond" class="comment-respond">
+			<h3 id="reply-title" class="comment-reply-title">Добавить комментарий <small><a rel="nofollow" id="cancel-comment-reply-link" href="http://prologistic.com.ua/chto-takoe-heap-i-stack-pamyat-v-java.html#respond" style="display:none;">Отменить ответ</a></small></h3>				<form action="http://prologistic.com.ua/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate="">
+					<p class="comment-notes"><span id="email-notes">Ваш e-mail не будет опубликован.</span> Обязательные поля помечены <span class="required">*</span></p><p class="comment-form-comment"><label for="comment">Комментарий</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" aria-required="true" required="required"></textarea></p><p class="comment-form-author"><label for="author">Имя <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" aria-required="true" required="required"></p>
+<p class="comment-form-email"><label for="email">E-mail <span class="required">*</span></label> <input id="email" name="email" type="email" value="" size="30" maxlength="100" aria-describedby="email-notes" aria-required="true" required="required"></p>
+<p class="comment-form-url"><label for="url">Сайт</label> <input id="url" name="url" type="url" value="" size="30" maxlength="200"></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit btn btn-default" value="Отправить комментарий" style="display: inline-block;"> <input type="hidden" name="comment_post_ID" value="794" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="f49c49044c"></p><p style="display: none;"></p>				<input type="hidden" id="ak_js" name="ak_js" value="1473925780570"></form>
+					</div><!-- #respond -->
+		
+</div><!-- #comments -->
+				<nav class="navigation post-navigation" role="navigation">
+		<h1 class="screen-reader-text">Навигация записей</h1>
+		<div class="nav-links">
+			<div class="nav-previous"><a href="http://prologistic.com.ua/klonirovanie-ob-ektov-v-java-primer-ispol-zovaniya-metoda-clone.html" rel="prev"><i class="fa fa-chevron-left"></i> Клонирование объектов в Java. Пример использования метода clone()</a></div><div class="nav-next"><a href="http://prologistic.com.ua/ploshhad-kruga-i-dlina-okruzhnosti-na-java.html" rel="next">Площадь круга и длина окружности на Java <i class="fa fa-chevron-right"></i></a></div>		</div><!-- .nav-links -->
+	</nav><!-- .navigation -->
+	
+		
+		</main><!-- #main -->
+	</div><!-- #primary -->
+
+</div>
+	<div id="secondary" class="widget-area col-sm-12 col-md-4" role="complementary">
+		<div class="well q2w3-fixed-widget-container" style="height: 2303px;">
+						<aside id="search-2" class="widget widget_search">
+<form role="search" method="get" class="form-search" action="http://prologistic.com.ua/">
+  <div class="input-group">
+  	<label class="screen-reader-text" for="s">Search for:</label>
+    <input type="text" class="form-control search-query" placeholder="Search…" value="" name="s" title="Search for:">
+    <span class="input-group-btn">
+      <button type="submit" class="btn btn-default" name="submit" id="searchsubmit" value="Search" style=""><span class="glyphicon glyphicon-search"></span></button>
+    </span>
+  </div>
+</form></aside><aside id="text-16" class="widget widget_text">			<div class="textwidget"><!-- Begin MailChimp Signup Form -->
+<link href="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/classic-10_7.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+	#mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif;  width:300px;}
+	/* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
+	   We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+</style>
+<div id="mc_embed_signup">
+<form action="http://prologistic.us12.list-manage.com/subscribe/post?u=9765524e1bc2dfdba7f924781&amp;id=db5cf9ae99" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate="">
+    <div id="mc_embed_signup_scroll">
+	<h2>Получай новые уроки по Java и Android каждую неделю!</h2>
+<div class="mc-field-group">
+	<label for="mce-EMAIL">Ваш Email</label>
+	<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+</div>
+	<div id="mce-responses" class="clear">
+		<div class="response" id="mce-error-response" style="display:none"></div>
+		<div class="response" id="mce-success-response" style="display:none"></div>
+	</div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_9765524e1bc2dfdba7f924781_db5cf9ae99" tabindex="-1" value=""></div>
+    <div class="clear"><input type="submit" value="Подписаться" name="subscribe" id="mc-embedded-subscribe" class="button btn btn-default"></div>
+    </div>
+</form>
+</div>
+
+<!--End mc_embed_signup--></div>
+		</aside><aside id="text-19" class="widget widget_text">			<div class="textwidget"><a href="https://goo.gl/TECu2P" title="Надежный хостинг" rel="nofollow"><img src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/hosting.jpg" title="Надежный хостинг" alt="Надежный хостинг"></a></div>
+		</aside>		<aside id="recent-posts-2" class="widget widget_recent_entries">		<h3 class="widget-title">Последние статьи</h3>		<ul>
+					<li>
+				<a href="http://prologistic.com.ua/primer-raboty-s-json-org-v-java-razbor-i-sozdanie-json.html">Пример работы с JSON.org в Java: разбор и создание JSON</a>
+						</li>
+					<li>
+				<a href="http://prologistic.com.ua/primer-raboty-s-json-simple-v-java-parsing-i-sozdanie-json.html">Пример работы с Json Simple в Java: парсинг и создание JSON</a>
+						</li>
+					<li>
+				<a href="http://prologistic.com.ua/kak-ubrat-povtoryayushhiesya-simvoly-iz-stroki-v-java.html">Как убрать повторяющиеся символы из строки в java</a>
+						</li>
+					<li>
+				<a href="http://prologistic.com.ua/formatirovanie-xml-ili-pretty-print-xml-v-java.html">Форматирование XML или Pretty Print XML в Java</a>
+						</li>
+					<li>
+				<a href="http://prologistic.com.ua/kak-preobrazovat-stroku-v-xml-document-sozdaem-string-iz-xml-document.html">Как преобразовать строку в XML Document. Создаем String из Document</a>
+						</li>
+				</ul>
+		</aside>		<aside id="categories-2" class="widget widget_categories"><h3 class="widget-title">Категории</h3><label class="screen-reader-text" for="cat">Категории</label><select name="cat" id="cat" class="postform form-control" style="display: inline-block;">
+	<option value="-1">Выберите рубрику</option>
+	<option class="level-0" value="231">Android</option>
+	<option class="level-0" value="2">GIt</option>
+	<option class="level-0" value="3">IntelliJ IDEA</option>
+	<option class="level-0" value="10">Java</option>
+	<option class="level-0" value="99">Java IO</option>
+	<option class="level-0" value="312">JSON</option>
+	<option class="level-0" value="103">Reflection API</option>
+	<option class="level-0" value="18">Алгоритмы</option>
+	<option class="level-0" value="97">Аннотации и Enum</option>
+	<option class="level-0" value="1">Без категорії</option>
+	<option class="level-0" value="21">Блог</option>
+	<option class="level-0" value="93">Интерфейсы и абстрактный класс</option>
+	<option class="level-0" value="96">Массивы в Java</option>
+	<option class="level-0" value="101">Многопоточность и параллелизм</option>
+	<option class="level-0" value="90">Начало работы</option>
+	<option class="level-0" value="100">Обработка исключений</option>
+	<option class="level-0" value="91">ООП в Java</option>
+	<option class="level-0" value="92">Операторы и типы данных</option>
+	<option class="level-0" value="104">Особенности Java 7</option>
+	<option class="level-0" value="94">Особенности Java 8</option>
+	<option class="level-0" value="39">Полезности</option>
+	<option class="level-0" value="35">Программирование</option>
+	<option class="level-0" value="257">Работа с XML</option>
+	<option class="level-0" value="98">Работа с Коллекциями</option>
+	<option class="level-0" value="95">Работа со строками</option>
+</select>
+
+<script type="text/javascript">
+/* <![CDATA[ */
+(function() {
+	var dropdown = document.getElementById( "cat" );
+	function onCatChange() {
+		if ( dropdown.options[ dropdown.selectedIndex ].value > 0 ) {
+			location.href = "http://prologistic.com.ua/?cat=" + dropdown.options[ dropdown.selectedIndex ].value;
+		}
+	}
+	dropdown.onchange = onCatChange;
+})();
+/* ]]> */
+</script>
+
+</aside><aside id="tag_cloud-7" class="widget widget_tag_cloud"><h3 class="widget-title">Метки</h3><div class="tagcloud" style="display: block;"><a href="http://prologistic.com.ua/tag/activity" class="tag-link-234 tag-link-position-1" title="4 записи" style="font-size: 10pt;">Activity</a>
+<a href="http://prologistic.com.ua/tag/android" class="tag-link-149 tag-link-position-2" title="29 записей" style="font-size: 17.090909090909pt;">Android</a>
+<a href="http://prologistic.com.ua/tag/android-studio" class="tag-link-239 tag-link-position-3" title="5 записей" style="font-size: 10.727272727273pt;">Android Studio</a>
+<a href="http://prologistic.com.ua/tag/android-ui" class="tag-link-230 tag-link-position-4" title="11 записей" style="font-size: 13.454545454545pt;">Android UI</a>
+<a href="http://prologistic.com.ua/tag/apache-poi" class="tag-link-293 tag-link-position-5" title="4 записи" style="font-size: 10pt;">Apache POI</a>
+<a href="http://prologistic.com.ua/tag/arraylist" class="tag-link-43 tag-link-position-6" title="6 записей" style="font-size: 11.363636363636pt;">ArrayList</a>
+<a href="http://prologistic.com.ua/tag/arrays" class="tag-link-114 tag-link-position-7" title="4 записи" style="font-size: 10pt;">Arrays</a>
+<a href="http://prologistic.com.ua/tag/bufferedreader" class="tag-link-167 tag-link-position-8" title="4 записи" style="font-size: 10pt;">BufferedReader</a>
+<a href="http://prologistic.com.ua/tag/button" class="tag-link-235 tag-link-position-9" title="8 записей" style="font-size: 12.272727272727pt;">Button</a>
+<a href="http://prologistic.com.ua/tag/byte" class="tag-link-78 tag-link-position-10" title="3 записи" style="font-size: 9.0909090909091pt;">byte</a>
+<a href="http://prologistic.com.ua/tag/default" class="tag-link-59 tag-link-position-11" title="3 записи" style="font-size: 9.0909090909091pt;">default</a>
+<a href="http://prologistic.com.ua/tag/dom-parser" class="tag-link-259 tag-link-position-12" title="4 записи" style="font-size: 10pt;">DOM Parser</a>
+<a href="http://prologistic.com.ua/tag/edittext" class="tag-link-263 tag-link-position-13" title="3 записи" style="font-size: 9.0909090909091pt;">EditText</a>
+<a href="http://prologistic.com.ua/tag/enum" class="tag-link-129 tag-link-position-14" title="3 записи" style="font-size: 9.0909090909091pt;">Enum</a>
+<a href="http://prologistic.com.ua/tag/excel" class="tag-link-16 tag-link-position-15" title="3 записи" style="font-size: 9.0909090909091pt;">Excel</a>
+<a href="http://prologistic.com.ua/tag/file" class="tag-link-151 tag-link-position-16" title="23 записи" style="font-size: 16.181818181818pt;">File</a>
+<a href="http://prologistic.com.ua/tag/files" class="tag-link-164 tag-link-position-17" title="6 записей" style="font-size: 11.363636363636pt;">Files</a>
+<a href="http://prologistic.com.ua/tag/hello-world" class="tag-link-56 tag-link-position-18" title="2 записи" style="font-size: 8pt;">hello world</a>
+<a href="http://prologistic.com.ua/tag/intellij-idea" class="tag-link-132 tag-link-position-19" title="5 записей" style="font-size: 10.727272727273pt;">IntelliJ IDEA</a>
+<a href="http://prologistic.com.ua/tag/jar" class="tag-link-8 tag-link-position-20" title="2 записи" style="font-size: 8pt;">JAR</a>
+<a href="http://prologistic.com.ua/tag/java" class="tag-link-11 tag-link-position-21" title="103 записи" style="font-size: 22pt;">Java</a>
+<a href="http://prologistic.com.ua/tag/java-7" class="tag-link-197 tag-link-position-22" title="6 записей" style="font-size: 11.363636363636pt;">Java 7</a>
+<a href="http://prologistic.com.ua/tag/java-8" class="tag-link-29 tag-link-position-23" title="5 записей" style="font-size: 10.727272727273pt;">java 8</a>
+<a href="http://prologistic.com.ua/tag/java-collections-framework" class="tag-link-133 tag-link-position-24" title="3 записи" style="font-size: 9.0909090909091pt;">Java Collections Framework</a>
+<a href="http://prologistic.com.ua/tag/java-io" class="tag-link-150 tag-link-position-25" title="25 записей" style="font-size: 16.454545454545pt;">Java IO</a>
+<a href="http://prologistic.com.ua/tag/jdk" class="tag-link-12 tag-link-position-26" title="2 записи" style="font-size: 8pt;">JDK</a>
+<a href="http://prologistic.com.ua/tag/linearlayout" class="tag-link-236 tag-link-position-27" title="3 записи" style="font-size: 9.0909090909091pt;">LinearLayout</a>
+<a href="http://prologistic.com.ua/tag/list" class="tag-link-44 tag-link-position-28" title="3 записи" style="font-size: 9.0909090909091pt;">List</a>
+<a href="http://prologistic.com.ua/tag/listview" class="tag-link-248 tag-link-position-29" title="3 записи" style="font-size: 9.0909090909091pt;">ListView</a>
+<a href="http://prologistic.com.ua/tag/runnable" class="tag-link-187 tag-link-position-30" title="7 записей" style="font-size: 11.818181818182pt;">Runnable</a>
+<a href="http://prologistic.com.ua/tag/scanner" class="tag-link-168 tag-link-position-31" title="3 записи" style="font-size: 9.0909090909091pt;">Scanner</a>
+<a href="http://prologistic.com.ua/tag/short" class="tag-link-79 tag-link-position-32" title="2 записи" style="font-size: 8pt;">short</a>
+<a href="http://prologistic.com.ua/tag/stack" class="tag-link-34 tag-link-position-33" title="3 записи" style="font-size: 9.0909090909091pt;">stack</a>
+<a href="http://prologistic.com.ua/tag/static" class="tag-link-62 tag-link-position-34" title="3 записи" style="font-size: 9.0909090909091pt;">static</a>
+<a href="http://prologistic.com.ua/tag/stream" class="tag-link-30 tag-link-position-35" title="3 записи" style="font-size: 9.0909090909091pt;">stream</a>
+<a href="http://prologistic.com.ua/tag/string" class="tag-link-45 tag-link-position-36" title="13 записей" style="font-size: 14.090909090909pt;">String</a>
+<a href="http://prologistic.com.ua/tag/stringbuffer" class="tag-link-47 tag-link-position-37" title="2 записи" style="font-size: 8pt;">StringBuffer</a>
+<a href="http://prologistic.com.ua/tag/stringbuilder" class="tag-link-46 tag-link-position-38" title="2 записи" style="font-size: 8pt;">StringBuilder</a>
+<a href="http://prologistic.com.ua/tag/textview" class="tag-link-232 tag-link-position-39" title="5 записей" style="font-size: 10.727272727273pt;">TextView</a>
+<a href="http://prologistic.com.ua/tag/thread" class="tag-link-130 tag-link-position-40" title="7 записей" style="font-size: 11.818181818182pt;">Thread</a>
+<a href="http://prologistic.com.ua/tag/toast" class="tag-link-249 tag-link-position-41" title="4 записи" style="font-size: 10pt;">Toast</a>
+<a href="http://prologistic.com.ua/tag/xml" class="tag-link-258 tag-link-position-42" title="11 записей" style="font-size: 13.454545454545pt;">XML</a>
+<a href="http://prologistic.com.ua/tag/goryachy-e-klavy-shy" class="tag-link-5 tag-link-position-43" title="2 записи" style="font-size: 8pt;">горячие клавиши</a>
+<a href="http://prologistic.com.ua/tag/dlya-nachinayushhih" class="tag-link-226 tag-link-position-44" title="10 записей" style="font-size: 13.090909090909pt;">для начинающих</a>
+<a href="http://prologistic.com.ua/tag/stek" class="tag-link-33 tag-link-position-45" title="2 записи" style="font-size: 8pt;">стек</a></div>
+</aside><!-- fixed widget --><aside id="text-23" class="widget widget_text"><h3 class="widget-title">Курсы по Java и Android</h3>			<div class="textwidget"><a href="http://goo.gl/nkqrxI" target="_blank" rel="nofollow">
+
+<div class="symple-box symple-fadein yellow center " style="text-align: left; opacity: 1;"> <img src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/all_ps.jpg" width="250" height="200">
+Видеокурсы по Java SE для начинающих
+</div>
+</a>
+<br>
+<a href="http://prologistic.com.ua/besplatnye-kursy-po-programmirovaniyu-na-java.html#javaee" target="_blank">
+
+<div class="symple-box symple-fadein yellow center " style="text-align: left; opacity: 1;"> <img src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/spring_logo-e1458076089724.png" width="75" height="30">
+Видеокурсы Java EE и Spring (Core, MVC, Webflow, Security) для начинающих</div>
+
+</a>
+
+<br>
+
+<a href="http://prologistic.com.ua/besplatnye-kursy-po-programmirovaniyu-na-java.html#android" target="_blank">
+
+<div class="symple-box symple-fadein yellow center " style="text-align: left; opacity: 1;"> <img src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/more-from-2.jpg" width="80" height="50">
+Видеокурсы по Android для начинающих</div>
+</a>
+
+<br>
+
+<a href="http://prologistic.com.ua/besplatnye-kursy-po-programmirovaniyu-na-java.html#noexperience" target="_blank">
+
+<div class="symple-box symple-fadein yellow center " style="text-align: left; opacity: 1;"> Тренинг «Как без опыта устроиться на работу Java программистом»</div>
+
+</a></div>
+		</aside>		</div>
+	</div><!-- #secondary -->
+		</div><!-- close .row -->
+	</div><!-- close .container -->
+</div><!-- close .site-content -->
+
+	<div id="footer-area">
+		<div class="container footer-inner">
+			<div class="row">
+				
+				</div>
+		</div>
+
+ 
+		<footer id="colophon" class="site-footer" role="contentinfo">
+			<div class="site-info container">
+				<div class="row">
+										<nav role="navigation" class="col-md-6">
+											</nav>
+					<div class="copyright col-md-6">
+						© Prologistic.com.ua Все права защищены 2014-2016						Тема от <a href="http://colorlib.com/" target="_blank">Colorlib</a>. Работает на <a href="http://wordpress.org/" target="_blank">WordPress</a>					</div>
+				</div>
+			</div><!-- .site-info -->
+			<div class="scroll-to-top" style="display: block;"><i class="fa fa-angle-up"></i></div><!-- .scroll-to-top -->
+		</footer><!-- #colophon -->
+	</div>
+</div><!-- #page -->
+  <script type="text/javascript">
+    jQuery( document ).ready( function( $ ){
+      if ( $( window ).width() >= 767 ){
+        $( '.navbar-nav > li.menu-item > a' ).click( function(){
+          window.location = $( this ).attr( 'href' );
+        });
+      }
+    });
+  </script>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function (d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter27402170 = new Ya.Metrika({id:27402170,
+                    webvisor:true,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true});
+        } catch(e) { }
+    });
+
+    var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+    if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+    } else { f(); }
+})(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript>&lt;div&gt;&lt;img src="//mc.yandex.ru/watch/27402170" style="position:absolute; left:-9999px;" alt="" /&gt;&lt;/div&gt;</noscript>
+<!-- /Yandex.Metrika counter -->
+
+<!--LiveInternet counter--><script type="text/javascript"><!--
+document.write("<a href='//www.liveinternet.ru/click' "+
+"target=_blank><img src='//counter.yadro.ru/hit?t50.6;r"+
+escape(document.referrer)+((typeof(screen)=="undefined")?"":
+";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
+screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
+";"+Math.random()+
+"' alt='' title='LiveInternet' "+
+"border='0' width='31' height='31'><\/a>")
+//--></script><a href="http://www.liveinternet.ru/click" target="_blank"><img src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/hit" alt="" title="LiveInternet" border="0" width="31" height="31"></a><!--/LiveInternet--><script type="text/javascript" src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/form.js"></script>
+<script type="text/javascript" src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/shCore.js"></script>
+<script type="text/javascript" src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/shBrushAS3.js"></script>
+<script type="text/javascript" src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/shBrushBash.js"></script>
+<script type="text/javascript" src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/shBrushColdFusion.js"></script>
+<script type="text/javascript" src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/shBrushClojure.js"></script>
+<script type="text/javascript" src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/shBrushCpp.js"></script>
+<script type="text/javascript" src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/shBrushCSharp.js"></script>
+<script type="text/javascript" src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/shBrushCss.js"></script>
+<script type="text/javascript" src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/shBrushDelphi.js"></script>
+<script type="text/javascript" src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/shBrushDiff.js"></script>
+<script type="text/javascript" src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/shBrushErlang.js"></script>
+<script type="text/javascript" src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/shBrushFSharp.js"></script>
+<script type="text/javascript" src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/shBrushGroovy.js"></script>
+<script type="text/javascript" src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/shBrushJava.js"></script>
+<script type="text/javascript" src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/shBrushJavaFX.js"></script>
+<script type="text/javascript" src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/shBrushJScript.js"></script>
+<script type="text/javascript" src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/shBrushLatex.js"></script>
+<script type="text/javascript" src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/shBrushMatlabKey.js"></script>
+<script type="text/javascript" src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/shBrushObjC.js"></script>
+<script type="text/javascript" src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/shBrushPerl.js"></script>
+<script type="text/javascript" src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/shBrushPhp.js"></script>
+<script type="text/javascript" src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/shBrushPlain.js"></script>
+<script type="text/javascript" src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/shBrushPowerShell.js"></script>
+<script type="text/javascript" src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/shBrushPython.js"></script>
+<script type="text/javascript" src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/shBrushR.js"></script>
+<script type="text/javascript" src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/shBrushRuby.js"></script>
+<script type="text/javascript" src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/shBrushScala.js"></script>
+<script type="text/javascript" src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/shBrushSql.js"></script>
+<script type="text/javascript" src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/shBrushVb.js"></script>
+<script type="text/javascript" src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/shBrushXml.js"></script>
+<script type="text/javascript">
+	(function(){
+		var corecss = document.createElement('link');
+		var themecss = document.createElement('link');
+		var corecssurl = "http://prologistic.com.ua/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shCore.css?ver=3.0.9b";
+		if ( corecss.setAttribute ) {
+				corecss.setAttribute( "rel", "stylesheet" );
+				corecss.setAttribute( "type", "text/css" );
+				corecss.setAttribute( "href", corecssurl );
+		} else {
+				corecss.rel = "stylesheet";
+				corecss.href = corecssurl;
+		}
+		document.getElementsByTagName("head")[0].insertBefore( corecss, document.getElementById("syntaxhighlighteranchor") );
+		var themecssurl = "http://prologistic.com.ua/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shThemeDefault.css?ver=3.0.9b";
+		if ( themecss.setAttribute ) {
+				themecss.setAttribute( "rel", "stylesheet" );
+				themecss.setAttribute( "type", "text/css" );
+				themecss.setAttribute( "href", themecssurl );
+		} else {
+				themecss.rel = "stylesheet";
+				themecss.href = themecssurl;
+		}
+		//document.getElementById("syntaxhighlighteranchor").appendChild(themecss);
+		document.getElementsByTagName("head")[0].insertBefore( themecss, document.getElementById("syntaxhighlighteranchor") );
+	})();
+	SyntaxHighlighter.config.strings.expandSource = '+ expand source';
+	SyntaxHighlighter.config.strings.help = '?';
+	SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
+	SyntaxHighlighter.config.strings.noBrush = 'Can\'t find brush for: ';
+	SyntaxHighlighter.config.strings.brushNotHtmlScript = 'Brush wasn\'t configured for html-script option: ';
+	SyntaxHighlighter.defaults['light'] = true;
+	SyntaxHighlighter.defaults['pad-line-numbers'] = false;
+	SyntaxHighlighter.defaults['toolbar'] = false;
+	SyntaxHighlighter.all();
+</script>
+<script type="text/javascript" src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/skip-link-focus-fix.js"></script>
+<script type="text/javascript" src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/comment-reply.min.js"></script>
+<script type="text/javascript">
+var q2w3_sidebar_options = new Array();
+q2w3_sidebar_options[0] = { "sidebar" : "sidebar-1", "margin_top" : 10, "margin_bottom" : 0, "stop_id" : "", "screen_max_width" : 0, "screen_max_height" : 0, "width_inherit" : false, "refresh_interval" : 1500, "window_load_hook" : false, "disable_mo_api" : false, "widgets" : ['text-23'] };
+</script>
+<script type="text/javascript" src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/q2w3-fixed-widget.min.js"></script>
+<script type="text/javascript" src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/wp-embed.min.js"></script>
+<script type="text/javascript" src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/pinterest.js"></script>
+<script type="text/javascript" src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/symple_scroll_fade.js"></script>
+
+
+<div id="fancybox-tmp"></div><div id="fancybox-loading"><div></div></div><div id="fancybox-overlay"></div><div id="fancybox-wrap"><div id="fancybox-outer"><div class="fancybox-bg" id="fancybox-bg-n"></div><div class="fancybox-bg" id="fancybox-bg-ne"></div><div class="fancybox-bg" id="fancybox-bg-e"></div><div class="fancybox-bg" id="fancybox-bg-se"></div><div class="fancybox-bg" id="fancybox-bg-s"></div><div class="fancybox-bg" id="fancybox-bg-sw"></div><div class="fancybox-bg" id="fancybox-bg-w"></div><div class="fancybox-bg" id="fancybox-bg-nw"></div><div id="fancybox-content"></div><a id="fancybox-close"></a><div id="fancybox-title"></div><a href="javascript:;" id="fancybox-left"><span class="fancy-ico" id="fancybox-left-ico"></span></a><a href="javascript:;" id="fancybox-right"><span class="fancy-ico" id="fancybox-right-ico"></span></a></div></div><script charset="UTF-8" src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/ru.js"></script><div style="position: static;"><div class="a2a_overlay" id="a2apage_overlay"></div><div id="a2apage_modal" class="a2a_menu a2a_modal" style="display:none"><div class="a2a_copy_link_container"><span id="a2a_copy_link_icon" class="a2a_svg a2a_s_link" onclick="a2a.gEl(&#39;a2a_copy_link_text&#39;).click()"></span><input id="a2a_copy_link_text" type="text"><div id="a2a_copy_link_copied">Copied!</div></div></div><div class="a2a_menu a2a_full" id="a2apage_full" role="dialog" tabindex="-1" aria-label="Отправить"><div class="a2a_full_header"><div id="a2apage_find_container" class="a2a_menu_find_container"><input id="a2apage_find" class="a2a_menu_find" type="text" onclick="a2a.focus_find()" onkeyup="a2a.do_find()" autocomplete="off" title="Найти сервис и добавить"><span id="a2apage_find_icon" class="a2a_svg a2a_s_find" onclick="a2a.focus_find()"><svg focusable="false" xmlns="http://www.w3.org/2000/svg" version="1.1" x="0" y="0" width="24" height="24" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve"><path fill="#CCCCCC" d="M19.7 18.2l-4.5-4.5c0.7-1.1 1.2-2.3 1.2-3.6 0-3.5-2.8-6.3-6.3-6.3 -3.5 0-6.3 2.8-6.3 6.3 0 3.5 2.8 6.3 6.3 6.3 1.4 0 2.6-0.4 3.6-1.2l4.5 4.5c0.6 0.6 1.3 0.7 1.7 0.2C20.4 19.5 20.3 18.8 19.7 18.2zM10.1 14.6c-2.5 0-4.5-2.1-4.5-4.5 0-2.5 2.1-4.5 4.5-4.5 2.5 0 4.5 2.1 4.5 4.5C14.6 12.5 12.6 14.6 10.1 14.6z"></path></svg></span></div></div><div class="a2a_full_services" id="a2apage_full_services" role="presentation"><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#facebook" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_facebook"></span>Facebook </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#twitter" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_twitter"></span>Twitter </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#google_plus" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_google_plus"></span>Google+ </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#pinterest" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_pinterest"></span>Pinterest </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#email" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_email"></span>Email </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#linkedin" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_linkedin"></span>LinkedIn </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#reddit" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_reddit"></span>Reddit </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#tumblr" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_tumblr"></span>Tumblr </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#wordpress" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_wordpress"></span>WordPress </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#google_gmail" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_gmail"></span>Google Gmail </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#whatsapp" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_whatsapp"></span>WhatsApp </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#stumbleupon" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_stumbleupon"></span>StumbleUpon </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#aim" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_aim"></span>AIM </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#amazon_wish_list" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_amazon"></span>Amazon Wish List </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#aol_mail" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_aol"></span>AOL Mail </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#app_net" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_app_net"></span>App.net </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#baidu" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_baidu"></span>Baidu </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#balatarin" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_balatarin"></span>Balatarin </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#bibsonomy" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_bibsonomy"></span>BibSonomy </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#bitty_browser" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_bitty"></span>Bitty Browser </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#blinklist" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_blinklist"></span>Blinklist </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#blogger_post" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_blogger"></span>Blogger Post </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#blogmarks" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_blogmarks"></span>BlogMarks </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#bookmarks_fr" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_bookmarks_fr"></span>Bookmarks.fr </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#box_net" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_box"></span>Box.net </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#buddymarks" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_buddymarks"></span>BuddyMarks </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#buffer" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_buffer"></span>Buffer </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#care2_news" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_care2"></span>Care2 News </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#citeulike" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_citeulike"></span>CiteULike </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#copy_link" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_link"></span>Copy Link </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#delicious" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_delicious"></span>Delicious </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#design_float" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_designfloat"></span>Design Float </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#diary_ru" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_diary_ru"></span>Diary.Ru </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#diaspora" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_diaspora"></span>Diaspora </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#digg" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_digg"></span>Digg </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#dihitt" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_dihitt"></span>diHITT </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#diigo" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_diigo"></span>Diigo </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#douban" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_douban"></span>Douban </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#draugiem" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_draugiem"></span>Draugiem </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#dzone" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_dzone"></span>DZone </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#evernote" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_evernote"></span>Evernote </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#facebook_messenger" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_facebook_messenger"></span>Facebook Messenger </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#fark" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_fark"></span>Fark </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#flipboard" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_flipboard"></span>Flipboard </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#folkd" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_folkd"></span>Folkd </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#google_bookmarks" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_google"></span>Google Bookmarks </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#google_classroom" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_google_classroom"></span>Google Classroom </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#hacker_news" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_y18"></span>Hacker News </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#hatena" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_hatena"></span>Hatena </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#instapaper" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_instapaper"></span>Instapaper </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#jamespot" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_jamespot"></span>Jamespot </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#kakao" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_kakao"></span>Kakao </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#kik" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_kik"></span>Kik </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#kindle_it" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_kindle"></span>Kindle It </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#known" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_known"></span>Known </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#line" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_line"></span>Line </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#livejournal" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_livejournal"></span>LiveJournal </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#mail_ru" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_mail_ru"></span>Mail.Ru </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#mendeley" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_mendeley"></span>Mendeley </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#meneame" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_meneame"></span>Meneame </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#mixi" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_mixi"></span>Mixi </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#myspace" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_myspace"></span>MySpace </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#netlog" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_netlog"></span>Netlog </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#netvouz" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_netvouz"></span>Netvouz </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#newsvine" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_newsvine"></span>NewsVine </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#nujij" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_nujij"></span>NUjij </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#odnoklassniki" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_odnoklassniki"></span>Odnoklassniki </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#oknotizie" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_oknotizie"></span>Oknotizie </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#outlook_com" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_outlook_com"></span>Outlook.com </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#pinboard" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_pinboard"></span>Pinboard </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#plurk" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_plurk"></span>Plurk </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#pocket" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_pocket"></span>Pocket </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#print" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_print"></span>Print </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#printfriendly" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_printfriendly"></span>PrintFriendly </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#protopage_bookmarks" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_protopage"></span>Protopage Bookmarks </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#pusha" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_pusha"></span>Pusha </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#qzone" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_qzone"></span>Qzone </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#rediff" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_rediff"></span>Rediff MyPage </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#renren" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_renren"></span>Renren </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#segnalo" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_segnalo"></span>Segnalo </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#sina_weibo" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_sina_weibo"></span>Sina Weibo </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#sitejot" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_sitejot"></span>SiteJot </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#skype" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_skype"></span>Skype </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#slashdot" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_slashdot"></span>Slashdot </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#sms" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_sms"></span>SMS </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#stumpedia" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_stumpedia"></span>Stumpedia </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#svejo" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_svejo"></span>Svejo </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#symbaloo_feeds" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_symbaloo"></span>Symbaloo Feeds </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#telegram" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_telegram"></span>Telegram </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#trello" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_trello"></span>Trello </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#tuenti" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_tuenti"></span>Tuenti </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#twiddla" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_twiddla"></span>Twiddla </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#typepad_post" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_typepad"></span>TypePad Post </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#viadeo" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_viadeo"></span>Viadeo </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#viber" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_viber"></span>Viber </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#vk" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_vk"></span>VK </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#wanelo" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_wanelo"></span>Wanelo </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#webnews" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_webnews"></span>Webnews </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#wechat" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_wechat"></span>WeChat </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#wykop" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_wykop"></span>Wykop </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#xing" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_xing"></span>XING </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#yahoo_bookmarks" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_yahoo"></span>Yahoo Bookmarks </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#yahoo_mail" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_yahoo"></span>Yahoo Mail </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#yahoo_messenger" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_yim"></span>Yahoo Messenger </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#yoolink" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_yoolink"></span>Yoolink </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#youmob" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_youmob"></span>YouMob </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#yummly" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_yummly"></span>Yummly </a><i class="a2a_i"></i><i class="a2a_i"></i></div><div class="a2a_full_footer"><a href="https://www.addtoany.com/" title="Share Buttons" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_a2a"></span>AddToAny</a></div></div><div id="a2apage_dropdown" class="a2a_menu a2a_mini" onmouseover="a2a.onMouseOver_stay()" onmouseout="a2a.onMouseOut_delay()" tabindex="-1" aria-label="Отправить" style="display:none"><div id="a2apage_title_container" class="a2a_menu_title_container" style="display:none"><input id="a2apage_title" class="a2a_menu_title"></div><div class="a2a_mini_services" id="a2apage_mini_services"><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#facebook" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_facebook"></span>Facebook </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#twitter" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_twitter"></span>Twitter </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#google_plus" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_google_plus"></span>Google+ </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#pinterest" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_pinterest"></span>Pinterest </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#email" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_email"></span>Email </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#linkedin" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_linkedin"></span>LinkedIn </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#reddit" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_reddit"></span>Reddit </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#tumblr" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_tumblr"></span>Tumblr </a></div><div id="a2apage_cols_container" class="a2a_cols_container"><div class="a2a_col1" id="a2apage_col1"></div><div id="a2apage_2_col1" style="display:none"><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#google_gmail" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_gmail"></span>Google Gmail </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#aol_mail" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_aol"></span>AOL Mail </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#outlook_com" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_outlook_com"></span>Outlook.com </a><a rel="nofollow" class="a2a_i" href="http://prologistic.com.ua/#yahoo_mail" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_yahoo"></span>Yahoo Mail </a><a rel="nofollow" class="a2a_i a2a_emailer" href="http://prologistic.com.ua/#email_form" target="_blank" id="a2apage_any_email"><span class="a2a_svg a2a_s__default a2a_s_email"></span>Any email </a><a rel="nofollow" class="a2a_i a2a_emailer a2a_email_client" href="http://prologistic.com.ua/#email_form" target="" id="a2apage_email_client"><span class="a2a_svg a2a_s__default a2a_s_email"></span>Email app</a></div><div class="a2a_clear"></div></div><div class="a2apage_wide a2a_wide"><a href="http://prologistic.com.ua/chto-takoe-heap-i-stack-pamyat-v-java.html" id="a2apage_show_more_less" class="a2a_menu_show_more_less a2a_more" title="Показать все"><span class="a2a_svg a2a_s__default a2a_s_a2a"></span>More…</a></div></div><div style="height: 1px; width: 1px; position: absolute; z-index: 100000; top: 0px; visibility: hidden;"><iframe id="a2apage_sm_ifr" height="1" width="1" title="AddToAny Utility Frame" transparency="true" allowtransparency="true" frameborder="0" src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/sm13.html" style="height: 1px; width: 1px; border: 0px; left: 0px; top: 0px; position: absolute; z-index: 100000; display: none;"></iframe></div></div><iframe id="sumome-jquery-iframe" style="display: none;" src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/saved_resource.html"></iframe><iframe name="oauth2relay682223393" id="oauth2relay682223393" src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/postmessageRelay.html" tabindex="-1" style="width: 1px; height: 1px; position: absolute; top: -100px;"></iframe><a href="javascript:void(0);" title="SumoMe" style="background-color: rgb(0, 115, 183); border-radius: 3px 0px 0px 3px; box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 10px; position: fixed; z-index: 2147483647; padding: 0px; width: 44px; height: 40px; text-indent: -10000px; opacity: 1; display: block !important; top: 40px; right: -40px;"><span style="display: block; width: 40px; height: 40px; background: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAPBJREFUeNpi/P//PwMtAeOoBSPAAobi7fVAuomh15OwTcXbO4AkMxCXEam+mAlIaQLxNCCHkQjDy4G4hAT1liALDgBxBhDPAwoy41BcDzUcBjLwWoJwzAGYBSCQAMSLMCwp3l4BJBuwGIPdEoThIHCAESr4DEhKQgWXAXEiMIx/AcXLgOxOAiE9A4izwHGCavgbIBaDWbAESEYjadoMxHuAeCKRiQVkyUe0YFwLtDSEBeYVNAt8oZhYkIFFDBz0TMgcKgMkC3o97wDJp1Q0HBT+V5F9wAANc2qBg7CMyITuJWoGD10sGC2uRy2gHAAEGACB725KrIq6EgAAAABJRU5ErkJggg==&quot;) 8px 8px no-repeat white; margin-left: 4px; border-radius: 3px 0px 0px 3px; margin-right: 0px;"></span></a><iframe style="display: none;" src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/saved_resource(5).html"></iframe><div style="position:fixed; top:0; left:0; overflow:hidden;"><input style="position:absolute; left:-300px;" type="text" value="" id="focus_retriever" readonly="true"></div><img src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/saved_resource(1)" alt="" style="display: none;"><img src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/saved_resource(2)" alt="" style="display: none;"><img src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/saved_resource(3)" alt="" style="display: none;"><img src="./Что такое Heap и Stack память в Java_ _ Программирование на Java _ Android_files/saved_resource(4)" alt="" style="display: none;"></body></html>

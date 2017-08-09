@@ -1,0 +1,8 @@
+gccElfX86 -march=pentiumpro -nostdlib -fno-builtin -fno-defer-pop -Wall -fno-zero-initialized-in-bss -fno-feature-proxy -I. -DCPU=PENTIUM3 -c  -finstrument-functions -oPasp_to_Priv.gefO Pasp_to_Priv.c 
+Pasp_to_Priv.c: In function 'GefMain':
+Pasp_to_Priv.c:34: warning: unused variable 'fault'
+Pasp_to_Priv.c:34: warning: unused variable 'Xtype'
+Pasp_to_Priv.c:34: warning: unused variable 'number'
+Pasp_to_Priv.c:33: warning: unused variable 'Yn'
+Pasp_to_Priv.c:33: warning: unused variable 'Xn'
+ldElfX86 --entry=_start -o test.sm Pasp_to_Priv.gefO  ctkGefStartup.gefO ctkBlkToolkitInfo.gefO ctkPlcLibFault.gefO ctkPlcLibRefMem.gefO ctkPlcLibFunc.gefO ctkPlcLibBus.gefO ctkPlcLibStackCheck.gefO ctkPlcLibVariables.gefO ctkStackCheckStub.gefO ctkCRunTimeStub.gefO ctkTargetStub.gefO

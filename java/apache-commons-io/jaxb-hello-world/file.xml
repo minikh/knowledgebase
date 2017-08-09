@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<user id="1">
+    <name firstName="Иванов" secondName="Иван"/>
+    <age>29</age>
+    <childs>
+        <child id="2">
+            <name firstName="Иванов" secondName="Андрей"/>
+            <age>3</age>
+        </child>
+        <child id="3">
+            <name firstName="Иванов" secondName="Сергей"/>
+            <age>5</age>
+        </child>
+    </childs>
+</user>

@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<!-- saved from url=(0068)http://dotsandbrackets.com/highly-available-kafka-cluster-docker-ru/ -->
+<html lang="ru-RU" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script async="" src="https://www.linkedin.com/countserv/count/share?format=jsonp&amp;callback=updateLinkedInCount&amp;url=http%3A%2F%2Fdotsandbrackets.com%2Fhighly-available-kafka-cluster-docker-ru%2F&amp;_=1493105868621"></script>
+	
+	<meta name="viewport" content="width=device-width">
+	<title>Отказоустойчивый Kafka кластер в Docker - Dots and Brackets: Блог</title>
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	<link rel="pingback" href="http://dotsandbrackets.com/xmlrpc.php">
+	<!--[if lt IE 9]>
+	<script src="http://dotsandbrackets.com/wp-content/themes/twentyfourteen/js/html5.js"></script>
+	<![endif]-->
+	
+<!-- This site is optimized with the Yoast SEO plugin v4.6 - https://yoast.com/wordpress/plugins/seo/ -->
+<meta name="description" content="До сегодняшнего дня мы запускали Apache Kafka на одном хосте, в кластере из одного брокера и всего с одним монолитным топиком. Для платформы, которая про...">
+<meta name="robots" content="noodp">
+<link rel="canonical" href="http://dotsandbrackets.com/highly-available-kafka-cluster-docker-ru/">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Отказоустойчивый Kafka кластер в Docker - Dots and Brackets: Блог">
+<meta property="og:description" content="До сегодняшнего дня мы запускали Apache Kafka на одном хосте, в кластере из одного брокера и всего с одним монолитным топиком. Для платформы, которая про...">
+<meta property="og:url" content="http://dotsandbrackets.com/highly-available-kafka-cluster-docker-ru/">
+<meta property="og:site_name" content="Dots and Brackets: Блог">
+<meta property="article:publisher" content="https://www.facebook.com/pasha.klimenkov">
+<meta property="article:tag" content="Apache Kafka">
+<meta property="article:tag" content="communication">
+<meta property="article:tag" content="docker">
+<meta property="article:tag" content="docker-compose">
+<meta property="article:tag" content="message broker">
+<meta property="article:section" content="О программировании">
+<meta property="article:published_time" content="2016-12-18T23:53:38-04:00">
+<meta property="fb:app_id" content="1108076389272745">
+<meta property="og:image" content="http://dotsandbrackets.com/wp-content/uploads/2016/12/cluster.jpg">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:description" content="До сегодняшнего дня мы запускали Apache Kafka на одном хосте, в кластере из одного брокера и всего с одним монолитным топиком. Для платформы, которая про...">
+<meta name="twitter:title" content="Отказоустойчивый Kafka кластер в Docker - Dots and Brackets: Блог">
+<meta name="twitter:site" content="@PashaKlimenkov">
+<meta name="twitter:image" content="http://dotsandbrackets.com/wp-content/uploads/2016/12/cluster.jpg">
+<meta name="twitter:creator" content="@PashaKlimenkov">
+<!-- / Yoast SEO plugin. -->
+
+<link rel="dns-prefetch" href="http://dotsandbrackets.com/">
+<link rel="dns-prefetch" href="http://s0.wp.com/">
+<link rel="dns-prefetch" href="http://fonts.googleapis.com/">
+<link rel="dns-prefetch" href="http://s.w.org/">
+<link rel="alternate" type="application/rss+xml" title="Dots and Brackets: Блог » Лента" href="http://dotsandbrackets.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="Dots and Brackets: Блог » Лента комментариев" href="http://dotsandbrackets.com/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="Dots and Brackets: Блог » Лента комментариев к «Отказоустойчивый Kafka кластер в Docker»" href="http://dotsandbrackets.com/highly-available-kafka-cluster-docker-ru/feed/">
+		<script async="" src="./Отказоустойчивый Kafka кластер в Docker - Dots and Brackets_ Блог_files/analytics.js"></script><script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/dotsandbrackets.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.6.5"}};
+			!function(a,b,c){function d(a){var c,d,e,f,g,h=b.createElement("canvas"),i=h.getContext&&h.getContext("2d"),j=String.fromCharCode;if(!i||!i.fillText)return!1;switch(i.textBaseline="top",i.font="600 32px Arial",a){case"flag":return i.fillText(j(55356,56806,55356,56826),0,0),!(h.toDataURL().length<3e3)&&(i.clearRect(0,0,h.width,h.height),i.fillText(j(55356,57331,65039,8205,55356,57096),0,0),c=h.toDataURL(),i.clearRect(0,0,h.width,h.height),i.fillText(j(55356,57331,55356,57096),0,0),d=h.toDataURL(),c!==d);case"diversity":return i.fillText(j(55356,57221),0,0),e=i.getImageData(16,16,1,1).data,f=e[0]+","+e[1]+","+e[2]+","+e[3],i.fillText(j(55356,57221,55356,57343),0,0),e=i.getImageData(16,16,1,1).data,g=e[0]+","+e[1]+","+e[2]+","+e[3],f!==g;case"simple":return i.fillText(j(55357,56835),0,0),0!==i.getImageData(16,16,1,1).data[0];case"unicode8":return i.fillText(j(55356,57135),0,0),0!==i.getImageData(16,16,1,1).data[0];case"unicode9":return i.fillText(j(55358,56631),0,0),0!==i.getImageData(16,16,1,1).data[0]}return!1}function e(a){var c=b.createElement("script");c.src=a,c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i;for(i=Array("simple","flag","unicode8","diversity","unicode9"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script src="./Отказоустойчивый Kafka кластер в Docker - Dots and Brackets_ Блог_files/wp-emoji-release.min.js" type="text/javascript"></script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel="stylesheet" id="twentyfourteen-jetpack-css" href="./Отказоустойчивый Kafka кластер в Docker - Dots and Brackets_ Блог_files/twentyfourteen.css" type="text/css" media="all">
+<link rel="stylesheet" id="crayon-css" href="./Отказоустойчивый Kafka кластер в Docker - Dots and Brackets_ Блог_files/crayon.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="crayon-theme-classic-css" href="./Отказоустойчивый Kafka кластер в Docker - Dots and Brackets_ Блог_files/classic.css" type="text/css" media="all">
+<link rel="stylesheet" id="crayon-font-monaco-css" href="./Отказоустойчивый Kafka кластер в Docker - Dots and Brackets_ Блог_files/monaco.css" type="text/css" media="all">
+<link rel="stylesheet" id="twentyfourteen-lato-css" href="./Отказоустойчивый Kafka кластер в Docker - Dots and Brackets_ Блог_files/css" type="text/css" media="all">
+<link rel="stylesheet" id="genericons-css" href="./Отказоустойчивый Kafka кластер в Docker - Dots and Brackets_ Блог_files/genericons.css" type="text/css" media="all">
+<link rel="stylesheet" id="twentyfourteen-style-css" href="./Отказоустойчивый Kafka кластер в Docker - Dots and Brackets_ Блог_files/style.css" type="text/css" media="all">
+<!--[if lt IE 9]>
+<link rel='stylesheet' id='twentyfourteen-ie-css'  href='http://dotsandbrackets.com/wp-content/themes/twentyfourteen/css/ie.css?ver=20131205' type='text/css' media='all' />
+<![endif]-->
+<link rel="stylesheet" id="social-logos-css" href="./Отказоустойчивый Kafka кластер в Docker - Dots and Brackets_ Блог_files/social-logos.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="jetpack_css-css" href="./Отказоустойчивый Kafka кластер в Docker - Dots and Brackets_ Блог_files/jetpack.css" type="text/css" media="all">
+<script type="text/javascript" src="./Отказоустойчивый Kafka кластер в Docker - Dots and Brackets_ Блог_files/jquery.js"></script>
+<script type="text/javascript" src="./Отказоустойчивый Kafka кластер в Docker - Dots and Brackets_ Блог_files/jquery-migrate.min.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var CrayonSyntaxSettings = {"version":"_2.7.2_beta","is_admin":"0","ajaxurl":"http:\/\/dotsandbrackets.com\/wp-admin\/admin-ajax.php","prefix":"crayon-","setting":"crayon-setting","selected":"crayon-setting-selected","changed":"crayon-setting-changed","special":"crayon-setting-special","orig_value":"data-orig-value","debug":""};
+var CrayonSyntaxStrings = {"copy":"Press %s to Copy, %s to Paste","minimize":"Click To Expand Code"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Отказоустойчивый Kafka кластер в Docker - Dots and Brackets_ Блог_files/crayon.min.js"></script>
+<link rel="https://api.w.org/" href="http://dotsandbrackets.com/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://dotsandbrackets.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://dotsandbrackets.com/wp-includes/wlwmanifest.xml"> 
+<meta name="generator" content="WordPress 4.6.5">
+<link rel="shortlink" href="http://dotsandbrackets.com/?p=1506">
+<link rel="alternate" type="application/json+oembed" href="http://dotsandbrackets.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fdotsandbrackets.com%2Fhighly-available-kafka-cluster-docker-ru%2F">
+<link rel="alternate" type="text/xml+oembed" href="http://dotsandbrackets.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fdotsandbrackets.com%2Fhighly-available-kafka-cluster-docker-ru%2F&amp;format=xml">
+
+<link rel="dns-prefetch" href="http://i0.wp.com/">
+<link rel="dns-prefetch" href="http://i1.wp.com/">
+<link rel="dns-prefetch" href="http://i2.wp.com/">
+<style type="text/css">img#wpstats{display:none}</style>
+<!-- BEGIN GADWP v4.9.6.2 Universal Tracking - https://deconf.com/google-analytics-dashboard-wordpress/ -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-62533268-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- END GADWP Universal Tracking -->
+
+</head>
+
+<body class="single single-post postid-1506 single-format-standard masthead-fixed full-width singular ui-selectable">
+<div id="page" class="hfeed site">
+	
+	<header id="masthead" class="site-header" role="banner">
+		<div class="header-main">
+			<h1 class="site-title"><a href="http://dotsandbrackets.com/" rel="home">Dots and Brackets: Блог</a></h1>
+
+			<div class="search-toggle">
+				<a href="http://dotsandbrackets.com/highly-available-kafka-cluster-docker-ru/#search-container" class="screen-reader-text" aria-expanded="false" aria-controls="search-container">Поиск</a>
+			</div>
+
+			<nav id="primary-navigation" class="site-navigation primary-navigation" role="navigation">
+				<button class="menu-toggle">Основное меню</button>
+				<a class="screen-reader-text skip-link" href="http://dotsandbrackets.com/highly-available-kafka-cluster-docker-ru/#content">Перейти к содержимому</a>
+				<div class="menu-pages-container"><ul id="primary-menu" class="nav-menu"><li id="menu-item-1248" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1248"><a href="http://dotsandbrackets.com/category/life/">О жизни</a></li>
+<li id="menu-item-1249" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-1249"><a href="http://dotsandbrackets.com/category/development/">О программировании</a></li>
+<li id="menu-item-1199" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1199"><a title="Мой англоязычный блог исключительно о программировании" href="http://codeblog.dotsandbrackets.com/">Code blog (EN)</a></li>
+<li id="menu-item-10" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-10"><a href="http://dotsandbrackets.com/about-me/">Обо мне</a></li>
+</ul></div>			</nav>
+		</div>
+
+		<div id="search-container" class="search-box-wrapper hide">
+			<div class="search-box">
+				<form role="search" method="get" class="search-form" action="http://dotsandbrackets.com/">
+				<label>
+					<span class="screen-reader-text">Найти:</span>
+					<input type="search" class="search-field" placeholder="Поиск…" value="" name="s">
+				</label>
+				<input type="submit" class="search-submit" value="Поиск">
+			</form>			</div>
+		</div>
+	</header><!-- #masthead -->
+
+	<div id="main" class="site-main">
+
+	<div id="primary" class="content-area">
+		<div id="content" class="site-content" role="main">
+			
+<article id="post-1506" class="post-1506 post type-post status-publish format-standard hentry category-development tag-apache-kafka tag-communication tag-docker tag-docker-compose tag-message-broker">
+	
+	<header class="entry-header">
+				<div class="entry-meta">
+			<span class="cat-links"><a href="http://dotsandbrackets.com/category/development/" rel="category tag">О программировании</a></span>
+		</div>
+		<h1 class="entry-title">Отказоустойчивый Kafka кластер в Docker</h1>
+		<div class="entry-meta">
+			<span class="entry-date"><a href="http://dotsandbrackets.com/highly-available-kafka-cluster-docker-ru/" rel="bookmark"><time class="entry-date" datetime="2016-12-18T23:53:38+00:00">Декабрь 18, 2016</time></a></span> <span class="byline"><span class="author vcard"><a class="url fn n" href="http://dotsandbrackets.com/author/pav/" rel="author">Pavel</a></span></span>			<span class="comments-link"><a href="http://dotsandbrackets.com/highly-available-kafka-cluster-docker-ru/#respond">Оставить комментарий</a></span>
+					</div><!-- .entry-meta -->
+	</header><!-- .entry-header -->
+
+		<div class="entry-content">
+		<p><a href="https://i0.wp.com/dotsandbrackets.com/wp-content/uploads/2016/12/cluster.jpg"><img class="alignnone size-full wp-image-1507" src="./Отказоустойчивый Kafka кластер в Docker - Dots and Brackets_ Блог_files/cluster.jpg" alt="Kafka кластер в Docker" width="474" height="289"></a></p>
+<p>До сегодняшнего дня мы <a href="http://dotsandbrackets.com/hello-world-with-apache-kafka-ru/">запускали Apache Kafka</a>&nbsp;на одном хосте, в кластере из одного брокера и всего с одним монолитным топиком. Для платформы, которая проектировалась под&nbsp;распределенные сценарии, это, наверное, печально. Поэтому сегодня мы станем на шаг ближе к представлению о том, как Kafka работает в нагруженных системах.</p>
+<p>Мы&nbsp;создадим кластер из нескольких брокеров,&nbsp;добавим туда разбитый на разделы топик и включим его резервное копирование. При такой конфигурации нужно будет очень постараться, чтобы с кластером случилось что-то неприятное.</p>
+<p><span id="more-1506"></span></p>
+<h2>Создаём кластер</h2>
+<p>Думаю, для сегодняшнего&nbsp;эксперимента трёх кафкианских хостов будет достаточно. В идеале, конечно, стоило бы клонировать&nbsp;и ZooKeeper —&nbsp;для надёжности.&nbsp;Но сегодня я почему-то уверен, что ему ничего не грозит, так что обойдёмся и одним.</p>
+<p>Чтобы сэмитировать изолированные хосты, я помещу &nbsp;ZooKeeper и всех Кафка-брокеров в собственные&nbsp;<a href="http://dotsandbrackets.com/quick-intro-to-docker-ru/">Docker</a>&nbsp;контейнеры и запущу их через&nbsp;<a href="http://dotsandbrackets.com/quick-intro-to-docker-compose-ru/">docker-compose</a>. Последний&nbsp;и упросит конфигурацию, и позаботится о настройке сети.</p>
+<h3>Dockerfile</h3>
+<p>Чтобы создать образы контейнеров для Kafka и&nbsp;ZooKeeper нужно всего две вещи: JDK и&nbsp;Kafka&nbsp;инсталлер. Образы будут настолько похожи, что, в принципе, можно обойтись одним Dockerfile и для брокеров, и для координатора.</p>
+<p>Брокеров к тому же&nbsp;нужно еще настроить. Например, по-умолчанию Kafka&nbsp;подключается к&nbsp;ZooKeeper через localhost:2181, который внутри контейнера ведёт в никуда. С другой стороны, если дать контейнеру с ZooKeeper внятное название, например —&nbsp;<em>zookeeper</em>, <a href="http://dotsandbrackets.com/communication-between-docker-containers-ru/">то тогда </a>к нему можно подключаться по zookeeper:2181. Нужно просто немного подредактировать&nbsp;конфигурацию брокера</p>
+<p>Второй момент:&nbsp;у каждого брокера внутри кластера должен быть уникальный broker id. Он задаётся в server.properties, и в нашем случае его можно передать прямо из docker-compose в Dockerfile через&nbsp;ARG инструкцию, и потом уже добавить в конфигурацию, например,&nbsp;через&nbsp;
+			<span id="crayon-58fefcce6fff2432449483" class="crayon-syntax crayon-syntax-inline  crayon-theme-classic crayon-theme-classic-inline crayon-font-monaco" style="font-size: 12px !important; line-height: 15px !important;font-size: 12px !important;"><span class="crayon-pre crayon-code" style="font-size: 12px !important; line-height: 15px !important;font-size: 12px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><span class="crayon-r">sed</span></span></span>&nbsp;. Вот в итоге что у меня получилось:</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-58fefcce70005881007268" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px !important; height: 18px !important; line-height: 18px !important; margin-top: -19px; display: none; position: absolute; z-index: 2;"><span class="crayon-title">Dockerfile</span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button crayon-pressed" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div><span class="crayon-language">INI</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly="" style="tab-size: 4; font-size: 12px !important; line-height: 15px !important; z-index: 0; opacity: 0; overflow: hidden;">FROM openjdk
+
+ARG brokerId=1
+
+ADD kafka_2.11-0.10.1.0.tgz /
+
+RUN mv /kafka_2.11-0.10.1.0 /kafka &amp;&amp; \
+    sed -i s/localhost:2181/zookeeper:2181/g /kafka/config/server.properties &amp;&amp; \
+    sed -i s/broker.id=0/broker.id=${brokerId}/g /kafka/config/server.properties
+
+EXPOSE 2181 9092</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-58fefcce70005881007268-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-58fefcce70005881007268-2">2</div><div class="crayon-num" data-line="crayon-58fefcce70005881007268-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-58fefcce70005881007268-4">4</div><div class="crayon-num" data-line="crayon-58fefcce70005881007268-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-58fefcce70005881007268-6">6</div><div class="crayon-num" data-line="crayon-58fefcce70005881007268-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-58fefcce70005881007268-8">8</div><div class="crayon-num" data-line="crayon-58fefcce70005881007268-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-58fefcce70005881007268-10">10</div><div class="crayon-num" data-line="crayon-58fefcce70005881007268-11">11</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-58fefcce70005881007268-1"><span class="crayon-i">FROM</span><span class="crayon-h"> </span><span class="crayon-i">openjdk</span></div><div class="crayon-line crayon-striped-line" id="crayon-58fefcce70005881007268-2">&nbsp;</div><div class="crayon-line" id="crayon-58fefcce70005881007268-3"><span class="crayon-i">ARG</span><span class="crayon-h"> </span><span class="crayon-v">brokerId</span><span class="crayon-o">=</span><span class="crayon-cn">1</span></div><div class="crayon-line crayon-striped-line" id="crayon-58fefcce70005881007268-4">&nbsp;</div><div class="crayon-line" id="crayon-58fefcce70005881007268-5"><span class="crayon-i">ADD</span><span class="crayon-h"> </span><span class="crayon-i">kafka_2</span><span class="crayon-sy">.</span><span class="crayon-cn">11</span><span class="crayon-o">-</span><span class="crayon-cn">0.10.1.0.tgz</span><span class="crayon-h"> </span><span class="crayon-o">/</span></div><div class="crayon-line crayon-striped-line" id="crayon-58fefcce70005881007268-6">&nbsp;</div><div class="crayon-line" id="crayon-58fefcce70005881007268-7"><span class="crayon-i">RUN</span><span class="crayon-h"> </span><span class="crayon-i">mv</span><span class="crayon-h"> </span><span class="crayon-o">/</span><span class="crayon-i">kafka_2</span><span class="crayon-sy">.</span><span class="crayon-cn">11</span><span class="crayon-o">-</span><span class="crayon-cn">0.10.1.0</span><span class="crayon-h"> </span><span class="crayon-o">/</span><span class="crayon-i">kafka</span><span class="crayon-h"> </span><span class="crayon-o">&amp;&amp;</span><span class="crayon-h"> </span><span class="crayon-sy">\</span></div><div class="crayon-line crayon-striped-line" id="crayon-58fefcce70005881007268-8"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">sed</span><span class="crayon-h"> </span><span class="crayon-o">-</span><span class="crayon-i">i</span><span class="crayon-h"> </span><span class="crayon-i">s</span><span class="crayon-o">/</span><span class="crayon-i">localhost</span><span class="crayon-o">:</span><span class="crayon-cn">2181</span><span class="crayon-o">/</span><span class="crayon-i">zookeeper</span><span class="crayon-o">:</span><span class="crayon-cn">2181</span><span class="crayon-o">/</span><span class="crayon-i">g</span><span class="crayon-h"> </span><span class="crayon-o">/</span><span class="crayon-i">kafka</span><span class="crayon-o">/</span><span class="crayon-i">config</span><span class="crayon-o">/</span><span class="crayon-i">server</span><span class="crayon-sy">.</span><span class="crayon-i">properties</span><span class="crayon-h"> </span><span class="crayon-o">&amp;&amp;</span><span class="crayon-h"> </span><span class="crayon-sy">\</span></div><div class="crayon-line" id="crayon-58fefcce70005881007268-9"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">sed</span><span class="crayon-h"> </span><span class="crayon-o">-</span><span class="crayon-i">i</span><span class="crayon-h"> </span><span class="crayon-i">s</span><span class="crayon-o">/</span><span class="crayon-i">broker</span><span class="crayon-sy">.</span><span class="crayon-v">id</span><span class="crayon-o">=</span><span class="crayon-cn">0</span><span class="crayon-o">/</span><span class="crayon-i">broker</span><span class="crayon-sy">.</span><span class="crayon-v">id</span><span class="crayon-o">=</span><span class="crayon-sy">$</span><span class="crayon-sy">{</span><span class="crayon-i">brokerId</span><span class="crayon-sy">}</span><span class="crayon-o">/</span><span class="crayon-i">g</span><span class="crayon-h"> </span><span class="crayon-o">/</span><span class="crayon-i">kafka</span><span class="crayon-o">/</span><span class="crayon-i">config</span><span class="crayon-o">/</span><span class="crayon-i">server</span><span class="crayon-sy">.</span><span class="crayon-i">properties</span></div><div class="crayon-line crayon-striped-line" id="crayon-58fefcce70005881007268-10">&nbsp;</div><div class="crayon-line" id="crayon-58fefcce70005881007268-11"><span class="crayon-i">EXPOSE</span><span class="crayon-h"> </span><span class="crayon-cn">2181</span><span class="crayon-h"> </span><span class="crayon-cn">9092</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0029 seconds] -->
+<p>В образе&nbsp;<em><a href="https://hub.docker.com/_/openjdk/">openjdk</a></em>&nbsp;есть JDK, а ADD инструкция добавит и распакует архив с Кафкой, который я предусмотрительно <a href="https://www.apache.org/dyn/closer.cgi?path=/kafka/0.10.1.0/kafka_2.11-0.10.1.0.tgz">скачал</a>&nbsp;до этого. Потом&nbsp;в RUN переименовываем папку с Кафкой и обновляем&nbsp;server.properties. Наконец, EXPOSE оставит в контейнере два открытых порта: 2181 (ZooKeeper) и&nbsp;9092 (Kafka).</p>
+<p>Проще простого.</p>
+<h3>docker-compose.yml</h3>
+<p>docker-compose.yml для запуска зоопарка контейнеров будет посложнее. Ведь чтобы получить внятный и функционирующий кластер, понадобятся контейнеры с ZooKeeper, тремя&nbsp;Kafka серверами, и продюсером и&nbsp;консьюмером сообщений&nbsp;(ну чтобы был хоть какой поток данных). Итого — шесть контейнеров. Это раз в шесть больше, чем обычно.</p>
+<h4>ZooKeeper</h4>
+<p>Конфигурация контейнера с ZooKeeper самая простая:</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-58fefcce70013646453132" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px !important; height: 18px !important; line-height: 18px !important; margin-top: -19px; display: none; position: absolute; z-index: 2;"><span class="crayon-title">Zookeeper config</span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button crayon-pressed" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div><span class="crayon-language">YAML</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly="" style="tab-size: 4; font-size: 12px !important; line-height: 15px !important; z-index: 0; opacity: 0; overflow: hidden;">zookeeper:
+    build: .
+    command: /kafka/bin/zookeeper-server-start.sh /kafka/config/zookeeper.properties
+    ports:
+    - 2181:2181</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-58fefcce70013646453132-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-58fefcce70013646453132-2">2</div><div class="crayon-num" data-line="crayon-58fefcce70013646453132-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-58fefcce70013646453132-4">4</div><div class="crayon-num" data-line="crayon-58fefcce70013646453132-5">5</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-58fefcce70013646453132-1"><span class="crayon-s ">zookeeper</span><span class="">:</span></div><div class="crayon-line crayon-striped-line" id="crayon-58fefcce70013646453132-2"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-s ">build</span><span class="">: .</span></div><div class="crayon-line" id="crayon-58fefcce70013646453132-3"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-s ">command</span><span class="">: /kafka/bin/zookeeper-server-start.sh /kafka/config/zookeeper.properties</span></div><div class="crayon-line crayon-striped-line" id="crayon-58fefcce70013646453132-4"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-s ">ports</span><span class="">:</span></div><div class="crayon-line" id="crayon-58fefcce70013646453132-5"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-s ">- 2181</span><span class="">:2181</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0004 seconds] -->
+<p>Она просто соберет Dockerfile, созданный на предыдущем этапе, запустит ZooKeeper внутри контейнера и оставит порт 2181 открытым для хоста. Вдруг нам захочется с ним пообщаться.</p>
+<h4>Kafka сервера</h4>
+<p>Конфигурация для Kafka серверов чуть-чуть сложнее, но всё еще вменяемая. Конфигураций&nbsp;будет три, и для сервера под номером 2 она&nbsp;будет такой:</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-58fefcce7001b911476784" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px !important; height: 18px !important; line-height: 18px !important; margin-top: -19px; display: none; position: absolute; z-index: 2;"><span class="crayon-title">Kafka server config</span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button crayon-pressed" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div><span class="crayon-language">YAML</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly="" style="tab-size: 4; font-size: 12px !important; line-height: 15px !important; z-index: 0; opacity: 0; overflow: hidden;">kafka2:
+    build:
+        context: .
+        args:
+            brokerId: 2
+    command: /kafka/bin/kafka-server-start.sh /kafka/config/server.properties
+    depends_on:
+    - zookeeper</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-58fefcce7001b911476784-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-58fefcce7001b911476784-2">2</div><div class="crayon-num" data-line="crayon-58fefcce7001b911476784-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-58fefcce7001b911476784-4">4</div><div class="crayon-num" data-line="crayon-58fefcce7001b911476784-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-58fefcce7001b911476784-6">6</div><div class="crayon-num" data-line="crayon-58fefcce7001b911476784-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-58fefcce7001b911476784-8">8</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-58fefcce7001b911476784-1"><span class="crayon-s ">kafka2</span><span class="">:</span></div><div class="crayon-line crayon-striped-line" id="crayon-58fefcce7001b911476784-2"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-s ">build</span><span class="">:</span></div><div class="crayon-line" id="crayon-58fefcce7001b911476784-3"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-s ">context</span><span class="">: .</span></div><div class="crayon-line crayon-striped-line" id="crayon-58fefcce7001b911476784-4"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-s ">args</span><span class="">:</span></div><div class="crayon-line" id="crayon-58fefcce7001b911476784-5"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-s ">brokerId</span><span class="">: 2</span></div><div class="crayon-line crayon-striped-line" id="crayon-58fefcce7001b911476784-6"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-s ">command</span><span class="">: /kafka/bin/kafka-server-start.sh /kafka/config/server.properties</span></div><div class="crayon-line" id="crayon-58fefcce7001b911476784-7"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-s ">depends_on</span><span class="">:</span></div><div class="crayon-line crayon-striped-line" id="crayon-58fefcce7001b911476784-8"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span>-<span class="crayon-h"> </span>zookeeper</div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0006 seconds] -->
+<p>
+			<span id="crayon-58fefcce70021354117446" class="crayon-syntax crayon-syntax-inline  crayon-theme-classic crayon-theme-classic-inline crayon-font-monaco" style="font-size: 12px !important; line-height: 15px !important;font-size: 12px !important;"><span class="crayon-pre crayon-code" style="font-size: 12px !important; line-height: 15px !important;font-size: 12px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;">depends<span class="crayon-sy">_</span>on</span></span>&nbsp; поможет запустить контейнер с Кафкой обязательно после контейнера с ZooKeeper, а&nbsp;
+			<span id="crayon-58fefcce70028864820626" class="crayon-syntax crayon-syntax-inline  crayon-theme-classic crayon-theme-classic-inline crayon-font-monaco" style="font-size: 12px !important; line-height: 15px !important;font-size: 12px !important;"><span class="crayon-pre crayon-code" style="font-size: 12px !important; line-height: 15px !important;font-size: 12px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><span class="crayon-s ">brokerId</span><span class="">: 2</span></span></span>&nbsp; пойдёт прямиком в Dockerfile, откуда перекочует в server.properties.</p>
+<h4>Продюсер</h4>
+<p>Продюсер — это маленький филиал ада. И всё из-за команды&nbsp;
+			<span id="crayon-58fefcce7002d252675983" class="crayon-syntax crayon-syntax-inline  crayon-theme-classic crayon-theme-classic-inline crayon-font-monaco" style="font-size: 12px !important; line-height: 15px !important;font-size: 12px !important;"><span class="crayon-pre crayon-code" style="font-size: 12px !important; line-height: 15px !important;font-size: 12px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;">command</span></span>&nbsp;. Ведь чтобы запустить продюсер, отправляющий сообщения, нужно всего-то:</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-58fefcce70033438145767" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px !important; height: 18px !important; line-height: 18px !important; margin-top: -19px; display: none; position: absolute; z-index: 2;"><span class="crayon-title">Producer logic</span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button crayon-pressed" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div><span class="crayon-language">Shell</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly="" style="tab-size: 4; font-size: 12px !important; line-height: 15px !important; z-index: 0; opacity: 0; overflow: hidden;">sleep 4
+/kafka/bin/kafka-topics.sh --create --zookeeper zookeeper:2181 
+      --replication-factor 3 
+      --partitions 2 
+      --topic dates 
+while true; do 
+   date | /kafka/bin/kafka-console-producer.sh \ 
+             --broker-list kafka1:9092,kafka2:9092,kafka3:9092 \
+             --topic dates; 
+   sleep 1; 
+done</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-58fefcce70033438145767-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-58fefcce70033438145767-2">2</div><div class="crayon-num" data-line="crayon-58fefcce70033438145767-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-58fefcce70033438145767-4">4</div><div class="crayon-num" data-line="crayon-58fefcce70033438145767-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-58fefcce70033438145767-6">6</div><div class="crayon-num" data-line="crayon-58fefcce70033438145767-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-58fefcce70033438145767-8">8</div><div class="crayon-num" data-line="crayon-58fefcce70033438145767-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-58fefcce70033438145767-10">10</div><div class="crayon-num" data-line="crayon-58fefcce70033438145767-11">11</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-58fefcce70033438145767-1"><span class="crayon-r">sleep</span><span class="crayon-h"> </span><span class="crayon-cn">4</span></div><div class="crayon-line crayon-striped-line" id="crayon-58fefcce70033438145767-2"><span class="crayon-o">/</span><span class="crayon-v">kafka</span><span class="crayon-o">/</span><span class="crayon-v">bin</span><span class="crayon-o">/</span><span class="crayon-v">kafka</span><span class="crayon-o">-</span><span class="crayon-v">topics</span><span class="crayon-e">.sh</span><span class="crayon-h"> </span><span class="crayon-o">--</span><span class="crayon-v">create</span><span class="crayon-h"> </span><span class="crayon-o">--</span><span class="crayon-e">zookeeper </span><span class="crayon-v">zookeeper</span><span class="crayon-o">:</span><span class="crayon-cn">2181</span><span class="crayon-h"> </span></div><div class="crayon-line" id="crayon-58fefcce70033438145767-3"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-o">--</span><span class="crayon-v">replication</span><span class="crayon-o">-</span><span class="crayon-i">factor</span><span class="crayon-h"> </span><span class="crayon-cn">3</span><span class="crayon-h"> </span></div><div class="crayon-line crayon-striped-line" id="crayon-58fefcce70033438145767-4"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-o">--</span><span class="crayon-i">partitions</span><span class="crayon-h"> </span><span class="crayon-cn">2</span><span class="crayon-h"> </span></div><div class="crayon-line" id="crayon-58fefcce70033438145767-5"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-o">--</span><span class="crayon-e">topic </span><span class="crayon-e">dates </span></div><div class="crayon-line crayon-striped-line" id="crayon-58fefcce70033438145767-6"><span class="crayon-st">while</span><span class="crayon-h"> </span><span class="crayon-t">true</span><span class="crayon-sy">;</span><span class="crayon-h"> </span><span class="crayon-st">do</span><span class="crayon-h"> </span></div><div class="crayon-line" id="crayon-58fefcce70033438145767-7"><span class="crayon-h">&nbsp;&nbsp; </span><span class="crayon-r">date</span><span class="crayon-h"> </span><span class="crayon-o">|</span><span class="crayon-h"> </span><span class="crayon-o">/</span><span class="crayon-v">kafka</span><span class="crayon-o">/</span><span class="crayon-v">bin</span><span class="crayon-o">/</span><span class="crayon-v">kafka</span><span class="crayon-o">-</span><span class="crayon-v">console</span><span class="crayon-o">-</span><span class="crayon-v">producer</span><span class="crayon-e">.sh</span><span class="crayon-h"> </span><span class="crayon-sy">\</span><span class="crayon-h"> </span></div><div class="crayon-line crayon-striped-line" id="crayon-58fefcce70033438145767-8"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-o">--</span><span class="crayon-v">broker</span><span class="crayon-o">-</span><span class="crayon-e">list </span><span class="crayon-v">kafka1</span><span class="crayon-o">:</span><span class="crayon-cn">9092</span><span class="crayon-sy">,</span><span class="crayon-v">kafka2</span><span class="crayon-o">:</span><span class="crayon-cn">9092</span><span class="crayon-sy">,</span><span class="crayon-v">kafka3</span><span class="crayon-o">:</span><span class="crayon-cn">9092</span><span class="crayon-h"> </span><span class="crayon-sy">\</span></div><div class="crayon-line" id="crayon-58fefcce70033438145767-9"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-o">--</span><span class="crayon-e">topic </span><span class="crayon-v">dates</span><span class="crayon-sy">;</span><span class="crayon-h"> </span></div><div class="crayon-line crayon-striped-line" id="crayon-58fefcce70033438145767-10"><span class="crayon-h">&nbsp;&nbsp; </span><span class="crayon-r">sleep</span><span class="crayon-h"> </span><span class="crayon-cn">1</span><span class="crayon-sy">;</span><span class="crayon-h"> </span></div><div class="crayon-line" id="crayon-58fefcce70033438145767-11"><span class="crayon-st">done</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0033 seconds] -->
+<p>Что в переводе на наш означает:</p>
+<ul>
+<li>подожди 4 секунды (решать race condition через задержки&nbsp;— плохой тон, но с воспитанием в нашу эпоху&nbsp;действительно не очень),</li>
+<li>создай топик под названием ‘dates’, раздели его на два раздела&nbsp;(partitions) и храни по три копии каждого,</li>
+<li>раз в секунду отправляй в топик сообщение — текущую дату.</li>
+</ul>
+<p>Просто ведь. Но если ужать это&nbsp;в одну строчку, то получится вот что:</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-58fefcce7003a734495261" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px !important; height: 18px !important; line-height: 18px !important; margin-top: -19px; display: none; position: absolute; z-index: 2;"><span class="crayon-title">Producer</span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button crayon-pressed" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div><span class="crayon-language">YAML</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly="" style="tab-size: 4; font-size: 12px !important; line-height: 15px !important; z-index: 0; opacity: 0; overflow: hidden;">producer:
+    build: .
+    command: bash -c "sleep 4 &amp;&amp; /kafka/bin/kafka-topics.sh --create --zookeeper zookeeper:2181 --replication-factor 3 --partitions 2 --topic dates &amp;&amp; while true; do date | /kafka/bin/kafka-console-producer.sh --broker-list kafka1:9092,kafka2:9092,kafka3:9092 --topic dates; sleep 1; done "
+    depends_on:
+    - zookeeper
+    - kafka1
+    - kafka2
+    - kafka3</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-58fefcce7003a734495261-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-58fefcce7003a734495261-2">2</div><div class="crayon-num" data-line="crayon-58fefcce7003a734495261-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-58fefcce7003a734495261-4">4</div><div class="crayon-num" data-line="crayon-58fefcce7003a734495261-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-58fefcce7003a734495261-6">6</div><div class="crayon-num" data-line="crayon-58fefcce7003a734495261-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-58fefcce7003a734495261-8">8</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-58fefcce7003a734495261-1"><span class="crayon-s ">producer</span><span class="">:</span></div><div class="crayon-line crayon-striped-line" id="crayon-58fefcce7003a734495261-2"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-s ">build</span><span class="">: .</span></div><div class="crayon-line" id="crayon-58fefcce7003a734495261-3"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-s ">command</span><span class="">: bash -c "sleep 4 &amp;&amp; /kafka/bin/kafka-topics.sh --create --zookeeper zookeeper</span><span class="">:2181 --replication-factor 3 --partitions 2 --topic dates &amp;&amp; while true; do date | /kafka/bin/kafka-console-producer.sh --broker-list kafka1</span><span class="">:9092</span><span class="crayon-o">,</span><span class="crayon-s ">kafka2</span><span class="">:9092</span><span class="crayon-o">,</span><span class="crayon-s ">kafka3</span><span class="">:9092 --topic dates; sleep 1; done "</span></div><div class="crayon-line crayon-striped-line" id="crayon-58fefcce7003a734495261-4"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-s ">depends_on</span><span class="">:</span></div><div class="crayon-line" id="crayon-58fefcce7003a734495261-5"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span>-<span class="crayon-h"> </span>zookeeper</div><div class="crayon-line crayon-striped-line" id="crayon-58fefcce7003a734495261-6"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span>-<span class="crayon-h"> </span>kafka1</div><div class="crayon-line" id="crayon-58fefcce7003a734495261-7"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span>-<span class="crayon-h"> </span>kafka2</div><div class="crayon-line crayon-striped-line" id="crayon-58fefcce7003a734495261-8"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span>-<span class="crayon-h"> </span>kafka3</div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0008 seconds] -->
+<p>Дурдом.</p>
+<h4>Консьюмер</h4>
+<p>По сравнению с продюсером, консьюмер практически не уродлив:</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-58fefcce70045192004917" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px !important; height: 18px !important; line-height: 18px !important; margin-top: -19px; display: none; position: absolute; z-index: 2;"><span class="crayon-title">Consumer config</span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button crayon-pressed" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div><span class="crayon-language">YAML</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly="" style="tab-size: 4; font-size: 12px !important; line-height: 15px !important; z-index: 0; opacity: 0; overflow: hidden;">consumer:
+    build: .
+    command: bash -c "sleep 6 &amp;&amp; /kafka/bin/kafka-console-consumer.sh --topic dates --bootstrap-server kafka1:9092,kafka2:9092,kafka3:9092"
+    depends_on:
+    - zookeeper
+    - kafka1
+    - kafka2
+    - kafka3</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-58fefcce70045192004917-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-58fefcce70045192004917-2">2</div><div class="crayon-num" data-line="crayon-58fefcce70045192004917-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-58fefcce70045192004917-4">4</div><div class="crayon-num" data-line="crayon-58fefcce70045192004917-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-58fefcce70045192004917-6">6</div><div class="crayon-num" data-line="crayon-58fefcce70045192004917-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-58fefcce70045192004917-8">8</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-58fefcce70045192004917-1"><span class="crayon-s ">consumer</span><span class="">:</span></div><div class="crayon-line crayon-striped-line" id="crayon-58fefcce70045192004917-2"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-s ">build</span><span class="">: .</span></div><div class="crayon-line" id="crayon-58fefcce70045192004917-3"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-s ">command</span><span class="">: bash -c "sleep 6 &amp;&amp; /kafka/bin/kafka-console-consumer.sh --topic dates --bootstrap-server kafka1</span><span class="">:9092</span><span class="crayon-o">,</span><span class="crayon-s ">kafka2</span><span class="">:9092</span><span class="crayon-o">,</span><span class="crayon-s ">kafka3</span><span class="">:9092"</span></div><div class="crayon-line crayon-striped-line" id="crayon-58fefcce70045192004917-4"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-s ">depends_on</span><span class="">:</span></div><div class="crayon-line" id="crayon-58fefcce70045192004917-5"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span>-<span class="crayon-h"> </span>zookeeper</div><div class="crayon-line crayon-striped-line" id="crayon-58fefcce70045192004917-6"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span>-<span class="crayon-h"> </span>kafka1</div><div class="crayon-line" id="crayon-58fefcce70045192004917-7"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span>-<span class="crayon-h"> </span>kafka2</div><div class="crayon-line crayon-striped-line" id="crayon-58fefcce70045192004917-8"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span>-<span class="crayon-h"> </span>kafka3</div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0008 seconds] -->
+<p>И продюсер, и консюмер получили в качестве параметров списки всех Kafka серверов. Это нужно для того, чтобы когда кого-то из брокеров&nbsp;не станет, у сервисов был запасной вариант.</p>
+<h4>Результат</h4>
+<p>Вот на что похож docker-compose.yml целиком:</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-58fefcce7004d645027851" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px !important; height: 18px !important; line-height: 18px !important; margin-top: -19px; display: none; position: absolute; z-index: 2;"><span class="crayon-title">docker-compose.yml</span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button crayon-pressed" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div><span class="crayon-language">YAML</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly="" style="tab-size: 4; font-size: 12px !important; line-height: 15px !important; z-index: 0; opacity: 0; overflow: hidden;">version: '2'
+
+services:
+    zookeeper:
+        build: .
+        command: /kafka/bin/zookeeper-server-start.sh /kafka/config/zookeeper.properties
+        ports:
+        - 2181:2181
+    kafka1:
+        build:
+            context: .
+            args:
+                brokerId: 1
+        command: /kafka/bin/kafka-server-start.sh /kafka/config/server.properties
+        depends_on:
+        - zookeeper
+    kafka2:
+        build:
+            context: .
+            args:
+                brokerId: 2
+        command: /kafka/bin/kafka-server-start.sh /kafka/config/server.properties
+        depends_on:
+        - zookeeper
+    kafka3:
+        build:
+            context: .
+            args:
+                brokerId: 3
+        command: /kafka/bin/kafka-server-start.sh /kafka/config/server.properties
+        depends_on:
+        - zookeeper
+    producer:
+        build: .
+        command: bash -c "sleep 4 &amp;&amp; /kafka/bin/kafka-topics.sh --create --zookeeper zookeeper:2181 --replication-factor 3 --partitions 2 --topic dates &amp;&amp; while true; do date | /kafka/bin/kafka-console-producer.sh --broker-list kafka1:9092,kafka2:9092,kafka3:9092 --topic dates; sleep 1; done "
+        depends_on:
+        - zookeeper
+        - kafka1
+        - kafka2
+        - kafka3
+    consumer:
+        build: .
+        command: bash -c "sleep 6 &amp;&amp; /kafka/bin/kafka-console-consumer.sh --topic dates --bootstrap-server kafka1:9092,kafka2:9092,kafka3:9092"
+        depends_on:
+        - zookeeper
+        - kafka1
+        - kafka2
+        - kafka3</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-58fefcce7004d645027851-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-58fefcce7004d645027851-2">2</div><div class="crayon-num" data-line="crayon-58fefcce7004d645027851-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-58fefcce7004d645027851-4">4</div><div class="crayon-num" data-line="crayon-58fefcce7004d645027851-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-58fefcce7004d645027851-6">6</div><div class="crayon-num" data-line="crayon-58fefcce7004d645027851-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-58fefcce7004d645027851-8">8</div><div class="crayon-num" data-line="crayon-58fefcce7004d645027851-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-58fefcce7004d645027851-10">10</div><div class="crayon-num" data-line="crayon-58fefcce7004d645027851-11">11</div><div class="crayon-num crayon-striped-num" data-line="crayon-58fefcce7004d645027851-12">12</div><div class="crayon-num" data-line="crayon-58fefcce7004d645027851-13">13</div><div class="crayon-num crayon-striped-num" data-line="crayon-58fefcce7004d645027851-14">14</div><div class="crayon-num" data-line="crayon-58fefcce7004d645027851-15">15</div><div class="crayon-num crayon-striped-num" data-line="crayon-58fefcce7004d645027851-16">16</div><div class="crayon-num" data-line="crayon-58fefcce7004d645027851-17">17</div><div class="crayon-num crayon-striped-num" data-line="crayon-58fefcce7004d645027851-18">18</div><div class="crayon-num" data-line="crayon-58fefcce7004d645027851-19">19</div><div class="crayon-num crayon-striped-num" data-line="crayon-58fefcce7004d645027851-20">20</div><div class="crayon-num" data-line="crayon-58fefcce7004d645027851-21">21</div><div class="crayon-num crayon-striped-num" data-line="crayon-58fefcce7004d645027851-22">22</div><div class="crayon-num" data-line="crayon-58fefcce7004d645027851-23">23</div><div class="crayon-num crayon-striped-num" data-line="crayon-58fefcce7004d645027851-24">24</div><div class="crayon-num" data-line="crayon-58fefcce7004d645027851-25">25</div><div class="crayon-num crayon-striped-num" data-line="crayon-58fefcce7004d645027851-26">26</div><div class="crayon-num" data-line="crayon-58fefcce7004d645027851-27">27</div><div class="crayon-num crayon-striped-num" data-line="crayon-58fefcce7004d645027851-28">28</div><div class="crayon-num" data-line="crayon-58fefcce7004d645027851-29">29</div><div class="crayon-num crayon-striped-num" data-line="crayon-58fefcce7004d645027851-30">30</div><div class="crayon-num" data-line="crayon-58fefcce7004d645027851-31">31</div><div class="crayon-num crayon-striped-num" data-line="crayon-58fefcce7004d645027851-32">32</div><div class="crayon-num" data-line="crayon-58fefcce7004d645027851-33">33</div><div class="crayon-num crayon-striped-num" data-line="crayon-58fefcce7004d645027851-34">34</div><div class="crayon-num" data-line="crayon-58fefcce7004d645027851-35">35</div><div class="crayon-num crayon-striped-num" data-line="crayon-58fefcce7004d645027851-36">36</div><div class="crayon-num" data-line="crayon-58fefcce7004d645027851-37">37</div><div class="crayon-num crayon-striped-num" data-line="crayon-58fefcce7004d645027851-38">38</div><div class="crayon-num" data-line="crayon-58fefcce7004d645027851-39">39</div><div class="crayon-num crayon-striped-num" data-line="crayon-58fefcce7004d645027851-40">40</div><div class="crayon-num" data-line="crayon-58fefcce7004d645027851-41">41</div><div class="crayon-num crayon-striped-num" data-line="crayon-58fefcce7004d645027851-42">42</div><div class="crayon-num" data-line="crayon-58fefcce7004d645027851-43">43</div><div class="crayon-num crayon-striped-num" data-line="crayon-58fefcce7004d645027851-44">44</div><div class="crayon-num" data-line="crayon-58fefcce7004d645027851-45">45</div><div class="crayon-num crayon-striped-num" data-line="crayon-58fefcce7004d645027851-46">46</div><div class="crayon-num" data-line="crayon-58fefcce7004d645027851-47">47</div><div class="crayon-num crayon-striped-num" data-line="crayon-58fefcce7004d645027851-48">48</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-58fefcce7004d645027851-1"><span class="crayon-s ">version</span><span class="">: '2'</span></div><div class="crayon-line crayon-striped-line" id="crayon-58fefcce7004d645027851-2">&nbsp;</div><div class="crayon-line" id="crayon-58fefcce7004d645027851-3"><span class="crayon-s ">services</span><span class="">:</span></div><div class="crayon-line crayon-striped-line" id="crayon-58fefcce7004d645027851-4"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-s ">zookeeper</span><span class="">:</span></div><div class="crayon-line" id="crayon-58fefcce7004d645027851-5"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-s ">build</span><span class="">: .</span></div><div class="crayon-line crayon-striped-line" id="crayon-58fefcce7004d645027851-6"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-s ">command</span><span class="">: /kafka/bin/zookeeper-server-start.sh /kafka/config/zookeeper.properties</span></div><div class="crayon-line" id="crayon-58fefcce7004d645027851-7"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-s ">ports</span><span class="">:</span></div><div class="crayon-line crayon-striped-line" id="crayon-58fefcce7004d645027851-8"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-s ">- 2181</span><span class="">:2181</span></div><div class="crayon-line" id="crayon-58fefcce7004d645027851-9"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-s ">kafka1</span><span class="">:</span></div><div class="crayon-line crayon-striped-line" id="crayon-58fefcce7004d645027851-10"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-s ">build</span><span class="">:</span></div><div class="crayon-line" id="crayon-58fefcce7004d645027851-11"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-s ">context</span><span class="">: .</span></div><div class="crayon-line crayon-striped-line" id="crayon-58fefcce7004d645027851-12"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-s ">args</span><span class="">:</span></div><div class="crayon-line" id="crayon-58fefcce7004d645027851-13"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-s ">brokerId</span><span class="">: 1</span></div><div class="crayon-line crayon-striped-line" id="crayon-58fefcce7004d645027851-14"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-s ">command</span><span class="">: /kafka/bin/kafka-server-start.sh /kafka/config/server.properties</span></div><div class="crayon-line" id="crayon-58fefcce7004d645027851-15"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-s ">depends_on</span><span class="">:</span></div><div class="crayon-line crayon-striped-line" id="crayon-58fefcce7004d645027851-16"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>-<span class="crayon-h"> </span>zookeeper</div><div class="crayon-line" id="crayon-58fefcce7004d645027851-17"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-s ">kafka2</span><span class="">:</span></div><div class="crayon-line crayon-striped-line" id="crayon-58fefcce7004d645027851-18"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-s ">build</span><span class="">:</span></div><div class="crayon-line" id="crayon-58fefcce7004d645027851-19"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-s ">context</span><span class="">: .</span></div><div class="crayon-line crayon-striped-line" id="crayon-58fefcce7004d645027851-20"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-s ">args</span><span class="">:</span></div><div class="crayon-line" id="crayon-58fefcce7004d645027851-21"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-s ">brokerId</span><span class="">: 2</span></div><div class="crayon-line crayon-striped-line" id="crayon-58fefcce7004d645027851-22"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-s ">command</span><span class="">: /kafka/bin/kafka-server-start.sh /kafka/config/server.properties</span></div><div class="crayon-line" id="crayon-58fefcce7004d645027851-23"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-s ">depends_on</span><span class="">:</span></div><div class="crayon-line crayon-striped-line" id="crayon-58fefcce7004d645027851-24"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>-<span class="crayon-h"> </span>zookeeper</div><div class="crayon-line" id="crayon-58fefcce7004d645027851-25"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-s ">kafka3</span><span class="">:</span></div><div class="crayon-line crayon-striped-line" id="crayon-58fefcce7004d645027851-26"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-s ">build</span><span class="">:</span></div><div class="crayon-line" id="crayon-58fefcce7004d645027851-27"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-s ">context</span><span class="">: .</span></div><div class="crayon-line crayon-striped-line" id="crayon-58fefcce7004d645027851-28"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-s ">args</span><span class="">:</span></div><div class="crayon-line" id="crayon-58fefcce7004d645027851-29"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-s ">brokerId</span><span class="">: 3</span></div><div class="crayon-line crayon-striped-line" id="crayon-58fefcce7004d645027851-30"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-s ">command</span><span class="">: /kafka/bin/kafka-server-start.sh /kafka/config/server.properties</span></div><div class="crayon-line" id="crayon-58fefcce7004d645027851-31"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-s ">depends_on</span><span class="">:</span></div><div class="crayon-line crayon-striped-line" id="crayon-58fefcce7004d645027851-32"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>-<span class="crayon-h"> </span>zookeeper</div><div class="crayon-line" id="crayon-58fefcce7004d645027851-33"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-s ">producer</span><span class="">:</span></div><div class="crayon-line crayon-striped-line" id="crayon-58fefcce7004d645027851-34"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-s ">build</span><span class="">: .</span></div><div class="crayon-line" id="crayon-58fefcce7004d645027851-35"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-s ">command</span><span class="">: bash -c "sleep 4 &amp;&amp; /kafka/bin/kafka-topics.sh --create --zookeeper zookeeper</span><span class="">:2181 --replication-factor 3 --partitions 2 --topic dates &amp;&amp; while true; do date | /kafka/bin/kafka-console-producer.sh --broker-list kafka1</span><span class="">:9092</span><span class="crayon-o">,</span><span class="crayon-s ">kafka2</span><span class="">:9092</span><span class="crayon-o">,</span><span class="crayon-s ">kafka3</span><span class="">:9092 --topic dates; sleep 1; done "</span></div><div class="crayon-line crayon-striped-line" id="crayon-58fefcce7004d645027851-36"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-s ">depends_on</span><span class="">:</span></div><div class="crayon-line" id="crayon-58fefcce7004d645027851-37"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>-<span class="crayon-h"> </span>zookeeper</div><div class="crayon-line crayon-striped-line" id="crayon-58fefcce7004d645027851-38"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>-<span class="crayon-h"> </span>kafka1</div><div class="crayon-line" id="crayon-58fefcce7004d645027851-39"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>-<span class="crayon-h"> </span>kafka2</div><div class="crayon-line crayon-striped-line" id="crayon-58fefcce7004d645027851-40"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>-<span class="crayon-h"> </span>kafka3</div><div class="crayon-line" id="crayon-58fefcce7004d645027851-41"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-s ">consumer</span><span class="">:</span></div><div class="crayon-line crayon-striped-line" id="crayon-58fefcce7004d645027851-42"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-s ">build</span><span class="">: .</span></div><div class="crayon-line" id="crayon-58fefcce7004d645027851-43"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-s ">command</span><span class="">: bash -c "sleep 6 &amp;&amp; /kafka/bin/kafka-console-consumer.sh --topic dates --bootstrap-server kafka1</span><span class="">:9092</span><span class="crayon-o">,</span><span class="crayon-s ">kafka2</span><span class="">:9092</span><span class="crayon-o">,</span><span class="crayon-s ">kafka3</span><span class="">:9092"</span></div><div class="crayon-line crayon-striped-line" id="crayon-58fefcce7004d645027851-44"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-s ">depends_on</span><span class="">:</span></div><div class="crayon-line" id="crayon-58fefcce7004d645027851-45"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>-<span class="crayon-h"> </span>zookeeper</div><div class="crayon-line crayon-striped-line" id="crayon-58fefcce7004d645027851-46"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>-<span class="crayon-h"> </span>kafka1</div><div class="crayon-line" id="crayon-58fefcce7004d645027851-47"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>-<span class="crayon-h"> </span>kafka2</div><div class="crayon-line crayon-striped-line" id="crayon-58fefcce7004d645027851-48"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>-<span class="crayon-h"> </span>kafka3</div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0037 seconds] -->
+<p></p>
+<h2>Запускаем кластер</h2>
+<p>Всё просто. Запускаем&nbsp;
+			<span id="crayon-58fefcce70054728922489" class="crayon-syntax crayon-syntax-inline  crayon-theme-classic crayon-theme-classic-inline crayon-font-monaco" style="font-size: 12px !important; line-height: 15px !important;font-size: 12px !important;"><span class="crayon-pre crayon-code" style="font-size: 12px !important; line-height: 15px !important;font-size: 12px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><span class="crayon-v">docker</span><span class="crayon-o">-</span><span class="crayon-e">compose </span><span class="crayon-v">up</span></span></span>&nbsp; и через десяток секунд монологов от очень разговорчивых контейнеров наступит тишина, иногда прерываемая сообщениями от консьюмера:</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-58fefcce7005a187175621" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px !important; height: 18px !important; line-height: 18px !important; margin-top: -19px; display: none; position: absolute; z-index: 2;"><span class="crayon-title">Consumer output</span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button crayon-pressed" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code" style="display: none;"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div><span class="crayon-language">Shell</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly="" style="tab-size: 4; font-size: 12px !important; line-height: 15px !important; z-index: 0; opacity: 0; overflow: hidden;"># consumer_1   | Tue Dec 13 05:23:31 UTC 2016
+# consumer_1   | Tue Dec 13 05:23:34 UTC 2016
+# consumer_1   | Tue Dec 13 05:23:37 UTC 2016
+# consumer_1   | Tue Dec 13 05:23:39 UTC 2016
+# consumer_1   | Tue Dec 13 05:23:43 UTC 2016
+# consumer_1   | Tue Dec 13 05:23:46 UTC 2016</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-58fefcce7005a187175621-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-58fefcce7005a187175621-2">2</div><div class="crayon-num" data-line="crayon-58fefcce7005a187175621-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-58fefcce7005a187175621-4">4</div><div class="crayon-num" data-line="crayon-58fefcce7005a187175621-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-58fefcce7005a187175621-6">6</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-58fefcce7005a187175621-1"><span class="crayon-c"># consumer_1&nbsp;&nbsp; | Tue Dec 13 05:23:31 UTC 2016</span></div><div class="crayon-line crayon-striped-line" id="crayon-58fefcce7005a187175621-2"><span class="crayon-c"># consumer_1&nbsp;&nbsp; | Tue Dec 13 05:23:34 UTC 2016</span></div><div class="crayon-line" id="crayon-58fefcce7005a187175621-3"><span class="crayon-c"># consumer_1&nbsp;&nbsp; | Tue Dec 13 05:23:37 UTC 2016</span></div><div class="crayon-line crayon-striped-line" id="crayon-58fefcce7005a187175621-4"><span class="crayon-c"># consumer_1&nbsp;&nbsp; | Tue Dec 13 05:23:39 UTC 2016</span></div><div class="crayon-line" id="crayon-58fefcce7005a187175621-5"><span class="crayon-c"># consumer_1&nbsp;&nbsp; | Tue Dec 13 05:23:43 UTC 2016</span></div><div class="crayon-line crayon-striped-line" id="crayon-58fefcce7005a187175621-6"><span class="crayon-c"># consumer_1&nbsp;&nbsp; | Tue Dec 13 05:23:46 UTC 2016</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0007 seconds] -->
+<p>Кажется, оно действительно запустилось.</p>
+<p>Так как 2181-й порт у&nbsp;ZooKeeper остался открыт, можно запросить у него статистику по топикам:</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-58fefcce70065264436453" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px !important; height: 18px !important; line-height: 18px !important; margin-top: -19px; display: none; position: absolute; z-index: 2;"><span class="crayon-title">Describe topic</span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button crayon-pressed" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div><span class="crayon-language">Shell</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly="" style="tab-size: 4; font-size: 12px !important; line-height: 15px !important; z-index: 0; opacity: 0; overflow: hidden;">./bin/kafka-topics.sh --describe --topic dates --zookeeper 127.0.0.1:2181
+#	Topic: dates	Partition: 0	Leader: 3	Replicas: 3,1,2	Isr: 3,1,2
+#	Topic: dates	Partition: 1	Leader: 1	Replicas: 1,2,3	Isr: 1,2,3</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-58fefcce70065264436453-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-58fefcce70065264436453-2">2</div><div class="crayon-num" data-line="crayon-58fefcce70065264436453-3">3</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-58fefcce70065264436453-1"><span class="crayon-sy">.</span><span class="crayon-o">/</span><span class="crayon-v">bin</span><span class="crayon-o">/</span><span class="crayon-v">kafka</span><span class="crayon-o">-</span><span class="crayon-v">topics</span><span class="crayon-e">.sh</span><span class="crayon-h"> </span><span class="crayon-o">--</span><span class="crayon-v">describe</span><span class="crayon-h"> </span><span class="crayon-o">--</span><span class="crayon-e">topic </span><span class="crayon-v">dates</span><span class="crayon-h"> </span><span class="crayon-o">--</span><span class="crayon-i">zookeeper</span><span class="crayon-h"> </span><span class="crayon-cn">127.0.0.1</span><span class="crayon-o">:</span><span class="crayon-cn">2181</span></div><div class="crayon-line crayon-striped-line" id="crayon-58fefcce70065264436453-2"><span class="crayon-c">#	Topic: dates	Partition: 0	Leader: 3	Replicas: 3,1,2	Isr: 3,1,2</span></div><div class="crayon-line" id="crayon-58fefcce70065264436453-3"><span class="crayon-c">#	Topic: dates	Partition: 1	Leader: 1	Replicas: 1,2,3	Isr: 1,2,3</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0011 seconds] -->
+<p>Ответ ZooKeeper’а весьма интересный:&nbsp;у топика ‘dates’ есть два раздела — 0 и&nbsp;1, а&nbsp;их лидеры — брокеры&nbsp;3&nbsp;и 1 соответственно. Лидер раздела&nbsp;— это брокер, через который походит чтение и запись, и который отвечает за синхронизацию его реплик. В нашем случае реплики разделов&nbsp;хранятся у брокеров 3,1,2 и&nbsp;1,2,3,&nbsp;и все они синхронизированы (Isr — in-sync replica), то есть все резервные копии на месте.</p>
+<p>Так как обычно я пишу эти посты ближе к часу ночи, то будет справедливо, если кластер пострадает вместе со мной.</p>
+<h2>Издеваемся над&nbsp;Kafka&nbsp;кластером</h2>
+<p>Когда все брокеры в кластере работают, кластеру, разумеется, хорошо. Что будет, если какого-то из брокеров не станет? Выясняем ID контейнера kafka2 (docker-compose ведь изменил имя) через&nbsp;
+			<span id="crayon-58fefcce7006d969150816" class="crayon-syntax crayon-syntax-inline  crayon-theme-classic crayon-theme-classic-inline crayon-font-monaco" style="font-size: 12px !important; line-height: 15px !important;font-size: 12px !important;"><span class="crayon-pre crayon-code" style="font-size: 12px !important; line-height: 15px !important;font-size: 12px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><span class="crayon-e">docker </span><span class="crayon-r">ps</span></span></span>&nbsp;, останавливаем его, и смотрим, что получилось:</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-58fefcce70073938951817" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px !important; height: 18px !important; line-height: 18px !important; margin-top: -19px; display: none; z-index: 4;"><span class="crayon-title">Stop kafka2 broker</span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button crayon-pressed" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code" style="display: none;"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div><span class="crayon-language">Shell</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly="" style="tab-size: 4; font-size: 12px !important; line-height: 15px !important; z-index: 0; opacity: 0; overflow: hidden;">docker stop 12bda0311443
+# 12bda0311443</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-58fefcce70073938951817-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-58fefcce70073938951817-2">2</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-58fefcce70073938951817-1"><span class="crayon-e">docker </span><span class="crayon-i">stop</span><span class="crayon-h"> </span><span class="crayon-cn">12bda0311443</span></div><div class="crayon-line crayon-striped-line" id="crayon-58fefcce70073938951817-2"><span class="crayon-c"># 12bda0311443</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0004 seconds] -->
+<p>Что здорово, consumer-контейнер как писал в консоль свои сообщения, так и продолжил без паузы.&nbsp;Но если посмотреть статистику топика, то кластер изменился:</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-58fefcce70079424202479" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px !important; height: 18px !important; line-height: 18px !important; margin-top: -19px; display: none; position: absolute; z-index: 2;"><span class="crayon-title">Kafka2 is down</span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button crayon-pressed" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div><span class="crayon-language">Shell</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly="" style="tab-size: 4; font-size: 12px !important; line-height: 15px !important; z-index: 0; opacity: 0; overflow: hidden;">./kafka/bin/kafka-topics.sh --describe --topic dates --zookeeper 127.0.0.1:2181
+#Topic:dates	PartitionCount:2	ReplicationFactor:3	Configs:
+#	Topic: dates	Partition: 0	Leader: 3	Replicas: 3,1,2	Isr: 3,1
+#	Topic: dates	Partition: 1	Leader: 1	Replicas: 1,2,3	Isr: 1,3</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-58fefcce70079424202479-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-58fefcce70079424202479-2">2</div><div class="crayon-num" data-line="crayon-58fefcce70079424202479-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-58fefcce70079424202479-4">4</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-58fefcce70079424202479-1"><span class="crayon-sy">.</span><span class="crayon-o">/</span><span class="crayon-v">kafka</span><span class="crayon-o">/</span><span class="crayon-v">bin</span><span class="crayon-o">/</span><span class="crayon-v">kafka</span><span class="crayon-o">-</span><span class="crayon-v">topics</span><span class="crayon-e">.sh</span><span class="crayon-h"> </span><span class="crayon-o">--</span><span class="crayon-v">describe</span><span class="crayon-h"> </span><span class="crayon-o">--</span><span class="crayon-e">topic </span><span class="crayon-v">dates</span><span class="crayon-h"> </span><span class="crayon-o">--</span><span class="crayon-i">zookeeper</span><span class="crayon-h"> </span><span class="crayon-cn">127.0.0.1</span><span class="crayon-o">:</span><span class="crayon-cn">2181</span></div><div class="crayon-line crayon-striped-line" id="crayon-58fefcce70079424202479-2"><span class="crayon-c">#Topic:dates	PartitionCount:2	ReplicationFactor:3	Configs:</span></div><div class="crayon-line" id="crayon-58fefcce70079424202479-3"><span class="crayon-c">#	Topic: dates	Partition: 0	Leader: 3	Replicas: 3,1,2	Isr: 3,1</span></div><div class="crayon-line crayon-striped-line" id="crayon-58fefcce70079424202479-4"><span class="crayon-c">#	Topic: dates	Partition: 1	Leader: 1	Replicas: 1,2,3	Isr: 1,3</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0011 seconds] -->
+<p>Лидеры разделов остались теми же, но реплика с номером 2 пропала.</p>
+<p>А что будет, если ещё кого-нибудь прибить?</p>
+<p>Если остановить kafka3, то с потоком сообщений всё останется в порядке,&nbsp;но лидер нулевого раздела поменяется:</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-58fefcce70080056471249" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px !important; height: 18px !important; line-height: 18px !important; margin-top: -19px; display: none; position: absolute; z-index: 2;"><span class="crayon-title">Kafka3 is down</span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button crayon-pressed" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div><span class="crayon-language">Shell</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly="" style="tab-size: 4; font-size: 12px !important; line-height: 15px !important; z-index: 0; opacity: 0; overflow: hidden;">./bin/kafka-topics.sh --describe --topic dates --zookeeper 127.0.0.1:2181
+#Topic:dates	PartitionCount:2	ReplicationFactor:3	Configs:
+#	Topic: dates	Partition: 0	Leader: 1	Replicas: 3,1,2	Isr: 1
+#	Topic: dates	Partition: 1	Leader: 1	Replicas: 1,2,3	Isr: 1</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-58fefcce70080056471249-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-58fefcce70080056471249-2">2</div><div class="crayon-num" data-line="crayon-58fefcce70080056471249-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-58fefcce70080056471249-4">4</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-58fefcce70080056471249-1"><span class="crayon-sy">.</span><span class="crayon-o">/</span><span class="crayon-v">bin</span><span class="crayon-o">/</span><span class="crayon-v">kafka</span><span class="crayon-o">-</span><span class="crayon-v">topics</span><span class="crayon-e">.sh</span><span class="crayon-h"> </span><span class="crayon-o">--</span><span class="crayon-v">describe</span><span class="crayon-h"> </span><span class="crayon-o">--</span><span class="crayon-e">topic </span><span class="crayon-v">dates</span><span class="crayon-h"> </span><span class="crayon-o">--</span><span class="crayon-i">zookeeper</span><span class="crayon-h"> </span><span class="crayon-cn">127.0.0.1</span><span class="crayon-o">:</span><span class="crayon-cn">2181</span></div><div class="crayon-line crayon-striped-line" id="crayon-58fefcce70080056471249-2"><span class="crayon-c">#Topic:dates	PartitionCount:2	ReplicationFactor:3	Configs:</span></div><div class="crayon-line" id="crayon-58fefcce70080056471249-3"><span class="crayon-c">#	Topic: dates	Partition: 0	Leader: 1	Replicas: 3,1,2	Isr: 1</span></div><div class="crayon-line crayon-striped-line" id="crayon-58fefcce70080056471249-4"><span class="crayon-c">#	Topic: dates	Partition: 1	Leader: 1	Replicas: 1,2,3	Isr: 1</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0011 seconds] -->
+<p>Теперь оставшийся брокер kafka1 — лидер всего. Реплика 3, разумеется, пропала.</p>
+<p>Наконец, что будет, если снова вернуть kafka2 и&nbsp;kafka3 в строй?</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-58fefcce70086037965404" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px !important; height: 18px !important; line-height: 18px !important; margin-top: -19px; display: none; position: absolute; z-index: 2;"><span class="crayon-title">All brokers back online</span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button crayon-pressed" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div><span class="crayon-language">Shell</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly="" style="tab-size: 4; font-size: 12px !important; line-height: 15px !important; z-index: 0; opacity: 0; overflow: hidden;">./bin/kafka-topics.sh --describe --topic dates --zookeeper 127.0.0.1:2181
+#Topic:dates	PartitionCount:2	ReplicationFactor:3	Configs:
+#	Topic: dates	Partition: 0	Leader: 1	Replicas: 3,1,2	Isr: 1,3,2
+#	Topic: dates	Partition: 1	Leader: 1	Replicas: 1,2,3	Isr: 1,3,2</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-58fefcce70086037965404-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-58fefcce70086037965404-2">2</div><div class="crayon-num" data-line="crayon-58fefcce70086037965404-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-58fefcce70086037965404-4">4</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-58fefcce70086037965404-1"><span class="crayon-sy">.</span><span class="crayon-o">/</span><span class="crayon-v">bin</span><span class="crayon-o">/</span><span class="crayon-v">kafka</span><span class="crayon-o">-</span><span class="crayon-v">topics</span><span class="crayon-e">.sh</span><span class="crayon-h"> </span><span class="crayon-o">--</span><span class="crayon-v">describe</span><span class="crayon-h"> </span><span class="crayon-o">--</span><span class="crayon-e">topic </span><span class="crayon-v">dates</span><span class="crayon-h"> </span><span class="crayon-o">--</span><span class="crayon-i">zookeeper</span><span class="crayon-h"> </span><span class="crayon-cn">127.0.0.1</span><span class="crayon-o">:</span><span class="crayon-cn">2181</span></div><div class="crayon-line crayon-striped-line" id="crayon-58fefcce70086037965404-2"><span class="crayon-c">#Topic:dates	PartitionCount:2	ReplicationFactor:3	Configs:</span></div><div class="crayon-line" id="crayon-58fefcce70086037965404-3"><span class="crayon-c">#	Topic: dates	Partition: 0	Leader: 1	Replicas: 3,1,2	Isr: 1,3,2</span></div><div class="crayon-line crayon-striped-line" id="crayon-58fefcce70086037965404-4"><span class="crayon-c">#	Topic: dates	Partition: 1	Leader: 1	Replicas: 1,2,3	Isr: 1,3,2</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0010 seconds] -->
+<p>ZooKeeper их заметил. Лидер разделов остался старым, но пропущенные реплики пересоздались и уютно расположились в «новых» брокерах. Кластер вернулся в сбалансированное состояние.</p>
+<h2>Мораль</h2>
+<p>Только что произошло немного чёрной уличной магии. Мы создали кластер из трёх хостов&nbsp;с&nbsp;фрагментированным топиком, а затем убили два хоста из трёх, и это никак не повлияло на нашу возможность публиковать и получать сообщения. Когда хосты вернулись назад, кластер перегруппировался и продолжил работать, как ни в чём не&nbsp;бывало.</p>
+<p>Сегодняшный пример получился намного сложнее, чем предыдущий, но вся сложность пришла от Докера. Единственное изменение в конфигурации Кафка-сервера по сравнению с кластером из одного хоста —&nbsp;добавился broker id. То есть изменив всего один численный параметр мы можем добавлять сервера в кластер пачками. Невероятно.</p>
+<div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social sd-social-icon sd-sharing"><h3 class="sd-title">Поделиться ссылкой:</h3><div class="sd-content"><ul><li class="share-facebook"><a rel="nofollow" data-shared="sharing-facebook-1506" class="share-facebook sd-button share-icon no-text" href="http://dotsandbrackets.com/highly-available-kafka-cluster-docker-ru/?share=facebook&amp;nb=1" target="_blank" title="Нажмите здесь, чтобы поделиться контентом на Facebook."><span><span class="share-count">6</span></span><span class="sharing-screen-reader-text">Нажмите здесь, чтобы поделиться контентом на Facebook. (Открывается в новом окне)<span class="share-count">6</span></span></a></li><li class="share-twitter"><a rel="nofollow" data-shared="sharing-twitter-1506" class="share-twitter sd-button share-icon no-text" href="http://dotsandbrackets.com/highly-available-kafka-cluster-docker-ru/?share=twitter&amp;nb=1" target="_blank" title="Нажмите, чтобы поделиться на Twitter"><span></span><span class="sharing-screen-reader-text">Нажмите, чтобы поделиться на Twitter (Открывается в новом окне)</span></a></li><li class="share-google-plus-1"><a rel="nofollow" data-shared="sharing-google-1506" class="share-google-plus-1 sd-button share-icon no-text" href="http://dotsandbrackets.com/highly-available-kafka-cluster-docker-ru/?share=google-plus-1&amp;nb=1" target="_blank" title="Нажмите, чтобы поделиться в Google+"><span></span><span class="sharing-screen-reader-text">Нажмите, чтобы поделиться в Google+ (Открывается в новом окне)</span></a></li><li class="share-linkedin"><a rel="nofollow" data-shared="sharing-linkedin-1506" class="share-linkedin sd-button share-icon no-text" href="http://dotsandbrackets.com/highly-available-kafka-cluster-docker-ru/?share=linkedin&amp;nb=1" target="_blank" title="Нажмите, чтобы поделиться на LinkedIn"><span></span><span class="sharing-screen-reader-text">Нажмите, чтобы поделиться на LinkedIn (Открывается в новом окне)</span></a></li><li class="share-end"></li></ul></div></div></div>	</div><!-- .entry-content -->
+	
+	<footer class="entry-meta"><span class="tag-links"><a href="http://dotsandbrackets.com/tag/apache-kafka/" rel="tag">Apache Kafka</a><a href="http://dotsandbrackets.com/tag/communication/" rel="tag">communication</a><a href="http://dotsandbrackets.com/tag/docker/" rel="tag">docker</a><a href="http://dotsandbrackets.com/tag/docker-compose/" rel="tag">docker-compose</a><a href="http://dotsandbrackets.com/tag/message-broker/" rel="tag">message broker</a></span></footer></article><!-- #post-## -->
+	<nav class="navigation post-navigation" role="navigation">
+		<h1 class="screen-reader-text">Навигация по записям</h1>
+		<div class="nav-links">
+			<a href="http://dotsandbrackets.com/canadian-expenses/" rel="prev"><span class="meta-nav">Предыдущая запись</span>На что уходят деньги в Канаде</a><a href="http://dotsandbrackets.com/host-monitoring-with-collectd-ru/" rel="next"><span class="meta-nav">Следующая запись</span>Мониторинг серверов с collectd</a>		</div><!-- .nav-links -->
+	</nav><!-- .navigation -->
+	
+<div id="comments" class="comments-area">
+
+	
+					<div id="respond" class="comment-respond">
+			<h3 id="reply-title" class="comment-reply-title">Добавить комментарий <small><a rel="nofollow" id="cancel-comment-reply-link" href="http://dotsandbrackets.com/highly-available-kafka-cluster-docker-ru/#respond" style="display:none;">Отменить ответ</a></small></h3>				<form action="http://dotsandbrackets.com/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate="">
+					<p class="comment-notes"><span id="email-notes">Ваш e-mail не будет опубликован.</span> Обязательные поля помечены <span class="required">*</span></p><p class="comment-form-comment"><label for="comment">Комментарий</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" aria-required="true" required="required"></textarea></p><p class="comment-form-author"><label for="author">Имя <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" aria-required="true" required="required"></p>
+<p class="comment-form-email"><label for="email">E-mail <span class="required">*</span></label> <input id="email" name="email" type="email" value="" size="30" maxlength="100" aria-describedby="email-notes" aria-required="true" required="required"></p>
+<p class="comment-form-url"><label for="url">Сайт</label> <input id="url" name="url" type="url" value="" size="30" maxlength="200"></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Отправить комментарий"> <input type="hidden" name="comment_post_ID" value="1506" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="ddfa81f519"></p><p style="display: none;"></p>				<input type="hidden" id="ak_js" name="ak_js" value="1493105868710"></form>
+					</div><!-- #respond -->
+		
+</div><!-- #comments -->
+		</div><!-- #content -->
+	</div><!-- #primary -->
+
+<div id="secondary">
+		<h2 class="site-description">Размышления об эмиграции, жизни, и вообще</h2>
+	
+	
+		<div id="primary-sidebar" class="primary-sidebar widget-area" role="complementary">
+		<aside id="search-2" class="widget widget_search"><form role="search" method="get" class="search-form" action="http://dotsandbrackets.com/">
+				<label>
+					<span class="screen-reader-text">Найти:</span>
+					<input type="search" class="search-field" placeholder="Поиск…" value="" name="s">
+				</label>
+				<input type="submit" class="search-submit" value="Поиск">
+			</form></aside>		<aside id="recent-posts-2" class="widget widget_recent_entries">		<h1 class="widget-title">Свежие записи</h1>		<ul>
+					<li>
+				<a href="http://dotsandbrackets.com/vagrant-create-consul-cluster-ru/">Создаём Consul кластер в Vagrant</a>
+						</li>
+					<li>
+				<a href="http://dotsandbrackets.com/belarus-passport-reason-hire/">Белорусский паспорт как повод для найма</a>
+						</li>
+					<li>
+				<a href="http://dotsandbrackets.com/consul-health-check-ru/">Проверка состояния сервисов в Consul</a>
+						</li>
+					<li>
+				<a href="http://dotsandbrackets.com/my-books-from-childhood/">Взрослый взгляд на свои детские сказки</a>
+						</li>
+					<li>
+				<a href="http://dotsandbrackets.com/using-consul-service-discovery-ru/">Поиск и регистрация сервисов с Consul</a>
+						</li>
+				</ul>
+		</aside>		<aside id="categories-2" class="widget widget_categories"><h1 class="widget-title">Рубрики</h1>		<ul>
+	<li class="cat-item cat-item-24"><a href="http://dotsandbrackets.com/category/life/">О жизни</a> (80)
+</li>
+	<li class="cat-item cat-item-8"><a href="http://dotsandbrackets.com/category/books/">О книгах</a> (8)
+</li>
+	<li class="cat-item cat-item-3"><a href="http://dotsandbrackets.com/category/development/">О программировании</a> (42)
+</li>
+		</ul>
+</aside><aside id="calendar-2" class="widget widget_calendar"><h1 class="widget-title">Calendar</h1><div id="calendar_wrap" class="calendar_wrap"><table id="wp-calendar">
+	<caption>Апрель 2017</caption>
+	<thead>
+	<tr>
+		<th scope="col" title="Понедельник">Пн</th>
+		<th scope="col" title="Вторник">Вт</th>
+		<th scope="col" title="Среда">Ср</th>
+		<th scope="col" title="Четверг">Чт</th>
+		<th scope="col" title="Пятница">Пт</th>
+		<th scope="col" title="Суббота">Сб</th>
+		<th scope="col" title="Воскресенье">Вс</th>
+	</tr>
+	</thead>
+
+	<tfoot>
+	<tr>
+		<td colspan="3" id="prev"><a href="http://dotsandbrackets.com/2017/03/">« Мар</a></td>
+		<td class="pad">&nbsp;</td>
+		<td colspan="3" id="next" class="pad">&nbsp;</td>
+	</tr>
+	</tfoot>
+
+	<tbody>
+	<tr>
+		<td colspan="5" class="pad">&nbsp;</td><td>1</td><td><a href="http://dotsandbrackets.com/2017/04/02/" aria-label="Записи, опубликованные 02.04.2017">2</a></td>
+	</tr>
+	<tr>
+		<td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td><a href="http://dotsandbrackets.com/2017/04/09/" aria-label="Записи, опубликованные 09.04.2017">9</a></td>
+	</tr>
+	<tr>
+		<td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td><td><a href="http://dotsandbrackets.com/2017/04/16/" aria-label="Записи, опубликованные 16.04.2017">16</a></td>
+	</tr>
+	<tr>
+		<td>17</td><td>18</td><td>19</td><td>20</td><td>21</td><td>22</td><td><a href="http://dotsandbrackets.com/2017/04/23/" aria-label="Записи, опубликованные 23.04.2017">23</a></td>
+	</tr>
+	<tr>
+		<td>24</td><td id="today">25</td><td>26</td><td>27</td><td>28</td><td>29</td><td>30</td>
+	</tr>
+	</tbody>
+	</table></div></aside>	</div><!-- #primary-sidebar -->
+	</div><!-- #secondary -->
+
+		</div><!-- #main -->
+
+		<footer id="colophon" class="site-footer" role="contentinfo">
+
+			
+			<div class="site-info">
+								<a href="https://ru.wordpress.org/">Сайт работает на WordPress</a>
+			</div><!-- .site-info -->
+		</footer><!-- #colophon -->
+	</div><!-- #page -->
+
+	
+	<script type="text/javascript">
+		window.WPCOM_sharing_counts = {"http:\/\/dotsandbrackets.com\/highly-available-kafka-cluster-docker-ru\/":1506};
+	</script>
+<script type="text/javascript" src="./Отказоустойчивый Kafka кластер в Docker - Dots and Brackets_ Блог_files/form.js"></script>
+<script type="text/javascript" src="./Отказоустойчивый Kafka кластер в Docker - Dots and Brackets_ Блог_files/photon.js"></script>
+<script type="text/javascript" src="./Отказоустойчивый Kafka кластер в Docker - Dots and Brackets_ Блог_files/devicepx-jetpack.js"></script>
+<script type="text/javascript" src="./Отказоустойчивый Kafka кластер в Docker - Dots and Brackets_ Блог_files/comment-reply.min.js"></script>
+<script type="text/javascript" src="./Отказоустойчивый Kafka кластер в Docker - Dots and Brackets_ Блог_files/functions.js"></script>
+<script type="text/javascript" src="./Отказоустойчивый Kafka кластер в Docker - Dots and Brackets_ Блог_files/wp-embed.min.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var sharing_js_options = {"lang":"en","counts":"1"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Отказоустойчивый Kafka кластер в Docker - Dots and Brackets_ Блог_files/sharing.js"></script>
+<script type="text/javascript">
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-facebook', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomfacebook', 'menubar=1,resizable=1,width=600,height=400' );
+				return false;
+			});
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-twitter', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomtwitter', 'menubar=1,resizable=1,width=600,height=350' );
+				return false;
+			});
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-google-plus-1', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomgoogle-plus-1', 'menubar=1,resizable=1,width=480,height=550' );
+				return false;
+			});
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-linkedin', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomlinkedin', 'menubar=1,resizable=1,width=580,height=450' );
+				return false;
+			});
+</script>
+<script type="text/javascript" src="./Отказоустойчивый Kafka кластер в Docker - Dots and Brackets_ Блог_files/e-201717.js" async="" defer=""></script>
+<script type="text/javascript">
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:4.8.2',blog:'90619155',post:'1506',tz:'-4',srv:'dotsandbrackets.com'} ]);
+	_stq.push([ 'clickTrackerInit', '90619155', '1506' ]);
+</script>
+
+<div id="wpsn-container" class="wpsn-container" style="position: absolute; top: 0px; left: 0px;"><span class="wpsn-preloadfont" style="visibility:hidden">a</span></div><div id="wpsn-popup-container" class="wpsn-popup-container" style="position: fixed; top: 0px; left: 0px; display: none;"></div><img src="./Отказоустойчивый Kafka кластер в Docker - Dots and Brackets_ Блог_files/g.gif" alt=":)" width="6" height="5" id="wpstats"></body></html>

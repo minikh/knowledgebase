@@ -1,0 +1,4 @@
+//посмотреть сиквенс
+SELECT last_value FROM cs.sidechannel_registrators_id_se
+//задать новый сиквенс
+select setval('cs.sidechannel_registrators_id_seq', 557218);

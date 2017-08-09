@@ -1,0 +1,11 @@
+Установка protobuf
+ protoc --version
+ whereis protoc
+ protobuf-3.0.0/
+ sudo ./configure
+ sudo make
+ sudo make check
+ sudo make install
+ sudo ldconfig
+ export LD_LIBRARY_PATH=/usr/local/lib
+ protoc --version

@@ -1,0 +1,620 @@
+LINK : warning L4021: no stack segment
+
+ Start  Stop   Length Name                   Class
+ 00000H 00538H 00539H CALCQ_TEXT             CODE
+ 0053AH 021FFH 01CC6H _TEXT                  CODE
+ 02200H 0238CH 0018DH STARTUP                CODE
+ 02390H 02B08H 00779H EMULATOR_TEXT          CODE
+ 02B10H 02B44H 00035H WRT2ERR_TEXT           CODE
+ 02B46H 02B46H 00000H C_ETEXT                ENDCODE
+ 02B46H 02C07H 000C2H MEM_DATA               FAR_DATA
+ 02C10H 02D45H 00136H EMULATOR_DATA          FAR_DATA
+ 02D46H 02D53H 0000EH CDATA                  DATA
+ 02D54H 03159H 00406H _DATA                  DATA
+ 0315AH 03163H 0000AH P_DATA                 DATA
+ 03164H 03167H 00004H DBDATA                 DATA
+ 03168H 03168H 00000H XIQC                   DATA
+ 03168H 03168H 00000H XIFB                   DATA
+ 03168H 03168H 00000H XIF                    DATA
+ 03168H 03168H 00000H XIFE                   DATA
+ 03168H 03168H 00000H XIB                    DATA
+ 03168H 03173H 0000CH XI                     DATA
+ 03174H 03174H 00000H XIE                    DATA
+ 03174H 03174H 00000H XPB                    DATA
+ 03174H 03174H 00000H XP                     DATA
+ 03174H 03174H 00000H XPE                    DATA
+ 03174H 03174H 00000H XCB                    DATA
+ 03174H 03174H 00000H XC                     DATA
+ 03174H 03174H 00000H XCE                    DATA
+ 03174H 03174H 00000H XCFB                   DATA
+ 03174H 03174H 00000H XCFCRT                 DATA
+ 03174H 03174H 00000H XCF                    DATA
+ 03174H 03174H 00000H XCFE                   DATA
+ 03174H 03174H 00000H XIFCB                  DATA
+ 03174H 03174H 00000H XIFU                   DATA
+ 03174H 03174H 00000H XIFL                   DATA
+ 03174H 03174H 00000H XIFM                   DATA
+ 03174H 03174H 00000H XIFCE                  DATA
+ 03174H 0318DH 0001AH WRT2                   DATA
+ 0318EH 03235H 000A8H CONST                  CONST
+ 03236H 0323DH 00008H HDR                    MSG
+ 0323EH 033B3H 00176H MSG                    MSG
+ 033B4H 033B5H 00002H PAD                    MSG
+ 033B6H 033B6H 00001H EPAD                   MSG
+ 033B8H 033CBH 00014H _BSS                   BSS
+ 033CCH 033CCH 00000H XOB                    BSS
+ 033CCH 033CCH 00000H XO                     BSS
+ 033CCH 033CCH 00000H XOE                    BSS
+ 033CCH 033CCH 00000H XOFB                   BSS
+ 033CCH 033CCH 00000H XOF                    BSS
+ 033CCH 033CCH 00000H XOFE                   BSS
+ 033D0H 033D7H 00008H c_common               BSS
+
+ Origin   Group
+ 02D4:0   DGROUP
+
+  Address         Publics by Name
+
+ 0053:10DB       $i8_output
+ 0053:13F6       $i8_tpwr10
+ 02D4:0434       cur_wrt2err_len
+ 02B4:0006       EXE_NUM_PTR_ENTRIES
+ 0000:0000  Abs  FIARQQ
+ 0000:0000  Abs  FICRQQ
+ 0000:0000  Abs  FIDRQQ
+ 0000:0000  Abs  FIERQQ
+ 0000:0000  Abs  FISRQQ
+ 0000:0000  Abs  FIWRQQ
+ 0000:0000  Abs  FJARQQ
+ 0000:0000  Abs  FJCRQQ
+ 0000:0000  Abs  FJSRQQ
+ 0053:0148       plc9070_chksum
+ 0053:004C       plc9070_crt0dat
+ 0053:014C       plc9070_crt0msg
+ 0239:0751       plc9070_emoem
+ 02B1:0000       plc9070_nmsghdr
+ 02B4:00A2       PLC_SYS_SEGSEL_TBL_DBG
+ 02B4:00A8       spares8
+ 02D4:0436       wrt2err_str
+ 02D4:00E6       _80x87int
+ 02B4:0014       _aib_mem
+ 02B4:0014       _aii_mem
+ 02D4:00E2       _aintdiv
+ 02B4:0014       _aiw_mem
+ 02B4:0094       _ai_diag_mem
+ 02B4:0096       _AI_DIAG_TBL_DBG
+ 02B4:0016       _AI_TBL_DBG
+ 02B4:0018       _aqb_mem
+ 02B4:0018       _aqi_mem
+ 02B4:0018       _aqw_mem
+ 02B4:0098       _aq_diag_mem
+ 02B4:009A       _AQ_DIAG_TBL_DBG
+ 02B4:001A       _AQ_TBL_DBG
+ 0053:0CF4       _atof
+ 0220:016D       _bit_mask
+ 0220:0000       _copy_right
+ 02D4:0678       _edata
+ 02D4:0698       _end
+ 02D4:00F4       _errno
+ 02D4:00DC       _exe_run_already
+ 02D4:041C       _exe_using_80x87
+ 0053:00E4       _exit
+ 0053:01C3       _exp
+ 0053:0386       _fFYTOX
+ 02B4:0040       _gab_mem
+ 02B4:0042       _GA_TBL_DBG
+ 02B4:0080       _ga_trans_mem
+ 02B4:0082       _GA_TRANS_TBL_DBG
+ 02B4:0044       _gbb_mem
+ 02B4:003C       _gb_mem
+ 02B4:0046       _GB_TBL_DBG
+ 02B4:0084       _gb_trans_mem
+ 02B4:0086       _GB_TRANS_TBL_DBG
+ 02B4:0048       _gcb_mem
+ 02B4:004A       _GC_TBL_DBG
+ 02B4:0088       _gc_trans_mem
+ 02B4:008A       _GC_TRANS_TBL_DBG
+ 02B4:004C       _gdb_mem
+ 02B4:004E       _GD_TBL_DBG
+ 02B4:008C       _gd_trans_mem
+ 02B4:008E       _GD_TRANS_TBL_DBG
+ 02B4:0050       _geb_mem
+ 02B4:0052       _GE_TBL_DBG
+ 02B4:0090       _ge_trans_mem
+ 02B4:0092       _GE_TRANS_TBL_DBG
+ 02D4:0418       _GMR_configuration_data
+ 02B4:003E       _G_TBL_DBG
+ 02B4:007C       _g_trans_mem
+ 02B4:007E       _G_TRANS_TBL_DBG
+ 02B4:001C       _ib_mem
+ 02B4:0054       _i_diag_mem
+ 02B4:0056       _I_DIAG_TBL_DBG
+ 02B4:001E       _I_TBL_DBG
+ 02B4:005C       _i_trans_mem
+ 02B4:005E       _I_TRANS_TBL_DBG
+ 02B4:0008       _lb_mem
+ 02B4:0008       _li_mem
+ 0053:01B8       _log
+ 0053:01BE       _log10
+ 02B4:0008       _lw_mem
+ 02B4:000A       _L_TBL_DBG
+ 0000:01F4       _main
+ 02B4:0028       _mb_mem
+ 0053:0DF4       _memmove
+ 0053:0EBE       _memset
+ 02B4:002A       _M_TBL_DBG
+ 02B4:0068       _m_trans_mem
+ 02B4:006A       _M_TRANS_TBL_DBG
+ 0000:0098       _NeuroNet
+ 02B4:000C       _pb_mem
+ 02B4:000C       _pi_mem
+ 0220:0076       _plc_blk_linkage_ptr_tbl
+ 0220:007A       _plc_exe_fpmath_use_ptr
+ 0220:0074       _plc_exe_signature
+ 02B4:00A6       _PLC_SEGSEL_MEM_SIZES_DBG
+ 0053:01B2       _pow
+ 02B4:000C       _pw_mem
+ 02B4:000E       _P_TBL_DBG
+ 02B4:0020       _qb_mem
+ 02B4:0058       _q_diag_mem
+ 02B4:005A       _Q_DIAG_TBL_DBG
+ 02B4:0022       _Q_TBL_DBG
+ 02B4:0060       _q_trans_mem
+ 02B4:0062       _Q_TRANS_TBL_DBG
+ 02B4:0010       _rb_mem
+ 02B4:0010       _ri_mem
+ 02B4:009C       _rsb_mem
+ 02B4:009E       _RSB_TBL_DBG
+ 02B4:0010       _rw_mem
+ 02B4:0012       _R_TBL_DBG
+ 02B4:002C       _sab_mem
+ 02B4:002E       _SA_TBL_DBG
+ 02B4:006C       _sa_trans_mem
+ 02B4:006E       _SA_TRANS_TBL_DBG
+ 02B4:0030       _sbb_mem
+ 02B4:0038       _sb_mem
+ 02B4:0032       _SB_TBL_DBG
+ 02B4:0070       _sb_trans_mem
+ 02B4:0072       _SB_TRANS_TBL_DBG
+ 02B4:0034       _scb_mem
+ 02B4:0036       _SC_TBL_DBG
+ 02B4:0074       _sc_trans_mem
+ 02B4:0076       _SC_TRANS_TBL_DBG
+ 02D4:015A       _STKHQQ
+ 0053:0C9E       _strcpy
+ 0053:0CDA       _strlen
+ 02B4:00A4       _sys_mem_sizes
+ 02B4:00A0       _sys_seg_tbl
+ 02B4:003A       _S_TBL_DBG
+ 02B4:0078       _s_trans_mem
+ 02B4:007A       _S_TRANS_TBL_DBG
+ 0000:0000       _tansig
+ 02B4:0024       _tb_mem
+ 02B4:0026       _T_TBL_DBG
+ 02B4:0064       _t_trans_mem
+ 02B4:0066       _T_TRANS_TBL_DBG
+ 02D4:0120       __80x87
+ 02D4:00E6       __80x87int
+ 02D4:0156       __aaltstkovr
+ 02D4:00E2       __acfinfo
+ 0000:9876  Abs  __acrtmsg
+ 0000:9876  Abs  __acrtused
+ 0000:D6D6  Abs  __aDBdoswp
+ 02D4:00DF       __aexit_rtn
+ 0053:1062       __aFahdiff
+ 0053:02EE       __aFchkstk
+ 0053:01D9       __aFCIexp
+ 0053:01CE       __aFCIlog
+ 0053:01D4       __aFCIlog10
+ 0053:01C8       __aFCIpow
+ 0053:025A       __aFfcmp
+ 0053:027D       __aFfcompp
+ 0000:1000  Abs  __AHINCR
+ 0000:000C  Abs  __AHSHIFT
+ 02D4:00E2       __aintdiv
+ 0053:0037       __amsg_exit
+ 02D4:017C       __asizeC
+ 02D4:017D       __asizeD
+ 0220:0084       __astart
+ 02D4:00DD       __atopsp
+ 0053:0A76       __cfltcvt
+ 02D4:015C       __cfltcvt_tab
+ 0053:0666       __cftoe
+ 0053:081E       __cftof
+ 0053:09A2       __cftog
+ 0053:02EE       __chkstk
+ 0053:004C       __cinit
+ 0053:001A       __cintDIV
+ 0053:0B31       __cintrindisp1
+ 0053:0B08       __cintrindisp2
+ 02D4:0382       __cpower
+ 02D4:00FF       __cpumode
+ 0053:056C       __cropzeros
+ 0053:0B66       __ctrandisp1
+ 0053:0B53       __ctrandisp2
+ 02D4:026C       __ctype
+ 02D4:026C       __ctype_
+ 0053:0049       __dataseg
+ 0053:034D       __DOSCREATECSALIAS
+ 0053:0318       __DOSDEVCONFIG
+ 02D4:0100       __doserrno
+ 0053:0363       __DOSFREESEG
+ 0053:032F       __DOSGETMACHINEMODE
+ 0053:0344       __DOSSETVEC
+ 02D4:00FC       __dosvermajor
+ 02D4:00FD       __dosverminor
+ 0053:036C       __DOSWRITE
+ 02D4:0678       __edata
+ 0239:0000       __EmDataSeg
+ 02D4:0698       __end
+ 02D4:0116       __environ
+ 0053:00EB       __exit
+ 02D4:0210       __expjmptab
+ 02D4:00EA       __fac
+ 0053:0614       __fassign
+ 0053:025A       __fcmp
+ 0053:027D       __fcompp
+ 0053:0392       __fFEXP
+ 0053:04BA       __ffexpm1
+ 0053:043F       __fFLN
+ 0053:014C       __FF_MSGBANNER
+ 0053:1220       __fltin
+ 0053:1006       __fltout
+ 0000:9876  Abs  __fltused
+ 0053:04FE       __forcdecpt
+ 0239:0010       __fpemulatorbegin
+ 0239:0713       __fpemulatorend
+ 0239:020B       __FPEXCEPTION87
+ 02D4:0008       __fpinit
+ 02D4:0008       __fpinit_
+ 0239:0720       __FPINSTALL87
+ 02D4:0420       __fpint87_addr
+ 0239:0751       __fpinterrupt87
+ 0239:003A       __fpmath
+ 0053:0296       __fpsignal
+ 02C1:0123       __fptaskdata
+ 0239:0741       __FPTERMINATE87
+ 0053:0D4C       __fptostr
+ 0053:0312       __fptrap
+ 02D4:03BA       __HUGE
+ 02D4:036E       __indefinite
+ 02D4:017E       __infinity
+ 0053:01DE       __Init80x87
+ 0053:1A91       __LD12MULT
+ 0053:19BC       __LD12MULTTENPOWER
+ 02D4:01F8       __lnjmptab
+ 02D4:0188       __logemax
+ 02D4:01E0       __logjmptab
+ 0053:1C16       __MANTOLD12
+ 0053:1052       __matherr
+ 02D4:03C2       __matherr_flag
+ 02D4:0690       __mbac
+ 0053:014E       __NMSG_TEXT
+ 0053:0179       __NMSG_WRITE
+ 0053:0148       __nullcheck
+ 02D4:0100       __oserr
+ 02D4:0102       __osfile
+ 02D4:00FC       __osmajor
+ 02D4:00FD       __osminor
+ 02D4:00FE       __osmode
+ 02D4:00FC       __osversion
+ 02D4:011A       __pgmptr
+ 02D4:0378       __piby2
+ 0053:05E6       __positive
+ 02D4:00FA       __psp
+ 02D4:00F8       __pspadr
+ 0053:0FCE       __rtbignan
+ 0053:0FFD       __rtchsifneg
+ 0053:0FF4       __rtifprojnpop
+ 0053:0FD5       __rtifprojpop
+ 0053:0FDF       __rtindfnpop
+ 0053:0FDC       __rtindfpop
+ 0053:049F       __rtinfnpop
+ 0053:0432       __rtinfnpopse
+ 0053:049C       __rtinfpop
+ 0053:042F       __rtinfpopse
+ 0053:0FB1       __rtnospop
+ 0053:0FB5       __rtnospopde
+ 0053:0FC7       __rtonenpop
+ 0053:0FC4       __rtonepop
+ 0053:0FB4       __rttosnpop
+ 0053:0FED       __rttosnpopde
+ 0053:0FAE       __rttospop
+ 0053:0FAB       __rttospopde
+ 0053:0FBD       __rtzeronpop
+ 0053:0FBA       __rtzeropop
+ 02D4:017A       __sigintoff
+ 02D4:0178       __sigintseg
+ 0053:1434       __STRINGTOD
+ 0053:149C       __STRINGTOLD
+ 0053:0F06       __trandisp1
+ 0053:0F48       __trandisp2
+ 02D4:00F6       __umaskval
+ 02B1:0000       __wrt2err
+ 02D4:01B0       __ytoxjmptab
+ 02D4:0426       ___aDBswpchk
+ 02D4:0424       ___aDBswpflg
+
+  Address         Publics by Value
+
+ 0000:0000  Abs  FICRQQ
+ 0000:0000       _tansig
+ 0000:0000  Abs  FJCRQQ
+ 0000:0000  Abs  FIWRQQ
+ 0000:0000  Abs  FIERQQ
+ 0000:0000  Abs  FJSRQQ
+ 0000:0000  Abs  FISRQQ
+ 0000:0000  Abs  FJARQQ
+ 0000:0000  Abs  FIDRQQ
+ 0000:0000  Abs  FIARQQ
+ 0000:000C  Abs  __AHSHIFT
+ 0000:0098       _NeuroNet
+ 0000:01F4       _main
+ 0053:001A       __cintDIV
+ 0053:0037       __amsg_exit
+ 0053:0049       __dataseg
+ 0053:004C       __cinit
+ 0053:004C       plc9070_crt0dat
+ 0053:00E4       _exit
+ 0053:00EB       __exit
+ 0053:0148       __nullcheck
+ 0053:0148       plc9070_chksum
+ 0053:014C       plc9070_crt0msg
+ 0053:014C       __FF_MSGBANNER
+ 0053:014E       __NMSG_TEXT
+ 0053:0179       __NMSG_WRITE
+ 0053:01B2       _pow
+ 0053:01B8       _log
+ 0053:01BE       _log10
+ 0053:01C3       _exp
+ 0053:01C8       __aFCIpow
+ 0053:01CE       __aFCIlog
+ 0053:01D4       __aFCIlog10
+ 0053:01D9       __aFCIexp
+ 0053:01DE       __Init80x87
+ 0053:025A       __aFfcmp
+ 0053:025A       __fcmp
+ 0053:027D       __aFfcompp
+ 0053:027D       __fcompp
+ 0053:0296       __fpsignal
+ 0053:02EE       __aFchkstk
+ 0053:02EE       __chkstk
+ 0053:0312       __fptrap
+ 0053:0318       __DOSDEVCONFIG
+ 0053:032F       __DOSGETMACHINEMODE
+ 0053:0344       __DOSSETVEC
+ 0053:034D       __DOSCREATECSALIAS
+ 0053:0363       __DOSFREESEG
+ 0053:036C       __DOSWRITE
+ 0053:0386       _fFYTOX
+ 0053:0392       __fFEXP
+ 0053:042F       __rtinfpopse
+ 0053:0432       __rtinfnpopse
+ 0053:043F       __fFLN
+ 0053:049C       __rtinfpop
+ 0053:049F       __rtinfnpop
+ 0053:04BA       __ffexpm1
+ 0053:04FE       __forcdecpt
+ 0053:056C       __cropzeros
+ 0053:05E6       __positive
+ 0053:0614       __fassign
+ 0053:0666       __cftoe
+ 0053:081E       __cftof
+ 0053:09A2       __cftog
+ 0053:0A76       __cfltcvt
+ 0000:1000  Abs  __AHINCR
+ 0053:0B08       __cintrindisp2
+ 0053:0B31       __cintrindisp1
+ 0053:0B53       __ctrandisp2
+ 0053:0B66       __ctrandisp1
+ 0053:0C9E       _strcpy
+ 0053:0CDA       _strlen
+ 0053:0CF4       _atof
+ 0053:0D4C       __fptostr
+ 0053:0DF4       _memmove
+ 0053:0EBE       _memset
+ 0053:0F06       __trandisp1
+ 0053:0F48       __trandisp2
+ 0053:0FAB       __rttospopde
+ 0053:0FAE       __rttospop
+ 0053:0FB1       __rtnospop
+ 0053:0FB4       __rttosnpop
+ 0053:0FB5       __rtnospopde
+ 0053:0FBA       __rtzeropop
+ 0053:0FBD       __rtzeronpop
+ 0053:0FC4       __rtonepop
+ 0053:0FC7       __rtonenpop
+ 0053:0FCE       __rtbignan
+ 0053:0FD5       __rtifprojpop
+ 0053:0FDC       __rtindfpop
+ 0053:0FDF       __rtindfnpop
+ 0053:0FED       __rttosnpopde
+ 0053:0FF4       __rtifprojnpop
+ 0053:0FFD       __rtchsifneg
+ 0053:1006       __fltout
+ 0053:1052       __matherr
+ 0053:1062       __aFahdiff
+ 0053:10DB       $i8_output
+ 0053:1220       __fltin
+ 0053:13F6       $i8_tpwr10
+ 0053:1434       __STRINGTOD
+ 0053:149C       __STRINGTOLD
+ 0053:19BC       __LD12MULTTENPOWER
+ 0053:1A91       __LD12MULT
+ 0053:1C16       __MANTOLD12
+ 0220:0000       _copy_right
+ 0220:0074       _plc_exe_signature
+ 0220:0076       _plc_blk_linkage_ptr_tbl
+ 0220:007A       _plc_exe_fpmath_use_ptr
+ 0220:0084       __astart
+ 0220:016D       _bit_mask
+ 0239:0000       __EmDataSeg
+ 0239:0010       __fpemulatorbegin
+ 0239:003A       __fpmath
+ 0239:020B       __FPEXCEPTION87
+ 0239:0713       __fpemulatorend
+ 0239:0720       __FPINSTALL87
+ 0239:0741       __FPTERMINATE87
+ 0239:0751       plc9070_emoem
+ 0239:0751       __fpinterrupt87
+ 02B1:0000       __wrt2err
+ 02B1:0000       plc9070_nmsghdr
+ 02B4:0006       EXE_NUM_PTR_ENTRIES
+ 02B4:0008       _li_mem
+ 02B4:0008       _lw_mem
+ 02B4:0008       _lb_mem
+ 02B4:000A       _L_TBL_DBG
+ 02B4:000C       _pi_mem
+ 02B4:000C       _pb_mem
+ 02B4:000C       _pw_mem
+ 02B4:000E       _P_TBL_DBG
+ 02B4:0010       _rb_mem
+ 02B4:0010       _ri_mem
+ 02B4:0010       _rw_mem
+ 02B4:0012       _R_TBL_DBG
+ 02B4:0014       _aib_mem
+ 02B4:0014       _aii_mem
+ 02B4:0014       _aiw_mem
+ 02B4:0016       _AI_TBL_DBG
+ 02B4:0018       _aqb_mem
+ 02B4:0018       _aqi_mem
+ 02B4:0018       _aqw_mem
+ 02B4:001A       _AQ_TBL_DBG
+ 02B4:001C       _ib_mem
+ 02B4:001E       _I_TBL_DBG
+ 02B4:0020       _qb_mem
+ 02B4:0022       _Q_TBL_DBG
+ 02B4:0024       _tb_mem
+ 02B4:0026       _T_TBL_DBG
+ 02B4:0028       _mb_mem
+ 02B4:002A       _M_TBL_DBG
+ 02B4:002C       _sab_mem
+ 02B4:002E       _SA_TBL_DBG
+ 02B4:0030       _sbb_mem
+ 02B4:0032       _SB_TBL_DBG
+ 02B4:0034       _scb_mem
+ 02B4:0036       _SC_TBL_DBG
+ 02B4:0038       _sb_mem
+ 02B4:003A       _S_TBL_DBG
+ 02B4:003C       _gb_mem
+ 02B4:003E       _G_TBL_DBG
+ 02B4:0040       _gab_mem
+ 02B4:0042       _GA_TBL_DBG
+ 02B4:0044       _gbb_mem
+ 02B4:0046       _GB_TBL_DBG
+ 02B4:0048       _gcb_mem
+ 02B4:004A       _GC_TBL_DBG
+ 02B4:004C       _gdb_mem
+ 02B4:004E       _GD_TBL_DBG
+ 02B4:0050       _geb_mem
+ 02B4:0052       _GE_TBL_DBG
+ 02B4:0054       _i_diag_mem
+ 02B4:0056       _I_DIAG_TBL_DBG
+ 02B4:0058       _q_diag_mem
+ 02B4:005A       _Q_DIAG_TBL_DBG
+ 02B4:005C       _i_trans_mem
+ 02B4:005E       _I_TRANS_TBL_DBG
+ 02B4:0060       _q_trans_mem
+ 02B4:0062       _Q_TRANS_TBL_DBG
+ 02B4:0064       _t_trans_mem
+ 02B4:0066       _T_TRANS_TBL_DBG
+ 02B4:0068       _m_trans_mem
+ 02B4:006A       _M_TRANS_TBL_DBG
+ 02B4:006C       _sa_trans_mem
+ 02B4:006E       _SA_TRANS_TBL_DBG
+ 02B4:0070       _sb_trans_mem
+ 02B4:0072       _SB_TRANS_TBL_DBG
+ 02B4:0074       _sc_trans_mem
+ 02B4:0076       _SC_TRANS_TBL_DBG
+ 02B4:0078       _s_trans_mem
+ 02B4:007A       _S_TRANS_TBL_DBG
+ 02B4:007C       _g_trans_mem
+ 02B4:007E       _G_TRANS_TBL_DBG
+ 02B4:0080       _ga_trans_mem
+ 02B4:0082       _GA_TRANS_TBL_DBG
+ 02B4:0084       _gb_trans_mem
+ 02B4:0086       _GB_TRANS_TBL_DBG
+ 02B4:0088       _gc_trans_mem
+ 02B4:008A       _GC_TRANS_TBL_DBG
+ 02B4:008C       _gd_trans_mem
+ 02B4:008E       _GD_TRANS_TBL_DBG
+ 02B4:0090       _ge_trans_mem
+ 02B4:0092       _GE_TRANS_TBL_DBG
+ 02B4:0094       _ai_diag_mem
+ 02B4:0096       _AI_DIAG_TBL_DBG
+ 02B4:0098       _aq_diag_mem
+ 02B4:009A       _AQ_DIAG_TBL_DBG
+ 02B4:009C       _rsb_mem
+ 02B4:009E       _RSB_TBL_DBG
+ 02B4:00A0       _sys_seg_tbl
+ 02B4:00A2       PLC_SYS_SEGSEL_TBL_DBG
+ 02B4:00A4       _sys_mem_sizes
+ 02B4:00A6       _PLC_SEGSEL_MEM_SIZES_DBG
+ 02B4:00A8       spares8
+ 02C1:0123       __fptaskdata
+ 02D4:0008       __fpinit
+ 02D4:0008       __fpinit_
+ 02D4:00DC       _exe_run_already
+ 02D4:00DD       __atopsp
+ 02D4:00DF       __aexit_rtn
+ 02D4:00E2       __aintdiv
+ 02D4:00E2       _aintdiv
+ 02D4:00E2       __acfinfo
+ 02D4:00E6       __80x87int
+ 02D4:00E6       _80x87int
+ 02D4:00EA       __fac
+ 02D4:00F4       _errno
+ 02D4:00F6       __umaskval
+ 02D4:00F8       __pspadr
+ 02D4:00FA       __psp
+ 02D4:00FC       __dosvermajor
+ 02D4:00FC       __osversion
+ 02D4:00FC       __osmajor
+ 02D4:00FD       __osminor
+ 02D4:00FD       __dosverminor
+ 02D4:00FE       __osmode
+ 02D4:00FF       __cpumode
+ 02D4:0100       __doserrno
+ 02D4:0100       __oserr
+ 02D4:0102       __osfile
+ 02D4:0116       __environ
+ 02D4:011A       __pgmptr
+ 02D4:0120       __80x87
+ 02D4:0156       __aaltstkovr
+ 02D4:015A       _STKHQQ
+ 02D4:015C       __cfltcvt_tab
+ 02D4:0178       __sigintseg
+ 02D4:017A       __sigintoff
+ 02D4:017C       __asizeC
+ 02D4:017D       __asizeD
+ 02D4:017E       __infinity
+ 02D4:0188       __logemax
+ 02D4:01B0       __ytoxjmptab
+ 02D4:01E0       __logjmptab
+ 02D4:01F8       __lnjmptab
+ 02D4:0210       __expjmptab
+ 02D4:026C       __ctype_
+ 02D4:026C       __ctype
+ 02D4:036E       __indefinite
+ 02D4:0378       __piby2
+ 02D4:0382       __cpower
+ 02D4:03BA       __HUGE
+ 02D4:03C2       __matherr_flag
+ 02D4:0418       _GMR_configuration_data
+ 02D4:041C       _exe_using_80x87
+ 02D4:0420       __fpint87_addr
+ 02D4:0424       ___aDBswpflg
+ 02D4:0426       ___aDBswpchk
+ 02D4:0434       cur_wrt2err_len
+ 02D4:0436       wrt2err_str
+ 02D4:0678       __edata
+ 02D4:0678       _edata
+ 02D4:0690       __mbac
+ 02D4:0698       __end
+ 02D4:0698       _end
+ 0000:9876  Abs  __fltused
+ 0000:9876  Abs  __acrtused
+ 0000:9876  Abs  __acrtmsg
+ 0000:D6D6  Abs  __aDBdoswp
+
+Program entry point at 0220:0084

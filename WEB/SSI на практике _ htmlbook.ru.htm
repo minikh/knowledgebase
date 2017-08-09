@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html g_init="6742" data-savefrom-tab-data="null"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title>SSI на практике | htmlbook.ru</title>
+		<link rel="search" type="application/opensearchdescription+xml" title="htmlbook.ru" href="http://htmlbook.ru/sites/search/search.xml">
+		<link rel="alternate" type="application/rss+xml" title="Материалы с htmlbook.ru" href="http://feeds.feedburner.com/htmlbook">		
+		<link href="SSI%20%D0%BD%D0%B0%20%D0%BF%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D0%BA%D0%B5%20_%20htmlbook.ru_files/a.css" rel="stylesheet" media="all">
+		<link href="SSI%20%D0%BD%D0%B0%20%D0%BF%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D0%BA%D0%B5%20_%20htmlbook.ru_files/print.css" rel="stylesheet" media="print">
+				<script src="SSI%20%D0%BD%D0%B0%20%D0%BF%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D0%BA%D0%B5%20_%20htmlbook.ru_files/widgets.js" id="twitter-wjs"></script><script src="SSI%20%D0%BD%D0%B0%20%D0%BF%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D0%BA%D0%B5%20_%20htmlbook.ru_files/aci.js" async="" type="text/javascript"></script><script src="SSI%20%D0%BD%D0%B0%20%D0%BF%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D0%BA%D0%B5%20_%20htmlbook.ru_files/all.js" id="facebook-jssdk"></script><script src="SSI%20%D0%BD%D0%B0%20%D0%BF%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D0%BA%D0%B5%20_%20htmlbook.ru_files/a.js"></script><script src="SSI%20%D0%BD%D0%B0%20%D0%BF%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D0%BA%D0%B5%20_%20htmlbook.ru_files/rotaban.js" async="" type="text/javascript"></script><script src="SSI%20%D0%BD%D0%B0%20%D0%BF%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D0%BA%D0%B5%20_%20htmlbook.ru_files/count.js" type="text/javascript" async=""></script>
+		<!--<script src="//vk.com/js/api/openapi.js?97"></script>
+		<script>VK.init({apiId: 3772597, onlyWidgets: true});</script>-->
+		<!--[if lt IE 9]><script src="/themes/hb/js/ie.js"></script><![endif]-->
+			<script src="SSI%20%D0%BD%D0%B0%20%D0%BF%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D0%BA%D0%B5%20_%20htmlbook.ru_files/count.js" type="text/javascript" async=""></script><script src="SSI%20%D0%BD%D0%B0%20%D0%BF%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D0%BA%D0%B5%20_%20htmlbook.ru_files/count-data.js" async=""></script><script async="async" src="SSI%20%D0%BD%D0%B0%20%D0%BF%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D0%BA%D0%B5%20_%20htmlbook.ru_files/5dfe0e1c96e846b8b9d6998914caac8a.js" id="_rotaban_js_5dfe0e1c96e846b8b9d6998914caac8a" type="text/javascript"></script><script src="SSI%20%D0%BD%D0%B0%20%D0%BF%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D0%BA%D0%B5%20_%20htmlbook.ru_files/watch.js" charset="utf-8"></script><style type="text/css">div.rotaban_203480{width:100%;display:block;}div.rotaban_203480 a{width:240px;}div.rotaban_203480 a img{padding:0;}div.rotaban_203480 a em{font-style:normal;}div.rotaban_203480 a.rb_adhere{width:240px;height:400px;border:0px solid #999}div.rotaban_203480 a.rb_adhere:hover{border:0px solid #999}div.rotaban_203480 img.s{height:0;width:0;}html>body div.rotaban_203480 a{}html>body div.rotaban_203480 img{}html>body div.rotaban_203480 a.rb_adhere{}html>body div.rotaban_203480 a.rb_adhere:hover{}html>body div.rotaban_203480 a{display:inline-block;position:relative;vertical-align:top;}div.rotaban_203480 a.rb_adhere{width:240px;height:400px;line-height:3200%;}div.rotaban_203480 a.rb_adhere{width:240px;height:400px;border:0px solid #999}div.rotaban_203480 a.rb_adhere:hover{border:0px solid #999} div.rotaban_203480 img.s{height:0;width:0;}</style><style type="text/css">yatag {
+    display: block !important;
+}
+ .yap-reset,.yap-reset a,.yap-reset img,.yap-reset table,.yap-reset tbody,.yap-reset tr,.yap-reset td {
+    font-size: inherit !important;
+    text-align: left !important;
+    background: transparent none no-repeat scroll 0 0 !important;
+    border: none !important;
+    -webkit-border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+    border-radius: 0 !important;
+    border-spacing: 0 !important;
+    border-collapse: collapse !important;
+    clear: both !important;
+    float: none !important;
+    font-variant: normal !important;
+    font-weight: normal !important;
+    height: auto !important;
+    letter-spacing: normal !important;
+    line-height: normal !important;
+    margin: 0 !important;
+    max-height: none !important;
+    max-width: none !important;
+    min-height: 0 !important;
+    min-width: 0 !important;
+    outline: none !important;
+    padding: 0 !important;
+    position: static !important;
+    text-decoration: none !important;
+    text-indent: 0 !important;
+    text-transform: none !important;
+    vertical-align: baseline !important;
+    visibility: visible !important;
+    word-spacing: normal !important;
+}
+ .yap-reset {
+    white-space: normal !important;
+    width: 100% !important;
+}
+ .yap-reset,.yap-reset a {
+    clear: none !important;
+}
+ .yap-reset yatag table {
+    display: table !important;
+    empty-cells: hide !important;
+    font-size: 100% !important;
+    table-layout: fixed !important;
+}
+ .yap-reset yatag td {
+    display: table-cell !important;
+    font-size: 100% !important;
+    vertical-align: middle !important;
+}
+ .yap-main {
+    position: relative !important;
+    overflow: hidden !important;
+}
+ .yap-list-wrapper {
+    border: 1px solid #dddcda !important;
+    overflow: hidden !important;
+    clear: both !important;
+}
+ .yap-list {
+    width: 100% !important;
+    height: auto !important;
+}
+ .yap-item {
+    height: auto !important;
+    text-align: left !important;
+}
+ .yap-border-type-none .yap-list-wrapper,.yap-border-type-ad .yap-list-wrapper {
+    border-width: 0 !important;
+}
+ .yap-border-type-ad table.yap-list {
+    border-spacing: 0 5px !important;
+    border-collapse: separate !important;
+}
+ .yap-border-type-ad table.yap-list td.yap-item {
+    border: 1px solid #dddcda !important;
+}
+ .yap-border-type-none table.yap-list td.yap-item,.yap-border-type-block table.yap-list td.yap-item {
+    border-width: 0 !important;
+}
+ .yap-border-type-block .yap-logo-text,.yap-border-type-ad .yap-logo-text,.yap-border-type-collapse .yap-logo-text {
+    padding-left: 1px !important;
+}
+ .yap-border-type-none.yap-border-radius-true .yap-list-wrapper,.yap-border-type-block.yap-border-radius-true .yap-list-wrapper,.yap-border-type-collapse.yap-border-radius-true .yap-list-wrapper {
+    -webkit-border-radius: 0 4px 4px 4px !important;
+    -moz-border-radius: 0 4px 4px 4px !important;
+    border-radius: 0 4px 4px 4px !important;
+}
+ .yap-border-type-ad.yap-border-radius-true td.yap-item {
+    -webkit-border-radius: 4px !important;
+    -moz-border-radius: 4px !important;
+    border-radius: 4px !important;
+}
+ .yap-border-type-ad.yap-border-radius-true td.yap-item.yap-item-1 {
+    -webkit-border-radius: 0 4px 4px 4px !important;
+    -moz-border-radius: 0 4px 4px 4px !important;
+    border-radius: 0 4px 4px 4px !important;
+}
+ .yap-logo-transparent-true.yap-border-radius-true.yap-border-type-block .yap-list-wrapper,.yap-logo-transparent-true.yap-border-radius-true.yap-border-type-collapse .yap-list-wrapper {
+    -webkit-border-top-left-radius: 4px !important;
+    -moz-border-top-left-radius: 4px !important;
+    border-top-left-radius: 4px !important;
+}
+ .yap-logo-transparent-true.yap-border-radius-true.yap-border-type-ad td.yap-item.yap-item-1 {
+    -webkit-border-top-left-radius: 4px !important;
+    -moz-border-top-left-radius: 4px !important;
+    border-top-left-radius: 4px !important;
+}
+ .yap-item-inner {
+    padding: 0.7em !important;
+    overflow: hidden !important;
+}
+ .yap-title,.yap-title * {
+    display: inline !important;
+}
+ .yap-title hl {
+    vertical-align: baseline !important;
+}
+ a.yap-title-text {
+    font-weight: normal !important;
+    text-decoration: underline !important;
+    font-size: 130% !important;
+    line-height: 1.1 !important;
+}
+ .yap-links-underline-false a.yap-title-text,.yap-links-underline-false a.yap-title-text:hover {
+    text-decoration: none !important;
+}
+ a.yap-body-text,a.yap-body-text:hover {
+    font-weight: normal !important;
+    line-height: 1.2 !important;
+    text-decoration: none !important;
+}
+ .yap-logo {
+    font-family: Arial, sans-serif !important;
+    position: relative !important;
+    padding-left: 0.7em !important;
+    float: left !important;
+}
+ .yap-logo .yap-logo-arrow {
+    position: absolute !important;
+    left: 100% !important;
+    top: 0 !important;
+    z-index: 1 !important;
+    width: 9px !important;
+    height: 100% !important;
+}
+ a.yap-logo-text {
+    font-family: Arial, sans-serif !important;
+    font-size: 87% !important;
+    padding-right: 4px !important;
+    line-height: 1.4 !important;
+    font-weight: normal !important;
+    text-decoration: none !important;
+}
+ .yap-border-type-none.yap-logo-transparent-true a.yap-logo-text {
+    text-decoration: underline !important;
+}
+ .yap-logo a.yap-logo-text * {
+    font-weight: normal !important;
+    font-style: normal !important;
+    vertical-align: baseline !important;
+}
+ .yap-picture-block {
+    float: left !important;
+    padding-right: 0.38em !important;
+    padding-bottom: 0.38em !important;
+}
+ .yap-picture-block img {
+    display: block !important;
+}
+ .yap-title-block {
+    padding-bottom: 0.23em !important;
+}
+ .yap-links-underline-true .yap-title-block {
+    padding-bottom: 0.38em !important;
+}
+ .yap-title-block a.yap-favicon-inline,.yap-title-block a.yap-favicon-inline:hover {
+    text-decoration: none !important;
+}
+ .yap-title-block .yap-favicon {
+    display: inline-block !important;
+    width: 16px !important;
+    height: 16px !important;
+    margin-top: -0.1em !important;
+    vertical-align: text-top !important;
+}
+ .yap-nobr {
+    white-space: nowrap !important;
+    display: inline !important;
+}
+ .yap-sitelinks {
+    text-align: left !important;
+    padding-top: 0.23em !important;
+}
+ .yap-sitelink {
+    white-space: nowrap !important;
+    vertical-align: middle !important;
+    display: inline-block !important;
+}
+ .yap-sitelinks wbr {
+    display: none !important;
+}
+ a.yap-sitelink-text {
+    white-space: normal !important;
+    font-weight: normal !important;
+    text-decoration: underline !important;
+}
+ .yap-links-underline-false .yap-sitelink-text,.yap-links-underline-false .yap-sitelink-text:hover {
+    text-decoration: none !important;
+}
+ .yap-sitelink-delim {
+    display: inline !important;
+    padding: 0 0.53em !important;
+}
+ .yap-contacts {
+    padding-top: 0.23em !important;
+    line-height: 1.1 !important;
+    font-size: 85% !important;
+}
+ .yap-links-underline-false .yap-contacts {
+    padding-top: 0.15em !important;
+}
+ .yap-contacts a,.yap-links-underline-false .yap-contacts a:hover {
+    font-weight: normal !important;
+    text-decoration: none !important;
+}
+ .yap-contacts a:hover {
+    text-decoration: underline !important;
+}
+ .yap-address,.yap-domain,.yap-region {
+    display: inline-block !important;
+    vertical-align: baseline !important;
+    padding-right: 0.53em !important;
+}
+ .yap-age {
+    display: inline-block !important;
+    font-size: 70% !important;
+    vertical-align: middle !important;
+    border: 1px solid #dddcda !important;
+    -webkit-border-radius: 4px !important;
+    -moz-border-radius: 4px !important;
+    border-radius: 4px !important;
+    padding: 0 0.15em !important;
+    margin-left: 0.23em !important;
+    text-align: center !important;
+    line-height: 1.6 !important;
+    margin-top: -0.2em !important;
+}
+ .yap-warning {
+    clear: both !important;
+    padding: 0.23em 0.35em 0 0 !important;
+}
+ .yap-warning-content {
+    display: block !important;
+    border: 1px solid #dddcda !important;
+    -webkit-border-radius: 4px !important;
+    -moz-border-radius: 4px !important;
+    border-radius: 4px !important;
+    padding: 0.15em 0.3em !important;
+    font-size: 70% !important;
+    line-height: 1 !important;
+}
+ .yap-type-flat .yap-item {
+    border-bottom: 1px solid #dddcda !important;
+    vertical-align: top !important;
+}
+ .yap-type-flat td.yap-item-last {
+    border-bottom-width: 0 !important;
+}
+ .yap-type-flat .yap-title-block,.yap-type-flat .yap-text {
+    display: inline !important;
+}
+ .yap-type-flat .yap-title-block {
+    padding-right: 5px !important;
+}
+ .yap-type-flat .yap-text {
+    padding-top: 0 !important;
+}
+ .yap-type-flat .yap-item-has-picture .yap-warning {
+    clear: none !important;
+    float: left !important;
+    min-width: 80% !important;
+}
+ .yap-type-flat.yap-border-type-ad table.yap-list {
+    margin-top: -5px !important;
+}</style><style type="text/css">#yap-Ya_sync_0-flat .yap-logo-arrow {
+    background: url("data:image/gif,GIF89a%C8%00)%00%80%01%00%DB%D6%C9%FF%FF%FF!%F9%04%01%00%00%01%00%2C%00%00%00%00%C8%00)%00%00%02%AB%84%8F%A9%CB%ED%0F%A3%9C%B4%DA%1B%B2%DE%B7%FB%0F%86%E2%E8lf%40%A6%EA%CA%B6%D2%A9%B9%F2L%D7%14%9C%D9%FA%CE%CBx%0F%0C%0A-%BF%A1%F1%884%C0%92%CC%E6n%E9%8CJY%A7%A9%F5%0A%AAb%B7%DC%17%A7%0B%0E'L%E2%B2%F8kNc%D1%EA%B64%E6%8E%3B%E1%F2%3A2g%CF%0F%F1%FA~%0F%E5%17%A8%03(XhxhF%88%B8(%A2%C8%F8%88%E1%089%E9Ei%E9%25y%A9%89%40%B7%E9%A9%D4%F9%B9%C9%26zIV%3AJ%8A%0A%A9%B5J%D9%EA%FA%08%15%2B%0BK%7BXt%8B%98%AB%5B%88%93%D9%AB%F7%1B%EC%3BL%1C%F8%1BP%00%00%3B") 100% 50% no-repeat scroll transparent !important;
+}
+ #yap-Ya_sync_0-flat .yap-logo-bg-color {
+    background: #DBD6C9 !important;
+}
+ #yap-Ya_sync_0-flat .yap-logo-color {
+    color: #000 !important;
+}
+ #yap-Ya_sync_0-flat .yap-title-color {
+    color: #1D67A4 !important;
+}
+ #yap-Ya_sync_0-flat .yap-sitelinks-color {
+    color: #1D67A4 !important;
+}
+ #yap-Ya_sync_0-flat .yap-hover-color:hover {
+    color: #BD2026 !important;
+}
+ #yap-Ya_sync_0-flat .yap-text-color {
+    color: #000000 !important;
+}
+ #yap-Ya_sync_0-flat .yap-url-color {
+    color: #1D67A4 !important;
+}
+ #yap-Ya_sync_0-flat .yap-border-color {
+    border-color: #DBD6C9 !important;
+}
+ #yap-Ya_sync_0-flat .yap-bg-color {
+    background-color: #F8F6F0 !important;
+}
+ #yap-Ya_sync_0-flat .yap-warning-colors {
+    border: 1px solid #D2D1CC !important;
+    background-color: #FDFDFC !important;
+}
+ #yap-Ya_sync_0-flat .yap-font-size {
+    font-size: 80% !important;
+}
+ #yap-Ya_sync_0-flat .yap-title-font-size {
+    font-size: 144% !important;
+}</style><script src="SSI%20%D0%BD%D0%B0%20%D0%BF%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D0%BA%D0%B5%20_%20htmlbook.ru_files/embed.js" async="" type="text/javascript"></script><style type="text/css">.gscb_a{display:inline-block;font:27px/13px arial,sans-serif}.gsst_a .gscb_a{color:#a1b9ed;cursor:pointer}.gsst_a:hover .gscb_a,.gsst_a:focus .gscb_a{color:#36c}.gsst_a{display:inline-block}.gsst_a{cursor:pointer;padding:0 4px}.gsst_a:hover{text-decoration:none!important}.gsst_b{font-size:16px;padding:0 2px;position:relative;user-select:none;-moz-user-select:none;white-space:nowrap}.gsst_e{opacity:0.55;}.gsst_a:hover .gsst_e,.gsst_a:focus .gsst_e{opacity:0.72;}.gsst_a:active .gsst_e{opacity:1;}.gsst_f{background:white;text-align:left}.gsst_g{background-color:white;border:1px solid #ccc;border-top-color:#d9d9d9;box-shadow:0 2px 4px rgba(0,0,0,0.2);-moz-box-shadow:0 2px 4px rgba(0,0,0,0.2);margin:-1px -3px;padding:0 6px}.gsst_h{background-color:white;height:1px;margin-bottom:-1px;position:relative;top:-1px}.gsib_a{width:100%;padding:4px 6px 0}.gsib_a,.gsib_b{vertical-align:top}.gssb_c{border:0;position:absolute;z-index:989}.gssb_e{border:1px solid #ccc;border-top-color:#d9d9d9;box-shadow:0 2px 4px rgba(0,0,0,0.2);-moz-box-shadow:0 2px 4px rgba(0,0,0,0.2);cursor:default}.gssb_f{visibility:hidden;white-space:nowrap}.gssb_k{border:0;display:block;position:absolute;top:0;z-index:988}.gsdd_a{border:none!important}.gscsep_a{display:none}.gsq_a{padding:0}.gssb_a{padding:0 7px}.gssb_a,.gssb_a td{white-space:nowrap;overflow:hidden;line-height:22px}#gssb_b{font-size:11px;color:#36c;text-decoration:none}#gssb_b:hover{font-size:11px;color:#36c;text-decoration:underline}.gssb_g{text-align:center;padding:8px 0 7px;position:relative}.gssb_h{font-size:15px;height:28px;margin:0.2em}.gssb_i{background:#eee}.gss_ifl{visibility:hidden;padding-left:5px}.gssb_i .gss_ifl{visibility:visible}a.gssb_j{font-size:13px;color:#36c;text-decoration:none;line-height:100%}a.gssb_j:hover{text-decoration:underline}.gssb_l{height:1px;background-color:#e5e5e5}.gssb_m{color:#000;background:#fff}.gsfe_a{border:1px solid #b9b9b9;border-top-color:#a0a0a0;box-shadow:inset 0px 1px 2px rgba(0,0,0,0.1);-moz-box-shadow:inset 0px 1px 2px rgba(0,0,0,0.1);-webkit-box-shadow:inset 0px 1px 2px rgba(0,0,0,0.1);}.gsfe_b{border:1px solid #4d90fe;outline:none;box-shadow:inset 0px 1px 2px rgba(0,0,0,0.3);-moz-box-shadow:inset 0px 1px 2px rgba(0,0,0,0.3);-webkit-box-shadow:inset 0px 1px 2px rgba(0,0,0,0.3);}.gssb_a{padding:0 2px}.gssb_e{border:0}.gssb_l{margin:5px 0}.gssb_c .gsc-completion-container{position:static}.gssb_c{z-index:5000}.gsc-completion-container table{background:transparent;font-size:inherit;font-family:inherit}.gssb_c > tbody > tr,.gssb_c > tbody > tr > td,.gssb_d,.gssb_d > tbody > tr,.gssb_d > tbody > tr > td,.gssb_e,.gssb_e > tbody > tr,.gssb_e > tbody > tr > td{padding:0;margin:0;border:0}.gssb_a table,.gssb_a table tr,.gssb_a table tr td{padding:0;margin:0;border:0}</style><style type="text/css">.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}.fb_link img{border:none}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_reset .fb_dialog_legacy{overflow:visible}.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}.fb_dialog_content{background:#fff;color:#333}.fb_dialog_close_icon{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;_background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif);cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent;_background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif)}.fb_dialog_close_icon:active{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent;_background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif)}.fb_dialog_loader{background-color:#f2f2f2;border:1px solid #606060;font-size:24px;padding:20px}.fb_dialog_top_left,.fb_dialog_top_right,.fb_dialog_bottom_left,.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}.fb_dialog_top_left{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}.fb_dialog_top_right{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}.fb_dialog_bottom_left{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}.fb_dialog_bottom_right{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}.fb_dialog_vert_left,.fb_dialog_vert_right,.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}.fb_dialog_vert_left,.fb_dialog_vert_right{width:10px;height:100%}.fb_dialog_vert_left{margin-left:-10px}.fb_dialog_vert_right{right:0;margin-right:-10px}.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{width:100%;height:10px}.fb_dialog_horiz_top{margin-top:-10px}.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #3b5998;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}body.fb_hidden{-webkit-transform:none;height:100%;margin:0;overflow:visible;position:absolute;top:-10000px;left:0;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{max-height:590px;min-height:590px;max-width:500px;min-width:500px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;left:0;top:0;width:100%;min-height:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#4966A6), color-stop(.5, #355492), to(#2A4887));border:1px solid #29447e;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset, rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #555;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f2f2f2;border:1px solid #555;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}
+.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_lift{z-index:1}.fb_hide_iframes iframe{position:relative;left:-10000px}.fb_iframe_widget_loader{position:relative;display:inline-block}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}.fb_iframe_widget_loader .FB_Loader{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/y9/r/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50%;z-index:4}
+.fb_connect_bar_container div,.fb_connect_bar_container span,.fb_connect_bar_container a,.fb_connect_bar_container img,.fb_connect_bar_container strong{background:none;border-spacing:0;border:0;direction:ltr;font-style:normal;font-variant:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal;vertical-align:baseline}.fb_connect_bar_container{position:fixed;left:0 !important;right:0 !important;height:42px !important;padding:0 25px !important;margin:0 !important;vertical-align:middle !important;border-bottom:1px solid #333 !important;background:#3b5998 !important;z-index:99999999 !important;overflow:hidden !important}.fb_connect_bar_container_ie6{position:absolute;top:expression(document.compatMode=="CSS1Compat"? document.documentElement.scrollTop+"px":body.scrollTop+"px")}.fb_connect_bar{position:relative;margin:auto;height:100%;width:100%;padding:6px 0 0 0 !important;background:none;color:#fff !important;font-family:"lucida grande", tahoma, verdana, arial, sans-serif !important;font-size:13px !important;font-style:normal !important;font-variant:normal !important;font-weight:normal !important;letter-spacing:normal !important;line-height:1 !important;text-decoration:none !important;text-indent:0 !important;text-shadow:none !important;text-transform:none !important;white-space:normal !important;word-spacing:normal !important}.fb_connect_bar a:hover{color:#fff}.fb_connect_bar .fb_profile img{height:30px;width:30px;vertical-align:middle;margin:0 6px 5px 0}.fb_connect_bar div a,.fb_connect_bar span,.fb_connect_bar span a{color:#bac6da;font-size:11px;text-decoration:none}.fb_connect_bar .fb_buttons{float:right;margin-top:7px}
+.fbpluginrecommendationsbarleft,.fbpluginrecommendationsbarright{position:fixed !important;bottom:0;z-index:999}.fbpluginrecommendationsbarleft{left:10px}.fbpluginrecommendationsbarright{right:10px}</style></head>
+	<body data-savefrom-link-count="78" data-twttr-rendered="true">
+		<header>
+			<a href="http://htmlbook.ru/" rel="home"><img src="SSI%20%D0%BD%D0%B0%20%D0%BF%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D0%BA%D0%B5%20_%20htmlbook.ru_files/logo.png" alt="htmlbook.ru" class="logo" height="66" width="184"></a>
+			<nav>
+			<ul id="topmenu">
+				<li class="hide"><a href="#main"><i class="icon icon-main"></i><br>Основное</a></li>
+				<li class="hide"><a href="#html"><i class="icon icon-html"></i><br>HTML</a></li>
+				<li class="hide"><a href="#css"><i class="icon icon-css"></i><br>CSS</a></li>
+				<li class="show"><a href="#site"><i class="icon icon-site"></i><br>Сайт</a></li>
+			</ul>
+
+			<div id="main" class="tile hide">
+				<ul>
+					<li><a href="http://htmlbook.ru/content">Статьи</a></li>
+					<li><a href="http://htmlbook.ru/blog">Блог</a></li>
+					<li><a href="http://htmlbook.ru/practical">Практикум</a></li>
+					<li><a href="http://htmlbook.ru/test">Тесты</a></li>
+					<li><a href="http://htmlforum.ru/" rel="nofollow">Форум</a></li>
+				</ul>
+			</div>
+			<div id="html" class="tile hide">
+				<ul>
+					<li><a href="http://htmlbook.ru/samhtml">Самоучитель HTML</a></li>
+					<li><a href="http://htmlbook.ru/html">Справочник по HTML</a></li>
+					<li><a href="http://htmlbook.ru/xhtml">XHTML</a></li>
+					<li><a href="http://htmlbook.ru/html5">HTML5</a></li>
+				</ul>
+			</div>
+			<div id="css" class="tile hide">
+				<ul>
+					<li><a href="http://htmlbook.ru/samcss">Самоучитель CSS</a></li>
+					<li><a href="http://htmlbook.ru/css">Справочник по CSS</a></li>
+					<li><a href="http://htmlbook.ru/faq">Рецепты CSS</a></li>
+					<li><a href="http://htmlbook.ru/css3">CSS3</a></li>
+				</ul>
+			</div>
+			<div id="site" class="tile show">
+				<ul>
+					<li><a href="http://htmlbook.ru/samlayout">Вёрстка веб-страниц</a></li>
+					<li><a href="http://htmlbook.ru/layout">Макеты</a></li>
+					<li><a href="http://htmlbook.ru/webserver" class="active">Веб-сервер</a></li>
+				</ul>
+			</div>
+			</nav>
+			<script src="SSI%20%D0%BD%D0%B0%20%D0%BF%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D0%BA%D0%B5%20_%20htmlbook.ru_files/jsapi"></script>
+			<script>
+				google.load('search', '1');
+				google.setOnLoadCallback(function() {
+				google.search.CustomSearchControl.attachAutoCompletion(
+					'partner-pub-0708135098984815:pmy83axen1s',
+					document.getElementById('q'), 'cse-search-box');
+				});
+			</script><script src="SSI%20%D0%BD%D0%B0%20%D0%BF%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D0%BA%D0%B5%20_%20htmlbook.ru_files/a" type="text/javascript"></script><link href="SSI%20%D0%BD%D0%B0%20%D0%BF%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D0%BA%D0%B5%20_%20htmlbook.ru_files/defaultru.css" type="text/css" rel="stylesheet"><script src="SSI%20%D0%BD%D0%B0%20%D0%BF%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D0%BA%D0%B5%20_%20htmlbook.ru_files/defaultru.js" type="text/javascript"></script>			
+			<form action="/search/" id="cse-search-box">
+				<input style="outline: medium none;" spellcheck="false" dir="ltr" name="as_q" id="q" autocomplete="off" placeholder="Поиск по сайту" autofocus="" type="text"><input src="SSI%20%D0%BD%D0%B0%20%D0%BF%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D0%BA%D0%B5%20_%20htmlbook.ru_files/find.png" alt="Найти" class="find" type="image">
+				<input name="cx" value="partner-pub-0708135098984815:pmy83axen1s" type="hidden">
+				<input name="cof" value="FORID:9" type="hidden">
+				<input name="ie" value="UTF-8" type="hidden">
+			</form>
+		</header>
+
+		<form action="/example/" method="post" id="codeform"><input id="codetext" name="codetext" value="" type="hidden"></form>
+		
+				<div class="layout">
+			<aside>
+					<div id="block-28" class="block">
+				<div class="block_content ">
+			    <form action="http://htmlbook.ru/sites/search/" id="filter">
+      <input autocomplete="off" name="q" id="ac" placeholder="Тег HTML или св-во CSS" type="search"><input src="SSI%20%D0%BD%D0%B0%20%D0%BF%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D0%BA%D0%B5%20_%20htmlbook.ru_files/find.png" alt="Найти" class="find" type="image">
+    </form>		</div>
+	</div>
+	<div id="book-navigation" class="block">
+		<h2 class="block_title">Содержание</h2>		<div class="block_content ">
+			<ul class="menu"><li class="first leaf"><a href="http://htmlbook.ru/webserver/appserv">AppServ</a></li>
+<li class="leaf"><a href="http://htmlbook.ru/webserver/vertrigoserv">VertrigoServ</a></li>
+<li class="leaf"><a href="http://htmlbook.ru/webserver/xampp">XAMPP</a></li>
+<li class="leaf"><a href="http://htmlbook.ru/webserver/openserver">OpenServer</a></li>
+<li class="leaf"><a href="http://htmlbook.ru/lokalnyy-veb-server/endels">Endels</a></li>
+<li class="last expanded active-trail"><a href="http://htmlbook.ru/webserver/ssi" class="active-trail">SSI</a><ul class="menu"><li class="first leaf"><a href="http://htmlbook.ru/webserver/ssi/direktivy-ssi">Директивы SSI</a></li>
+<li class="leaf"><a href="http://htmlbook.ru/webserver/ssi/peremennye-okruzheniya">Переменные окружения</a></li>
+<li class="leaf"><a href="http://htmlbook.ru/webserver/ssi/uslovnye-vyrazheniya">Условные выражения</a></li>
+<li class="last leaf active-trail"><a href="http://htmlbook.ru/webserver/ssi/ssi-na-praktike" class="active-trail active">SSI на практике<span style="border-width: 11.5px 6px;" class="pointer"></span></a></li>
+</ul></li>
+</ul>		</div>
+	</div>
+					<div id="block-24" class="block">
+				<div class="block_content ">
+			<div id="MarketGidScriptRootC7954">
+<div style="display: none;" id="MarketGidPreloadC7954"></div>
+<script> 
+(function(){
+var D=new Date(),d=document,b='body',ce='createElement',ac='appendChild',st='style',ds='display',n='none',gi='getElementById';
+var i=d[ce]('iframe');i[st][ds]=n;d[gi]("MarketGidScriptRootC7954")[ac](i);try{var iw=i.contentWindow.document;iw.open();iw.writeln("<ht"+"ml><body></body></ht"+"ml>");iw.close();var c=iw[b];}
+catch(e){var iw=d;var c=d[gi]("MarketGidScriptRootC7954");}var dv=iw[ce]('div');dv.id="MG_ID";dv[st][ds]=n;dv.innerHTML=7954;c[ac](dv);
+var s=iw[ce]('script');s.async='async';s.defer='defer';s.charset='utf-8';s.src="http://jsc.dt00.net/h/t/htmlbook.ru.7954.js?t="+D.getYear()+D.getMonth()+D.getDate()+D.getHours();c[ac](s);})();
+</script><iframe style="display: none;"></iframe>
+<div id="MarketGidComposite7954"><table class="mctable"> <tbody><tr> <td class="mcteaser" style="width:100%; height:100%;" valign="top"> <table style="width:100%; height:100%;" cellpadding="0" cellspacing="1"> <tbody><tr><td style="width:100%;" class="mccc" valign="top"><div class="mcdesc"><a target="_blank" href="http://marketgid.com/ghits/3173781/i/6107/0/pp/1/4/#k7954?h=yG85umvt2ehewpsxrSOVttq_fG-4EfhCTdk_au6rf82usdNliRijBgnuSRvQPiWz" class="mcdesc">Не путать с дешевыми ...</a></div><div class="mcimage"><a target="_blank" href="http://marketgid.com/ghits/3173781/i/6107/0/pp/1/4/#k7954?h=yG85umvt2ehewpsxrSOVttq_fG-4EfhCTdk_au6rf82usdNliRijBgnuSRvQPiWz"><img class="mcimage" src="SSI%20%D0%BD%D0%B0%20%D0%BF%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D0%BA%D0%B5%20_%20htmlbook.ru_files/3173781_vb.jpg" height="200" width="200"></a></div></td></tr><tr><td style="height:100%;" class="mcbc" colspan="1" valign="top"><div class="mctitle"><a target="_blank" href="http://marketgid.com/ghits/3173781/i/6107/0/pp/1/4/#k7954?h=yG85umvt2ehewpsxrSOVttq_fG-4EfhCTdk_au6rf82usdNliRijBgnuSRvQPiWz" class="mctitle">Смартфон AGM Rock V5+ ...</a></div></td></tr></tbody></table></td>  </tr> </tbody></table></div><script src="SSI%20%D0%BD%D0%B0%20%D0%BF%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D0%BA%D0%B5%20_%20htmlbook.ru_files/4.js" charset="utf-8" type="text/javascript"></script><style type="text/css">#MarketGidComposite7954 .mctable, #MarketGidComposite7954 .mctable * {margin:0; padding:0; border:0; font-style:normal; font-size:100.01%; line-height:1; text-decoration:none; color:#000; line-height:1.1em;} #MarketGidComposite7954 .mctable{border-spacing:2px; margin:auto !important; font:11px Tahoma, Verdana, Arial;} #MarketGidComposite7954 .mctable{ font-family: Arial,Arial,Helvetica,sans-serif; width: 200px; border-width: 0px; border-style: solid; border-color: #808080; } #MarketGidComposite7954 .mctable *{ letter-spacing: 0em; } #MarketGidComposite7954 .mctitle{ font-weight: bold; font-size: 12px; color: #EEDFAC; } #MarketGidComposite7954 div.mctitle{ text-align: center; } #MarketGidComposite7954 .mctitle *, #MarketGidComposite7954 .mctitle cite{ color: #EEDFAC; } #MarketGidComposite7954 div.mcimage{ text-align: center; } #MarketGidComposite7954 .mcimage{ padding: 5px; } #MarketGidComposite7954 div.mcdesc{ text-align: center; } #MarketGidComposite7954 .mcdesc{ font-size: 12px; color: #ffffff; } #MarketGidComposite7954 .mcdesc *, #MarketGidComposite7954 .mcdesc cite{ color: #ffffff; } #MarketGidComposite7954 .mcprice{ font-weight: bold; color: #ff0000; font-size: 16px; } #MarketGidComposite7954 .mcprice *, #MarketGidComposite7954 .mcprice cite{ color: #ff0000; } #MarketGidComposite7954 div.mcprice{ text-align: center; } #MarketGidComposite7954 .mcpriceold{ text-decoration: line-through; font-weight: bold; color: #f00; margin: 0+0+0+50%; } #MarketGidComposite7954 .mcpriceold *, #MarketGidComposite7954 .mcpriceold cite{ color: #f00; } #MarketGidComposite7954 .mcdiscount{ font-weight: bold; color: #f00; display: none; } #MarketGidComposite7954 .mcdiscount *, #MarketGidComposite7954 .mcdiscount cite{ color: #f00; } #MarketGidComposite7954 div.mcsource{ text-align: center; } #MarketGidComposite7954 .mcsource{ color: #ffffff; font-size: 11px; } #MarketGidComposite7954 .mcsource *, #MarketGidComposite7954 .mcsource cite{ color: #ffffff; } #MarketGidComposite7954 .mcteaser{ padding: 0px; border-width: 0px; border-style: solid; text-align: left; } #MarketGidComposite7954 .mccc{ padding: 0px; border-width: 0px; border-style: solid; } #MarketGidComposite7954 .mcrc{ padding: 0px; } #MarketGidComposite7954 .mctc{ padding: 0px; border-width: 0px; border-style: solid; } #MarketGidComposite7954 .mcbc{ padding: 0px; } </style></div>		</div>
+	</div>
+	<div id="block-6" class="block">
+				<div class="block_content ">
+			<script type="text/javascript">
+<!--
+var _acic={dataProvider:10};(function(){var e=document.createElement("script");e.type="text/javascript";e.async=true;e.src="//www2.acint.net/aci.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})()
+//-->
+</script>		</div>
+	</div>
+			</aside>
+				<div id="block-16" class="block">
+				<div class="block_content ">
+			<object type="application/x-shockwave-flash" data="SSI%20%D0%BD%D0%B0%20%D0%BF%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D0%BA%D0%B5%20_%20htmlbook.ru_files/webformyself.swf" height="90" width="700"> 
+<param name="movie" value="/files/webformyself.swf">
+<param name="quality" value="high">
+<param name="wmode" value="transparent">
+<param name="allowScriptAccess" value="always"></object>		</div>
+	</div>
+			<div id="sidebar">
+									<div id="block-10" class="block">
+				<div class="block_content ">
+			<div id="rotaban_203480" class="rotaban_203480 rotaban"><a href="http://www.di-net.ru/collocation/" onclick="_rotaban.rocks('click', '20704', '203480');" class="rb_ad1 odd" title="Размещение (colocation) и Аренда серверов" id="rb_20704" target="_blank"><img src="SSI%20%D0%BD%D0%B0%20%D0%BF%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D0%BA%D0%B5%20_%20htmlbook.ru_files/c00ebff2-3e1f-4f63-9f69-4b2798c76c81.gif" alt="Размещение (colocation) и Аренда серверов" height="400" width="240"></a></div>		</div>
+	</div>
+	<div id="block-15" class="block">
+				<div class="block_content ">
+			<b style="display:block;font-size:12px;padding:0 0 10px 0"><a href="http://www.realwatch.ru/">﻿﻿ ﻿ Копии швейцарских часов</a> </b>Вам поможет наш магазин. Разнообразные Марки  <a style="color:#103399" href="http://www.realwatch.ru/">швейцарских часов</a> и новейшие их модели представлены в нашем магазине в виде точнейших копий.		</div>
+	</div>
+			</div>			
+			<div id="content" class="three-col">
+								
+								<div class="tabs">
+				
+				</div>
+								<h1 class="title">SSI на практике</h1>
+				﻿		<div id="like">
+			<div class="num_comments"><a href="#disqus_thread">1 комментарий</a></div>
+			<div class=" fb_reset" id="fb-root"><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe src="SSI%20%D0%BD%D0%B0%20%D0%BF%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D0%BA%D0%B5%20_%20htmlbook.ru_files/oDB-fAAStWy.htm" style="border: medium none;" tabindex="-1" title="Facebook Cross Domain Communication Frame" aria-hidden="true" id="fb_xdm_frame_http" scrolling="no" allowtransparency="true" name="fb_xdm_frame_http" frameborder="0"></iframe><iframe src="SSI%20%D0%BD%D0%B0%20%D0%BF%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D0%BA%D0%B5%20_%20htmlbook.ru_files/oDB-fAAStWy_002.htm" style="border: medium none;" tabindex="-1" title="Facebook Cross Domain Communication Frame" aria-hidden="true" id="fb_xdm_frame_https" scrolling="no" allowtransparency="true" name="fb_xdm_frame_https" frameborder="0"></iframe></div></div><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div></div></div></div>
+			<div fb-iframe-plugin-query="app_id=&amp;font=arial&amp;href=http%3A%2F%2Fhtmlbook.ru%2Fwebserver%2Fssi%2Fssi-na-praktike&amp;layout=button_count&amp;locale=ru_RU&amp;sdk=joey&amp;show_faces=false&amp;width=450" fb-xfbml-state="rendered" class="fb-like fb_iframe_widget" data-layout="button_count" data-width="450" data-show-faces="false" data-font="arial"><span style="vertical-align: bottom; width: 103px; height: 20px;"><iframe class="" src="SSI%20%D0%BD%D0%B0%20%D0%BF%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D0%BA%D0%B5%20_%20htmlbook.ru_files/like.htm" style="border: medium none; visibility: visible; width: 103px; height: 20px;" title="fb:like Facebook Social Plugin" scrolling="no" allowtransparency="true" name="f25621a39abc49" frameborder="0" height="1000px" width="450px"></iframe></span></div>
+			<iframe style="width: 131px; height: 20px;" data-twttr-rendered="true" title="Twitter Tweet Button" class="twitter-share-button twitter-tweet-button twitter-share-button twitter-count-horizontal" src="SSI%20%D0%BD%D0%B0%20%D0%BF%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D0%BA%D0%B5%20_%20htmlbook.ru_files/tweet_button.htm" allowtransparency="true" scrolling="no" id="twitter-widget-0" frameborder="0"></iframe>
+			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+			<script>
+				var disqus_shortname = 'htmlbook';
+				(function () {
+					var s = document.createElement('script'); s.async = true;
+					s.type = 'text/javascript';
+					s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+					(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+				}());
+			</script>
+		</div>					<div id="system-main" class="block">
+				<div class="block_content ">
+			<div class="info"><p class="date"><time datetime="2011-09-25">25.09.2011</time></p><p class="author">Влад Мержевич</p></div>
+<div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>SSI
+ используется не только для вывода каких-либо значений, но и для 
+упрощения построения сайта и добавления некоторых удобных вещей, которых
+ лишён HTML. Рассмотрим некоторые примеры применения SSI в деле.</p><!--break-->
+<h2>Ссылка на главную страницу</h2>
+<p> Обычно ссылку на главной странице на саму себя не делают, чтобы не 
+сбивать пользователей с толку. При этом на остальных страницах такая 
+ссылка есть и она ставится на заголовок сайта. Пусть файл с главной 
+страницей называется index.shtml, тогда нам надо определить, не 
+совпадает ли имя открытого документа с этим и в зависимости от 
+совпадения решаем, делать или нет ссылку. В примере&nbsp;1 переменная 
+DOCUMENT_URI сравнивается со значением <span class="value">/index.shtml</span> и если оно не равно, иными словами, у нас любая страница кроме главной, тогда картинку делаем ссылкой. </p>
+<p class="exampleTitle2">Пример 1. Главная страница</p>
+
+<pre style="display: none;"><code class="no-buttons">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+ &lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;SSI&lt;/title&gt;
+ &lt;/head&gt;
+ &lt;body&gt;
+  &lt;!--#if expr="($DOCUMENT_URI != \"/index.shtml\")"--&gt;
+   &lt;a href="/"&gt;&lt;img src="logo.gif" alt="Логотип"&gt;&lt;/a&gt;
+  &lt;!--#else--&gt;
+   &lt;img src="logo.gif" alt="Логотип"&gt;
+  &lt;!--endif--&gt;
+ &lt;/body&gt;
+&lt;/html&gt;</code></pre><pre><code class="no-buttons html"><span class="doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;<span class="keyword">html</span>&gt;</span>
+ <span class="tag">&lt;<span class="keyword">head</span>&gt;</span>
+  <span class="tag">&lt;<span class="keyword">meta</span><span class="attribute"> charset=<span class="value">"utf-8"</span></span>&gt;</span>
+  <span class="tag">&lt;<span class="keyword">title</span>&gt;</span>SSI<span class="tag">&lt;/<span class="keyword">title</span>&gt;</span>
+ <span class="tag">&lt;/<span class="keyword">head</span>&gt;</span>
+ <span class="tag">&lt;<span class="keyword">body</span>&gt;</span>
+  <span class="comment">&lt;!--#if expr="($DOCUMENT_URI != \"/index.shtml\")"--&gt;</span>
+   <span class="tag">&lt;<span class="keyword">a</span><span class="attribute"> href=<span class="value">"/"</span></span>&gt;</span><span class="tag">&lt;<span class="keyword">img</span><span class="attribute"> src=<span class="value">"logo.gif"</span></span><span class="attribute"> alt=<span class="value">"Логотип"</span></span>&gt;</span><span class="tag">&lt;/<span class="keyword">a</span>&gt;</span>
+  <span class="comment">&lt;!--#else--&gt;</span>
+   <span class="tag">&lt;<span class="keyword">img</span><span class="attribute"> src=<span class="value">"logo.gif"</span></span><span class="attribute"> alt=<span class="value">"Логотип"</span></span>&gt;</span>
+  <span class="comment">&lt;!--endif--&gt;</span>
+ <span class="tag">&lt;/<span class="keyword">body</span>&gt;</span>
+<span class="tag">&lt;/<span class="keyword">html</span>&gt;</span></code></pre>
+
+<h2>Определение Internet Explorer</h2>
+<p>В некоторых случаях для браузера Internet Explorer необходимо 
+загружать отдельный код, который отличается для других браузеров. Тогда 
+используем переменную HTTP_USER_AGENT и сравниваем её со значением MSIE.
+ Обратите внимание, что если просто вывести HTTP_USER_AGENT, то текст 
+будет совсем другой. В примере&nbsp;2 показано, как задать один текст 
+для всех версий IE и другой для остальных браузеров.</p>
+<p class="exampleTitle2">Пример 2. Определение IE</p>
+<pre style="display: none;"><code class="no-buttons">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+ &lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;SSI&lt;/title&gt;
+ &lt;/head&gt;
+ &lt;body&gt;
+  &lt;!--#if expr="$HTTP_USER_AGENT = /MSIE/"--&gt;
+   &lt;p&gt;Ваш браузер устарел, пожалуйста, замените Internet Explorer на другой.&lt;/p&gt;
+  &lt;!--#else--&gt;
+   &lt;p&gt;Добро пожаловать на сайт!&lt;/p&gt;
+  &lt;!--endif--&gt;
+ &lt;/body&gt;
+&lt;/html&gt;</code></pre><pre><code class="no-buttons html"><span class="doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;<span class="keyword">html</span>&gt;</span>
+ <span class="tag">&lt;<span class="keyword">head</span>&gt;</span>
+  <span class="tag">&lt;<span class="keyword">meta</span><span class="attribute"> charset=<span class="value">"utf-8"</span></span>&gt;</span>
+  <span class="tag">&lt;<span class="keyword">title</span>&gt;</span>SSI<span class="tag">&lt;/<span class="keyword">title</span>&gt;</span>
+ <span class="tag">&lt;/<span class="keyword">head</span>&gt;</span>
+ <span class="tag">&lt;<span class="keyword">body</span>&gt;</span>
+  <span class="comment">&lt;!--#if expr="$HTTP_USER_AGENT = /MSIE/"--&gt;</span>
+   <span class="tag">&lt;<span class="keyword">p</span>&gt;</span>Ваш браузер устарел, пожалуйста, замените Internet Explorer на другой.<span class="tag">&lt;/<span class="keyword">p</span>&gt;</span>
+  <span class="comment">&lt;!--#else--&gt;</span>
+   <span class="tag">&lt;<span class="keyword">p</span>&gt;</span>Добро пожаловать на сайт!<span class="tag">&lt;/<span class="keyword">p</span>&gt;</span>
+  <span class="comment">&lt;!--endif--&gt;</span>
+ <span class="tag">&lt;/<span class="keyword">body</span>&gt;</span>
+<span class="tag">&lt;/<span class="keyword">html</span>&gt;</span></code></pre>
+<h2>Создание шаблона</h2>
+<p>Все страницы сайта строятся, как правило, по одному шаблону и имеют 
+некоторые повторяющиеся элементы вроде шапки и подвала. Чтобы не 
+повторять их в каждом HTML-документе, их код можно вынести в отдельный 
+файл и подключать одной строкой. Это позволяет не редактировать десятки 
+файлов, а ограничиться всего одним.</p>
+<p>Предположим, что типовой документ на сайте имеет структуру, показанную в примере&nbsp;3. Различаться будет только содержимое <span class="tag">&lt;article&gt;</span>, а всё остальное кочует из файла в файл.</p>
+<p class="exampleTitle2">Пример 3. Типовой файл</p>
+<pre style="display: none;"><code class="no-buttons">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+ &lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;SSI&lt;/title&gt;
+  &lt;!-- Стилевые файлы и скрипты --&gt;
+ &lt;/head&gt;
+ &lt;body&gt;
+  &lt;header&gt;Шапка сайта&lt;/header&gt;
+  &lt;article&gt;Содержание текущего документа&lt;/article&gt;
+  &lt;aside&gt;Боковая панель&lt;/aside&gt;
+  &lt;footer&gt;Подвал&lt;/footer&gt;
+ &lt;/body&gt;
+&lt;/html&gt;</code></pre><pre><code class="no-buttons html"><span class="doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;<span class="keyword">html</span>&gt;</span>
+ <span class="tag">&lt;<span class="keyword">head</span>&gt;</span>
+  <span class="tag">&lt;<span class="keyword">meta</span><span class="attribute"> charset=<span class="value">"utf-8"</span></span>&gt;</span>
+  <span class="tag">&lt;<span class="keyword">title</span>&gt;</span>SSI<span class="tag">&lt;/<span class="keyword">title</span>&gt;</span>
+  <span class="comment">&lt;!-- Стилевые файлы и скрипты --&gt;</span>
+ <span class="tag">&lt;/<span class="keyword">head</span>&gt;</span>
+ <span class="tag">&lt;<span class="keyword">body</span>&gt;</span>
+  <span class="tag">&lt;<span class="keyword">header</span>&gt;</span>Шапка сайта<span class="tag">&lt;/<span class="keyword">header</span>&gt;</span>
+  <span class="tag">&lt;<span class="keyword">article</span>&gt;</span>Содержание текущего документа<span class="tag">&lt;/<span class="keyword">article</span>&gt;</span>
+  <span class="tag">&lt;<span class="keyword">aside</span>&gt;</span>Боковая панель<span class="tag">&lt;/<span class="keyword">aside</span>&gt;</span>
+  <span class="tag">&lt;<span class="keyword">footer</span>&gt;</span>Подвал<span class="tag">&lt;/<span class="keyword">footer</span>&gt;</span>
+ <span class="tag">&lt;/<span class="keyword">body</span>&gt;</span>
+<span class="tag">&lt;/<span class="keyword">html</span>&gt;</span></code></pre> 
+<p>Чтобы не писать каждый раз одно и то же, вынесем похожие фрагменты в 
+текстовые файлы и поместим их в папку assets. Тогда шаблон будет иметь 
+вид, как показано в примере&nbsp;4.
+</p>
+<p class="exampleTitle2">Пример 4. Шаблон</p>
+<pre style="display: none;"><code class="no-buttons">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+ &lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;SSI&lt;/title&gt;
+  &lt;!--#include virtual="/assets/link.txt"--&gt;
+ &lt;/head&gt;
+ &lt;body&gt;
+  &lt;!--#include virtual="/assets/header.shtml"--&gt;
+  &lt;article&gt;Содержание текущего документа&lt;/article&gt;
+  &lt;!--#include virtual="/assets/aside.shtml"--&gt;
+  &lt;!--#include virtual="/assets/footer.txt"--&gt;
+ &lt;/body&gt;
+&lt;/html&gt;</code></pre><pre><code class="no-buttons html"><span class="doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;<span class="keyword">html</span>&gt;</span>
+ <span class="tag">&lt;<span class="keyword">head</span>&gt;</span>
+  <span class="tag">&lt;<span class="keyword">meta</span><span class="attribute"> charset=<span class="value">"utf-8"</span></span>&gt;</span>
+  <span class="tag">&lt;<span class="keyword">title</span>&gt;</span>SSI<span class="tag">&lt;/<span class="keyword">title</span>&gt;</span>
+  <span class="comment">&lt;!--#include virtual="/assets/link.txt"--&gt;</span>
+ <span class="tag">&lt;/<span class="keyword">head</span>&gt;</span>
+ <span class="tag">&lt;<span class="keyword">body</span>&gt;</span>
+  <span class="comment">&lt;!--#include virtual="/assets/header.shtml"--&gt;</span>
+  <span class="tag">&lt;<span class="keyword">article</span>&gt;</span>Содержание текущего документа<span class="tag">&lt;/<span class="keyword">article</span>&gt;</span>
+  <span class="comment">&lt;!--#include virtual="/assets/aside.shtml"--&gt;</span>
+  <span class="comment">&lt;!--#include virtual="/assets/footer.txt"--&gt;</span>
+ <span class="tag">&lt;/<span class="keyword">body</span>&gt;</span>
+<span class="tag">&lt;/<span class="keyword">html</span>&gt;</span></code></pre>
+<p>Обратите внимание, что файлs header.shtml и aside.shtml имеют 
+расширение .shtml, для того, чтобы в них подключать директивы SSI. </p>
+<h2>Выделение текущего пункта меню</h2>
+<p>Аналогично главной странице пункт меню, который указывает на текущую 
+страницу не делают ссылкой, а вставляют как рядовой текст, выделяя его с
+ помощью стилей. В примере&nbsp;5 показано содержимое файла aside.shtml,
+ который используется в предыдущем примере.</p>
+<p class="exampleTitle2">Пример 5. Меню для сайта</p>
+<pre style="display: none;"><code class="no-buttons">&lt;ul&gt;
+  &lt;!--#if expr="($DOCUMENT_URI = '/1.shtml')"--&gt;
+  &lt;li class="active"&gt;Эрик Картман&lt;/li&gt;
+  &lt;!--#else--&gt;
+  &lt;li&gt;&lt;a href="1.shtml"&gt;Эрик Картман&lt;/a&gt;&lt;/li&gt;
+  &lt;!--#endif--&gt;
+ &lt;!--#if expr="($DOCUMENT_URI = '/2.shtml')"--&gt;
+  &lt;li class="active"&gt;Кенни Маккормик&lt;/li&gt;
+  &lt;!--#else--&gt;
+  &lt;li&gt;&lt;a href="2.shtml"&gt;Кенни Маккормик&lt;/a&gt;&lt;/li&gt;
+  &lt;!--#endif--&gt;
+ &lt;!--#if expr="($DOCUMENT_URI = '/3.shtml')"--&gt;
+  &lt;li class="active"&gt;Стэн Марш&lt;/li&gt;
+  &lt;!--#else--&gt;
+  &lt;li&gt;&lt;a href="3.shtml"&gt;Стэн Марш&lt;/a&gt;&lt;/li&gt;
+  &lt;!--#endif--&gt;
+ &lt;!--#if expr="($DOCUMENT_URI = '/4.shtml')"--&gt;
+  &lt;li class="active"&gt;Кайл Брофловски&lt;/li&gt;
+  &lt;!--#else--&gt;
+  &lt;li&gt;&lt;a href="4.shtml"&gt;Кайл Брофловски&lt;/a&gt;&lt;/li&gt;
+  &lt;!--#endif--&gt;
+&lt;/ul&gt;</code></pre><pre><code class="no-buttons html"><span class="tag">&lt;<span class="keyword">ul</span>&gt;</span>
+  <span class="comment">&lt;!--#if expr="($DOCUMENT_URI = '/1.shtml')"--&gt;</span>
+  <span class="tag">&lt;<span class="keyword">li</span><span class="attribute"> class=<span class="value">"active"</span></span>&gt;</span>Эрик Картман<span class="tag">&lt;/<span class="keyword">li</span>&gt;</span>
+  <span class="comment">&lt;!--#else--&gt;</span>
+  <span class="tag">&lt;<span class="keyword">li</span>&gt;</span><span class="tag">&lt;<span class="keyword">a</span><span class="attribute"> href=<span class="value">"1.shtml"</span></span>&gt;</span>Эрик Картман<span class="tag">&lt;/<span class="keyword">a</span>&gt;</span><span class="tag">&lt;/<span class="keyword">li</span>&gt;</span>
+  <span class="comment">&lt;!--#endif--&gt;</span>
+ <span class="comment">&lt;!--#if expr="($DOCUMENT_URI = '/2.shtml')"--&gt;</span>
+  <span class="tag">&lt;<span class="keyword">li</span><span class="attribute"> class=<span class="value">"active"</span></span>&gt;</span>Кенни Маккормик<span class="tag">&lt;/<span class="keyword">li</span>&gt;</span>
+  <span class="comment">&lt;!--#else--&gt;</span>
+  <span class="tag">&lt;<span class="keyword">li</span>&gt;</span><span class="tag">&lt;<span class="keyword">a</span><span class="attribute"> href=<span class="value">"2.shtml"</span></span>&gt;</span>Кенни Маккормик<span class="tag">&lt;/<span class="keyword">a</span>&gt;</span><span class="tag">&lt;/<span class="keyword">li</span>&gt;</span>
+  <span class="comment">&lt;!--#endif--&gt;</span>
+ <span class="comment">&lt;!--#if expr="($DOCUMENT_URI = '/3.shtml')"--&gt;</span>
+  <span class="tag">&lt;<span class="keyword">li</span><span class="attribute"> class=<span class="value">"active"</span></span>&gt;</span>Стэн Марш<span class="tag">&lt;/<span class="keyword">li</span>&gt;</span>
+  <span class="comment">&lt;!--#else--&gt;</span>
+  <span class="tag">&lt;<span class="keyword">li</span>&gt;</span><span class="tag">&lt;<span class="keyword">a</span><span class="attribute"> href=<span class="value">"3.shtml"</span></span>&gt;</span>Стэн Марш<span class="tag">&lt;/<span class="keyword">a</span>&gt;</span><span class="tag">&lt;/<span class="keyword">li</span>&gt;</span>
+  <span class="comment">&lt;!--#endif--&gt;</span>
+ <span class="comment">&lt;!--#if expr="($DOCUMENT_URI = '/4.shtml')"--&gt;</span>
+  <span class="tag">&lt;<span class="keyword">li</span><span class="attribute"> class=<span class="value">"active"</span></span>&gt;</span>Кайл Брофловски<span class="tag">&lt;/<span class="keyword">li</span>&gt;</span>
+  <span class="comment">&lt;!--#else--&gt;</span>
+  <span class="tag">&lt;<span class="keyword">li</span>&gt;</span><span class="tag">&lt;<span class="keyword">a</span><span class="attribute"> href=<span class="value">"4.shtml"</span></span>&gt;</span>Кайл Брофловски<span class="tag">&lt;/<span class="keyword">a</span>&gt;</span><span class="tag">&lt;/<span class="keyword">li</span>&gt;</span>
+  <span class="comment">&lt;!--#endif--&gt;</span>
+<span class="tag">&lt;/<span class="keyword">ul</span>&gt;</span></code></pre>
+  
+<p>На сайте сделано четыре файла с именами 1.shtml, 2.shtml, 3.shtml и 
+4.shtml. Чтобы SSI различал, какому пункту меню какой файл 
+соответствует, используется переменная DOCUMENT_URI. Если её значение 
+совпадает с именем открытого документа, то ссылка не добавляется. </p>
+<h2>Версия для печати</h2>
+<p>Версия для печати содержит то же самое содержание, что и текущая 
+страница, но специально оптимизированное для печати документа, к 
+примеру, может отсутствовать реклама, какие-то декоративные элементы. 
+Чтобы различать «нормальную» страницу и её версию для печати, к адресу 
+документа добавим <span class="var">?print</span>, а с помощью SSI будем
+ проверять, есть эта добавка или нет.  Поскольку адрес документа может 
+быть произвольным, воспользуемся переменной DOCUMENT_URI для его 
+получения и создания ссылки на печатную версию (пример&nbsp;6).</p>
+<p class="exampleTitle2">Пример 6. Версия для печати</p>
+<pre style="display: none;"><code class="no-buttons">&lt;!--#if expr="($QUERY_STRING = 'print')"--&gt;
+ &lt;p&gt;Версия для печати&lt;/p&gt;
+&lt;!--#else--&gt; 
+ &lt;p&gt;Обычная страница&lt;/p&gt;
+ &lt;p&gt;&lt;a href="&lt;!--#echo var="DOCUMENT_URI"--&gt;?print"&gt;Версия для печати&lt;/a&gt;&lt;/p&gt;
+&lt;!--#endif--&gt;</code></pre><pre><code class="no-buttons html"><span class="comment">&lt;!--#if expr="($QUERY_STRING = 'print')"--&gt;</span>
+ <span class="tag">&lt;<span class="keyword">p</span>&gt;</span>Версия для печати<span class="tag">&lt;/<span class="keyword">p</span>&gt;</span>
+<span class="comment">&lt;!--#else--&gt;</span> 
+ <span class="tag">&lt;<span class="keyword">p</span>&gt;</span>Обычная страница<span class="tag">&lt;/<span class="keyword">p</span>&gt;</span>
+ <span class="tag">&lt;<span class="keyword">p</span>&gt;</span><span class="tag">&lt;<span class="keyword">a</span><span class="attribute"> href=<span class="value">"&lt;!--#echo var="</span><span class="value">DOCUMENT</span></span>_URI"--&gt;</span>?print"&gt;Версия для печати<span class="tag">&lt;/<span class="keyword">a</span>&gt;</span><span class="tag">&lt;/<span class="keyword">p</span>&gt;</span>
+<span class="comment">&lt;!--#endif--&gt;</span></code></pre>
+С помощью переменной 
+QUERY_STRING идёт проверка, есть ли в адресе ключевое слово <span class="var">print</span>
+ или нет. Если оно присутствует, тогда выводится одна версия страницы, 
+если этого ключевого слова нет, тогда отображается другая версия 
+страницы со ссылкой.</div></div></div><div class="metki">
+<a href="http://htmlbook.ru/metki/ssi">SSI</a></div>  <div class="book-navigation">
+    
+        <div class="page-links">
+              <a href="http://htmlbook.ru/webserver/ssi/uslovnye-vyrazheniya" class="page-previous" title="На предыдущую страницу"><i class="arrow icon-prev"></i>Условные выражения</a>
+                    <a href="http://htmlbook.ru/webserver/ssi" class="page-up" title="Перейти к родительской странице"><i class="arrow icon-up"></i>Оглавление</a>
+                </div>
+    
+  </div>
+ 		</div>
+	</div>
+		
+			<div id="block-26" class="block">
+				<div class="block_content ">
+			<script src="SSI%20%D0%BD%D0%B0%20%D0%BF%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D0%BA%D0%B5%20_%20htmlbook.ru_files/ya1.js"></script><script type="text/javascript" src="SSI%20%D0%BD%D0%B0%20%D0%BF%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D0%BA%D0%B5%20_%20htmlbook.ru_files/context.js"></script><div id="Ya_sync_0"><yatag class="yap-reset ya-partner_ads" id="yap-Ya_sync_0-flat"><yatag class="yap-main yap-font-size yap-border-type-block yap-border-radius-false yap-links-underline-true yap-logo-transparent-false yap-type-flat"><yatag class="yap-logo yap-logo-bg-color"><a target="_blank" href="http://direct.yandex.ru/?partner" class="yap-logo-text yap-logo-bg-color yap-logo-color">Яндекс.Директ</a><yatag class="yap-logo-arrow"></yatag></yatag><yatag class="yap-list-wrapper yap-border-color yap-font-family yap-bg-color "><table class="yap-list"><tbody><tr><td class="yap-item yap-border-color yap-item-border-width yap-bg-color yap-item-1 yap-item-has-picture"><yatag class="yap-item-inner"><yatag class="yap-picture-block"><a target="_blank" href="http://an.yandex.ru/count/9iVqxpkN7M440000ZhVZU3u5XP6O1vK2cm5kGxS2Am68jVUTx0Q9fAdADfYZERo-dhzQ2m04dQLQWH6MkrBp1G6w-yH4IofL3Wu1feq8YhrJTn41lRfJQK81gW6bhtGW0xoWIly2aRNnM_04ZxrIV3iAdxE-LWe6am6PEKACaBhRe90azA-GkjkKaP4DfvWV0QYrGNCH0QJ00000SWIi4Ax-vuAqom5800MmiF6ZA06n0RA0KhcbMe4Hk_dA7uRTvExJ1tWN?test-tag=67521&amp;stat-id=1073788335" class="yap-image-link"><img class="yap-image" alt="" src="SSI%20%D0%BD%D0%B0%20%D0%BF%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D0%BA%D0%B5%20_%20htmlbook.ru_files/y90.jpg" style="width: 90px !important;max-width: 90px !important;height: 90px !important;"></a></yatag><yatag class="yap-title-block"><yatag class="yap-title"><a href="http://an.yandex.ru/count/9iVqxpkN7M440000ZhVZU3u5XP6O1vK2cm5kGxS2Am68jVUTx0Q9fAdADfYZERo-dhzQ2m04dQLQWH6MkrBp1G6w-yH4IofL3Wu1feq8YhrJTn41lRfJQK81gW6bhtGW0xoWIly2aRNnM_04ZxrIV3iAdxE-LWe6am6PEKACaBhRe90azA-GkjkKaP4DfvWV0QYrGNCH0QJ00000SWIi4Ax-vuAqom5800MmiF6ZA06n0RA0KhcbMe4Hk_dA7uRTvExJ1tWN?test-tag=67521&amp;stat-id=1073788335" target="_blank" class="yap-title-text yap-title-font-size yap-title-color yap-hover-color">Студия ландшафтного дизайна</a></yatag></yatag><yatag class="yap-text"><a class="yap-body-text yap-text-color">От 150 т.р./сотка. От 10 соток. Гарантия 10 лет. Дизайн бесплатно. Звоните!</a></yatag><yatag class="yap-contacts"><yatag class="yap-address"><a class="yap-address-text yap-url-color yap-hover-color" target="_blank" href="http://an.yandex.ru/count/9iVqxsgMVgO40000ZhVZU3u5XP6O1vK2cm5kGxS2Am68jVUTx0Q9fAdADfYZERo-dhzQ2m04dQLQWH6MkrBp1G6w-yH4IofL3Wu1feq8YhrJTn41lRfJQK81gWUbhtGW0xoWIly2aRNnM_04ZxrIV3iAdxE-LWe6am6PEKACaBhRe90azA-GkjkKaP4DfvWV0QYrGNCH0QJ00000SWIi4Ax-vuAqom5800MmiF6ZA06n0RA0KhcbMe4Hk_dA7uRTvExJ1tWN?test-tag=67521&amp;stat-id=1073788335">Адрес&nbsp;и&nbsp;телефон</a></yatag><yatag class="yap-domain"><a class="yap-domain-text yap-url-color yap-hover-color" target="_blank" href="http://an.yandex.ru/count/9iVqxpkN7M440000ZhVZU3u5XP6O1vK2cm5kGxS2Am68jVUTx0Q9fAdADfYZERo-dhzQ2m04dQLQWH6MkrBp1G6w-yH4IofL3Wu1feq8YhrJTn41lRfJQK81gW6bhtGW0xoWIly2aRNnM_04ZxrIV3iAdxE-LWe6am6PEKACaBhRe90azA-GkjkKaP4DfvWV0QYrGNCH0QJ00000SWIi4Ax-vuAqom5800MmiF6ZA06n0RA0KhcbMe4Hk_dA7uRTvExJ1tWN?test-tag=67521&amp;stat-id=1073788335">primula-ld.ru</a></yatag></yatag></yatag></td></tr><tr><td class="yap-item yap-border-color yap-item-border-width yap-bg-color yap-item-2 yap-item-last"><yatag class="yap-item-inner"><yatag class="yap-title-block"><yatag class="yap-title"><a href="http://an.yandex.ru/count/9iVqxqrslfS40000ZhVZU3u5XP6O1vK2cm5kGxS2Am4oYBPB0442YQPe_n6OeSoylfw_MWi019sf_9KGbhjIymK1kll4H4igLGuE0QOZYgrgvRAzh76NwAe1fQ_oZ0AHjV5Ry0IFi-1BUW-VkNl30WQJ0PbWGeoGfWwWa4mThv2c3fIQoYQdaWe8gA3tIXEam0000784h12k_kU2jCi1I005iB3neoW1iG6oW52vgVoL4BlvoX-6tUJkqmTu5W00?test-tag=67521&amp;stat-id=1073788335" target="_blank" class="yap-favicon-inline yap-nobr"><img class="yap-favicon" src="SSI%20%D0%BD%D0%B0%20%D0%BF%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D0%BA%D0%B5%20_%20htmlbook.ru_files/alexanderpaukov.png" alt="">&nbsp;</a><a href="http://an.yandex.ru/count/9iVqxqrslfS40000ZhVZU3u5XP6O1vK2cm5kGxS2Am4oYBPB0442YQPe_n6OeSoylfw_MWi019sf_9KGbhjIymK1kll4H4igLGuE0QOZYgrgvRAzh76NwAe1fQ_oZ0AHjV5Ry0IFi-1BUW-VkNl30WQJ0PbWGeoGfWwWa4mThv2c3fIQoYQdaWe8gA3tIXEam0000784h12k_kU2jCi1I005iB3neoW1iG6oW52vgVoL4BlvoX-6tUJkqmTu5W00?test-tag=67521&amp;stat-id=1073788335" target="_blank" class="yap-title-text yap-title-font-size yap-title-color yap-hover-color">Видеоуроки по&nbsp;верстке сайта</a></yatag></yatag><yatag class="yap-text"><a class="yap-body-text yap-text-color">Научись верстать сайты с&nbsp;помощью бесплатных видеоуроков.</a><yatag class="yap-age yap-text-color yap-warning-colors">18+</yatag></yatag><yatag class="yap-contacts"><yatag class="yap-domain"><a class="yap-domain-text yap-url-color yap-hover-color" target="_blank" href="http://an.yandex.ru/count/9iVqxqrslfS40000ZhVZU3u5XP6O1vK2cm5kGxS2Am4oYBPB0442YQPe_n6OeSoylfw_MWi019sf_9KGbhjIymK1kll4H4igLGuE0QOZYgrgvRAzh76NwAe1fQ_oZ0AHjV5Ry0IFi-1BUW-VkNl30WQJ0PbWGeoGfWwWa4mThv2c3fIQoYQdaWe8gA3tIXEam0000784h12k_kU2jCi1I005iB3neoW1iG6oW52vgVoL4BlvoX-6tUJkqmTu5W00?test-tag=67521&amp;stat-id=1073788335">alexanderpaukov.com</a></yatag></yatag></yatag></td></tr></tbody></table></yatag></yatag></yatag></div><script type="text/javascript" src="SSI%20%D0%BD%D0%B0%20%D0%BF%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D0%BA%D0%B5%20_%20htmlbook.ru_files/context_static_r716.js" yandex_load_check="yes"></script><script type="text/javascript" charset="utf-8" src="SSI%20%D0%BD%D0%B0%20%D0%BF%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D0%BA%D0%B5%20_%20htmlbook.ru_files/31105.js"></script>		</div>
+	</div>
+				<p class="note comment-note">Не выкладывайте свой код напрямую в комментариях, он отображается некорректно. 
+		Воспользуйтесь сервисом <a href="http://cssdeck.com/labs" rel="nofollow">cssdeck.com</a> или <a href="http://jsfiddle.net/" rel="nofollow">jsfiddle.net</a>,
+		сохраните код и в комментариях дайте на него ссылку. Так и результат сразу увидят.</p>
+
+		<div id="disqus_thread"><iframe verticalscrolling="no" horizontalscrolling="no" scrolling="no" src="SSI%20%D0%BD%D0%B0%20%D0%BF%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D0%BA%D0%B5%20_%20htmlbook.ru_files/a.htm" style="width: 100% ! important; border: medium none ! important; overflow: hidden ! important; height: 297px ! important;" title="Disqus" tabindex="0" allowtransparency="true" data-disqus-uid="2" id="dsq-2" frameborder="0" width="100%"></iframe></div>
+		<script>
+        var disqus_shortname = 'htmlbook';
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    
+    			</div>
+		</div>
+
+
+		<footer>
+		<section>
+			<h4>О сайте</h4>
+			<p><a href="http://htmlbook.ru/help">Помощь</a></p>
+			<p><a href="http://htmlbook.ru/about/copy">Копирование материалов</a></p>
+			<p><a href="http://htmlbook.ru/about/error">Борьба с ошибками</a></p>
+			<p><a href="http://htmlbook.ru/about/tech">Технологии</a></p>
+			<p><a href="http://htmlbook.ru/about/search">Поисковый плагин</a></p>
+		</section>
+		<section>
+			<h4>Основные разделы</h4>
+			<p><a href="http://htmlbook.ru/content">Статьи</a></p>
+			<p><a href="http://htmlbook.ru/blog">Блог</a></p>
+			<p><a href="http://htmlbook.ru/practical">Практикум</a></p>
+			<p><a href="http://htmlbook.ru/books">Цифровые книги</a></p>
+			<p><a href="http://htmlbook.ru/test">Тесты</a></p>
+			<p><a href="http://forum.htmlbook.ru/" rel="nofollow">Форум</a></p>
+		</section>
+		<section>
+			<h4>HTML</h4>
+			<p><a href="http://htmlbook.ru/samhtml">Самоучитель HTML</a></p>
+			<p><a href="http://htmlbook.ru/xhtml">XHTML</a></p>
+			<p><a href="http://htmlbook.ru/html">Справочник по HTML</a></p>
+			<p><a href="http://htmlbook.ru/html5">HTML5</a></p>
+		</section>
+		<section>
+			<h4>CSS</h4>
+			<p><a href="http://htmlbook.ru/samcss">Самоучитель CSS</a></p>
+			<p><a href="http://htmlbook.ru/css">Справочник по CSS</a></p>
+			<p><a href="http://htmlbook.ru/faq">Рецепты CSS</a></p>
+			<p><a href="http://htmlbook.ru/css3">CSS3</a></p>
+		</section>
+		<section>
+			<h4>Сайт</h4>
+			<p><a href="http://htmlbook.ru/samlayout">Вёрстка</a></p>
+			<p><a href="http://htmlbook.ru/layout">Макеты</a></p>
+			<p><a href="http://htmlbook.ru/webserver">Веб-сервер</a></p>
+		</section>
+		<section class="hosting">
+			<a href="http://dh.it-patrol.ru/drupal_hosting">htmlbook.ru использует Друпал хостинг it-patrol</a>
+		</section>
+		<p class="li"><script src="SSI%20%D0%BD%D0%B0%20%D0%BF%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D0%BA%D0%B5%20_%20htmlbook.ru_files/li.js"></script><a href="http://www.liveinternet.ru/click" target="_blank"><img src="SSI%20%D0%BD%D0%B0%20%D0%BF%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D0%BA%D0%B5%20_%20htmlbook.ru_files/hit.gif" alt="" title="LiveInternet" height="31" width="31"></a></p>
+		<p class="copyright">© 2002–2014 Влад Мержевич, по всем вопросам пишите по адресу vlad@htmlbook.ru</p>
+		<p><img src="SSI%20%D0%BD%D0%B0%20%D0%BF%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D0%BA%D0%B5%20_%20htmlbook.ru_files/htmlbook.gif" alt="" style="vertical-align: middle; margin-right: 5px" height="26" width="88"> <a href="http://feeds.feedburner.com/htmlbook" rel="nofollow">Подпишитесь на материалы сайта по RSS</a></p>
+		</footer>
+	
+<div id="AutocompleteContainter_f2d1b" style="position: absolute; z-index: 9999; top: 132.833px; left: 5.88333px;"><div class="autocomplete-w1"><div class="autocomplete" id="Autocomplete_f2d1b" style="display: none; width: 200px; max-height: 400px;"></div></div></div><img src="SSI%20%D0%BD%D0%B0%20%D0%BF%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D0%BA%D0%B5%20_%20htmlbook.ru_files/foo.gif" height="1" width="1"><table class="gstl_50 gssb_c" style="width: 204px; display: none; top: 40px; left: 1425px; position: absolute;" cellpadding="0" cellspacing="0"><tbody><tr><td class="gssb_f"></td><td style="width: 100%;" class="gssb_e"></td></tr></tbody></table></body></html>

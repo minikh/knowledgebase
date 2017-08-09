@@ -1,0 +1,3 @@
+make[1]: Entering directory `/cygdrive/c/pac_cpu_ctk/PACSystemsCToolkit/Projects/SampleProj2'
+gcc -g -fno-defer-pop -Wall -I. -DGEF_DEBUG -c -octkCBlockTest6.pcO ctkCBlockTest6.c
+make[1]: Leaving directory `/cygdrive/c/pac_cpu_ctk/PACSystemsCToolkit/Projects/SampleProj2'

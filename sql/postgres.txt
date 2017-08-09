@@ -1,0 +1,160 @@
+зайти в psql
+sudo -u postgres psql
+задать пароль
+alter user postgres with password 'postgres';
+тут доступ
+vim /etc/postgresql/9.4/main/pg_hba.conf
+прописать:
+  local   all    all   md5
+
+
+создать БД
+sudo -u postgres createdb csdb
+или
+sudo su postgres
+createdb csdb
+
+создать структуру БД из скрипта
+psql -U csdb -h 192.168.185.206 csdb2 -f update.sql
+
+
+для 16
+/etc/apt/sources.list.d/pgdg.list
+deb http://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main
+wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | \
+  sudo apt-key add -
+sudo apt-get update
+apt-get install postgresql-9.4
+sudo apt-get install pgadmin3
+
+sudo add-apt-repository "deb http://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main"
+
+Документация
+www.postgrespro.ru/doc
+Установка
+$ sudo sh -c 'echo "deb \
+http://repo.postgrespro.ru/pgpro-9.5/ubuntu \
+$(lsb_release -cs) main" > \
+/etc/apt/sources.list.d/posgrespro.list'
+$ wget --quiet -O - http://repo.postgrespro.ru/pgpro\
+-9.5/keys/GPG-KEY-POSTGRESPRO-95 | sudo apt-key add -
+$ sudo apt-get update
+$ sudo apt-get install postgrespro-9.5
+sudo apt-get install pgadmin3
+
+Проверить работу
+$ sudo -u postgres psql -c 'select now();'
+
+Тут настройки
+/etc/postgresql/9.5/main/start.conf
+
+Запуск службы
+service postgresql start 9.5
+
+Остановить службу
+service postgresql stop 9.5
+
+Журнал ошибок
+/var/log/postgresql/postgresql-9.5-main.log
+
+Получить полный список команд
+service postgresql
+
+Тут находится БД
+/var/lib/pgstgresql/9.5/main/
+
+
+/etc/postgresql/9.5/main/postgresql.conf —
+основной конфигурационный файл, содержащий значения
+параметров сервера;
+
+/etc/postgresql/9.5/main/pg_hba.conf — файл,
+определяющий настройки доступа. В целях безопасности
+по умолчанию доступ разрешен только с локального
+компьютера и только для пользователя ОС postgres.
+
+
+узнать путь к БД
+cat /etc/postgresql/9.3/main/postgresql.conf | grep data
+
+Запуск psql:
+sudo -u postgres psql
+psql -h 127.0.0.1 -U postgres -W
+\? - помощь
+\l - список БД
+\d - список таблиц БД
+\d+ tablename - описание структуры таблицы
+\c <имя БД> - переключиться на БД
+\help
+\help create table
+
+\? Справка по командам psql.
+\h Справка по SQL: список доступных команд
+или синтаксис конкретной команды.
+\x Переключает обычный табличный вывод
+(столбцы и строки) на расширенный
+(каждый столбец на отдельной строке)
+и обратно. Удобно для просмотра нескольких
+«широких» строк.
+\l Список баз данных.
+\du Список пользователей.
+\dt Список таблиц.
+\dt cs.* Список таблиц в схеме cs
+
+\di Список индексов.
+\dv Список представлений.
+\df Список функций.
+\dn Список схем.
+\dx Список установленных расширений.
+\dp Список привилегий.
+\d имя Подробная информация по конкретному объекту.
+\d+ имя Еще более подробная информация
+по конкретному объекту.
+\timing on Показывать время выполнения операторов.
+\q - выход
+
+максимально кол-во подключений
+cat  /etc/postgresql/9.3/main/postgresql.conf | grep connection
+
+
+DEGIN; - начало транзакции
+...
+INSERT
+INSERT
+....
+COMMIT; - фиксация
+
+
+создать пользователя
+CREATE USER app password 'p@ssw0rd';
+назначить владельца
+CREATE DATABASE appdb owner app;
+
+    БД   user  host    port
+\c appdb app localhost 5432 - подключиться к БД от имени пользователя
+
+
+***
+Для удаленного подключения прописать в файле postgresql.conf
+listen_addresses = '*'
+В файле pg_hba.conf добавить
+host appdb app all md5
+Это разрешит доступ к базе данных appdb
+пользователю app с любого адреса при указании
+верного пароля.
+***
+
+
+//посмотреть сиквенс
+SELECT last_value FROM cs.sidechannel_registrators_id_se
+//задать новый сиквенс
+select setval('cs.sidechannel_registrators_id_seq', 557218);
+
+
+
+
+список транзакций
+select * from pgxc_prepared_xacts
+
+список процессов в БД
+SELECT datname, NOW() - query_start AS duration, procpid, current_query FROM pg_stat_activity ORDER BY duration DESC;
