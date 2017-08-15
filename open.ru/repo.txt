@@ -1,0 +1,16 @@
+git clone ssh://git@rumskap224.open.ru:22222/DigitalPlatform/client-ingo-service.git
+
+
+https://rumskapt224.open.ru/DigitalPlatform/common-api.git
+Это общая для всех сервисов часть кода.
+
+https://rumskapt224.open.ru/DevOps/OpenBankPlugins.git
+Это gradle плагин
+
+Генератор шаблонного сервиса:
+https://rumskapt224.open.ru/DevOps/Templater.git
+
+Прикладные сервисы:
+https://rumskapt224.open.ru/DigitalPlatform/card-service.git
+https://rumskapt224.open.ru/DigitalPlatform/client-info-service.git
+
