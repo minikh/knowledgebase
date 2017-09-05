@@ -5,7 +5,7 @@ vipw
 groupadd hornetq
 
 создать пользователя
-adduser --system --home /opt/jboss/hornetq --shell=/bin/bash —no-create-home —ingroup hornetq hornetq
+adduser --system --home /opt/jboss/hornetq --shell=/bin/bash --no-create-home --ingroup hornetq hornetq
 useradd
 
 sudo usermod -a -G hornetq username
