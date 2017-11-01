@@ -1,0 +1,3 @@
+sudo sysctl net.ipv4.ip_default_ttl=65 - для linux
+
+Значение по умолчанию 20 минут может быть изменено путем установки параметра DWORD с именем DefaultRegistrationTTL в HKLM\system\CurrentControlSet\Services\TCPIP\(значение должно быть в секундах. Перезагрузка не требуется, чтобы она вступила в силу, но вы должны будете запустить ipconfig /registerdns после изменения, если вы хотите, чтобы новый TTL обновлялся немедленно.
