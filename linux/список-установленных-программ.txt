@@ -1,0 +1,2 @@
+создание списка- dpkg --get-selections > installed_programs.txt
+установка пакетов, перечисленных в файле - sudo dpkg --set-selections < installed_programs.txt
