@@ -1,3 +1,5 @@
+sudo ln -s /opt/Postman/Postman /usr/bin/postman
+
 ln -s ~/Загрузки/ ~/downloads
 
 символическая ссылка на папку
