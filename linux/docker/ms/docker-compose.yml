@@ -1,0 +1,110 @@
+version: '2'
+networks:
+    open-bank:
+      driver: bridge
+      ipam:
+        driver: default
+        config:
+          - subnet: 172.16.0.0/24
+            gateway: 172.16.0.1
+services:
+    amq-1:
+      image: rmohr/activemq
+      container_name: amq-1
+      ports:
+#      пробрасываем на localhost
+        - "8161:8161"
+        - "61616:61616"
+      expose:
+#      будет торчать наружу с ip контейнера
+        - 8161
+        - 61616
+      volumes:
+        - "./amq-1/conf:/opt/activemq/conf"
+      networks:
+          open-bank:
+            ipv4_address: 172.16.0.2
+
+    amq-2:
+      image: rmohr/activemq
+      container_name: amq-2
+      expose:
+        - 8161
+        - 61616
+      volumes:
+        - "./amq-2/conf:/opt/activemq/conf"
+      networks:
+          open-bank:
+            ipv4_address: 172.16.0.3
+
+    consul:
+      image: consul
+      container_name: consul
+      networks:
+          open-bank:
+            ipv4_address: 172.16.0.4
+      ports:
+        - "8500:8500"
+      expose:
+        - 8400
+        - 8500
+        - 8600
+      command: "agent -ui -dev"
+      environment:
+        - CONSUL_CLIENT_INTERFACE=eth0
+        - CONSUL_BIND_INTERFACE=eth0
+
+    hazelcast:
+      image: hazelcast/hazelcast
+      container_name: hazelcast
+      networks:
+          open-bank:
+            ipv4_address: 172.16.0.5
+      ports:
+        - "5701:5701"
+      expose:
+        - 5701
+
+
+#    card-back-1:
+#      container_name: card-back-1
+#      build:
+#        context: ./card-back-1
+#      depends_on:
+#        - amq-2
+#        - consul
+#        - hazelcast
+#      volumes:
+#        - "./card-back-1/app:/opt/app/"
+#      networks:
+#          open-bank:
+#            ipv4_address: 172.16.0.20
+#      expose:
+#        - 20018
+
+#    card-front-1:
+#      container_name: card-front-1
+#      build:
+#        context: ./card-front-1
+#      depends_on:
+#        - amq-1
+#      volumes:
+#        - "./card-front-1/app:/opt/app/"
+#      networks:
+#          open-bank:
+#            ipv4_address: 172.16.0.22
+#      expose:
+#        - 10018
+#    card-front-2:
+#      container_name: card-front-2
+#      build:
+#        context: ./card-front-2
+#      depends_on:
+#        - amq-2
+#      volumes:
+#        - "./card-front-2/app:/opt/app/"
+#      networks:
+#          open-bank:
+#            ipv4_address: 172.16.0.23
+#      expose:
+#        - 10018
