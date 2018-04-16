@@ -1,0 +1,6 @@
+docker build -t metacards .
+docker run -d -p 80:8090 --name=metacards -v "$(pwd)/app:/opt/app/" metacards
+docker run -d -p 80:8090 --restart=always --name=metacards -v "$(pwd)/app:/opt/app/" metacards
+
+
+# go to 127.0.0.1 to see if works
