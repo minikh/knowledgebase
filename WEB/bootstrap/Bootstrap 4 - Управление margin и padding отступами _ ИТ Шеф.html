@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="Статья, в которой рассмотрим классы Bootstrap 4, с помощью которых можно не только очень просто, но и адаптивно добавлять margin и padding отступы.">
+<meta name="author" content="">
+<base href="https://itchief.ru/">
+<title>Bootstrap 4 - Управление margin и padding отступами | ИТ Шеф</title>
+<link rel="canonical" href="https://itchief.ru/bootstrap/spacing-v4">
+<link rel="stylesheet" href="/assets/build/css/main.05.05.2018.2.css">
+<script src="/assets/build/js/main.26.04.2018.js"></script>
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="theme-color" content="#ffffff">
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+<![endif]--><script type="text/javascript">TicketsConfig={"ctx":"web","jsUrl":"\/assets\/components\/tickets\/js\/web\/","cssUrl":"\/assets\/components\/tickets\/css\/web\/","actionUrl":"\/assets\/components\/tickets\/action.php","close_all_message":"\u0437\u0430\u043a\u0440\u044b\u0442\u044c \u0432\u0441\u0435","tpanel":0,"enable_editor":1};</script>
+<script type="text/javascript">TicketsConfig.editor={ticket: {onTab: {keepDefault:false, replaceWith:"	"}
+		,markupSet: [
+			{name:"Bold", className: "btn-bold", key:"B", openWith:"<b>", closeWith:"</b>" }
+			,{name:"Italic", className: "btn-italic", key:"I", openWith:"<i>", closeWith:"</i>"  }
+			,{name:"Underline", className: "btn-underline", key:"U", openWith:"<u>", closeWith:"</u>" }
+			,{name:"Stroke through", className: "btn-stroke", key:"S", openWith:"<s>", closeWith:"</s>" }
+			,{separator:"---------------" }
+			,{name:"Bulleted List", className: "btn-bulleted", openWith:"	<li>", closeWith:"</li>", multiline:true, openBlockWith:"<ul>\n", closeBlockWith:"\n</ul>"}
+			,{name:"Numeric List", className: "btn-numeric", openWith:"	<li>", closeWith:"</li>", multiline:true, openBlockWith:"<ol>\n", closeBlockWith:"\n</ol>"}
+			,{separator:"---------------" }
+			,{name:"Quote", className: "btn-quote", openWith:"<blockquote>", closeWith:"</blockquote>"}
+			,{name:"Code", className: "btn-code", openWith:"<code>", closeWith:"</code>"}
+			,{name:"Link", className: "btn-link", openWith:"<a href=\"[![Link:!:http://]!]\">", closeWith:"</a>" }
+			,{name:"Picture", className: "btn-picture", replaceWith:"<img src=\"[![Source:!:http://]!]\" />" }
+			,{separator:"---------------" }
+			,{name:"Cut", className: "btn-cut", openWith:"<cut/>" }
+		]},comment: {onTab: {keepDefault:false, replaceWith:"	"}
+		,markupSet: [
+			{name:"Bold", className: "btn-bold", key:"B", openWith:"<b>", closeWith:"</b>" }
+			,{name:"Italic", className: "btn-italic", key:"I", openWith:"<i>", closeWith:"</i>"  }
+			,{name:"Underline", className: "btn-underline", key:"U", openWith:"<u>", closeWith:"</u>" }
+			,{name:"Stroke through", className: "btn-stroke", key:"S", openWith:"<s>", closeWith:"</s>" }
+			,{separator:"---------------" }
+			,{name:"Quote", className: "btn-quote", openWith:"<blockquote>", closeWith:"</blockquote>"}
+			,{name:"Code", className: "btn-code", openWith:"<code>", closeWith:"</code>"}
+			,{name:"Link", className: "btn-link", openWith:"<a href=\"[![Link:!:http://]!]\">", closeWith:"</a>" }
+			,{name:"Picture", className: "btn-picture", replaceWith:"<img src=\"[![Source:!:http://]!]\" />" }
+		]}};</script>
+<link rel="stylesheet" href="/assets/components/tickets/js/web/editor/editor.css" type="text/css" />
+</head>
+<body>
+<div class="scrollup">
+    <i class="icon icon-chevron-up"></i>
+</div>
+<header>
+    <nav class="navbar fixed-top navbar-dark bg-secondary">
+    <a class="navbar-brand" href="/" title="Перейти на главную страницу ИТ ШЕФ" style="padding-top:0; padding-bottom: 0; margin-top: -.5rem; margin-bottom: -.5rem; margin-left: -1rem;">
+        <img src="assets/img/brand.svg" height="56" alt="itchief.ru">
+    </a>
+
+    <a class="ml-auto btn btn-outline-danger d-sm-none" href="search"><i class="icon icon-search"></i></a>
+
+    <a id="btn-user" class="btn btn-outline-danger mx-2 d-sm-none" href="#"><i class="icon icon-user"></i></a>  
+
+    <form class="form-inline d-none d-sm-flex px-3" action="search" method="get" class="form-inline" role="search">
+        <div class="input-group">
+            <input type="text" class="form-control" name="query" placeholder="" aria-label="Найти..." value="">
+            <div class="input-group-append">
+                <button class="btn btn-outline-light" type="submit"><i class="icon icon-search"></i></button>
+            </div>
+        </div>
+    </form>
+        
+            
+    <ul class="navbar-nav flex-row d-none d-sm-flex">
+        <li class="nav-item d-sm-none d-lg-block"><a class="nav-link" href="bootstrap/">BOOTSTRAP</a></li>      
+        <li class="nav-item d-sm-none d-lg-block"><a class="nav-link" href="javascript/">JAVASCRIPT</a></li>
+        <li class="nav-item d-sm-none d-lg-block"><a class="nav-link " href="modx/">MODX</a></li>
+        <li class="nav-item d-sm-none"><a class="nav-link" href="css/">CSS</a></li>         
+        <li class="nav-item d-sm-none"><a class="nav-link" href="php/">PHP</a></li>        
+        <li class="nav-item d-sm-none"><a class="nav-link" href="html/">HTML</a></li>
+        <li class="nav-item d-sm-none"><a class="nav-link" href="others/">РАЗНОЕ</a></li>        
+        <li class="nav-item d-sm-none d-lg-block"><a class="nav-link" href="questions/">ВОПРОСЫ</a></li>        
+        <!--<li class="nav-item"><a class="nav-link" href="1c/">1С:ПРЕДПРИЯТИЕ</a></li>-->
+        <li class="nav-item d-sm-none d-md-block"><a class="nav-link" data-toggle="collapse" data-target="#navbar" href="#"><span class="d-none d-lg-inline-block">ВСЕ РАЗДЕЛЫ...</span><span class="d-none d-md-inline-block d-lg-none">РАЗДЕЛЫ...</span></a></li>
+    </ul>
+
+            <ul class="flex-row navbar-nav ml-auto d-none d-sm-flex"><li class="nav-item"><a href="authorization" class="nav-link authorization" rel="nofollow">ВОЙТИ</a></li></ul>
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div id="navbar" class="collapse navbar-collapse pt-3">   
+        <div class="container-fluid">
+            <div class="row">
+                <div id="navbar-sections" class="col-sm-8 col-md-9 col-xl-7 order-2 order-sm-1">
+                    <div class="row text-center">
+                        <div class="col p-2">
+                            <a class="btn btn-outline-light btn-block nav-more-btn" href="html/">HTML<span class="d-none d-lg-block">язык разметки документов во Всемирной паутине</span></a>
+                        </div>
+                        <div class="col p-2">
+                            <a class="btn btn-outline-light btn-block nav-more-btn" href="css/">CSS<span class="d-none d-lg-block">язык описания внешнего вида веб-страниц</span></a>
+                        </div>
+                        <div class="d-xs w-100"></div>
+                        <div class="col p-2">
+                            <a class="btn btn-outline-light btn-block nav-more-btn" href="javascript/">JAVASCRIPT<span class="d-none d-lg-block">скриптовый язык для фронтэнда и не только</span></a>
+                        </div>
+                        <div class="d-none d-sm-block d-md-none w-100"></div>
+                        <div class="col p-2">
+                            <a class="btn btn-outline-light btn-block nav-more-btn" href="bootstrap/">BOOTSTRAP<span class="d-none d-lg-block">CSS и JS фреймворк для вёрстки сайтов</span></a>
+                        </div>
+                        <div class="d-xs w-100"></div>    
+                        <div class="d-ms w-100"></div>
+                        
+                        <div class="col p-2">
+                            <a class="btn btn-outline-light btn-block nav-more-btn" href="php/">PHP<span class="d-none d-lg-block">язык для создания динамических сайтов</span></a>
+                        </div>
+                        <div class="d-none d-md-block w-100"></div>
+                        <div class="col p-2">
+                            <a class="btn btn-outline-light btn-block nav-more-btn" href="modx/">MODX<span class="d-none d-lg-block">CMS для разработки сайтов и веб-проектов</span></a>
+                        </div>
+                        <div class="d-xs w-100"></div>
+                        <div class="d-none d-sm-block d-md-none w-100"></div>
+                        <div class="col p-2">
+                            <a class="btn btn-outline-light btn-block nav-more-btn" href="1c/">1С:ПРЕДПРИЯТИЕ<span class="d-none d-lg-block">система автоматизации учета и управления</span></a>
+                        </div>
+                        <div class="col p-2">
+                            <a class="btn btn-outline-light btn-block nav-more-btn" href="others/">РАЗНОЕ<span class="d-none d-lg-block">различные статьи по программированию</span></a>
+                        </div>
+                        <div class="d-xs w-100"></div>  
+                        <div class="d-ms w-100"></div>
+                        
+                        <div class="col p-2">
+                            <a class="btn btn-outline-light btn-block nav-more-btn" href="questions/">ВОПРОСЫ<span class="d-none d-lg-block">вопросы и ответы по программированию</span></a>
+                        </div>
+                        <div class="d-none d-sm-block d-md-none w-100"></div>
+                        <div class="col p-2">
+                            <a class="btn btn-outline-light btn-block nav-more-btn" href="howto/">ИНСТРУКЦИИ<span class="d-none d-lg-block">готовые решения от пользователей</span></a>
+                        </div>
+                    </div>
+                </div>
+                <div id="navbar-user" class="col-sm-4 col-md-3 offset-xl-2 order-1 order-sm-2 d-none d-sm-block">
+                    <div class="row">
+                        <div class="w-100"></div>
+                                                    <div class="col ml-sm-auto mr-sm-0 col-sm-8 ml-md-auto mr-md-0 col-md-8 py-2">
+                                <a class="btn btn-outline-danger btn-block nav-more-btn authorization" href="authorization">ВОЙТИ</a>
+                            </div>
+                            <div class="w-100 d-none d-sm-block"></div>
+                            <div class="col ml-sm-auto mr-sm-0 col-sm-8 ml-md-auto mr-md-0 col-md-8 py-2">
+                                <a class="btn btn-outline-danger btn-block nav-more-btn" href="registration">РЕГИСТРАЦИЯ</a>
+                            </div>
+                                                <div class="w-100"></div>  
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+</header>
+<main itemscope itemtype="http://schema.org/Article">
+    <div class="bg-light py-4">
+        <div class="container-fluid">
+            <ol itemscope itemtype="http://schema.org/BreadcrumbList" class="breadcrumb pl-0 mb-1"><li itemprop="itemListElement" itemscope
+      itemtype="http://schema.org/ListItem"><a itemprop="item" href="/">ИТ ШЕФ<span itemprop="name" class="sr-only">ИТ ШЕФ</span></a><meta itemprop="position" content="1" /></li><li itemprop="itemListElement" itemscope
+      itemtype="http://schema.org/ListItem"><a itemprop="item" href="bootstrap/"><span itemprop="name">Bootstrap</span></a><meta itemprop="position" content="2" /></li></ol>
+            <h1 class="h2 text-secondary" itemprop="headline" style="font-weight: 300;">Bootstrap 4 - Управление margin и padding отступами</h1>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <article class="col-md-8 article" itemscope itemprop="mainEntityOfPage" itemType="https://schema.org/WebPage" itemid="bootstrap/spacing-v4">
+                <!--meta itemscope itemprop="mainEntityOfPage" itemType="https://schema.org/WebPage" itemid="bootstrap/spacing-v4"/-->
+                
+                    <!-- Yandex.RTB R-A-161442-1 -->
+<div class="as-aside text-center">
+  <div id="yandex_ad_h" style="display: inline-block;"></div>
+</div>
+<script>
+(function(w, d, n, s, t) {
+  if (window.matchMedia("only screen and (max-width: 1239px)").matches) {
+    var m= "R-A-161442-1";
+  } else if (window.matchMedia("only screen and (min-width: 1240px) and (max-width: 1919px)").matches) {
+    var m= "R-A-161442-3";
+  } else {
+    var m= "R-A-161442-4";
+  }
+  w[n] = w[n] || [];
+  w[n].push(function() {
+    Ya.Context.AdvManager.render({
+      blockId: m,
+      renderTo: "yandex_ad_h",
+      async: true
+    });
+  });
+  t = d.getElementsByTagName("script")[0];
+  s = d.createElement("script");
+  s.type = "text/javascript";
+  s.src = "//an.yandex.ru/system/context.js";
+  s.async = true;
+  t.parentNode.insertBefore(s, t);
+})(this, this.document, "yandexContextAsyncCallbacks");
+</script>
+                          
+                <div itemprop="articleBody" class="main-content mt-5"><p><em>Статья, в которой рассмотрим классы Bootstrap 4, с помощью которых можно не только очень просто, но и адаптивно добавлять margin и padding отступы.</em></p>
+
+<h2>Синтаксис классов для задания margin и padding отступов</h2>
+<p>Bootstrap 4 включает в себя набор классов, с помощью которых можно очень легко добавлять к HTML элементам необходимые <code>margin</code> и <code>padding</code> отступы.</p>
+
+<p>Именуются эти классы следующим образом:</p>
+<ul>
+  <li><code>&#123;property&#125;&#123;sides&#125;-&#123;size&#125;</code> для <code>xs</code>;</li>
+  <li><code>&#123;property&#125;&#123;sides&#125;-&#123;breakpoint&#125;-&#123;size&#125;</code> для <code>sm</code>, <code>md</code>, <code>lg</code>, и <code>xl</code>.</li>
+</ul>
+<p>Вместо <code>&#123;property&#125;</code> необходимо указать первую букву названия отступа, т.е. <code>m</code> или <code>p</code> (<code>m</code> – для <code>margin</code>, <code>p</code> – для <code>padding</code>).</p>
+<p>Вместо <code>&#123;sides&#125;</code> необходимо указать сторону (<code>t</code> - для задания отступа только сверху, <code>b</code> – снизу, <code>l</code> – слева, <code>r</code> – справа) или несколько сторон (<code>x</code> – слева и справа, <code>y</code> – сверху и снизу). Если <code>&#123;sides&#125;</code> <strong>не указать</strong>, то тогда <strong>отступ будет установлен для всех 4 сторон элемента</strong>.</p>
+<p>Вместо <code>&#123;breakpoint&#125;</code> нужно указать контрольную точку (<code>sm</code>, <code>md</code>, <code>lg</code>, или <code>xl</code>). Другими словами, определить минимальную ширину viewport, начиная с которой, отступы, задаваемые этим классом, будут действовать.</p>
+<p class="alert alert-warning">При этом необходимо помнить, что контрольные точки задают именно минимальную ширину viewport. Это означает, что, например, класс с <code>sm</code> будет действовать не только на <code>sm</code>, но и на всех следующих контрольных точках (<code>sm</code>-><code>md</code>-><code>lg</code>-><code>xl</code>). Т.е. до тех пор, пока его действие будет не переопределено с помощью другого класса (например, с помощью <code>lg</code>).</p>
+<p>Вместо <code>&#123;size&#125;</code> необходимо задать величину отступа  (посредством одного из следующих значений):</p>
+<ul>
+    <li><code>0</code> (равно <code>0</code>);</li>
+    <li><code>1</code> (равно <code>$spacer * .25</code>);</li>
+    <li><code>2</code> (равно <code>$spacer * .5</code>);</li>  
+    <li><code>3</code> (равно <code>$spacer</code>);</li> 
+    <li><code>4</code> (равно <code>$spacer * 1.5</code>);</li> 
+    <li><code>5</code> (равно <code>$spacer * 3</code>);</li>
+    <li><code>auto</code> (равно <code>auto</code>) - можно использовать только для <code>margin</code>.</li>  
+</ul>
+<p class="alert alert-warning"><code>$spacer</code> -  это SCSS переменная Bootstrap 4, значение которой, по умолчанию, равно 1rem. А 1rem в большинстве браузеров равен 16px. В итоге, например, размер <span class="font-weight-bold">4</span> будет равен <span class="font-weight-bold">24px</span> (16px * 1.5).</p>
+
+<h2>Примеры использования</h2>
+<p>Рассмотрим примеры использования классов Bootstrap для установления HTML-элементам <code>padding</code> и <code>margin</code> оступов.</p>
+
+<p>Пример 1. Установим HTML-элементу padding отступ сверху, равный 3:</p>
+<pre class="prettyprint linenums">
+&lt;div class="pb-3"&gt;
+    ...
+&lt;/div&gt;
+</pre>
+
+<p>Пример 2. Расположим 2 блока по центру. Для этого первому блоку установим в качестве свойства <code>margin-left</code> значение auto с помощью класса <code>ml-auto</code>, а второму <code>margin-right:auto</code> - с помощью класса <code>mr-auto</code>. Кроме этого дополнительно зададим отступ между блоками, с помощью классов <code>mr-3</code> и <code>ml-3</code>.</p>
+<pre class="prettyprint linenums">
+&lt;div class="container"&gt;
+    &lt;div class="row"&gt;
+        &lt;!-- Первый блок --&gt;        
+        &lt;div class="col-4 ml-auto mr-3 bg-success" style="height: 200px;"&gt;&lt;/div&gt;
+        &lt;!-- Второй блок --&gt; 
+        &lt;div class="col-4 mr-auto ml-3 bg-danger" style="height: 200px;"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+
+<p>Пример 3. Установим блоку:</p>
+<ul>
+    <li><code>margin</code> отступы слева и справа, равные auto (<code>mx-auto</code>);</li>
+    <li>на <code>xs</code> <code>margin</code> отступы сверху и снизу,  равные 2 (<code>my-2</code>); </li>
+    <li>на <code>sm</code> и <code>md</code> (т.е. <code>&gt;sm</code>) <code>margin</code> отступы сверху и снизу, равные 3 (<code>my-sm-3</code>);</li>
+    <li>на <code>lg</code> и <code>xl</code> (т.е. <code>&gt;lg</code>) <code>margin</code> отступы сверху и снизу, равные 4 (<code>my-lg-4</code>);</li>
+    <li>на всех контрольных точках <code>padding</code> отступы для 4 сторон, равные 3 (<code>p-3</code>).</li>
+</ul>
+<pre class="prettyprint linenums">
+&lt;div class="mx-auto my-2 my-sm-3 my-lg-4 p-3"&gt;
+    ...
+&lt;/div&gt;
+</pre>
+
+<p>Пример 4. Установим элементу на <code>xs</code> <code>margin</code> отступ снизу, равный 4. На остальных контрольных точках этот отступ уберём, т.е. установим его, равным 0.</p>
+<pre class="prettyprint linenums">
+&lt;div class="mb-4 mb-sm-0"&gt;
+    ...
+&lt;/div&gt;
+</pre>
+
+<p>Пример 5. Установим HTML-элементу:</p>
+<ul>
+    <li>по умолчанию (<code>min-width</code> &gt;= 0 или <code>xs</code>) <code>padding</code> отступы, равные 0 (<code>p-0</code>);</li>
+    <li>на <code>sm</code> и следующих контрольных точках <code>padding</code> отступ слева, равный 3(<code>pl-sm-3</code>);</li>
+    <li>на <code>md</code> и следующих контрольных точках (т.е. <code>&gt;md</code>) <code>margin</code> уберём отступ слева (установим его равным 0, т.е. <code>pl-md-0</code>) и добавим отступ справа, равный 4 (<code>pr-sm-4</code>).</li>
+</ul>
+<pre class="prettyprint linenums">
+&lt;div class="p-0 pl-sm-3 pl-md-0 pr-sm-4"&gt;
+    ...
+&lt;/div&gt;
+</pre></div>
+                <hr>
+                <div class="row text-center" style="margin-bottom: 15px;">
+<ins class="adsbygoogle adslot1l"
+  data-ad-client="ca-pub-5588980879362570"
+  data-ad-slot="6130465844"></ins>
+<ins class="adsbygoogle adslot1r"
+  data-ad-client="ca-pub-5588980879362570"
+  data-ad-slot="7204314642"></ins>
+</div>
+                <hr>
+                <script src="//yastatic.net/share2/share.js" async="async"></script>
+<div class="ya-share2-container">
+  <p>Если статья понравилась, то поделитесь ей в социальных сетях:</p>
+  <div class="ya-share2" data-services="collections,vkontakte,facebook,gplus,twitter" data-counter=""></div>  
+</div>
+                <div class="ticket-meta justify-content-center row text-center border border-secondary border-left-0 border-right-0 bg-light p-3 my-4" data-id="485">
+    <div class="col-auto card-footer__published">
+      	<div class="title">
+              Дата публикации
+      	</div>
+      	<div class="content">
+              <i class="icon icon-calendar"></i>
+              <time itemprop="datePublished" 
+                  content="2017-12-26T17:32"
+                  datetime="2017-12-26T17:32">
+                  26-12-2017
+              </time>
+      	</div> 
+    </div>
+    <div class="w-100 d-sm-none"></div>
+    <div class="col-auto card-footer__user mt-2 mt-sm-0">
+        <div class="title">
+            Автор
+        </div>
+        <div class="content">
+            <i class="icon icon-user"></i>
+            <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+                <span itemprop="name">Александр Мальцев</span>
+            </span>
+        </div>
+    </div>
+    <div class="w-100 d-sm-none d-md-block d-lg-none"></div>
+    <div class="col-auto card-footer__views mt-2 mt-xl-0">
+        <div class="title">
+            Просмотры
+        </div>
+        <div class="content">
+            <i class="icon icon-eye"></i> 
+            4228
+        </div> 
+    </div>
+    <div class="col-auto card-footer__star mt-2 mt-xl-0">
+        <div class="title">
+            Избранное
+        </div>
+        <div class="content">
+            <span class="ticket-star"><i class="icon icon-star unstared star"></i> 
+                <span class="ticket-star-count">0</span>
+            </span>
+        </div> 
+    </div>        
+    <div class="col-auto card-footer__favorite mt-2 mt-xl-0">
+        <div class="title">
+            Нравится
+        </div>
+        <div class="content">
+            <span class="ticket-rating inactive">
+                <span class="vote plus" title="Нравится">
+          	        <i class="icon icon-heart"></i>
+                </span>
+                <span class="rating positive">+1</span>
+            </span>
+        </div> 
+    </div>                 
+</div>
+                <section class="comments">
+  
+	<h3 class="text-danger title"><i class="icon icon-bubbles"></i> Комментарии (<span itemprop="commentCount" id="comment-total"></span>)</h3>
+	
+	<!-- Для авторизированных пользователей -->
+	
+	
+	<div id="comments-wrapper">
+		<ol class="comment-list" id="comments"></ol>
+	</div>
+	
+	<div id="comments-tpanel">
+		<div id="tpanel-refresh"></div>
+		<div id="tpanel-new"></div>
+	</div>
+	
+</section><div class="ticket-comments alert alert-danger">
+    Вы должны авторизоваться, чтобы оставлять комментарии.
+</div>
+            </article>
+            <aside id="sidebar" class="col-md-4" style="border-left: 1px solid #f8f9fa;">
+                <section class="my-4 rounded p-3" style="border: 1px solid rgba(255,144,9,.3)">
+<h3 class="h4 text-danger" style="font-weight: 300;">Найти на сайте</h3>
+<p class="text-muted">Чтобы быстро найти нужную информацию, введите её в поле поиска, и получите все страницы, где она встречается!</p>
+<form action="search" method="get" role="search">   
+  <div class="input-group">
+    <input type="text" name="query" class="form-control" placeholder="Что найти?" value="">        
+    <div class="input-group-append">
+      <button type="submit" class="text-white btn btn-danger">Поиск</button>
+    </div>
+  </div>
+</form>  
+</section>
+                <section class="mb-4 border rounded p-3">
+                    <h3 class="h4 text-danger" style="font-weight: 300;">История просмотров</h3>
+                    <div class="mod__history" id="mod__history"></div>                
+                </section>
+                <nav class="mb-4 border rounded p-3">
+<div class="aside-nav-loading py-2 text-center">
+    <img src="/assets/aside_nav/ripple.svg" width="60" alt="loading aside nav">
+</div>
+<div class="aside-nav" data-id="499" style="position: relative">
+    <h3 class="h4 text-success" style="font-weight: 300;">Навигация</h3>
+    <div class="aside-nav__switch">
+        <input class="aside-nav__input" id="aside-nav__input" name="aside-nav__input" type="checkbox">
+        <label class="aside-nav__label label-success" for="aside-nav__input"></label>
+    </div>
+    <div class="aside-nav__body"></div>
+</div>  
+</nav>
+                <!--$adblock-adaptive-2a-->
+                <section class="mb-4 border rounded p-3">
+    <h3 class="h4 text-success" style="font-weight: 300;">Популярное</h3>
+    <div class="d-flex align-items-center mb-3">
+    <div class="rounded d-flex align-items-center bg-success"
+         style="width: 34px; height: 34px; flex-shrink: 0;">
+        <div class="w-100 text-center text-white font-weight-bold" style="font-size: 20px;">
+            1
+        </div>
+    </div>
+    <div class="ml-3 text-muted" style="flex-grow: 1; line-height: 1.1;">
+        <a class="link_muted" href="lessons/bootstrap-3/38-bootstrap-3-navigation-menu">Bootstrap 3 - Navbar (горизонтальное меню)</a> ~196.3K
+    </div>
+</div><div class="d-flex align-items-center mb-3">
+    <div class="rounded d-flex align-items-center bg-success"
+         style="width: 34px; height: 34px; flex-shrink: 0;">
+        <div class="w-100 text-center text-white font-weight-bold" style="font-size: 20px;">
+            2
+        </div>
+    </div>
+    <div class="ml-3 text-muted" style="flex-grow: 1; line-height: 1.1;">
+        <a class="link_muted" href="lessons/bootstrap-3/22-the-grid-system-twitter-bootstrap-3">Bootstrap 3 - Сетка</a> ~179.0K
+    </div>
+</div><div class="d-flex align-items-center mb-3">
+    <div class="rounded d-flex align-items-center bg-success"
+         style="width: 34px; height: 34px; flex-shrink: 0;">
+        <div class="w-100 text-center text-white font-weight-bold" style="font-size: 20px;">
+            3
+        </div>
+    </div>
+    <div class="ml-3 text-muted" style="flex-grow: 1; line-height: 1.1;">
+        <a class="link_muted" href="lessons/bootstrap-3/bootstrap-3-modal-window">Bootstrap - Modal (модальное окно)</a> ~162.7K
+    </div>
+</div><div class="d-flex align-items-center mb-3">
+    <div class="rounded d-flex align-items-center bg-success"
+         style="width: 34px; height: 34px; flex-shrink: 0;">
+        <div class="w-100 text-center text-white font-weight-bold" style="font-size: 20px;">
+            4
+        </div>
+    </div>
+    <div class="ml-3 text-muted" style="flex-grow: 1; line-height: 1.1;">
+        <a class="link_muted" href="lessons/bootstrap-3/119-bootstrap-3-customize-the-navbar">Bootstrap 3 - Настройка компонента Navbar</a> ~132.3K
+    </div>
+</div><div class="d-flex align-items-center mb-3">
+    <div class="rounded d-flex align-items-center bg-success"
+         style="width: 34px; height: 34px; flex-shrink: 0;">
+        <div class="w-100 text-center text-white font-weight-bold" style="font-size: 20px;">
+            5
+        </div>
+    </div>
+    <div class="ml-3 text-muted" style="flex-grow: 1; line-height: 1.1;">
+        <a class="link_muted" href="bootstrap/carousel">Bootstrap - Carousel (карусель)</a> ~126.9K
+    </div>
+</div><div class="d-flex align-items-center mb-3">
+    <div class="rounded d-flex align-items-center bg-success"
+         style="width: 34px; height: 34px; flex-shrink: 0;">
+        <div class="w-100 text-center text-white font-weight-bold" style="font-size: 20px;">
+            6
+        </div>
+    </div>
+    <div class="ml-3 text-muted" style="flex-grow: 1; line-height: 1.1;">
+        <a class="link_muted" href="lessons/bootstrap-3/34-bootstrap-3-images">Bootstrap - CSS классы для изображений</a> ~110.3K
+    </div>
+</div><div class="d-flex align-items-center mb-3">
+    <div class="rounded d-flex align-items-center bg-success"
+         style="width: 34px; height: 34px; flex-shrink: 0;">
+        <div class="w-100 text-center text-white font-weight-bold" style="font-size: 20px;">
+            7
+        </div>
+    </div>
+    <div class="ml-3 text-muted" style="flex-grow: 1; line-height: 1.1;">
+        <a class="link_muted" href="lessons/bootstrap-3/32-bootstrap-3-form">Bootstrap 3 - Формы</a> ~102.4K
+    </div>
+</div>  
+</section>
+                <section class="mb-4 border rounded p-3">
+    <h3 class="h4 text-warning" style="font-weight: 300;">Опрос</h3>
+    <div id="section-vote">
+        <div class="text-warning question mb-3"></div>
+        <div class="main"></div>
+    </div>  
+</section>
+                <section class="mb-4 border rounded p-3">
+    <h3 class="h4 text-success" style="font-weight: 300;">Подпишитесь на email рассылку!</h3>
+    <p class="text-muted">Если хотите быть в курсе событий сайта «itchief.ru», то подпишитесь на еженедельную информационную email рассылку (спам не присылаем)!</p>
+    <a href="/subscribe" class="btn btn-success">Оформить подписку</a>  
+</section>
+                
+                    <!-- Yandex.RTB R-A-161442-1 -->
+<div id="ya-aside" class="as-aside text-center">
+  <div id="yandex_ad_v" style="display: inline-block;"></div>
+</div>
+<script>
+(function(w, d, n, s, t) {
+  if (window.matchMedia("only screen and (max-width: 991px)").matches) {
+    var m= "R-A-161442-1";
+  } else {
+    var m= "R-A-161442-5";
+  }
+  w[n] = w[n] || [];
+  w[n].push(function() {
+    Ya.Context.AdvManager.render({
+      blockId: m,
+      renderTo: "yandex_ad_v",
+      async: true
+    });
+  });
+  t = d.getElementsByTagName("script")[0];
+  s = d.createElement("script");
+  s.type = "text/javascript";
+  s.src = "//an.yandex.ru/system/context.js";
+  s.async = true;
+  t.parentNode.insertBefore(s, t);
+})(this, this.document, "yandexContextAsyncCallbacks");
+</script>
+                
+            </aside>
+        </div>
+    </div>
+</main>
+<footer class="footer position-relative mt-5 py-3 text-muted bg-light text-center font-weight-light">
+  <div class="footer__age-rating position-absolute">16+</div>
+  <div class="footer__social">
+    <a href="http://twitter.com/itchief_ru" title="ИТ Шеф в Twitter" target="_blank" rel="nofollow"><i class="icon icon-twitter"></i></a>
+    <a href="http://www.fb.com/itchief.ru" title="ИТ Шеф в Facebook" target="_blank" rel="nofollow"><i class="icon icon-facebook"></i></a>
+    <a href="http://vk.com/itchief" title="ИТ Шеф в ВКонтакте" target="_blank" rel="nofollow"><i class="icon icon-vk"></i></a>
+    <a href="https://www.google.com/+ItchiefRuFirst" title="ИТ Шеф в Google+" target="_blank" rel="nofollow"><i class="icon icon-google-plus"></i></a>
+  </div>
+  <div class="container-fluid">
+    <div class="row my-2" style="line-height:1.1">
+      <div class="col-9 col-sm-4 col-md-3 col-xl-2 mx-auto mr-sm-0 mb-2">
+        <a class="footer__btn d-block p-2 rounded text-center text-white" href="/user-agreement" rel="nofollow" title="Пользовательское соглашение">
+             <div style="font-size: 30px;"><i class="icon icon-handshake-o"></i></div>
+             <div>Условия использования</div>             
+        </a>
+      </div>
+      <div class="col-9 col-sm-4 col-md-3 col-xl-2 mx-auto m-sm-0 mb-2">
+        <a class="footer__btn d-block p-2 rounded text-center text-white" href="/privacy-policy" rel="nofollow" title="Политика конфиденциальности">
+             <div style="font-size: 30px;"><i class="icon icon-briefcase"></i></div>
+             <div>Конфиденциальность</div>             
+        </a>
+      </div>
+      <div class="col-9 col-sm-4 col-md-3 col-xl-2 mx-auto ml-sm-0 mb-2">
+        <a class="footer__btn d-block p-2 rounded text-center text-white" href="/about" rel="nofollow" title="О сайте">
+             <div style="font-size: 30px;"><i class="icon icon-info"></i></div>
+             <div>О сайте</div>             
+        </a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">© Александр Мальцев, 2014-2018</div>
+      <div class="col-12">E-mail: alexander@itchief.ru</div>
+      <div class="col-12 col-sm-11 col-md-9 col-xl-6 mx-auto" style="font-size: .75rem;">Цитирование документа разрешается только при обязательном указании активной гиперссылки на сайт. Полное заимствование документа не разрешается и является нарушением российского и международного законодательства.</div>
+    </div>    
+  </div>
+</footer>
+
+    
+<script> (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter25823180 = new Ya.Metrika({ id:25823180, clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks"); </script> <noscript><div><img src="https://mc.yandex.ru/watch/25823180" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-53667418-1', 'auto');
+  ga('require', 'displayfeatures');
+  ga('send', 'pageview');
+
+</script>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+[].forEach.call(document.querySelectorAll('.adsbygoogle'),function(){
+  (adsbygoogle = window.adsbygoogle || []).push({});
+});  
+</script>
+
+
+<script type="text/javascript" src="/assets/components/tickets/js/web/editor/jquery.markitup.js"></script>
+<script type="text/javascript" src="/assets/components/tickets/js/web/default.js"></script>
+</body>
+</html>
