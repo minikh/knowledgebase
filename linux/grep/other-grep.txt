@@ -1,0 +1,3 @@
+альтернативные инструменты поиска (типа grep)
+sudo apt install ack-grep
+sudo apt install silversearcher-ag
