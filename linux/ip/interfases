@@ -1,0 +1,11 @@
+auto lo
+iface lo inet loopback
+
+
+auto ens160:1
+iface ens160:1 inet static
+address 192.168.1.10
+netmask 255.255.255.0
+
+
+#sudo service networking restart

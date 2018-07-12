@@ -5,6 +5,7 @@ https://habrahabr.ru/post/225189/
 
 gradle -version
 
+gradle wrapper --gradle-version 4.5.1
 
 gradle wrapper
 ./gradlew -version
@@ -12,4 +13,6 @@ gradle wrapper
 
 ./gradlew run
 ./gradlew main_project:run - запуск подпроекта
+
+
 

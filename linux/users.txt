@@ -11,3 +11,5 @@ useradd
 sudo usermod -a -G hornetq username
 
 sudo adduser и отвечать на вопросы
+
+sudo adduser <username> sudo
