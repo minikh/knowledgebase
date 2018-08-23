@@ -1,0 +1,1939 @@
+
+<!DOCTYPE html>
+<html class="no-js" lang="ru-RU" prefix="og: http://ogp.me/ns#">
+<head itemscope itemtype="http://schema.org/WebSite">
+	<meta charset="UTF-8">
+	<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
+	<!--[if IE ]>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<![endif]-->
+	<link rel="profile" href="http://gmpg.org/xfn/11" />
+	
+                    <link rel="icon" href="https://losst.ru/wp-content/uploads/2017/01/lt.png" type="image/x-icon" />
+        
+                    <meta name="msapplication-TileImage" content="https://losst.ru/wp-content/uploads/2017/01/cropped-lt-270x270.png">        
+                    <link rel="apple-touch-icon-precomposed" href="https://losst.ru/wp-content/uploads/2017/01/cropped-lt-180x180.png">        
+                    <meta name="viewport" content="width=device-width, initial-scale=1">
+            <meta name="apple-mobile-web-app-capable" content="yes">
+            <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        
+        
+        <meta itemprop="name" content="Losst" />
+        <meta itemprop="url" content="https://losst.ru" />
+
+                                                <meta itemprop="creator accountablePerson" content="Сергей Матийчук" />
+                    	<link rel="pingback" href="https://losst.ru/xmlrpc.php" />
+	<title>Настройка iptables для чайников | Losst</title>
+<script type="text/javascript">document.documentElement.className = document.documentElement.className.replace( /\bno-js\b/,'js' );</script>
+<!-- This site is optimized with the Yoast SEO plugin v7.4.2 - https://yoast.com/wordpress/plugins/seo/ -->
+<meta name="description" content="Каждый компьютер, подключенный к сети, находится в потенциальной опасности. В сети очень много угроз начиная от программ, которые будут пытаться любым способом проникнуть в систему и заканчивая хакерами, которые хотят получить доступ к нужному им компьютеру. А программное обеспечение, установленное на компьютере,"/>
+<link rel="canonical" href="https://losst.ru/nastrojka-iptables-dlya-chajnikov" />
+<link rel="publisher" href="https://plus.google.com/u/0/b/105846980335513060650/+LosstRu1c"/>
+<meta property="og:locale" content="ru_RU" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Настройка iptables для чайников | Losst" />
+<meta property="og:description" content="Каждый компьютер, подключенный к сети, находится в потенциальной опасности. В сети очень много угроз начиная от программ, которые будут пытаться любым способом проникнуть в систему и заканчивая хакерами, которые хотят получить доступ к нужному им компьютеру. А программное обеспечение, установленное на компьютере," />
+<meta property="og:url" content="https://losst.ru/nastrojka-iptables-dlya-chajnikov" />
+<meta property="og:site_name" content="Losst" />
+<meta property="article:publisher" content="https://www.facebook.com/losstofficial" />
+<meta property="article:tag" content="iptables" />
+<meta property="article:section" content="Инструкции" />
+<meta property="article:published_time" content="2016-10-21T11:36:10+03:00" />
+<meta property="article:modified_time" content="2017-07-14T18:31:56+03:00" />
+<meta property="og:updated_time" content="2017-07-14T18:31:56+03:00" />
+<meta property="og:image" content="https://losst.ru/wp-content/uploads/2016/10/08194204721851.jpg" />
+<meta property="og:image:secure_url" content="https://losst.ru/wp-content/uploads/2016/10/08194204721851.jpg" />
+<meta property="og:image:width" content="640" />
+<meta property="og:image:height" content="368" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:description" content="Каждый компьютер, подключенный к сети, находится в потенциальной опасности. В сети очень много угроз начиная от программ, которые будут пытаться любым способом проникнуть в систему и заканчивая хакерами, которые хотят получить доступ к нужному им компьютеру. А программное обеспечение, установленное на компьютере," />
+<meta name="twitter:title" content="Настройка iptables для чайников | Losst" />
+<meta name="twitter:site" content="@Losst_official" />
+<meta name="twitter:image" content="https://losst.ru/wp-content/uploads/2016/10/08194204721851.jpg" />
+<meta name="twitter:creator" content="@Losst_official" />
+<script type='application/ld+json'>{"@context":"https:\/\/schema.org","@type":"Organization","url":"https:\/\/losst.ru\/","sameAs":["https:\/\/www.facebook.com\/losstofficial","https:\/\/plus.google.com\/u\/0\/b\/105846980335513060650\/+LosstRu1c","https:\/\/www.youtube.com\/channel\/UCFhsZ0CeGEXOSpIOUORwbUA","https:\/\/ru.pinterest.com\/seriyyy95\/losst\/","https:\/\/twitter.com\/Losst_official"],"@id":"https:\/\/losst.ru\/#organization","name":"Losst","logo":"https:\/\/losst.ru\/wp-content\/uploads\/2017\/01\/cropped-cropped-lt.png"}</script>
+<!-- / Yoast SEO plugin. -->
+
+<link rel="alternate" type="application/rss+xml" title="Losst &raquo; Лента" href="https://losst.ru/feed" />
+<link rel="alternate" type="application/rss+xml" title="Losst &raquo; Лента комментариев" href="https://losst.ru/comments/feed" />
+<link rel="alternate" type="application/rss+xml" title="Losst &raquo; Лента комментариев к &laquo;Настройка iptables для чайников&raquo;" href="https://losst.ru/nastrojka-iptables-dlya-chajnikov/feed" />
+
+		<style type="text/css">
+			.mistape-test, .mistape_mistake_inner {color:  !important;}
+			#mistape_dialog h2::before, #mistape_dialog .mistape_action, .mistape-letter-back {background-color:  !important; }
+			#mistape_reported_text:before, #mistape_reported_text:after {border-color:  !important;}
+            .mistape-letter-front .front-left {border-left-color:  !important;}
+            .mistape-letter-front .front-right {border-right-color:  !important;}
+            .mistape-letter-front .front-bottom, .mistape-letter-back > .mistape-letter-back-top, .mistape-letter-top {border-bottom-color:  !important;}
+            .mistape-logo svg {fill:  !important;}
+		</style>
+		<link rel='stylesheet' id='yarppWidgetCss-css'  href='https://losst.ru/wp-content/plugins/yet-another-related-posts-plugin/style/widget.css' type='text/css' media='all' />
+<link rel='stylesheet' id='contact-form-7-css'  href='https://losst.ru/wp-content/plugins/contact-form-7/includes/css/styles.css' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-postratings-css'  href='https://losst.ru/wp-content/plugins/wp-postratings/css/postratings-css.css' type='text/css' media='all' />
+<link rel='stylesheet' id='mistape-front-css'  href='https://losst.ru/wp-content/plugins/mistape/assets/css/mistape-front.css' type='text/css' media='all' />
+<link rel='stylesheet' id='footable-core-min-css'  href='https://losst.ru/wp-content/plugins/footable/css/footable.core.min.css' type='text/css' media='all' />
+<link rel='stylesheet' id='best-stylesheet-css'  href='https://losst.ru/wp-content/themes/mts_best_child/style.css' type='text/css' media='all' />
+<style id='best-stylesheet-inline-css' type='text/css'>
+
+        body {background-color:#ffffff;background-image:url(https://losst.ru/wp-content/themes/mts_best/images/nobg.png);}
+        .main-header {background-color:#ffae72;background-image:url(https://losst.ru/wp-content/themes/mts_best/images/nobg.png);}
+        footer-carousel-wrap {background-color:#ff9950; }
+        footer {background-color:#eeeeee;background-image:url(https://losst.ru/wp-content/themes/mts_best/images/nobg.png);}
+        footer > .copyrights {background-color:#FFFFFF;}
+        .pace .pace-progress, .mobile-menu-wrapper, .owl-carousel .owl-nav > div, #top-navigation li:hover a, #header nav#top-navigation ul ul li, a#pull, .secondary-navigation, #move-to-top,.mts-subscribe input[type='submit'],input[type='submit'],#commentform input#submit,.contactform #submit,.pagination a,.fs-pagination a,.header-search .ajax-search-results-container,#load-posts a,#fs2_load_more_button,#wp-calendar td a,#wp-calendar caption,#wp-calendar #prev a:before,#wp-calendar #next a:before, .tagcloud a, #tags-tab-content a, #wp-calendar thead th.today, .slide-title, .slidertitle, #header nav#navigation ul ul li, .thecategory a, #wp-calendar td a:hover, #wp-calendar #today, .widget .wpt-pagination a, .widget .wpt_widget_content #tags-tab-content ul li a, .widget .wp_review_tab_widget_content .wp-review-tab-pagination a, .ajax-search-meta .results-link, .post-day .review-total-only, .woocommerce a.button, .woocommerce-page a.button, .woocommerce button.button, .woocommerce-page button.button, .woocommerce input.button, .woocommerce-page input.button, .woocommerce #respond input#submit, .woocommerce-page #respond input#submit, .woocommerce #content input.button, .woocommerce-page #content input.button, .woocommerce nav.woocommerce-pagination ul li a, .woocommerce-page nav.woocommerce-pagination ul li a, .woocommerce #content nav.woocommerce-pagination ul li a, .woocommerce-page #content nav.woocommerce-pagination ul li a, .woocommerce .bypostauthor:after, #searchsubmit, .woocommerce nav.woocommerce-pagination ul li a:hover, .woocommerce-page nav.woocommerce-pagination ul li a:hover, .woocommerce #content nav.woocommerce-pagination ul li a:hover, .woocommerce-page #content nav.woocommerce-pagination ul li a:hover, .woocommerce nav.woocommerce-pagination ul li a:focus, .woocommerce-page nav.woocommerce-pagination ul li a:focus, .woocommerce #content nav.woocommerce-pagination ul li a:focus, .woocommerce-page #content nav.woocommerce-pagination ul li a:focus, .woocommerce a.button, .woocommerce-page a.button, .woocommerce button.button, .woocommerce-page button.button, .woocommerce input.button, .woocommerce-page input.button, .woocommerce #respond input#submit, .woocommerce-page #respond input#submit, .woocommerce #content input.button, .woocommerce-page #content input.button, .widget_product_search input[type='submit'] {background: #ff9950; color: #fff; }
+        .header-search #s,nav a.toggle-mobile-menu, .tab_widget ul.wps_tabs li, .wpt_widget_content .tab_title.selected a, .widget_wp_review_tab .tab_title.selected a {background: #ff9950 !important;}
+        #wp-calendar thead th.today { border-color: #ff9950; }
+        a, a:hover,.title a:hover,.post-data .post-title a:hover,.post-title a:hover,.post-info a:hover,.entry-content a,.textwidget a,.reply a,.comm,.fn a,.comment-reply-link, .entry-content .singleleft a:hover, #footer-post-carousel .owl-nav div {color:#ff9950;}
+        .post-box .review-total-only .review-result-wrapper .review-result i {color:#ff9950!important;}
+        footer > .footer-carousel-wrap { background: #ff9950; }
+        
+        .shareit { top: 373px; left: auto; z-index: 0; margin: 0 0 0 -110px; width: 100px; position: fixed; padding: 0; border:none; border-right: 0;}
+        .share-item {margin: 2px;}
+        
+        .bypostauthor .fn:after { content: "Автор"; position: absolute; left: 0px; top: 0px; padding: 0px 10px; background: #444; color: #FFF; border-radius: 3px; }
+        
+        
+        
+            
+</style>
+<link rel='stylesheet' id='owl-carousel-css'  href='https://losst.ru/wp-content/themes/mts_best/css/owl.carousel.css' type='text/css' media='all' />
+<link rel='stylesheet' id='magnificPopup-css'  href='https://losst.ru/wp-content/themes/mts_best/css/magnific-popup.css' type='text/css' media='all' />
+<link rel='stylesheet' id='fontawesome-css'  href='https://losst.ru/wp-content/themes/mts_best/css/font-awesome.min.css' type='text/css' media='all' />
+<link rel='stylesheet' id='responsive-css'  href='https://losst.ru/wp-content/themes/mts_best/css/responsive.css' type='text/css' media='all' />
+<script type='text/javascript' src='https://losst.ru/wp-includes/js/jquery/jquery.js'></script>
+<script type='text/javascript' src='https://losst.ru/wp-includes/js/jquery/jquery-migrate.min.js'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var mts_customscript = {"responsive":"1","nav_menu":"secondary"};
+/* ]]> */
+</script>
+<script type='text/javascript' async="async" src='https://losst.ru/wp-content/themes/mts_best/js/customscript.js'></script>
+<script type='text/javascript' src='https://losst.ru/wp-content/plugins/footable/js/footable.min.js'></script>
+<script type='text/javascript' src='https://losst.ru/wp-content/plugins/footable/js/footable.sort.min.js'></script>
+<link rel='https://api.w.org/' href='https://losst.ru/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://losst.ru/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://losst.ru/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 4.9.5" />
+<link rel='shortlink' href='https://losst.ru/?p=9927' />
+<link rel="alternate" type="application/json+oembed" href="https://losst.ru/wp-json/oembed/1.0/embed?url=https%3A%2F%2Flosst.ru%2Fnastrojka-iptables-dlya-chajnikov" />
+<link rel="alternate" type="text/xml+oembed" href="https://losst.ru/wp-json/oembed/1.0/embed?url=https%3A%2F%2Flosst.ru%2Fnastrojka-iptables-dlya-chajnikov&#038;format=xml" />
+<meta name='keywords' content='правила iptables, настройка iptables, просмотр правил iptables, удалить правило iptables, отключить iptables, добавить правило iptables, установка iptables, iptables для чайников, очистить iptables, удаление правил iptables, iptables параметры' />
+<link href="//fonts.googleapis.com/css?family=Roboto:700|Open+Sans:normal|Source+Sans+Pro:700|Roboto:normal|Source+Sans+Pro:600|Source+Sans+Pro:normal&amp;subset=latin,cyrillic" rel="stylesheet" type="text/css">
+<style type="text/css">
+#logo a { font-family: 'Roboto'; font-weight: 700; font-size: 36px; color: #3498db;text-transform: uppercase; }
+#navigation .menu li, #navigation .menu li a { font-family: 'Open Sans'; font-weight: normal; font-size: 15px; color: #ffffff; }
+body { font-family: 'Open Sans'; font-weight: normal; font-size: 16px; color: #444444; }
+.post-data .post-title a, #comments-tab-content a { font-family: 'Source Sans Pro'; font-weight: 700; font-size: 18px; color: #444444;text-transform: uppercase; }
+.hentry .entry-title { font-family: 'Source Sans Pro'; font-weight: 700; font-size: 30px; color: #444444;text-transform: uppercase; }
+#sidebars .widget { font-family: 'Roboto'; font-weight: normal; font-size: 15px; color: #444444; }
+.footer-widgets, #site-footer { font-family: 'Open Sans'; font-weight: normal; font-size: 15px; color: #444444; }
+h1 { font-family: 'Source Sans Pro'; font-weight: 600; font-size: 30px; color: #444444;text-transform: uppercase; }
+h2 { font-family: 'Source Sans Pro'; font-weight: 600; font-size: 26px; color: #444444;text-transform: uppercase; }
+h3 { font-family: 'Source Sans Pro'; font-weight: 600; font-size: 21px; color: #444444;text-transform: uppercase; }
+h4 { font-family: 'Source Sans Pro'; font-weight: 600; font-size: 18px; color: #444444;text-transform: uppercase; }
+h5 { font-family: 'Source Sans Pro'; font-weight: 600; font-size: 15px; color: #444444;text-transform: uppercase; }
+h6 { font-family: 'Source Sans Pro'; font-weight: normal; font-size: 15px; color: #444444;text-transform: uppercase; }
+</style>
+<meta name="google-site-verification" content="MLJTyNsDZbjcYnWos4oWiIGSb7_tC5FS7kW5Glnj3IY" /><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://losst.ru/nastrojka-iptables-dlya-chajnikov"
+    },
+    "headline": "Настройка iptables для чайников | Losst",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://losst.ru/wp-content/uploads/2016/10/08194204721851.jpg",
+        "width": 640,
+        "height": 368
+    },
+    "datePublished": "2016-10-21T11:36:10+0300",
+    "dateModified": "2017-07-14T18:31:56+0000",
+    "author": {
+        "@type": "Person",
+        "name": "admin"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Losst",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://losst.ru/wp-content/uploads/2017/01/LOSSTNEW_2.0-text.png",
+            "width": 1920,
+            "height": 560
+        }
+    },
+    "description": ""
+}
+</script>
+
+<!-- BEGIN recaptcha, injected by plugin wp-recaptcha-integration  -->
+
+<!-- END recaptcha -->
+<script type="text/javascript">/* FooTable init code */
+
+var $FOOTABLE = $FOOTABLE || {};
+(function( $FOOTABLE, $, undefined ) {
+
+	jQuery.fn.attrAppendWithComma=function(a,b){var c;return this.each(function(){c=$(this),void 0!==c.attr(a)&&""!=c.attr(a)?c.attr(a,c.attr(a)+","+b):c.attr(a,b)})};jQuery.fn.footableAttr=function(a,b){return this.each(function(){var c=$(this);c.data("auto-columns")!==!1&&(c.find("thead th:gt("+a+")").attrAppendWithComma("data-hide","tablet"),c.find("thead th:gt("+b+")").attrAppendWithComma("data-hide","phone"))})},jQuery.fn.footableFilter=function(a){return this.each(function(){var b=$(this);b.data("filter")||b.data("filter")===!1||b.data("filter-text-only","true").before('<div class="footable-filter-container"><input placeholder="'+a+'" style="float:right" type="text" class="footable-filter" /></div>')})},jQuery.fn.footablePager=function(){return this.each(function(){var a=$(this);if(a.data("page")!==!1){var b=$('<tfoot class="hide-if-no-paging"><tr><td><div class="pagination pagination-centered"></div></td></tr></tfoot>');b.find("td").attr("colspan",a.find("thead th").length),a.find("tbody:last").after(b)}})};
+
+	$FOOTABLE.init = function() {
+		$(".tablepress")
+			.footableAttr(3,1)
+			.footable( { breakpoints: { phone: 320, tablet: 768 } });
+
+	};
+}( $FOOTABLE, jQuery ));
+
+jQuery(function($) {
+	$FOOTABLE.init();
+});
+</script>      <meta name="onesignal" content="wordpress-plugin"/>
+          <link rel="manifest"
+            href="https://losst.ru/wp-content/plugins/onesignal-free-web-push-notifications/sdk_files/manifest.json.php?gcm_sender_id="/>
+          <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async></script>    <script>
+
+      window.OneSignal = window.OneSignal || [];
+
+      OneSignal.push( function() {
+        OneSignal.SERVICE_WORKER_UPDATER_PATH = "OneSignalSDKUpdaterWorker.js.php";
+        OneSignal.SERVICE_WORKER_PATH = "OneSignalSDKWorker.js.php";
+        OneSignal.SERVICE_WORKER_PARAM = { scope: '/' };
+
+        OneSignal.setDefaultNotificationUrl("https://losst.ru");
+        var oneSignal_options = {};
+        window._oneSignalInitOptions = oneSignal_options;
+
+        oneSignal_options['wordpress'] = true;
+oneSignal_options['appId'] = 'f5156215-de21-418f-a4e8-b8bd0ad1b38a';
+oneSignal_options['autoRegister'] = true;
+oneSignal_options['welcomeNotification'] = { };
+oneSignal_options['welcomeNotification']['title'] = "Losst";
+oneSignal_options['welcomeNotification']['message'] = "Спасибо за подписку!";
+oneSignal_options['path'] = "https://losst.ru/wp-content/plugins/onesignal-free-web-push-notifications/sdk_files/";
+oneSignal_options['safari_web_id'] = "web.onesignal.auto.5462a642-4744-4944-be08-d03aa1430cc8";
+oneSignal_options['promptOptions'] = { };
+oneSignal_options['promptOptions']['actionMessage'] = 'Подписывайтесь на уведомления о новых постах и обновлениях Losst.';
+oneSignal_options['promptOptions']['exampleNotificationTitleDesktop'] = 'Это заголовок';
+oneSignal_options['promptOptions']['exampleNotificationMessageDesktop'] = 'Текст уведомления';
+oneSignal_options['promptOptions']['exampleNotificationTitleMobile'] = 'Загловок';
+oneSignal_options['promptOptions']['exampleNotificationMessageMobile'] = 'Текст уведомления';
+oneSignal_options['promptOptions']['exampleNotificationCaption'] = 'Вы можете отписаться в любой момент';
+oneSignal_options['promptOptions']['acceptButtonText'] = 'Включить';
+oneSignal_options['promptOptions']['cancelButtonText'] = 'Нет, спасибо';
+oneSignal_options['notifyButton'] = { };
+oneSignal_options['notifyButton']['enable'] = true;
+oneSignal_options['notifyButton']['position'] = 'bottom-left';
+oneSignal_options['notifyButton']['theme'] = 'inverse';
+oneSignal_options['notifyButton']['size'] = 'medium';
+oneSignal_options['notifyButton']['prenotify'] = true;
+oneSignal_options['notifyButton']['showCredit'] = false;
+oneSignal_options['notifyButton']['text'] = {};
+oneSignal_options['notifyButton']['text']['message.prenotify'] = 'Подписывайтесь на уведомления';
+oneSignal_options['notifyButton']['text']['tip.state.unsubscribed'] = 'Подписка на уведомления';
+oneSignal_options['notifyButton']['text']['tip.state.subscribed'] = 'Вы подписаны на уведомления';
+oneSignal_options['notifyButton']['text']['tip.state.blocked'] = 'Уведомления заблокированы';
+oneSignal_options['notifyButton']['text']['message.action.subscribed'] = 'Спасибо за подписку!';
+oneSignal_options['notifyButton']['text']['message.action.resubscribed'] = 'Вы снова подписаны на уведомления Losst';
+oneSignal_options['notifyButton']['text']['message.action.unsubscribed'] = 'Вы не будете больше получать уведомлений';
+oneSignal_options['notifyButton']['text']['dialog.main.title'] = 'Управление уведомлениями';
+oneSignal_options['notifyButton']['text']['dialog.main.button.subscribe'] = 'Включить';
+oneSignal_options['notifyButton']['text']['dialog.main.button.unsubscribe'] = 'Включить';
+oneSignal_options['notifyButton']['text']['dialog.blocked.title'] = 'Разблокировать уведомления';
+oneSignal_options['notifyButton']['text']['dialog.blocked.message'] = 'Выполните эти инструкции чтобы включить уведомления:';
+oneSignal_options['notifyButton']['colors'] = {};
+oneSignal_options['notifyButton']['colors']['circle.background'] = '#ff9950';
+oneSignal_options['notifyButton']['colors']['circle.foreground'] = '#ffffff';
+oneSignal_options['notifyButton']['colors']['dialog.button.background'] = '#ff9950';
+oneSignal_options['notifyButton']['colors']['dialog.button.background.hovering'] = '#ff9950';
+oneSignal_options['notifyButton']['colors']['dialog.button.background.active'] = '#ff9950';
+              OneSignal.init(window._oneSignalInitOptions);
+                    });
+
+      function documentInitOneSignal() {
+        var oneSignal_elements = document.getElementsByClassName("OneSignal-prompt");
+
+        var oneSignalLinkClickHandler = function(event) { OneSignal.push(['registerForPushNotifications']); event.preventDefault(); };        for(var i = 0; i < oneSignal_elements.length; i++)
+          oneSignal_elements[i].addEventListener('click', oneSignalLinkClickHandler, false);
+      }
+
+      if (document.readyState === 'complete') {
+           documentInitOneSignal();
+      }
+      else {
+           window.addEventListener("load", function(event){
+               documentInitOneSignal();
+          });
+      }
+    </script>
+
+<link rel="icon" href="https://losst.ru/wp-content/uploads/2017/01/cropped-lt-32x32.png" sizes="32x32" />
+<link rel="icon" href="https://losst.ru/wp-content/uploads/2017/01/cropped-lt-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon-precomposed" href="https://losst.ru/wp-content/uploads/2017/01/cropped-lt-180x180.png" />
+<meta name="msapplication-TileImage" content="https://losst.ru/wp-content/uploads/2017/01/cropped-lt-270x270.png" />
+		<style type="text/css" id="wp-custom-css">
+			.mail {
+	display: none;
+}
+
+.post-data .post-title a {
+	font-weight: 600 !important;
+}
+
+.odd{
+    background: #F9F9F9;
+}
+
+.postrating {
+	margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+code {
+    line-height: 1.5;
+	background-color:
+rgba(0, 0, 0, 0.05)
+;
+	border-bottom-left-radius:
+3px
+;
+	border-bottom-right-radius:
+3px
+;
+	border-top-left-radius:
+3px
+;
+	border-top-right-radius:
+3px
+;
+	box-sizing:
+border-box
+;
+    padding: 15px;
+    width: 97%;
+    display: block;
+}
+
+code.user:before {
+    content: "$";
+    margin-right: 6px;
+}
+
+code.root:before {
+    content: "#";
+    margin-right: 6px;
+}
+
+#social {
+-moz-transition: all 0.8s ease-in-out;
+-webkit-transition: all 0.8s ease-in-out;
+-o-transition: all 0.8s ease-in-out;
+-ms-transition: all 0.8s ease-in-out;
+transition: all 0.8s  cubic-bezier(0,0,0.58,1)
+}
+/* Поворот на 360 градусов при наведении курсора*/
+
+#social:hover {
+-moz-transform: rotate(360deg);
+-webkit-transform: rotate(360deg);
+-o-transform: rotate(360deg);
+-ms-transform: rotate(360deg);
+transform: rotate(360deg);
+}
+
+.mobile-menu-wrapper, .owl-nav > div, #top-navigation li:hover a, #header nav#top-navigation ul ul li,#header nav#navigation ul ul li , a#pull, .secondary-navigation {
+	background: rgba(0, 0, 0, 0.77) !important;
+}
+
+
+img[src='https://losst.ru/wp-content/uploads/2017/01/LOSSTNEW_2.0-text.png'] {
+    vertical-align: middle;
+    width: 100%;
+    object-fit: cover;
+}
+
+.container {
+    width: 100% !important;
+	  max-height: 100px;
+}
+
+.main-container, .container {
+    max-width: 100%;
+}
+
+.logo-wrap {
+	max-height: 250px;
+  margin: 0;
+	overflow: hidden;
+	vertical-align: middle;
+	display:flex;
+	align-items:center;
+	justify-content:center;
+}
+
+.header-inner {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    float: left;
+	  background-color: #fff;
+}
+
+#content_box {
+    float: left;
+    width: 98%;
+    padding-left: 20px !important;
+}
+
+#category-description {
+    padding-bottom: 30px;
+}
+
+.post-data .post-title a {
+	text-transform: none;
+	font-size: 24px;
+  font-weight: 400;
+}		</style>
+	</head>
+<body id ="blog" class="post-template-default single single-post postid-9927 single-format-standard main" itemscope itemtype="http://schema.org/WebPage">
+	<div class="main-container-wrap">
+		<header id="site-header" role="banner" class="main-header" itemscope itemtype="http://schema.org/WPHeader">
+			<div id="header">
+				<div class="container">
+															<div class="clear" id="catcher"></div>
+						<div class="secondary-navigation sticky-navigation" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+											<div class="container clearfix">
+							<a href="#" id="pull" class="toggle-mobile-menu">Меню</a>
+															<nav id="navigation" class="clearfix">
+																			<ul id="menu-kategorii" class="menu clearfix"><li id="menu-item-8567" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-8567"><a href="//losst.ru/">Главная</a></li>
+<li id="menu-item-8575" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-8575"><a href="https://losst.ru/novosti">Новости</a></li>
+<li id="menu-item-8568" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-8568"><a href="#" target="_blank" rel="nofollow">Категории</a>
+<ul class="sub-menu">
+	<li id="menu-item-19733" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-19733"><a href="https://losst.ru/instruktsii">Инструкции</a></li>
+	<li id="menu-item-8580" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-8580"><a href="https://losst.ru/distributivu">Дистрибутивы</a></li>
+	<li id="menu-item-8571" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-8571"><a href="https://losst.ru/rewiews">Обзоры</a></li>
+	<li id="menu-item-8582" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-8582"><a href="https://losst.ru/applications">Программы</a></li>
+	<li id="menu-item-8588" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-8588"><a href="https://losst.ru/system">Система</a></li>
+	<li id="menu-item-8584" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-8584"><a href="https://losst.ru/oformlenie">Оформление</a></li>
+	<li id="menu-item-8577" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-8577"><a href="https://losst.ru/terminal">Терминал</a></li>
+	<li id="menu-item-8579" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-8579"><a href="https://losst.ru/info">Информация</a></li>
+	<li id="menu-item-8569" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-8569"><a href="https://losst.ru/security">Безопасность</a></li>
+	<li id="menu-item-8587" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-8587"><a href="https://losst.ru/server">Сервер</a></li>
+	<li id="menu-item-8586" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-8586"><a href="https://losst.ru/yadro">Ядро</a></li>
+	<li id="menu-item-8585" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-8585"><a href="https://losst.ru/programming">Программирование</a></li>
+	<li id="menu-item-8578" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-8578"><a href="https://losst.ru/games">Игры</a></li>
+	<li id="menu-item-8583" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-8583"><a href="https://losst.ru/multimedia">Мультимедиа</a></li>
+	<li id="menu-item-8570" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-8570"><a href="https://losst.ru/android">Android</a></li>
+	<li id="menu-item-8572" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-8572"><a href="https://losst.ru/windows">Windows</a></li>
+	<li id="menu-item-8581" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-8581"><a href="https://losst.ru/hardware">Оборудование</a></li>
+</ul>
+</li>
+<li id="menu-item-8574" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-8574"><a href="#" target="_blank" rel="nofollow">Рекомендуем</a>
+<ul class="sub-menu">
+	<li id="menu-item-8600" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8600"><a href="https://losst.ru/vybor-distributiva">Дистрибутив</a></li>
+	<li id="menu-item-8601" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8601"><a href="https://losst.ru/gvim">gVim</a></li>
+	<li id="menu-item-8602" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8602"><a href="https://losst.ru/openshot">Openshot</a></li>
+	<li id="menu-item-8605" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8605"><a href="https://losst.ru/vlc">VLC</a></li>
+</ul>
+</li>
+<li id="menu-item-8589" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-8589"><a href="https://losst.ru/knigi">Книги</a></li>
+<li id="menu-item-8573" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-8573"><a href="#" target="_blank" rel="nofollow">Losst</a>
+<ul class="sub-menu">
+	<li id="menu-item-8598" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8598"><a href="https://losst.ru/about"><i class="fa fa-sticky-note"></i> О Проекте</a></li>
+	<li id="menu-item-8609" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8609"><a href="https://losst.ru/istoriya-losst"><i class="fa fa-history"></i> История Losst</a></li>
+	<li id="menu-item-8599" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8599"><a href="https://losst.ru/obratnaya-svyaz"><i class="fa fa-phone"></i> Обратная связь</a></li>
+	<li id="menu-item-8607" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8607"><a href="https://losst.ru/nachnite-izuchat-linux-pryamo-sejchas"><i class="fa fa-book"></i> Содержание сайта</a></li>
+	<li id="menu-item-22081" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-22081"><a href="https://losst.ru/avtory"><i class="fa fa-users"></i> Наши авторы</a></li>
+	<li id="menu-item-8608" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8608"><a href="https://losst.ru/pishite-dlya-nas"><i class="fa fa-pencil"></i> Пишите для нас</a></li>
+</ul>
+</li>
+</ul>																	</nav>
+								<nav id="navigation" class="mobile-only clearfix mobile-menu-wrapper">
+									<ul id="menu-kategorii-1" class="menu clearfix"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-8567"><a href="//losst.ru/">Главная</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-8575"><a href="https://losst.ru/novosti">Новости</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-8568"><a href="#" target="_blank" rel="nofollow">Категории</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-19733"><a href="https://losst.ru/instruktsii">Инструкции</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-8580"><a href="https://losst.ru/distributivu">Дистрибутивы</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-8571"><a href="https://losst.ru/rewiews">Обзоры</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-8582"><a href="https://losst.ru/applications">Программы</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-8588"><a href="https://losst.ru/system">Система</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-8584"><a href="https://losst.ru/oformlenie">Оформление</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-8577"><a href="https://losst.ru/terminal">Терминал</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-8579"><a href="https://losst.ru/info">Информация</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-8569"><a href="https://losst.ru/security">Безопасность</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-8587"><a href="https://losst.ru/server">Сервер</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-8586"><a href="https://losst.ru/yadro">Ядро</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-8585"><a href="https://losst.ru/programming">Программирование</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-8578"><a href="https://losst.ru/games">Игры</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-8583"><a href="https://losst.ru/multimedia">Мультимедиа</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-8570"><a href="https://losst.ru/android">Android</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-8572"><a href="https://losst.ru/windows">Windows</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-8581"><a href="https://losst.ru/hardware">Оборудование</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-8574"><a href="#" target="_blank" rel="nofollow">Рекомендуем</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8600"><a href="https://losst.ru/vybor-distributiva">Дистрибутив</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8601"><a href="https://losst.ru/gvim">gVim</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8602"><a href="https://losst.ru/openshot">Openshot</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8605"><a href="https://losst.ru/vlc">VLC</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-8589"><a href="https://losst.ru/knigi">Книги</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-8573"><a href="#" target="_blank" rel="nofollow">Losst</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8598"><a href="https://losst.ru/about"><i class="fa fa-sticky-note"></i> О Проекте</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8609"><a href="https://losst.ru/istoriya-losst"><i class="fa fa-history"></i> История Losst</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8599"><a href="https://losst.ru/obratnaya-svyaz"><i class="fa fa-phone"></i> Обратная связь</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8607"><a href="https://losst.ru/nachnite-izuchat-linux-pryamo-sejchas"><i class="fa fa-book"></i> Содержание сайта</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-22081"><a href="https://losst.ru/avtory"><i class="fa fa-users"></i> Наши авторы</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8608"><a href="https://losst.ru/pishite-dlya-nas"><i class="fa fa-pencil"></i> Пишите для нас</a></li>
+</ul>
+</li>
+</ul>								</nav>
+													</div>
+					</div>
+				
+
+					<div class="header-inner">
+						<div class="logo-wrap">
+																								<h2 id="logo" class="image-logo" itemprop="headline">
+										<a href="https://losst.ru"><img src="https://losst.ru/wp-content/uploads/2017/01/LOSSTNEW_2.0-text.png" alt="Losst"></a>
+									</h2><!-- END #logo -->
+																					</div>
+
+
+											</div>
+				</div><!--.container-->
+				
+			</div><!--#header-->
+		</header>
+		<div class="main-container">		
+<div id="page" class="single">
+	    	<article class="article">
+		<div id="content_box" >
+							<div id="post-9927" class="g post post-9927 type-post status-publish format-standard has-post-thumbnail hentry category-instruktsii tag-iptables has_thumb">
+					<div class="single_post">
+													<div class="breadcrumb" xmlns:v="http://rdf.data-vocabulary.org/#"><div><i class="fa fa-home"></i></div> <div typeof="v:Breadcrumb" class="root"><a rel="v:url" property="v:title" href="https://losst.ru">Главная</a></div><div><i class="fa fa-caret-right"></i></div><div typeof="v:Breadcrumb"><a href="https://losst.ru/instruktsii" rel="v:url" property="v:title">Инструкции</a></div><div><i class="fa fa-caret-right"></i></div><div><span>Настройка iptables для чайников</span></div></div>
+																		<header>
+							<h1 class="title single-title entry-title">Настройка iptables для чайников</h1>
+										<div class="post-info">
+                                <span class="thecategory"><a href="https://losst.ru/instruktsii" title="View all posts in Инструкции">Инструкции</a></span>
+                            <span class="thetime updated"><i class="fa fa-clock-o"></i> <span>Октябрь 21, 2016</span></span>
+                            <span class="thecomment"><i class="fa fa-comments"></i> <a href="https://losst.ru/nastrojka-iptables-dlya-chajnikov#comments" itemprop="interactionCount">8</a></span>
+                            <span class="theauthor"><i class="fa fa-user"></i> <span><a href="https://losst.ru/author/admin" title="Записи admin" rel="author">admin</a></span></span>
+                            <span class="thetags"><div class="tags border-bottom"><i class="fa fa-tags"></i> <a href="https://losst.ru/tag/iptables" rel="tag">iptables</a></div></span>
+                            			</div>
+								</header><!--.headline_area-->
+						<div class="post-single-content box mark-links entry-content">
+														
+                            														<p>Каждый компьютер, подключенный к сети, находится в потенциальной опасности. В сети очень много угроз начиная от программ, которые будут пытаться любым способом проникнуть в систему и заканчивая хакерами, которые хотят получить доступ к нужному им компьютеру. А программное обеспечение, установленное на компьютере, может содержать еще не известные и неисправленные уязвимости, которые и могут стать дырой в безопасности.</p><div class='code-block code-block-1' style='margin: 8px auto; text-align: center; clear: both;'>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- ArticleTop -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:336px;height:280px"
+     data-ad-client="ca-pub-3031391294356171"
+     data-ad-slot="3149139045"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+
+<p>Если для домашних компьютеров это не очень актуально, так как они подключены к сети через роутеры и NAT, которые скрывают их от внешней сети, то для серверов это актуально как никогда. В операционной системе Linux в ядро встроен очень гибкий и надежный фаервол iptables.</p>
+<p>Именно с помощью этой программы выполняется защита системы от внешних вторжений, перенаправление портов, а также еще очень много действий с трафиком. Но ее минус в том, что она немного сложна в настройке. В этой статье будет рассмотрена настройка iptables для чайников. Я надеюсь, что после нее вы сможете уверенно пользоваться базовыми возможностями iptables.</p>
+<div id="ez-toc-container" class="counter-hierarchy counter-numeric">
+<div class="ez-toc-title-container">
+<p class="ez-toc-title">Содержание статьи:</p>
+<span class="ez-toc-title-toggle"></span></div>
+<ul class="ez-toc-list"><li><a href="#_Iptables" title="Что такое Iptables?">Что такое Iptables?</a><ul><li><a href="#i" title="Виды пакетов">Виды пакетов</a></li><li><a href="#i-2" title="Правила и действия">Правила и действия</a></li></ul></li><li><a href="#_ipatables" title="Таблицы ipatables">Таблицы ipatables</a></li><li><a href="#_Iptables-2" title="Утилита Iptables">Утилита Iptables</a></li><li><a href="#_Iptables-3" title="Примеры настройки Iptables">Примеры настройки Iptables</a><ul><li><a href="#i-3" title="Список правил">Список правил</a></li><li><a href="#i-4" title="Очистка правил">Очистка правил</a></li><li><a href="#i-5" title="Правила по умолчанию">Правила по умолчанию</a></li><li><a href="#i-6" title="Блокировка пакетов">Блокировка пакетов</a></li><li><a href="#i-7" title="Удаление правил">Удаление правил</a></li><li><a href="#_Iptables-4" title="Сохранить правила Iptables">Сохранить правила Iptables</a></li></ul></li><li><a href="#i-8" title="Выводы">Выводы</a></li></ul></div>
+<h2><span class="ez-toc-section" id="_Iptables">Что такое Iptables?</span></h2>
+<p>Подсистема iptables и Netfilter уже достаточно давно встроена в ядро Linux. Все сетевые пакеты, которые проходят через компьютер, отправляются компьютером или предназначены компьютеру, ядро направляет через фильтр iptables. Там эти пакеты поддаются проверкам и затем для каждой проверки, если она пройдена выполняется указанное в ней действие. Например, пакет передается дальше ядру для отправки целевой программе, или отбрасывается.</p>
+<h3><span class="ez-toc-section" id="i">Виды пакетов</span></h3>
+<p>Все пакеты делятся на три типа: входящие, исходящие и проходящие. Входящие &#8212; это те, которые были отправлены на этот компьютер, исходящие &#8212; отправленные из этого компьютера в сеть. А проходящие &#8212; это пакеты, которые просто должны быть пересланы дальше, например, если ваш компьютер выступает в качестве маршрутизатора.</p>
+<p>Соответственно в фильтре iptables все пакеты делятся на три аналогичные цепочки:</p>
+<ul>
+<li><strong>Input</strong> &#8212; обрабатывает входящие пакеты и подключения. Например, если какой-либо внешний пользователь пытается подключиться к вашему компьютеру по ssh или любой веб-сайт отправит вам свой контент по запросу браузера. Все эти пакеты попадут в эту цепочку;</li>
+<li><strong>forward</strong> &#8212; эта цепочка применяется для проходящих соединений. Сюда попадают пакеты, которые отправлены на ваш компьютер, но не предназначены ему, они просто пересылаются по сети к своей цели. Как я уже говорил, такое наблюдается на маршрутизаторах или, например, если ваш компьютер раздает wifi;</li>
+<li><strong>output</strong> &#8212; эта цепочка используется для исходящих пакетов и соединений. Сюда попадают пакеты, которые были созданы при попытке выполнить ping losst.ru или когда вы запускаете браузер и пытаетесь открыть любой сайт.</li>
+</ul>
+<p>Но если вы думаете что можно просто полностью закрыть цепочку Input для увеличения безопасности, то вы очень сильно ошибаетесь. При работе сети используются обе цепочки input и output. Например, вы пытаетесь выполнить ping, данные отправляются через output, но ответ приходит через input. То же самое происходит при просмотре сайтов и других действиях. А вот цепочка forward может вообще не использоваться если ваш компьютер не является маршрутизатором. Так что настройка iptables должна выполняться очень аккуратно.</p>
+<h3><span class="ez-toc-section" id="i-2">Правила и действия</span></h3>
+<p>Перед тем как перейти к созданию списка правил iptables нужно рассмотреть как они работают и какие бывают. Для каждого типа пакетов можно установить набор правил, которые по очереди будут проверяться на соответствие с пакетом и если пакет соответствует, то применять к нему указанное в правиле действие. Правила образуют цепочку, поэтому input, output и forward называют цепочками, цепочками правил. Действий может быть несколько:</p>
+<ul>
+<li><strong>ACCEPT</strong> &#8212; разрешить прохождение пакета дальше по цепочке правил;</li>
+<li><strong>DROP</strong> &#8212; удалить пакет;</li>
+<li><strong>REJECT</strong> &#8212; отклонить пакет, отправителю будет отправлено сообщение, что пакет был отклонен;</li>
+<li><strong>LOG</strong> &#8212; сделать запись о пакете в лог файл;</li>
+<li><strong>QUEUE</strong> &#8212; отправить пакет пользовательскому приложению.</li>
+</ul>
+<p>Правила могут проверять любые соответствия, например, по ip, по порту получателя или отправителя, заголовкам пакета и многому другому. Если пакет не подходит ни одному из правил, то к нему применяется действие по умолчанию, обычно ACCEPT.</p>
+<p>Когда мы разобрались с правилами, можно вернутся обратно к цепочкам. Кроме перечисленных выше, есть еще две дополнительные цепочки правил:</p>
+<ul>
+<li><strong>prerouting</strong> &#8212; в эту цепочку пакет попадает перед обработкой iptables, система еще не знает куда он будет отправлен, в input, output или forward;</li>
+<li><strong>postrouting</strong> &#8212; сюда попадают все проходящие пакеты, которые уже прошли цепочку forward.</li>
+</ul>
+<p>Но это еще не все. У нас еще есть таблицы iptables, с которыми тоже желательно разобраться.</p>
+<h2><span class="ez-toc-section" id="_ipatables">Таблицы ipatables</span></h2>
+<p>Над цепочками правил в iptables есть еще один уровень абстракции, и это таблицы. В системе есть несколько таблиц, и все они имеют стандартный набор цепочек input, forward и output. Таблицы предназначены для выполнения разных действий над пакетами, например для модификации или фильтрации. Сейчас это для вас не так важно и будет достаточно знать что фильтрация пакетов iptables осуществляется в таблице filter. Но мы рассмотрим их все:</p>
+<ul>
+<li><strong>raw</strong> &#8212; предназначена для работы с сырыми пакетами, пока они еще не прошли обработку;</li>
+<li><strong>mangle</strong> &#8212; предназначена для модификации пакетов;</li>
+<li><strong>nat</strong> &#8212; обеспечивает работу nat, если вы хотите использовать компьютер в качестве маршрутизатора;</li>
+<li><strong>filter</strong> &#8212; основная таблица для фильтрации пакетов, используется по умолчанию.</li>
+</ul>
+<p>С теорией почти все, теперь давайте рассмотрим утилиту командной строки iptables, с помощью которой и выполняется управление системой iptables.</p>
+<h2><span class="ez-toc-section" id="_Iptables-2">Утилита Iptables</span></h2>
+<p>Подсистема iptables и netfilter встроены в ядро, но вот набор утилит для управления всем этим не всегда поставляется вместе с системой. Для установки утилиты в Ubuntu наберите:</p>
+<p><code class=user> sudo apt install iptables</code></p>
+<p>А в дистрибутивах, основанных на Fedora, установка iptables выполняется немного по-другому:</p>
+<p><code class=user> sudo yum install iptables</code></p>
+<p>Когда установка iptables будет завершена, можно переходить к настройке, но давайте сначала рассмотрим синтаксис утилиты. Обычно команда имеет такой общий вид:</p>
+<p><strong><span style="color: #ff6600;">$ iptables</span> <span style="color: #99cc00;">-t таблица</span> <span style="color: #ff9900;">действие</span> <span style="color: #993366;">цепочка</span> <span style="color: #3366ff;">дополнительные_параметры</span></strong></p>
+<p>Теперь давайте рассмотрим параметры iptables, таблица указывает таблицу, с которой нужно работать, этот параметр можно упустить, действие &#8212; нужное действие, например, создать или удалить правило, а дополнительные параметры описывают действие и правило, которое нужно выполнить.</p>
+<p>Осталось рассмотреть основные действия, которые позволяет выполнить iptables:</p>
+<ul>
+<li><strong>-A</strong> &#8212; добавить правило в цепочку;</li>
+<li><strong>-С</strong> &#8212; проверить все правила;</li>
+<li><strong>-D</strong> &#8212; удалить правило;</li>
+<li><strong>-I</strong> &#8212; вставить правило с нужным номером;</li>
+<li><strong>-L</strong> &#8212; вывести все правила в текущей цепочке;</li>
+<li><strong>-S</strong> &#8212; вывести все правила;</li>
+<li><strong>-F</strong> &#8212; очистить все правила;</li>
+<li><strong>-N</strong> &#8212; создать цепочку;</li>
+<li><strong>-X</strong> &#8212; удалить цепочку;</li>
+<li><strong>-P</strong> &#8212; установить действие по умолчанию.</li>
+</ul>
+<p>Дополнительные опции для правил:</p>
+<ul>
+<li><strong>-p</strong> &#8212; указать протокол, один из tcp, udp, udplite, icmp, icmpv6,esp, ah, sctp,<br />
+mh;</li>
+<li><strong>-s</strong> &#8212; указать ip адрес устройства-отправителя пакета;</li>
+<li><strong>-d</strong> &#8212; указать ip адрес получателя;</li>
+<li><strong>-i</strong> &#8212; входной сетевой интерфейс;</li>
+<li><strong>-o</strong> &#8212; исходящий сетевой интерфейс;</li>
+<li><strong>-j</strong> &#8212; выбрать действие, если правило подошло.</li>
+</ul>
+<p>Теперь вы можем перейти рассмотрению примеров того как выполняется настройка iptables.</p>
+<h2><span class="ez-toc-section" id="_Iptables-3">Примеры настройки Iptables</span></h2>
+<p>Мы рассмотрим несколько основных примеров, чтобы вы смогли закрепить все прочитанное выше.</p>
+<h3><span class="ez-toc-section" id="i-3">Список правил</span></h3>
+<p>Сначала давайте рассмотрим как выполняется просмотр правил iptables, для этого достаточно опции -L:</p>
+<p><code class=user> iptables -L</code></p>
+<p><img class="size-full wp-image-9940 aligncenter" src="//losst.ru/wp-content/uploads/2016/10/iptables.jpeg" alt="iptables" width="1075" height="634" srcset="https://losst.ru/wp-content/uploads/2016/10/iptables.jpeg 1075w, https://losst.ru/wp-content/uploads/2016/10/iptables-300x177.jpeg 300w, https://losst.ru/wp-content/uploads/2016/10/iptables-768x453.jpeg 768w, https://losst.ru/wp-content/uploads/2016/10/iptables-1024x604.jpeg 1024w" sizes="(max-width: 1075px) 100vw, 1075px" /></p>
+<div class='code-block code-block-2' style='margin: 8px auto; text-align: center; clear: both;'>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- ArticleLink -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-3031391294356171"
+     data-ad-slot="5693905305"
+     data-ad-format="link"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+<p>Также вы можете указать нужную цепочку, чтобы вывести правила только для нее:</p>
+<p><code class=user> iptables -L INPUT</code></p>
+<h3><span class="ez-toc-section" id="i-4">Очистка правил</span></h3>
+<p>Вы не можете просто так отключить iptables остановив сервис обновления правил iptables через systemd или даже удалив набор утилит для настройки. Подсистема работает на уровне ядра и не зависит от того, что там у вас установлено. Поэтому если сделаете что-то не так, то нужно будет очистить правила. Для этого выполните:</p>
+<p><code class=user> sudo iptables -F</code></p>
+<p>Или только для определенной цепочки:</p>
+<p><code class=user> sudo iptables -F Input</code></p>
+<p>Напоминаю, что все эти действия выполняются для таблицы по умолчанию &#8212; filter.</p>
+<h3><span class="ez-toc-section" id="i-5">Правила по умолчанию</span></h3>
+<p>Как я уже говорил, если для пакета не подходит ни одно правило, то для него применяется действие по умолчанию. Его можно задать с помощью опции -p:</p>
+<p><code class=user> sudo iptables -p INPUT ACCEPT<br />
+$ sudo iptables -p OUTPUT ACCEPT<br />
+$ sudo iptables -p FORWARD DROP</code></p>
+<p>В этом примере мы разрешаем цепочки INPUT и OUTPUT, но запрещаем FORWARD.</p>
+<p><code class=user> sudo iptables -L</code></p>
+<p><img class="size-full wp-image-9941 aligncenter" src="//losst.ru/wp-content/uploads/2016/10/iptables1.jpeg" alt="iptables1" width="1043" height="627" srcset="https://losst.ru/wp-content/uploads/2016/10/iptables1.jpeg 1043w, https://losst.ru/wp-content/uploads/2016/10/iptables1-300x180.jpeg 300w, https://losst.ru/wp-content/uploads/2016/10/iptables1-768x462.jpeg 768w, https://losst.ru/wp-content/uploads/2016/10/iptables1-1024x616.jpeg 1024w" sizes="(max-width: 1043px) 100vw, 1043px" /></p>
+<h3><span class="ez-toc-section" id="i-6">Блокировка пакетов</span></h3>
+<p>Для блокировки пакетов мы можем использовать действие DROP, фильтровать пакеты, которые нужно заблокировать мы можем по множеству критериев, например, протоколу, ip адресу, маске сети, порту и многому другому.</p>
+<p>Вот так будет выглядеть команда, которая позволяет добавить правило iptables для блокировки всех входящих пакетов от 10.10.10.10:</p>
+<p><code class=user> sudo iptables -A INPUT -s 10.10.10.10 -j DROP</code></p>
+<p>А теперь исходящие пакеты на этот же адрес:</p>
+<p><code class=user> sudo iptables -A OUTPUT -s 10.10.10.10 -j DROP</code></p>
+<p><img class="size-full wp-image-9942 aligncenter" src="//losst.ru/wp-content/uploads/2016/10/iptables2.jpeg" alt="iptables2" width="1061" height="646" srcset="https://losst.ru/wp-content/uploads/2016/10/iptables2.jpeg 1061w, https://losst.ru/wp-content/uploads/2016/10/iptables2-300x183.jpeg 300w, https://losst.ru/wp-content/uploads/2016/10/iptables2-768x468.jpeg 768w, https://losst.ru/wp-content/uploads/2016/10/iptables2-1024x623.jpeg 1024w" sizes="(max-width: 1061px) 100vw, 1061px" /></p>
+<p>Блокировка диапазона ip выполняется подобным образом. Для этого нужно использовать маску сети 10.10.10.0/24. Это будут все адреса начиная от 10.10.10.0 до 10.10.10.255:</p>
+<p><code class=user> sudo iptables -A INPUT -s 10.10.10.0/24 -j DROP</code></p>
+<p>Или расширенный вариант маски:</p>
+<p><code class=user> sudo iptables -A INPUT -s 10.10.10.0/255.255.255.0 -j DROP</code></p>
+<p>Также вы можете заблокировать все входящие соединения ssh:</p>
+<p><code class=user> sudo iptables -A INPUT -p tcp --dport ssh -s 10.10.10.10 -j DROP</code></p>
+<p>Как видите, добавить правило iptables очень просто.</p>
+<h3><span class="ez-toc-section" id="i-7">Удаление правил</span></h3>
+<p>Удаление правил iptables выполняется точно так же, как и создание новых, только вместо опции A нужно использовать опцию D. Сначала смотрим список правил:</p>
+<p><code class=user> sudo iptables -L</code></p>
+<p><img class="size-full wp-image-9943 aligncenter" src="//losst.ru/wp-content/uploads/2016/10/iptables3.jpeg" alt="iptables3" width="1053" height="637" srcset="https://losst.ru/wp-content/uploads/2016/10/iptables3.jpeg 1053w, https://losst.ru/wp-content/uploads/2016/10/iptables3-300x181.jpeg 300w, https://losst.ru/wp-content/uploads/2016/10/iptables3-768x465.jpeg 768w, https://losst.ru/wp-content/uploads/2016/10/iptables3-1024x619.jpeg 1024w" sizes="(max-width: 1053px) 100vw, 1053px" /></p>
+<p>Например, вот так можно удалить правило iptables, которое было создано вторым:</p>
+<p><code class=user> sudo iptables -A OUTPUT -s 10.10.10.10 -j DROP</code></p>
+<p><img class="size-full wp-image-9945 aligncenter" src="//losst.ru/wp-content/uploads/2016/10/iptables5.jpeg" alt="iptables5" width="1106" height="666" srcset="https://losst.ru/wp-content/uploads/2016/10/iptables5.jpeg 1106w, https://losst.ru/wp-content/uploads/2016/10/iptables5-300x181.jpeg 300w, https://losst.ru/wp-content/uploads/2016/10/iptables5-768x462.jpeg 768w, https://losst.ru/wp-content/uploads/2016/10/iptables5-1024x617.jpeg 1024w" sizes="(max-width: 1106px) 100vw, 1106px" /></p>
+<p>&nbsp;</p>
+<p>Также вы можете полностью очистить iptables выполнив команду с опцией -F:</p>
+<p><code class=user> sudo iptables -F</code></p>
+<p><img class="size-full wp-image-9946 aligncenter" src="//losst.ru/wp-content/uploads/2016/10/iptables6.jpeg" alt="iptables6" width="1053" height="666" srcset="https://losst.ru/wp-content/uploads/2016/10/iptables6.jpeg 1053w, https://losst.ru/wp-content/uploads/2016/10/iptables6-300x190.jpeg 300w, https://losst.ru/wp-content/uploads/2016/10/iptables6-768x486.jpeg 768w, https://losst.ru/wp-content/uploads/2016/10/iptables6-1024x648.jpeg 1024w" sizes="(max-width: 1053px) 100vw, 1053px" /></p>
+<h3><span class="ez-toc-section" id="_Iptables-4">Сохранить правила Iptables</span></h3>
+<p>Все настройки iptables, которые вы указали с помощью этих команд сохранятся только до перезагрузки. После перезагрузки компьютера все изменения будут стерты. Поэтому чтобы сохранить правила iptables, нужно выполнить специальную команду. Только в разных дистрибутивах она отличается. В Ubuntu выполните:</p>
+<p><code class=user> sudo /sbin/iptables-save</code></p>
+<p>А в Red Hat или CentOS:</p>
+<p><code class=user> sudo /sbin/service iptables save</code></p>
+<h2><span class="ez-toc-section" id="i-8">Выводы</span></h2>
+<p>Вот и все. Наша статья о том, как выполняется настройка iptables для чайников подошла к концу. Эта система действительно сложна, на первый взгляд, но если разобраться, то с помощью нее возможно делать очень интересные вещи. В этой статье была рассмотрены основы использования iptables, в следующих статьях мы более подробно остановимся на практическом применении.</p>
+<p>На завершение видео о том, как увеличить безопасность вашего сервера:</p>
+<p><iframe width="806" height="453" src="https://www.youtube.com/embed/B1lY_rfYvAc?feature=oembed" frameborder="0" allowfullscreen></iframe></p>
+
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+    $.post('https://losst.ru/wp-admin/admin-ajax.php', {action: 'mts_view_count', id: '9927'});
+});
+</script><div class='yarpp-related'>
+<div class="related-posts">
+<div style="font-weight: 700; font-size: 25px; padding-bottom: 30px;">Похожие записи:</div>
+<ul>
+						<li class="post-box horizontal-small">
+			<div class="horizontal-container">
+			<div class="horizontal-container-inner">
+			<div class="post-img">
+			<a href="https://losst.ru/kak-otkryt-port-ubuntu" title="Как открыть порт Ubuntu">
+			<img width="115" height="72" src="https://losst.ru/wp-content/uploads/2017/06/Snimok-ekrana-ot-2017-06-01-20-51-47.png" class="attachment-best-widgetthumb size-best-widgetthumb wp-post-image" alt="" title="" sizes="(max-width: 115px) 100vw, 115px">
+			</a>
+			</div>
+			<div class="post-data">
+			<div class="post-data-container">
+			<div class="post-title">
+			<a href="https://losst.ru/kak-otkryt-port-ubuntu" title="Как открыть порт Ubuntu"> Как открыть порт Ubuntu</a>
+			</div>
+			<div class="post-info">
+			<span class="thetime updated">Июнь 2, 2017</span>
+			</div>
+			</div>
+			</div>
+			</div>
+			</div>
+			</li>
+
+							<li class="post-box horizontal-small">
+			<div class="horizontal-container">
+			<div class="horizontal-container-inner">
+			<div class="post-img">
+			<a href="https://losst.ru/nastrojka-fail2ban-centos-7" title="Настройка fail2ban Centos 7">
+			<img width="115" height="72" src="https://losst.ru/wp-content/uploads/2017/03/088.jpg" class="attachment-best-widgetthumb size-best-widgetthumb wp-post-image" alt="" title="" sizes="(max-width: 115px) 100vw, 115px">
+			</a>
+			</div>
+			<div class="post-data">
+			<div class="post-data-container">
+			<div class="post-title">
+			<a href="https://losst.ru/nastrojka-fail2ban-centos-7" title="Настройка fail2ban Centos 7"> Настройка fail2ban Centos 7</a>
+			</div>
+			<div class="post-info">
+			<span class="thetime updated">Март 16, 2017</span>
+			</div>
+			</div>
+			</div>
+			</div>
+			</div>
+			</li>
+
+							<li class="post-box horizontal-small">
+			<div class="horizontal-container">
+			<div class="horizontal-container-inner">
+			<div class="post-img">
+			<a href="https://losst.ru/kak-zakryt-port-iptables" title="Как закрыть порт iptables">
+			<img width="115" height="72" src="https://losst.ru/wp-content/uploads/2017/03/port.png" class="attachment-best-widgetthumb size-best-widgetthumb wp-post-image" alt="" title="" sizes="(max-width: 115px) 100vw, 115px">
+			</a>
+			</div>
+			<div class="post-data">
+			<div class="post-data-container">
+			<div class="post-title">
+			<a href="https://losst.ru/kak-zakryt-port-iptables" title="Как закрыть порт iptables"> Как закрыть порт iptables</a>
+			</div>
+			<div class="post-info">
+			<span class="thetime updated">Март 5, 2017</span>
+			</div>
+			</div>
+			</div>
+			</div>
+			</div>
+			</li>
+
+							<li class="post-box horizontal-small">
+			<div class="horizontal-container">
+			<div class="horizontal-container-inner">
+			<div class="post-img">
+			<a href="https://losst.ru/probros-portov-iptables-v-linux" title="Проброс портов iptables в Linux">
+			<img width="115" height="72" src="https://losst.ru/wp-content/uploads/2017/01/1733766.jpg" class="attachment-best-widgetthumb size-best-widgetthumb wp-post-image" alt="" title="" sizes="(max-width: 115px) 100vw, 115px">
+			</a>
+			</div>
+			<div class="post-data">
+			<div class="post-data-container">
+			<div class="post-title">
+			<a href="https://losst.ru/probros-portov-iptables-v-linux" title="Проброс портов iptables в Linux"> Проброс портов iptables в Linux</a>
+			</div>
+			<div class="post-info">
+			<span class="thetime updated">Январь 1, 2017</span>
+			</div>
+			</div>
+			</div>
+			</div>
+			</div>
+			</li>
+
+		</ul>
+</div>
+</div>
+<div class='code-block code-block-3' style='margin: 8px auto; text-align: center; clear: both;'>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Рекомендованный контент -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-3031391294356171"
+     data-ad-slot="1454178648"
+     data-ad-format="autorelaxed"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+														
+<div style="padding-top: 30px; 
+    font-weight: bold;"> 
+Ваше имя тоже может быть здесь. Начните писать статьи для Losst. Это просто! Смотрите подробнее как начать писать статьи - <a href="https://losst.ru/pishite-dlya-nas">Пишите для нас</a> 
+</div> 
+<div class="postrating"> 
+<h3>Оцените статью:</h3>
+<div id="post-ratings-9927" class="post-ratings" itemscope itemtype="http://schema.org/Article" data-nonce="674fe3ebda"><img id="rating_9927_1" src="https://losst.ru/wp-content/plugins/wp-postratings/images/stars_crystal/rating_on.gif" alt="Звёзд: 1" title="Звёзд: 1" onmouseover="current_rating(9927, 1, 'Звёзд: 1');" onmouseout="ratings_off(4.9, 5, 0);" onclick="rate_post();" onkeypress="rate_post();" style="cursor: pointer; border: 0px;" /><img id="rating_9927_2" src="https://losst.ru/wp-content/plugins/wp-postratings/images/stars_crystal/rating_on.gif" alt="Звёзд: 2" title="Звёзд: 2" onmouseover="current_rating(9927, 2, 'Звёзд: 2');" onmouseout="ratings_off(4.9, 5, 0);" onclick="rate_post();" onkeypress="rate_post();" style="cursor: pointer; border: 0px;" /><img id="rating_9927_3" src="https://losst.ru/wp-content/plugins/wp-postratings/images/stars_crystal/rating_on.gif" alt="Звёзд: 3" title="Звёзд: 3" onmouseover="current_rating(9927, 3, 'Звёзд: 3');" onmouseout="ratings_off(4.9, 5, 0);" onclick="rate_post();" onkeypress="rate_post();" style="cursor: pointer; border: 0px;" /><img id="rating_9927_4" src="https://losst.ru/wp-content/plugins/wp-postratings/images/stars_crystal/rating_on.gif" alt="Звёзд: 4" title="Звёзд: 4" onmouseover="current_rating(9927, 4, 'Звёзд: 4');" onmouseout="ratings_off(4.9, 5, 0);" onclick="rate_post();" onkeypress="rate_post();" style="cursor: pointer; border: 0px;" /><img id="rating_9927_5" src="https://losst.ru/wp-content/plugins/wp-postratings/images/stars_crystal/rating_half.gif" alt="Звёзд: 5" title="Звёзд: 5" onmouseover="current_rating(9927, 5, 'Звёзд: 5');" onmouseout="ratings_off(4.9, 5, 0);" onclick="rate_post();" onkeypress="rate_post();" style="cursor: pointer; border: 0px;" /> (<strong>16</strong> оценок, среднее: <strong>4,88</strong> из 5)<br /><span class="post-ratings-text" id="ratings_9927_text"></span><meta itemprop="headline" content="Настройка iptables для чайников" /><meta itemprop="description" content="Каждый компьютер, подключенный к сети, находится в потенциальной опасности. В сети очень много угроз начиная от программ, которые будут пытаться любым способом проникнуть в систему и заканчивая хакера..." /><meta itemprop="datePublished" content="2016-10-21T11:36:10+00:00" /><meta itemprop="dateModified" content="2017-07-14T18:31:56+00:00" /><meta itemprop="url" content="https://losst.ru/nastrojka-iptables-dlya-chajnikov" /><meta itemprop="author" content="admin" /><meta itemprop="mainEntityOfPage" content="https://losst.ru/nastrojka-iptables-dlya-chajnikov" /><div style="display: none;" itemprop="image" itemscope itemtype="https://schema.org/ImageObject"><meta itemprop="url" content="https://losst.ru/wp-content/uploads/2016/10/08194204721851-150x150.jpg" /><meta itemprop="width" content="150" /><meta itemprop="height" content="150" /></div><div style="display: none;" itemprop="publisher" itemscope itemtype="https://schema.org/Organization"><meta itemprop="name" content="Losst" /><div itemprop="logo" itemscope itemtype="https://schema.org/ImageObject"><meta itemprop="url" content="" /></div></div><div style="display: none;" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating"><meta itemprop="bestRating" content="5" /><meta itemprop="worstRating" content="1" /><meta itemprop="ratingValue" content="4.88" /><meta itemprop="ratingCount" content="16" /></div></div><div id="post-ratings-9927-loading" class="post-ratings-loading">
+            <img src="https://losst.ru/wp-content/plugins/wp-postratings/images/loading.gif" width="16" height="16" class="post-ratings-image" /> Загрузка...</div></div>
+
+							            <!-- Start Share Buttons -->
+            <div class="shareit floating">
+                                <!-- Facebook Share-->
+                <span class="share-item facebooksharebtn">
+                    <div class="fb-share-button" data-layout="button_count"></div>
+                </span>
+                            <!-- Facebook -->
+                <span class="share-item facebookbtn">
+                    <div id="fb-root"></div>
+                    <div class="fb-like" data-send="false" data-layout="button_count" data-width="150" data-show-faces="false"></div>
+                </span>
+                            <!-- Twitter -->
+                <span class="share-item twitterbtn">
+                    <a href="https://twitter.com/share" class="twitter-share-button" data-via="">Tweet</a>
+                </span>
+                            <!-- GPlus -->
+                <span class="share-item gplusbtn">
+                    <g:plusone size="medium"></g:plusone>
+                </span>
+                            <!-- Pinterest -->
+                <span class="share-item pinbtn">
+                    <a href="http://pinterest.com/pin/create/button/?url=https://losst.ru/nastrojka-iptables-dlya-chajnikov&media=https://losst.ru/wp-content/uploads/2016/10/08194204721851.jpg&description=Настройка iptables для чайников" class="pin-it-button" count-layout="horizontal">Pin It</a>
+                </span>
+                        </div>
+            <!-- end Share Buttons -->
+        
+                     					
+					
+					<div class="postauthor" style="padding-top: 30px">
+						<h4>Об авторе</h4>
+						<div class="author-box">
+							<img alt='' src='https://secure.gravatar.com/avatar/579224caff116f83cf36783155cfd699?s=150&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/579224caff116f83cf36783155cfd699?s=300&#038;d=mm&#038;r=g 2x' class='avatar avatar-150 photo' height='150' width='150' />							<div class="author-box-content">
+								<div class="vcard clearfix">
+									<a href="https://losst.ru/author/admin" class="fn"><i class="fa fa-user"></i>admin</a>
+							</div>
+																<p>Основатель и администратор сайта losst.ru, увлекаюсь открытым программным обеспечением и операционной системой Linux. В качестве основной ОС сейчас использую Ubuntu. Кроме Linux интересуюсь всем, что связано с информационными технологиями и современной наукой.</p>
+															</div>
+						</div>
+					</div>
+										
+				</div><!--.g post-->
+				<!-- You can start editing here. -->
+	<div id="comments">
+		<h4 class="total-comments">8 комментариев</h4>
+			<ol class="commentlist">
+				<div class="navigation">
+					<div class="alignleft"></div>
+					<div class="alignright"></div>
+				</div>
+				    <li class="comment even thread-even depth-1" id="li-comment-3111">
+        <div id="comment-3111" class="comment-box">
+            <div class="comment-author vcard clearfix">
+                <img alt='' src='https://secure.gravatar.com/avatar/e3d0cc34ac3108c29004010b4d2e6770?s=115&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/e3d0cc34ac3108c29004010b4d2e6770?s=230&#038;d=mm&#038;r=g 2x' class='avatar avatar-115 photo' height='115' width='115' />                <span class="fn">Teacher</span> 
+                                    <span class="ago">Октябрь 23, 2016</span>
+                                <span class="comment-meta">
+                                        <a rel='nofollow' class='comment-reply-link' href='#comment-3111' onclick='return addComment.moveForm( "comment-3111", "3111", "respond", "9927" )' aria-label='Комментарий к записи Teacher'><i class="fa fa-mail-forward"></i> Ответить</a>                </span>
+            </div>
+                        <div class="commentmetadata">
+                <p>Проверьте ошибки в правилах-примерах ) там, где пишете удалить, вместо -D написано -A, там где пишете пример с цепочкой по умолчанию вместо  -P написано -p &#8230; И еще есть несколько ошибок связанных с регистром .</p>
+            </div>
+        </div>
+    </li>
+<ul class="children">
+    <li class="comment odd alt depth-2" id="li-comment-6262">
+        <div id="comment-6262" class="comment-box">
+            <div class="comment-author vcard clearfix">
+                <img alt='' src='https://secure.gravatar.com/avatar/71a430345c7249991dd0b34d65c13e76?s=115&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/71a430345c7249991dd0b34d65c13e76?s=230&#038;d=mm&#038;r=g 2x' class='avatar avatar-115 photo' height='115' width='115' />                <span class="fn">demi</span> 
+                                    <span class="ago">Апрель 24, 2017</span>
+                                <span class="comment-meta">
+                                        <a rel='nofollow' class='comment-reply-link' href='#comment-6262' onclick='return addComment.moveForm( "comment-6262", "6262", "respond", "9927" )' aria-label='Комментарий к записи demi'><i class="fa fa-mail-forward"></i> Ответить</a>                </span>
+            </div>
+                        <div class="commentmetadata">
+                <p>Боюсь Вы невнимательны. Там где -A &#8212; это копия предыдущей команды. А на скрине &#8212; ее удаление.</p>
+            </div>
+        </div>
+    </li>
+</li><!-- #comment-## -->
+    <li class="comment even depth-2" id="li-comment-8295">
+        <div id="comment-8295" class="comment-box">
+            <div class="comment-author vcard clearfix">
+                <img alt='' src='https://secure.gravatar.com/avatar/3dd47d50b81f0739410ff318a49e1be9?s=115&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/3dd47d50b81f0739410ff318a49e1be9?s=230&#038;d=mm&#038;r=g 2x' class='avatar avatar-115 photo' height='115' width='115' />                <span class="fn">Alex</span> 
+                                    <span class="ago">Август 19, 2017</span>
+                                <span class="comment-meta">
+                                        <a rel='nofollow' class='comment-reply-link' href='#comment-8295' onclick='return addComment.moveForm( "comment-8295", "8295", "respond", "9927" )' aria-label='Комментарий к записи Alex'><i class="fa fa-mail-forward"></i> Ответить</a>                </span>
+            </div>
+                        <div class="commentmetadata">
+                <p>Согласен с человеком по поводу -P -p.</p>
+            </div>
+        </div>
+    </li>
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+    <li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-3160">
+        <div id="comment-3160" class="comment-box">
+            <div class="comment-author vcard clearfix">
+                <img alt='' src='https://secure.gravatar.com/avatar/c704ca840995289b18aead079f9cc9af?s=115&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/c704ca840995289b18aead079f9cc9af?s=230&#038;d=mm&#038;r=g 2x' class='avatar avatar-115 photo' height='115' width='115' />                <span class="fn">Dmitry</span> 
+                                    <span class="ago">Октябрь 25, 2016</span>
+                                <span class="comment-meta">
+                                        <a rel='nofollow' class='comment-reply-link' href='#comment-3160' onclick='return addComment.moveForm( "comment-3160", "3160", "respond", "9927" )' aria-label='Комментарий к записи Dmitry'><i class="fa fa-mail-forward"></i> Ответить</a>                </span>
+            </div>
+                        <div class="commentmetadata">
+                <p>Ошибок в статье много, проверяйте же!</p>
+            </div>
+        </div>
+    </li>
+</li><!-- #comment-## -->
+    <li class="comment even thread-even depth-1" id="li-comment-5609">
+        <div id="comment-5609" class="comment-box">
+            <div class="comment-author vcard clearfix">
+                <img alt='' src='https://secure.gravatar.com/avatar/1198aa607af443eb83116fc4f3e584dd?s=115&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/1198aa607af443eb83116fc4f3e584dd?s=230&#038;d=mm&#038;r=g 2x' class='avatar avatar-115 photo' height='115' width='115' />                <span class="fn">alex</span> 
+                                    <span class="ago">Март 8, 2017</span>
+                                <span class="comment-meta">
+                                        <a rel='nofollow' class='comment-reply-link' href='#comment-5609' onclick='return addComment.moveForm( "comment-5609", "5609", "respond", "9927" )' aria-label='Комментарий к записи alex'><i class="fa fa-mail-forward"></i> Ответить</a>                </span>
+            </div>
+                        <div class="commentmetadata">
+                <p>С ошибками беда, зато не дает чайникам расслабляться.:-)<br />
+Спасибо автору за материал!</p>
+            </div>
+        </div>
+    </li>
+<ul class="children">
+    <li class="comment odd alt depth-2" id="li-comment-5871">
+        <div id="comment-5871" class="comment-box">
+            <div class="comment-author vcard clearfix">
+                <img alt='' src='https://secure.gravatar.com/avatar/b6086e2050ad1b82b9eaeb871b5627b4?s=115&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/b6086e2050ad1b82b9eaeb871b5627b4?s=230&#038;d=mm&#038;r=g 2x' class='avatar avatar-115 photo' height='115' width='115' />                <span class="fn">Alexandr</span> 
+                                    <span class="ago">Март 22, 2017</span>
+                                <span class="comment-meta">
+                                        <a rel='nofollow' class='comment-reply-link' href='#comment-5871' onclick='return addComment.moveForm( "comment-5871", "5871", "respond", "9927" )' aria-label='Комментарий к записи Alexandr'><i class="fa fa-mail-forward"></i> Ответить</a>                </span>
+            </div>
+                        <div class="commentmetadata">
+                <p>чайники на то и чайники что бы сначала просто повторять, а потом ужо думать)</p>
+            </div>
+        </div>
+    </li>
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+    <li class="comment even thread-odd thread-alt depth-1" id="li-comment-10052">
+        <div id="comment-10052" class="comment-box">
+            <div class="comment-author vcard clearfix">
+                <img alt='' src='https://secure.gravatar.com/avatar/1485e0fa576275a2cd10c0921994c4f8?s=115&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/1485e0fa576275a2cd10c0921994c4f8?s=230&#038;d=mm&#038;r=g 2x' class='avatar avatar-115 photo' height='115' width='115' />                <span class="fn">Slavick</span> 
+                                    <span class="ago">Октябрь 19, 2017</span>
+                                <span class="comment-meta">
+                                        <a rel='nofollow' class='comment-reply-link' href='#comment-10052' onclick='return addComment.moveForm( "comment-10052", "10052", "respond", "9927" )' aria-label='Комментарий к записи Slavick'><i class="fa fa-mail-forward"></i> Ответить</a>                </span>
+            </div>
+                        <div class="commentmetadata">
+                <p>Если можно напишите про Xtabless-addons для IPtables и такие кошерные вещи как MIRROR, DELUDE, TARPIT и CHAOS &#8212; думаю будет полезно &#8230;<br />
+Например : TARPIT — широко известный инструмент для активного противодействия DoS-атакам и сканированиям TCP-портов, способный в определенный обстоятельствах неплохо проучить атакующего.</p>
+            </div>
+        </div>
+    </li>
+</li><!-- #comment-## -->
+    <li class="comment odd alt thread-even depth-1" id="li-comment-14046">
+        <div id="comment-14046" class="comment-box">
+            <div class="comment-author vcard clearfix">
+                <img alt='' src='https://secure.gravatar.com/avatar/81698b870912af2c1d7fcc1f76dbd3e7?s=115&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/81698b870912af2c1d7fcc1f76dbd3e7?s=230&#038;d=mm&#038;r=g 2x' class='avatar avatar-115 photo' height='115' width='115' />                <span class="fn">G-Tiger</span> 
+                                    <span class="ago">Март 21, 2018</span>
+                                <span class="comment-meta">
+                                        <a rel='nofollow' class='comment-reply-link' href='#comment-14046' onclick='return addComment.moveForm( "comment-14046", "14046", "respond", "9927" )' aria-label='Комментарий к записи G-Tiger'><i class="fa fa-mail-forward"></i> Ответить</a>                </span>
+            </div>
+                        <div class="commentmetadata">
+                <p>Оставлю это здесь. На всякий случай.<br />
+Чтобы получить ответ nslookup нужно добавить такое правило:<br />
+-A INPUT -p udp -m udp &#8212;sport 53 -j ACCEPT</p>
+<p>ключевой параметр &gt; &#8212;sport</p>
+            </div>
+        </div>
+    </li>
+</li><!-- #comment-## -->
+				<div class="navigation">
+					<div class="alignleft"></div>
+					<div class="alignright"></div>
+				</div>
+			</ol>
+		</div>
+
+	<div id="commentsAdd">
+		<div id="respond" class="box m-t-6">
+				<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title"><h4><span>Ответить</span></h4> <small><a rel="nofollow" id="cancel-comment-reply-link" href="/nastrojka-iptables-dlya-chajnikov#respond" style="display:none;">Отменить ответ</a></small></h3>			<form action="https://losst.ru/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+				<p class="comment-form-comment"><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" placeholder="Текст комментария*"></textarea></p><p class="comment-form-author"><input id="author" name="author" type="text" placeholder="Имя*" value="" size="30" /></p>
+<p class="comment-form-email"><input id="email" name="email" type="text" placeholder="Email*" value="" size="30" /></p>
+<p class="comment-form-url"><input id="url" name="url" type="text" placeholder="Веб-сайт" value="" size="30" /></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Добавить комментарий" /> <input type='hidden' name='comment_post_ID' value='9927' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="aadc69eb63" /></p><p style="display: none;"><input type="hidden" id="ak_js" name="ak_js" value="221"/></p>			</form>
+			</div><!-- #respond -->
+			</div>
+	</div>
+					</div>
+	</article>
+    <aside id="sidebar" class="sidebar c-4-12" role="complementary" itemscope itemtype="http://schema.org/WPSideBar">
+	<div id="search-2" class="widget widget_search"><h3 class="widget-title">Поиск:</h3><form method="get" id="searchform" class="search-form" action="https://losst.ru" _lpchecked="1">
+	<fieldset>
+		<input type="text" name="s" id="s" value="" placeholder="Искать на сайте"  autocomplete="off" />
+		<button id="search-image" class="sbutton" type="submit" value="">
+	    		<i class="fa fa-search"></i>
+	    	</button>
+	</fieldset>
+</form>
+</div><div id="text-2" class="widget widget_text">			<div class="textwidget"><a href='//losst.ru/nachnite-izuchat-linux-pryamo-sejchas' id='start-linux'><img src='//losst.ru/wp-content/uploads/2016/08/map-2.png'></a></div>
+		</div><div id="text-3" class="widget widget_text">			<div class="textwidget"><a href='//losst.ru/kak-polzovatsya-tekstovym-redaktorom-vim' id='use-vim'><img src='//losst.ru/wp-content/uploads/2016/08/vim-3.png'></a></div>
+		</div>			<div id="wpt_widget-2" class="widget widget_wpt">						
+			
+			<div id="wpt_widget-2_content" data-widget-number="2" class="wptp_widget_content wpt-load8 wptp-style-17 wptp-pagination-style-13" data-style="17" data-pagination-style="13">
+				<div class="wpt-loader"></div>
+				
+<ul class="wptp-tabs has-3-tabs">
+						<li class="tab_title selected">
+				<a href="#" id="popular-tab">
+					Лучшие				</a>
+			</li>
+								<li class="tab_title">
+				<a href="#" id="latest-5-tab">
+					Последние				</a>
+			</li>
+								<li class="tab_title">
+				<a href="#" id="tags-tab">
+					Метки				</a>
+			</li>
+			</ul> <!--end .tabs-->
+<div class="clear"></div><div class="inside">
+						<div class="wpt_acc_title">
+				<a href="#" id="popular-tab">
+					Лучшие				</a>
+			</div>
+			<div id="popular-tab-content" class="tab-content" data-loaded="1" style="display:block;">
+			<ul class="wptp-list">
+			<li class="wptp-list-item">
+							<div class="wptp_thumbnail wptp_thumb_custom wptp_thumb_align_left">
+					<a title="Установка Linux рядом с Windows 10" href="https://losst.ru/ustanovka-linux-ryadom-s-windows-10">
+																					<img width="75" height="75" src="https://losst.ru/wp-content/uploads/2016/01/windowsLinux-100x100.png" class="attachment-75x75 size-75x75 wp-post-image" alt="" title="" srcset="https://losst.ru/wp-content/uploads/2016/01/windowsLinux-100x100.png 100w, https://losst.ru/wp-content/uploads/2016/01/windowsLinux-150x150.png 150w" sizes="(max-width: 75px) 100vw, 75px" />																		</a>
+				</div>
+						<div class="entry-title"><a title="Установка Linux рядом с Windows 10" href="https://losst.ru/ustanovka-linux-ryadom-s-windows-10">Установка Linux рядом с Windows 10</a></div>
+							<div class="wptp-postmeta">
+											Янв 19, 2016																			</div> <!--end .entry-meta-->
+						
+												
+			<div class="clear"></div>
+		</li>
+			<li class="wptp-list-item">
+							<div class="wptp_thumbnail wptp_thumb_custom wptp_thumb_align_left">
+					<a title="Лучший Linux для ноутбука 2016" href="https://losst.ru/luchshij-linux-dlya-noutbuka-2016">
+																					<img width="75" height="75" src="https://losst.ru/wp-content/uploads/2016/05/best-linux-os-for-laptop-100x100.png" class="attachment-75x75 size-75x75 wp-post-image" alt="" title="" srcset="https://losst.ru/wp-content/uploads/2016/05/best-linux-os-for-laptop-100x100.png 100w, https://losst.ru/wp-content/uploads/2016/05/best-linux-os-for-laptop-150x150.png 150w" sizes="(max-width: 75px) 100vw, 75px" />																		</a>
+				</div>
+						<div class="entry-title"><a title="Лучший Linux для ноутбука 2016" href="https://losst.ru/luchshij-linux-dlya-noutbuka-2016">Лучший Linux для ноутбука 2016</a></div>
+							<div class="wptp-postmeta">
+											Май 8, 2016																			</div> <!--end .entry-meta-->
+						
+												
+			<div class="clear"></div>
+		</li>
+			<li class="wptp-list-item">
+							<div class="wptp_thumbnail wptp_thumb_custom wptp_thumb_align_left">
+					<a title="Как сделать загрузочную флешку Ubuntu" href="https://losst.ru/kak-sdelat-zagruzochnuyu-fleshku-ubuntu">
+																					<img width="75" height="75" src="https://losst.ru/wp-content/uploads/2016/01/create-bootable-install-usb-drive-mac-os-x-10-10-yosemite.1280x600OS-X-10.10-Yosemite-screenshot-preview-mac-wallpaper-750x420-100x100.jpg" class="attachment-75x75 size-75x75 wp-post-image" alt="" title="" srcset="https://losst.ru/wp-content/uploads/2016/01/create-bootable-install-usb-drive-mac-os-x-10-10-yosemite.1280x600OS-X-10.10-Yosemite-screenshot-preview-mac-wallpaper-750x420-100x100.jpg 100w, https://losst.ru/wp-content/uploads/2016/01/create-bootable-install-usb-drive-mac-os-x-10-10-yosemite.1280x600OS-X-10.10-Yosemite-screenshot-preview-mac-wallpaper-750x420-150x150.jpg 150w" sizes="(max-width: 75px) 100vw, 75px" />																		</a>
+				</div>
+						<div class="entry-title"><a title="Как сделать загрузочную флешку Ubuntu" href="https://losst.ru/kak-sdelat-zagruzochnuyu-fleshku-ubuntu">Как сделать загрузочную флешку Ubuntu</a></div>
+							<div class="wptp-postmeta">
+											Янв 4, 2016																			</div> <!--end .entry-meta-->
+						
+												
+			<div class="clear"></div>
+		</li>
+			<li class="wptp-list-item">
+							<div class="wptp_thumbnail wptp_thumb_custom wptp_thumb_align_left">
+					<a title="Mi Band 2 не подключается к телефону" href="https://losst.ru/mi-band-2-ne-podklyuchaetsya-k-telefonu">
+																					<img width="75" height="75" src="https://losst.ru/wp-content/uploads/2017/05/7c09231b-7ae2-409f-af61-9cbf16a09922-100x100.jpg" class="attachment-75x75 size-75x75 wp-post-image" alt="" title="" srcset="https://losst.ru/wp-content/uploads/2017/05/7c09231b-7ae2-409f-af61-9cbf16a09922-100x100.jpg 100w, https://losst.ru/wp-content/uploads/2017/05/7c09231b-7ae2-409f-af61-9cbf16a09922-150x150.jpg 150w, https://losst.ru/wp-content/uploads/2017/05/7c09231b-7ae2-409f-af61-9cbf16a09922-65x65.jpg 65w" sizes="(max-width: 75px) 100vw, 75px" />																		</a>
+				</div>
+						<div class="entry-title"><a title="Mi Band 2 не подключается к телефону" href="https://losst.ru/mi-band-2-ne-podklyuchaetsya-k-telefonu">Mi Band 2 не подключается к телефону</a></div>
+							<div class="wptp-postmeta">
+											Май 27, 2017																			</div> <!--end .entry-meta-->
+						
+												
+			<div class="clear"></div>
+		</li>
+			<li class="wptp-list-item">
+							<div class="wptp_thumbnail wptp_thumb_custom wptp_thumb_align_left">
+					<a title="Настройка Ubuntu 16.04 после установки" href="https://losst.ru/nastrojka-ubuntu-16-04-posle-ustanovki">
+																					<img width="75" height="75" src="https://losst.ru/wp-content/uploads/2016/03/700ubuntu-100x100.png" class="attachment-75x75 size-75x75 wp-post-image" alt="" title="" srcset="https://losst.ru/wp-content/uploads/2016/03/700ubuntu-100x100.png 100w, https://losst.ru/wp-content/uploads/2016/03/700ubuntu-150x150.png 150w" sizes="(max-width: 75px) 100vw, 75px" />																		</a>
+				</div>
+						<div class="entry-title"><a title="Настройка Ubuntu 16.04 после установки" href="https://losst.ru/nastrojka-ubuntu-16-04-posle-ustanovki">Настройка Ubuntu 16.04 после установки</a></div>
+							<div class="wptp-postmeta">
+											Мар 17, 2016																			</div> <!--end .entry-meta-->
+						
+												
+			<div class="clear"></div>
+		</li>
+	       
+</ul>
+<div class="clear"></div>
+			</div><!--end .tab-content-->
+								<div class="wpt_acc_title">
+				<a href="#" id="latest-5-tab">
+					Последние				</a>
+			</div>
+			<div id="latest-5-tab-content" class="tab-content" data-loaded="1" style="display:none;">
+			<ul class="wptp-list">
+			<li class="wptp-list-item">
+							<div class="wptp_thumbnail wptp_thumb_custom wptp_thumb_align_left">
+					<a title="Установка драйвера Nvidia в Manjaro" href="https://losst.ru/ustanovka-drajvera-nvidia-v-manjaro">
+																					<img width="75" height="75" src="https://losst.ru/wp-content/uploads/2018/04/all-drivers-115x115.png" class="attachment-75x75 size-75x75 wp-post-image" alt="Все драйверы" title="" srcset="https://losst.ru/wp-content/uploads/2018/04/all-drivers-115x115.png 115w, https://losst.ru/wp-content/uploads/2018/04/all-drivers-150x150.png 150w" sizes="(max-width: 75px) 100vw, 75px" />																		</a>
+				</div>
+						<div class="entry-title"><a title="Установка драйвера Nvidia в Manjaro" href="https://losst.ru/ustanovka-drajvera-nvidia-v-manjaro">Установка драйвера Nvidia в Manjaro</a></div>
+							<div class="wptp-postmeta">
+											Май 3, 2018																			</div> <!--end .entry-meta-->
+						
+												
+			<div class="clear"></div>
+		</li>
+			<li class="wptp-list-item">
+							<div class="wptp_thumbnail wptp_thumb_custom wptp_thumb_align_left">
+					<a title="Настройка Ubuntu 18.04 после установки" href="https://losst.ru/nastrojka-ubuntu-18-04-posle-ustanovki">
+																					<img width="75" height="75" src="https://losst.ru/wp-content/uploads/2018/04/Kadr-ot-ubuntuconfig.mp4-3-115x115.png" class="attachment-75x75 size-75x75 wp-post-image" alt="" title="" srcset="https://losst.ru/wp-content/uploads/2018/04/Kadr-ot-ubuntuconfig.mp4-3-115x115.png 115w, https://losst.ru/wp-content/uploads/2018/04/Kadr-ot-ubuntuconfig.mp4-3-150x150.png 150w" sizes="(max-width: 75px) 100vw, 75px" />																		</a>
+				</div>
+						<div class="entry-title"><a title="Настройка Ubuntu 18.04 после установки" href="https://losst.ru/nastrojka-ubuntu-18-04-posle-ustanovki">Настройка Ubuntu 18.04 после установки</a></div>
+							<div class="wptp-postmeta">
+											Май 1, 2018																			</div> <!--end .entry-meta-->
+						
+												
+			<div class="clear"></div>
+		</li>
+			<li class="wptp-list-item">
+							<div class="wptp_thumbnail wptp_thumb_custom wptp_thumb_align_left">
+					<a title="Как обновить Ubuntu 17.10 до 18.04" href="https://losst.ru/kak-obnovit-ubuntu-17-10-do-18-04">
+																					<img width="75" height="75" src="https://losst.ru/wp-content/uploads/2018/04/Kadr-ot-ubuntuupdate.mp4-10-115x115.png" class="attachment-75x75 size-75x75 wp-post-image" alt="" title="" srcset="https://losst.ru/wp-content/uploads/2018/04/Kadr-ot-ubuntuupdate.mp4-10-115x115.png 115w, https://losst.ru/wp-content/uploads/2018/04/Kadr-ot-ubuntuupdate.mp4-10-150x150.png 150w" sizes="(max-width: 75px) 100vw, 75px" />																		</a>
+				</div>
+						<div class="entry-title"><a title="Как обновить Ubuntu 17.10 до 18.04" href="https://losst.ru/kak-obnovit-ubuntu-17-10-do-18-04">Как обновить Ubuntu 17.10 до 18.04</a></div>
+							<div class="wptp-postmeta">
+											Апр 30, 2018																			</div> <!--end .entry-meta-->
+						
+												
+			<div class="clear"></div>
+		</li>
+			<li class="wptp-list-item">
+							<div class="wptp_thumbnail wptp_thumb_custom wptp_thumb_align_left">
+					<a title="Установка Ubuntu 18.04" href="https://losst.ru/ustanovka-ubuntu-18-04">
+																					<img width="75" height="75" src="https://losst.ru/wp-content/uploads/2018/04/Kadr-ot-ubuntu1804.mp4-24-115x115.png" class="attachment-75x75 size-75x75 wp-post-image" alt="" title="" srcset="https://losst.ru/wp-content/uploads/2018/04/Kadr-ot-ubuntu1804.mp4-24-115x115.png 115w, https://losst.ru/wp-content/uploads/2018/04/Kadr-ot-ubuntu1804.mp4-24-150x150.png 150w" sizes="(max-width: 75px) 100vw, 75px" />																		</a>
+				</div>
+						<div class="entry-title"><a title="Установка Ubuntu 18.04" href="https://losst.ru/ustanovka-ubuntu-18-04">Установка Ubuntu 18.04</a></div>
+							<div class="wptp-postmeta">
+											Апр 29, 2018																			</div> <!--end .entry-meta-->
+						
+												
+			<div class="clear"></div>
+		</li>
+			<li class="wptp-list-item">
+							<div class="wptp_thumbnail wptp_thumb_custom wptp_thumb_align_left">
+					<a title="Удалить пользователя из группы Linux" href="https://losst.ru/udalit-polzovatelya-iz-gruppy-linux">
+																					<img width="75" height="75" src="https://losst.ru/wp-content/uploads/2018/04/Snimok-ekrana-ot-2018-04-23-16-46-28-115x115.png" class="attachment-75x75 size-75x75 wp-post-image" alt="" title="" srcset="https://losst.ru/wp-content/uploads/2018/04/Snimok-ekrana-ot-2018-04-23-16-46-28-115x115.png 115w, https://losst.ru/wp-content/uploads/2018/04/Snimok-ekrana-ot-2018-04-23-16-46-28-150x150.png 150w" sizes="(max-width: 75px) 100vw, 75px" />																		</a>
+				</div>
+						<div class="entry-title"><a title="Удалить пользователя из группы Linux" href="https://losst.ru/udalit-polzovatelya-iz-gruppy-linux">Удалить пользователя из группы Linux</a></div>
+							<div class="wptp-postmeta">
+											Апр 27, 2018																			</div> <!--end .entry-meta-->
+						
+												
+			<div class="clear"></div>
+		</li>
+	</ul>
+<div class="clear"></div>
+			</div><!--end .tab-content-->
+								<div class="wpt_acc_title">
+				<a href="#" id="tags-tab">
+					Метки				</a>
+			</div>
+			<div id="tags-tab-content" class="tab-content" data-loaded="1" style="display:none;">
+			<div class="tagcloud" style="margin-top: 20px;">
+				<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/ubuntu">ubuntu</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/ustanovka">установка</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/network">сеть</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/security">безопасность</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/programming">программирование</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/debian">debian</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/linuxmint">linux mint</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/oshibki">ошибки</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/bash">bash</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/kde">kde</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/disk">диск</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/fajlovaya-sistema">файловая система</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/ofis">офис</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/hardware">оборудование</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/multimedia">мультимедиа</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/fedora">fedora</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/gentoo">gentoo</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/grub">grub</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/virtualization">виртуализация</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/obnovlenie">обновление</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/redaktor">редактор</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/windows">windows</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/komandy">команды</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/opensuse">opensuse</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/unity">unity</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/proizvoditelnost">производительность</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/server">сервер</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/centos">centos</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/messendzher">мессенджер</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/gnome">gnome</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/raspberry">raspberry</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/wine">wine</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/drajver">драйвер</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/pakety">пакеты</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/android">android</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/deb">deb</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/kriptovalyuta">криптовалюта</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/archlinux">archlinux</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/microsoft">microsoft</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/alternativy">альтернативы</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/bekap">бэкап</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/vosstanovlenie">восстановление</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/nastrojka">настройка</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/komplektuyushhie">комплектующие</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/optimizatsiya">оптимизация</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/sravnenie">сравнение</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/shifrovanie">шифрование</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/nginx">nginx</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/mysql">mysql</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/virtualbox">virtualbox</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/ext4">ext4</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/kubuntu">kubuntu</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/portable">portable</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/snap">snap</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/systemd">systemd</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/mikrokompyuter">микрокомпьютер</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/oshibka">ошибка</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/uskorenie">ускорение</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/grafika">графика</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/cinnamon">cinnamon</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/videokarta">видеокарта</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/lyudi">люди</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/oblako">облако</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/ochistka">очистка</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/fleshka">флешка</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/games">игры</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/plaginy">плагины</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/brauzery">браузеры</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/wordpress">wordpress</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/manjaro">manjaro</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/brauzer">браузер</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/pamyat">память</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/nositeli">носители</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/vpn">vpn</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/bazy-dannyh">базы данных</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/prichiny">причины</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/paneli">панели</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/obolochki">оболочки</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/drajvera">драйвера</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/php">php</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/distributivu">дистрибутивы</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/nvidia">nvidia</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/reactos">reactos</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/xfce">xfce</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/xorg">xorg</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/virus">вирус</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/terminal">терминал</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/kali-linux">kali linux</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/servisy">сервисы</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/analogi">аналоги</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/proekty">проекты</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/yadro">ядро</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/bsd">BSD</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/programirovanie">програмирование</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/iptables">iptables</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/polzovateli">пользователи</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/oformlenie">оформление</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/python">python</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/apache">apache</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/wifi">wifi</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/dos">dos</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/postgresql">postgresql</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/libreoffice">libreoffice</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/gimp">gimp</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/zabbix">zabbix</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/vlc">vlc</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/bitcoin">bitcoin</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/majning">майнинг</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/uyazvimosti">уязвимости</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/ispolzovanie">использование</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/video">Видео</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/mint">mint</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/wot">WoT</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/proksi">прокси</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/squid">squid</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/red-hat">red hat</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/pacman">pacman</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/arhivy">архивы</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/gruppy">группы</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/minikompyuter">миникомпьютер</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/kontejnery">контейнеры</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/applications">Программы</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/i3wm">i3wm</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/de">DE</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/desktop">desktop</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/tajling">тайлинг</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/okonnyj-menedzher">оконный менеджер</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/android-8-0">Android 8.0</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/fajlovye-sistemy">файловые системы</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/prilozheniya">приложения</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/sravneniya">сравнения</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/virusy">вирусы</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/ide">IDE</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/virtualziatsiya">виртуалзиация</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/udalenie">удаление</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/udalennyj-dostup">удаленный доступ</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/arduino">arduino</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/usb">usb</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/emulyator">эмулятор</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/phpmyadmin">phpmyadmin</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/vremya">время</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/freebsd">freebsd</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/hosting">хостинг</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/intervyu">интерьвю</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/plank">plank</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/dock">dock</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/montazh">Монтаж</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/linux">Linux</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/qt-creator">Qt Creator</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/c">C++</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/atom">Atom</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/stroka">строка</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/optsii">опции</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/parametry">параметры</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/skript">скрипт</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/komandnaya-stroka">командная строка</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/proverka">проверка</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/peremennye">переменные</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/fajlovyj-deskriptor">файловый дескриптор</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/arhiv">Архив</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/tar">tar</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/bzip2">bzip2</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/gzip">gzip</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/pamac">pamac</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/yaourt">yaourt</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/diski">диски</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/pitanie">питание</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/dual-boot">dual boot</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/clear">clear</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/reset">reset</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/komanda">команда</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/windows-manager">windows manager</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/tiling">tiling</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/andoid">Andoid</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/lineageos">Lineageos</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/lineage-os">lineage os</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/cyanogen">cyanogen</a>
+						<a class="tag-cloud-link tag-link-20 tag-link-position-1" style="font-size: 8pt;" href="https://losst.ru/tag/mod">mod</a>
+			</div>
+			</div><!--end .tab-content-->
+				<div class="clear"></div>
+</div> <!--end .inside -->
+<div class="clear"></div><style type="text/css">
+#wpt_widget-2_content.wptp-style-17.wptp_widget_content {
+    border: 0;
+    background: transparent;
+}
+#wpt_widget-2_content.wptp-style-17.wptp_widget_content .tab_title a,
+#wpt_widget-2_content.wptp-style-17.wptp_widget_content .wpt_acc_title a {
+    color: #ffffff;
+    background: #ff9950;
+    background: -moz-linear-gradient(250deg, transparent 14px, #ff9950 14px);
+    background: -webkit-linear-gradient(250deg, transparent 14px, #ff9950 14px);
+    background: -ms-linear-gradient(250deg, transparent 14px, #ff9950 14px);
+    background: -o-linear-gradient(250deg, transparent 14px, #ff9950 14px);
+    background: linear-gradient(250deg, transparent 14px, #ff9950 14px);
+    font-weight: 600;
+    padding: 13px 0;
+    line-height: 1.5;
+    height: 46px;
+    box-sizing: border-box;
+    border: 0;
+    font-size: 14px;
+}
+#wpt_widget-2_content.wptp-style-17.wptp_widget_content .tab_title a:hover,
+#wpt_widget-2_content.wptp-style-17.wptp_widget_content .wpt_acc_title a:hover {
+    color: #ffffff;
+    background: #ff9950;
+    background: -moz-linear-gradient(250deg, transparent 14px, #ff9950 14px);
+    background: -webkit-linear-gradient(250deg, transparent 14px, #ff9950 14px);
+    background: -ms-linear-gradient(250deg, transparent 14px, #ff9950 14px);
+    background: -o-linear-gradient(250deg, transparent 14px, #ff9950 14px);
+    background: linear-gradient(250deg, transparent 14px, #ff9950 14px);
+}
+#wpt_widget-2_content.wptp-style-17.wptp_widget_content .tab_title.selected a,
+#wpt_widget-2_content.wptp-style-17.wptp_widget_content .wpt_acc_title.selected a {
+    color: #293241;
+    background: #ffffff;
+    background: -moz-linear-gradient(250deg, transparent 14px, #ffffff 14px);
+    background: -webkit-linear-gradient(250deg, transparent 14px, #ffffff 14px);
+    background: -ms-linear-gradient(250deg, transparent 14px, #ffffff 14px);
+    background: -o-linear-gradient(250deg, transparent 14px, #ffffff 14px);
+    background: linear-gradient(250deg, transparent 14px, #ffffff 14px);
+}
+#wpt_widget-2_content.wptp-style-17.wptp_widget_content .inside {
+    background: #ffffff;
+}
+#wpt_widget-2_content.wptp-style-17.wptp_widget_content .tab-content li.wptp-list-item {
+    border: 0;
+}
+#wpt_widget-2_content.wptp-style-17.wptp_widget_content .entry-title,
+#wpt_widget-2_content.wptp-style-17 .wptp_comment_meta {
+    font-size: 15px;
+    line-height: 24px;
+    margin-bottom: 5px;
+}
+#wpt_widget-2_content.wptp-style-17.wptp_widget_content .entry-title a,
+#wpt_widget-2_content.wptp-style-17 .wptp_comment_meta a,
+#wpt_widget-2_content.wptp-style-17.wptp_widget_content a {
+    color: #535b67;
+    font-weight: normal;
+}
+#wpt_widget-2_content.wptp-style-17.wptp_widget_content .entry-title a:hover,
+#wpt_widget-2_content.wptp-style-17 .wptp_comment_meta a:hover,
+#wpt_widget-2_content.wptp-style-17.wptp_widget_content a:hover {
+    color: #293241;
+}
+#wpt_widget-2_content.wptp-style-17.wptp_widget_content,
+#wpt_widget-2_content.wptp-style-17.wptp_widget_content .wptp-postmeta,
+#wpt_widget-2_content.wptp-style-17 .wptp_comment_content,
+#wpt_widget-2_content.wptp-style-17 .wptp_excerpt {
+    color: #9499a0;
+}
+#wpt_widget-2_content.wptp-style-17.wptp_widget_content .wptp-postmeta,
+#wpt_widget-2_content.wptp-style-17 .wptp_comment_content,
+#wpt_widget-2_content.wptp-style-17 .wptp_excerpt {
+    font-size: 11px;
+}
+</style><style type="text/css">
+#wpt_widget-2_content.wptp-pagination-style-13.wptp_widget_content .wptp-pagination li .page-numbers {
+	background: #fafafa;
+	color: #293241;
+	border-radius: 3px;
+    border: 1px solid rgba(0,0,0,0.06);
+    box-shadow: 0 1px 1px rgba(0,0,0,0.05);
+}
+#wpt_widget-2_content.wptp-pagination-style-13.wptp_widget_content .wptp-pagination li .page-numbers.prev,
+#wpt_widget-2_content.wptp-pagination-style-13.wptp_widget_content .wptp-pagination li .page-numbers.next {
+	background: #fafafa;
+	color: #293241;
+}
+#wpt_widget-2_content.wptp-pagination-style-13.wptp_widget_content .wptp-pagination li a.page-numbers:hover {
+	background: #ffffff;
+	color: #293241;
+}
+#wpt_widget-2_content.wptp-pagination-style-13.wptp_widget_content .wptp-pagination li .page-numbers.current {
+	background: #ffffff;
+	color: #293241;
+}
+#wpt_widget-2_content.wptp-pagination-style-13.wptp_widget_content .wptp-pagination li .fa { display: none; }
+#wpt_widget-2_content.wptp-pagination-style-13.wptp_widget_content .wptp-pagination li { margin-right: 3px }
+</style>			</div><!--end .wpt_widget_content -->
+			
+			</div>			<div id="execphp-2" class="widget widget_execphp">			<div class="execphpwidget"><div style="width: 300px">
+<h3 class="widget-title">Реклама</h3>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- ArticleSidebar -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:336px;height:280px"
+     data-ad-client="ca-pub-3031391294356171"
+     data-ad-slot="9303611445"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+</div>
+		</div>			<div id="wp_subscribe-2" class="widget wp_subscribe">	
+		<div id="wp-subscribe" class="wp-subscribe-wrap wp-subscribe wp-subscribe-1" data-thanks_page="0" data-thanks_page_url="" data-thanks_page_new_window="0">
+
+			<h4 class="title">Подписка на рассылку</h4>
+
+			<p class="text">Подписывайтесь на обновления и получайте уведомления о новых интересных статьях по почте раз в неделю.</p>
+
+			
+			<form action="https://losst.ru/nastrojka-iptables-dlya-chajnikov?name=nastrojka-iptables-dlya-chajnikov" method="post" class="wp-subscribe-form wp-subscribe-mailchimp" id="wp-subscribe-form-1">
+
+				
+				<input class="regular-text email-field" type="text" name="email" placeholder="Введите ваш Email:">
+
+				<input type="hidden" name="form_type" value="widget">
+
+				<input type="hidden" name="service" value="mailchimp">
+
+				<input type="hidden" name="widget" value="wp_subscribe-2">
+
+				<input class="submit" type="submit" name="submit" value="Подписаться!">
+
+			</form>
+
+			
+			<div class="wp-subscribe-loader">
+				<svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" width="40px" height="40px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+					<path fill="#ffffff" d="M43.935,25.145c0-10.318-8.364-18.683-18.683-18.683c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615c8.072,0,14.615,6.543,14.615,14.615H43.935z">
+						<animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"/>
+					</path>
+				</svg>
+			</div>
+
+			<p class="thanks">Спасибо!</p>
+			<p class="error">Произошла ошибка, попробуйте еще раз.</p>
+			<div class="clear"></div>
+
+			<p class="footer-text">Никакой рекламы или спама!</p>
+
+		</div>
+
+			</div>	
+<div id="text-5" class="widget widget_text"><h3 class="widget-title">Мы вконтакте</h3>			<div class="textwidget"><p><script type="text/javascript" src="//vk.com/js/api/openapi.js?146" async></script></p>
+<p><!-- VK Widget --></p>
+<div id="vk_groups"></div>
+<p><script type="text/javascript">
+var intervalVK = setInterval(function () {
+if (window.VK) {
+clearInterval(intervalVK);
+VK.Widgets.Group("vk_groups", {redesign: 1, mode: 3, width: "280", height: "300", color1: 'FFFFFF', color2: '000000', color3: '5E81A8'}, 33241754);
+}}, 500);
+</script></p>
+</div>
+		</div><div id="text-4" class="widget widget_text"><h3 class="widget-title">Обнаружили опечатку?</h3>			<div class="textwidget">Сообщите нам об этом, выделите текст с ошибкой и нажмите <b>Ctrl+Enter</b>, будем очень признательны!</div>
+		</div>		<div id="meta" class="widget widget_meta">			<h3 class="widget-title">Мета</h3>			<ul>
+			<li><a rel="nofollow" href="https://losst.ru/wp-login.php?action=register">Регистрация</a></li>			<li><a rel="nofollow" href="https://losst.ru/wp-login.php">Войти</a></li>
+			<li><a href="https://losst.ru/feed" title="Syndicate this site using RSS 2.0"><abbr title="Really Simple Syndication">RSS</abbr> записей</a></li>
+			<li><a href="https://losst.ru/comments/feed" title="The latest comments to all posts in RSS"><abbr title="Really Simple Syndication">RSS</abbr> комментариев</a></li>
+						</ul>
+		</div><div id="text-6" class="widget widget_text"><h3 class="widget-title">Оставайтесь с нами в социальных сетях:</h3>			<div class="textwidget"><div id="social1"><a class="social_tack" href="https://twitter.com/Losst_official" target="_blank" rel="noopener"><img id="social" src="//losst.ru/wp-content/themes/arcade-basic-child/library/icons/socialtwitter.png" /></a><a class="social_tack" href="https://plus.google.com/u/0/b/105846980335513060650/+LosstRu1c" target="_blank" rel="noopener"><img id="social" src="//losst.ru/wp-content/themes/arcade-basic-child/library/icons/socialgoogle.png" /></a><a id="social_tack" href="https://www.facebook.com/losstofficial" target="_blank" rel="noopener"><img id="social" src="//losst.ru/wp-content/themes/arcade-basic-child/library/icons/socialfb.png" /></a><a class="social_tack" href="//losst.ru/feed" target="_blank" rel="noopener"><img id="social" src="//losst.ru/wp-content/themes/arcade-basic-child/library/icons/socialrss.png" /></a><a class="social_tack" href="https://losstofficial.tumblr.com/" target="_blank" rel="noopener"><img id="social" src="//losst.ru/wp-content/themes/arcade-basic-child/library/icons/socialtubmlr.png" /></a><a class="social_tack" href="https://vk.com/losst_official" target="_blank" rel="noopener"><img id="social" src="//losst.ru/wp-content/themes/arcade-basic-child/library/icons/socialpath.png" /></a><a class="social_tack" href="https://t.me/losstofficial" target="_blank" rel="noopener"><img id="social" src="//losst.ru/wp-content/themes/mts_best_child/icons/socialtelegram.png"/></a><a class="social_tack" href="https://www.youtube.com/channel/UCFhsZ0CeGEXOSpIOUORwbUA" target="_blank" rel="noopener"><img id="social" src="//losst.ru/wp-content/themes/arcade-basic-child/library/icons/socialyoutube.png" /></a></div></div>
+		</div><div id="text-7" class="widget widget_text"><h3 class="widget-title">Мы в Twitter</h3>			<div class="textwidget"><p><a class="twitter-timeline" data-lang="ru" data-height="500" href="https://twitter.com/Losst_official?ref_src=twsrc%5Etfw">Tweets by Losst_official</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></p>
+</div>
+		</div></aside><!--#sidebar-->
+        </div><!--#page-->
+    </div><!--.main-container-->
+    <footer id="site-footer" role="contentinfo" itemscope itemtype="http://schema.org/WPFooter">
+                <div class="footer-carousel-wrap">
+            <div class="container">
+                <div class="slider-container">
+                    <div class="owl-container loading">
+                        <div id="footer-post-carousel" class="slides">
+                                                        <div class="footer-carousel-item show-post-data">
+                                <div class="dark-style post-box">
+                                    <div class="post-data">
+                                        <header>
+                                            <a href="https://losst.ru/ustanovka-drajvera-nvidia-v-manjaro" class="title post-title" title="Установка драйвера Nvidia в Manjaro">Установка драйвера Nvidia в Manjaro</a>
+                                                <div class="post-info">  
+                                                    <span class="thetime updated">Май 3, 2018</span>    
+                                                </div>
+                                        </header>
+                                    </div>
+                                </div>
+                                <a href="https://losst.ru/ustanovka-drajvera-nvidia-v-manjaro">
+                                    <img width="115" height="115" src="https://losst.ru/wp-content/uploads/2018/04/all-drivers-115x115.png" class="attachment-best-widgetthumb size-best-widgetthumb wp-post-image" alt="Все драйверы" title="" srcset="https://losst.ru/wp-content/uploads/2018/04/all-drivers-115x115.png 115w, https://losst.ru/wp-content/uploads/2018/04/all-drivers-150x150.png 150w" sizes="(max-width: 115px) 100vw, 115px" />                                </a>
+                            </div>
+                                                        <div class="footer-carousel-item">
+                                <div class="dark-style post-box">
+                                    <div class="post-data">
+                                        <header>
+                                            <a href="https://losst.ru/nastrojka-ubuntu-18-04-posle-ustanovki" class="title post-title" title="Настройка Ubuntu 18.04 после установки">Настройка Ubuntu 18.04 после установки</a>
+                                                <div class="post-info">  
+                                                    <span class="thetime updated">Май 1, 2018</span>    
+                                                </div>
+                                        </header>
+                                    </div>
+                                </div>
+                                <a href="https://losst.ru/nastrojka-ubuntu-18-04-posle-ustanovki">
+                                    <img width="115" height="115" src="https://losst.ru/wp-content/uploads/2018/04/Kadr-ot-ubuntuconfig.mp4-3-115x115.png" class="attachment-best-widgetthumb size-best-widgetthumb wp-post-image" alt="" title="" srcset="https://losst.ru/wp-content/uploads/2018/04/Kadr-ot-ubuntuconfig.mp4-3-115x115.png 115w, https://losst.ru/wp-content/uploads/2018/04/Kadr-ot-ubuntuconfig.mp4-3-150x150.png 150w" sizes="(max-width: 115px) 100vw, 115px" />                                </a>
+                            </div>
+                                                        <div class="footer-carousel-item">
+                                <div class="dark-style post-box">
+                                    <div class="post-data">
+                                        <header>
+                                            <a href="https://losst.ru/kak-obnovit-ubuntu-17-10-do-18-04" class="title post-title" title="Как обновить Ubuntu 17.10 до 18.04">Как обновить Ubuntu 17.10 до 18.04</a>
+                                                <div class="post-info">  
+                                                    <span class="thetime updated">Апрель 30, 2018</span>    
+                                                </div>
+                                        </header>
+                                    </div>
+                                </div>
+                                <a href="https://losst.ru/kak-obnovit-ubuntu-17-10-do-18-04">
+                                    <img width="115" height="115" src="https://losst.ru/wp-content/uploads/2018/04/Kadr-ot-ubuntuupdate.mp4-10-115x115.png" class="attachment-best-widgetthumb size-best-widgetthumb wp-post-image" alt="" title="" srcset="https://losst.ru/wp-content/uploads/2018/04/Kadr-ot-ubuntuupdate.mp4-10-115x115.png 115w, https://losst.ru/wp-content/uploads/2018/04/Kadr-ot-ubuntuupdate.mp4-10-150x150.png 150w" sizes="(max-width: 115px) 100vw, 115px" />                                </a>
+                            </div>
+                                                        <div class="footer-carousel-item">
+                                <div class="dark-style post-box">
+                                    <div class="post-data">
+                                        <header>
+                                            <a href="https://losst.ru/ustanovka-ubuntu-18-04" class="title post-title" title="Установка Ubuntu 18.04">Установка Ubuntu 18.04</a>
+                                                <div class="post-info">  
+                                                    <span class="thetime updated">Апрель 29, 2018</span>    
+                                                </div>
+                                        </header>
+                                    </div>
+                                </div>
+                                <a href="https://losst.ru/ustanovka-ubuntu-18-04">
+                                    <img width="115" height="115" src="https://losst.ru/wp-content/uploads/2018/04/Kadr-ot-ubuntu1804.mp4-24-115x115.png" class="attachment-best-widgetthumb size-best-widgetthumb wp-post-image" alt="" title="" srcset="https://losst.ru/wp-content/uploads/2018/04/Kadr-ot-ubuntu1804.mp4-24-115x115.png 115w, https://losst.ru/wp-content/uploads/2018/04/Kadr-ot-ubuntu1804.mp4-24-150x150.png 150w" sizes="(max-width: 115px) 100vw, 115px" />                                </a>
+                            </div>
+                                                        <div class="footer-carousel-item">
+                                <div class="dark-style post-box">
+                                    <div class="post-data">
+                                        <header>
+                                            <a href="https://losst.ru/udalit-polzovatelya-iz-gruppy-linux" class="title post-title" title="Удалить пользователя из группы Linux">Удалить пользователя из группы Linux</a>
+                                                <div class="post-info">  
+                                                    <span class="thetime updated">Апрель 27, 2018</span>    
+                                                </div>
+                                        </header>
+                                    </div>
+                                </div>
+                                <a href="https://losst.ru/udalit-polzovatelya-iz-gruppy-linux">
+                                    <img width="115" height="115" src="https://losst.ru/wp-content/uploads/2018/04/Snimok-ekrana-ot-2018-04-23-16-46-28-115x115.png" class="attachment-best-widgetthumb size-best-widgetthumb wp-post-image" alt="" title="" srcset="https://losst.ru/wp-content/uploads/2018/04/Snimok-ekrana-ot-2018-04-23-16-46-28-115x115.png 115w, https://losst.ru/wp-content/uploads/2018/04/Snimok-ekrana-ot-2018-04-23-16-46-28-150x150.png 150w" sizes="(max-width: 115px) 100vw, 115px" />                                </a>
+                            </div>
+                                                        <div class="footer-carousel-item">
+                                <div class="dark-style post-box">
+                                    <div class="post-data">
+                                        <header>
+                                            <a href="https://losst.ru/kak-uznat-id-polzovatelya-linux" class="title post-title" title="Как узнать id пользователя Linux">Как узнать id пользователя Linux</a>
+                                                <div class="post-info">  
+                                                    <span class="thetime updated">Апрель 26, 2018</span>    
+                                                </div>
+                                        </header>
+                                    </div>
+                                </div>
+                                <a href="https://losst.ru/kak-uznat-id-polzovatelya-linux">
+                                    <img width="115" height="115" src="https://losst.ru/wp-content/uploads/2018/04/Snimok-ekrana-ot-2018-04-23-15-36-41-115x115.png" class="attachment-best-widgetthumb size-best-widgetthumb wp-post-image" alt="" title="" srcset="https://losst.ru/wp-content/uploads/2018/04/Snimok-ekrana-ot-2018-04-23-15-36-41-115x115.png 115w, https://losst.ru/wp-content/uploads/2018/04/Snimok-ekrana-ot-2018-04-23-15-36-41-150x150.png 150w" sizes="(max-width: 115px) 100vw, 115px" />                                </a>
+                            </div>
+                                                        <div class="footer-carousel-item">
+                                <div class="dark-style post-box">
+                                    <div class="post-data">
+                                        <header>
+                                            <a href="https://losst.ru/komanda-tar-v-linux" class="title post-title" title="Команда tar в Linux">Команда tar в Linux</a>
+                                                <div class="post-info">  
+                                                    <span class="thetime updated">Апрель 24, 2018</span>    
+                                                </div>
+                                        </header>
+                                    </div>
+                                </div>
+                                <a href="https://losst.ru/komanda-tar-v-linux">
+                                    <img width="115" height="115" src="https://losst.ru/wp-content/uploads/2018/04/archive-115x115.png" class="attachment-best-widgetthumb size-best-widgetthumb wp-post-image" alt="Создание архива tar" title="" srcset="https://losst.ru/wp-content/uploads/2018/04/archive-115x115.png 115w, https://losst.ru/wp-content/uploads/2018/04/archive-150x150.png 150w" sizes="(max-width: 115px) 100vw, 115px" />                                </a>
+                            </div>
+                                                        <div class="footer-carousel-item">
+                                <div class="dark-style post-box">
+                                    <div class="post-data">
+                                        <header>
+                                            <a href="https://losst.ru/ustanovka-programm-v-manjaro" class="title post-title" title="Установка программ в Manjaro">Установка программ в Manjaro</a>
+                                                <div class="post-info">  
+                                                    <span class="thetime updated">Апрель 23, 2018</span>    
+                                                </div>
+                                        </header>
+                                    </div>
+                                </div>
+                                <a href="https://losst.ru/ustanovka-programm-v-manjaro">
+                                    <img width="115" height="115" src="https://losst.ru/wp-content/uploads/2018/04/category-graphics-115x115.png" class="attachment-best-widgetthumb size-best-widgetthumb wp-post-image" alt="Категория Графика" title="" srcset="https://losst.ru/wp-content/uploads/2018/04/category-graphics-115x115.png 115w, https://losst.ru/wp-content/uploads/2018/04/category-graphics-150x150.png 150w" sizes="(max-width: 115px) 100vw, 115px" />                                </a>
+                            </div>
+                                                        <div class="footer-carousel-item">
+                                <div class="dark-style post-box">
+                                    <div class="post-data">
+                                        <header>
+                                            <a href="https://losst.ru/vyvod-v-fajl-bash-v-linux" class="title post-title" title="Вывод в файл Bash в Linux">Вывод в файл Bash в Linux</a>
+                                                <div class="post-info">  
+                                                    <span class="thetime updated">Апрель 19, 2018</span>    
+                                                </div>
+                                        </header>
+                                    </div>
+                                </div>
+                                <a href="https://losst.ru/vyvod-v-fajl-bash-v-linux">
+                                    <img width="115" height="115" src="https://losst.ru/wp-content/uploads/2018/04/poster-1-115x115.png" class="attachment-best-widgetthumb size-best-widgetthumb wp-post-image" alt="" title="" srcset="https://losst.ru/wp-content/uploads/2018/04/poster-1-115x115.png 115w, https://losst.ru/wp-content/uploads/2018/04/poster-1-150x150.png 150w" sizes="(max-width: 115px) 100vw, 115px" />                                </a>
+                            </div>
+                                                        <div class="footer-carousel-item">
+                                <div class="dark-style post-box">
+                                    <div class="post-data">
+                                        <header>
+                                            <a href="https://losst.ru/proverka-sushhestvovaniya-fajla-bash" class="title post-title" title="Проверка существования файла Bash">Проверка существования файла Bash</a>
+                                                <div class="post-info">  
+                                                    <span class="thetime updated">Апрель 17, 2018</span>    
+                                                </div>
+                                        </header>
+                                    </div>
+                                </div>
+                                <a href="https://losst.ru/proverka-sushhestvovaniya-fajla-bash">
+                                    <img width="115" height="115" src="https://losst.ru/wp-content/uploads/2018/04/poster-115x115.png" class="attachment-best-widgetthumb size-best-widgetthumb wp-post-image" alt="" title="" srcset="https://losst.ru/wp-content/uploads/2018/04/poster-115x115.png 115w, https://losst.ru/wp-content/uploads/2018/04/poster-150x150.png 150w" sizes="(max-width: 115px) 100vw, 115px" />                                </a>
+                            </div>
+                                                        <div class="footer-carousel-item">
+                                <div class="dark-style post-box">
+                                    <div class="post-data">
+                                        <header>
+                                            <a href="https://losst.ru/peremennye-v-bash-skriptah" class="title post-title" title="Переменные в Bash скриптах">Переменные в Bash скриптах</a>
+                                                <div class="post-info">  
+                                                    <span class="thetime updated">Апрель 16, 2018</span>    
+                                                </div>
+                                        </header>
+                                    </div>
+                                </div>
+                                <a href="https://losst.ru/peremennye-v-bash-skriptah">
+                                    <img width="115" height="115" src="https://losst.ru/wp-content/uploads/2018/04/test3-115x115.png" class="attachment-best-widgetthumb size-best-widgetthumb wp-post-image" alt="" title="" srcset="https://losst.ru/wp-content/uploads/2018/04/test3-115x115.png 115w, https://losst.ru/wp-content/uploads/2018/04/test3-150x150.png 150w" sizes="(max-width: 115px) 100vw, 115px" />                                </a>
+                            </div>
+                                                        <div class="footer-carousel-item">
+                                <div class="dark-style post-box">
+                                    <div class="post-data">
+                                        <header>
+                                            <a href="https://losst.ru/nastrojka-squid-dlya-ipv6" class="title post-title" title="Настройка Squid для IPv6">Настройка Squid для IPv6</a>
+                                                <div class="post-info">  
+                                                    <span class="thetime updated">Апрель 12, 2018</span>    
+                                                </div>
+                                        </header>
+                                    </div>
+                                </div>
+                                <a href="https://losst.ru/nastrojka-squid-dlya-ipv6">
+                                    <img width="115" height="115" src="https://losst.ru/wp-content/uploads/2018/04/Snimok-ekrana-ot-2018-04-10-19-34-25-115x115.png" class="attachment-best-widgetthumb size-best-widgetthumb wp-post-image" alt="" title="" srcset="https://losst.ru/wp-content/uploads/2018/04/Snimok-ekrana-ot-2018-04-10-19-34-25-115x115.png 115w, https://losst.ru/wp-content/uploads/2018/04/Snimok-ekrana-ot-2018-04-10-19-34-25-150x150.png 150w" sizes="(max-width: 115px) 100vw, 115px" />                                </a>
+                            </div>
+                                                    </div>
+                    </div>
+                </div><!-- slider-container -->
+            </div>
+        </div>
+                
+            <div class="container">
+                        </div>
+            
+        <div class="copyrights">
+            <div class="container">
+                <!--start copyrights-->
+<div id="copyright-note">
+<span><a href="https://losst.ru/" title="Linux Open Source Software Technologies" rel="nofollow">Losst</a> Copyright &copy; 2018.</span>
+<div class="right"><span style="margin-right: 40px"><!--LiveInternet counter--><script type="text/javascript"><!--
+document.write("<a href='//www.liveinternet.ru/click' "+
+"target=_blank><img src='//counter.yadro.ru/hit?t52.6;r"+
+escape(document.referrer)+((typeof(screen)=="undefined")?"":
+";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
+screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
+";"+Math.random()+
+"' alt='' title='LiveInternet: number of pageviews and visitors"+
+" for 24 hours is shown' "+
+"border='0' width='88' height='31'><\/a>")
+//--></script><!--/LiveInternet--></span>
+
+Все права защищены.</div>
+</div>
+<!--end copyrights-->
+            </div><!--.container-->
+        </div><!--.copyrights-->
+    </footer><!--footer-->
+</div><!--.main-container-wrap-->
+        <!--start footer code-->
+        <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-65316510-1', 'auto');
+  ga('send', 'pageview');
+  setTimeout("ga('send','event','Engaged users','More than 15 seconds')",15000);
+
+</script>
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function (d, w, c) {
+        (w[c] = w[c] || []).push(function() {
+            try {
+                w.yaCounter30875541 = new Ya.Metrika({
+                    id:30875541,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true,
+                    webvisor:true
+                });
+            } catch(e) { }
+        });
+
+        var n = d.getElementsByTagName("script")[0],
+            s = d.createElement("script"),
+            f = function () { n.parentNode.insertBefore(s, n); };
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+        if (w.opera == "[object Opera]") {
+            d.addEventListener("DOMContentLoaded", f, false);
+        } else { f(); }
+    })(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/30875541" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
+<!-- Rating@Mail.ru counter -->
+<script type="text/javascript">
+var _tmr = _tmr || [];
+_tmr.push({id: "2660982", type: "pageView", start: (new Date()).getTime()});
+(function (d, w, id) {
+  if (d.getElementById(id)) return;
+  var ts = d.createElement("script"); ts.type = "text/javascript"; ts.async = true; ts.id = id;
+  ts.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//top-fwz1.mail.ru/js/code.js";
+  var f = function () {var s = d.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ts, s);};
+  if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); }
+})(document, window, "topmailru-code");
+</script><noscript><div style="position:absolute;left:-10000px;">
+<img src="//top-fwz1.mail.ru/counter?id=2660982;js=na" style="border:0;" height="1" width="1" alt="Рейтинг@Mail.ru" />
+</div></noscript>
+<!-- //Rating@Mail.ru counter -->    <!--end footer code-->
+    
+<!-- BEGIN recaptcha, injected by plugin wp-recaptcha-integration  -->
+<script type="text/javascript">
+		var recaptcha_widgets={};
+		function wp_recaptchaLoadCallback(){
+			try {
+				grecaptcha;
+			} catch(err){
+				return;
+			}
+			var e = document.querySelectorAll ? document.querySelectorAll('.g-recaptcha:not(.wpcf7-form-control)') : document.getElementsByClassName('g-recaptcha'),
+				form_submits;
+
+			for (var i=0;i<e.length;i++) {
+				(function(el){
+					var wid;
+					// check if captcha element is unrendered
+					if ( ! el.childNodes.length) {
+						wid = grecaptcha.render(el,{
+							'sitekey':'6LeIoQkTAAAAAB4mEfFiBqBl2GVA6Ri1dGkH7GfL',
+							'theme':el.getAttribute('data-theme') || 'light'
+						});
+						el.setAttribute('data-widget-id',wid);
+					} else {
+						wid = el.getAttribute('data-widget-id');
+						grecaptcha.reset(wid);
+					}
+				})(e[i]);
+			}
+		}
+
+		// if jquery present re-render jquery/ajax loaded captcha elements
+		if ( typeof jQuery !== 'undefined' )
+			jQuery(document).ajaxComplete( function(evt,xhr,set){
+				if( xhr.responseText && xhr.responseText.indexOf('6LeIoQkTAAAAAB4mEfFiBqBl2GVA6Ri1dGkH7GfL') !== -1)
+					wp_recaptchaLoadCallback();
+			} );
+
+		</script><script src="https://www.google.com/recaptcha/api.js?onload=wp_recaptchaLoadCallback&#038;render=explicit" async defer></script>
+<!-- END recaptcha -->
+<link rel='stylesheet' id='yarppRelatedCss-css'  href='https://losst.ru/wp-content/plugins/yet-another-related-posts-plugin/style/related.css' type='text/css' media='all' />
+<link rel='stylesheet' id='wpt_font_awesome-css'  href='https://losst.ru/wp-content/plugins/wp-tab-widget-pro/css/font-awesome.min.css' type='text/css' media='all' />
+<link rel='stylesheet' id='wpt_widget_pro-css'  href='https://losst.ru/wp-content/plugins/wp-tab-widget-pro/css/wp-tab-widget-pro.css' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-subscribe-css'  href='https://losst.ru/wp-content/plugins/wp-subscribe/assets/css/wp-subscribe-form.css' type='text/css' media='all' />
+<script type='text/javascript'>
+/* <![CDATA[ */
+var wpcf7 = {"apiSettings":{"root":"https:\/\/losst.ru\/wp-json\/contact-form-7\/v1","namespace":"contact-form-7\/v1"},"recaptcha":{"messages":{"empty":"\u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u043f\u043e\u0434\u0442\u0432\u0435\u0440\u0434\u0438\u0442\u0435, \u0447\u0442\u043e \u0432\u044b \u043d\u0435 \u0440\u043e\u0431\u043e\u0442."}},"cached":"1"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://losst.ru/wp-content/plugins/contact-form-7/includes/js/scripts.js'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var ratingsL10n = {"plugin_url":"https:\/\/losst.ru\/wp-content\/plugins\/wp-postratings","ajax_url":"https:\/\/losst.ru\/wp-admin\/admin-ajax.php","text_wait":"\u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u043d\u0435 \u0433\u043e\u043b\u043e\u0441\u0443\u0439\u0442\u0435 \u0437\u0430 \u043d\u0435\u0441\u043a\u043e\u043b\u044c\u043a\u043e \u0437\u0430\u043f\u0438\u0441\u0435\u0439 \u043e\u0434\u043d\u043e\u0432\u0440\u0435\u043c\u0435\u043d\u043d\u043e.","image":"stars_crystal","image_ext":"gif","max":"5","show_loading":"1","show_fading":"1","custom":"0"};
+var ratings_mouseover_image=new Image();ratings_mouseover_image.src="https://losst.ru/wp-content/plugins/wp-postratings/images/stars_crystal/rating_over.gif";;
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://losst.ru/wp-content/plugins/wp-postratings/js/postratings-js.js'></script>
+<script type='text/javascript' src='https://losst.ru/wp-content/plugins/mistape/assets/js/modernizr.custom.js'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var decoMistape = {"ajaxurl":"https:\/\/losst.ru\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://losst.ru/wp-content/plugins/mistape/assets/js/mistape-front.js'></script>
+<script type='text/javascript' src='https://losst.ru/wp-includes/js/comment-reply.min.js'></script>
+<script type='text/javascript' src='https://losst.ru/wp-content/themes/mts_best/js/owl.carousel.min.js'></script>
+<script type='text/javascript' src='https://losst.ru/wp-includes/js/wp-embed.min.js'></script>
+<script type='text/javascript' src='https://losst.ru/wp-content/plugins/easy-table-of-contents/vendor/smooth-scroll/jquery.smooth-scroll.min.js'></script>
+<script type='text/javascript' src='https://losst.ru/wp-content/plugins/easy-table-of-contents/vendor/js-cookie/js.cookie.min.js'></script>
+<script type='text/javascript' src='https://losst.ru/wp-content/plugins/easy-table-of-contents/vendor/sticky-kit/jquery.sticky-kit.min.js'></script>
+<script type='text/javascript' src='https://losst.ru/wp-content/plugins/easy-table-of-contents/vendor/waypoints/jquery.waypoints.min.js'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var ezTOC = {"smooth_scroll":"1","scroll_offset":"100"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://losst.ru/wp-content/plugins/easy-table-of-contents/assets/js/front.min.js'></script>
+<script async="async" type='text/javascript' src='https://losst.ru/wp-content/plugins/akismet/_inc/form.js'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var wpt = {"ajax_url":"https:\/\/losst.ru\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://losst.ru/wp-content/plugins/wp-tab-widget-pro/js/wp-tab-widget.js'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var wp_subscribe = {"ajaxurl":"https:\/\/losst.ru\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://losst.ru/wp-content/plugins/wp-subscribe/assets/js/wp-subscribe-form.js'></script>
+<script type='text/javascript' src='https://losst.ru/wp-content/themes/mts_best/js/jquery.magnific-popup.min.js'></script>
+<script type='text/javascript' async="async" src='https://losst.ru/wp-content/themes/mts_best/js/sticky.js'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var mts_ajax_search = {"url":"https:\/\/losst.ru\/wp-admin\/admin-ajax.php","ajax_search":"1"};
+/* ]]> */
+</script>
+<script type='text/javascript' async="async" src='https://losst.ru/wp-content/themes/mts_best/js/ajax.js'></script>
+<div id="mistape_dialog" data-mode="comment" data-dry-run="0">
+			           <div class="dialog__overlay"></div><div class="dialog__content"><div id="mistape_confirm_dialog" class="mistape_dialog_screen">
+					<div class="dialog-wrap">
+						<div class="dialog-wrap-top">
+							<h2>Сообщить об опечатке</h2>
+							 <div class="mistape_dialog_block">
+								<h3>Текст, который будет отправлен нашим редакторам:</h3>
+								<div id="mistape_reported_text"></div>
+							 </div>
+							 </div>
+						<div class="dialog-wrap-bottom"><div class="mistape_dialog_block comment">
+				        <h3><label for="mistape_comment">Ваш комментарий (необязательно):</label></h3>
+				        <textarea id="mistape_comment" cols="60" rows="3" maxlength="1000"></textarea>
+			         </div><div class="pos-relative">
+						</div>
+					</div>
+			    </div>
+			    <div class="mistape_dialog_block">
+					<a class="mistape_action" data-action="send" data-id="9927" role="button">Отправить</a>
+					<a class="mistape_action" data-dialog-close role="button" style="display:none">Отмена</a>
+				</div>
+				<div class="mistape-letter-front letter-part">
+				    <div class="front-left"></div>
+				    <div class="front-right"></div>
+				    <div class="front-bottom"></div>
+				</div>
+				<div class="mistape-letter-back letter-part">
+					<div class="mistape-letter-back-top"></div>
+				</div>
+				<div class="mistape-letter-top letter-part"></div>
+			</div></div></div></body>
+</html>
+<!--
+Performance optimized by W3 Total Cache. Learn more: https://www.w3-edge.com/products/
+
+Object Caching 227/348 objects using memcached
+Page Caching using disk: enhanced 
+Database Caching 7/51 queries in 0.785 seconds using memcached
+
+Served from: losst.ru @ 2018-05-05 14:04:36 by W3 Total Cache
+-->

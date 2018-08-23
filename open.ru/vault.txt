@@ -1,0 +1,270 @@
+Скачать и скопировать vault в
+/opt/vault/vault
+
+Создаем файл настроек config
+listener "tcp" {
+  address = "127.0.0.1:8200"
+  tls_disable = 1
+}
+
+storage "file" {
+  path = "/opt/vault/data"
+}
+Сохраняем в /opt/vault/config
+
+Прописать в .bashrc
+export VAULT_ADDR='http://127.0.0.1:8200'
+PATH=$PATH:/opt/vault/
+
+Выполнить
+source .bashrc (или . .bashrc)
+
+Запустить vault
+sudo /opt/vault/vault server -config=/opt/vault/config
+
+Получение root token
+1. Инициализация хранилища
+vault init:
+(или так: vault init -key-shares=5 -key-threshold=2)
+
+Unseal Key 1: kc8OnlTsDLm0vhTOCTM4XopGLU5FOePZ+moZEelOLqXN
+Unseal Key 2: Si81yAXWLwRDNOTigywsGRYZYBEm1SCRrhyaDMEB1Uoq
+Unseal Key 3: FPQmfTFwkNmtpVS06qHA9DHmUBZArQ5mVIP28HdXz58y
+Unseal Key 4: vexqNrdbUMJrXATRN1tr8zf4iSxilYJd2NYnxMCGoY/8
+Unseal Key 5: eDVQOvLPhH0QQD+elYhNbnWwodqLE4I3McOqUD1I5SKR
+Initial Root Token: c9a9ca15-89c6-4b58-150b-ed72f9784314
+
+2. Открыть хранилище
+vault unseal
+ввести key 1
+vault unseal
+ввести key 2
+vault unseal
+ввести key 3
+
+Vault is already unsealed.
+
+3. Генерим otp
+vault generate-root -genotp
+OTP: L0MoHlBRr/jr62ZPF4Xk3A==
+
+4. генерим root token
+vault generate-root -otp="L0MoHlBRr/jr62ZPF4Xk3A=="
+ввести key 1
+vault generate-root -otp="L0MoHlBRr/jr62ZPF4Xk3A=="
+ввести key 2
+vault generate-root -otp="L0MoHlBRr/jr62ZPF4Xk3A=="
+ввести key 3
+
+Encoded root token: 9V9CYZN4HUDz0iiZpL26aQ==
+
+5. Расшифровать токен
+vault generate-root -otp="L0MoHlBRr/jr62ZPF4Xk3A==" -decode="9V9CYZN4HUDz0iiZpL26aQ=="
+Root token: da1c6a7f-c329-b2b8-1839-4ed6b3385eb5
+
+6. Авторизация
+vault auth da1c6a7f-c329-b2b8-1839-4ed6b3385eb5
+Successfully authenticated! You are now logged in.
+
+7. Теперь можем что нибудь записать в хранилище
+vault write secret/credit-back/ server.port=8090
+
+и прочитать секрет:
+vault read secret/credit-back/
+можно через web:
+из vault:
+curl -H "X-Vault-Token: da1c6a7f-c329-b2b8-1839-4ed6b3385eb5" http://localhost:8200/v1/secret/credit-back | jq
+из spring cloud config:
+curl -H "X-Config-Token: da1c6a7f-c329-b2b8-1839-4ed6b3385eb5" http://localhost:28018/secret/credit-back | jq
+
+8. Делаем политики:
+vault auth <root token>
+vault write secret/credit-back/ base=appname login=appname password=difficult_password
+
+политика для чтения в файл credit-back_read.hcl:
+path "secret/credit-back*" {  
+  policy = "read"  
+}
+
+создать политику:
+vault policy-write credit-back credit-back_read.hcl
+
+токен для чтения:
+vault token-create -policy=credit-back_read
+
+авторизация под новым токеном:
+vault auth <new token>
+
+прочитать секрет:
+vault read secret/credit-back
+прочитать через web:
+curl -H "X-Config-Token: <new token>" http://localhost:28018/secret/credit-back | jq
+
+
+
+https.
+Создать новый сертификат:
+openssl genrsa -des3 -out vault.key 1024
+openssl req -new -key vault.key -out vault.csr
+ (Common Name (e.g. server FQDN or YOUR name) []: myhost.open.ru)
+cp vault.key vault.key.org
+openssl rsa -in vault.key.org -out vault.key
+openssl x509 -req -days 365 -in vault.csr -signkey vault.key -out vault.crt
+
+Для Ubuntu Скопировать сертификат в PEM формате (the format that has ----BEGIN CERTIFICATE---- in it) и с расширением .crt в /usr/local/share/ca-certificates
+Обновить сертификаты:
+sudo update-ca-certificates
+
+Для RedHat Скопировать сертификат в PEM формате (the format that has ----BEGIN CERTIFICATE---- in it) и с расширением .crt в /etc/pki/tls/certs
+Обновить сертификаты:
+sudo update-ca-trust
+
+
+скопировать файлы vault.crt и vault.key в /opt/vault/
+Изменить файл config
+listener "tcp" {
+  address = "myhost.open.ru:8200"
+  cluster_address = "myhost.open.ru:8200"
+  tls_disable = 0
+  tls_cert_file = "/opt/vault/vault.crt"
+  tls_key_file  = "/opt/vault/vault.key"
+}
+storage "file" {
+  path = "/opt/vault/data"
+}
+
+Прописать в .bashrc
+export VAULT_ADDR='https://myhost.open.ru:8200'
+выполнить
+. .bashrc
+
+Перезапустить vault
+
+Проверить работу:
+vault status
+vault read secret/credit-back/
+curl -H "X-Vault-Token: da1c6a7f-c329-b2b8-1839-4ed6b3385eb5" https://myhost.open.ru:8200/v1/secret/credit-back | jq
+
+Хранилище ключей для spring cloud config:
+openssl pkcs12 -export -out vault.pkcs12 -in vault.crt -inkey vault.key
+keytool -genkey -keyalg RSA -alias endeca -keystore vault.ks
+keytool -v -importkeystore -srckeystore vault.pkcs12 -srcstoretype PKCS12 -destkeystore vault.jks -deststoretype JKS
+
+#####keytool -genkey -keyalg RSA -alias selfsigned -keystore keystore.jks -storepass password -validity 360 -keysize 2048
+
+скопировать файл vault.jks в resources проекта spring cloud config
+прописать в bootstrap.yml
+spring.cloud:
+  vault:
+    host: myhost.open.ru
+    port: 8200
+    scheme: https
+    authentication: TOKEN
+    token: da1c6a7f-c329-b2b8-1839-4ed6b3385eb5
+    ssl:
+      trust-store: /vault.jks
+      trust-store-password: WeBaPi2016 #(пароль хранилища)
+  config:
+    server.vault:
+      host: myhost.open.ru
+      port: 8200
+      scheme: https
+      authentication: TOKEN
+      token: da1c6a7f-c329-b2b8-1839-4ed6b3385eb5
+javax.net.ssl.trustStore: /vault.jks
+javax.net.ssl.trustStorePassword: WeBaPi2016 #(пароль хранилища)
+
+Перезапустить spring cloud config
+
+Проверить работу:
+curl -H "X-Config-Token: da1c6a7f-c329-b2b8-1839-4ed6b3385eb5" http://myhost.open.ru:28018/secret/credit-back | jq
+
+------------
+Примеры запросов
+curl -H "X-Vault-Token: <root token>" https://127.0.0.1:8200/v1/secret/service_name/prod/database | jq
+curl -X POST -H "X-Vault-Token: <root token>" -H "Content-Type: application/json" -d '{"value":"bar"}' http://127.0.0.1:8200/v1/secret/baz
+
+
+
+
+roox1
+[root@roox1 certs]# vault init -key-shares=5 -key-threshold=2
+Unseal Key 1: KQ6KCa6WjQLR01Y/6ZZAx8xFYVrJOGhZ2cdO7gVp6L73
+Unseal Key 2: NkWfZL0qkT6zpnsDlHrzosmftaWcVMn4th6m881Wjpa5
+Unseal Key 3: z3iuQj0yvbg5chKF53hHI63T7yfiyEd2/4d6ZbsF2pvg
+Unseal Key 4: txioehH+0KdA4s6a5mnKipKjJBoAChwtKOKu8h0PZni/
+Unseal Key 5: U8il97JfY+fd4b7an8F7fWui8RHwQ8r7NrQ7hXsYxvGW
+Initial Root Token: 16f5b588-d3d6-a714-d3dc-3446e9d5aeb5
+
+OTP: OXWjVwxIi7uLiobxKCJnDQ==
+Encoded root token: jb3eVWzwpXVD9NoPmqz3dw==
+Root token: b4c87d02-60b8-2ece-c87e-5cfeb28e907a
+
+
+vault write secret/credit-back/ server.port=8090
+
+
+application-back_dev.properties.sh
+vault auth da1c6a7f-c329-b2b8-1839-4ed6b3385eb5
+vault write secret/application,back_dev \
+	com.rooxteam.activemq.password=admin\
+	ru.openbank.webapi.mq.trustStore.password=password123 \
+	ru.openbank.webapi.db.keystore.password=password123 \
+	ru.openbank.webapi.database.password=postgres \
+	com.rooxteam.tibcoems.user=webapi \
+	com.rooxteam.tibcoems.password=webapi \
+	com.rooxteam.webapi.database.user=postgres \
+	com.rooxteam.webapi.database.password=postgres \
+	com.rooxteam.aal.auth.password=password \
+	investments.uidm.login=partners \
+	investments.uidm.password=password \
+	ru.openbank.webapi.hazelcast.group.name=dev \
+	ru.openbank.webapi.hazelcast.group.password=dev-pass
+
+
+
+
+
+
+
+
+
+vault auth-enable cert	
+vault write auth/cert/certs/back_dev display_name=back_dev policies=application,back_dev certificate=@/etc/ssl/certs/vault.pem ttl=3600
+vault write auth/cert/certs/web display_name=web policies=web,root certificate=@/etc/ssl/certs/vault.pem ttl=3600
+
+	
+vault auth -method=cert -ca-cert=ca.pem -client-cert=cert.pem -client-key=key.pem name=web
+
+
+
+
+Unseal Key 1: NwCYV5U6LAwIg/TWNDNeQcHDFYLLq3kyqPd86agnQNlt
+Unseal Key 2: qMe8aTtEO2TraK6IbatUF0kMFxLdXKwI/33KSKl0+AaC
+Unseal Key 3: 6VMzRBwEyNrwG2FztckmhPvwDRgjo/IRYdVVJKTeISrF
+Unseal Key 4: 7Wxl/+TV3kOZtOaX0ExcpukJsVtrPubJHXv8m/rBkUQJ
+Unseal Key 5: 54DiQnOJ+avyKz02pZKV88QRjHHf3MQO22tsLGl9sq/s
+Initial Root Token: 7438ee94-2c8b-7607-7459-48ba3aede44e
+
+Root token: 1f8a135d-2c79-be3c-8ff4-3f98a93b4737
+
+
+
+
+
+
+
+
+
+
+
+vault write secret/application,back_dev/s1 value=1
+vault write secret/application,back_dev/s2 value=2
+vault write secret/application,back_dev/s3 value=3
+vault write secret/application,back_dev/s4 value=4
+
+
+
+
+
+

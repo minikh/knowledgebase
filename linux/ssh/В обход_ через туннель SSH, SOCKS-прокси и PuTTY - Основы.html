@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="ru" prefix="og: http://ogp.me/ns#">
+<head>
+  <title>В обход: через туннель SSH, SOCKS-прокси и PuTTY - Основы</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1">
+  <meta name="description" content="Когда-то мысль об окруженной брандмауэрами, перекрытой кордонами и подцензурной Web могла привести в ужас любого пользователя Интернета. Однако прошли годы, и мы стали относиться к этому спокойно. Совершенно свободная" />
+  <meta name="twitter:site" value="@pcmag_ru"><meta property="og:site_name" content="PCMag Russian Edition" /><meta property="fb:app_id" content="141810985954037" /><meta property="fb:profile_id" content="https://www.facebook.com/pcmag.ru" /><meta property="fb:pages" content="160874197270130" /><meta property="twitter:image" content="http://sm.pcmag.com/pcmag_ru/screenshot/o/obhod-brandmauera-chereztunnel-ssh-socks-proksi-i/obhod-brandmauera-chereztunnel-ssh-socks-proksi-i_aqm2.jpg"><meta property="og:image" content="http://sm.pcmag.com/pcmag_ru/screenshot/o/obhod-brandmauera-chereztunnel-ssh-socks-proksi-i/obhod-brandmauera-chereztunnel-ssh-socks-proksi-i_aqm2.jpg"><meta name="twitter:card" value="summary_large_image"><meta property="og:type" content="article"><meta property="og:title" content="В обход: через туннель SSH, SOCKS-прокси и PuTTY"><meta property="og:description" content="Когда-то мысль об окруженной брандмауэрами, перекрытой кордонами и подцензурной Web могла привести в ужас любого пользователя Интернета. Однако прошли годы, и мы стали относиться к этому спокойно. Совершенно свободная"><meta property="og:url" content="http://ru.pcmag.com/osnovy/6716/help/v-obkhod-cherez-tunnel-ssh-socks-proksi-i-putty"><meta property="og:locale" content="ru_RU"><meta property="article:published_time" content="2012-01-15T20:39:08+00:00"><meta property="article:publisher" content="https://www.facebook.com/pcmag.ru"><meta property="article:section" content="Основы"><meta property="article:tag" content="Основы, Сумма технологий">
+  <meta http-equiv="content-language" content="ru" />
+<link rel="alternate" hreflang="ru" href="http://ru.pcmag.com/osnovy/6716/help/v-obkhod-cherez-tunnel-ssh-socks-proksi-i-putty" />
+<link rel="alternate" hreflang="x-default" href="http://www.pcmag.ru/solutions/detail.php?ID=45985" />
+<link rel="alternate" hreflang="en" href="http://www.pcmag.ru/solutions/detail.php?ID=45985" />
+<link rel="alternate" hreflang="en-us" href="http://www.pcmag.ru/solutions/detail.php?ID=45985" />
+  
+<meta name="keywords" content="Основы, Сумма технологий" />
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-square150x150logo" content="/s/pcmag/mstile-150x150.png">
+  <meta name="msapplication-square310x310logo" content="/s/pcmag/mstile-310x310.png">
+  <meta name="msapplication-TileImage" content="/s/pcmag/mstile-144x144.png">
+  <link rel="dns-prefetch" href="https://sm.pcmag.com/"/>
+
+  <script type="text/javascript">
+    window.ICMS = window.ICMS || { cmd: [], libs: [], css: [] };
+    ICMS.lang = 'ru'; ICMS.siteID = 'pcmag_ru'; ICMS.siteName = 'PCMag Russian Edition';
+    ICMS.baseUri = ''; ICMS.pageName = 'В обход: через туннель SSH, SOCKS\u002Dпрокси и PuTTY \u002D Основы'; ICMS.pageUrl = 'http://ru.pcmag.com/osnovy/6716/help/v-obkhod-cherez-tunnel-ssh-socks-proksi-i-putty';
+    ICMS.isPublished = 'True'; ICMS.backendEditUrl = 'http://icms.ru.pcmag.com/admin/article/6716/';
+    ICMS.isEmbed = (window.self !== window.top)? true : false
+    ICMS.cmd.push(function() { ICMS.PCMagInit(); });
+    var s = { channel: 'PC Magazine>Основы' };
+  </script>
+  <script type="text/javascript">window.ICMS.cmd.push(function() {  });</script>
+  <script src="/s/bundle_pcmag.js?g9" async="true"></script>
+
+  <link href="/s/pcmag/favicon.ico" rel="icon" type="image/x-icon" />
+  <link href="/s/pcmag/css/pcmagf.css" rel="stylesheet" media="none" onload="if(media!='all')media='all'" />
+  <link href="/s/pcmag/css/pcmag.css?g9" rel="stylesheet"/>
+  
+
+
+
+  <link href="/s/pcmag/css/pcmag_ru.css?g9" rel="stylesheet" media="none" onload="if(media!='all')media='all'" />
+
+  <link rel="canonical" href="http://ru.pcmag.com/osnovy/6716/help/v-obkhod-cherez-tunnel-ssh-socks-proksi-i-putty">
+  <link rel="amphtml" href="https://ru.pcmag.com/osnovy/6716/help/v-obkhod-cherez-tunnel-ssh-socks-proksi-i-putty?amp=1">
+
+  <link rel="alternate" type="application/rss+xml" title="PCMag Russian Edition - Основы" href="/osnovy.xml" />
+  
+
+  <!--[if lt IE 9]>
+    <script src="/s/js/html5shiv.js?g9"></script>
+    <script src="/s/js/respond.min.js?g9"></script>
+  <![endif]-->
+  <!-- Trackers -->
+  <script type="text/javascript" async="true" src="//www.google-analytics.com/analytics.js"></script>
+  <script type="text/javascript">
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+  ga('create', 'UA-57219825-1', 'auto'); ga('require', 'displayfeatures'); ga('send', 'pageview');
+  </script>
+  <script type="text/javascript">var _comscore = _comscore || []; _comscore.push({c1:"2", c2: 6036202});</script>
+  <script type="text/javascript" src="//www.pcmag.com/bs/beacon.js" async="true"></script>
+  <noscript><img src="//www.pcmag.com/bs/p?c1=2&c2=6036202&cv=2.0&cj=1" /></noscript>
+  
+  <meta name="zdid" content="PCMAG_RU-SECTION-Id:1319" /><script type="text/javascript">(function(){ var evs = [['TAG', 'helps'],['TAG', 'osnovy'],['TAG', 'summa-tekhnologii'],['TAG', 'summa'],['TAG', 'tekhnologii']]; for (var i=0; i < evs.length; i++) { ga('send', 'event', evs[i][0], evs[i][1], {'nonInteraction': 1}); } })();</script><script type="text/javascript">window.__PCMAG = { sections: "helps,osnovy,summa-tekhnologii,summa,tekhnologii" }</script> 
+<script type="text/javascript">var googletag = googletag || {}; googletag.cmd = googletag.cmd || [];</script>
+<script type='text/javascript'>
+window.AdSlots = {};
+googletag.cmd.push(function() {
+  if (window.ICMS && window.ICMS.isEmbed) { return; }
+
+  var BillboardMapping = googletag.sizeMapping().
+  addSize([990, 250], [[997, 123], [970, 250], [970, 200], [970, 180], [970, 90], [728, 90]]).
+  addSize([750, 200],  [[728, 90], [468, 60]]).
+  addSize([0, 0], [[300, 250],[320, 50]]).
+  build();
+
+  var sidebarMapping = googletag.sizeMapping().
+  addSize([768, 250], [[300, 600], [300, 250]]).
+  addSize([0, 0], []).
+  build();
+
+  window.AdSlots['billboard'] = googletag.defineSlot('/4585/PCMag.com_International/PCMag_Int_ATF_Leader', [[997, 123], [970, 250], [970, 200], [970, 180], [970, 90], [728, 90]], 'gpt-billboard').defineSizeMapping(BillboardMapping).addService(googletag.pubads());
+  window.AdSlots['mrec1'] = googletag.defineSlot('/4585/PCMag.com_International/PCMag_Int_ATF_MPU', [[300, 600], [300, 250]], 'gpt-mpu1').defineSizeMapping(sidebarMapping).addService(googletag.pubads());
+  window.AdSlots['rectangle'] = googletag.defineSlot('/4585/PCMag.com_International/PCMag_Int_ATF_Feature', [[300, 100], [300, 250]], 'gpt-rectangle').addService(googletag.pubads());
+  window.AdSlots['mrec2'] = googletag.defineSlot('/4585/PCMag.com_International/PCMag_Int_BTF_MPU', [[300, 600], [300, 250], [300, 1050]], 'gpt-mpu2').defineSizeMapping(sidebarMapping).addService(googletag.pubads());
+  window.AdSlots['footer'] = googletag.defineSlot('/4585/PCMag.com_International/PCMag_Int_BTF_Footer', [[970, 250], [970, 280], [970, 180], [728, 90]], 'gpt-footer').defineSizeMapping(BillboardMapping).addService(googletag.pubads());
+  window.AdSlots['pagescript'] = googletag.defineSlot('/4585/PCMag.com_International/PCMag_Int_OOP_PageScript', [1, 2], 'gpt-pagescript-oop').addService(googletag.pubads());
+  window.AdSlots['skin'] = googletag.defineOutOfPageSlot('/4585/PCMag.com_International/PCMag_Int_OOP_Skin', 'gpt-skin-oop').addService(googletag.pubads()).setTargeting('OOP_type', 'skin');
+  window.AdSlots['interstitial'] = googletag.defineOutOfPageSlot('/4585/PCMag.com_International/PCMag_Int_OOP_Stitial', 'gpt-stitial-oop').addService(googletag.pubads()).setTargeting('OOP_type', 'stitials');
+  window.AdSlots['inpage'] = googletag.defineOutOfPageSlot('/4585/PCMag.com_International/sPCMag_Int_OOP_Inpage', 'gpt-inpage-oop').addService(googletag.pubads()).setTargeting('OOP_type', 'inpage');
+
+  googletag.pubads().enableSingleRequest();
+  googletag.pubads().setTargeting("channel", "ros").setTargeting("url", "http://ru.pcmag.com/osnovy/6716/help/v-obkhod-cherez-tunnel-ssh-socks-proksi-i-putty").setTargeting("pcmint_channel", "ros").setTargeting("pcmint_url", "http://ru.pcmag.com/osnovy/6716/help/v-obkhod-cherez-tunnel-ssh-socks-proksi-i-putty").setTargeting("zdtype", "help").setTargeting("zdtopic", ["helps","osnovy","summa-tekhnologii","summa","tekhnologii"]).setTargeting("zdid", ["PCMAG_RU-ELEMENT-Id:45985","PCMAG_RU-SECTION-Id:1319"]).setTargeting("article_id", "6716");
+    if (window && window.screen && window.screen.width) {
+    var scrSizes = [];
+    if (window.screen.width >= 2560) { scrSizes.push(2560); }
+    if (window.screen.width >= 1920) { scrSizes.push(1920); }
+    if (window.screen.width >= 1600) { scrSizes.push(1600); }
+    if (window.screen.width >= 1280) { scrSizes.push(1280); }
+    if (window.screen.width >= 1024) { scrSizes.push(1024); }
+    if (window.screen.width >= 375) { scrSizes.push(375); }
+    if (scrSizes) { googletag.pubads().setTargeting("screen", scrSizes); }
+  }
+  if (window.__ZDDMP) {
+    googletag.pubads().setTargeting("s", __ZDDMP.GetUSegs()).setTargeting("p", __ZDDMP.GetPSegs()).setTargeting("zc", __ZDDMP.NewCorrelator()).setTargeting("zcp", __ZDDMP.PageCorrelator()).setTargeting("zdbb", __ZDDMP.GetZDBB());
+  }
+  if (window.__ZDGC) { googletag.pubads().setTargeting("zcp", window.__ZDGC) }
+  if (window.__ZD_SEG_) { googletag.pubads().setTargeting("s", window.__ZD_SEG_) }
+  if (window.__ZD_CPID_) { googletag.pubads().setTargeting("cpid", window.__ZD_CPID_); if (window.ga) { window.ga('send', 'event', 'cpid', window.__ZD_CPID_); } }
+  googletag.pubads().collapseEmptyDivs();
+  googletag.enableServices();
+});
+</script><script type="text/javascript" src="https://www.googletagservices.com/tag/js/gpt.js" async="true"></script>
+    
+  <script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
+</head>
+
+<body><div align="center" id="adkit_pagescript" class="adkit"><script language="JavaScript" src="/s/ads/pcmag_ru/ug20.js"></script></div>
+<div id="redcarpet"></div>
+<header>
+  <a href="#content" class="sr-only">Skip to main content</a>
+  <div id="header"><meta content="PCMag Russian Edition"/>
+    <a href="http://ru.pcmag.com" name="top"><img src="/s/pcmag/logo_pcmag.png" height="104" width="86" alt="PCMag Russian Edition" id="pcmlogo"></a>
+    <nav>
+      <ul id="topmenu1"><li id="news"><a href="/article/news/">Новости</a><span>/</span></li><li id="guide"><a href="/article/guide/">Гид покупателя</a><span>/</span></li><li id="opinion"><a href="/article/opinion/">Мнения</a><span>/</span></li><li id="help"><a href="/article/help/">Решения</a><span>/</span></li><li id="shop" class="last"><a href="//shop.pcmag.ru/?q=catalog-categories/2018" class="last">Купить</a></li><li id="subscribe"><a href="https://phplist.skpress.ru/lists/?p=subscribe">Подписаться</a></li></ul>
+      <ul id="topmenu2"><li id="all" class="first"><a href="/article/review/" class="first">Тренды</a><span> </span><ul class="child l2"><li id="vpn"><a href="/se/?q=VPN&order_by=-date">Приватность и VPN</a><li id="linux"><a href="/se/?q=Linux&order_by=-date">Linux и СПО</a></li><li id="importphaseout"><a href="/se/?q=%D0%98%D0%BC%D0%BF%D0%BE%D1%80%D1%82%D0%BE%D0%B7%D0%B0%D0%BC%D0%B5%D1%89%D0%B5%D0%BD%D0%B8%D0%B5&order_by=-date">Импортозамещение</a></li><li id="drones"><a href="/se/?q=%D0%B4%D1%80%D0%BE%D0%BD%D1%8B&order_by=date">Дроны</a></li><li id="gerr"><a href="/u/ruben_gerr">Рубен Герр</a></li><li id="ai"><a href="/se/?q=%D0%B8%D0%BD%D1%82%D0%B5%D0%BB%D0%BB%D0%B5%D0%BA%D1%82&order_by=-date">ИИ</a></li><li id="mining"><a href="/se/?q=%D0%BC%D0%B0%D0%B9%D0%BD%D0%B8%D0%BD%D0%B3&order_by=-date">Майнинг</a></li><li id="crm"><a href="/se/?q=CRM&order_by=-date">CRM</a></li><li id="robots"><a href="/se/?q=%D1%80%D0%BE%D0%B1%D0%BE%D1%82&order_by=-date">Роботы</a></li><li id="clouds"><a href="/se/?q=%D0%BE%D0%B1%D0%BB%D0%B0%D1%87%D0%BD%D0%BE%D0%B5&order_by=-date">Облака</a></li><li id="chat"><a href="/se/?q=%D1%87%D0%B0%D1%82&order_by=-date">Чат и боты</a></li><li id="antivir"><a href="/se/?q=%D0%B0%D0%BD%D1%82%D0%B8%D0%B2%D0%B8%D1%80%D1%83%D1%81%D1%8B&order_by=-date">Антивирусы</a></li><li id="rf-software"><a href="/se/?q=%D0%BE%D1%82%D0%B5%D1%87%D0%B5%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D0%BE%D0%B5+%D0%9F%D0%9E&order_by=-date">Отечественное ПО</a></li><li id="messengers"><a href="/se/?q=%D0%BC%D0%B5%D1%81%D1%81%D0%B5%D0%BD%D0%B4%D0%B6%D0%B5%D1%80%D1%8B&order_by=-date">Мессенджеры</a></li><li id="monitoring"><a href="/se/?q=%D0%92%D0%B8%D0%B4%D0%B5%D0%BE%D1%81%D0%BB%D0%B5%D0%B6%D0%BA%D0%B0&order_by=-date">Видеослежка</a></li><li id="games"><a href="/se/?q=%D0%B8%D0%B3%D1%80%D1%8B&order_by=-date">Игры и киберспорт</a></li><li id="gos"><a href="/se/?q=%D0%B3%D0%BE%D1%81%D1%83%D0%B4%D0%B0%D1%80%D1%81%D1%82%D0%B2%D0%BE&order_by=-date">Государство</a></li><li id="house"><a href="/se/?q=tp-link&order_by=-date">Умный дом</a></li><li id="quant"><a href="/se/?q=%D0%BA%D0%B2%D0%B0%D0%BD%D1%82%D0%BE%D0%B2%D1%8B%D0%B5&order_by=-date">Квантовые системы</a></li><li id="apple"><a href="/se/?q=Apple&order_by=-date">Экосистема Apple</a></li><li id="asus"><a href="/se/?q=ASUS&order_by=-date">Экосистема ASUS</a></li><li id="gigabyte"><a href="/se/?q=GIGABYTE&order_by=-date">Экосистема GIGABYTE</a></li></ul></li><li id="blockchain"><a href="/se/?q=%D0%B1%D0%BB%D0%BE%D0%BA%D1%87%D0%B5%D0%B9%D0%BD&order_by=-date">Блокчейн</a><span>/</span><li id="krym"><a href="/se/?q=%D0%9A%D1%80%D1%8B%D0%BC&order_by=-date">ИТ в Крыму</a><span>/</span></li><li id="sanctions"><a href="/se/?q=%D1%81%D0%B0%D0%BD%D0%BA%D1%86%D0%B8%D0%B8&order_by=-date">Санкции</a><span>/</span></li><li id="education"><a href="/se/?q=%D0%98%D0%A2-%D0%BE%D0%B1%D1%83%D1%87%D0%B5%D0%BD%D0%B8%D0%B5%3A+%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D1%8F+%D0%BF%D1%80%D0%BE%D1%82%D0%B8%D0%B2+%D1%81%D0%B5%D1%80%D1%82%D0%B8%D1%84%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D0%B2&order_by=-date">ИТ-обучение</a><span>/</span></li><li id="about"><a href="http://ru.pcmag.com/informatsiia/20938/page/o-zhurnale">Об издании</a></li></ul>
+    </nav>
+    <div class="social">
+   
+    <div id="followFB" class="socialRHSIcons">
+      <a href="https://www.facebook.com/pcmag.ru" target="_blank">
+        <svg id="followFBSvg" width="44" height="44" viewBox="0 0 44 44" >
+            <path class="pathSocialIcons" d="M23.23 30.5v-7.754h2.603l.39-3.023H23.23v-1.929c0-.875.243-1.471 1.498-1.471l1.6-.001v-2.703a21.367 21.367 0 0 0-2.332-.119c-2.307 0-3.887 1.408-3.887 3.995v2.228H17.5v3.023h2.609V30.5h3.121z" fill="#3D5A98"></path>
+        </svg>
+    </div>
+    <div id="followTW" class="socialRHSIcons">
+      <a href="https://twitter.com/pcmag_ru" target="_blank">
+        <svg id="followTWSvg" width="44" height="44" viewBox="0 0 44 44" >
+            <path class="pathSocialIcons" d="M29.582 18.724c0-.164 0-.328-.01-.49a7.709 7.709 0 0 0 1.888-1.96 7.538 7.538 0 0 1-2.175.596 3.802 3.802 0 0 0 1.665-2.095 7.596 7.596 0 0 1-2.404.92 3.792 3.792 0 0 0-6.456 3.453 10.75 10.75 0 0 1-7.805-3.957 3.79 3.79 0 0 0 1.173 5.056 3.749 3.749 0 0 1-1.72-.474v.048a3.79 3.79 0 0 0 3.04 3.713 3.773 3.773 0 0 1-1.71.065 3.793 3.793 0 0 0 3.538 2.63A7.61 7.61 0 0 1 13 27.8a10.713 10.713 0 0 0 5.806 1.698c6.966.003 10.776-5.768 10.776-10.773z" fill="#1DA1F2"></path>
+        </svg>
+      </a>
+    </div>
+    <div id="topsearch" class="socialRHSIcons">
+    <svg id="searchsvg" width="22" height="44" viewBox="0 0 512 512">
+    <path fill="none" class="pathSearch" stroke="#B0AFAF" stroke-width="36" stroke-linecap="round" d="m280,278a153,153 0 1,0-2,2l170,170m-91-117 110,110-26,26-110-110"/>
+    </svg>
+    </div>
+  </div>
+</div>
+<div id="search-form" class="search-form">
+                    <form action="/se/" class="form-search" method="get">
+                            <label for="qry" class="hide-for-small-only">Search for</label>
+                            <input type="search" class="search-input" autocomplete="off" name="q" value="" id="topsearch_input" placeholder="Поиск" required>
+                            <input type="hidden" name="model" value="article"><input type="hidden" name="order_by" value="-date">
+                            <input type="submit" value="GO" class="search-button">
+                          <a href="#" class="moon-close"><span class="icon-close"></span>X</a>
+                    </form>
+  </div>
+  <div id="headerbg"></div>
+</header><div id="headerPlaceholder" style="display:none"></div>
+
+<div align="center" id="adkit_billboard" class="adkit"><script> document.write('<iframe src="https://old.pcmag.ru/zd/advert_iframe_1000_90.php?ref=' + location.href + '" width="1000" height="125" scrolling="no"><\/iframe>');</script> </div>
+
+<div class="wrapper" id="main">
+  
+<div class="breadcrumbs">
+  <a href="/"><span>PCMag Russian Edition</span></a> |
+  <a href="http://ru.pcmag.com/osnovy" rel="tag"><span>Основы</span></a> | 
+  <span>Tips &amp; Help</span>
+</div>
+
+  
+
+  <div id="content" class="content">
+  <ol style="display: none;" itemscope itemtype="https://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+    <a itemscope itemtype="https://schema.org/Thing" itemprop="item" href="http://ru.pcmag.com">
+      <span itemprop="name">PCMag Russian Edition</span>
+    </a><meta itemprop="position" content="1" />
+   </li>
+   
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemscope itemtype="https://schema.org/Thing" itemprop="item" href="http://ru.pcmag.com/osnovy">
+        <span itemprop="name">Основы</span>
+      </a><meta itemprop="position" content="" />
+    </li>
+  
+  </ol>
+
+  
+  <article itemscope itemtype="https://schema.org/Article">
+  <meta itemscope itemprop="mainEntityOfPage" itemType="https://schema.org/WebPage" itemid="https://google.com/article"/>
+  <meta itemprop="datePublished" content="2012-01-16T00:39:08+04:00"/>
+  <meta itemprop="dateModified" content="2016-01-11T15:21:28+03:00"/>
+  <meta itemprop="inLanguage" content="RU"/>
+  <div itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+    <div itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+      <meta itemprop="url" content="http://ru.pcmag.com/s/pcmag/pcmag_logo_micro.png">
+      <meta itemprop="width" content="245">
+      <meta itemprop="height" content="60">
+    </div>
+    <meta itemprop="name" content="PCMag Russian Edition">
+  </div>
+  <span itemprop="image" style="display: none" itemscope itemtype="http://schema.org/ImageObject"><meta itemprop="url" content="http://sm.pcmag.com/pcmag_ru/screenshot/o/obhod-brandmauera-chereztunnel-ssh-socks-proksi-i/obhod-brandmauera-chereztunnel-ssh-socks-proksi-i_aqm2.jpg"><meta itemprop="width" content="70"><meta itemprop="height" content="50"></span>
+  
+
+  
+  <div class="article">
+  <hgroup>
+    <h1 id="id_title" itemprop="headline">В обход: через туннель SSH, SOCKS-прокси и PuTTY</h1>
+    <div class="byline"><address><!--  -->
+      <b>Автор
+        <span itemprop="author" itemscope itemtype="http://schema.org/Person" class="microdata person">
+<span id="id_author" itemprop="name">Себастиан Энтони</span>
+</span>
+      </b></address>
+      <span class="sep"></span> <time datetime="2012-01-16T00:39:08+04:00" itemprop="datePublished">16 января 2012 г. 0:39</time>
+    </div>
+    <h2 id="id_deck" itemprop="description">Когда-то мысль об окруженной брандмауэрами, перекрытой кордонами и подцензурной Web могла привести в ужас любого пользователя Интернета. Однако прошли годы, и мы стали относиться к этому спокойно. Совершенно свободная&hellip;</h2>
+  </hgroup>
+  
+  
+  <div class="sharer" id="enhancedsharer">
+   <script src="/s/pcmag/social-share.js?g9" id="sharer-widget-js" data-position="left" data-linkedin data-facebook data-twitter data-pinterest data-reddir async="true"></script>
+  </div>
+  
+  <div class="splashImg" itemscope itemtype="https://schema.org/ImageObject"><img src="http://sm.pcmag.com/t/pcmag_ru/screenshot/o/obhod-brandmauera-chereztunnel-ssh-socks-proksi-i/obhod-brandmauera-chereztunnel-ssh-socks-proksi-i_aqm2.640.jpg" align="left" alt="" itemprop="image">
+    </div>
+  <div id="id_text" itemprop="articleBody">Когда-то мысль об окруженной брандмауэрами, перекрытой кордонами и подцензурной Web могла привести в ужас любого пользователя Интернета. Однако прошли годы, и мы стали относиться к этому спокойно. Совершенно свободная, децентрализованная и неподотчетная Web — идеал, но успешно управлять ею очень трудно для любого крупного централизованного учреждения. В результате собственно Web (коммуникационная магистраль) по-прежнему свободна, но школы, офисы, Интернет-провайдеры и даже некоторые страны начинают прибегать к фильтрации соединений пользователей.<br/>
+<br/>
+В настоящее время большинство посетителей и не подозревают, что их доступ в Web фильтруется, но опытные пользователи и поборники неограниченной свободы личности воспринимают фильтрацию, ограничение пропускной способности (traffic shaping) и цензуру как посягательство на их важнейшие гражданские права.<br/>
+<br/>
+К счастью, с помощью бесплатной программы PuTTY, процесса, именуемого туннелированием SSH (SSH tunneling), и SOCKS-прокси почти каждый пользователь может обойти локальный брандмауэр и наслаждаться Web в свободной и первозданной форме. Дополнительное преимущество: в SSH-туннеле шифруются все данные, проходящие через локальную сеть и Интернет-провайдера, поэтому никто не может следить за обменом информацией.<br/>
+<br/>
+<font class="comment_title">PuTTY и SSH</font><br/>
+<br/>
+Тот, кто в прошлом не занимался дистанционным администрированием сервера Unix или Linux, вряд ли слышал о Secure Shell (SSH). Secure Shell — всего лишь сетевой протокол, обеспечивающий шифрованную связь между двумя компьютерами (обычно ПК пользователя и удаленным сервером). «Shell» относится к интерфейсу командной строки, имеющемуся на компьютере почти любого типа, в том числе Mac OS X и Windows. Обычно SSH используется для безопасного доступа к интерфейсу командной строки удаленного компьютера, но может применяться и для копирования файлов или в качестве туннеля между вашим ПК и другим компьютером в Интернете.<br/>
+<br/>
+PuTTY — клиент SSH. С его помощью можно обратиться к удаленному интерфейсу командной строки или организовать туннель — именно этим мы и займемся в данной статье.<br/>
+<br/>
+<font class="comment_title">Туннелирование</font><br/>
+<br/>
+Когда пользователь вводит URL-адрес или щелкает на ссылке, запрос передается с компьютера, проходит через локальный маршрутизатор и модем, сеть Интернет-провайдера, Интернет и поступает на удаленный Web-сервер. Фильтровать запрос можно на любом из этих этапов, но, как правило, это происходит на локальном маршрутизаторе (школьном или корпоративном брандмауэре) или у Интернет-провайдера (ограничение полосы, государственная цензура).<br/>
+<br/>
+Туннель позволяет обойти ограничения локального маршрутизатора, модема и сети Интернет-провайдера и подключиться непосредственно к Интернету. Например, передавая весь трафик через SSH-туннель в компьютер, находящийся в Америке, жители Китая могут обойти любые фильтры и цензуру на государственном уровне. Собственно передача Web-трафика через другой компьютер (и другой порт) называется применением SOCKS-прокси. Использование SOCKS-прокси возможно и без SSH, но в этом случае снижается надежность и увеличивается опасность фильтрации со стороны местного Интернет-провайдера.<br/>
+<br/>
+Загрузите PuTTY (putty.exe). Эта бесплатная, автономная программа не требует установки. Просто разместите ярлык на Рабочем столе или Панели задач.<br/>
+<br/>
+Затем необходимо найти удаленный сервер Linux, который будет конечной точкой SSH-туннеля. Можно выбрать бесплатный (для активации учетной записи придется, возможно, выполнить несколько несложных действий) или арендовать недорогой виртуальный частный сервер (VPS) приблизительно за 5 долл./мес, который можно использовать в качестве сервера разработки или сидбокса (seed box — выделенный сервер с установленным Torrent-клиентом) BitTorrent. В любом случае, необходима учетная запись SSH на удаленном сервере, а также IP-адрес и порт для подключения.<br/>
+<br/>
+Откройте PuTTY и заполните поля Host Name и Port. Убедитесь в том, что в поле Connection Type указано SSH. Вид должен быть примерно следующий:<br/>
+<div class="div_code_outer"><div class="div_code_inner"><pre class="pre_code">Putty: ввод имени узла и порта</pre></div></div>
+В левой панели выполните переход Connection | SSH | Tunnels. Введите 8080 в поле Source Port и нажмите кнопку с зависимой фиксацией Dynamic. Щелкните на Add, и в списке Forwarded Ports появится D8080.<br/>
+<div class="div_code_outer"><div class="div_code_inner"><pre class="pre_code">Putty: отправная точка и место назначения туннеля</pre></div></div>
+Вернитесь в раздел Session в верхней левой панели, введите имя в поле Saved Sessions («tunnel») и щелкните на Save, затем — на Open в нижней части PuTTY. На экране всплывет новое окно с запросом учетного имени; введите его и нажмите клавишу Enter. Введите пароль и нажмите Enter.<br/>
+<div class="div_code_outer"><div class="div_code_inner"><pre class="pre_code">Putty: имя входа оболочки</pre></div></div>
+Готово! В вашем распоряжении открытый SSH-туннель.<br/>
+<br/>
+<font class="comment_title">Использование туннеля</font><br/>
+<br/>
+Теперь, когда имеется открытый SSH-туннель, необходимо направить через него трафик, представив туннель в качестве SOCKS-прокси. Начнем с браузера Firefox.<br/>
+<br/>
+Щелкните на Tools | Options [или Большая Оранжевая Кнопка (Big Orange Button) | Options], а затем на Advanced. Щелкните на Settings… в панели Connection: Firefox | Advanced | Connection.<br/>
+<br/>
+Выберите Manual Proxy Configuration, а затем впишите адрес 127.0.0.1 и порт 8080 к узлу SOCKS Host. Убедитесь в том, что выбран SOCKS v5, и нажмите OK. Хотите верьте, хотите нет: вы вышли в Web через SSH-туннель.<br/>
+<br/>
+<font class="comment_title">Настройки прокси-сервера в Chrome, IE</font><br/>
+<br/>
+Internet Explorer можно настроить таким же способом (Internet Options | Connections | LAN Settings), а настройки прокси-сервера браузера Chrome находятся в разделе Wrench | Options | Under the Hood (Bonnet) | Change Proxy Settings | LAN Settings. В обоих случаях необходимо включить режим Use a proxy server for your LAN (Использовать прокси-сервер для подключений LAN) и щелкнуть на Advanced:<br/>
+<div class="div_code_outer"><div class="div_code_inner"><pre class="pre_code">Chrome/Internet Explorer, использование прокси-сервера</pre></div></div>
+Введите 127.0.0.1 и 8080 в строке Socks и щелкните на OK:<br/>
+<div class="div_code_outer"><div class="div_code_inner"><pre class="pre_code">Настройки прокси-сервера</pre></div></div>
+Задача решена.<br/>
+<br/>
+<font class="comment_title">Другие службы</font><br/>
+<br/>
+SSH-туннели могут использоваться и другими Web-службами. Можно использовать BitTorrent over SSH, чтобы избежать ограничения полосы Интернет-провайдером или загрузить какой-нибудь файл в школе или офисе. Во многих программах мгновенного обмена сообщениями можно ввести SOCKS-прокси. Это полезно, если требуется зашифровать чат в целях безопасности или приходится вести чат из страны, власти которой не соблюдают принципа конфиденциальности. И наконец, через SOCKS-прокси может работать почти любая серьезная прикладная программа, которая обращается в Интернет. О том, как это сделать, можно узнать на вкладке Network или Connection.<br/>
+<br/>
+<font class="comment_title">Mac и Linux</font><br/>
+<br/>
+Теперь о других настольных операционных системах. Как Mac OS X, так и Linux располагают установленным по умолчанию SSH-клиентом командной строки, поэтому, чтобы построить SSH-туннель, достаточно открыть терминал и ввести соответствующую команду. Можно поступить иначе — вызвать из графического интерфейса такую программу, как SSH Tunnel Manager.</div>
+  <ul class="taglist"><li class="tag-osnovy"><a href="http://ru.pcmag.com/osnovy"  rel="tag">Основы</a></li><li class="tag-summa-tekhnologii"><a href="http://ru.pcmag.com/summa-tekhnologii"  rel="tag">Сумма технологий</a></li></ul>
+  
+  
+  
+  <div class="taboolaCnt" id="taboola-below-article-thumbnails" data-taboola-placement="Below Article Thumbnails" data-taboola-mode="thumbnails-a"></div>
+  <div class="taboolaCnt" id="taboola-below-article-text-links" data-taboola-placement="Below Article Text Links" data-taboola-mode="alternating-text-links-a"></div>
+  <div align="center" id="adkit_article" class="adkit"></div>
+  
+      <a id="btnnext" href="http://ru.pcmag.com/osnovy/6717/help/kak-postroit-time-capsule-dlia-windows" rel="next" title="Как построить Time Capsule для Windows">Далее</a>
+  
+
+
+</div>
+ 
+
+</article>
+
+
+<hr>
+  
+  <h5 class="related">Еще от PCMag</h5><ul class="related">
+    <li><a href="http://ru.pcmag.com/osnovy/30265/help/blokcheiny-raid-dlia-chistoi-pravdy" class="thumb article"><img src="http://sm.pcmag.com/t/pcmag_ru/help/b/blokcheiny/blokcheiny-raid-dlia-chistoi-pravdy_f5sg.640.jpg" alt="Блокчейны: RAID для чистой правды" title="Блокчейны: RAID для чистой правды" class="thumb" srcset="http://sm.pcmag.com/t/pcmag_ru/help/b/blokcheiny/blokcheiny-raid-dlia-chistoi-pravdy_f5sg.1280.jpg 2x" width="640"/></a><a href="http://ru.pcmag.com/osnovy/30265/help/blokcheiny-raid-dlia-chistoi-pravdy">Блокчейны: RAID для чистой правды</a></li>
+  
+  
+  
+    <li><a href="http://ru.pcmag.com/osnovy/28809/help/ozvuchennaia-virtualnost-tsifrovoi-zvuk-geimeram" class="thumb article"><img src="http://sm.pcmag.com/t/pcmag_ru/help/o/ozvuchenna/ozvuchennaia-virtualnost-tsifrovoi-zvuk-geimeram_2tc7.640.jpg" alt="Озвученная виртуальность: цифровой звук — геймерам" title="Озвученная виртуальность: цифровой звук — геймерам" class="thumb" srcset="http://sm.pcmag.com/t/pcmag_ru/help/o/ozvuchenna/ozvuchennaia-virtualnost-tsifrovoi-zvuk-geimeram_2tc7.1280.jpg 2x" width="640"/></a><a href="http://ru.pcmag.com/osnovy/28809/help/ozvuchennaia-virtualnost-tsifrovoi-zvuk-geimeram">Озвученная виртуальность: цифровой звук — геймерам</a></li>
+  
+  
+  
+    <li><a href="http://ru.pcmag.com/osnovy/20141/feature/virtualizatsiia-ot-kilia-do-klotika" class="thumb article"><img src="http://sm.pcmag.com/t/pcmag_ru/feature/v/virtualiza/virtualizatsiia-ot-kilia-do-klotika_64bh.640.jpg" alt="Виртуализация: от киля до клотика" title="Виртуализация: от киля до клотика" class="thumb" srcset="http://sm.pcmag.com/t/pcmag_ru/feature/v/virtualiza/virtualizatsiia-ot-kilia-do-klotika_64bh.1280.jpg 2x" width="640"/></a><a href="http://ru.pcmag.com/osnovy/20141/feature/virtualizatsiia-ot-kilia-do-klotika">Виртуализация: от киля до клотика</a></li>
+  
+  
+  
+    <li><a href="http://ru.pcmag.com/osnovy/18237/gallery/kalibruem-hd-televizor" class="thumb gallery"><img src="http://sm.pcmag.com/t/pcmag_ru/screenshot/a/alibruem-hd-televizor-1jpg/alibruem-hd-televizor-1jpg_y78z.640.jpg" alt="Калибруем HD-телевизор" title="Калибруем HD-телевизор" class="thumb" srcset="http://sm.pcmag.com/t/pcmag_ru/screenshot/a/alibruem-hd-televizor-1jpg/alibruem-hd-televizor-1jpg_y78z.1280.jpg 2x" width="640"/></a><a href="http://ru.pcmag.com/osnovy/18237/gallery/kalibruem-hd-televizor">Калибруем HD-телевизор</a></li>
+  </ul>
+  
+
+
+
+<div class="morelikethis">
+<h3 class="author-container-title">About the Author</h3>
+<section class="author-container">
+    <div class="author-bio" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+        
+        <div class="author-info">
+            <a href="http://ru.pcmag.com/u/sebastian_entoni" itemprop="url" class="name"><span itemprop="name">Себастиан Энтони</span></a>
+            <span itemprop="jobTitle" class="title"></span>
+            <div class="followme">
+                 
+            </div>
+        </div>
+        <p class="author-deck" itemprop="description">
+             <a class="morestory" href="http://ru.pcmag.com/u/sebastian_entoni">See Full Bio</a>
+        </p>
+    </div>
+    <div class="author-stories">
+        <h3>More From Себастиан Энтони</h3>
+        <ul>
+        
+            <li>
+                <a href="http://ru.pcmag.com/osnovy/6717/help/kak-postroit-time-capsule-dlia-windows">
+                    <span class="story-image" style='background-image: url(http://sm.pcmag.com/t/pcmag_ru/help/k/kak-postro/kak-postroit-time-capsule-dlia-windows_y7eu.180.jpg)'>
+                        <img alt="Как построить Time Capsule для Windows" src="http://sm.pcmag.com/t/pcmag_ru/help/k/kak-postro/kak-postroit-time-capsule-dlia-windows_y7eu.640.jpg">
+                    </span>
+                    <div class="author-content">
+                        <p>Как построить Time Capsule для Windows</p>
+                    </div>
+                </a>
+            </li>
+        
+            <li>
+                <a href="http://ru.pcmag.com/osnovy/6716/help/v-obkhod-cherez-tunnel-ssh-socks-proksi-i-putty">
+                    <span class="story-image" style='background-image: url(http://sm.pcmag.com/t/pcmag_ru/screenshot/o/obhod-brandmauera-chereztunnel-ssh-socks-proksi-i/obhod-brandmauera-chereztunnel-ssh-socks-proksi-i_aqm2.180.jpg)'>
+                        <img alt="В обход: через туннель SSH, SOCKS-прокси и PuTTY" src="http://sm.pcmag.com/t/pcmag_ru/screenshot/o/obhod-brandmauera-chereztunnel-ssh-socks-proksi-i/obhod-brandmauera-chereztunnel-ssh-socks-proksi-i_aqm2.640.jpg">
+                    </span>
+                    <div class="author-content">
+                        <p>В обход: через туннель SSH, SOCKS-прокси и PuTTY</p>
+                    </div>
+                </a>
+            </li>
+        
+        </ul>
+        <div class="author-fullbio"><a href="http://ru.pcmag.com/u/sebastian_entoni">Еще</a></div>
+    </div>
+</section>
+
+<h5 class="comments" id="disqus">Обсуждение</h5>
+<div id="disqus_thread"></div>
+
+<script type="text/javascript">
+function disqus_config() {
+    this.language = "ru";
+}
+
+
+    var disqus_shortname = 'pcmagru';
+    var disqus_identifier = 'article_6716';
+    var disqus_url = 'http://ru.pcmag.com/osnovy/6716/help/v-obkhod-cherez-tunnel-ssh-socks-proksi-i-putty';
+
+    var disqus_title = 'В обход: через туннель SSH, SOCKS-прокси и PuTTY - Основы';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+
+<noscript>Please enable JavaScript to view the comments.</noscript>
+
+
+
+</div>
+
+
+</div>
+
+  <section><div class="sidebar">
+    
+    <div align="center" id="adkit_mrec1" class="adkit"><script> document.write('<iframe src="https://old.pcmag.ru/zd/advert_iframe_300x600.php?ref=' + location.href + ' " width="300" height="600" frameborder="0" scrolling="no" style="margin-bottom: 12px" id="pcmru_mrec1" ></iframe>'); </script></div>
+    
+  
+  <h6>Анонсы</h6><ul class="sidebox hot_articles">
+    <li>
+      <a href="http://ru.pcmag.com/smartfony/36874/review/bq-advance-5500l-red-fcsm-edition" class="thumb article"><img src="http://sm.pcmag.com/t/pcmag_ru/photo/default/dsc05503_2abm.200.jpg" alt="" title="" class="thumb" srcset="http://sm.pcmag.com/t/pcmag_ru/photo/default/dsc05503_2abm.400.jpg 2x" width="200"/></a>
+      <div>
+        <h5><a href="/smartfony/36874/review/bq-advance-5500l-red-fcsm-edition">BQ Advance (5500L) Red (FCSM Edition)</a></h5>
+        <p>Смартфон BQ Advance (5500L) представляет собой функционально сбалансированное решение в ценовом диапазоне ...</p>
+      </div>
+    </li>
+  
+  
+  
+    <li>
+      <a href="http://ru.pcmag.com/koroli-i-kapusta/36838/opinion/sledite-za-rukami-obeimi" class="thumb article"><img src="http://sm.pcmag.com/t/pcmag_ru/photo/default/tlg_xtrs.200.jpg" alt="" title="" class="thumb" srcset="http://sm.pcmag.com/t/pcmag_ru/photo/default/tlg_xtrs.400.jpg 2x" width="200"/></a>
+      <div>
+        <h5><a href="/koroli-i-kapusta/36838/opinion/sledite-za-rukami-obeimi">Следите за руками. Обеими</a></h5>
+        <p>Дыма без огня не бывает. Зато бывает дымовая завеса.</p>
+      </div>
+    </li>
+  
+  
+  
+    <li>
+      <a href="http://ru.pcmag.com/it-servis/36840/opinion/servis-i-kachestvo-mneniia-it-praktikov-mikhail-varennikov-m" class="thumb article"><img src="http://sm.pcmag.com/t/pcmag_ru/photo/default/varennikov_bv6m.200.jpg" alt="" title="" class="thumb" srcset="http://sm.pcmag.com/t/pcmag_ru/photo/default/varennikov_bv6m.400.jpg 2x" width="200"/></a>
+      <div>
+        <h5><a href="/it-servis/36840/opinion/servis-i-kachestvo-mneniia-it-praktikov-mikhail-varennikov-m">Сервис и качество, мнения ИТ-практиков: Михаил Варенников, Москва</a></h5>
+        <p>Большая доля неисправностей приходится на дефекты качества отпечатка.</p>
+      </div>
+    </li>
+  
+  
+  
+    <li>
+      <a href="http://ru.pcmag.com/it-servis/36824/issue/servis-i-kachestvo-2017-vybor-chitatelei" class="thumb article"><img src="http://sm.pcmag.com/t/pcmag_ru/photo/default/illustr-readerschoice_cqs2.200.jpg" alt="" title="" class="thumb" srcset="http://sm.pcmag.com/t/pcmag_ru/photo/default/illustr-readerschoice_cqs2.400.jpg 2x" width="200"/></a>
+      <div>
+        <h5><a href="/it-servis/36824/issue/servis-i-kachestvo-2017-vybor-chitatelei">«Сервис и качество 2017»: выбор читателей</a></h5>
+        <p>Итоги традиционного опроса российских пользователей цифровой техники</p>
+      </div>
+    </li>
+  
+  
+  
+    <li>
+      <a href="http://ru.pcmag.com/meropriiatie-1/36831/news/asus-zenfone-5-krupnoekrannyi-chetyriokhkamernyi-intellekt" class="thumb article"><img src="http://sm.pcmag.com/t/pcmag_ru/photo/default/dsc05383_49dr.200.jpg" alt="" title="" class="thumb" srcset="http://sm.pcmag.com/t/pcmag_ru/photo/default/dsc05383_49dr.400.jpg 2x" width="200"/></a>
+      <div>
+        <h5><a href="/meropriiatie-1/36831/news/asus-zenfone-5-krupnoekrannyi-chetyriokhkamernyi-intellekt">ASUS ZenFone 5: крупноэкранный четырёхкамерный интеллект</a></h5>
+        <p>Стремление к совершенству за 27 990 руб.</p>
+      </div>
+    </li>
+  </ul>
+  
+  
+  <div class="taboolaCnt" id="taboola-right-rail-thumbnails" data-taboola-placement="Right Rail Thumbnails" data-taboola-mode="thumbnails-rr"></div>
+  <div class="taboolaCnt" id="taboola-mobile-escalator-thumbnails" data-taboola-slider="true" data-taboola-placement="Mobile Escalator Thumbnails" data-taboola-mode="thumbnails-a-escalator"></div>
+  
+  <div align="center" id="adkit_rectangle" class="adkit"><script> document.write('<iframe src="https://old.pcmag.ru/zd/advert_iframe_textblock.php?ref=' + location.href + '" scrolling="no" width="300" height="250"></iframe>'); </script></div>
+
+   
+   <h6 class="currentissue">25 лет PCMag Russia</h6>
+    <div class="currentissue">      <a href="http://ru.pcmag.com/it-servis/36824/issue/servis-i-kachestvo-2017-vybor-chitatelei" class="thumb article"><img src="http://sm.pcmag.com/t/pcmag_ru/photo/default/illustr-readerschoice_cqs2.200.jpg" alt="«Сервис и качество 2017»: выбор читателей" title="«Сервис и качество 2017»: выбор читателей" class="thumb" srcset="http://sm.pcmag.com/t/pcmag_ru/photo/default/illustr-readerschoice_cqs2.400.jpg 2x" width="200"/></a>
+    <div><h5><a href="http://ru.pcmag.com/it-servis/36824/issue/servis-i-kachestvo-2017-vybor-chitatelei">«Сервис и качество 2017»: выбор читателей</a></h5>
+    <p>Цель опроса — выявить наиболее авторитетные марки цифровой техники по мнению покупателей.</p></div>
+    </div>
+    
+
+    <div class="social300 spaced">
+      <h6>Подключайся!</h6>
+      <iframe id="followFB" src="//www.facebook.com/v2.3/plugins/page.php?href=https%3A//www.facebook.com/pcmag.ru&adapt_container_width=true&container_width=320&height=100&hide_cover=false&show_facepile=true&small_header=false&show_posts=false&app_id=141810985954037" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
+    </div>
+
+    
+
+    
+
+    
+
+  </div></section>
+  
+  
+  <hr/>
+</div>
+
+
+<div align="center" id="adkit_footer" class="adkit"><script> document.write('<iframe src="https://old.pcmag.ru/zd/advert_iframe_728_90_bottom.php?ref=' + location.href + '" width="728" height="120" scrolling="no"></iframe>'); </script></div>
+
+<footer>
+  <nav class="row">
+    <a href="http://ru.pcmag.com">
+      <img src="/s/pcmag/pcmag-grey-logo.svg" id="pcmfooterlogo" alt="logo">
+    </a>
+    <ul id="footer_social"><li class=" first">Social</li><li class="facebook"><a href="http://www.facebook.com/pcmag.ru"><svg viewBox="0 0 448 512"><path fill="currentColor" d="M448 80v352c0 26.5-21.5 48-48 48h-85.3V302.8h60.6l8.7-67.6h-69.3V192c0-19.6 5.4-32.9 33.5-32.9H384V98.7c-6.2-.8-27.4-2.7-52.2-2.7-51.6 0-87 31.5-87 89.4v49.9H184v67.6h60.9V480H48c-26.5 0-48-21.5-48-48V80c0-26.5 21.5-48 48-48h352c26.5 0 48 21.5 48 48z"></path></svg></a></li><li class="twitter"><a href="http://www.twitter.com/pcmag_ru"><svg viewBox="0 0 448 512"><path fill="currentColor" d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-48.9 158.8c.2 2.8.2 5.7.2 8.5 0 86.7-66 186.6-186.6 186.6-37.2 0-71.7-10.8-100.7-29.4 5.3.6 10.4.8 15.8.8 30.7 0 58.9-10.4 81.4-28-28.8-.6-53-19.5-61.3-45.5 10.1 1.5 19.2 1.5 29.6-1.2-30-6.1-52.5-32.5-52.5-64.4v-.8c8.7 4.9 18.9 7.9 29.6 8.3a65.447 65.447 0 0 1-29.2-54.6c0-12.2 3.2-23.4 8.9-33.1 32.3 39.8 80.8 65.8 135.2 68.6-9.3-44.5 24-80.6 64-80.6 18.9 0 35.9 7.9 47.9 20.7 14.8-2.8 29-8.3 41.6-15.8-4.9 15.2-15.2 28-28.8 36.1 13.2-1.4 26-5.1 37.8-10.2-8.9 13.1-20.1 24.7-32.9 34z"></path></a></li><li class="gplus"><a href="https://plus.google.com/+PCMag/"><svg viewBox="0 0 448 512"><path fill="currentColor" d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM164 356c-55.3 0-100-44.7-100-100s44.7-100 100-100c27 0 49.5 9.8 67 26.2l-27.1 26.1c-7.4-7.1-20.3-15.4-39.8-15.4-34.1 0-61.9 28.2-61.9 63.2 0 34.9 27.8 63.2 61.9 63.2 39.6 0 54.4-28.5 56.8-43.1H164v-34.4h94.4c1 5 1.6 10.1 1.6 16.6 0 57.1-38.3 97.6-96 97.6zm220-81.8h-29v29h-29.2v-29h-29V245h29v-29H355v29h29v29.2z"></path></svg></a></li><li class="linkedin"><a href="https://www.linkedin.com/company/pc-magazine/"><svg viewBox="0 0 448 512"><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"></path></svg></a></li><li><script type="text/javascript">(function() {
+  if (window.pluso)if (typeof window.pluso.start == "function") return;
+  if (window.ifpluso==undefined) { window.ifpluso = 1;
+    var d = document, s = d.createElement('script'), g = 'getElementsByTagName';
+    s.type = 'text/javascript'; s.charset='UTF-8'; s.async = true;
+    s.src = ('https:' == window.location.protocol ? 'https' : 'http')  + '://share.pluso.ru/pluso-like.js';
+    var h=d[g]('body')[0];
+    h.appendChild(s);
+  }})();</script>
+<div class="pluso" data-background="transparent" data-options="medium,square,line,horizontal,counter,theme=04" data-services="vkontakte"></div></li></ul>
+    <ul id="footer_about"><li class=" first">About</li><li><a href="/pcmagru/20938/page/o-zhurnale">About PCMag Russia</a></li><li><a href="/pcmagru/25189/page/privacy-policy">Privacy Policy</a></li><li><a href="/pcmagru/25190/page/terms-of-use">Terms of Use</a></li><li><a href="/pcmagru/25191/page/cookies">Cookies</a></li><li><a href="http://www.ziffdavis.com/advertise/">Advertise</a></li><li><script type="text/javascript" src="/s/pcmag/adchoices.js"></script></li></ul>
+    <ul id="footer_world">
+      <li class="title">International Editions:</li>
+      <li><a href="http://www.pcmag.com/?setccpref=US">PCMag USA</a></li>
+      <li><a href="http://uk.pcmag.com">Великобритания</a></li>
+      <li><a href="http://au.pcmag.com">Австралия</a></li>
+      <li><a href="http://nl.pcmag.com">Бенелюкс</a></li>
+      <li><a href="http://fr.pcmag.com">Франция</a></li>
+      <li><a href="http://gr.pcmag.com">Греция</a></li>
+      <li><a href="http://in.pcmag.com">Индия</a></li>
+      <li><a href="http://latam.pcmag.com">Latin America</a></li>
+      <li><a href="http://me.pcmag.com">Средний Восток</a></li>
+      <li><a href="http://pt.pcmag.com">Португалия</a></li>
+      <li><a href="http://ru.pcmag.com">Россия</a></li>
+      <li><a href="http://sea.pcmag.com">Southeast Asia</a></li>
+    </ul>
+    <ul id="footer_connect"><li class=" first">Connect</li><li><a href="http://www.ziffdavis.com/">Ziff Davis</a></li><li><a href="http://www.extremetech.com/">ExtremeTech</a></li><li><a href="http://www.ign.com">IGN</a></li><li><a href="http://www.askmen.com">AskMen</a></li></ul>
+    <div id="adsense">Ad</div>
+  </nav>
+  <div id="footer_terms" class="row">
+    <div class="footer-flex">
+      <img src="/s/pcmag/ziff_davis_logo.svg" alt="ZiffDavis">
+      
+      [SITE_NAME] лицензированное издание <a href="[LICENSEE_HOMEPAGE]" rel="nofollow">[LICENSEE]</a>.
+      
+      <script src="/cookienotice.js" async="true"></script>
+    </div>
+  </div>
+</div>
+</footer>
+
+<div id="js">
+  
+  <script type="text/javascript">
+    var nls = new Image(1,1); nls.src = ["//secure-us.imrworldwide.com/cgi-bin/m?ci=us-806031h&cg=0&cc=1&si=", escape(window.location.href), "&rp=", escape(document.referrer), "&ts=compact&rnd=", (new Date()).getTime()].join('')
+  </script><noscript><img src="https://secure-us.imrworldwide.com/cgi-bin/m?ci=us-806031h&amp;cg=0&amp;cc=1&amp;ts=noscript" width="1" height="1" alt="" /></noscript>
+  
+  
+
+  <!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function (d, w, c) {
+    (w[c] = w[c] || []).push(function() { try { w.yaCounter56752 = new Ya.Metrika({id:56752, webvisor:true, clickmap:true, trackLinks:true, accurateTrackBounce:true}); } catch(e) { } });
+    var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = "text/javascript"; s.async = true; s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+    if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); }
+})(document, window, "yandex_metrika_callbacks");
+</script><noscript><div><img src="https://mc.yandex.ru/watch/56752" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter --><script type="text/javascript">ga('create', 'UA-2445682-1', 'auto', { 'name': 'pcmru' }); ga('pcmru.send', 'pageview');</script>
+<script type="text/javascript">
+
+    if (window.location.pathname.match('/review/') && !window.location.pathname.match('article/review/') && document.getElementsByClassName('price')[0] != undefined) {
+        document.getElementsByClassName('price')[0].innerHTML = '<iframe src="https://old.pcmag.ru/zd/advert_iframe_240_400.php?ref=' + location.href + ' " width="250" height="410" scrolling="no" style="margin-bottom: 12px" id="pcmru_mrec1" frameborder="0" >';;
+    }
+</script>
+
+
+  
+  
+  
+  
+  
+<script type='application/ld+json'>
+{
+    "@context":"http://schema.org",
+    "@type":"WebSite",
+    "url":"http://ru.pcmag.com",
+    "name":"PCMag Russian Edition",
+    "description":"PCMagazine/RE - гид в мире компьютеров компьютеров, периферии и модернизации. Мы тестируем и рассматриваем компьютерные и Интернет-продукты и услуги, новости технологии и тенденции, даем советы покупателям и ценовые сравнения.",
+    "potentialAction":{ "@type":"SearchAction", "target":"http://ru.pcmag.com/se/?q={search_term_string}", "query-input":"required name=search_term_string"}
+}
+</script>
+<script type='application/ld+json'>
+{
+    "@context":"http://schema.org",
+    "@type":"Organization",
+    "url":"http://ru.pcmag.com",
+    "name":"PCMag Russian Edition",
+    "sameAs":[ "https://www.twitter.com/pcmag_ru", "https://www.facebook.com/pcmag.ru"],
+    "logo":"http://ru.pcmag.com/s/pcmag/pcmag_logo_micro.png"
+}
+</script>
+
+<script type = "application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type":"BreadcrumbList",
+  "itemListElement":[
+      
+        {
+            "@type":"ListItem",
+            "position":1,
+            "item":{
+                "@id":"http://ru.pcmag.com/osnovy",
+                "name":"Основы"
+            }
+        }
+        
+      
+    ]
+}
+</script>
+<script type="application/ld+json">
+{
+    "@context":"https://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://google.com/article"
+     },
+    "headline":"В обход: через туннель SSH, SOCKS-прокси и PuTTY",
+    "image": {"url": "http://sm.pcmag.com/pcmag_ru/screenshot/o/obhod-brandmauera-chereztunnel-ssh-socks-proksi-i/obhod-brandmauera-chereztunnel-ssh-socks-proksi-i_aqm2.jpg", "width": 70, "caption": "_obhod_brandmauera_chereztunnel_SSH_SOCKS-proksi_iPuTTY.jpg", "@type": "ImageObject", "height": 50},
+    "description":"Когда\u002Dто мысль об окруженной брандмауэрами, перекрытой кордонами и подцензурной Web могла привести в ужас любого пользователя Интернета. Однако прошли годы, и мы стали относиться к этому спокойно. Совершенно свободная\u0026hellip\u003B",
+    "datePublished": "2012-01-16T00:39:08+04:00",
+    "dateModified": "2016-01-11T15:21:28+03:00",
+    "inLanguage": "RU",
+    "about": {"@type": "Thing", "name": "\u041e\u0441\u043d\u043e\u0432\u044b"},
+    "author": {
+        "@type": "Person",
+        "name": "Себастиан Энтони"
+         
+                ,"description":"",
+                "jobTitle": "",
+                "image": ""
+         
+    },
+    "publisher": {
+        "@type":"Organization",
+        "name": "PCMag Russian Edition",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "http://ru.pcmag.com/s/pcmag/pcmag_logo_micro.png",
+            "width": 245,
+            "height": 60
+        }
+    }
+}
+</script>
+
+</div>
+
+</body>
+</html>

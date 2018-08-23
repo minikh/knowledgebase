@@ -1,0 +1,4 @@
+ssh -D 12345 bob@myserver.com
+export http_proxy=http://localhost:1080/ https_proxy=http://localhost:1080/
+
+wget -O - -q icanhazip.com

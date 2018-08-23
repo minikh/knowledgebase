@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+<head>
+	<meta charset="UTF-8">
+	<link rel="apple-touch-icon-precomposed" href="https://www.8host.com/blog/wp-content/themes/wp-8host-new/images/favicon/favicon-152.png">
+	<title>  Вывод и удаление правил IPTables |  www.8host.com</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<link href="https://fonts.googleapis.com/css?family=Exo+2:700|Open+Sans:400,700&subset=latin,cyrillic" rel="stylesheet" type="text/css" />
+	<!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
+	<script>
+		var templateUrl = 'https://www.8host.com/blog/wp-content/themes/wp-8host-new';
+	</script>
+		
+<!-- All in One SEO Pack 2.3.14.2 by Michael Torbert of Semper Fi Web Design[-1,-1] -->
+<meta name="description"  content="IPTables – это фаервол (или брандмауэр), играющий очень важную роль в сетевой безопасности большинства дистрибутивов Linux. Данное руководство сфокусировано на" />
+
+<link rel="canonical" href="https://www.8host.com/blog/vyvod-i-udalenie-pravil-iptables/" />
+<!-- /all in one seo pack -->
+<link rel='dns-prefetch' href='//pagead2.googlesyndication.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.3\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/www.8host.com\/blog\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.8"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,56826,8203,55356,56819),0,0),c=j.toDataURL(),b===c&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55358,56794,8205,9794,65039),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55358,56794,8203,9794,65039),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='wp-pagenavi-css'  href='https://www.8host.com/blog/wp-content/plugins/wp-pagenavi/pagenavi-css.css?ver=2.70' media='all' />
+<script type='text/javascript' src='https://www.8host.com/blog/wp-content/themes/wp-8host-new/js/jquery.min.js?ver=1.0.0'></script>
+<script type='text/javascript' src='https://www.8host.com/blog/wp-content/themes/wp-8host-new/js/skel.min.js?ver=1.0.0'></script>
+<script type='text/javascript' src='https://www.8host.com/blog/wp-content/themes/wp-8host-new/js/skel-layers.min.js?ver=1.0.0'></script>
+<script type='text/javascript' src='https://www.8host.com/blog/wp-content/themes/wp-8host-new/js/init.js?ver=1.0.0'></script>
+<script type='text/javascript' src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?ver=4.8'></script>
+<link rel='https://api.w.org/' href='https://www.8host.com/blog/wp-json/' />
+<link rel="alternate" type="application/json+oembed" href="https://www.8host.com/blog/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.8host.com%2Fblog%2Fvyvod-i-udalenie-pravil-iptables%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://www.8host.com/blog/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.8host.com%2Fblog%2Fvyvod-i-udalenie-pravil-iptables%2F&#038;format=xml" />
+
+ <!-- OneAll.com / Social Login for WordPress / v5.3 -->
+<script data-cfasync="false" type="text/javascript">
+ (function() {
+  var oa = document.createElement('script'); oa.type = 'text/javascript';
+  oa.async = true; oa.src = 'https://8host.api.oneall.com/socialize/library.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(oa, s);
+ })();
+</script>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script type="text/javascript" src="https://www.8host.com/blog/wp-content/plugins/si-captcha-for-wordpress/captcha/si_captcha.js?ver=1525518086"></script>
+<!-- begin SI CAPTCHA Anti-Spam - login/register form style -->
+<style type="text/css">
+.si_captcha_small { width:175px; height:45px; padding-top:10px; padding-bottom:10px; }
+.si_captcha_large { width:250px; height:60px; padding-top:10px; padding-bottom:10px; }
+img#si_image_com { border-style:none; margin:0; padding-right:5px; float:left; }
+img#si_image_reg { border-style:none; margin:0; padding-right:5px; float:left; }
+img#si_image_log { border-style:none; margin:0; padding-right:5px; float:left; }
+img#si_image_side_login { border-style:none; margin:0; padding-right:5px; float:left; }
+img#si_image_checkout { border-style:none; margin:0; padding-right:5px; float:left; }
+img#si_image_jetpack { border-style:none; margin:0; padding-right:5px; float:left; }
+img#si_image_bbpress_topic { border-style:none; margin:0; padding-right:5px; float:left; }
+.si_captcha_refresh { border-style:none; margin:0; vertical-align:bottom; }
+div#si_captcha_input { display:block; padding-top:15px; padding-bottom:5px; }
+label#si_captcha_code_label { margin:0; }
+input#si_captcha_code_input { width:65px; }
+p#si_captcha_code_p { clear: left; padding-top:10px; }
+.si-captcha-jetpack-error { color:#DC3232; }
+</style>
+<!-- end SI CAPTCHA Anti-Spam - login/register form style -->
+ 
+		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="https://www.8host.com/blog/wp-content/themes/wp-8host-new/js/main.js"></script>
+    <noscript>
+		<link rel="stylesheet" href="https://www.8host.com/blog/wp-content/themes/wp-8host-new/css/skel.css" />
+		<link rel="stylesheet" href="https://www.8host.com/blog/wp-content/themes/wp-8host-new/css/style.css" />
+		<link rel="stylesheet" href="https://www.8host.com/blog/wp-content/themes/wp-8host-new/css/style-xlarge.css" />
+	</noscript>
+<!-- End Google Tag Manager -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-41429720-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+</head>
+<body class="">
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-5QBLV4"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5QBLV4');</script>
+
+<script type="text/javascript">(window.Image ? (new Image()) : document.createElement('img')).src = location.protocol + '//vk.com/rtrg?r=h/oz4XxFtFEerFNe9q2/YfYiHnSGXTUntBIbuR5tJptSPCyV0RzFc5qa1ST5*UCnXjj/fZ6XFBFRRAECdSw8toPbCzrpiwrq9KLsMAxI*MtjZe52iGwDqpq3hD6zbZgjeK6dayCbPtOh1A4DGAQjNfOu/DVXINl/cP*k/N9egxQ-';</script>
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function (d, w, c) {
+        (w[c] = w[c] || []).push(function() {
+            try {
+                w.yaCounter32842552 = new Ya.Metrika({
+                    id:32842552,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true,
+                    webvisor:true
+                });
+            } catch(e) { }
+        });
+
+        var n = d.getElementsByTagName("script")[0],
+            s = d.createElement("script"),
+            f = function () { n.parentNode.insertBefore(s, n); };
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+        if (w.opera == "[object Opera]") {
+            d.addEventListener("DOMContentLoaded", f, false);
+        } else { f(); }
+    })(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/32842552" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
+<!-- End Google Tag Manager -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-41429720-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+	<!-- Header -->
+	<header id="header">
+		<h1><a href="https://www.8host.com"><img src="https://www.8host.com/blog/wp-content/themes/wp-8host-new/images/logo-8host.png" alt="Профессиональный облачный хостинг. Быстрый, надежный и свободный"/></a></h1>
+		<nav id="nav">
+			<ul>
+				<li>
+					<a href="https://www.8host.com/">Главная</a>
+				</li>
+				<li>
+					<a href="https://www.8host.com/features">Преимущества</a>
+					<div class="drop">
+						<ul class="drop-menu">
+							<li><a href="https://www.8host.com/features#features-tech">Технологии</a>
+								<div class="drop-info hidden">Размещение серверов в надежных дата-центрах Европы. Откройте облачный VPS/VDS сервер на быстрых SSD за 1 минуту!</div>
+							</li>
+
+							<li><a href="https://www.8host.com/features#features-freedom">Свобода и безопасность</a>
+								<div class="drop-info hidden">Лучший хостинг:<br/>- оградит данные от нежелательного доступа в охраняемом европейском ЦОДе<br/>- примет оплату хоть в bitcoin ! <br/>- позволит поставить свой дистрибутив</div>
+							</li>
+
+							<li><a href="https://www.8host.com/features#features-reliability">Надежность</a>
+								<div class="drop-info hidden">- защита от DDos-атак <br/>- бесплатный backup <br/>- Uptime 99,9999% <br/>- ЦОД - TIER III <br/>- провайдер - TIER I</div>
+							</li>
+
+							<li><a href="https://www.8host.com/features#features-access">Доступность</a>
+								<div class="drop-info hidden">Поддержим на русском языке 24/7/365 Работаем с юрлицами и физлицами. Вам прямо сейчас нужно 24 ядра и 72 Gb RAM ? Пожалуйста!</div>
+							</li>
+						</ul>
+					</div>
+				</li>
+				<li>
+					<a href="https://www.8host.com/pricing">Стоимость</a>
+					<div class="drop drop-cost">
+						<ul class="drop-menu">
+							<li><a href="https://www.8host.com/pricing">Цены VPS</a>
+								<div class="drop-info hidden">Наши выгодные тарифы докажут, что дешевый хостинг вы еще не знали!</div>
+							</li>
+
+							<li><a href="https://www.8host.com/pricing#pricing-cms">Цены CMS</a>
+								<div class="drop-info hidden">Минутное дело: выберите конфигурацию, оплатите и CMS на VPS готова. <br/>Money Back – 30 дней!</div>
+							</li>
+							
+							<li><a href="https://www.8host.com/pricing#payment-methods">Способы оплаты</a>
+								<div class="drop-info hidden">Банковскими картами, электронной валютой, через терминалы Qiwi, Webmoney, PayPal, Новоплат и др.</div>
+							</li>
+						</ul>
+					</div>
+				</li>
+				<li>
+					<a href="https://www.8host.com/blog/">Информаторий</a>
+					<div class="drop drop-informateka">
+						<ul class="drop-menu">
+							<li><a href="https://www.8host.com/contact-us">Техподдержка</a>
+								<div class="drop-info hidden">Задайте вопрос в службу поддержки 24/7/365</div>
+							</li>
+
+							<li><a href="https://www.8host.com/blog">База знаний</a>
+								<div class="drop-info hidden">Найдите ответы в нашей базе и познакомьтесь с рекомендациями</div>
+							</li>
+						</ul>
+					</div>
+				</li>
+				<li>
+					<a href="https://www.8host.com/contact-us">Контакты</a>
+					<div class="drop drop-informateka">
+						<ul class="drop-menu">
+							<li><a href="https://www.facebook.com/pages/8Host/1063590243670236?ref=hl">Facebook</a></li>
+							<li><a href="https://twitter.com/8Host_social">Twitter</a></li>
+							<li><a href="https://plus.google.com/u/0/b/105145648824775848083/105145648824775848083/about">Google+</a></li>
+							<li><a href="https://vk.com/8host">VK</a></li>
+						</ul>
+					</div>
+				</li>
+				<li><a href="https://www.8host.com/portal/" class="button login-special">Вход</a></li>
+				<li><a href="https://www.8host.com/portal/register.php" class="button register-special">Регистрация</a></li>
+			</ul>
+		</nav>
+	</header>
+
+
+
+
+
+
+
+
+
+
+
+<section class="wrapper">
+	<div class="container">
+		<div class="row">
+								<div class="3u 12u$(small) article-sidebar">
+
+					<aside class="sidebar" role="complementary">
+						<div class="sidebar-widget">
+							<div id="text-7" class="widget_text"><h3>Предложение от 8host.com</h3>			<div class="textwidget"><p><a href="https://www.8host.com/pricing?utm_source=blog_8host&amp;utm_medium=cpc&amp;utm_campaign=blog"><img src="https://www.8host.com/blog/wp-content/uploads/240x240_1.jpg" /></a></p>
+</div>
+		</div>						</div>
+					</aside>
+
+					</div>
+				
+				
+					<div class="6u 12u$(small)">
+				
+				<main role="main">
+					<!-- section -->
+					<section>
+
+						
+						<!-- article -->
+						<article id="post-1554" class="post-1554 post type-post status-publish format-standard hentry category-centos category-linux category-ubuntu tag-centos-7 tag-iptables tag-linux tag-ubuntu-14-04">
+
+							<!-- post thumbnail -->
+													<!-- /post thumbnail -->
+
+						<!-- post title -->
+						<header class="major article-header">
+							<h1>
+								<a href="https://www.8host.com/blog/vyvod-i-udalenie-pravil-iptables/" title="Вывод и удаление правил IPTables">Вывод и удаление правил IPTables</a>
+							</h1>
+						</header>
+						<!-- /post title -->
+
+						<!-- post details -->
+						<span class="date article-date"><i class="fa fa-calendar" aria-hidden="true"></i> Сентябрь 16, 2015 12:53 пп</span>
+						<span class="date article-date">7&nbsp;922 views</span>
+						<span class="date article-date"> | <i class="fa fa-comments" aria-hidden="true"></i> <span class="dsq-postid" data-dsqidentifier="1554 http://www.8host.com/blog/?p=1554">Комментариев нет</span></span>
+						<p class="article-category single-post-category"><i class="fa fa-tags" aria-hidden="true"></i> <a href="https://www.8host.com/blog/category/centos/" rel="tag">Centos</a>, <a href="https://www.8host.com/blog/category/linux/" rel="tag">Linux</a>, <a href="https://www.8host.com/blog/category/ubuntu/" rel="tag">Ubuntu</a>						<span class="author">| <i class="fa fa-user" aria-hidden="true"></i> <a href="https://www.8host.com/blog/author/amber/" title="Записи Amber" rel="author">Amber</a></span>
+						<span class="comments">| <a href="https://www.8host.com/blog/vyvod-i-udalenie-pravil-iptables/#respond"><span class="dsq-postid" data-dsqidentifier="1554 http://www.8host.com/blog/?p=1554">Комментировать запись</span></a></span></p>
+						<!-- /post details -->
+
+						<p>IPTables – это фаервол (или брандмауэр), играющий очень важную роль в сетевой безопасности большинства дистрибутивов Linux. Данное руководство сфокусировано на различных аспектах управления фаерволом: выводе списка правил, удалении правил и т.п.<span id="more-1554"></span></p>
+<p>Это руководство охватывает следующие вопросы:</p>
+<ul>
+<li>Вывод списка правил</li>
+<li>Очистка счетчиков пакетов и байтов</li>
+<li>Удаление правил</li>
+<li>Сброс цепочек (удаление всех правил цепи)</li>
+<li>Сброс всех цепочек и таблиц, удаление всех цепочек правил, разрешение всего трафика.</li>
+</ul>
+<p style="padding-left: 30px;"><strong>Примечание</strong>: При работе с брандмауэрами очень важно быть внимательным, иначе можно закрыть себе доступ к собственному серверу, заблокировав SSH-трафик (порт 22 по умолчанию). Если вы случайно заблокировали себе доступ к серверу, подключитесь к нему с помощью консоли, чтобы исправить настройки брандмауэра. Также решить эту проблему может перезагрузка сервера (только в случае если сохраненные правила брандмауэра разрешают трафик SSH).</p>
+<h3>Требования</h3>
+<p>Для начала нужно настроить сервер и создать не-root пользователя с расширенными правами. Подробнее об этом можно прочитать в руководствах:</p>
+<ul>
+<li><a href="http://www.8host.com/blog/nachalnaya-nastrojka-servera-ubuntu-14-04/">Начальная настройка сервера Ubuntu 14.04</a></li>
+<li><a href="http://www.8host.com/blog/nachalnaya-nastrojka-servera-centos-7/">Начальная настройка сервера CentOS 7</a></li>
+</ul>
+<h2>Вывод правил IPTables</h2>
+<p>Существует два способа просмотра активных правил фаервола IPTables:</p><div class="wpInsert wpInsertInPostAd wpInsertMiddle" style="margin: 5px; padding: 0px;
+display:block; text-align:center;"><ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-format="fluid"
+     data-ad-layout="in-article"
+     data-ad-client="ca-pub-4672639452561295"
+     data-ad-slot="5305723615"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+<ol>
+<li>В виде таблицы;</li>
+<li>В виде списка спецификаций правил.</li>
+</ol>
+<p>Оба метода предоставляют примерно одинаковую информацию в разных форматах.</p>
+<h3>Вывод правил по спецификации</h3>
+<p>Чтобы вывести список правил по спецификации, запустите:</p>
+<p><code>sudo iptables -S<br />
+Example: Rule Specification Listing<br />
+-P INPUT DROP<br />
+-P FORWARD DROP<br />
+-P OUTPUT ACCEPT<br />
+-N ICMP<br />
+-N TCP<br />
+-N UDP<br />
+-A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT<br />
+-A INPUT -i lo -j ACCEPT<br />
+-A INPUT -m conntrack --ctstate INVALID -j DROP<br />
+-A INPUT -p udp -m conntrack --ctstate NEW -j UDP<br />
+-A INPUT -p tcp -m tcp --tcp-flags FIN,SYN,RST,ACK SYN -m conntrack --ctstate NEW -j TCP<br />
+-A INPUT -p icmp -m conntrack --ctstate NEW -j ICMP<br />
+-A INPUT -p udp -j REJECT --reject-with icmp-port-unreachable<br />
+-A INPUT -p tcp -j REJECT --reject-with tcp-reset<br />
+-A INPUT -j REJECT --reject-with icmp-proto-unreachable<br />
+-A TCP -p tcp -m tcp --dport 22 -j ACCEPT</code></p>
+<p>Как видите, вывод содержит команды, которые использовались для создания правил (без команды iptables). Также эта команда выводит содержимое конфигурационных файлов, если вы когда-либо использовали такие команды:</p>
+<p><code>iptables-persistent<br />
+iptables save</code></p>
+<h3>Вывод цепочки правил</h3>
+<p>Чтобы ограничить вывод до определённой цепочки (INPUT, OUTPUT, TCP и т.п.), нужно просто указать имя цепочки после опции –S. К примеру, чтобы получить все правила цепи TCP, нужно запустить:</p>
+<p><code>sudo iptables -S TCP<br />
+Example: TCP Chain Rule Specification Listing<br />
+-N TCP<br />
+-A TCP -p tcp -m tcp --dport 22 -j ACCEPT</code></p>
+<h3>Вывод правил в виде таблиц</h3>
+<p>Такой формат вывода правил iptables позволяет сравнивать разные правила.</p>
+<p>Чтобы вывести все активные правила в виде таблицы, запустите  iptables с опцией –L:</p>
+<p><code>sudo iptables -L</code></p>
+<p>Это выведет все текущие правила брандмауэра, отсортированные по цепочкам.</p>
+<p>Чтобы ограничить вывод до определённой цепочки, просто укажите имя нужной цепи после опции –L. Например:</p>
+<p><code>sudo iptables -L INPUT<br />
+Example: Input Chain Rule Table Listing<br />
+Chain INPUT (policy DROP)<br />
+target     prot opt source               destination<br />
+ACCEPT     all  --  anywhere             anywhere             ctstate RELATED,ESTABLISHED<br />
+ACCEPT     all  --  anywhere             anywhere<br />
+DROP       all  --  anywhere             anywhere             ctstate INVALID<br />
+UDP        udp  --  anywhere             anywhere             ctstate NEW<br />
+TCP        tcp  --  anywhere             anywhere             tcp flags:FIN,SYN,RST,ACK/SYN ctstate NEW<br />
+ICMP       icmp --  anywhere             anywhere             ctstate NEW<br />
+REJECT     udp  --  anywhere             anywhere             reject-with icmp-port-unreachable<br />
+REJECT     tcp  --  anywhere             anywhere             reject-with tcp-reset<br />
+REJECT     all  --  anywhere             anywhere             reject-with icmp-proto-unreachable</code></p>
+<p>Первая строка вывода показывает имя цепочки (в данном случае это INPUT), а затем её политику по умолчанию (DROP).Следующая строка содержит заголовки всех столбцов в таблице, а затем следуют правила цепочки. Рассмотрим подробнее каждый заголовок:</p>
+<ul>
+<li>target: определяет, что делать с пакетом, если он соответствует правилу. Например, пакет может быть принят, сброшен, внесен в журнал или отправлен другой цепочке правил.</li>
+<li>prot: задаёт протокол (например, TCP, UDP, ICMP и т.д.).</li>
+<li>opt: показывает параметры IP (редко используется).</li>
+<li>source: исходный IP-адрес или подсеть трафика (или anywhere).</li>
+<li>destination: целевой IP-адрес или подсеть трафика (или anywhere).</li>
+</ul>
+<p>Последний столбец без названия определяет опции правила (опцией в данном случае называется любая часть правила, которая не относится ни к одному из предыдущих столбцов).</p>
+<h3>Вывод количества пакетов и байтов</h3>
+<p>При просмотре правил iptables можно также запрашивать количество пакетов и байтов, которые совпали с каждым конкретным правилом. Для этого просто используйте опции -L и -v.</p>
+<p>К примеру, запросите цепочку INPUT:</p>
+<p><code>sudo iptables -L INPUT -v<br />
+Example: Verbose Listing<br />
+Chain INPUT (policy DROP 0 packets, 0 bytes)<br />
+pkts bytes target     prot opt in     out     source               destination<br />
+284K   42M ACCEPT     all  --  any    any     anywhere             anywhere             ctstate RELATED,ESTABLISHED<br />
+0     0 ACCEPT     all  --  lo     any     anywhere             anywhere<br />
+0     0 DROP       all  --  any    any     anywhere             anywhere             ctstate INVALID<br />
+396 63275 UDP        udp  --  any    any     anywhere             anywhere             ctstate NEW<br />
+17067 1005K TCP        tcp  --  any    any     anywhere             anywhere             tcp flags:FIN,SYN,RST,ACK/SYN ctstate NEW<br />
+2410  154K ICMP       icmp --  any    any     anywhere             anywhere             ctstate NEW<br />
+396 63275 REJECT     udp  --  any    any     anywhere             anywhere             reject-with icmp-port-unreachable<br />
+2916  179K REJECT     all  --  any    any     anywhere             anywhere             reject-with icmp-proto-unreachable<br />
+0     0 ACCEPT     tcp  --  any    any     anywhere             anywhere             tcp dpt:ssh ctstate NEW,ESTABLISHED</code></p>
+<p>Обратите внимание: в выводе добавилось два столбца по имени pkts и bytes.</p>
+<h2>Сброс счетчиков пакетов и байтов</h2>
+<p>Чтобы очистить счетчики пакетов и байтов, используйте опцию –Z. Эти счетчики сбрасываются после перезагрузки системы. Это позволяет узнать, получает ли сервер какой-либо трафик, совпадающий с правилами брандмауэра.</p>
+<p>Итак, чтобы очистить счётчики для всех цепочек и правил, используйте опцию –Z без дополнительных параметров:</p>
+<p><code>sudo iptables -Z</code></p>
+<p>Чтобы очистить счётчики для всех правил определённой цепи, укажите имя цепочки после –Z. Например, чтобы сбросить счётчики цепи INPUT, нужно ввести:</p>
+<p><code>sudo iptables -Z INPUT</code></p>
+<p>Чтобы сбросить счётчики для конкретного правила, укажите имя цепочки и номер правила. Например, чтобы сбросить счётчики первого правила цепи INPUT, нужно использовать:</p>
+<p><code>sudo iptables -Z INPUT 1</code></p>
+<h2>Удаление правил iptables</h2>
+<p>Удалять правила брандмауэра iptables тоже можно двумя способами.</p>
+<h3>Удаление правил по спецификации</h3>
+<p>Первый способов удаления правил Iptables – использование спецификации правила. Для этого нужно запустить команду iptables с опцией –D, после которой указывается спецификация правила. Чтобы удалить правила таким способом,  можно обратиться за помощью к выводу уже знакомой команды:</p>
+<p><code>iptables -S</code></p>
+<p>К примеру, чтобы удалить правило, которое сбрасывает недопустимые входящие пакеты (-A INPUT -m conntrack &#8212;ctstate INVALID -j DROP), нужно запустить команду:</p>
+<p><code>sudo iptables -D INPUT -m conntrack --ctstate INVALID -j DROP</code></p>
+<p style="padding-left: 30px;"><strong>Примечание</strong>: При этом нужно исключить опцию –А, которая задаёт положение правила во время создания.</p>
+<h3>Удаление правила по номеру и цепочке</h3>
+<p>Кроме того, правило можно удалить, зная имя цепочки и номер строки, к которой оно находится. Чтобы узнать номер строки правила, используйте опцию &#8212;line-numbers:</p>
+<p><code>sudo iptables -L --line-numbers<br />
+[secondary_output Example Output: Rules with Line Numbers]<br />
+Chain INPUT (policy DROP)<br />
+num  target     prot opt source               destination<br />
+1    ACCEPT     all  --  anywhere             anywhere             ctstate RELATED,ESTABLISHED<br />
+2    ACCEPT     all  --  anywhere             anywhere<br />
+3    DROP       all  --  anywhere             anywhere             ctstate INVALID<br />
+4    UDP        udp  --  anywhere             anywhere             ctstate NEW<br />
+5    TCP        tcp  --  anywhere             anywhere             tcp flags:FIN,SYN,RST,ACK/SYN ctstate NEW<br />
+6    ICMP       icmp --  anywhere             anywhere             ctstate NEW<br />
+7    REJECT     udp  --  anywhere             anywhere             reject-with icmp-port-unreachable<br />
+8    REJECT     tcp  --  anywhere             anywhere             reject-with tcp-reset<br />
+9    REJECT     all  --  anywhere             anywhere             reject-with icmp-proto-unreachable<br />
+10    ACCEPT     tcp  --  anywhere             anywhere             tcp dpt:ssh ctstate NEW,ESTABLISHED<br />
+...</code></p>
+<p>Это добавит номер строки для каждого правила.</p>
+<p>Зная имя цепи и номер строки, в которой находится искомое правило, используйте команду iptables –D, указав после опции эти данные. К примеру, чтобы удалить правило цепочки INPUT, которое сбрасывает недействительные пакеты, нужно использовать:</p>
+<p><code>sudo iptables -D INPUT 3</code></p>
+<h2>Сброс цепочек правил</h2>
+<p>Брандмауэр Iptables предоставляет возможность удалить все правила цепочки – сбросить цепочку правил. Данный раздел рассматривает несколько способов сделать это.</p>
+<p style="padding-left: 30px;"><strong>Примечание</strong>: Будьте внимательны, не заблокируйте себя на собственном сервере, случайно сбросив цепочку правил с политикой drop или deny. Если же вы всё-таки заблокировали себя, используйте консоль, чтобы остановить доступ.</p>
+<h3>Сброс одной цепи</h3>
+<p>Чтобы сбросить определённую цепочку правил, используйте флаг –F (или его полную версию &#8212;flush), указав имя цепочки.</p>
+<p>Например, чтобы удалить все правила цепочки INPUT, запустите:</p>
+<p><code>sudo iptables -F INPUT</code></p>
+<h3>Сброс всех цепочек</h3>
+<p>Чтобы сбросить все цепочки правил – то есть, удалить все правила фаервола, &#8212; используйте опцию –F (или &#8212;flush) без дополнительных параметров.</p>
+<p><code>sudo iptables -F</code></p>
+<p>Сброс всех правил, удаление всех цепочек, разрешение всего трафика</p>
+<p>Этот раздел покажет, как сбросить все правила, цепочки и таблицы брандмауэра и разрешить весь трафик.</p>
+<p style="padding-left: 30px;"><strong>Примечание</strong>: Это полностью отключит фаервол. Следуйте данному разделу только в том случае, если хотите заново настроить правила фаервола.</p>
+<p>Сначала настройте стандартную политику всех цепочек; это должна быть политика ACCEPT. В основном это нужно для того, чтобы случайно не заблокировать себе доступ к собственному серверу.</p>
+<p><code>sudo iptables -P INPUT ACCEPT<br />
+sudo iptables -P FORWARD ACCEPT<br />
+sudo iptables -P OUTPUT ACCEPT</code></p>
+<p>Затем сбросьте таблицы nat и mangle, сбросьте все цепочки (флаг –F) и удалите все нестандартные цепочки правил (-X)</p>
+<p><code>sudo iptables -t nat -F<br />
+sudo iptables -t mangle -F<br />
+sudo iptables -F<br />
+sudo iptables -X</code></p>
+<p>Теперь брандмауэр пропускает весь сетевой трафик. Если сейчас запросить список правил, результат будет нулевым, на экране появятся только имена стандартных цепочек (INPUT, FORWARD и OUTPUT).</p>
+<h2>Заключение</h2>
+<p>Помните, что все изменения правил при помощи команды iptables непостоянны, их нужно сохранять вручную, чтобы они оставались действительными после перезапуска системы.</p>
+<div class="wpInsert wpInsertInPostAd wpInsertBelow" style="margin: 5px; padding: 0px;
+display:block"><!-- Top -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-4672639452561295"
+     data-ad-slot="5472232813"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>						<div class="pagelink"></div>
+
+
+
+						Tags: <a href="https://www.8host.com/blog/tag/centos-7/" rel="tag">CentOS 7</a>, <a href="https://www.8host.com/blog/tag/iptables/" rel="tag">Iptables</a>, <a href="https://www.8host.com/blog/tag/linux/" rel="tag">Linux</a>, <a href="https://www.8host.com/blog/tag/ubuntu-14-04/" rel="tag">Ubuntu 14.04</a><br>
+						
+						
+<div id="disqus_thread">
+    </div>
+
+<script type="text/javascript">
+var disqus_url = 'https://www.8host.com/blog/vyvod-i-udalenie-pravil-iptables/';
+var disqus_identifier = '1554 http://www.8host.com/blog/?p=1554';
+var disqus_container_id = 'disqus_thread';
+var disqus_shortname = '8host-blog';
+var disqus_title = "Вывод и удаление правил IPTables";
+var disqus_config_custom = window.disqus_config;
+var disqus_config = function () {
+    /*
+    All currently supported events:
+    onReady: fires when everything is ready,
+    onNewComment: fires when a new comment is posted,
+    onIdentify: fires when user is authenticated
+    */
+    
+    
+    this.language = '';
+        this.callbacks.onReady.push(function () {
+
+        // sync comments in the background so we don't block the page
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = '?cf_action=sync_comments&post_id=1554';
+
+        var firstScript = document.getElementsByTagName('script')[0];
+        firstScript.parentNode.insertBefore(script, firstScript);
+    });
+    
+    if (disqus_config_custom) {
+        disqus_config_custom.call(this);
+    }
+};
+
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+
+
+					</article>
+					<!-- /article -->
+
+				
+			
+	</section>
+	<!-- /section -->
+</main>
+</div>
+
+<div class="3u 12u$(small) article-sidebar">
+
+	<!-- sidebar -->
+		<aside class="sidebar" role="complementary">
+			<div class="sidebar-widget">
+				<div id="text-8" class="widget_text">			<div class="textwidget"><p><!-- Right 300x600 --><br />
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:600px"
+     data-ad-client="ca-pub-4672639452561295"
+     data-ad-slot="4498842740"></ins><br />
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+</div>
+		</div><div id="categories-2" class="widget_categories"><h3>Рубрики</h3>		<ul>
+	<li class="cat-item cat-item-58"><a href="https://www.8host.com/blog/category/arch-linux/" title="Стабильный и простой дистрибутив Linux. Здесь вы найдете советы по установке, настройкам и обзоры. Отзывы и вопросы оставляйте в комментариях к статьям.">Arch Linux</a>
+</li>
+	<li class="cat-item cat-item-10"><a href="https://www.8host.com/blog/category/centos/" title=" Дистрибутив Linux, основанный Red Hat Enterprise Linux. Здесь вы найдете рекомендации по установке, настройкам и обзоры. Отзывы оставляйте в комментариях.">Centos</a>
+</li>
+	<li class="cat-item cat-item-57"><a href="https://www.8host.com/blog/category/cloud-server/" title="Cloud Server - облачный виртуальный сервер VPS/VDS. Как установить и настроить VPS? Репликация баз данных и многое другое в статьях нашего информатория.">Cloud Server</a>
+</li>
+	<li class="cat-item cat-item-52"><a href="https://www.8host.com/blog/category/debian/" title="Рекомендации по настройке сервера на Debian Linux. Установка Git, настройка Nginx, установка стека LAMP. Отзывы и вопросы внизу статей.">Debian</a>
+</li>
+	<li class="cat-item cat-item-600"><a href="https://www.8host.com/blog/category/freebsd/" title="Установка ОС FreeBSD на VPS. Рекомендации, обзоры, советы по установкам FAMP Stack, Java, защита сайта от уязвимостей.">FreeBSD</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="https://www.8host.com/blog/category/ftp/" title="Как работать с FTP на виртуальном сервере (VPS). Использование SSL/TLS, рекомендации и советы.">FTP</a>
+</li>
+	<li class="cat-item cat-item-38"><a href="https://www.8host.com/blog/category/general/" title="Настройка DNS, использование SMTP-сервера и другие базовые действия настройки VPS на Linux. Советы и рекомендации в статьях">General</a>
+</li>
+	<li class="cat-item cat-item-179"><a href="https://www.8host.com/blog/category/java/" title="Установка Java в Ubuntu, CentOS 7, настройка фреймворка Node.js. Рекомендации, обзоры, советы по настройкам.">Java</a>
+</li>
+	<li class="cat-item cat-item-12"><a href="https://www.8host.com/blog/category/lampstack/" title="Установка стека LAMP в Ubuntu, CentOS, Fedora 22, Debian, Arch Linux. Пошаговое описание процесса, рекомендации и отзывы.">LAMP Stack</a>
+</li>
+	<li class="cat-item cat-item-209"><a href="https://www.8host.com/blog/category/lemp-stack/" title="Установка стека LEMP Stack (Linux, nginx, MySQL, PHP) на Ubuntu, CentOS, Fedora 22, Debian, Arch Linux. Пошаговое описание процесса, рекомендации и отзывы.">LEMP Stack</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="https://www.8host.com/blog/category/linux/" title="Установка ОС Linux на VPS/VDS: пошаговые пособия по работе с БД, установка и обновление Nginx, работа с GitLab и многое другое">Linux</a>
+</li>
+	<li class="cat-item cat-item-235"><a href="https://www.8host.com/blog/category/mariadb/" title="Работа с базами данных MariaDB: рекомендации по резервному копированию и защите БД  на Ubuntu Linux. Советы и рекомендации в статьях, отзывы внизу статей.">MariaDB</a>
+</li>
+	<li class="cat-item cat-item-11"><a href="https://www.8host.com/blog/category/mysql/" title="Установка и работа MySQL на VPS с ОС Ubuntu, FreeBSD.  Рекомендации, обзоры, советы по установке">mySQL</a>
+</li>
+	<li class="cat-item cat-item-16"><a href="https://www.8host.com/blog/category/php/" title="Работа с PHP-фреймворками на VPS с ОС Linux, масштабирование PHP-приложений, обновление PHP и другие вопросы и рекомендации в статьях.">PHP</a>
+</li>
+	<li class="cat-item cat-item-106"><a href="https://www.8host.com/blog/category/python/" title="Развертывание и обслуживание приложений Django и других приложений на Pyton на VPS. Рекомендации, обзоры, советы по установке">Python</a>
+</li>
+	<li class="cat-item cat-item-644"><a href="https://www.8host.com/blog/category/rhel/" title="Red Hat Enterprise Linux - установка, настройка VPS(виртуального сервера). Рекомендации, обзоры, советы по настройкам. Отзывы и вопросы внизу статей.">RHEL</a>
+</li>
+	<li class="cat-item cat-item-2"><a href="https://www.8host.com/blog/category/ruby/" title="Развёртывание Rails-приложения  и установка Ruby на VPS на Ubuntu, CentOS , Debian. Рекомендации, обзоры, советы по настройкам.">Ruby</a>
+</li>
+	<li class="cat-item cat-item-17"><a href="https://www.8host.com/blog/category/ssh/" title="SSH-подключение к серверу VPS, установка и настройка, изменение паролей, использование SSH для подключения к удаленному серверу. Рекомендации и отзывы.">SSH</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="https://www.8host.com/blog/category/ubuntu/" title="Подбор статей о работе с сервером на Ubuntu разных версий. Настройки, установка, развертывание приложений.">Ubuntu</a>
+</li>
+	<li class="cat-item cat-item-37"><a href="https://www.8host.com/blog/category/vps/" >VPS</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="https://www.8host.com/blog/category/uncategorized/" title="Здесь вы найдете дополнительные материалы по установке приложений, ОС на VPS, советы по работе с БД. Всё, что не вошло в основные категории информатория">Без категорий</a>
+</li>
+		</ul>
+</div><style scoped type="text/css">.utcw-857bnk3 {word-wrap:break-word}.utcw-857bnk3 span,.utcw-857bnk3 a{border-width:0px}.utcw-857bnk3 span:hover,.utcw-857bnk3 a:hover{border-width:0px}</style><div id="utcw-2" class="widget_utcw widget_tag_cloud"><h3>Поиск по меткам</h3><div class="utcw-857bnk3 tagcloud"><a class="tag-link-270 utcw-tag utcw-tag-htaccess" href="https://www.8host.com/blog/tag/htaccess/" style="font-size:10.138888888889px" title="30 topics">.htaccess</a> <a class="tag-link-13 utcw-tag utcw-tag-apache" href="https://www.8host.com/blog/tag/apache/" style="font-size:21.180555555556px" title="189 topics">Apache</a> <a class="tag-link-14 utcw-tag utcw-tag-centos-2" href="https://www.8host.com/blog/tag/centos-2/" style="font-size:15px" title="100 topics">CentOS</a> <a class="tag-link-169 utcw-tag utcw-tag-centos-6" href="https://www.8host.com/blog/tag/centos-6/" style="font-size:11.388888888889px" title="48 topics">CentOS 6</a> <a class="tag-link-299 utcw-tag utcw-tag-centos-7" href="https://www.8host.com/blog/tag/centos-7/" style="font-size:16.388888888889px" title="120 topics">CentOS 7</a> <a class="tag-link-1059 utcw-tag utcw-tag-cloud-server" href="https://www.8host.com/blog/tag/cloud-server/" style="font-size:17.777777777778px" title="140 topics">Cloud Server</a> <a class="tag-link-1058 utcw-tag utcw-tag-debian" href="https://www.8host.com/blog/tag/debian/" style="font-size:12.152777777778px" title="59 topics">Debian</a> <a class="tag-link-54 utcw-tag utcw-tag-debian-7" href="https://www.8host.com/blog/tag/debian-7/" style="font-size:10.347222222222px" title="33 topics">Debian 7</a> <a class="tag-link-712 utcw-tag utcw-tag-debian-8" href="https://www.8host.com/blog/tag/debian-8/" style="font-size:11.041666666667px" title="43 topics">Debian 8</a> <a class="tag-link-104 utcw-tag utcw-tag-django" href="https://www.8host.com/blog/tag/django/" style="font-size:11.111111111111px" title="44 topics">Django</a> <a class="tag-link-230 utcw-tag utcw-tag-dns" href="https://www.8host.com/blog/tag/dns/" style="font-size:10.208333333333px" title="31 topics">DNS</a> <a class="tag-link-396 utcw-tag utcw-tag-docker" href="https://www.8host.com/blog/tag/docker/" style="font-size:12.013888888889px" title="57 topics">Docker</a> <a class="tag-link-425 utcw-tag utcw-tag-elasticsearch" href="https://www.8host.com/blog/tag/elasticsearch/" style="font-size:10.069444444444px" title="29 topics">ElasticSearch</a> <a class="tag-link-200 utcw-tag utcw-tag-epel" href="https://www.8host.com/blog/tag/epel/" style="font-size:10px" title="28 topics">EPEL</a> <a class="tag-link-53 utcw-tag utcw-tag-git" href="https://www.8host.com/blog/tag/git/" style="font-size:12.083333333333px" title="58 topics">Git</a> <a class="tag-link-59 utcw-tag utcw-tag-iptables" href="https://www.8host.com/blog/tag/iptables/" style="font-size:10.486111111111px" title="35 topics">Iptables</a> <a class="tag-link-1062 utcw-tag utcw-tag-java" href="https://www.8host.com/blog/tag/java/" style="font-size:10.277777777778px" title="32 topics">Java</a> <a class="tag-link-193 utcw-tag utcw-tag-javascript" href="https://www.8host.com/blog/tag/javascript/" style="font-size:11.458333333333px" title="49 topics">Javascript</a> <a class="tag-link-269 utcw-tag utcw-tag-lamp-stack" href="https://www.8host.com/blog/tag/lamp-stack/" style="font-size:13.333333333333px" title="76 topics">LAMP stack</a> <a class="tag-link-852 utcw-tag utcw-tag-lets-encrypt" href="https://www.8host.com/blog/tag/lets-encrypt/" style="font-size:10.138888888889px" title="30 topics">Let's Encrypt</a> <a class="tag-link-1052 utcw-tag utcw-tag-linux" href="https://www.8host.com/blog/tag/linux/" style="font-size:30px" title="316 topics">Linux</a> <a class="tag-link-1064 utcw-tag utcw-tag-mariadb" href="https://www.8host.com/blog/tag/mariadb/" style="font-size:10.069444444444px" title="29 topics">MariaDB</a> <a class="tag-link-338 utcw-tag utcw-tag-mongodb" href="https://www.8host.com/blog/tag/mongodb/" style="font-size:10.555555555556px" title="36 topics">MongoDB</a> <a class="tag-link-167 utcw-tag utcw-tag-mysql-2" href="https://www.8host.com/blog/tag/mysql-2/" style="font-size:18.472222222222px" title="150 topics">MySQL</a> <a class="tag-link-120 utcw-tag utcw-tag-nginx" href="https://www.8host.com/blog/tag/nginx/" style="font-size:23.194444444444px" title="218 topics">NGINX</a> <a class="tag-link-192 utcw-tag utcw-tag-node-js" href="https://www.8host.com/blog/tag/node-js/" style="font-size:11.527777777778px" title="50 topics">Node.js</a> <a class="tag-link-423 utcw-tag utcw-tag-nosql" href="https://www.8host.com/blog/tag/nosql/" style="font-size:10.069444444444px" title="29 topics">NoSQL</a> <a class="tag-link-1055 utcw-tag utcw-tag-php" href="https://www.8host.com/blog/tag/php/" style="font-size:15.972222222222px" title="114 topics">PHP</a> <a class="tag-link-144 utcw-tag utcw-tag-postgresql" href="https://www.8host.com/blog/tag/postgresql/" style="font-size:11.111111111111px" title="44 topics">PostgreSQL</a> <a class="tag-link-1061 utcw-tag utcw-tag-python" href="https://www.8host.com/blog/tag/python/" style="font-size:13.680555555556px" title="81 topics">Python</a> <a class="tag-link-157 utcw-tag utcw-tag-python-3" href="https://www.8host.com/blog/tag/python-3/" style="font-size:12.777777777778px" title="68 topics">Python 3</a> <a class="tag-link-437 utcw-tag utcw-tag-rails" href="https://www.8host.com/blog/tag/rails/" style="font-size:10.347222222222px" title="33 topics">Rails</a> <a class="tag-link-1051 utcw-tag utcw-tag-ruby" href="https://www.8host.com/blog/tag/ruby/" style="font-size:12.291666666667px" title="61 topics">Ruby</a> <a class="tag-link-4 utcw-tag utcw-tag-ruby-on-rails" href="https://www.8host.com/blog/tag/ruby-on-rails/" style="font-size:10.486111111111px" title="35 topics">Ruby on Rails</a> <a class="tag-link-1056 utcw-tag utcw-tag-ssh" href="https://www.8host.com/blog/tag/ssh/" style="font-size:14.166666666667px" title="88 topics">SSH</a> <a class="tag-link-130 utcw-tag utcw-tag-ssl" href="https://www.8host.com/blog/tag/ssl/" style="font-size:14.930555555556px" title="99 topics">SSL</a> <a class="tag-link-207 utcw-tag utcw-tag-tls" href="https://www.8host.com/blog/tag/tls/" style="font-size:10.138888888889px" title="30 topics">TLS</a> <a class="tag-link-1053 utcw-tag utcw-tag-ubuntu" href="https://www.8host.com/blog/tag/ubuntu/" style="font-size:23.819444444444px" title="227 topics">Ubuntu</a> <a class="tag-link-24 utcw-tag utcw-tag-ubuntu-12-04" href="https://www.8host.com/blog/tag/ubuntu-12-04/" style="font-size:18.75px" title="154 topics">Ubuntu 12.04</a> <a class="tag-link-35 utcw-tag utcw-tag-ubuntu-12-10" href="https://www.8host.com/blog/tag/ubuntu-12-10/" style="font-size:10.069444444444px" title="29 topics">Ubuntu 12.10</a> <a class="tag-link-191 utcw-tag utcw-tag-ubuntu-14-04" href="https://www.8host.com/blog/tag/ubuntu-14-04/" style="font-size:24.375px" title="235 topics">Ubuntu 14.04</a> <a class="tag-link-902 utcw-tag utcw-tag-ubuntu-16-04" href="https://www.8host.com/blog/tag/ubuntu-16-04/" style="font-size:23.611111111111px" title="224 topics">Ubuntu 16.04</a> <a class="tag-link-107 utcw-tag utcw-tag-virtualenv" href="https://www.8host.com/blog/tag/virtualenv/" style="font-size:10.069444444444px" title="29 topics">virtualenv</a> <a class="tag-link-1057 utcw-tag utcw-tag-vps" href="https://www.8host.com/blog/tag/vps/" style="font-size:27.916666666667px" title="286 topics">VPS</a> <a class="tag-link-205 utcw-tag utcw-tag-wordpress" href="https://www.8host.com/blog/tag/wordpress/" style="font-size:11.597222222222px" title="51 topics">WordPress</a></div></div><div id="archives-2" class="widget_archive"><h3>Архивы</h3>		<label class="screen-reader-text" for="archives-dropdown-2">Архивы</label>
+		<select id="archives-dropdown-2" name="archive-dropdown" onchange='document.location.href=this.options[this.selectedIndex].value;'>
+			
+			<option value="">Выберите месяц</option>
+				<option value='https://www.8host.com/blog/2018/05/'> Май 2018 &nbsp;(4)</option>
+	<option value='https://www.8host.com/blog/2018/04/'> Апрель 2018 &nbsp;(26)</option>
+	<option value='https://www.8host.com/blog/2018/03/'> Март 2018 &nbsp;(30)</option>
+	<option value='https://www.8host.com/blog/2018/02/'> Февраль 2018 &nbsp;(25)</option>
+	<option value='https://www.8host.com/blog/2018/01/'> Январь 2018 &nbsp;(30)</option>
+	<option value='https://www.8host.com/blog/2017/12/'> Декабрь 2017 &nbsp;(30)</option>
+	<option value='https://www.8host.com/blog/2017/11/'> Ноябрь 2017 &nbsp;(30)</option>
+	<option value='https://www.8host.com/blog/2017/10/'> Октябрь 2017 &nbsp;(31)</option>
+	<option value='https://www.8host.com/blog/2017/09/'> Сентябрь 2017 &nbsp;(30)</option>
+	<option value='https://www.8host.com/blog/2017/08/'> Август 2017 &nbsp;(31)</option>
+	<option value='https://www.8host.com/blog/2017/07/'> Июль 2017 &nbsp;(31)</option>
+	<option value='https://www.8host.com/blog/2017/06/'> Июнь 2017 &nbsp;(30)</option>
+	<option value='https://www.8host.com/blog/2017/05/'> Май 2017 &nbsp;(31)</option>
+	<option value='https://www.8host.com/blog/2017/04/'> Апрель 2017 &nbsp;(30)</option>
+	<option value='https://www.8host.com/blog/2017/03/'> Март 2017 &nbsp;(33)</option>
+	<option value='https://www.8host.com/blog/2017/02/'> Февраль 2017 &nbsp;(28)</option>
+	<option value='https://www.8host.com/blog/2017/01/'> Январь 2017 &nbsp;(31)</option>
+	<option value='https://www.8host.com/blog/2016/12/'> Декабрь 2016 &nbsp;(31)</option>
+	<option value='https://www.8host.com/blog/2016/11/'> Ноябрь 2016 &nbsp;(30)</option>
+	<option value='https://www.8host.com/blog/2016/10/'> Октябрь 2016 &nbsp;(31)</option>
+	<option value='https://www.8host.com/blog/2016/09/'> Сентябрь 2016 &nbsp;(30)</option>
+	<option value='https://www.8host.com/blog/2016/08/'> Август 2016 &nbsp;(31)</option>
+	<option value='https://www.8host.com/blog/2016/07/'> Июль 2016 &nbsp;(31)</option>
+	<option value='https://www.8host.com/blog/2016/06/'> Июнь 2016 &nbsp;(30)</option>
+	<option value='https://www.8host.com/blog/2016/05/'> Май 2016 &nbsp;(31)</option>
+	<option value='https://www.8host.com/blog/2016/04/'> Апрель 2016 &nbsp;(30)</option>
+	<option value='https://www.8host.com/blog/2016/03/'> Март 2016 &nbsp;(31)</option>
+	<option value='https://www.8host.com/blog/2016/02/'> Февраль 2016 &nbsp;(29)</option>
+	<option value='https://www.8host.com/blog/2016/01/'> Январь 2016 &nbsp;(31)</option>
+	<option value='https://www.8host.com/blog/2015/12/'> Декабрь 2015 &nbsp;(31)</option>
+	<option value='https://www.8host.com/blog/2015/11/'> Ноябрь 2015 &nbsp;(30)</option>
+	<option value='https://www.8host.com/blog/2015/10/'> Октябрь 2015 &nbsp;(31)</option>
+	<option value='https://www.8host.com/blog/2015/09/'> Сентябрь 2015 &nbsp;(30)</option>
+	<option value='https://www.8host.com/blog/2015/08/'> Август 2015 &nbsp;(31)</option>
+	<option value='https://www.8host.com/blog/2015/07/'> Июль 2015 &nbsp;(31)</option>
+	<option value='https://www.8host.com/blog/2015/06/'> Июнь 2015 &nbsp;(30)</option>
+	<option value='https://www.8host.com/blog/2015/05/'> Май 2015 &nbsp;(31)</option>
+	<option value='https://www.8host.com/blog/2015/04/'> Апрель 2015 &nbsp;(30)</option>
+	<option value='https://www.8host.com/blog/2015/03/'> Март 2015 &nbsp;(31)</option>
+	<option value='https://www.8host.com/blog/2015/02/'> Февраль 2015 &nbsp;(28)</option>
+	<option value='https://www.8host.com/blog/2015/01/'> Январь 2015 &nbsp;(31)</option>
+	<option value='https://www.8host.com/blog/2014/12/'> Декабрь 2014 &nbsp;(31)</option>
+	<option value='https://www.8host.com/blog/2014/11/'> Ноябрь 2014 &nbsp;(30)</option>
+	<option value='https://www.8host.com/blog/2014/10/'> Октябрь 2014 &nbsp;(31)</option>
+	<option value='https://www.8host.com/blog/2014/09/'> Сентябрь 2014 &nbsp;(30)</option>
+	<option value='https://www.8host.com/blog/2014/08/'> Август 2014 &nbsp;(31)</option>
+	<option value='https://www.8host.com/blog/2014/07/'> Июль 2014 &nbsp;(31)</option>
+	<option value='https://www.8host.com/blog/2014/06/'> Июнь 2014 &nbsp;(25)</option>
+	<option value='https://www.8host.com/blog/2014/05/'> Май 2014 &nbsp;(22)</option>
+	<option value='https://www.8host.com/blog/2014/04/'> Апрель 2014 &nbsp;(22)</option>
+	<option value='https://www.8host.com/blog/2014/03/'> Март 2014 &nbsp;(20)</option>
+	<option value='https://www.8host.com/blog/2014/02/'> Февраль 2014 &nbsp;(6)</option>
+	<option value='https://www.8host.com/blog/2014/01/'> Январь 2014 &nbsp;(12)</option>
+	<option value='https://www.8host.com/blog/2013/12/'> Декабрь 2013 &nbsp;(11)</option>
+
+		</select>
+		</div>			</div>
+		</aside>
+	
+			<aside class="sidebar" role="complementary">
+			<div class="sidebar-widget">
+				<div id="text-11" class="widget_text">			<div class="textwidget"><p><!-- 300x600 v.2 --><br />
+<ins class="adsbygoogle" style="display: inline-block; width: 300px; height: 600px;" data-ad-client="ca-pub-4672639452561295" data-ad-slot="9427006842"></ins><br />
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+</div>
+		</div>			</div>
+		</aside>
+	
+	
+
+</div>
+</div>
+
+
+
+</div>
+</section>
+
+
+        <script type="text/javascript">
+        // <![CDATA[
+        var disqus_shortname = '8host-blog';
+        (function () {
+            var nodes = document.getElementsByTagName('span');
+            for (var i = 0, url; i < nodes.length; i++) {
+                if (nodes[i].className.indexOf('dsq-postid') != -1 && nodes[i].parentNode.tagName == 'A') {
+                    nodes[i].parentNode.setAttribute('data-disqus-identifier', nodes[i].getAttribute('data-dsqidentifier'));
+                    url = nodes[i].parentNode.href.split('#', 1);
+                    if (url.length == 1) { url = url[0]; }
+                    else { url = url[1]; }
+                    nodes[i].parentNode.href = url + '#disqus_thread';
+                }
+            }
+            var s = document.createElement('script');
+            s.async = true;
+            s.type = 'text/javascript';
+            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+        // ]]>
+        </script>
+        <script type='text/javascript' src='https://www.8host.com/blog/wp-includes/js/comment-reply.min.js?ver=4.8'></script>
+<script type='text/javascript' src='https://www.8host.com/blog/wp-includes/js/wp-embed.min.js?ver=4.8'></script>
+<!-- Footer -->
+<!-- Footer -->
+<footer id="footer">
+	<div class="container">
+		<section class="links">
+			<div class="row">
+				<section class="3u 6u(medium) 12u$(small)">
+					<h3>Продукт</h3>
+					<ul class="unstyled">
+						<li><a href="https://www.8host.com/pricing">Цены</a></li>
+						<li><a href="https://www.8host.com/features">Преимущества</a></li>
+						<li><a href="https://www.8host.com/pricing#payment-methods">Способы оплаты</a></li>
+<!--						<li><a href="http://www.8host.com/features#features-tech">Технологии</a></li>
+						<li><a href="#">API</a></li>-->
+					</ul>
+				</section>
+				<section class="3u 6u$(medium) 12u$(small)">
+					<h3>Компания</h3>
+					<ul class="unstyled">
+						<li><a href="https://www.8host.com/features#features-freedom">О нас</a></li>
+						<li><a href="https://www.8host.com/blog/">Блог</a></li>
+						<li><a href="https://www.8host.com/contact-us">Контакты</a></li>
+<!--						<li><a href="#">События</a></li>
+						<li><a href="#">Лого и бейджи</a></li>
+						<li><a href="#">Пресса</a></li>  -->
+					</ul>
+				</section>
+				<section class="3u 6u(medium) 12u$(small)">
+					<h3>Помощь</h3>
+					<ul class="unstyled">
+						<li><a href="https://www.8host.com/blog/">Информаторий</a></li>
+						<li><a href="https://www.8host.com/contact-us">Техподдержка</a></li>
+						<li><a href="https://www.8host.com/contact-us">Оставить запрос</a></li>
+<!--						<li><a href="#">Статус сети</a></li>
+						<li><a href="#">Вопросы и ответы</a></li>   -->
+					</ul>
+				</section>
+				<section class="3u$ 6u$(medium) 12u$(small)">
+					<h3>Преимущества</h3>
+					<ul class="unstyled">
+						<li><a href="https://www.8host.com/features#features-tech">Технологии</a></li>
+						<li><a href="https://www.8host.com/features#features-freedom">Свобода и безопасность</a></li>
+						<li><a href="https://www.8host.com/features#features-reliability">Надежность</a></li>
+						<li><a href="https://www.8host.com/features#features-access">Доступность</a></li>
+					</ul>
+				</section>
+			</div>
+		</section>
+	</div>
+	<section class="under-footer">
+		<div class="container">
+			<div class="row">
+				<div class="8u 12u$(medium)">
+					<ul class="copyright">
+						<li>© 2016 www.8host.com</li>
+						<li><a href='https://www.8host.com/privacy'>Безопасность</a></li>
+						<li><a href='https://www.8host.com/terms-and-conditions'>Условия предоставления услуг</a></li>
+					</ul>
+				</div>
+				<div class="4u$ 12u$(medium)">
+					<ul class="icons">
+						<li>
+							<a class="icon rounded fa-facebook" href="https://www.facebook.com/pages/8Host/1063590243670236?ref=hl"><span class="label">Facebook</span></a>
+						</li>
+						<li>
+							<a class="icon rounded fa-twitter" href="https://twitter.com/8Host_social"><span class="label">Twitter</span></a>
+						</li>
+						<li>
+							<a class="icon rounded fa-google-plus" href="https://plus.google.com/u/0/b/105145648824775848083/105145648824775848083/about"><span class="label">Google+</span></a>
+						</li>
+						<li>
+							<a class="icon rounded fa-linkedin" href="https://www.linkedin.com/grp/home?gid=8310064"><span class="label">LinkedIn</span></a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+</footer>
+</body>
+</html>
