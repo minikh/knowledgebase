@@ -1,3 +1,6 @@
+pg_dump -d postgres | gzip > /home/postgres/2018_11.20.gz
+
+
 зайти в psql
 sudo -u postgres psql
 задать пароль
