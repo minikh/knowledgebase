@@ -60,3 +60,10 @@ k3s kubectl proxy
 
 # service file
 /etc/systemd/system/k3s.service
+
+kubectl -n tme-dev get cm tme-backend -o json
+
+kubectl --insecure-skip-tls-verify get ns
+kubectl --insecure-skip-tls-verify -n stateful-services port-forward db-postgres-postgresql-0 5432:5432
+
+kubectl create secret generic intake-tls --namespace=dev --from-file=DLWSCert.p12 --from-literal=password=UVBRKJGC
