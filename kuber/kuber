@@ -1,0 +1,62 @@
+# install
+curl -sfL https://get.k3s.io | sh -
+
+#uninstall
+/usr/local/bin/k3s-uninstall.sh
+
+#deploy
+sudo ./deploy-locally.sh
+
+#get all namespaces
+sudo k3s kubectl get pods --all-namespaces
+
+#get sandboxes
+sudo kubectl --kubeconfig /etc/rancher/k3s/k3s.yaml get pods -n sandbox
+sudo k3s kubectl get all -n sandbox
+
+#logs
+sudo k3s kubectl -n sandbox logs -f orientdb-nosql-db-59d88b9864-c5chk
+sudo kubectl --kubeconfig /etc/rancher/k3s/k3s.yaml -n sandbox logs -f orientdb-nosql-db-59d88b9864-c5chk
+
+#delete
+sudo k3s kubectl --kubeconfig /etc/rancher/k3s/k3s.yaml -n sandbox delete pod metadata-ui-68c4dd59f9-x2qdd
+
+
+
+k3s kubectl create ns sandbox
+k3s kubectl apply -f configurations/global-configmap.yaml
+k3s kubectl apply -f deployments/orientdb.yaml
+k3s kubectl apply -f deployments/metadata-api.yaml
+k3s kubectl apply -f deployments/metadata-ui.yaml
+k3s kubectl apply -f services/orientdb.yaml
+k3s kubectl apply -f services/metadata-api.yaml
+k3s kubectl apply -f services/metadata-ui.yaml
+k3s kubectl apply -f ingress/routes.yaml
+k3s kubectl get all -n sandbox
+
+k3s kubectl delete ns sandbox
+
+export GITHUB_URL=https://github.com/kubernetes/dashboard/releases
+export VERSION_KUBE_DASHBOARD=$(curl -w '%{url_effective}' -I -L -s -S ${GITHUB_URL}/latest -o /dev/null | sed -e 's|.*/||')
+
+k3s kubectl create -f https://raw.githubusercontent.com/kubernetes/dashboard/${VERSION_KUBE_DASHBOARD}/aio/deploy/recommended.yaml
+k3s kubectl apply -f ./dashboard/sa-admin_user.yaml
+k3s kubectl apply -f ./dashboard/rolebinding-admin_role.yaml
+
+k3s kubectl proxy
+# Then, open in web-browser the following link:
+# http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/
+
+
+
+# killall script
+/usr/local/bin/k3s-killall.sh
+
+# uninstall script
+/usr/local/bin/k3s-uninstall.sh
+
+# environment file
+/etc/systemd/system/k3s.service.env
+
+# service file
+/etc/systemd/system/k3s.service
