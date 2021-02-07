@@ -14,6 +14,12 @@ sudo k3s kubectl get pods --all-namespaces
 sudo kubectl --kubeconfig /etc/rancher/k3s/k3s.yaml get pods -n sandbox
 sudo k3s kubectl get all -n sandbox
 
+# get pod
+sudo kubectl --kubeconfig /etc/rancher/k3s/k3s.yaml -n sandbox get pod metadata-api-66c8c5696f-pdgbq
+
+# describe pod
+sudo kubectl --kubeconfig /etc/rancher/k3s/k3s.yaml -n sandbox describe pod metadata-api
+
 #logs
 sudo k3s kubectl -n sandbox logs -f orientdb-nosql-db-59d88b9864-c5chk
 sudo kubectl --kubeconfig /etc/rancher/k3s/k3s.yaml -n sandbox logs -f orientdb-nosql-db-59d88b9864-c5chk
