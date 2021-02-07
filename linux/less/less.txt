@@ -1,0 +1,5 @@
+#Подсветка логов в less
+sudo apt install source-highlight
+echo 'export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"' >> ~/.bashrc
+echo "export LESS=' -R '" >> ~/.bashrc
+source ~/.bashrc

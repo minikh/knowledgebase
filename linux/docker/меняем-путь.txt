@@ -1,0 +1,9 @@
+/var/lib/docker/
+
+Скопируем все из /var/lib/docker/ в /home/docker/
+
+удалим /var/lib/docker/
+
+далее создаем ссылку:
+
+ln -s /home/docker/ /var/lib/docker
