@@ -11,3 +11,18 @@ KEYS *
 FLUSHALL
 
 INFO
+
+
+
+127.0.0.1:6379> KEYS alerts:rules:*
+1) "alerts:rules:af66af8c-8129-41dd-a443-8b1bb04d62ac"
+2) "alerts:rules:c2946816-2729-4ffb-9209-d502a2ef4149"
+3) "alerts:rules:074299a4-20be-40c6-a9a5-6c6b9751368d"
+4) "alerts:rules:f63243ca-dc67-4826-a9af-ffc55fdfb9ac"
+5) "alerts:rules:c120a0d0-f173-48ff-a3c3-e5dba0b63c2a"
+
+127.0.0.1:6379> smembers alerts:rules:af66af8c-8129-41dd-a443-8b1bb04d62ac
+1) "77e7227e-ab0b-46f3-b78b-325dd049e401"
+2) "354c2581-64c5-4611-b067-83633b1c4064"
+
+

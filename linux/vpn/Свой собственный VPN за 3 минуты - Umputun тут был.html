@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!-->
+<html class="js video maskImage placeholder" lang="en"><!--<![endif]--><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <title>Свой собственный VPN за 3 минуты - Umputun тут был</title>
+  <meta name="author" content="Umputun">
+
+  
+  <meta name="description" content="Это простое руководство для обычных людей, тем кому нужен VPN для каких-то благих целей. Например, доступаться к тому к чему вас не подпускают, …">
+  
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+
+  
+  <link rel="canonical" href="http://p.umputun.com/p/2014/08/12/svoi-sobstviennyi-vpn-za-3-minuty">
+  <link href="https://p.umputun.com/favicon.png" rel="icon">
+  <link href="%D0%A1%D0%B2%D0%BE%D0%B9%20%D1%81%D0%BE%D0%B1%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9%20VPN%20%D0%B7%D0%B0%203%20%D0%BC%D0%B8%D0%BD%D1%83%D1%82%D1%8B%20-%20Umputun%20%D1%82%D1%83%D1%82%20%D0%B1%D1%8B%D0%BB_files/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="%D0%A1%D0%B2%D0%BE%D0%B9%20%D1%81%D0%BE%D0%B1%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9%20VPN%20%D0%B7%D0%B0%203%20%D0%BC%D0%B8%D0%BD%D1%83%D1%82%D1%8B%20-%20Umputun%20%D1%82%D1%83%D1%82%20%D0%B1%D1%8B%D0%BB_files/cbgapi.loaded_1" async=""></script><script src="%D0%A1%D0%B2%D0%BE%D0%B9%20%D1%81%D0%BE%D0%B1%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9%20VPN%20%D0%B7%D0%B0%203%20%D0%BC%D0%B8%D0%BD%D1%83%D1%82%D1%8B%20-%20Umputun%20%D1%82%D1%83%D1%82%20%D0%B1%D1%8B%D0%BB_files/cbgapi.loaded_0" async=""></script><script type="text/javascript" async="" src="%D0%A1%D0%B2%D0%BE%D0%B9%20%D1%81%D0%BE%D0%B1%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9%20VPN%20%D0%B7%D0%B0%203%20%D0%BC%D0%B8%D0%BD%D1%83%D1%82%D1%8B%20-%20Umputun%20%D1%82%D1%83%D1%82%20%D0%B1%D1%8B%D0%BB_files/plusone.js" gapi_processed="true"></script><script type="text/javascript" async="" src="%D0%A1%D0%B2%D0%BE%D0%B9%20%D1%81%D0%BE%D0%B1%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9%20VPN%20%D0%B7%D0%B0%203%20%D0%BC%D0%B8%D0%BD%D1%83%D1%82%D1%8B%20-%20Umputun%20%D1%82%D1%83%D1%82%20%D0%B1%D1%8B%D0%BB_files/ga.js"></script><script src="%D0%A1%D0%B2%D0%BE%D0%B9%20%D1%81%D0%BE%D0%B1%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9%20VPN%20%D0%B7%D0%B0%203%20%D0%BC%D0%B8%D0%BD%D1%83%D1%82%D1%8B%20-%20Umputun%20%D1%82%D1%83%D1%82%20%D0%B1%D1%8B%D0%BB_files/modernizr-2.js"></script>
+  <script src="%D0%A1%D0%B2%D0%BE%D0%B9%20%D1%81%D0%BE%D0%B1%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9%20VPN%20%D0%B7%D0%B0%203%20%D0%BC%D0%B8%D0%BD%D1%83%D1%82%D1%8B%20-%20Umputun%20%D1%82%D1%83%D1%82%20%D0%B1%D1%8B%D0%BB_files/ender.js"></script>
+  <script src="%D0%A1%D0%B2%D0%BE%D0%B9%20%D1%81%D0%BE%D0%B1%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9%20VPN%20%D0%B7%D0%B0%203%20%D0%BC%D0%B8%D0%BD%D1%83%D1%82%D1%8B%20-%20Umputun%20%D1%82%D1%83%D1%82%20%D0%B1%D1%8B%D0%BB_files/octopress.js" type="text/javascript"></script>
+  <link href="http://feeds.feedburner.com/p-umputun" rel="alternate" title="Umputun тут был" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<!-- <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+ -->
+
+<!-- <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css"> -->
+
+ <!-- <link href='http://fonts.googleapis.com/css?family=Ubuntu&subset=latin,cyrillic' rel='stylesheet' type='text/css'> -->
+
+<!-- <link href='http://fonts.googleapis.com/css?family=PT+Sans+Caption:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'> -->
+
+<!-- <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+ -->
+<link href="http://fonts.googleapis.com/css?family=Play&amp;subset=latin,cyrillic" rel="stylesheet" type="text/css">
+
+<!-- audio player -->
+<script src="%D0%A1%D0%B2%D0%BE%D0%B9%20%D1%81%D0%BE%D0%B1%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9%20VPN%20%D0%B7%D0%B0%203%20%D0%BC%D0%B8%D0%BD%D1%83%D1%82%D1%8B%20-%20Umputun%20%D1%82%D1%83%D1%82%20%D0%B1%D1%8B%D0%BB_files/audio.js"></script>
+
+<script>
+  audiojs.events.ready(function() {
+    var as = audiojs.createAll();
+  });
+</script>
+
+
+<meta content="умпутун, umputun, подкаст умпутуна, еженедельный подкаст, podcast, подкаст из США, подкаст на русском, Интернет Радио" name="Keywords">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-20349923-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+<script type="text/javascript" async="" src="http://p-umputun.disqus.com/embed.js"></script><script type="text/javascript" async="" src="http://platform.twitter.com/widgets.js"></script></head>
+
+<body>
+  <header role="banner"> <!-- <hgroup>
+  <h1><a href="/">Umputun тут был</a></h1>
+   <h1><a href="/">Расширитель твитера Umputun. Прямо из центра USA</a></h1>
+</hgroup> -->
+
+<header role="banner">
+	<hgroup>
+<!-- 		<a href="/" id="super-logo"></a>
+		<h1><a href="/">Расширитель твитера Umputun. Прямо из центра USA</a></h1> -->
+	</hgroup>
+</header>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://feeds.feedburner.com/p-umputun" rel="subscribe-rss" title="подисаться на RSS фид подкаста">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="p.umputun.com">
+    <input class="search" type="text" name="q" results="0" placeholder="Поиск">
+  </fieldset><fieldset class="mobile-nav"><select><option value="">Navigate…</option><option value="https://p.umputun.com/">» Umputun тут был</option><option value="http://feeds.feedburner.com/p-umputun" selected="selected">» RSS</option></select></fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="https://p.umputun.com/"><h1>Umputun тут был</h1></a></li>
+  <!-- <li><a href="/archives">Архивы</a></li> -->
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h2 class="entry-title">Свой собственный VPN за 3 минуты</h2>
+
+      <!-- Twitter Card Stuff -->
+      <meta name="twitter:card" content="summary">
+      <meta name="twitter:site" content="">
+      <meta name="twitter:creator" content="">
+
+      
+
+      <meta name="twitter:url" content="http://p.umputun.com/p/2014/08/12/svoi-sobstviennyi-vpn-za-3-minuty">
+      <meta name="twitter:title" content="Свой собственный VPN за 3 минуты">
+      <meta name="twitter:description" content="">
+      <!-- End of Twitter Card Stuff -->
+
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-08-12T11:27:00+00:00" pubdate="" data-updated="true">12-08-2014</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p><img class="right" src="%D0%A1%D0%B2%D0%BE%D0%B9%20%D1%81%D0%BE%D0%B1%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9%20VPN%20%D0%B7%D0%B0%203%20%D0%BC%D0%B8%D0%BD%D1%83%D1%82%D1%8B%20-%20Umputun%20%D1%82%D1%83%D1%82%20%D0%B1%D1%8B%D0%BB_files/openvpn.png" width="150"></p>
+
+<p>Это простое руководство <strong>для обычных людей</strong>, тем кому 
+нужен VPN для каких-то благих целей.  Например, доступаться к тому к 
+чему вас не подпускают, обходить разные глупые цензуры и, наконец, 
+немного скрыть свои следы в сети.</p>
+
+<p>Мое мини-руководство рассчитано на человека с улицы, без особого 
+гиковского опыта, но достаточно комфортно чувствующего себя в мире 
+компьютеров. Если у вас возникнут уточнения, пояснения и прочие поправки
+ упрощающие процесс понимания - <strong>пишите в комментарии и я добавлю в основной текст</strong>.</p>
+
+<!--more-->
+
+
+<p>План такой:</p>
+
+<ol>
+<li>Поднять подходящий дроплет в <a href="https://www.digitalocean.com/">DigitalOcean</a></li>
+<li>Добавить в этот дроплет VPN</li>
+<li>Настроить ваш компьютер для доступа через этот VPN</li>
+</ol>
+
+
+<p><strong>Поднимаем дроплет</strong></p>
+
+<p>Первым делом надо завести себе экаунт на DigitalOcean. Это можно (и нужно ;) сделать по моей <a href="https://www.digitalocean.com/?refcode=229abb726d5d">реферальной ссылке</a>
+ либо прямо с их сайта. Цена вопроса - $5/мес. За эти деньги вы получите
+ 1Т трафика в месяц, что на практике более чем достаточно. В принципе и 
+четверти от этого нормальному человеку хватит на месяц, а значит можно 
+скооперироваться с друзьями/коллегами и использовать общий VPN дроплет 
+для целой группы товарищей.  И еще в сети можно найти вполне законные 
+промо-коды для скидок и подарков, например у нас на <a href="http://www.radio-t.com/">радио-т</a> есть такой на $10, что хватит на целых 2 месяца работы нашего VPN.</p>
+
+<p>Далее запускаем новый дроплет кликнув на зеленый “CREATE”. Даем ему 
+какое-нибудь имя (любое) на ваш вкус. Я, например, дал своему 
+“vpn.umputun.com”. Выбираем (в “Select Size”) 512MB/1CPU, а в “Select 
+Region” то место, где вы хотите расположить свой VPN. Если вас не 
+волнует доступ к ресурсам которые работают только из США, то разумнее 
+всего выбирать регион близкий к вам (Amsterdam или London для жителей 
+бывшего СССР).</p>
+
+<p><img src="%D0%A1%D0%B2%D0%BE%D0%B9%20%D1%81%D0%BE%D0%B1%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9%20VPN%20%D0%B7%D0%B0%203%20%D0%BC%D0%B8%D0%BD%D1%83%D1%82%D1%8B%20-%20Umputun%20%D1%82%D1%83%D1%82%20%D0%B1%D1%8B%D0%BB_files/wzl1u-20140812-110444.png" alt=""></p>
+
+<p>В секции “Select Image” переходим в “Applications” и там выбираем “Docker 1.4.1 on Ubuntu”</p>
+
+<p><img src="%D0%A1%D0%B2%D0%BE%D0%B9%20%D1%81%D0%BE%D0%B1%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9%20VPN%20%D0%B7%D0%B0%203%20%D0%BC%D0%B8%D0%BD%D1%83%D1%82%D1%8B%20-%20Umputun%20%D1%82%D1%83%D1%82%20%D0%B1%D1%8B%D0%BB_files/s14g0_20141231_152757.png" alt=""></p>
+
+<p>После этого жмем на “Create Droplet” и ждем минуту (иногда чуть больше) пока оно создается.</p>
+
+<p><strong>Добавляем VPN в наш дроплет</strong></p>
+
+<p>Первым делом надо зайти в консоль вновь созданного дроплета. Это 
+звучит страшно, но на самом деле все очень просто. К этому моменту вам 
+на почту уже должен добраться email с паролем. Если по какой-то причине 
+он не пришел, то в списке Droplets находим наш свеже-созданный, выбираем
+ Access и просим “Reset Root Password”.</p>
+
+<p><img src="%D0%A1%D0%B2%D0%BE%D0%B9%20%D1%81%D0%BE%D0%B1%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9%20VPN%20%D0%B7%D0%B0%203%20%D0%BC%D0%B8%D0%BD%D1%83%D1%82%D1%8B%20-%20Umputun%20%D1%82%D1%83%D1%82%20%D0%B1%D1%8B%D0%BB_files/v5d8v-20140812-133405.png" alt=""></p>
+
+<p>Через пару минут пароль придет в почту и мы готовы к доступу. 
+Нажимаем на “Console Access” и на запрос “login” вводим root, а на 
+запрос Password – полученный на почту пароль.</p>
+
+<p>В нашей консоли создаем VPN сервер набрав вот это и нажав Enter:
+  <code>CID=$(docker run -d --restart=always --privileged -p 1194:1194/udp -p 443:443/tcp umputun/dockvpn)</code></p>
+
+<p>Это будет работать несколько минут выказывая минимальные признаки жизни. Не волнуемся, оно все, что надо сделает и выйдет.</p>
+
+<p><img src="%D0%A1%D0%B2%D0%BE%D0%B9%20%D1%81%D0%BE%D0%B1%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9%20VPN%20%D0%B7%D0%B0%203%20%D0%BC%D0%B8%D0%BD%D1%83%D1%82%D1%8B%20-%20Umputun%20%D1%82%D1%83%D1%82%20%D0%B1%D1%8B%D0%BB_files/ige67_20141231_153712.png" alt=""></p>
+
+<p>Следующим шагом делаем это:
+ <code>docker run -t -i -p 8080:8080 --volumes-from $CID umputun/dockvpn serveconfig</code></p>
+
+<p>Оно должно выдать нечто типа <code>https://1.1.1.1:8080/</code> (у 
+вас будет другой адрес). Берем эту строку и вносим в ваш браузер. Оно (в
+ зависимости от бразуера) может пожаловаться на сертификат и попросить 
+подтверждения, которое надо дать. После этого загрузится файл который 
+нам понадобится на следующем, последнем этапе. А пока нажмем Ctrl-C в 
+консоли и переходим к последнему шагу.</p>
+
+<p>Если вы ввели адрес в браузере а файл не загрузился – попробуйте запустить <code>docker run -t -i -p 8181:8080 --volumes-from $CID umputun/dockvpn serveconfig</code> и потом откройте <code>https://1.1.1.1:8181/</code>, может помочь.</p>
+
+<p><strong>Устанавливаем VPN соединение</strong></p>
+
+<p>Нам понадобится поставить OpenVPN клиент для вашей платформы. Я установил <a href="https://code.google.com/p/tunnelblick/wiki/DownloadsEntry#Tunnelblick_Stable_Release">Tunnelblick</a> на Mac, но клиенты есть и для всех <a href="http://openvpn.net/">прочих систем</a>. А на <a href="http://www.umgum.com/openvpn-client-win">этом сайте</a> понятная и подробная инструкция по установке для windows.</p>
+
+<p>После этого переименуйте файл который мы загрузили на прошлом этапе в
+ vpn.ovpn и кликните по нему. Это добавит наш вновь созданный сервер в 
+вашу, вновь установленную программу клиента и приготовит все, что надо 
+приготовить. В процессе, в зависимости от вашей ОС и установленного 
+OpenVPN клиента, оно может попросить согласиться с тем и этим и задать 
+пару вопросов на которые смело отвечайте “Да”.</p>
+
+<p>Собственно на этом и все. Кликаем на Connect и мы подключены.</p>
+
+<p><img src="%D0%A1%D0%B2%D0%BE%D0%B9%20%D1%81%D0%BE%D0%B1%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9%20VPN%20%D0%B7%D0%B0%203%20%D0%BC%D0%B8%D0%BD%D1%83%D1%82%D1%8B%20-%20Umputun%20%D1%82%D1%83%D1%82%20%D0%B1%D1%8B%D0%BB_files/jt1dq-20140812-140949.png" alt=""></p>
+
+<p>Теперь можно убедиться в том, что все работает. Если зайти на <a href="http://wanip.info/">wanip.info</a>
+ то оно покажет вам всю правду, а именно то, что вы подключены с адреса 
+вашего VPN сервера и, с точки зрения всех сайтов, приходите из 
+Амстердама/Лондона/NY в зависимости от того, что выбрали в “Select 
+Region” на первом этапе.</p>
+
+<p>Для подключения дополнительных компьютеров просто повторите последний
+ шаг. Да, и имейте в виду, что раздавать свой vpn.ovpn файл всему 
+интернету - это плохая идея. 1Т это конечно много, но не настолько 
+много, чтоб хватило всем.</p>
+
+<p>Если после соединения вы не можете ни к чему подключится, то возможно
+ проблемы с DNS на стороне DigitalOcean.  Лично у меня таких проблем 
+никогда не возникало, но в комментариях люди жаловались. Чтоб это 
+починить откройте скаченный файл  (vpn.ovpn) и добавьте в него строку <code>dhcp-option DNS 8.8.8.8</code>.</p>
+
+<p><em>образ umputun/dockvpn это копия jpetazzo/openvpn из его свежих 
+исходников. Единственная цель зачем я его собрал это то, что у автора он
+ не строится автоматически и последние изменения там сами не появились.</em></p>
+
+<p><em>Последнее обновление: 1 Июля 2014 (для umputun/dockvpn с длинным ключом)</em></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard"> <span class="fn">Umputun</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-08-12T11:27:00+00:00" pubdate="" data-updated="true">12-08-2014</time>
+      
+
+<span class="categories">
+  
+    <a class="category" href="https://p.umputun.com/categories/tech/">tech</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://p.umputun.com/p/2014/08/12/svoi-sobstviennyi-vpn-za-3-minuty/" data-via="umputun" data-counturl="http://p.umputun.com/p/2014/08/12/svoi-sobstviennyi-vpn-za-3-minuty/">Tweet</a>
+  
+  
+  <div style="position: absolute; width: 450px; left: -10000px;" id="___plusone_0"><iframe ng-non-bindable="" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position:absolute;top:-10000px;width:450px;margin:0px;border-style:none" tabindex="0" vspace="0" id="I0_1574323767644" name="I0_1574323767644" src="%D0%A1%D0%B2%D0%BE%D0%B9%20%D1%81%D0%BE%D0%B1%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9%20VPN%20%D0%B7%D0%B0%203%20%D0%BC%D0%B8%D0%BD%D1%83%D1%82%D1%8B%20-%20Umputun%20%D1%82%D1%83%D1%82%20%D0%B1%D1%8B%D0%BB_files/fastbutton.html" data-gapiattached="true" width="100%" frameborder="0"></iframe></div><div class="g-plusone" data-size="medium" data-gapiscan="true" data-onload="true" data-gapistub="true"></div>
+  
+  
+</div>
+
+
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="https://p.umputun.com/p/2014/05/30/zhizn-s-ghibridnym-fusion-drive/" title="Previous Post: Жизнь с гибридным Fusion Drive">« Жизнь с гибридным Fusion Drive</a>
+      
+      
+        <a class="basic-alignment right" href="https://p.umputun.com/p/2014/09/07/remote-backup-mac/" title="Next Post: Резервные копии для озабоченных">Резервные копии для озабоченных »</a>
+      
+    </p>
+  </footer>
+</article>
+
+
+<section>
+<center>
+<!-- Яндекс.Директ -->
+</center>
+<br>
+    <!-- <h2>комментарии</h2> -->
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    
+  
+</aside>
+
+
+    <span class="toggle-sidebar"></span></div>
+  </div>
+  <footer role="contentinfo"><p>
+  Some <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/">rights</a> reserved, 2015 - Umputun -
+  <span class="credit">Powered by <a href="http://octopress.org/">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'p-umputun';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://p.umputun.com/p/2014/08/12/svoi-sobstviennyi-vpn-za-3-minuty/';
+        var disqus_url = 'http://p.umputun.com/p/2014/08/12/svoi-sobstviennyi-vpn-za-3-minuty/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+// <script type="text/javascript">//<![CDATA[
+//    if (document.getElementById('disqus_thread')) {
+//        (function() {
+//             var _gp = document.createElement('script');
+//             _gp.type = 'text/javascript'; _gp.async = true;
+//             _gp.src = 'http://gplus.kulikovd.ru/pingback?profile=104578309919492528255&url=' + window.location.href;
+//             var _s = document.getElementsByTagName('script')[0]; _s.parentNode.insertBefore(_gp, _s.nextSibling);
+//         })();
+//     }
+// //]]></script>
+
+
+
+
+
+<iframe name="oauth2relay744199392" id="oauth2relay744199392" src="%D0%A1%D0%B2%D0%BE%D0%B9%20%D1%81%D0%BE%D0%B1%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9%20VPN%20%D0%B7%D0%B0%203%20%D0%BC%D0%B8%D0%BD%D1%83%D1%82%D1%8B%20-%20Umputun%20%D1%82%D1%83%D1%82%20%D0%B1%D1%8B%D0%BB_files/postmessageRelay.html" style="width: 1px; height: 1px; position: absolute; top: -100px;" tabindex="-1" aria-hidden="true"></iframe></body></html>

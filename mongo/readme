@@ -1,0 +1,344 @@
+use projectdb - switch to db projectdb
+db - имя текуущей базы
+show dbs - список баз
+db.projectdb.insert({"name":"proselyte.net"}) - вставить запись
+
+db.dropDatabase() - удалить текущую базу
+
+
+db.createCollection(имя_коллекции, свойства_коллекции) - создать в базе коллекцию
+db.createCollection(имя_коллекции)
+show collections
+
+db.proselyte.insert({"name": "test"}) - создать коллекцию proselyte и вставить в нее документ
+
+
+
+1.
+> use projectdb
+switched to db projectdb
+2.
+> show collections
+developers
+3.
+> db.developers.insert({title: 'Eugene Suleimanov', specialty: 'Java Developer', skills: ['Java', 'Hibernate', 'Spring']})
+WriteResult({ "nInserted" : 1 })
+
+
+db.ИМЯ_КОЛЛЕКЦИИ.find() - запрос документа
+db.developers.find()
+db.developers.findOne()
+db.ИМЯ_КОЛЛЕКЦИИ.find().pretty() - красивый вывод
+
+Операция 	                 Синтаксис 	               Пример 	                                       Эквивалент в реляционной БД
+Равенство 	                {<key>:<value>} 	db.developers.find({“specialty”:”Java”}).pretty() 	where specialty = ‘Java’
+Меньше, чем 	                {<key>:{$lt:<value>}} 	db.developers.find({“salary”:{$lt:1000}}).pretty() 	where salary < 1000
+Меньше, либо равно 	        {<key>:{$lte:<value>}} 	db.developers.find({“salary”:{$lte:1000}}).pretty() 	where salary <= 1000
+Больше, чем 	                {<key>:{$gt:<value>}} 	db.developers.find({“salary”:{$gt:1000}}).pretty() 	where salary > 1000
+Больше, либо равно 	        {<key>:{$gte:<value>}} 	db.developers.find({“salary”:{$gte:1000}}).pretty() 	where salary >= 1000
+Не равно 	                {<key>:{$ne:<value>}} 	db.developers.find({“salary”:{$ne:1000}}).pretty() 	where salary != 1000
+
+
+AND
+db.ИМЯ_КОЛЛЕКЦИИ.find(
+   {
+      $and: [
+         {ключ1: значение1}, {ключ2:значение2}
+      ]
+   }
+).pretty()
+
+OR
+db.ИМЯ_КОЛЛЕКЦИИ.find(
+   {
+      $or: [
+         {ключ1: значение1}, {ключ2:значение2}
+      ]
+   }
+).pretty()
+
+db.developers.insert({title: 'Ivan Ivanov', specialty: 'Java', skills: ['Java', 'Hibernate', 'Spring'], salary: 3000})
+db.developers.insert({title: 'Nikolai Nikolaev', specialty: 'C++', skills: ['C++', 'STL', 'SQL'], salary: 2500})
+
+Теперь выберем всех Java разработчиков, у которых зарплата более 2000.
+db.developers.find( { $and: [ { skills: "Java" }, {salary: { $gte: 2000 }} ] } ).pretty()
+
+выбрать всех разработчиков из нашей коллекции developers, у который зарплата больше, либо равна 3000, или они являются C++ разработчиками.
+db.developers.find( { $or: [ {specialty: "C++"}, {salary: { $gte: 3000 }} ] } ).pretty()
+
+получить всех разработчиков из нашей коллекции developers, у которых специальность зарплата более или равна 2000 и специальность Java либо Java Developer.
+db.developers.find( {"salary": {$gte: 2000}, $or: [ {"specialty": "Java"}, {"specialty": "Java Developer"} ] } ).pretty()
+
+
+
+
+
+
+методы update() и save().
+db.ИМЯ_КОЛЛЕКЦИИ.insert(документ) - вставить новый документ
+db.ИМЯ_КОЛЛЕКЦИИ.save(документ) - перезаписать документ, надо указать _id
+Метод update() изменяет значения уже существующего документа в то время, как метод save() перезаписывает существующий документ.
+db.ИМЯ_КОЛЛЕКЦИИ.update(КРИТЕРИЙ_ВЫБОРА, ИЗМЕНЁННЫЕ_ДАННЫЕ)
+
+мы хотим изменить поле salary у разработчика с именем Eugene Suleimanov
+db.developers.update( {'title':'Eugene Suleimanov'}, {$set : { 'salary': 2500 }} )
+
+Для того, чтобы изменить несколько записей необходимо установить параметр multi в значение true
+Изменим зарплату всем разработчикам, со специальностью Java:
+db.developers.update( {'specialty':'Java'}, {$set : { 'salary': 3500 }}, {multi: true} )
+
+
+Метод save() используется для перезаписи уже существующего документа новым.
+db.ИМЯ_КОЛЛЕКЦИИ.save( {_id:ObjectId(), НОВЫЕ_ДАННЫЕ} )
+Перезапишем объект с ID:5815f4f535ee883c37ac8b4f.
+db.developers.save( { "_id": ObjectId("5815f4f535ee883c37ac8b4f"), "title" : "Nikolay Nikolaev", "specialty": "C++", "skills": ["C++", "STL", "SQL"], "salary" : 3500  } )
+
+
+
+db.ИМЯ_КОЛЛЕКЦИИ.remove(КРИТЕРИЙ_УДАЛЕНИЯ)
+db.createCollection('test_collection')
+db.test_collection.insert( { 'title': 'Document1' } )
+db.test_collection.insert( { 'title': 'Document2' } )
+db.test_collection.insert( { 'title': 'Document3' } )
+db.test_collection.find().pretty()
+db.test_collection.remove( {"title": "Document3"} )
+
+Если у нас есть несколько записей, но мы хотим удалить только первую из них, тогда нам необходимо установить параметр justOne в методе remove().
+db.ИМЯ_КОЛЛЕКЦИИ.remove(КРИТЕРИЙ_УДАЛЕНИЯ, 1)
+
+Для удаления всех документов из коллекции (аналог команды truncate в SQL) нам необходимо выполнить метод remove() без указания критерия удаления.
+db.test_collection.remove({})
+
+
+Для того, чтобы ограничить данные, которые будут получены в результате выполнения запроса нам необходимо указать
+список атрибутов документа со значениями 1 или 0. 1 – означает ,что данный атрибут будет выведен, 0 – нет.
+db.ИМЯ_КОЛЛЕКЦИИ.find( {}, {АТТРИБУТ: 1} )
+
+хотим узнать только специальности наших разработчиков.
+db.developers.find( {}, {_id: 0, "specialty": 1})
+db.developers.find( {}, {"specialty": 1})
+
+> db.developers.find( {}, {_id: 0, "specialty": 1})
+{ "specialty" : "Java" }
+{ "specialty" : "Java" }
+{ "specialty" : "C++" }
+
+> db.developers.find( {}, {"specialty": 1})
+{ "_id" : ObjectId("5815f4e735ee883c37ac8b4d"), "specialty" : "Java" }
+{ "_id" : ObjectId("5815f4ec35ee883c37ac8b4e"), "specialty" : "Java" }
+{ "_id" : ObjectId("5815f4f535ee883c37ac8b4f"), "specialty" : "C++" }
+
+
+db.ИМЯ_КОЛЛЕКЦИИ.find().limit(КОЛИЧЕСТВО_ДОКУМЕНТОВ)
+db.developers.find().pretty().limit(2)
+
+db.ИМЯ_КОЛЛЕКЦИИ.find().limit(КОЛИЧЕСТВО_ДОУМЕНТОВ).skip(КОЛИЧЕСТВО_ДОКУМЕНТОВ)
+db.developers.find().pretty().limit(2).skip(1)
+
+
+Значение возле атрибута, указывает порядок сортировки.
+Для сортировки по возрастанию используется число ‘1’, для сортировки по убыванию – ‘-1’. По умолчанию документы сортируются по возрастанию.
+db.ИМЯ_КОЛЛЕКЦИИ.find().sort( {АТРИБУТ: 1} )
+db.developers.find().pretty().sort( {"title": 1} )
+db.developers.find().pretty().sort( {"title": -1} )
+
+
+Индексация.
+Мы указываем имя коллекции, для которой мы хотим создать индекс, а число ‘1’ – порядок по возрастанию. Для сортировки по убыванию используется число – ‘-1’.
+db.ИМЯ_КОЛЛЕКЦИИ.ensureIndex( {KEY: 1} )
+db.developers.ensureIndex( {"title": 1} )
+db.developers.ensureIndex( {"title": 1, "specialty": -1} )
+
+Данный метод также может принимать список параметров, которые указаны ниже:
+
+Параметр 	         Тип 	          Описание
+background 	        Boolean 	Создаёт индекс в фоновом режиме таким образом, что данный индекс не блокирует другие процессы базы данных (далее – БД). Для активации необходимо установить true. По умолчанию – false.
+unique 	                Boolean 	Создаёт уникальный индекс таким образом, что коллекция не примет вставку документа, в котором ключ индекса, или ключи совпадают с уже существующими значениями. Для активации необходимо установить true. По умолчанию – false.
+name 	                string 	        Имя индекса. Если не указан, то MongoDB генерирует путём конкантенации имён индексируемых полей.
+dropDups 	        Boolean 	Создаёт уникальный индекс для поля, которое может иметь дубликаты. MongoDB индексирует только первый случай ключа и удаляет все документы коллекции, которые содержат совпадения поля. Для активации необходимо установить true. По умолчанию – false.
+sparse 	                Boolean 	Индекс ссылается на документ по указанному полю. Данный вид индексов используют меньше памяти. Но, в некоторых ситуациях, ведут себя по-другому. Для активации необходимо установить true. По умолчанию – false.
+expireAfterSeconds 	integer 	Определяет значение (в секундах) TTL для контроля того, как долго MongoDB сохраняет документ в коллекции.
+v 	                index version 	Номер версии индекса. По умолчанию, версия индекса зависит от версии MongoDB во время создания индекса.
+weights 	        document 	Число, которое ранжирует от 1 до 99,999 и обозначает важность соответствующего поля по отношению к другим индексируемым полям.
+default_language 	string 	        Для текстового индекса это язык, который определяет список стоп-слов и правил для сущностей stemmer и tokenizer. По умолчанию – english
+language_override 	string 	        Для текстового индекса определяет имя поля в документе, которое содержит, и переопределяет язык по умолчанию.
+
+
+Агрегация.
+Агрегация – это группировка значений многих документов. Операции агрегирования
+позволяют манипулировать такими сгруппированными данными (например, подсчёт – COUNT(*)).
+В MySQL аналогом агрегации является команда group by.
+
+db.ИМЯ_КОЛЛЕКЦИИ.aggregate(ОПЕРАЦИЯ_АГРЕГАЦИИ)
+необходимо вычислить общую зарплату всех разработчиков в коллекции
+db.developers.aggregate( [ {$group :{ _id : "Developers", total_salary: { $sum : "$salary" }}} ] )
+
+Ниже приведён список операций для агрегации документов:
+
+Выраженеие 	     Описание 	                                                                        Пример
+$sum 	        Суммирует указанные значения всех документов в коллекции. 	                        db.ИМЯ_КОЛЛЕКЦИИ.aggregate([{$group : {_id : “$title”, total_salary : {$sum : “$salary”}}}])
+$avg 	        Рассчитывает среднее значение указанного поля поля для всех документов коллекции. 	db.ИМЯ_КОЛЛЕКЦИИ.aggregate([{$group : {_id : “$title”, avg_salary : {$avg : “$salary”}}}])
+$min 	        Получает минимальное значение указанного поля документа в коллекции 	                db.ИМЯ_КОЛЛЕКЦИИ.aggregate([{$group : {_id : “$title”, min_salary : {$min : “$salary”}}}])
+$max 	        Получает максимальное значение указанного поля документа в коллекции 	                db.ИМЯ_КОЛЛЕКЦИИ.aggregate([{$group : {_id : “$title”, max_salary : {$max : “$salary”}}}])
+$push 	        Вставляет значение в массив в результирующем документе. 	                        db.ИМЯ_КОЛЛЕКЦИИ.aggregate([{$group : {_id : “$title”, skills : {$push: “$skills”}}}])
+$addToSet 	Вставляет значение в массив в результирующем документе, но не создаёт дубликаты. 	db.ИМЯ_КОЛЛЕКЦИИ.aggregate([{$group : {_id : “$title”, skills : {$addToSet : “$skills”}}}])
+$first 	        Получает первый документ из сгруппированных. Обычно используется вместе с сортировкой. 	db.ИМЯ_КОЛЛЕКЦИИ.aggregate([{$group : {_id : “$title”, first_skill : {$first : “$skills”}}}])
+$last 	        Получает крайний документ из сгруппированных. Обычно используется вместе с сортировкой. db.ИМЯ_КОЛЛЕКЦИИ.aggregate([{$group : {_id : “$title”, last_skill : {$last : “$skills”}}}])
+
+
+Концепция “Трубопровода”
+
+В UNIX-системах данная концепция означает возможность выполнения операции над некоторым вводом и использования вывода, как ввода для следующей команды. MongoDB также поддерживает данную концепцию. Ниже приведён список возможных этапов и каждый из них может быть взят, как множество документов для ввода и сгенерировать  набор документов, полученных в результате обработки:
+
+    $project
+    Используется для выбора некоторых специальных полей из коллекции.
+    $match
+    Операция фильтрации, которая может уменьшить количество документов, которые передаются для ввода в следующий этап.
+    $group
+    Непосредственно, сама агрегация
+    $sort
+    Сортирует документы
+    $skip
+    С помощью данной команды мы можем проигнорировать список документов в имеющемся множестве.
+    $limit
+    Ограничивает количество документов для вывода на количество, переданное методу, начиная, с текущей позиции.
+    $unwind
+    Используется для “разматывания” документов, который используют массивы.
+
+
+Резервирование.
+Команда mongodump
+
+Для создания резервной копии БД в MongoDB нам необходимо использовать команду mongodump. Данная команда “скинет” все данные нашего сервера в указанную директорию. Для ограничения количества данных существует целый ряд команд.
+
+
+
+
+
+Примеры.
+
+db.employees.insert({_id: ObjectId("4d85c7039ab0fd70a117d730"), name: 'Leto'})
+db.employees.insert({_id: ObjectId("4d85c7039ab0fd70a117d731"), name: 'Duncan', manager: ObjectId("4d85c7039ab0fd70a117d730")});
+db.employees.insert({_id: ObjectId("4d85c7039ab0fd70a117d732"), name: 'Moneo', manager: ObjectId("4d85c7039ab0fd70a117d730")});
+db.employees.find({manager: ObjectId("4d85c7039ab0fd70a117d730")})
+
+
+
+
+
+https://docs.spring.io/spring-data/mongodb/docs/current/reference/html/#repositories.query-methods.details
+public interface PersonRepository extends MongoRepository<Person, String>
+
+  @Query("{ 'firstname' : ?0 }")
+  List<Person> findByThePersonsFirstname(String firstname);
+
+  @Query(value="{ 'firstname' : ?0 }", fields="{ 'firstname' : 1, 'lastname' : 1}")
+  List<Person> findByThePersonsFirstname(String firstname);
+
+  @Query(sort = "{ age : -1 }")
+  List<Person> findByFirstname(String firstname);
+
+  @Query(sort = "{ age : -1 }")
+  List<Person> findByLastname(String lastname, Sort sort);
+
+  @Query("select u from User u")
+  Stream<User> findAllByCustomQueryAndStream();
+
+  Stream<User> readAllByFirstnameNotNull();
+
+  @Query("select u from User u")
+  Stream<User> streamAllPaged(Pageable pageable);
+
+
+}
+
+
+Predicate predicate = user.firstname.equalsIgnoreCase("dave")
+	.and(user.lastname.startsWithIgnoreCase("mathews"));
+
+userRepository.findAll(predicate);
+
+
+
+
+
+package org.spring.example;
+
+import static org.springframework.data.mongodb.core.query.Criteria.where;
+import static org.springframework.data.mongodb.core.query.Update.update;
+import static org.springframework.data.mongodb.core.query.Query.query;
+
+import java.util.List;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.springframework.data.mongodb.core.MongoOperations;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.SimpleMongoDbFactory;
+
+import com.mongodb.MongoClient;
+
+public class MongoApp {
+
+  private static final Log log = LogFactory.getLog(MongoApp.class);
+
+  public static void main(String[] args) {
+
+    MongoOperations mongoOps = new MongoTemplate(new SimpleMongoDbFactory(new MongoClient(), "database"));
+
+    Person p = new Person("Joe", 34);
+
+    // Insert is used to initially store the object into the database.
+    mongoOps.insert(p);
+    log.info("Insert: " + p);
+
+    // Find
+    p = mongoOps.findById(p.getId(), Person.class);
+    log.info("Found: " + p);
+
+    // Update
+    mongoOps.updateFirst(query(where("name").is("Joe")), update("age", 35), Person.class);
+    p = mongoOps.findOne(query(where("name").is("Joe")), Person.class);
+    log.info("Updated: " + p);
+
+    // Delete
+    mongoOps.remove(p);
+
+    // Check that deletion worked
+    List<Person> people =  mongoOps.findAll(Person.class);
+    log.info("Number of people = : " + people.size());
+
+
+    mongoOps.dropCollection(Person.class);
+  }
+}
+
+
+
+
+
+BasicQuery query = new BasicQuery("{ age : { $lt : 50 }, accounts.balance : { $gt : 1000.00 }}");
+List<Person> result = mongoTemplate.find(query, Person.class);
+
+Person tmp = template.findOne(query(where("id").is(daenerys.getId())), Person.class);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
