@@ -1,0 +1,2 @@
+docker export container-name | gzip > container-name.gz
+zcat container-name.gz | docker import - container-name
