@@ -1,0 +1,22 @@
+vim /etc/group
+vim /etc/sudoers
+
+Установить docker можно следующей командой:
+
+    # apt-get install docker-engine
+
+В старых репозиториях пакет называется docker-ce:
+
+    # apt-get install docker-ce
+
+Для запуска docker от пользователя (не root) следует выполнить несколько шагов:
+
+    Добавить пользователя в группу docker;
+
+        # usermod ИМЯ_ПОЛЬЗОВАТЕЛЯ -aG docker
+
+    Выполнить повторный вход в систему.
+
+Затем необходимо запустить соответствующую службу:
+
+    # systemctl enable --now docker
