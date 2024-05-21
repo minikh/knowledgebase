@@ -1,0 +1,28 @@
+https://timeweb.cloud/tutorials/git/ustanovka-gitlab-na-ubuntu-22-04
+
+
+sudo vim /etc/apt/sources.list.d/gitlab_gitlab-ce.list
+
+deb [signed-by=/usr/share/keyrings/gitlab_gitlab-ce-archive-keyring.gpg] https://packages.gitlab.com/gitlab/gitlab-ce/ubuntu/ jammy main
+deb-src [signed-by=/usr/share/keyrings/gitlab_gitlab-ce-archive-keyring.gpg] https://packages.gitlab.com/gitlab/gitlab-ce/ubuntu/ jammy main
+
+
+
+ubuntu jammy
+
+deb http://packages.linuxmint.com virginia main upstream import backport #id:linuxmint_main
+
+deb http://archive.ubuntu.com/ubuntu jammy main restricted universe multiverse
+deb http://archive.ubuntu.com/ubuntu jammy-updates main restricted universe multiverse
+deb http://archive.ubuntu.com/ubuntu jammy-backports main restricted universe multiverse
+
+deb http://security.ubuntu.com/ubuntu/ jammy-security main restricted universe multiverse
+
+
+gitlab-rake "gitlab:password:reset[root]"
+
+[[runners]]
+  ...
+  [runners.docker]
+    ...
+    network_mode = "host"
