@@ -1,3 +1,5 @@
+docker run ubuntu while true; do sleep 1; done
+
 //copy files from container to computer
 docker cp metadata-orientdb:/orientdb/databases/mdp ~/
 
